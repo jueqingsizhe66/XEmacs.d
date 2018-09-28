@@ -4421,14 +4421,15 @@ t-io收发消息及处理过程，可以用一张图清晰地表达出来
 
 *** 引言
 
-•	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
-•	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
-•	tio-http-server是基于tio-core实现的http服务器，自带t-io提供的各项API以及一流的性能和稳定性
+1. t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
+2. 	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
+3. 	tio-http-server是基于tio-core实现的http服务器，自带t-io提供的各项API以及一流的性能和稳定性
 
 *** tio-http-server-showcase工程简介
 
-•	用于学习tio-http-server的示范工程
-•	工程地址：https://gitee.com/tywo45/tio-http-server-showcase
+1. 用于学习tio-http-server的示范工程
+2. 工程地址：https://gitee.com/tywo45/tio-http-server-showcase
+
 入口程序
 
 #+BEGIN_SRC java
@@ -4472,32 +4473,33 @@ t-io收发消息及处理过程，可以用一张图清晰地表达出来
 
 *** 引言
 
-•	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
-•	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
-•	tio-websocket-server是基于tio-core实现的websocket服务器，自带t-io提供的各项API以及一流的性能和稳定性
+1. t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
+2.	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
+3. 	tio-websocket-server是基于tio-core实现的websocket服务器，自带t-io提供的各项API以及一流的性能和稳定性
 
 *** tio-websocket-showcase工程简介
 
-•	用于学习tio-websocket-server的示范工程
-•	包括wss和流量监控及处理等高级特性
-•	还包括t-io作者写的一个用于连接websocket服务器的js小框架——tiows.js（内置断链重连、定时主动发心跳等功能，使用API极其简单）
-•	工程地址：https://gitee.com/tywo45/tio-websocket-showcase
-•	效果图
+1. 用于学习tio-websocket-server的示范工程
+2. 包括wss和流量监控及处理等高级特性
+3. 	还包括t-io作者写的一个用于连接websocket服务器的js小框架——tiows.js（内置断链重连、定时主动发心跳等功能，使用API极其简单）
+4. 工程地址：https://gitee.com/tywo45/tio-websocket-showcase
+5. 效果图
  
     [[file:img/4.2weixin.png][微信聊天窗口]]
 
 *** 学习步骤
 
-•	把工程以maven的形式导入到eclipse后
-•	运行org.tio.showcase.websocket.server.ShowcaseWebsocketStarter
-•	用chrome打开http://127.0.0.1/index.html（说明：本工程不仅会启动websocket服务器，还会启动一个http服务器用于访问websocket服务器）
-•	这是个用iframe嵌入了两个demo.html的页面，方便在一个窗口查看群聊效果
-•	可以愉快地聊天了
+1. 把工程以maven的形式导入到eclipse后
+2. 运行org.tio.showcase.websocket.server.ShowcaseWebsocketStarter
+3. 	用chrome打开http://127.0.0.1/index.html（说明：本工程不仅会启动websocket服务器，还会启动一个http服务器用于访问websocket服务器）
+4. 这是个用iframe嵌入了两个demo.html的页面，方便在一个窗口查看群聊效果
+5. 可以愉快地聊天了
 
 *** 说明
 
-•	服务器端，大家看代码就好，用起来比较简单
-•	客户端（js），page/tio/tiows.js是和业务无关的websocket js小框架，主要是实现了重连、定时发心跳等和业务无关的功能
+1. 服务器端，大家看代码就好，用起来比较简单
+2. 客户端（js），page/tio/tiows.js是和业务无关的websocket js小框架，主要是实现了重连、定时发心跳等和业务无关的功能
+
 
 ** 4.1 Tio-showcase
 :PROPERTIES:
@@ -4505,44 +4507,44 @@ t-io收发消息及处理过程，可以用一张图清晰地表达出来
 :END:
 *** 引言
 
-•	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
+1. t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
 
-•	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
+2. 	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
 *** tio-showcase工程简介
 
-•	用于学习t-io的示范工程，一共3个示范工程
-•	在t-io工程结构一节中已经说了：一般用户口中的t-io就是指tio-core
-•	工程地址：https://gitee.com/tywo45/tio-showcase
-•	下面分别对这三个工程进行简介
+1. 用于学习t-io的示范工程，一共3个示范工程
+2. 在t-io工程结构一节中已经说了：一般用户口中的t-io就是指tio-core
+3. 工程地址：https://gitee.com/tywo45/tio-showcase
+4. 下面分别对这三个工程进行简介
 
 *** helloworld
-•	helloworld是入门t-io最好的方式！而作者也是用心写了一个对生产项目有参考价值的hello tio，而不是仅仅是show hello而hello
+1. 	helloworld是入门t-io最好的方式！而作者也是用心写了一个对生产项目有参考价值的hello tio，而不是仅仅是show hello而hello
 
-•	服务器端入口程序：org.tio.examples.helloworld.server.HelloServerStarter
-•	客户端入口程序：org.tio.examples.helloworld.client.HelloClientStarter
-•	本例子演示的是一个典型的TCP长连接应用，大体业务简介如下。
-•	分为server和client工程，server和client共用common工程
-•	服务端和客户端的消息协议比较简单，消息头为4个字节，用以表示消息体的长度，消息体为一个字符串的byte[]
-•	服务端先启动，监听6789端口
-•	客户端连接到服务端后，会主动向服务器发送一条消息
-•	服务器收到消息后会回应一条消息
-•	之后，框架层会自动从客户端发心跳到服务器，服务器也会检测心跳有没有超时（这些事都是框架做的，业务层只需要配一个心跳超时参数即可）
-•	框架层会在断链后自动重连（这些事都是框架做的，业务层只需要配一个重连配置对象即可）
+2. 服务器端入口程序：org.tio.examples.helloworld.server.HelloServerStarter
+3. 客户端入口程序：org.tio.examples.helloworld.client.HelloClientStarter
+4. 本例子演示的是一个典型的TCP长连接应用，大体业务简介如下。
+5. 分为server和client工程，server和client共用common工程
+6.      服务端和客户端的消息协议比较简单，消息头为4个字节，用以表示消息体的长度，消息体为一个字符串的byte[]
+7. 服务端先启动，监听6789端口
+8. 客户端连接到服务端后，会主动向服务器发送一条消息
+9. 服务器收到消息后会回应一条消息
+10. 之后，框架层会自动从客户端发心跳到服务器，服务器也会检测心跳有没有超时（这些事都是框架做的，业务层只需要配一个心跳超时参数即可）
+11. 	框架层会在断链后自动重连（这些事都是框架做的，业务层只需要配一个重连配置对象即可）
 
 *** showcase
 
-•	showcase工程用于进一步掌握t-io，甚至可以用作你项目的脚手架（@精灵007 同学已经用这个工程完成了3个项目）
-•	这里有一篇博客，可以参考：ShowCase设计分析
-•	服务器端入口程序：org.tio.examples.showcase.server.ShowcaseServerStarter
-•	客户端入口程序：org.tio.examples.showcase.client.ShowcaseClientStarter
+1. showcase工程用于进一步掌握t-io，甚至可以用作你项目的脚手架（@精灵007 同学已经用这个工程完成了3个项目）
+2. 这里有一篇博客，可以参考：ShowCase设计分析
+3. 服务器端入口程序：org.tio.examples.showcase.server.ShowcaseServerStarter
+4. 客户端入口程序：org.tio.examples.showcase.client.ShowcaseClientStarter
 
 *** IM
 
-•	im项目在1.7.0版本前一直都开放的（见：https://gitee.com/tywo45/t-io/tree/v1.7.0），考虑到im的复杂性，这会给作者带来一些额外的咨询工作，所以在后面的版本没有放出来，现在重新放出来
-•	j-im项目是在本项目的基础上改造而来的，有兴趣的可以看看j-im
-•	服务器端入口程序：org.tio.examples.im.server.ImServerStarter
-•	客户端入口程序：org.tio.examples.im.client.ImClientStarter
-•	当年有用户用这个工程 轰出每秒收发500万条聊天消息 （当然现在t-io加了各种流量监控后，简单测试发现性能大约降了一半）
+1. 	im项目在1.7.0版本前一直都开放的（见：https://gitee.com/tywo45/t-io/tree/v1.7.0），考虑到im的复杂性，这会给作者带来一些额外的咨询工作，所以在后面的版本没有放出来，现在重新放出来
+2. j-im项目是在本项目的基础上改造而来的，有兴趣的可以看看j-im
+3. 服务器端入口程序：org.tio.examples.im.server.ImServerStarter
+4. 客户端入口程序：org.tio.examples.im.client.ImClientStarter
+5. 当年有用户用这个工程 轰出每秒收发500万条聊天消息 （当然现在t-io加了各种流量监控后，简单测试发现性能大约降了一半）
 
 [[file:img/4.1ChatRoom.png][chatRoom]]
 * 3. 性能和稳定性
@@ -4553,11 +4555,13 @@ t-io收发消息及处理过程，可以用一张图清晰地表达出来
 :PROPERTIES:
 :ID:       dccc530c-1e38-4350-a141-7ef5e51f9549
 :END:
-•	在actframework作者罗总的怂恿下，t-io未也加入了全球最大的免费性能PK平台——TFB，t-io拿去PK的作品是基于tio-http-server的tio-mvc，说是叫tio-mvc，其实这个tio-mvc是内置在tio-http-server中的
-•	观战地址：https://www.techempower.com/benchmarks/#section=data-r17&hw=ph&test=plaintext
 
-•	特别说明：不少非常大众的很多框架是排在tio-mvc后面的，譬如… …（此处还是不点名），排在tio-mvc前面的框架有少数框架是不具备生产实战能力的，譬如有的框架可能连基本的参数绑定、甚至post都不支持（此处亦不点名），纯粹一玩物！
-•	当然：性能到这份上，再对性能斤斤计较，也是没太多必要，还是花更大精力去提供更优质的业务功能更实在一些。像actframework的性能就非常靠前，但actframework的作者也是很少提及它家作品的性能了，而是强调actframework的表达力
+1. 在actframework作者罗总的怂恿下，t-io未也加入了全球最大的免费性能PK平台——TFB，t-io拿去PK的作品是基于tio-http-server的tio-mvc，说是叫tio-mvc，其实这个tio-mvc是内置在tio-http-server中的
+2. 	观战地址：https://www.techempower.com/benchmarks/#section=data-r17&hw=ph&test=plaintext
+
+3. 特别说明：不少非常大众的很多框架是排在tio-mvc后面的，譬如… …（此处还是不点名），排在tio-mvc前面的框架有少数框架是不具备生产实战能力的，譬如有的框架可能连基本的参数绑定、甚至post都不支持（此处亦不点名），纯粹一玩物！
+4. 当然：性能到这份上，再对性能斤斤计较，也是没太多必要，还是花更大精力去提供更优质的业务功能更实在一些。像actframework的性能就非常靠前，但actframework的作者也是很少提及它家作品的性能了，而是强调actframework的表达力
+
 ** 3.1 t-io 30W长连接并发压力测试报告
 :PROPERTIES:
 :ID:       fff89213-3e04-413f-9b85-e65a890d007f
@@ -4616,11 +4620,11 @@ jvm
 
 *** 结论如下
 
-•	0-10万连接。内存变化较大。主要是由于内存初始化时jvm会占用一部分内存。
-•	10万之后。每增加10万连接 内存占用率上升300M左右。
-•	随着连接数增加可以发现cpu性能对连接数影响不大。
-•	新生代内存与老生代内存占用率比较合理。
-•	并发30W连接在2小时内。内存变化不明显。处于合理状态
+1. 0-10万连接。内存变化较大。主要是由于内存初始化时jvm会占用一部分内存。
+2. 10万之后。每增加10万连接 内存占用率上升300M左右。
+3. 随着连接数增加可以发现cpu性能对连接数影响不大。
+4. 新生代内存与老生代内存占用率比较合理。
+5. 并发30W连接在2小时内。内存变化不明显。处于合理状态
 根据以上数据可以推论 —-> 以8G内存(可使用内存为7.5G左右)为例:当内存占用率达到5G左右时足以支撑100W并发连接。
 
 
@@ -4647,47 +4651,54 @@ jvm
 7. 哦，说这么，其实就是想挑战J2cache，不过tio-utils也把J2cache门面化了^_^
 *** tio-core
 
-•	大家口中的t-io或tio指的就是tio-core，这个一定要记住，要不然会混掉
-•	tio-core依赖tio-utils
+1. 大家口中的t-io或tio指的就是tio-core，这个一定要记住，要不然会混掉
+2. tio-core依赖tio-utils
 
-•	tio-core基于java aio的网络编程框架（很多人说t-io是基于netty，大家不要听信这样不负责任的言论）
-•	如果你知道netty是啥，那理解tio-core就很容易了，因为tio-core是和netty类似的框架
-•	关于社区的问答
-•	问：市面上已经有netty这样优秀的框架，为何还要自己写一个tio-core？
-•	答：每个人心中有杆秤，你认为优秀的，不代表所有人都这样认为
-•	问：和netty比，tio-core有何优势和劣势？
-•	答：很难回答这个问题，说几个事实：
-•	在t-io没提供任何文档的情况下，许多用户仅依靠笔者提供的示范工程就掌握了tio，并用于生产项目中，这表明t-io很容易上手
+3. tio-core基于java aio的网络编程框架（很多人说t-io是基于netty，大家不要听信这样不负责任的言论）
+4. 如果你知道netty是啥，那理解tio-core就很容易了，因为tio-core是和netty类似的框架
+5. 于社区的问答
+6. 问：市面上已经有netty这样优秀的框架，为何还要自己写一个tio-core？
+7. 答：每个人心中有杆秤，你认为优秀的，不代表所有人都这样认为
+8. 问：和netty比，tio-core有何优势和劣势？
+9. 答：很难回答这个问题，说几个事实：
+10. 	在t-io没提供任何文档的情况下，许多用户仅依靠笔者提供的示范工程就掌握了tio，并用于生产项目中，这表明t-io很容易上手
 *** tio-mvc
-•	tio-mvc是基于tio-http-server的mvc框架，它在TFB上的性能排名不差（不得不严肃提醒各位：TFB上部分排在tio-mvc前面的框架，并不具备用于生产项目的能力，而只是DEMO级别的，譬如协议容错、协议防攻击、session支持、分布session支持，流控这些都没有，重要的是普通开发工程师难以入手）
+1. tio-mvc是基于tio-http-server的mvc框架，它在TFB上的性能排名不差（不得不严肃提醒各位：TFB上部分排在tio-mvc前面的框架，并不具备用于生产项目的能力，而只是DEMO级别的，譬如协议容错、协议防攻击、session支持、分布session支持，流控这些都没有，重要的是普通开发工程师难以入手）
 
  
-•	tio-mvc在TFB上的PK排名表明t-io性能很好
-•	观察了解t-io的历史，以及大量生产项目以及真实用户的口碑，这个能表明t-io足够稳定！
-•	性能达到一定高度的前提下，再对比性能，其已经意义不大，稳定性、易用性、坑多否才是后面主要的竞技场！
-•	貌似说了一堆和问题无关的内容？！是的，和netty的对比，只能由第三方公正处给出，而不是我！
+2. tio-mvc在TFB上的PK排名表明t-io性能很好
+3. 观察了解t-io的历史，以及大量生产项目以及真实用户的口碑，这个能表明t-io足够稳定！
+4.  能达到一定高度的前提下，再对比性能，其已经意义不大，稳定性、易用性、坑多否才是后面主要的竞技场！
+5. 	貌似说了一堆和问题无关的内容？！是的，和netty的对比，只能由第三方公正处给出，而不是我！
 *** tio-http-common
+
 •	一个给tio-http-server和tio-http-client共用的工程，大家可以略过
+
 *** tio-http-server
-•	基于tio-core（为啥不说是基于tio-http-common？怎么说都可以）实现的http服务器
-•	内置了极易使用的MVC框架
-•	内置了流控、拉黑、forward、拦截器等常用能力
-•	性能优秀，前面已经有地方描述了它在TFB上的性能表现，在TFB上tio-mvc的性能远超使用人群最多的springmvc，当然这不是说springmvc不优秀，而是说性能到这份上了，再说性能没啥意义！
+
+1. 基于tio-core（为啥不说是基于tio-http-common？怎么说都可以）实现的http服务器
+2. 内置了极易使用的MVC框架
+3. 内置了流控、拉黑、forward、拦截器等常用能力
+4. 性能优秀，前面已经有地方描述了它在TFB上的性能表现，在TFB上tio-mvc的性能远超使用人群最多的springmvc，当然这不是说springmvc不优秀，而是说性能到这份上了，再说性能没啥意义！
 *** tio-websocket-common
-•	一个给tio-websocket-server和tio-websocket-client共用的工程，大家可以略过
+
+1. 一个给tio-websocket-server和tio-websocket-client共用的工程，大家可以略过
 *** tio-websocket-server
-•	基于tio-core（为啥不说是基于tio-websocket-common？怎么说都可以）实现的websocket服务器
-•	请注意：tio-http-server和tio-websocket-server是分开的，不能在同一端口用tio-http-server和tio-websocket-server，这么样的原因很简单：为了提升性能。
-•	“哦，那为什么其它框架是放在一起的？”
-•	“我想说的是websocket协议是后来硬扯在http协议之上的，从设计上来讲：这俩货根本就不应该呆在一起，搞得笔者在实现websocket协议时，还得用http协议来完成握手”
+
+1. 基于tio-core（为啥不说是基于tio-websocket-common？怎么说都可以）实现的websocket服务器
+2.    请注意：tio-http-server和tio-websocket-server是分开的，不能在同一端口用tio-http-server和tio-websocket-server，这么样的原因很简单：为了提升性能。
+3. “哦，那为什么其它框架是放在一起的？”
+4. “我想说的是websocket协议是后来硬扯在http协议之上的，从设计上来讲：这俩货根本就不应该呆在一起，搞得笔者在实现websocket协议时，还得用http协议来完成握手”
 *** tio-webpack-core
-•	笔者在tio-http-server的基础之上依赖freemarker实现的类似nodejs webpack的功能，现在还没完全封装到位，就笔者一人在用
-•	你现在正在浏览的网页就是基于tio-webpacke-core的，不信你用右键点击查看源代码，全TM压缩或加密的^_^
+
+1.  笔者在tio-http-server的基础之上依赖freemarker实现的类似nodejs webpack的功能，现在还没完全封装到位，就笔者一人在用
+2. 你现在正在浏览的网页就是基于tio-webpacke-core的，不信你用右键点击查看源代码，全TM压缩或加密的^_^
 
 ** 2.2 t-io应用场景和能力
 :PROPERTIES:
 :ID:       d4125bb8-f634-442e-ba15-771603350636
 :END:
+
 t-io是基于JVM的网络编程框架，和netty属同类，所以netty能做的t-io都能做，考虑到t-io是从项目抽象出来的框架，所以t-io提供了更多的和业务相关的API，大体上t-io具有如下特点和能力
 
 1. 提供了最强级别的监控和流控能力
