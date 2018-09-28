@@ -1,0 +1,347 @@
+﻿* IDEA
+** TODO get the line contour from image 
+  With Image Processing
+* IDEA
+** 学习 [#A] system thinking <2017-10-30 周一 11:10> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-10-30 周一 11:10]--[2017-10-30 周一 11:10] =>  0:00
+:END:
+ 
+系统思考意味着权衡利弊，知其各部件之不足，优化配置，进而达到最优利用
+system thinking,同时也意味着链状思考，进一步上升到螺旋式思考，行
+程整体性的金字塔思考，系统分层思考和构建，持续性思考的能力
+** 学习 [#A] module organization <2017-10-30 周一 20:48> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-10-30 周一 20:49]--[2017-10-30 周一 20:49] =>  0:00
+:END:
+ 
+Module organization
+
+Regardless of language, we can define a module as a collection of code that tries to solve one problem. This problem can be
+ broad or not, but the idea is to encapsulate this problem into small pieces so the user does not have to think about what 
+is inside. With that in mind, there are some precautions that are considered good taste:
+
+    A MATLAB module is a folder containing functions. So try to keep all your code into one folder. Each file must contain 
+one function that solves one problem inside this bigger problem. If this function needs a helper function, really specific 
+to that domain, then it can be appended to this same file; the outside scripts will not see this helper function. Unless 
+it is desired that it appears somewhere else or it is used repeatedly, this helper should not have a script file for its own.
+    Whenever possible, try to solve your problem using only one script file. Most solutions should be considered just another
+ procedure to be included in someone else's code. This is not always the case, since some problems actually need user interfaces
+ and the whatnot, but it can be really nice to just incorporate a single file to the codebase instead of a whole system.
+
+One issue that I have come accross during this time working with this language is that there is considerable namespace pollution 
+given MATLAB does not have any mechanisms to deal with it. Therefore some care is desired when work with them:
+
+    Unless the given module is always used, do not incorporate it directly to MATLAB. Instead, for each script, run the addpath
+ function with the module path. This will keep the current namespace organized. The same applies to the Java classpath.
+    One thing to pay attention is that MATLAB does not add nested modules when a folder is inserted to its path. Therefore it 
+might be a good idea to write a function to add the modules whithin for better incorporation, unless you've got somethign to 
+hide from everyone else.
+** 学习 [#A] paragraph better than document <2017-10-30 周一 20:54> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-10-30 周一 20:54]--[2017-10-30 周一 20:54] =>  0:00
+:END:
+ 
+Your code is mostly like a text, with sentences are paragraphs. Therefore it is a good idea
+ to visually separate concerns within your code with empty lines so new-comers know these 
+concerns. Sometimes, this separations of paragraphs is more useful than documentation itself.
+** 学习 [#A] programming is about thinking <2017-10-30 周一 23:10> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-10-30 周一 23:11]--[2017-10-30 周一 23:11] =>  0:00
+:END:
+ 
+
+
+    Good design is not about making grand plans, but about taking things apart.
+
+    Programming is not about typing...it's about thinking.
+** 学习 [#A] humor has a certain relationship to seriousness <2017-10-31 周二 11:13> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-10-31 周二 11:13]--[2017-10-31 周二 11:13] =>  0:00
+:END:
+ 
+Humor has a certain relationship to seriousness. It is appropriate to
+ joke about serious things, but only after the right amount of time
+ has passed. For example, it took years for me to be able to crack
+ a smile when I remember my favorite uncle��s last words: ��Hold my beer.��
+** 学习 [#A] simple design clojure <2017-10-31 周二 16:01> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-10-31 周二 16:01]--[2017-10-31 周二 16:04] =>  0:03
+:END:
+ 
+Structure your program flow into simple,elegant ways. Keep this 
+in mind will help you break down your tasks into discrete,small
+units of code, and orchestrate the flow of data between functions.
+** 学习 [#A] programming craft based on write and modify <2017-10-31 周二 16:05> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-10-31 周二 16:06]--[2017-10-31 周二 16:09] =>  0:03
+:END:
+ 
+Elegant programming craft is based on the code writing and modifying
+
+you should write it more and more, and modify it with your effect(many 
+effect until to achieve the beauty and elegance , more functions) 
+
+vars into functions, then upgrades into modules, upgrade into project,
+upgrade into problem domain
+** 学习 [#A] visual memory of clojure <2017-10-31 周二 16:17> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:13]
+:LOGBOOK:
+CLOCK: [2017-11-01 周三 17:14]--[2017-11-01 周三 17:15] =>  0:01
+CLOCK: [2017-10-31 周二 16:18]--[2017-10-31 周二 16:26] =>  0:08
+:END:
+ 
+
+Under ground, we will have a seed, we carry a seed in our hand.
+we are only one sand in the dessert, if you can grow into one
+tree, nobody will care, nobody will stand below your body wing.
+
+Upgrade into module
+upgrade into packages
+upgrade into projects
+upgrade into domain specific language
+
+Finally into trees
+
+That's your destination, and it  is very important, need 
+a lot of time to achieve.
+
+Every tree nodes have left branch and right branch. Every 
+branch have many tree nodes. Every tree node is your effect
+and blood
+
+大家对于树状逻辑还不是特别能够运用，就比如吉林省长春市西天光路
+漏了一个宽城区，也不知道怎么补，当然百度会出来，究其原因是会理清楚
+在市和路中少了一个区
+** 学习 [#A] 要记得使用sw的曲面造型技术 <2017-10-31 周二 22:08> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:13]
+:LOGBOOK:
+CLOCK: [2017-10-31 周二 22:08]--[2017-11-01 周三 00:19] =>  2:11
+:END:
+ 
+
+可以使用边界曲面绘制两个面间的平面
+
+今晚学会了边界曲面和相交曲面的创建
+
+记住一点Solidworks的面操作还是比ICEM强的，先修复几何然后在进行面操作
+** 学习 [#A] 学问和研究 <2017-11-01 周三 18:18> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:13]
+:LOGBOOK:
+CLOCK: [2017-11-01 周三 18:19]--[2017-11-01 周三 18:20] =>  0:01
+:END:
+疑而问，问而学，学而知，学而不得，便有研究
+以小见大，循序渐进，实乃学术通义
+** 学习 [#A] 设计的本质是沟通？ <2017-11-02 周四 19:50> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-11-02 周四 19:50]--[2017-11-02 周四 20:47] =>  0:57
+:END:
+ 
+逻辑思维提到设计的本质是沟通，通过沟通达到物我，设计师我之间的沟通
+
+设计方便了你的需求
+** 学习 [#A] 清晰了然 <2017-11-22 周三 22:54> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-11-22 周三 22:55]--[2017-11-22 周三 22:55] =>  0:00
+:END:
+ 我不管具体做成什么样，原则就是清晰，最好一目了然。这就是好图
+** 学习 [#A] 习惯和方法 <2017-11-22 周三 23:35> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-11-22 周三 23:36]--[2017-11-22 周三 23:58] =>  0:22
+:END:
+ 正确的习惯 和正确的方法是类似的道理
+
+养成了好的习惯，你就能让自己有规律，能够活的更好
+
+找到了正确的方法，你就能解决你的问题。思考问题，找到方法，这是人一辈子都在干的活
+
+方法对了，你就有最大的可能性把问题解决掉
+习惯对了，那就有最大的可能性让你的生活有姿有色。
+
+习惯去寻找新的方法，来更快更好更有效率的解决你的问题
+
+习惯质疑  不断学习新的方法来改造自己。
+
+找对了研究某种问题的方法，你才能进一步去研究该问题，要注意研究的顺序，解决问题的顺序
+
+
+大家都会说：在学习Perl前，请明确你的学习目的，并采用正确的学习方法和资源
+(欲望：吃饭，睡觉，玩，等是阻碍你像你的目的进军的念头） 目的是你真正要干的
+http://blog.sina.com.cn/s/blog_4d2c7ad601011x3m.html
+** 学习 [#A] 船和桥 <2017-11-27 周一 19:33> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-11-27 周一 19:33]--[2017-11-27 周一 23:14] =>  3:41
+:END:
+ 我们的任务是过河，但是没有桥或没有船就不能过。不解决桥或船的问题，过河就是一句空话。不解决方法问题，任务也只是瞎说一顿
+
+船和桥  对应方法
+
+
+我们讨论问题，应当从实际出发，不是从定义出发。
+
+
+世界上没有直路，要准备走曲折的路，不要贪便宜
+
+要想不经过艰难曲折，不付出极大努力，总是一帆风顺，容易得到成功，这种想法，只是幻想。
+
+世界上的事情就是这样，要走弯路，就是Ｓ形。
+
+此处吃亏，彼处胜利，东方不亮西方亮，黑了南方有北方，我们总有道路。（方法总能找到)
+
+下定决心，不怕牺牲，排除万难，去争取胜利。
+《毛泽东选集》第2版第3卷第1101页
+
+什么叫工作，工作就是斗争。那些地方有困难、有问题，需要我们去解决。我们是为着解决困难去工作、去斗争的。越是困难的地方越是要去，这才是好同志。
+《毛泽东选集》第2版第4卷第1161页
+
+
+一件事不做则已，做则必做到底，做到最后胜利。
+
+我认为聪明、老实二义，足以解决一切困难问题。……
+聪 谓 多问多思，
+实 谓 实事求是。持之以恒，行之有素，总是比较能够做好事情的。
+《毛泽东文集》第7卷第430页
+
+我们看事情必须要看它的实质，而把它的现象只看作入门的向导，一进了门就要抓住它的实质，这才是可靠的科学的分析方法。
+《毛泽东选集》第2版第1卷99页
+
+
+感觉到了的东西，我们不能立刻理解它，只有理解了的东西才更深刻地感觉它。感觉只解决现象问题，理论才解决本质问题。
+《毛泽东选集》第2版第1卷第286页
+
+一切事物，它的现象同它的本质之间是有矛盾的
+。人们必须通过对现象的分析和研究，才能了解到事物的本质，因此需要有科学。
+不然，用直觉一看就看出本质来，还要科学
+
+干什么？还要研究干什么？
+《毛泽东文集》第6卷第401页
+
+
+要别人不动摇，就要自己首先不动摇。要看到问题的本质方面，
+要看到事物的主导或主流方面，这样才能不动摇。《建国以来毛泽东文稿》(基础不稳 地动山摇）
+
+
+研究问题，要从人们看得见、摸得到的现象出发，来研究隐藏在现象后面的本质，从而揭露客观事物的本质的矛盾。
+《毛泽东文集》第8卷第139页
+
+提高要有一个基础。比如一桶水，不是从地上去提高，难道是从空中去提高吗？
+《毛泽东选集》第2版第3卷第859页
+
+如果要看前途，一定要看历史。《毛泽东文集》第8卷第383页
+
+没有眼睛向下的兴趣和决心，是一辈子也不会真正懂得中国的事情的。
+《毛泽东选集》第2版第3卷第789至790页 
+
+
+我们中国人必须用我们自己的头脑进行思考，并决定什么东西能在我们自己的土壤里生长起来。
+《毛泽东文集》第3卷第192页(本土国情)
+** 学习 [#A]  <2017-11-28 周二 14:39> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2017-11-28 周二 14:39]--[2017-11-28 周二 14:39] =>  0:00
+:END:
+ 
+液压式风力机
+** 学习 [#A] 记录服务于目的 <2018-01-29 周一 10:44> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2018-01-29 周一 10:44]--[2018-01-29 周一 10:48] =>  0:04
+:END:
+ 正如主题服务于你的目的一样
+
+你每一次的记录也得服从于你的目的才有意义
+
+记录一定能够反复的帮你完成计划的执行
+** 学习 [#A] doctor's tasks <2018-03-03 周六 10:40> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2018-03-03 周六 10:40]--[2018-03-03 周六 10:50] =>  0:10
+:END:
+ 
+一个博士该干什么(要干什么）
+干了什么？
+能干什么？
+怎么干？ 是需要成为每天都在思考的内容
+
+
+类似的(likewise)
+
+西北体系说的四点解决你生活、学术遇到的困难的方法
+
+A. 目标
+B. 优势和劣势
+c. 行动方案
+d. 行动方案最佳是什么？
+
+
+如果更加细致点
+
+A. 你的目标是什么？
+B. 你做了哪些准备
+C. 你的计划是什么？
+D. 最佳的行动方案是什么?
+E. 你打算什么时候执行该方案，何时完成？
+
+
+这得在经历着人生的挫折过程中观看才更有效果
+
+本质类似于结构化思维， 都是基于目标的解决问题的方法
+
+但是结构化思维那本书是以事为思(看完之后感觉缺乏感情，但是对于报告有帮助）
+而古典的那本推掉思维里的墙则是以人为思
+
+你要做什么？ 他要做什么？ 我要做什么？
+
+不是干或者做，而是主语的变化……  也就是其能干什么（本身就代表的适用范围，当然换个思路
+就变成有几种解决方案)
+** 学习 [#A] 只靠自己的造化 <2018-03-14 周三 18:49> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+:LOGBOOK:
+CLOCK: [2018-03-14 周三 18:49]--[2018-03-14 周三 18:51] =>  0:02
+:END:
+ 
+人得靠自己的机遇、际遇、挑战、阅历，来造化自己的人生
+
+贵人可能在某一时刻帮你，但不会时时刻刻。
+** 学习 [#A] 计算图电线 <2018-04-15 周日 17:50> 
+- State "学习"       from "TODO"          [2018-06-20 周三 11:14]
+ 计算的本质是处理信息！
+
+计算图[区分符号和模型，不同的语言只不过是不同的符号而已，内部的模型可能一致，也就是编码不同导致看起来不同，类似于你现在看到的中文编码，
+别人看到可能是utf-8编码，还有英文、法文等，  而表现的背后都有一个模型，他就是一个加法运算器，乘法运算器，线性运算器，非线性运算器等。
+如果你了解这个内部的模型，无论什么写法都是类似，表现出来可能不一样，但意思是一样的
+
+想要表达一个模型，内部需要
+
+1. 基础的数值。比如布尔值,整数，字符串等
+2. 变量(诞生地）
+3. 表达式（单一表达式 复杂表达式【算术表达式，嵌套表达式】 递归表达式）
+4. 分支 （查看过程)
+5. 函数  调用(传递过程)
+6. 接着查看，函数调用，表达式，变量等过程
+
+信息处理的源头变量的内存地址  信息的传递赋值、函数调用和返回值【三种传递方式】，信息的查看即分支【菱形】
+
+一根电线【一个箭头表示】一个变量（一个参数、一个属性），一个基点一个函数，一个站点一个模块
+箭头只有开始和结束上面没有基础的数值或者变量，开始地方分布在箭尾、结束地方分布在箭头，其他地方都得有基础的数值和变量名
+** TODO [#A] 师出有名 <2018-07-26 周四 10:40> 
+ 
+任何的描述都应该有理有据，有其出处，处则为location，也即为名
+
+师出有名，名为location(联想到名字---地名----标识----tag---mark(以小见大))
+** TODO [#A] 路要靠自己走 <2018-07-27 周五 06:13> 
+
+自己走出来的路，就是好路，走不出来，那就只能感叹！
+
+从大到小，抓住重点，以重点论、两点论为纲！！不断深化自己的见识 

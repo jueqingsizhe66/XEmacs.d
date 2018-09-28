@@ -1,0 +1,143 @@
+* comment 
+file:k:/clojure-home/clj-new-github/src/clj_new_github/core.clj::17
+In ~foo~:
+#+BEGIN_SRC clojure
+
+(comment
+  (+ 1 2 3 4)
+  (let [url "https://api.github.com/repos/rails/rails/stats/contributors"]
+    (type (http/get url))))
+#+END_SRC
+* org table evaluation 
+file:c:/Users/yzl/AppData/Roaming/.emacs.d/README.md::3967
+In ~插入公式~:
+#+BEGIN_SRC markdown
+| Date              | Category | Money | People     | Note |   |
+|-------------------+----------+-------+------------+------+---|
+| <2017-10-30 周一> | 备用     | +3000 | Yezhaolian |      |   |
+| <2017-10-30 周一> | 备用     | +7000 | zhujian    |      |   |
+| <2017-10-30 周一> | 火车票   | -4000 | zhuijan    |      |   |
+|-------------------+----------+-------+------------+------+---|
+|                   | Total:   |  6000 |            |      |   |
+#+TBLFM: @>$3=vsum(@2..@-1)   
+#+END_SRC
+* dfeich-lob的函数对齐 
+file:c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/dfreich-lob.org::17
+In ~PostAlignTables - Align and calculate multiple tables of an ~:
+#+BEGIN_SRC org
+   #+NAME: lobPostAlignTables
+   #+header: :var text="|5|22222|\n|0||\n|12|45|\n|---\n|||\n#+TBLFM:@>$1=vsum(@1..@-1)\n\n|1|22222|\n|0||\n|12|45|\n"
+   #+BEGIN_SRC emacs-lisp :results value :exports both
+     (with-temp-buffer
+       (erase-buffer)
+       (cl-assert text nil "PostAlignTables received nil instead of text ")
+       (insert text)
+       (beginning-of-buffer)
+       (org-mode)
+       (while
+           (search-forward-regexp org-table-any-line-regexp nil t)
+         (org-table-align)
+         (org-table-recalculate 'iterate)
+         (goto-char (org-table-end)))
+       (buffer-string))
+   #+END_SRC
+
+#+END_SRC
+* 代码标注 
+file:c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/newgtd.org::1085
+In ~提交双滑移初稿 <2018-05-15 周二 11:56 +1w>~:
+#+BEGIN_SRC org
+** 伟大的awk
+
+
+#+BEGIN_SRC awk :dir M://fluentYaw30//
+
+  ls *.cas|awk -F"-"  '{print a[NR]=substr($5,0,length($5)-8);}END{for(i=1;i<=NR-1;i++) print a[i+1]-a[i];}
+                                                              '
+
+#+END_SRC
+#+END_SRC
+*  插入文件(基于base65加密)
+file:c:/Users/yzl/AppData/Roaming/.emacs.d/.orgConf.el::1614
+In ~org-insert-file~:
+#+BEGIN_SRC elisp
+(defun org-insert-file (filename)
+      "Insert Elisp code block recreating FILE in the current
+directory."
+      (interactive "f")
+      (let ((basename (file-name-nondirectory filename))
+            (base64-string
+             (with-temp-buffer
+               (insert-file-contents-literally filename)
+               (base64-encode-region (point-min) (point-max))
+               (buffer-string))))
+        (save-excursion
+          (insert (format "[[./%s]]\n#+BEGIN_SRC emacs-lisp :results output silent\n  (with-temp-file %S\n    (insert (base64-decode-string\n      %S)))\n#+END_SRC" basename basename base64-string)))
+        (forward-line)
+        (copy-file filename basename 1)
+        (org-display-inline-images)))
+#+END_SRC
+http://mbork.pl/2018-08-18_Embedding_files_in_Org-mode_revisited
+* 一定模式下面后面5行删掉 
+file:c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/Note/notes.org::1519
+In ~perl seek [#B]~:
+#+BEGIN_SRC org
+  while ( <$journal2018> ) {
+    
+      if (/^\*\skeep/ ) {
+          print tell $journal2018,"$_\n";
+          seek($journal2018,(tell $journal2018)+150,0);
+      }else{
+          print $journalOut $_;
+      }
+  }
+
+#+END_SRC
+* 拷贝一堆文件到一个文件 
+file:c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/Note/notes.org::1577
+In ~perl收集所有文件内容到一个文件 [#B]~:
+#+BEGIN_SRC org
+  #while ( glob("*") ) {
+  while ( <*> ) {
+
+      my        $journalF_file_name = "$_";# input file name
+
+      print "$_\n";
+      open  my $journalF, '<', $journalF_file_name
+          or die  "$0 : failed to open  input file '$journalF_file_name' : $!\n";
+
+      print $journalOne "* $_\n";
+      my  $lineNumber=1;
+      while ( <$journalF> ) {
+          if($lineNumber >8)
+          {
+              print $journalOne "$_\n";
+          }
+          $lineNumber=$lineNumber+1;
+      }
+      close  $journalF
+          or warn "$0 : failed to close input file '$journalF_file_name' : $!\n";
+#+END_SRC
+* MIT技术 file:c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/Note/notes.org::1816
+In ~科研? [#B]~:
+MIT技术Review(From 克克老师)
+https://www.technologyreview.com/
+
+
+Phys.org
+https://phys.org/
+
+Science
+http://www.sciencemag.org/
+
+
+Nature:
+https://www.nature.com/
+
+
+
+MIT公开课
+https://ocw.mit.edu/index.htm
+
+网易公开课
+http://open.163.com/special/opencourse/

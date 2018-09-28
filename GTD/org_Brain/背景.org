@@ -1,0 +1,711 @@
+#+BRAIN_PARENTS: 科研论文
+
+
+* 基于多项式混沌的不确定CFD模拟方法                                   :crypt:
+:PROPERTIES:
+:ID:       18507696-c950-4099-8ebe-a1f7645a0a0a
+:END:
+-----BEGIN PGP MESSAGE-----
+
+hQEMAw7kGOoigxp9AQf+Pjn+4dH/pCmSigDo6S8vT8HBq1BTwFiRBgLo8NoEbmEy
+BT+859iejRmzufJn+EGkF7KH3DKx0uSamHhPk/F9zCLKVPIuGcHI/DIefdLDK/Nf
+F/JMuMbmvNP+AaahzbzUK1YGvPdaXfsrLmzXVo8PHPWnHoVKYcuN3mq85y7+Kemo
+eTPa4Rw5DGvLh7TwnvNEgud04J9Z0t/C0Vyvo3laaN4JjdNJlnLCCStXxk+CslHZ
+EGMN0UZ7cskGjz1+PmO99wZY73gMRImA9p8+w7d5NGuXXt9u2DeDQxGoolQp7DWU
+XWsNvbVmBZCUuUnvD2M5P4/nM1X4g0rnrcfs8TJohdLpAdumfHCNbjMKEM2Xit22
+kk6eLShwn/8Hyv2uUuEP8N5Ml+clfNnWDrzL7Dr+z0F1frhGLDaZtnDbO+mmMGPg
+msPt80t12Memrm+XtpHqFFKXC5nI0rrFwPibkaX60xvOSmCWjTkUW3t8c0C7RI+m
+sHPjv3E0AM0wCmPcdYOYszcaj23MOI9MzJa6pA+5y2nO0UHq7b+l6MfveUZSoktD
+QgFAEV6v9+gesQz6mHi+UdQpdvwjuyYvu7GxD7YQtw9oqYjNcmo7nuAZaAZ0l7A9
+EB1IPK286ax+0g6ldv4+s5uyvKM0DoiRfBY4uVUXlrtWLTmvkOw8ogjqS9kZGM0H
+0tpUCKcGjBjraagQWNakaMRT0iNz321TdRF7OS1g8sHch2uXA28u8Uz7ncNR+msN
+jK+/1gOzTbBSL2LjlvPOxq1L7yHrF8UZ2srB1K+X3NSp4ECYqLEKrC6tIJ6jfeDq
+tEmh0vEEkpGE79e0yn6wPwxPieD301jd0cxYVMxIg7WPeZOorh9vzkUUZsmNiXDr
+13OoT7fKyWCUQA3DIavPyyuvCkC6ZYicuRMTuHCZw3X3u1fJJ2U8DCSFDJpJ1zx5
+9hMGlGhjAg93GmuwnvlFR3a3DTTcaswtOlXXcLGk1HFo4qJpbDe9VhQk/6D7RMxE
+7IyCfPqP8trkD9I6Kb/HNustsS/x8oLEWcb2BKJf14+utnGKt8SIiZWbExuuqwR7
+trFnMXneUTwph0WQaZ+E
+=Yi/l
+-----END PGP MESSAGE-----
+* 风轮多轴角运动模型                                                  :crypt:
+:PROPERTIES:
+:ID:       ac7d5c26-d568-47bd-a50d-4bc002a8eb03
+:END:
+-----BEGIN PGP MESSAGE-----
+
+hQEMAw7kGOoigxp9AQf/Y45Ufv6ebjnWdZmH8dKAB8ZxJbhFpsyPQDWA7jt8nxE1
+FWeyihPRHFFyH5HaO/j9loYlG13G/WeiyH6X9fAw2Ja8x8sSOHoQXGHkaxi9YWpj
+ilvYRXIz/11KXkGrrOZLo33cQnIErAdHVRHuX3WVrglE4pvdMpNAT3MkbM97OoX+
+HndV/erwI31P0xvXnNIbqa1OFLPaURQlSQYHSL+HlKD7QCc9uxeSzWv44ZXHWaVn
+KXr4552UD/oegDzo4prjOaAyhqp6eXBbpDfgCDu74SGdENX9FWPoyQSWOMOeQ99s
+wac40kC41zQ8JXIygG51jrO7cgfbNXZYPziJ+4Az1tLpAc5QglmcGnVieA3Qzv1q
+3CkgVKO4IzMExAMH77todgPxsPg0hwgy86Zh8cjEekTTodICHijMpBmnLAPABVrO
+33MwB3JGRhF2CD5pACI8PR2dw+XmME01hQ6Zvm2s00IVu2ZXFiAD3NTVesPNpqnu
+ctonzO0K/GHvOU4HNGdm3wA4nxr8t1OxBFFlDx6YbsWaHNqweCw6q+pWzG4sYI3E
+l2nls0ZvveC+zMXoNteorw1MEsngqvwzSlnfWwzT3v81XkVFKF26NcdcOWSpibEd
+/HgpoYYAAALkjDS3ndNHr2Ro/kVbwDvTxxPiA734P2rZbY+Aza8IvQemOkOdfJcd
+7uxTTHRxCxaOCeLg9plIZOF7HlcoGGJ3h5PWyem99pi2NoTnuWXRtT8QaOzDPoZU
+1LZ4xCdkfcofMqDmbfXfOxkpYCVu9RRJKI7j5FjHQOn6eDf22uAGFO6on8tOudSZ
+xwcAq3i2hCipw094Cgdm9dqni7iceVdxDzEpj3sVClR93bwzMfV/aj/ebmx2Zg9b
+ix4gBR7d1l+F2YPSGQE/cSdLs9RNbya6zOsTZceS1vBUtl3oUL9UJzsij16F20vl
+hJOmdkKMdn7WnfBXHX+4nrE3tHp4GT6V/z83sQsnDEm8Njc6GLGO83MLQY7h73I5
+fGqTvmYeO5TqxIMmRPbmVxRTerUshEGM+HL5Kmz+VPW+CQ7pAEUVhQw+QrglOetT
+BhFN112rlV2AowPMMi50SoJUdpn/Ojt3u+nDQACSJ1SO5aGiTsPEXEHPbl9zON2h
+oxOma10=
+=Maf7
+-----END PGP MESSAGE-----
+
+* 大气湍流下风电机组近尾流特性与失谐特性                              :crypt:
+:PROPERTIES:
+:ID:       0c94b60e-7daf-4ddd-97b4-604dc01b506c
+:END:
+-----BEGIN PGP MESSAGE-----
+
+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
+=pWxT
+-----END PGP MESSAGE-----
+* 非定常
+:PROPERTIES:
+:ID:       611eaefe-b59f-4234-aa05-b21f14ab61ca
+:END:
+
+** 4.湍流非定常
+:PROPERTIES:
+:ID:       5e51cb35-e761-4c4f-af85-51f656933632
+:END:
+
+一般只能通过DNS LES进行研究了
+** 3.分离引起的旋涡脱落非定常
+:PROPERTIES:
+:ID:       3b0da20f-5e2f-411e-87c7-67f871ea493a
+:END:
+** 2. 风向非定常
+:PROPERTIES:
+:ID:       6912cff2-d850-4a71-b03d-f4b41714b06d
+:END:
+** 1.相位非定常
+:PROPERTIES:
+:ID:       c0d36639-36f7-4635-9a6d-e17719cb5361
+:END:
+* Information Source
+:PROPERTIES:
+:ID:       2c5202d1-5d63-4f1a-910a-332784694e15
+:END:
+
+** Discoverability
+:PROPERTIES:
+:ID:       8ee4f990-e46f-4d12-90c2-2636c6cc2ddb
+:END:
+
+Five fundamental psychological concepts for discoverability:(from the book <The Design of Everyday Things>)
+
+1. affordances
+2. signifiers
+3. constraints
+4. mappings
+5. feedback
+* Be critical
+:PROPERTIES:
+:ID:       0c6de2f3-3388-4ff9-99e8-0f541ff86125
+:BRAIN_PARENTS: 科研论文
+:END:
+:RESOURCES:
+:END:
+
+** understand the topic from different perspectives
+:PROPERTIES:
+:ID:       df167cb1-8ed7-4270-b546-1737f6e26dcf
+:END:
+
+*** read the related texts
+:PROPERTIES:
+:ID:       9ea4d76d-e72e-47c6-9a48-c4ebb0aeed70
+:END:
+
+    The point of making up the story is now to concentrate on how all your bits fit together;
+ what you want to end up saying, how your work supports that conclusion, how the literature 
+relates to the argument you are now putting forward. It doesn't have to be a true story of 
+why you did that: but a self-critical and measured account of what you know think can be said about it.
+    
+1. how all your bits fit together; 
+2. what you want to end up saying, 
+3. how your work supports that conclusion, 
+4. how the literature relates to the argument you are now putting forward.
+
+
+**** framework
+:PROPERTIES:
+:ID:       ad6c8a91-bfa5-4612-8f05-294820e01e9e
+:END:
+**** approaches
+:PROPERTIES:
+:ID:       28dca5c9-b7f1-408a-80dc-c0d973f2379b
+:END:
+**** theories
+:PROPERTIES:
+:ID:       82cb2e87-02e7-4d76-b488-2c520ea8f04d
+:END:
+** present your evaluation and judgement of the text
+:PROPERTIES:
+:ID:       5b58677b-4fc8-431d-a5c9-203a7a7ca77f
+:END:
+*** Set Goals?
+:PROPERTIES:
+:ID:       8d842945-8257-4dd1-90a6-f09c2ce04f8e
+:END:
+
+What is a goal?
+
+Goal is a start of a plan, plan something to be perform and then perceive.
+
+Goal is like an application, an package , an tree, an house, an set etc.
+
+"""
+    For each goal, one has to ask, “Why is that the goal?”
+Why was I reading? I was trying to prepare a meal using a new
+recipe, so I needed to reread it before I started. Reading was thus
+a subgoal. But cooking was itself a subgoal. 
+I was cooking in order to eat, which had the goal of satisfying my hunger.
+So the hierarchy of goals is roughly: satisfy hunger; eat; cook; read cookbook;
+get more light. This is called a root cause analysis: asking
+“Why?” until the ultimate, fundamental cause of the activity is
+reached.
+
+
+Goal driven behavior(GHB)
+"""
+**** Bridge of Evaluation
+:PROPERTIES:
+:ID:       fa49732e-b505-4b69-8227-11b3a4432e55
+:END:
+***** 6Compare
+:PROPERTIES:
+:ID:       e5151600-e698-41b9-bf4e-4db60ebfc2bf
+:END:
+Compare the outcome with the goal!!!! This is very important!
+***** 4Perceive
+:PROPERTIES:
+:ID:       40f472f1-9bad-4153-b22d-8ad7fd374f1e
+:END:
+
+The state of the world by your investigation and watch
+***** 5Interpret
+:PROPERTIES:
+:ID:       5699fce7-7282-49e1-9845-c9487e379f60
+:END:
+Intercept your perception , using your knowledge
+**** Bridge of Execution
+:PROPERTIES:
+:ID:       a370a0c1-5aae-4821-b375-f153a268bd31
+:END:
+***** 3Perform
+:PROPERTIES:
+:ID:       11b0d241-f98d-4504-a560-df99a2163d92
+:END:
+Perform the action sequence
+***** 2Specify
+:PROPERTIES:
+:ID:       4d367759-1580-4d94-8309-0e77e320ffa4
+:END:
+Specify an action sequence(First to do what, how well? Standard, Second to do^-^)
+***** 1Plan
+:PROPERTIES:
+:ID:       4aa2fb26-ab22-4c5a-b39d-a58878401456
+:END:
+
+Plan the action
+*** Analysis
+:PROPERTIES:
+:ID:       0666a863-95e7-49f3-b63c-619dd1a08839
+:END:
+Analysing requires separating the content and concepts of a text into their main components
+and then understanding how these interrelate, connect and possible influence each other
+**** influence
+:PROPERTIES:
+:ID:       cff9d8b5-a138-4cc4-ba94-98eea2303032
+:END:
+**** connect
+:PROPERTIES:
+:ID:       42917213-2caa-411c-8c65-6fb8564a1c35
+:END:
+**** interrelate
+:PROPERTIES:
+:ID:       6290b53c-7bd3-4afd-8492-5242a60167da
+:END:
+*** Structure:why it is structured the way it is
+:PROPERTIES:
+:ID:       bb36eea5-df92-4327-b0d8-5d93aa12a201
+:END:
+ 
+Planning and expressing the structure
+There are really four stages here: 
+1. collecting material for the essay,
+2. deciding what your main message and argument really are,
+3. deciding what structure to adopt in order to communicate that, and
+4. indicating your structure to the reader. 
+
+a. The first is the result of the issues and activities discussed above (e.g. selecting, reading, and thinking),
+b. the middle two are about "planning" your writing and perhaps writing an essay plan,
+c. the last about making sure your plan is clear to the reader. 
+
+{{{
+Writing is for yourself, while rewriting is for your reader
+}}}
+*** the intended audience
+:PROPERTIES:
+:ID:       1289f198-1543-4dc3-bc12-aec6363e7648
+:END:
+*** purpose of text
+:PROPERTIES:
+:ID:       8ef83cf5-6b5a-4469-8c11-f79b22d66440
+:END:
+
+    Generally, the purpose of a review is 
+1. to analyze critically a segment of a published body of knowledge through summary,
+2. classification, and
+3. comparison of prior research studies, reviews of literature, and theoretical articles.
+
+****  Value
+1. Deciding what your argument is?(60s filter method)
+
+    Thus you will probably at this point have a collection of points and facts you think of some value:
+ the raw material for the essay; not a plan, but the elements to fit into the plan.
+ Some students will now realise they have too much material to fit within the size limit.
+ They must decide what is important to include, and what to leave out.
+ The way to do that selection is to do what everyone must do anyway:
+       decide what the overall point or conclusion is, what are the points 
+or evidence that most directly and strongly support those conclusions,and so on.
+When you know what the main point or points are, then you can decide what is most important for supporting those conclusions. 
+If this is proving difficult for you, one technique I find useful in my own writing is to put away my notes,
+and try to speak a 60 second version. For example grab a friend, preferably one who doesn't know about your 
+topic and isn't all that interested, and tell them what your essay is going to say. You automatically make it 
+brief to keep their attention, and mention only the most important things without the details. When you hear 
+yourself give the summary, that tells you what for you is the most important point; and hence how to organise your essay.
+ E.g.
+    "My CR is about autism, and the main feature of this field is all the different theories that don't really fit together,
+    yet all of them seem to have some support." If you hear yourself say that, then you probably want an essay with one section
+    for each of the major different theories, and a concluding discussion pointing out how they conflict. Or you might have 
+    found yourself saying "My CR is on autism, and although there are various theories, I'm just concentrating on the claim 
+    that it comes from a specific neurophysiological deficit. There's a few papers on this, and I'm going to focus on how strong
+    the evidence they present really is. There are really two classes of problem here: firstly the evidence for the deficit is
+    scanty and might be questioned at least until more studies are done, and secondly it is hard to see how all the symptoms and
+    consequences can really be the effect of a single deficit when they vary so much from case to case." 
+
+Here the essay might take each of a few selected papers in turn, and apply the basic criticisms repeatedly to each. 
+
+**** Body
+:PROPERTIES:
+:ID:       392e8092-4a85-4f72-8314-2c7565f43a8c
+:END:
+
+1. Group research studies and other types of literature 
+    (reviews, theoretical articles, case studies, etc.) according to common denominators 
+    such as qualitative versus quantitative approaches, conclusions of authors, specific 
+    purpose or objective, chronology, etc. 
+2. Summarize individual studies or articles with as much or as little detail as each merits
+    according to its comparative importance in the literature, remembering that space (length) 
+    denotes significance. 
+3. Provide the reader with strong "umbrella" sentences at beginnings of paragraphs, "signposts" 
+    throughout, and brief "so what" summary sentences at intermediate points in the review to
+    aid in understanding comparisons and analyses. 
+
+    So What????? 有什么用处?
+
+**** Introduction
+:PROPERTIES:
+:ID:       ffb20933-9c63-4f12-8e9a-9351b5f078d4
+:END:
+1. Briefly expain the topic of the text.
+2. Present the aim of the text and summarise the main finding or key argument.
+3. Conclude the introduction with a brief statement of your evaluation of the text
+
+In the introduction, you should:
+
+1. define or identify the general topic, issue, or area of concern,
+   thus providing an appropriate context for reviewing the literature. 
+2. Point out overall trends in what has been published about the topic;
+   or conflicts in theory, methodology, evidence, and conclusions; 
+   or gaps in research and scholarship;
+   or a single problem
+   or new perspective of immediate interest. 
+3. Establish the writer's reason (point of view) for reviewing the literature;
+   explain the criteria to be used in analyzing and comparing literature and
+   the organization of the review (sequence); and, when necessary,
+   state why certain literature is or is not included (scope). 
+
+
+**** Summary
+:PROPERTIES:
+:ID:       2d578b3d-d5b2-4abb-9c53-5c1fb7d9d9d7
+:END:
+1. present a summary of the key points along with a limited number of example.
+2. briefly explain the purpose/intentions throughout the text
+3. briefly describe how the text is organised.
+4. The summary should only make up about a third of the critical review
+
+    Summarising and paraphrasing are essential skills for academic writing and in particular, 
+the critical review. 
+***** Summarise
+:PROPERTIES:
+:ID:       3dfbcdac-54f8-4b96-970b-e3ac98b9c83a
+:END:
+    To summarise means to reduce a text to its main points and its most important ideas.
+ The length of your summary for a critical review should only be about one quarter to one third (1/3)
+of the whole critical review. The best way to summarise is to:
+
+1. Scan the text.
+    Look for information that can be deduced from the introduction, conclusion and the title
+    and headings. What do these tell you about the main points of the article? 
+2. Locate the topic sentences and highlight the main points as you read. 
+3. Reread the text and make separate notes of the main points. 
+  Examples and evidence do not need to be included at this stage. Usually they are used selectively in your critique.
+***** Paraphrasing 
+:PROPERTIES:
+:ID:       2e27370d-0692-43ce-a1ca-c9b7c92c6fac
+:END:
+    Paraphrasing means putting it into your own words. 
+Paraphrasing offers an alternative to using direct quotations in your summary (and the critique) 
+and can be an efficient way to integrate your summary notes.  The best way to paraphrase is to:
+
+1. Review your summary notes 
+2. Rewrite them in your own words and in complete sentences 
+3. Use reporting verbs and phrases (eg; The author describes…, Smith argues that …). 
+4. If you include unique or specialist phrases from the text, use quotation marks.
+
+
+
+
+**** Conclusions
+:PROPERTIES:
+:ID:       3f4111ec-6453-4b54-a314-77b2b089ab6f
+:END:
+ 1. This is usually a very short paragraph.
+ 2. Restate your overall opinion of the text. 
+ 3. Briefly present recommendations. 
+ 4.If necessary some further qualification or explanation of your judgement can be included.
+ This can help your critique sound fair and reasonable. 
+    
+
+1. Summarize major contributions of significant studies and articles to the body of knowledge 
+    under review, maintaining the focus established in the introduction. 
+2. Evaluate the current "state of the art" for the body of knowledge reviewed, pointing out major 
+    methodological flaws or gaps in research, inconsistencies in theory and findings, and areas or
+    issues pertinent to future study. 
+3. Conclude by providing some insight into the relationship between the central topic of the literature
+    review and a larger area of study such as a discipline, a scientific endeavor, or a profession. 
+
+
+
+*** content of text
+:PROPERTIES:
+:ID:       383a7ff4-fcf1-44da-a57e-6a4582b27d5e
+:END:
+** question the information and opionions in the text
+:PROPERTIES:
+:ID:       f44d336e-7952-401c-97b6-6f1686d3cbf8
+:END:
+*** Weakness?
+:PROPERTIES:
+:ID:       7d8328e1-b93e-45fb-a000-441ea7ca79c6
+:END:
+
+What is your weakness point in your argument?(Strongness) Add it!
+
+reReason(重新推理)
+
+Value- Verify--Valid
+
+Add some evidences to your weakness! Three evidences are enough
+
+*** science?
+:PROPERTIES:
+:ID:       4a81b658-a9fc-4277-9a42-ce9908aa0a0e
+:END:
+
+What is science ?
+
+    More generally, what you are doing in constructing your argument is demonstrating "critical thought" 
+(which is often stated as a requirement in the paperwork for PhD exams). It is true that a defining 
+characteristic of science is that things are published ("facts") which others then interpret in different 
+ways from the original author. This is crucial to the way work cumulates (builds on what went before):
+things do not depend on what the first observer thought. And certainly one valuable thing you do in your 
+thesis is report facts or observations, or what you did. 
+    However a PhD that only reported facts, what was done, measurements taken, would be unlikely to pass.
+You are expected to discuss what may and may not reasonably be concluded from your work, and the arguments
+for and against your conclusions. Although what you present is in effect in the form of an argument,
+you will not mainly be judged on whether or not you persuade others (as you might be in marketing, and politics).
+But you are expected to help others decide how much to believe your conclusions by providing them with your 
+considered judgement and the important issues and evidence for and against. In discussing not only evidence for, 
+but evidence against, alternative theories, and obvious objections, you are helping the reader form their own judgement,
+and simultaneously showing you have a good and thoughtful grasp of the issues involved in your work.
+ Even if some people don't value your conclusions, they will value this discussion.
+ 
+In a word:
+    Science can be questioned and skeptical based on the same facts and different interpretation.
+
+1.    report your facts
+2.    report your observations(observations talent)
+3.    report what you did(what's your argument)
+
+*** critique(question the value of the text)                         :学术:
+:PROPERTIES:
+:ID:       d6a2ab3f-b6da-46e1-b2bf-7d4d5a5e2b9e
+:END:
+
+    Value means why you are going to do the first task.(Value first, layout second, content later, decorate finally) VfLsClDf
+    
+    Value why?(背景 和 main idea or main argument---Your argument)
+    layout How?(it is a structure)
+    content what?
+    decorate grammer,style,spell,pageNum,lineNum etc.
+    
+    You won't know what your argument is untill you have finished the research.
+
+Write things up for yourself, and separately(later) for others(real beneficiaary of your writing is you)
+--------------in a word: first write for yourself, then later rewrite for the reader.
+
+    When writing for yourself, you don't have to explain background or motivation, just focus on the facts and
+above all on the argument. When that is straight you can later go back and put in what it needs to make sense
+to an outsider.(In many ways, all the "glue" and structure is helping the reader to those things.(也就是说原型是
+无结构可研，真正内在的东西无形，而之所以化为有形的结构和框架只是为了帮助读者, 所以writing也可以变成painting或者其他任何方式
+存在的表达，比如雕刻，比如音乐，比如舞蹈等)
+
+Glue sentence 要注意区分过滤出来！！！(但是其实最重要的是你在心中已经勾勒出了你的writing,你的argument)
+```
+    The main techniques for helping the reader decide if they have arrived at the right place are titles,
+ and "glue" sentences at the start and/or the end of every bit. For example "This chapter described my second and third experiments,
+ concluded X and Y, and discussed the degree to which these conclusions can be relied on.
+ X is used in the next chapter to motivate the fourth study, and Y is important in the overall conclusions in chapter 9."
+
+
+```
+
+    The critique should be a balanced discussion and evaluation of the strengths, weakness and notable features of the text. 
+Remember to base your discussion on specific criteria. 
+Good reviews also include other sources to support your evaluation (remember to reference). 
+    
+    You can choose how to sequence your critique. Here are some examples to get you started:
+Most important to least important conclusions you make about the text. 
+  
+1. If your critique is more positive than negative, then present the negative points first and the positive last. 
+2. If your critique is more negative than positive, then present the positive points first and the negative last. 
+3.If there are both strengths and weakness for each criterion you use, you need to decide overall what your judgement is.
+
+    For example, you may want to comment on a key idea in the text and have both positive and negative comments.
+ You could begin by stating what is good about the idea and then concede and explain how it is limited in some way.
+ While this example shows a mixed evaluation, overall you are probably being more negative than positive. 
+
+    You can also include recommendations for how the text can be improved in terms of ideas, research approach;
+ theories or frameworks used can also be included in the critique section. 
+
+
+
+* 中尺度
+:PROPERTIES:
+:ID:       5e50693e-352f-4b69-a406-124efaf0b3a2
+:END:
+
+** 风场模拟
+:PROPERTIES:
+:ID:       9ce98d14-4e17-4d35-9e0c-4486fa64e642
+:END:
+
+*** Openfoam
+:PROPERTIES:
+:ID:       037f9175-6fa6-4f6c-a61d-f1fe1296d56d
+:END:
+** 风资源
+:PROPERTIES:
+:ID:       d716c932-5359-41df-9805-c7603e87e74f
+:END:
+** 可研报告
+:PROPERTIES:
+:ID:       f6db4bb3-e84c-4a6d-bbb8-ebbc83f318fe
+:END:
+* lidar
+:PROPERTIES:
+:ID:       fd652cf7-3106-4815-a916-34983561c290
+:END:
+* 闪电
+:PROPERTIES:
+:ID:       fdbacd74-979f-4324-a5f9-f8180ce5319f
+:END:
+* 噪声
+:PROPERTIES:
+:ID:       dc6d07e9-cca9-4dea-b5d8-88ea6c64dfe8
+:END:
+* 气弹
+:PROPERTIES:
+:ID:       99fd01f9-76a5-4878-a06a-f4b09e801a03
+:END:
+* 尾迹
+:PROPERTIES:
+:ID:       6b8a5e03-ef76-41c1-990f-a2598a5e3033
+:END:
+* 气动
+:PROPERTIES:
+:ID:       49820ca3-c343-4c50-a890-6d2ba964f5f5
+:END:
+
+
+(df sdf)
+
+"dfds  gsdf          sdfs
+df"

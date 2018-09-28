@@ -1,0 +1,52 @@
+* 2017
+
+** 2017-09 九月
+*** 2017-09-13 星期三
+**** file <2017-09-13 周三 00:55>
+** 2017-10 十月
+*** 2017-10-07 星期六
+**** Expense [#A] <2017-10-07 周六 15:42>                          :crypt:
+-----BEGIN PGP MESSAGE-----
+
+hQEMAw1pL9obieEVAQf+OmlpwxjPvNn9F7baiJZEg/htQjGAroOQDslbKt9KVQvR
+MinCHnUmvo5oISl/84fT4MCso9vmZ9HxLzlqWy0klCK4oZLTy95jXLJ6cKX386E5
+fltH5Ylgnl3dCLx6tTzer7dRpyunUWl6uM9nHTyDyHmMzl/heRN1zgwbf8r2djyp
+lXqz7e2zXbtiRqHCF2cZc28nj0Wbq1Fy9qPcgJERclYGRIRa5I7mFoFedaxGfgzW
+37kO7RXdLYKFCm7e1yv1EQKYChVKqtBQjROuhcJxC9+VMkAKAd3M3u5jXgQ1/Whm
+PEAh9T3ODFkX5SOh1u7viFJh0jpHKQVRDuPMgUBn79I7AQpmngWJpr3blKEbJxKu
+eJuJKOToxhUS7l/J1/xK/gUDMpT8r9GiZirvi5KLvbtm7sJEB9UpkKRp1xY=
+=w1y+
+-----END PGP MESSAGE-----
+**** That's your gtd
+
+| Date              | Category |  Money | People |
+|-------------------+----------+--------+--------|
+| <2017-10-07 周六> | Book     |   30.6 |        |
+| <2017-10-09 周一> | Film     |   70.6 |        |
+| <2017-11-10 周五> | Bus      |   50.2 |        |
+| <2017-11-11 周六> | Bus      |   60.2 | xinran |
+| <2017-11-12 周日> | Eating   |   1000 | Ye     |
+|-------------------+----------+--------+--------|
+|                   | Total:   | 1211.6 |        |
+#+TBLFM: @>$3=vsum(@2..@-1)   
+
+
+#+BEGIN_EXAMPLE
+@> The @ specifies a row, and this refers to the last row in a table.
+    $3 The $ specifies a column, so this refers to the third column.
+    vsum A vertical sum function with parameters given in parenthesis
+    @2 The second row. Notice that it the Amount header is @1 and the dashes separating the header from the body is ignored.
+    @-1 The next to the last row. Using these relative references mean that we can add rows to our table, and still have the sum formula work.
+
+
+http://www.howardism.org/Technical/Emacs/spreadsheet.html
+#+END_EXAMPLE
+
+
+
+#+BEGIN_SRC java -n
+String phoneLine  = reader.readLine();
+
+#+END_SRC
+
+

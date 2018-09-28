@@ -1,0 +1,233 @@
+2018-06-13 去蓬莱旅游
+    Expenses:Tourists  RMB 1800
+    Assets:Savings:建行7889
+
+2018-06-14 奶茶
+    Expenses:Food  RMB 6
+    Assets:支付宝alipay
+
+2018-06-14 花甲盖饭
+    Expenses:Food  RMB 15
+    Assets:支付宝alipay
+    
+2018-06-14 饭卡充钱
+    Expenses:Food  RMB 170
+    Assets:Savings:建行7889
+
+2018-06-17 妈祖岛吃鱿鱼
+    Expenses:Food  RMB 115
+    Liabilities:花呗Huabei
+2018-06-18 海鲜烧烤
+    Expenses:Food  RMB 249
+    Liabilities:花呗Huabei
+    
+2018-06-19 两根小香肠 王庆坨服务区
+    Expenses:Food  RMB 10
+    Liabilities:花呗Huabei
+
+2018-06-19 匹夫烧烤
+    Expenses:Food  RMB 83
+    Liabilities:花呗Huabei
+
+2018-06-19 火车票报销收入
+    Assets:Savings:建行7889  RMB 2160
+    Income:SalaryNcepu
+
+2018-06-19 劳务费
+    Assets:Savings:建行7889  RMB 800
+    Income:SalaryKang
+
+2018-06-19 股市余钱
+    Assets:Stokes  RMB 1366.1
+    Income:SalaryNcepu 
+    
+2018-06-19 端午前结余钱
+    Assets:Savings:建行7889  RMB 1872.82
+    Income:SalaryNcepu
+    
+2018-06-19 买荔枝
+    Expenses:Fruits  RMB 12.5
+    Assets:Savings:支付宝Alipay
+2018-06-20 转账
+    Assets:Savings:建行1593  RMB 1700
+    Assets:Savings:建行7889
+
+2018-06-20 存入股市
+    Assets:Stokes  RMB 1700
+    Assets:Savings:建行1593
+
+2018-06-20 劳务费
+    Assets:Savings:支付宝Alipay  RMB 200
+    Income:SalaryKang
+2018-06-20 购买cfhj股票
+    Assets:Stokes  RMB 1476
+    Assets:Savings:建行1593
+2018-06-21 苹果 荔枝 油桃
+    Expenses:Fruits  RMB 31
+    Liabilities:花呗Huabei
+    
+2018-06-21 金汤玉粉
+    Expenses:Food  RMB 13
+    Liabilities:花呗Huabei
+
+2018-06-23 宵夜 金汤鱼粉-炒花甲33-生蚝20
+    Expenses:Food  RMB 53
+    Liabilities:花呗Huabei
+    
+2018-06-23 烧仙草
+    Expenses:Food  RMB 8
+    Assets:Savings:支付宝Alipay
+    
+2018-06-23 劳务费王
+    Assets:Savings:建行7889  RMB 600
+    Income:SalaryWang
+    
+2018-06-23 晚餐11 板面
+    Expenses:Food  RMB 11
+    Assets:Savings:支付宝Alipay
+    
+2018-06-23 购买坐垫
+    Expenses:House-living  RMB 26
+    Liabilities:花呗Huabei
+    
+2018-06-24 回龙观汤包
+    Expenses:Food  RMB 49
+    Liabilities:花呗Huabei
+    
+2018-06-24 大山栗子
+    Expenses:Food  RMB 23
+    Assets:Savings:支付宝Alipay
+    
+2018-06-24 购买wife夏季衣服1
+    Equity:Wife  RMB 533
+    Liabilities:花呗Huabei
+
+2018-06-24 商品购买2017款夏季衣服2
+    Equity:Wife  RMB 360
+    Liabilities:花呗Huabei
+
+2018-06-24 拼单收款
+    Assets:Savings:支付宝Alipay  RMB 237
+    Income:Business
+2018-06-25 购买窗帘(实验室)
+    Expenses:House-living  RMB 160
+    Liabilities:花呗Huabei
+2018-06-26 学校补助
+    Assets:Savings:建行7889  RMB 2500
+    Income:SalaryNcepu
+
+2018-06-26 盖饭卡券
+    Expenses:Food  RMB 160
+    Liabilities:花呗Huabei
+2018-06-26 卤肉饭
+    Expenses:Food  RMB 22
+    Assets:Savings:支付宝Alipay
+2018-06-27 phone流量
+    Expenses:Utilities:Phone  RMB 10
+    Liabilities:CreditCard:牡丹卡Mudan    
+2018-06-30 水果
+    Expenses:Fruits  RMB 29
+    Assets:Savings:支付宝Alipay
+
+2018-07-03 股票转入
+    Assets:Stokes  RMB 1419
+    Assets:Savings:建行1593
+    
+2018-07-03 内部转账
+    Assets:Savings:建行1593  RMB 1350
+    Assets:Savings:建行7889
+
+2018-07-04 西安臊子面
+    Expenses:Food  RMB 16
+    Assets:Savings:支付宝Alipay
+
+
+2018-07-04 xinran 面膜
+    Equity:Wife  RMB 675
+    Assets:Savings:支付宝Alipay
+
+2018-07-06 信用卡还钱(xinran)
+    Equity:Wife  RMB 3400
+    Assets:Savings:建行7889
+    
+2018-07-06 phone charge
+    Expenses:Utilities:Phone  RMB 100
+    Liabilities:花呗Huabei
+    
+2018-07-09 wife give me money
+    Liabilities:花呗Huabei  RMB 1340
+    Equity:Wife
+    
+2018-07-10 水果
+    Expenses:Fruits  RMB 30
+    Assets:Savings:支付宝Alipay
+
+2018-07-13 买水果
+    Expenses:Food  RMB 31
+    Assets:Savings:支付宝Alipay
+
+2018-07-16 劳务费
+    Assets:Savings:建行7889  RMB 1000
+    Income:SalaryKang
+
+2018-07-16 加氟
+    Expenses:House-living  RMB 650
+    Assets:Savings:建行7889
+
+2018-07-31 水果
+    Expenses:Fruits  RMB 22
+    Liabilities:花呗Huabei
+    
+2018-07-31 龙泽水果
+    Expenses:Fruits  RMB 30
+    Liabilities:花呗Huabei
+
+2018-08-03 黄焖鸡饭
+    Expenses:Food  RMB 18
+    Liabilities:花呗Huabei
+2018-08-04 麦当劳
+    Expenses:Food  RMB 45.4
+    Expenses:Food
+2018-08-14 金堂鱼粉
+    Expenses:Food  RMB 13
+    Liabilities:花呗Huabei
+    
+2018-08-14 爸給2000
+    Assets:Savings:支付宝Alipay  RMB 2000
+    Income:Donation
+    
+2018-08-17 水蜜桃+葡萄
+    Expenses:Fruits  RMB 24
+    Assets:Savings:支付宝Alipay
+    
+
+2018-08-17 金堂鱼粉会员卡
+    Expenses:Fruits  RMB 130
+    Liabilities:花呗Huabei
+2018-08-26 绝味
+     RMB 45
+    Liabilities:花呗Huabei
+    
+2018-08-26 苹果+桃子
+    Expenses:Fruits  RMB 27
+    Liabilities:花呗Huabei
+    
+2018-08-26 给欣然礼钱+麻辣烫
+    Equity:Wife  RMB 500
+    Assets:Savings:支付宝Alipay
+
+2018-09-07 花甲盖饭170
+    Expenses:Food  RMB 170
+    Liabilities:花呗Huabei
+
+2018-09-22 麻辣烫 中秋前小聚
+    Expenses:Food  RMB 78
+    Assets:Savings:微信Weixin   
+
+2018-09-24 中秋聚餐 鲈鱼 蛏子 花甲 牛肉 鸡胗
+    Expenses:Food  RMB 150
+    Liabilities:花呗Huabei
+
+2018-09-26 麻辣烫小龙虾
+    Expenses:Food  RMB 26
+    Liabilities:花呗Huabei

@@ -1,0 +1,2727 @@
+* Quick notes
+
+:LOGBOOK:
+CLOCK: [2017-10-02 周一 11:09]--[2017-10-02 周一 11:10] =>  0:01
+CLOCK: [2017-09-29 周五 11:03]j
+
+
+CLOCK: [2017-09-28 周四 13:41]--[2017-09-28 周四 13:42] =>  0:01
+:END:
+** tomato time [#B]                                                  :@F708:
+                           Added: [2017-10-02 周一 11:09]
+  ● 开心网的偷菜游戏？你是不是老是惦记着收菜的时间？你收的不是菜，是番茄
+  ● 奥运会倒计时，高考倒计时？很大很重要的一个番茄
+  ● 老板明天要的资料？味道不怎么样的番茄
+我想说的是，番茄时间的核心是倒计时所产生的紧迫感。这是中科院心理学专业毕业的老郭（郭军峰）告诉我的，感谢哦。 
+
+** cljrefactor call last thread call [#B]                            :@work:
+                           Added: [2017-09-30 周六 05:21]
+-https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-thread-first-all
+
+
+** cljr thread first all [#B]                                        :@work:
+                           Added: [2017-09-30 周六 05:23]
+                           
+https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-thread-last-all
+
+Start with:
+
+(map square (filter even? [1 2 3 4 5]))
+
+Put your cursor in front of the s-exp, and call cljr-thread-last-all:
+
+(->> [1 2 3 4 5]
+     (filter even?)
+     (map square))
+
+** CFD nacell wiwith bump [#B]                                       :@work:
+                           Added: [2017-09-29 周五 11:02]
+     首先，总算完成了大小网格的嵌套功能。 划分到机舱的过程中基本上比较正常，就是做了几次o剖而已，然后对应关联而已，
+只不过在几何的处理上，有一个很小的技巧就是需要把机舱的线往前copy一个buffer长度的距离，这样就能够做到两次o剖，第三次o剖在过渡到
+圆上，在两次o剖后，就可以把机舱的内部网格删掉；而在第三次o剖圆的过程，把圆内的网格再删掉； 还有在第一次o剖机舱头部的时候，需要把
+机舱上尾部的点进行split block,尾部的点、线进行关联操作，当然机舱的头部也要进行split block，进行线关联。
+     完成了上述的过程之后，也就是最后一步达到buffer区域圆的删除，就可以进一步做bump的切割。这一步的切割很有讲究，流线方向上切上两刀
+即可（这边需要注意的是，不要切上三刀，只是bump的前后面即可，把他当作一个正方体去对待，防止切多了，不需要进行流线的线关联了，事先在机
+舱头的o剖就已经进行了关联）。注意在你每进行切割的时候，都得把质量检查打开，防止出现太糟糕的网格质量。 要注意的是，从bump开始的切割都
+是使用visible select block的方式，而不是All, 现在得选择bump上面的三个block快，然后选择斜边，选择bump竖直方向的第二个点，紧接着切割选择
+第三个点，这样就算完成了，然后就是一个关联工作，把bump点关联上，然后是线关联。
+      至此完工。 这边有一个对应关系，也就是你需要把梯形体，想成六面体进行切割，正如你在进行o剖的时候，把直翼段想成圆柱段的感觉一样，
+然后进行o剖。
+** emacs auto open gtd file                                           :NOTE:
+                           Added: [2017-09-28 周四 13:40]
+  
+== Automatically open your todo.org every time you start Emacs ==
+
+Make your life a little bit easier by automatically opening ~/todo.org every time you open Emacs. Add this to the end of your Emacs configuration. To do that,
+
+    C-x C-f ~/.emacs.d/init.el - use find-file to open your configuration file. If it does not yet exist, it is created.
+    Go to the end of this file. (Handy shortcut: C-end)
+    Add (find-file "~/todo.org")
+    Save with C-x C-s (save-buffer).
+
+You can test it with M-x eval-buffer while looking at your ~/.emacs.d/init.el. If it works, it should show you your ~/todo.org file.
+
+You have just written a little Emacs Lisp. Totally not scary.
+
+
+
+http://members.optusnet.com.au/~charles57/GTD/datetree.html
+ %^g prompts for a tag
+I timestamp all my captured items with the line: Added: %U
+Some of my items are filed after a specific headline in a file. Appointments are filed under a heading Calendar.
+Other entries are filed in date trees. These are explained in the next section
+
+
+http://blog.csdn.net/u011729865/article/details/54236547
+
+
+http://blog.csdn.net/jiluben/article/details/39587723
+关于org-capture-templates配置代码的解释
+原创 2014年09月26日 22:13:02
+
+      对于org-capture-templates的配置，网上只有如下几行代码：
+
+   (setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+             "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+             "* %?\nEntered on %U\n  %i\n  %a")))
+    大家都是这么写，但是并没有解释每个代码的含义。
+    经过几次的测试，各个代码的意义大体如下：
+    
+    现在以
+
+("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+             "* TODO %?\n  %i\n  %a")
+
+为例进行说明。
+   "t"代表快捷键，如果我们要调用org-capture，必须按下C-c c的组合键，此时emacs就会显示出
+一写字母等，如t、j等，这个"t"就是代码中的"t",我们可以根据自己的意愿设置。
+   "Todo"目前还不清楚。
+    当为"file+headline"时，后面要跟两个参数，一个是文件的地址，如"~/org/gtd.org"，另一个是
+我们当前文档所属的标题。本配置中是"Tasks",意味着当我们在按下C-c c t，并输入内容，再按下
+C-c C-c后，我们的内容会自动归档到gtd.org文件的Tasks标题下，若文件gtd.org中没有Tasks标题，
+系统会自动产生一个。
+    "*"具体意义不知道，如果没有，在按下C-c c后，再按t，无法调出gtd文件。
+     "TODO"会显示再文本标题中，大家也可以换成"SOMEDAY"等，自己想要的状态。
+      "%a"代表你按C-c c前，鼠标所在的内容。
+      其它的内容还没有弄明白。
+
+     附：
+
+     %a          annotation, normally the link created with org-store-link
+     %i          initial content, the region when capture is called with C-u.
+     %t          timestamp, date only
+     %T          timestamp with date and time
+     %u, %U      like the above, but inactive timestamps
+     %?          表示cursor定位于此 开始输入
+
+http://doc.norang.ca/org-mode.html
+
+https://github.com/bbatsov/prelude
+
+https://www.zhihu.com/question/26384934/answer/32686989
+大半年前正值我开写博士论文， 对于这种大部头的写作， 提纲无疑十分重要， 我也尝试过许多mindmap软件来做规划， 结果都乱做一团。 最后还是把维度降到1
+
+
+Org能识别无序列表、有序列表、和描述表
+
+
+https://link.zhihu.com/?target=http%3A//orgmode.org/org.pdf
+** org-bookmark-heading [#B]                                         :@work:
+                         Added: [2017-10-14 周六 20:05]
+                         
+This package provides Emacs bookmark support for org-mode. You can bookmark headings in org-mode files and jump to them using standard Emacs bookmark commands.
+
+It seems like this file should be named org-bookmark.el, but a package by that name already exists in org-mode/contrib which lets org-mode links point to Emacs bookmarks, sort-of the reverse of this package.
+
+It also seems like this should be built-in to org-mode… ;)
+** org time budget [#B]                                              :@work:
+:LOGBOOK:
+CLOCK: [2017-10-14 周六 23:23]--[2017-10-14 周六 23:30] =>  0:07
+:END:
+                         Added: [2017-10-14 周六 23:23]
+** 秀才饿死不买书 [#B]                                               :@F708:
+:LOGBOOK:
+CLOCK: [2017-10-15 周日 00:29]--[2017-10-15 周日 00:29] =>  0:00
+:END:
+                         Added: [2017-10-15 周日 00:28]
+                        
+壮士饿死不迈剑 
+** 工作 [#B]                                                         :@work:
+:LOGBOOK:
+CLOCK: [2017-10-15 周日 01:18]--[2017-10-15 周日 01:24] =>  0:06
+:END:
+                         Added: [2017-10-15 周日 01:17]
+                         
+1. 你做了什么
+2. 你希望的结果是什么
+3. 实际上的结果是什么
+https://github.com/marboo/orgmode-cn/blob/master/org.org#Clocking%20work%20time
+
+
+8.1 时间戳
+http://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html#sec-8
+跟普通时间戳一样，但是这里是方括号而不是尖括号。这种时间戳是未激活的
+，它 不 会让一个条目显示在议程中
+** defmulti [#B]                                                     :@work:
+:LOGBOOK:
+CLOCK: [2017-10-15 周日 13:49]--[2017-10-15 周日 13:49] =>  0:00
+:END:
+                         Added: [2017-10-15 周日 13:49]
+
+                         http://clojuredocs.org/clojure.core/defmulti
+** clojure programming [#B]                                          :@F708:
+:LOGBOOK:
+CLOCK: [2017-10-16 周一 09:16]--[2017-10-16 周一 10:23] =>  1:07
+:END:
+                         Added: [2017-10-16 周一 09:15]
+                         
+programming clojure2012.pdf
+
+Chapter7
+
+Macro
+
+With most programming techniques, you build features within language.
+
+when you write macros, it is more accurate to say that you area
+"adding features to" the language. This is a powerful and dangerous
+ability, so you should follow the rules in 7.1
+
+At least until you have enough experience to decide for yourself when
+to bend the rules.
+
+While powerful, macros are not always simple. Clojure works to make macros
+as simple as feasible by including convenience to solve many common
+problems that occur when writing macros.
+
+taxonomy(分类系统) taxonomy of Macros(7.4 introduces a taxonomy of 
+clojure macros, based on the macros in clojure and contrib libraries.
+
+In clojure, you just implement feature X using a macro(while in most
+languages, you sense that incompleteness whenever you say,"My life
+would be easier if only my language had feature X."
+
+Some expressions, such as
+1. numbers
+   1. Integers
+   2. floats
+   3. rationals
+2. symbols
+3. keywords(numbers,symbols and keywords are self evaluating)
+4. Booleans
+5. characters
+6. functions
+7. functions calls
+8. macros
+9. strings
+10. literal maps
+11. vectors
+12. queues
+13. records
+14. sets
+** PIC [#B]                                                          :@F708:
+:LOGBOOK:
+CLOCK: [2017-10-25 周三 18:32]--[2017-10-25 周三 18:33] =>  0:01
+:END:
+                         Added: [2017-10-25 周三 18:32]
+                         
+PIC:记忆时候需要考虑三个组成部分，一purpose二interesting三curiosity也就是你要对你的记忆的目的有一个理性的认识，
+进行理性的思考，才能明白其重要性，才能让你持续性工作(理性和专注)，这个过程还得有趣，这样能够保持你的好奇心
+
+当你能跟别人讲的清楚的时候，事先你的记忆也肯定是完全清楚的
+
+好奇心和童心挺像，也就是保持空杯状态
+
+目标写在纸上，量化并且场景化，会让你理性和专注* Quick notes
+** emacs highlight [#B]                                              :@F708:
+                         Added: [2017-10-09 周一 15:07]
+                         作者：BigBoss
+
+(global-hi-lock-mode 1) ;开启全局 hi lock 模式
+;避免每次开启 hi lock mode 时询问是否需要高亮指定表达式
+(setq hi-lock-file-patterns-policy #'(lambda (dummy) t)) 
+; 各种 face 的定义
+(defface phone-number-lock-face '((t (:foreground "FF0000"))) t)
+(defface language-lock-face '((t (:foreground "00FF00"))) t)
+(defface emacs-vim-lock-face '((t (:foreground "9900FF"))) t)
+
+; 利用 highlight-regexp 高亮指定的正则表达式
+(defun bigboss-highlight ()
+  (interactive)
+  (highlight-regexp "0[0-9]\\{2\\}-[0-9]\\{8\\}" 'phone-number-lock-face)
+  (highlight-regexp "Lisp\\|Scheme" 'language-lock-face)
+  (highlight-regexp "神之编辑器\\|编辑器之神" 'emacs-vim-lock-face)
+
+
+)
+
+; org mode 中开启高亮
+(add-hook 'org-mode-hook 'bigboss-highlight)
+
+https://www.zhihu.com/question/28830039?sort=created
+** latex author [#B]                                                 :@work:
+                         Added: [2017-10-09 周一 21:41]
+                          LaTeX 的作者 Leslie Lamport 
+
+本论文全篇使用Emacs25.3进行文字编辑，Tex Live 2013进行排版设计，git2.13进行版本控制
+org——mode进行进度管理。因此要感谢Emacs的发明者Richard Stallman;Tex的发明者Donald Knuth;
+git的发明者Linus Torvalds, latex的作者Lesile Lamport;以及Org-mode的发明者carsten Dominik.
+** schedule zone [#B]                                                :@work:
+                         Added: [2017-10-09 周一 21:44]
+                         精确到时间是可以的，时间区间都可以。 格式是：
+SCHEDULED: <2015-04-04 Sat 09:00-12:00 ++1d>
+这样。上面这句的意思是从4-4日开始， 每天早上的9-12点规划干某件事情。
+
+至于提醒功能， 可以试试org-notify， 不过这个我自己没有用过， 所以不好回答你。
+** shift+l [#B]                                                      :@work:
+                         Added: [2017-10-09 周一 21:49]
+             
+你好～想问一下第一张图里面的每个Day下的时间是怎么显示的，
+我用C-c C-s 和C-c C-d设置了时间，但是在界面里面却没有显示，我现在用的是emacs25.1。
+
+在 org-agenda 里面按 Shift-l 就可以啦
+** add clock summary [#B]                                            :@work:
+                         Added: [2017-10-09 周一 22:14]
+                         
+如何在一个org文件创建clock summary
+C-c C-x C-r
+** org blog jekyll [#B]                                              :@work:
+                         Added: [2017-10-09 周一 22:16]
+                         
+org-mode可以直接拿来写blog， 这不是什么新鲜事了。  不过最近发现几个项目， 可以方便地从org 输出到jekyll支持的格式。
+对于喜欢jekyll，但更喜欢org-mode的同学是个好的解决方案。  当然也有直接从org-mode生成静态网页的。
+
+
+https://github.com/noinil/prelude/blob/master/personal/noinil.el
+https://github.com/noinil/prelude/blob/75d41be0c5da3383cde1bd073c2aa5a9f4b7d792/personal/noinil.el#L397
+** emacs 看电影 [#B]                                                 :@F708:
+                         Added: [2017-10-09 周一 22:46]
+                         用Emacs看电影
+
+大多数人用emacs听歌，我却喜欢用emacs看电影。用 EMMS 和 mplayer 结合，看电影真是太方便了。
+
+不要从源里安装EMMS，它可能给你安装别的播放器，没必要，我们有 mplayer 足够了。从 EMMS 的主页下载，然后编译安装 EMMS 。
+
+然后在 .emacs 中加入如下的配置：
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+	
+(require 'emms-setup)
+(emms-standard)
+(setq emms-player-list '(emms-player-mplayer) emms-player-mplayer-command-name "mplayer" emms-player-mplayer-parameters '("-slave"))
+(setq emms-repeat-playlist nil emms-source-file-default-directory "~/音乐/" emms-lyrics-dir "~/音乐/" emms-lyrics-coding-system nil emms-playlist-buffer-name "*EMMS*")
+(global-set-key (kbd "C-c e g") 'emms-play-directory)
+(global-set-key (kbd "C-c e d") 'emms-play-dired)
+(global-set-key (kbd "C-c e v") 'emms-playlist-mode-go)
+(global-set-key (kbd "C-c e x") 'emms-start)
+(global-set-key (kbd "C-c e SPC") 'emms-pause)
+(global-set-key (kbd "C-c e s") 'emms-stop)
+(global-set-key (kbd "C-c e n") 'emms-next)
+(global-set-key (kbd "C-c e p") 'emms-previous)
+
+我的emms設置比較簡單，我只是通過它調用mplayer聽歌看電影，不需要看歌詞等額外的功能。我要说的是用 EMMS + mplayer + Dired 可以非常方便地看碟。
+
+通過 Dired 打開電影目錄，比如其中有一個文件夾 辛德勒名單 ，裏面有4 個媒體文件：辛德勒名單CD1.avi、辛德勒名單CD2.avi、辛德勒名單CD3.avi、辛德勒名單CD4.avi。我只需要將光標停在 辛德勒名單 文件夾上，按 C-c e d ，調用 emms-play-dired 函數，則會自動建立播放列表，mplayer 按順序播放這4個文件。
+
+比如有一個電視劇的文件夾 手機 ，裏面共有 36 集，我今天想看 10-12集，用 Dired 進入 手機 文件夾，用 m 在 10-12 集上做標記，然後按 C-c e d ，mplayer 就會順次播放 10-12集。
+** emacs多标签 [#B]                                                  :@F708:
+                         Added: [2017-10-10 周二 00:41]
+                         你的Emacs多标签是用的什么呢？
+tabbar-ruler
+** win [#B]                                                          :@work:
+                         Added: [2017-10-10 周二 01:03]
+                         
+想在竞赛中获胜， 关键就是要挑自己最在行的项目啊！
+所以结论是， 跟他们比笨， 比懒， 比穷。
+恭喜你完胜。
+** java syscall [#B]                                                 :@F708:
+                         Added: [2017-10-10 周二 10:58]
+                         
+语法糖+syscal
+设计的好渐进式发张 即使单进程 照样锤爆
+socket 也就是 syscall的问题
+和多线程 多进程 协程一样
+
+1:技术是设计的基础，有了技术然后运用技术就能设计出好的产品
+2:答：没有设计的产品技术再牛逼也没用，设计才是有技术含量的
+技术都是垃圾
+** 学习 pattern for life [#B]                                         :NOTE:mm
+- State "学习"       from              [2017-10-12 周四 09:55]
+                         Added: [2017-10-10 周二 14:00]
+                       
+在面向对象编程的世界中，我们大量听到"模式"（pattern）这个词，
+我觉得那些"模式"就是现实中的因素（c），也就是人肉编译器。
+ 当我在自己的程序中，发现用到了模式，我觉得这就表明某个地方出错了。
+程序的形式，应该仅仅反映它所要解决的问题。代码中其他任何外加的形式，
+都是一个信号，（至少对我来说）表明我对问题的抽象还不够深，
+也经常提醒我，自己正在手工完成的事情，本应该写代码，通过宏的扩展自动实现。
+** blog idea [#B]                                                    :@F708:
+                         Added: [2017-10-10 周二 14:02]
+                         
+当然 blog 还有一个好处就是在把自己的想法表达给大家, 
+大家能够听懂的知识才是自己的(有些知识并不是大家都能听懂,有些知识hard to 
+understand, hard to use,总是有简单和复杂才能构成真实的世界，都简单的话
+那就肯定不真实，这样想也能拓宽你的知识面、认识面)
+http://www.woola.net/me
+** 产学研 [#B]                                                       :@work:
+                         Added: [2017-10-11 周三 11:19]
+                         
+学校忙着发论文，评职称。私企忙着签合同赚钱。
+国企忙着完成资金计划，形象工程。这三者之间有一个共同的利益纽带，是钱。而不是科学。
+** RSS Feed [#B]                                                     :@F708:
+                         Added: [2017-10-11 周三 22:19]
+                         
+Use ‘G R’ in the group buffer to create a new group for the feed. When asked, paste the URL to the XML or RDF file 
+(I usually paste the URL to the RSS 1.0 feed when given the choice). (You must use G R only when the pointer is not 
+on any other group, else it triggers group rename. 
+An empty line in the group buffer should work fine.)
+
+The ‘G R’ method does not work for me on gnus 5.10.8, for instance when tried with the url below it says “no such
+ newsgroup nnrss:EmacsWiki”. What works for me is hitting ‘G m’ then typing a group name, and specifying nnrss as 
+the backend, this creates a group, when entering the group for the first time it prompts for a url.
+** fortran+c混编 [#B]                                             :PERSONAL:
+:LOGBOOK:
+CLOCK: [2017-10-14 周六 22:24]--[2017-10-14 周六 22:25] =>  0:01
+:END:
+                         Added: [2017-10-12 周四 21:31]
+                         
+你肯定是没用 ISO_C_binding
+现在有了规范的混编方法，一切都简单而优
+
+** logical sequence introduction [#B]                                :@work:
+:LOGBOOK:
+CLOCK: [2017-10-29 周日 22:06]--[2017-10-29 周日 22:15] =>  0:09
+:END:
+                         Added: [2017-10-29 周日 22:05]
+                         
+
+Before we look at the primary collection types individually, we'll 
+discuss the things they have in common. For example, you may have 
+heard of clojure's sequence abstraction(都是基于sequence)---all the
+persistent collection use it(all :keyword, they :keyword , collective
+nouns and abjectives), so we'll examine that as well as some algorithmic
+complexity concepts we'll refer to throughout the chapter.
+
+
+Before....individually ... in common....
+
+is very important. 一方面可以体现出你的逻辑的完整性，另一方面体现你的专业性
+同时也可以让你把握重要性，这部分内容只是描述性部分，充当点缀，不是特别核心的地方
+相当于引言部分，核心的在不同的地方。
+
+
+如果你第一次碰到该句话，就可以当作是一个全面性的了解
+所以他也是挺重要的
+** clojure interop with java [#B]                                    :@work:
+:LOGBOOK:
+CLOCK: [2017-10-29 周日 22:31]--[2017-10-29 周日 22:31] =>  0:00
+:END:
+                         Added: [2017-10-29 周日 22:31]
+                         
+
+Handling Interop with Java
+
+When a new language comes into being, it faces the library problem. That is, to be useful in everyday situations, 
+a language needs to do all the things that current dominant languages do. These current dominant languages have a 
+full array of libraries that support things like parsing JSON and logging.
+
+Clojure solved this new language library problem by running on the JVM and having interoperability with Java
+ classes. When you use Clojure, you can use Java classes and Java libraries. Clojure builds on the strength 
+of the production-hardened and tested JVM and existing Java libraries. In fact, many of the popular Clojure
+ libraries in use today utilize Java libraries as fundamental building blocks. We are going to cover the most
+ common areas that you will encounter: how to import Java libraries/classes, how to create new instances of 
+them, and how to interact with their methods.
+** matlab coding style [#B]                                          :@F708:
+:LOGBOOK:
+CLOCK: [2017-10-30 周一 20:57]--[2017-10-30 周一 20:57] =>  0:00
+:END:
+                         Added: [2017-10-30 周一 20:57]
+                         
+MATLAB Coding Style
+
+This document suggests a MATLAB coding style. This file is directed to those who code with me in the lab, but might serve for everyone out there.
+Coding style
+
+    No whitespace at the end of the line.
+    Use Unix style line breaks (LF only).
+    Keep line lenghts under 80 characters.
+    Use 4 spaces to indent code. Add indentation for each logic level but the function operator:
+
+function a = ackermann(m, n)
+% Computes the Ackermann function.
+%
+if m == 0
+    a = n+1;
+elseif and(m > 0, n == 0)
+    a = ackermann(m-1, 1);
+else
+    a = ackermann(m-1, ackermann(m, n-1));
+end
+
+    For while loops, the counter variable must be declared just before the while keyword:
+
+n = 0;
+while n <= 10
+    disp(n);
+    n = n+10;
+end
+
+    If a line is not enough to write the whole statement, break it into meaningful places, like after an operator or separating a line for each function argument:
+
+pyt = sqrt(x^2 + ...
+           y^2);
+set(handles.edit, ...
+    'String', ...
+    sprintf('This is worth %.2f$', ...
+            pyt));
+
+Keep LISP style indentation in this case for better legibility. Sometimes, it might be a good idea too to break the line before a mathematical operator, to give a more meaningful sense to your code:
+
+result = viscosity ...
+       + shear ...
+       - (acceleration * mass);
+
+    Name variables and functions using camelCase, as it is Java after all.
+    Name constants using UPPERCASE_SEPARATED_BY_UNDERSCORES.
+    Always add a space near the equals sign.
+    Add spaces after and before brackets in case they define an array or a cell. This space is not needed when accessing data, calling a function or anything like that:
+
+% defining cells or arrays:
+emptyCell = { };
+someNumbers = [ 1 1 2 3 5 8 13 42 ];
+
+% function call:
+someNumbers(5);
+someTrouble = ackermann(4, 2);
+
+% accessing data:
+emptyCell{end+1} = 19;
+
+    Add spaces between expressions to make them more readable in case they are too long or full of text:
+
+% expressions that needs space for readability:
+result = sqrt(x1^2 + y1^2) + sqrt(x2^2 + y2^2) + sqrt(x3^2 + y3^2);
+force = mass * acceleration;
+
+% expressions that does not need space for readability:
+z = i+1;
+f = m*a;
+
+    Your code is mostly like a text, with sentences are paragraphs. Therefore it is a good idea to visually separate concerns within your code with empty lines so new-comers know these concerns. Sometimes, this separations of paragraphs is more useful than documentation itself.
+
+General practices
+
+    Write documentation before writing code. Write documentation before writing code. Write documentation before writing code.
+    State your functions' inputs and outputs when documenting it, specially the data types.
+    Whenever possible, try to use MATLAB's own math functions. And try to make your own functions comply with their functions. This will make your script a lot more faster and readable.
+    Make every function return something unless it is a procedure. 'What does it mean?', you might ask. Ask why for MATLAB and it will answer for you. Actually not. Procedures here can be understand as a series of transformations and steps to achieve a goal, while a function is the transformation itself. A procedure's goal is to cause a side-effect on your system, and this side-effect must be well documented and defined. A function's goal is to create another variable based on other variable's state. This distinction will make your programs less confusing to outsiders, even if they do not know it is there; specially when there are graphical user interfaces (GUIs for short) involved. For example: when you a press a button, it will usually cause a side-effect somewhere, like saving some data to a file or change something else on your GUI. This can be done by performing a procedure, creating and updating variables based on the system's current state. This distinction is subtle but turns everything clearer with practice. Seriously.
+
+Module organization
+
+Regardless of language, we can define a module as a collection of code that tries to solve one problem. This problem can be broad or not, but the idea is to encapsulate this problem into small pieces so the user does not have to think about what is inside. With that in mind, there are some precautions that are considered good taste:
+
+    A MATLAB module is a folder containing functions. So try to keep all your code into one folder. Each file must contain one function that solves one problem inside this bigger problem. If this function needs a helper function, really specific to that domain, then it can be appended to this same file; the outside scripts will not see this helper function. Unless it is desired that it appears somewhere else or it is used repeatedly, this helper should not have a script file for its own.
+    Whenever possible, try to solve your problem using only one script file. Most solutions should be considered just another procedure to be included in someone else's code. This is not always the case, since some problems actually need user interfaces and the whatnot, but it can be really nice to just incorporate a single file to the codebase instead of a whole system.
+
+One issue that I have come accross during this time working with this language is that there is considerable namespace pollution given MATLAB does not have any mechanisms to deal with it. Therefore some care is desired when work with them:
+
+    Unless the given module is always used, do not incorporate it directly to MATLAB. Instead, for each script, run the addpath function with the module path. This will keep the current namespace organized. The same applies to the Java classpath.
+    One thing to pay attention is that MATLAB does not add nested modules when a folder is inserted to its path. Therefore it might be a good idea to write a function to add the modules whithin for better incorporation, unless you've got somethign to hide from everyone else.
+** 流动分离 [#B]                                                     :@work:
+:LOGBOOK:
+CLOCK: [2017-11-01 周三 14:22]--[2017-11-01 周三 16:43] =>  2:21
+:END:
+                         Added: [2017-11-01 周三 14:21]
+                         
+
+风力机时常处于变风速的流动中，当来流风速接近或超过设计风速时，在叶片的根部或大部分叶展范围都有可能发生流动分离。发生流动分离后，分离流的湍流强度大大增加，引起气动损失迅速增加。同时，流动分离区导致压力平台，减小了内叶展甚至中叶展位置翼型的升力，增加了翼型的阻力。通过在叶片表面加装涡发生器，可以有效控制流动分离，提高翼型升力，降低翼型阻力，从而提高叶片风能吸收效率。
+** 三维旋转效应和流动分离 [#B]                                       :@work:
+:LOGBOOK:
+CLOCK: [2017-11-01 周三 18:20]--[2017-11-02 周四 00:55] =>  6:35
+CLOCK: [2017-11-01 周三 17:17]--[2017-11-01 周三 18:19] =>  1:02
+:END:
+                         Added: [2017-11-01 周三 17:17]
+                         
+[风力机叶片表面压力的计算与外场测试分析][李仁年] 外场试验表明，叶片表面压力分布
+特征沿展向出现较大的差异性，主要原因是在外场多变环境下，高速旋转的风力机叶片存在
+较强的三维旋转效应，且三维旋转效应越靠近叶片根部越明显。
+
+当风速超过额定风速后，沿叶展方向的翼型截面会发生动态失速现象，尾涡的形成
+和脱落涡将对叶片表面压力分布产生较大影响，产生剧烈的压力波动，致使叶片表面
+压力与计算值出现较大差异
+** whatis habits [#B]                                                :@work:
+:LOGBOOK:
+CLOCK: [2017-11-02 周四 20:59]--[2017-11-02 周四 21:00] =>  0:01
+:END:
+                         Added: [2017-11-02 周四 20:59]
+                         
+5.3.3 Tracking your habits
+
+Org has the ability to track the consistency of a special category of TODOs, called “habits”. A habit has the following properties:
+
+    You have enabled the habits module by customizing org-modules.
+    The habit is a TODO item, with a TODO keyword representing an open state.
+    The property STYLE is set to the value habit.
+    The TODO has a scheduled date, usually with a .+ style repeat interval. A ++ style may be appropriate for habits with time constraints, e.g., must be done on weekends, or a + style for an unusual habit that can have a backlog, e.g., weekly reports.
+    The TODO may also have minimum and maximum ranges specified by using the syntax ‘.+2d/3d’, which says that you want to do the task at least every three days, but at most every two days.
+    You must also have state logging for the DONE state enabled (see Tracking TODO state changes), in order for historical data to be represented in the consistency graph. If it is not enabled it is not an error, but the consistency graphs will be largely meaningless. 
+
+To give you an idea of what the above rules look like in action, here's an actual habit with some history:
+{{{
+     ** TODO Shave
+        SCHEDULED: <2009-10-17 Sat .+2d/4d>
+        - State "DONE"       from "TODO"       [2009-10-15 Thu]
+        - State "DONE"       from "TODO"       [2009-10-12 Mon]
+        - State "DONE"       from "TODO"       [2009-10-10 Sat]
+        - State "DONE"       from "TODO"       [2009-10-04 Sun]
+        - State "DONE"       from "TODO"       [2009-10-02 Fri]
+        - State "DONE"       from "TODO"       [2009-09-29 Tue]
+        - State "DONE"       from "TODO"       [2009-09-25 Fri]
+        - State "DONE"       from "TODO"       [2009-09-19 Sat]
+        - State "DONE"       from "TODO"       [2009-09-16 Wed]
+        - State "DONE"       from "TODO"       [2009-09-12 Sat]
+        :PROPERTIES:
+        :STYLE:    habit
+        :LAST_REPEAT: [2009-10-19 Mon 00:36]
+        :END:
+}}}
+What this habit says is: I want to shave at most every 2 days (given by the SCHEDULED date and repeat interval) and
+ at least every 4 days. If today is the 15th, then the habit first appears in the agenda on Oct 17, after the minimum 
+of 2 days has elapsed, and will appear overdue on Oct 19, after four days have elapsed.
+
+What's really useful about habits is that they are displayed along with a consistency graph, to show how consistent
+ you've been at getting that task done in the past. This graph shows every day that the task was done over the past 
+three weeks, with colors for each day. The colors used are:
+
+Blue
+    If the task wasn't to be done yet on that day.
+Green
+    If the task could have been done on that day.
+Yellow
+    If the task was going to be overdue the next day.
+Red
+    If the task was overdue on that day. 
+
+In addition to coloring each day, the day is also marked with an asterisk if the task was actually done that day,
+ and an exclamation mark to show where the current day falls in the graph.
+
+There are several configuration variables that can be used to change the way habits are displayed in the agenda.
+
+org-habit-graph-column
+    The buffer column at which the consistency graph should be drawn. This will overwrite any text in that column,
+ so it is a good idea to keep your habits' titles brief and to the point.
+org-habit-preceding-days
+    The amount of history, in days before today, to appear in consistency graphs.
+org-habit-following-days
+    The number of days after today that will appear in consistency graphs.
+org-habit-show-habits-only-for-today
+    If non-nil, only show habits in today's agenda view. This is set to true by default. 
+
+Lastly, pressing K in the agenda buffer will cause habits to temporarily be disabled and they won't appear at all. 
+Press K again to bring them back. They are also subject to tag filtering, 
+if you have habits which should only be done in certain contexts, for example. 
+https://www.gnu.org/software/emacs/manual/html_mono/org.html#Tracking-your-habits
+** tags important [#B]                                               :@work:
+:LOGBOOK:
+CLOCK: [2017-11-02 周四 21:04]--[2017-11-02 周四 21:04] =>  0:00
+:END:
+                         Added: [2017-11-02 周四 21:04]
+                         
+An excellent way to implement labels and contexts for cross-correlating information is to assign tags to headlines.
+ Org mode has extensive support for tags.
+
+Every headline can contain a list of tags; they occur at the end of the headline. Tags are normal words containing 
+letters, numbers, ‘_’, and ‘@’. Tags must be preceded and followed by a single colon, e.g., ‘:work:’. Several tags
+ can be specified, as in ‘:work:urgent:’. Tags will by default be in bold face with the same color as the headline. 
+You may specify special faces for 
+specific tags using the option org-tag-faces, in much the same way as you can for TODO keywords (see Faces for TODO keywords). 
+** Dynamic Stall [#B]                                               :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-07-25 周三 10:50]--[2018-07-25 周三 10:55] =>  0:05
+:END:
+                         Added: [2018-07-25 周三 10:50]
+                         
+                         
+Yaw misalignment introduces the unsteady load , dynamic stall is very important
+ because it causes the larger load than static 
+ 
+
+Yaw misaligment introduces unsteady blade load(产生位置也有了). The occurentce for dynamic stall
+is of particular(采用of形式来表达) in this respect, since it can yield(产生)significantly (极大地)
+higher aerodynamic blade forces(又加上了balde） than for static stall(加上for， 然后在static后面
+再加上stall)
+
+spanwise and temporal extend of the dyanmic stall region 
+
+进一步参考 [Wind turbine aerodynamic in yaw.pdf P153]
+
+
+记得在cygwin安装tree
+#+BEGIN_SRC bash :dir "I:\\ScienceBase.Attachments\\data missing estimation\\"
+  find
+#+END_SRC
+
+
+#+BEGIN_SRC bash :dir "I:\\ScienceBase.Attachments\\data missing estimation\\"
+  perl hello.pl 
+#+END_SRC
+
+
+#+RESULTS:
+** NoteExpress标记 [#B]                                             :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-08-04 周六 09:33]--[2018-08-04 周六 09:44] =>  0:11
+:END:
+                         Added: [2018-08-04 周六 09:32]
+                         
+
+标记星级+优先级(刚开始是一级，如果觉得好变成2级，再看一遍觉得特别不错，变成三级..)
+** 搜索引擎出现的必然 [#B]                                          :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-08-04 周六 09:44]--[2018-08-04 周六 09:45] =>  0:01
+:END:
+                         Added: [2018-08-04 周六 09:44]
+                         
+从只言片语到书册，再到图书馆以及搜索引擎
+https://www.baidu.com/s?wd=how%20search%20works&rsv_spt=1&rsv_iqid=0x9c499bc9000313b6&issp=1&f=8&rsv_bp=0&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=1&rsv_sug3=17&rsv_sug1=7&rsv_sug7=100&rsv_sug2=0&inputT=4271&rsv_sug4=4272
+
+1. 爬虫抓取信息(following links ,inside links  connected into thousands and millions information web)，按照高质量网站优先原则
+2. 进行index
+3. 通过算法，better understand what you mean理解你的输入内容，进行搜索 base on the relevent clues, 
+4. 不断过滤掉垃圾网页（site & page quality高质量网站显示在前! 
+
+https://www.google.com/intl/bn/insidesearch/howsearchworks/thestory/
+Jake Hubert, Google Product Manager, said in a blog, “Here you can follow the entire life of a search query,
+ from the web, to crawling and indexing(1), to algorithmic ranking(2) and serving(3), to fighting webspam(去掉垃圾信息).”
+ 
+
+ 
+1. keyword
+2. rank and sort(整理)
+3. qualitiy
+
+
+级别1： 只会输入单词的
+级别2： 关键词组合 基本逻辑关系(and：空格表示 or not)  高级检索(site:  ftp:   filetype:pdf)
+句子的话涉及拆词问题(关键词组合，跟浏览器的搜商有关)，  + 强制添加   -减号强制剔除
+级别3： 高校检索 黑客级别
+
+各个搜搜引擎差异在于专业性知识收集不同、展示界面不同
+
+乔纳森-弗莱彻：被遗忘的搜索引擎之父
+腾讯科技[微博]瑞雪2013年09月05日02:47我要分享
+[导读]20年前，弗莱彻发明了全世界第一个能进行网络搜索的搜索引擎。
+
+乔纳森-弗莱彻：被遗忘的搜索引擎之父
+
+弗莱彻（中）与SIGIR大会的其他与会者在一起（腾讯科技配图）
+
+腾讯科技 瑞雪 9月5日编译
+
+在谷歌(微博)庆祝其15周年诞辰之际，这家网络巨头已经成为信息检索的代名词。
+
+但是，如果你在谷歌搜索引擎中输入乔纳森·弗莱彻（Jonathon Fletcher）的名字，那么在马上得出的搜索结果中不会找到什么线索指向他曾在万维网发展的过程中所扮演的角色。当然，也不会有任何信息能表明他作为现代搜索引擎之父的身份。
+
+但在20年以前，正是弗莱彻在苏格兰斯特灵大学（University of Stirling）的一个电脑实验室中发明了全世界第一个能进行网络搜索的搜索引擎，也正是他发明的这种技术为谷歌、必应（Bing）、雅虎和今天网络上的所有大型搜索工具提供了支持。
+
+解决网络搜索问题
+
+在1993年时，网络正处于刚刚开始发展的婴儿期。在那时，第一个拥有类似于今天我们使用的界面的流行浏览器Mosaic刚刚发布，网页的总数量还只是以千为单位来进行计算而已。
+
+尽管当时网络已经诞生，但如何在网络上找到内容的问题尚未得到解决。Mosaic拥有一个名为“What's New”的页面，能在新网站被创立时检索到这些网站。但问题在于，如果想要Mosaic的开发者能够知道一个新网站的诞生，那么其创立者就必须写信给美国伊利诺伊大学香槟分校（University of Illinois Urbana-Champaign）的国家超级计算应用中心（NCSA），也就是Mosaic浏览器团队的基地。
+
+在那时，弗莱彻是斯特灵大学一名颇有前途的研究生，而且已经被推荐到格拉斯哥大学（University of Glasgow）攻读博士学位。但是，格拉斯哥大学的资金链在弗莱彻还没能到这所大学以前就已断裂，这让他变得无所事事。
+
+“在突然之间，我变得非常渴望找到一种收入来源。”弗莱彻回忆道。“因此我回到了原来的大学，找到了一个为技术部门工作的岗位。”
+
+正是在这个工作岗位上，弗莱彻第一次与万维网和Mosaic的“What's New”页面邂逅。
+
+更好的方法
+
+在为斯特灵大学建设一个网络服务器的过程中，弗莱彻意识到，“What's New”页面存在根本上的缺陷。由于网站是以人工方式被添加到这个网页的列表中的缘故，没有什么东西能被用来追踪网站内容的变化。其结果是，许多链接很快就会变得过期或是被错误标记。
+
+“如果你想要看看有什么东西发生了变化，那么就不得不回过头去查看。”弗莱彻在谈及Mosaic的链接时说道。“抱着必须推出一种更好的方法的念头，拥有计算机科学学位的我决定要编写一些东西来改变这种情况。”
+
+弗莱彻所说的“一些东西”就是全世界的第一个“网络爬虫”（web crawler）。弗莱彻把自己的这种发明称作“JumpStation”，他建立起了一个页面索引，能通过“网络爬虫”来对页面进行搜索，这基本上来说是一种自动化的处理程序，能对被其发现的每个网站页面进行访问和索引。这种自动化处理的程序会一直继续下去，直到“网络爬虫”再也找不到东西可以访问时为止。
+
+在十年以后，也就是1993年12月21日，JumpStation就再也找不到可以访问的东西，结果是将2.5万个页面编入索引。而在今天，谷歌已经编入索引的页面数量已经超过了1万亿个。
+
+乔纳森-弗莱彻：被遗忘的搜索引擎之父
+
+JumpStatio诞生几个月以前的“What's New”页面（腾讯科技配图）
+
+搜索的诞生
+
+弗莱彻很快就为这个索引开发出了一种易于导航的搜索工具，将自己的网站嵌入了Mosaic的“What's New”页面，这标志着全世界第一个现代搜索引擎开始运作。
+
+“我会说，他是网络搜索引擎之父。”墨尔本皇家理工大学（Royal Melbourne Instituteof Technology）的马克·桑德森（Mark Sanderson）教授说道，他专门负责研究信息检索的历史。“（在弗莱彻发明第一个网络搜索引擎之前的）很长一段时间里，很明显一直都有计算机在从事搜索工作；在网络诞生以前，当然也已经有搜索引擎存在。然而，是弗莱彻第一个创造了一种拥有现代搜索引擎所有组成部分的搜索引擎。”
+
+但在今天，谷歌的两名联合创始人塞吉·布林（Sergey Brin）和拉里·佩奇（Larry Page）都已经成为家喻户晓的名人，而目前居住在中国香港的弗莱彻却几乎没有因为他为互联网进化作出的贡献而为人所知。
+
+之所以会出现这种情况，或许与他的项目最终被放弃有关。随着JumpStation的成长，这个项目需要的投资越来越大，而这种投资却是斯特灵大学所不愿提供的。“当时JumpStation是在一个共享服务器上运行的。”弗莱彻解释道。“那时没有很大的磁盘空间，而且当时的磁盘很小，价格也很昂贵。”
+
+空间控制
+
+到1994年6月份，JumpStation已经对27.5万个页面进行了索引。空间方面的限制迫使弗莱彻仅对网页的标题进行索引，而不是对网页的全部内容进行索引；但即使是在作出了这种妥协以后，JumpStation也仍旧开始面临着过载的困境。
+
+弗莱彻也同样已不堪重负。“那并非我的本职工作。”他说道。“那时我的工作职责是维持学生实验室的正常运作，并从事一些系统管理和技术方面的杂活儿。”
+
+在当时，弗莱彻得到了一个到东京工作的机会。对他来说，这个工作机会的吸引力大到令人难以抗拒，而斯特灵大学也几乎没有尝试做些什么来挽留他或是挽留JumpStation。
+
+“很明显，在尝试说服他们相信这个项目很有潜力的问题上，我做得很不成功。”弗莱彻说道。“在当时，我做了自己认为是正确的事情（到日本去工作）。但在过去20年时间里，总有那么些时候我会回首这段往事。”
+
+斯特灵大学计算机科学及数学系主任莱斯利·史密斯（Leslie Smith）教授还记得弗莱彻，他承认JumpStation最终“被证明是领先于时代的”，并在接受BBC采访时表示：“斯特灵大学的同仁们都为他能因自己取得的成就而为人所知感到高兴。”
+
+未来展望
+
+尽管弗莱彻对不得不放弃JumpStation项目而感到失望，但他的这种先驱技术在后来却成为了所有网络搜索引擎的基础。
+
+“在1993年时，网络社区的规模非常小。”桑德森教授说道。“在当时，在网上做任何事情的人都会知道JumpStation。”他还补充道：“到1994年年中前后，网络搜索引擎将变得非常重要这件事情已经开始变得明显。谷歌直到1998年才出现，而弗莱彻在1993年就已经做了这件事情。”
+
+在几个星期以前于爱尔兰首都都柏林召开的SIGIR（国际计算机协会主办的国际信息检索大会）上，弗莱彻由于他在网络搜索引擎方面作出的成就而获得了一些知名度。在当时，他曾跟来自于微软、雅虎和谷歌的与会代表进行过小组讨论。但在弗莱彻的言谈中，他所谈论的并非自己以往的成就，而是对未来作出了展望。
+
+“在我看来，网络不会永远存在。”弗莱彻说道。“但是，找到信息的问题则将永远存在，因为对内容进行搜索并找到信息的愿望是独立于媒介以外的。”
+
+对于追随弗莱彻其后建立起网络搜索引擎的人们来说，当前的这种媒介已经让他们赚到了大笔的钞票。但是，弗莱彻这位出生于英格兰自治市斯卡伯勒（Scarborough）的先驱者并不对此感到遗憾。“我的父母以我为骄傲，我的妻子和孩子也是如此。对我来说，这才是无价之宝，所以我感到非常幸福。”
+** 最喜欢的一段perl代码 [#B]                                        :@NCEPU:
+                         Added: [2018-08-05 周日 03:47]
+                         
+
+#+BEGIN_SRC perl
+
+#!/usr/bin/env perl
+#===============================================================================
+#
+#         FILE: accessPeople.pl
+#
+#        USAGE: ./accessPeople.pl
+#
+#  DESCRIPTION:
+#
+#      OPTIONS: ---
+# REQUIREMENTS: ---
+#         BUGS: ---
+#        NOTES: ---
+#       AUTHOR: YOUR NAME (),
+# ORGANIZATION:
+#      VERSION: 1.0
+#      CREATED: 2017/12/10 22:03:34
+#     REVISION: ---
+#===============================================================================
+
+use strict;
+use warnings;
+use utf8;
+
+my @records;
+my @cols = ( 's_name', 'f_name', 'job' );
+
+my $FILE_file_name = 'people.dat';    # output file name
+
+open my $FILE, '<', $FILE_file_name
+    or die "$0 : failed to open  output file '$FILE_file_name' : $!\n";
+while (<$FILE>) {
+    chomp;
+    my %rec;
+    @rec{@cols} = split /,/;
+    push @records, \%rec;
+}
+
+close $FILE
+    or warn "$0 : failed to close output file '$FILE_file_name' : $!\n";
+
+foreach (@records) {
+    print "$_->{f_name} ", "$_->{s_name} ", "is a $_->{job}\n";
+}
+
+#+END_SRC
+
+
+
+
+
+#+BEGIN_EXAMPLE people.dat
+Jones, Martha, UNIT
+Harkness,JACK,Torchwood
+Smith,Sarah Jane, Journalist
+#+END_EXAMPLE
+** 常用perl解析中文 [#B]                                            :@NCEPU:
+                         Added: [2018-08-05 周日 03:55]
+                         
+
+
+#+BEGIN_SRC perl
+
+# 统一形式  '*(<|>|>>):encoding\(\w+\)'
+
+open my( $read_fh), '<:encoding(UTF-8)', $filename;
+open my( $write_fh), '>:encoding(UTF-8)', $filename;
+open my( $append_fh), '>>:encoding(UTF-8)', $filename;
+#+END_SRC
+
+
+#+BEGIN_SRC perl
+#!/usr/bin/env perl
+#===============================================================================
+#
+#         FILE: analysisFeiji.pl
+#
+#        USAGE: ./analysisFeiji.pl  
+#
+#  DESCRIPTION: 
+#
+#      OPTIONS: ---
+# REQUIREMENTS: ---
+#         BUGS: ---
+#        NOTES: ---
+#       AUTHOR: Ye Zhao Liang (YZL), yezhaoliang@ncepu.edu.cn
+# ORGANIZATION: NCEPU
+#      VERSION: 1.0
+#      CREATED: 2017/12/19 21:46:42
+#     REVISION: ---
+#===============================================================================
+
+use strict;
+use warnings;
+use utf8;
+
+binmode(STDIN,":encoding(gb2312)");
+binmode(STDOUT,":encoding(gb2312)");
+
+# while ( <> ) {
+#     chomp;
+#     print $_,"\n";
+#     last if $_ =~ m/q/xm;
+# }
+
+open(FEIJI,"feiji.txt") or die "can't open the file \n";
+my $car ="尾翼";
+
+binmode(FEIJI,":encoding(gb2312)");
+# binmode( STDIN,  ':encoding(gbk2312)' );
+#binmode( FEIJI,  ':encoding(utf8)' );
+#binmode( STDOUT, ':encoding(gbk2312)' );   
+#binmode( STDERR, ':encoding(gbk2312)' ); 
+#while( my $line = <FEIJI>){
+#my $re = Encode::decode('GB2312','汽车');
+my $count=1;
+while( <FEIJI>){
+    #print "$_ \n" ;
+    #     print "$_ \n" if $_ =~ /.*$re.*/;
+    #    Encode::_utf8_on($_);
+    #    Encode::decode_utf8($_);
+    #print "$_\n" ;#if $_ =~ m/$car/xm;
+    #print "$count: $_\n" if $_ =~ m/$car/xm;
+    #$count +=1;
+
+    s/汽车/风力机/g;
+    print;
+}
+
+#+END_SRC
+** perl正则学习 [#B]                                                  :perl:
+                         Added: [2018-08-13 周一 11:38]
+                         
+
+                         
+perl中有一个tr命令，代表代换，任何的编译器也有着代换的概念（代换就是一一代换吗，
+在perl中其实就是一个一个字母进行代换
+
+s///其实是模式代换，tr叫做字母代换，不考虑模式
+
+现在编辑器，vim，emacs等对于多文件搜索(配合上fzf，ag等代码、字符搜索工具）,可以很容易进行
+
+很多编辑器内置了正则表达式引擎，比如vim和emacs的:%s///功能,
+
+
+*** 反向引用
+
+如果想在s"""运算符的第一部分使用反向引用，使用语法\1 \2等
+如果相杂第二部分使用反向引用，使用$1,$2
+
+比如 
+#+BEGIN_SRC  perl
+$string=~ s"(far)(out)" $2 $1"; ====> 'Out far’
+
+$string=' sample examples'; if($string=~m"(amp..) ex\1") {print "matches!\n";}
+
+#+END_SRC
+所以s命令进行匹配的时候是有进行两个隐式的赋值工作(很多人没说好这一点，因为比较细)
+
+比如
+
+#+BEGIN_SRC perl
+
+  $string = ' bballball';
+  $string =~ s" (b)\1(a...)\1\2" $1$2";
+
+  #让我们详细地看看这个例子。该例完成匹配，但是原因不是太明显。对这个字符串的匹
+  #配有五个步骤：
+      1)在圆括号中的第一个b匹配字符串的开头，接着将其存放在\1 和$1 中。
+      2)\1 于是匹配字符串中的第二个b，因为与b 相等，而第二个字符碰巧是b。
+      3)(a..)匹配字符串all且被存在\2 和$2 中。
+      4)\1 匹配下一个b。
+      5)因为\2等于all所以匹配下一个且是最后三个字符(all)。
+      将他们放到一起就得到正则表达式匹配bballball，或者说是整个字符串。既然$1 等于'
+      b'，$2 等于all，则整个表达式：
+
+  $string = ' bballball' ;
+  $string =~ s" (b)\1(a..)\1\2" $1$2";
+  #(在这个例子中)转换为如下代码：
+  $string =~ s" (b)b(all)ball" ball";
+  #或者用行话讲，用bballball 替换ball。
+
+
+  一般第一部分替换比较少一些(第二部分可以直接使用)
+#+END_SRC
+
+
+***  scalars
+
+三种内建的数据结构
+1. scalars
+2. arrays of scalars(arrays)
+3. associates arrays of scalars(hashes)
+
+
+基于scalars的语法规则！
+
+
+#my  @words   = $_=~/(\S+)/g; 等效于 #my  @words =  /(\S+)/g; 
+
+
+
+*** 零宽断言
+
+从假设出发吧！假设存在那么一个位置！我想找到他的右边单词是。。。就用(?=)
+我想找打他的左侧单词就用(?<=)
+
+但是该位置可能不存在， 而匹配词也可能不存在，假设有风险!夹逼须果断！
+
+位置坐落于匹配单词物理上的左侧(?=匹配词) (?!匹配词)  ---或者这样说以当前位置角度出发：如果当前位置的右边存在匹配词
+位置坐落于匹配单词物理上的右侧(?<=匹配词) (?<!匹配词)---如果当前位置的左边存在该匹配信息(假设存在这个位置)
+
+
+#+BEGIN_EXAMPLE
+   源字符串：<div>a test</div>
+
+   正则表达式：(?<=<div>)[^<]+(?=</div>)
+    这个正则的意义就是匹配<div>和</div>标签之间的内容，而不包括<div>和</div>标签本身。
+
+有个问题，是否领款断言的表达式可以匹配呢
+   正则表达式：(?=<div>)[^<]+(?=</div>)
+#+END_EXAMPLE\b匹配单词边界
+
+\w匹配[a-zA-Z0-9]  \W匹配非\w
+\d匹配[0-9] \D匹配非数字
+^匹配行字符串开头  $ 匹配行字符串结尾
+\A匹配行头  \Z匹配行尾
+
+
+#+BEGIN_SRC perl
+  print "**********************zero width predicting and backslash g**************************************\n";
+
+  my  $divS= "<div> a test </div>               <div> hello  another test</div>";
+
+  #注意这边不适用//,而使用""来代替，避免和html标签</div>冲突
+  #$divS =~ m"(?<=<div>)[^<]+(?=</div>)"xm;
+  $divS =~ m"((?<=<div>)[^<]+)(?=</div>)"mx;
+
+  print "THe matched string is $1\n";
+
+  while ( $divS =~ m"((?<=<div>)[^<]+)(?=</div>)"mxg ) {
+      print "THe matched string is $1\n";
+  }
+
+
+  ## result
+  #**********************zero width predicting and backslash g**************************************
+  THe matched string is  a test
+  THe matched string is  a test
+  THe matched string is  hello  another test
+#+END_SRC
+
+注意还有一点，正则表达式\< 和\>匹配单词边界(分别匹配the start position of a word and the end position of a word
+还有就是命名捕获也会用尖括号！
+
+由于零宽断言，最终只获得一个位置，我们是否可以获取其匹配的内容？多此一举，直接不使用零宽断言不就ok了！！
+
+零宽断言其实也叫作夹逼定理(洛必达法则，嘚瑟的说出来 luo重音 必(重音)达(达平音）
+
+边界本身也是一个夹逼的过程，答案本身也是夹逼的过程，数值计算也是夹逼的过程！人生也是夹逼的过程！
+并行： 分别夹逼的过程!
+所以一定得把逼夹紧！
+
+**** 正则命名捕获
+
+
+#+BEGIN_SRC perl
+  print "*********************** named capture*************************************\n";
+
+  ## All named capture string are stored in the associative arrays of scalars(hash) named %+
+  # So yuu can use $+{name} to reference the value of the captured term.
+  my $str = "jack and rose"; 
+  if ($str =~ /(?<first>\S+) (and|or) (?<second>\S+)/) { 
+      my ($first, $second) = ($+{first}, $+{second}); 
+      print "$first\n$second\n";  # jack, rose 
+      print "the current \$1 \$2 \$3 is $1 , $2 , $3\n";
+  } 
+
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+
+
+#########*********************** named capture*************************************
+jack
+rose
+the current $1 $2 $3 is jack , and , rose
+
+
+
+#+END_EXAMPLE
+
+**** 不捕获
+
+
+use ?: to stop capturing the content into $number array!
+#+BEGIN_SRC perl
+  if ($str =~ /(?<first>\S+) (?:and|or) (?<second>\S+)/) { 
+      my ($first, $second) = ($+{first}, $+{second}); 
+      print "$first\n$second\n";  # jack, rose 
+      print "Now  \$1 \$2 \$3 is $1 , $2 , $3\n";
+  } 
+
+#+END_SRC
+
+
+#+BEGIN_EXAMPLE
+#*********************** named capture*************************************
+jack
+rose
+Use of uninitialized value $3 in concatenation (.) or string at testArray2.pl line 118.
+Now  $1 $2 $3 is jack , rose ,
+
+#+END_EXAMPLE
+
+所以命名捕获其实是让程序多做事情!
+
+
+*** 两字字符
+
+
+跟踪一个人并不简单，至少得10个人，如果只有一个人，那么至少要挡住自己的脸
+
+
+perl有两种字符单元
+1. 元字符(\w \b \a \z ^ $ \1 \2 $1 $2 \< \>  a-zA-Z0-9 \s \S \d \D .   + ? {3,5} -) 特殊意义的字符
+2. 基本字符a-z A-Z 0-9（字面值）
+   
+正则表达式的思维！
+
+要想正确使用正则表达式，清楚地了解目标文本是非常重要的
+
+
+****  字符组和多选结构的区别
+
+字符组(character set)只是针对单个单词，基本可以算是一门独立的微型语言(例如 对于元字符，他们有自己的规定)
+
+而多选结构(alternative)是"正则表达式语言主体(main regular expression language)"的一部分。
+多选结构(alternative)可以包括很多字符，但不能超越括号的界限！
+
+gr[ae]y 和 gr(a|e)y虽然一样，但是理念不一样
+
+'^From|Subject|Date:' 查三种类型的信息
+
+'^(From|Subject|Date):'  查询From或者Subject或者Date开头并以冒号结尾的
+
+
+竖线的本质就是匹配分割两边的任意一个表达式
+也就是说括号通常是和竖线合在一起使用的,也就是限制竖线的作用范围！
+
+
+一般字符组的效率差些，最好用分支结构!
+多选项缺点: 没有像字符组那样排除功能，可以匹配任意长度的文本,相当于一个一个选项!
+
+
+#+BEGIN_SRC perl
+  ([\u4e00-\u9fa5\w])\1+
+
+
+  ([a-zA-Z0-9]+)\1+  查找重复英文
+    
+  (\w+)\1+
+  (\w+)\s\1+    可以查到the the
+
+#+END_SRC
+
+
+
+正则表达式包含多个流派！
+弄懂正则表达式的工作原理，才是真正理解的关键
+
+学习正则表达式犹如造车一样，是一种艺术形式，而不是仅仅开车（不需要懂得车运行原理）
+在造车之前，必须了解汽车的工作原理。
+
+你有开过车，知道怎么用起来就可以了！但是真想开的好，也不一定得精通车的原理！
+
+1. 开车的经验
+2. 开车的历史 详细考察正则表达式的流派的主要内容
+3. 正则表达式流派重要引擎
+4. 更为复杂内容
+5. 设置具体的正则引擎
+6. 检查具体的产品和模型！
+   
+
+***  华氏转为摄氏度
+
+
+#+BEGIN_SRC perl
+  print "**********************huashi ******************************************\n";
+
+  print "Enter a temperature (e.g., 32F, 100C):\n";
+  my  $input= <STDIN>; ## 接收用户一行文本
+  chomp($input);
+
+
+  #if ( $input =~ m/^([-+]?[0-9]+)([CF])$/xm ) {
+  #此时 $1 保存 数字     $2保存类型
+  if ( $input =~ m/^([-+]?[0-9]+(\.[0-9]*)?)([CF])$/xm ) {
+  #此时 $1 保存 数字和小数点数字    $2保存小数点 $3保存类型
+     my $InputNum = $1; ## 数据存储
+     my  $type = $3;  ## 保证程序清晰易懂
+
+     my  $celsius;
+     my  $fahrenheit;
+
+     if ( $type eq "C" ) {
+         #输入为摄氏温度
+         $celsius = $InputNum;
+         $fahrenheit = ($celsius * 9 /5.0) + 32;
+     }
+     else {
+         $fahrenheit = $InputNum;
+         $celsius = ($fahrenheit - 32)*5 / 9.0;
+     }
+
+     printf "%.2f C is %.2f F \n", $celsius,$fahrenheit;
+  }
+  else {
+      print "Expecting a number followed by \"C\" or \"F\", \n";
+      print "So I don't understand \"$input\". \n";
+  }
+
+#+END_SRC
+
+
+改进写法，支持大小写(也许你更喜欢/i,因为它更简洁，类似\s)，支持小数点!
+#+BEGIN_SRC perl
+  ##if ( $input =~ m/^([-+]?[0-9]+)([CF])$/xm ) {
+  #此时 $1 保存 数字     $2保存类型
+  #if ( $input =~ m/^([-+]?[0-9]+(\.[0-9]*)?)([CF])$/xm ) {
+  #if ( $input =~ m/^([-+]?[0-9]+(\.[0-9]*)?)\s*([cCfF])$/xm ) {
+  if ( $input =~ m/^([-+]?[0-9]+(\.[0-9]*)?)\s*([CF])$/ixm ) {
+  ## /i 不区分大小写
+  #此时 $1 保存 数字和小数点数字    $2保存小数点 $3保存类型
+     my $InputNum = $1; ## 数据存储
+     my  $type = $3;  ## 保证程序清晰易懂
+
+     my  $celsius;
+     my  $fahrenheit;
+
+     if ( $type eq "C" || $type eq "c" ) {
+    # if ( $type =~ m/c/i) {   #或者这种方式更加简洁些！ 伟大的i    伟大的g
+
+         #输入为摄氏温度
+         $celsius = $InputNum;
+         $fahrenheit = ($celsius * 9 /5.0) + 32;
+     }
+     else {
+         $fahrenheit = $InputNum;
+         $celsius = ($fahrenheit - 32)*5 / 9.0;
+     }
+
+     printf "%.2f C is %.2f F \n", $celsius,$fahrenheit;
+  }
+  else {
+      print "Expecting a number followed by \"C\" or \"F\", \n";
+      print "So I don't understand \"$input\". \n";
+  }
+
+#+END_SRC
+
+***  括号三种用法
+
+1. 限定多选方案的范围比如 gr(a|e)y  竖线的作用范围只能在a和e之间，而如果是gra|ey则变成gra和ey两个表达式
+2. 分组，比如(wor)fdf(hel)  分组$1 $2
+3. 捕获 。。。 也有不捕获比如(?:...)
+
+
+*** 反斜杠(反斜线)backslash的四种用法
+
+1. \> \< 构成元字符(不同流程构成了不同对应元字符的定义)
+2. \w([a-zA-Z0-9] \W([^a-zA-Z0-9] \d([0-9]) \D([^0-9] \s(所有空白字符:空格符、制表符、换行符、
+   回车符, 更方便些) \S \A \Z 和字母结合构成元字符, \b单词边界 \B
+3. \\ \( \) 去除某些元字符的意义，保存字符特殊含义
+4. \t(字表符) \n \r \l 构成特殊孔子字符
+   
+*** 斜杠(斜线)slash两种用法
+1. 斜线用来标记正则表达式的边界 比如m//  s///也可以用m""  m{}等来代替斜线！
+2. /和某些字母结合，充当匹配表达式的拓展功能，比如/i表示不区分大小写，/g表示全局匹配行， /m多行匹配 , /x表示正则表达式
+   正则表达式可以写成多行的形式，忽略中间的换行符!
+
+
+***  破折号两种用法
+
+1. 放在character set第一个位置表示破折号意思
+2. 放在character set中间某个位置比如[a-z] 表示到（范围的意思）
+3. perl -i 表示直接写进文件, -p表示对目标文件每一行进行查找和替换  perl -p -e -i 's/sysread/read/g' file
+
+类似的意思还比如尖角号
+
+****  尖角号三种用法
+
+1. 放在character set第一个位置表示逻辑非
+2. 放在character set其他位置表示尖角字面值意思
+3. 放在表达式首位类表征匹配要匹配字符串的首位，对应$为尾位
+   
+而且一般限定尖角和dollar符号可以加快匹配速度
+
+*** 单词的定义
+
+perl和其他语言一样都把数字、字母、下划线当做单词一部分
+
+单词分界符意思：在此位置一侧是单词(例如数字、字母）另一侧不是(例如行的末尾或者数字后面的空格）
+一侧如此这般，另一侧如此那般：(是不是类似顺序环视和逆序环视）
+
+
+*** 栈式测试操作符
+
+
+#+BEGIN_SRC perl
+  #perl 5.10引入栈式操作
+
+  # 5.10以前写法
+  if(-r $file and -w _){
+      print "hel..";
+  }
+
+  # 5.10以后写法
+  use 5.010;
+  if(-w -r -d -x -o $file){
+      print "My directory is readable ,writable, and executable!\n");
+  }
+
+  # 靠近$file的先进性判断
+
+  Learning Perl P238回看可能的误用!
+#+END_SRC
+
+
+*** 尖括号的作用(diamond)
+
+通配符匹配所有当前文件夹下pm结尾可以写为 "*.pm"
+
+perl可以使用 glob "*.pm" 获取所有文件，当然也可以使用<"**.pm">获取
+
+
+这种运用场景也用于文件读取
+
+也就是说diamond（尖括号）既可以表示文件句柄读取又代表文件名通配操作，那么perl又是如何判断取舍？
+
+因为合理的文件句柄必须是严格意义上的Perl标识符，所以如果满足Perl标识符条件的，就作为文件句柄读取，otherwise,..
+
+
+#+BEGIN_SRC perl
+  my @files = <FRED/*>; ## 文件名 通配符
+  my @lines = <FRED>; ##文件句柄
+  my @lines = <$fred>; #文件句柄
+  my $nane = 'FRED';
+  my @files = <$name/*>;  #文件名通配操作
+
+
+  # 唯一例外
+
+  my $name ='FRED';
+  my @lines = <$name>; # $name解析为FRED句柄，当做文件句柄! 不要用间接文件句柄！！！！
+#+END_SRC
+
+
+**** 目录句柄
+
+open     ---> opendir
+readline ---> readdir
+close    ---> closedir
+
+
+
+#+BEGIN_SRC perl
+      ## file
+        my	$letterfile_file_name = 'someFiles.md';		# input file name
+
+        open  my $letterfile, '<', $letterfile_file_name
+            or die  "$0 : failed to open  input file '$letterfile_file_name' : $!\n";
+
+        close  $letterfile
+            or warn "$0 : failed to close input file '$letterfile_file_name' : $!\n";
+
+
+      ## directory
+        my	$letterfile_direcotry_name = 'Directory/';		# input file name
+
+        opendir  my $letterfile, '<', $letterfile_direcotry_name
+            or die  "$0 : failed to open  input file '$letterfile_direcotry_name' : $!\n";
+
+    while($name = readdir $letterfile_direcotry_name){
+        next unless $name=~ /\.pm$/;
+  next if $name=~ /^\./;
+next if $name eq '.' or $name eq '..';
+    }
+        closedir  $letterfile
+            or warn "$0 : failed to close input file '$letterfile_direcotry_name' : $!\n";
+
+#+END_SRC
+
+
+****  File::Spec::Functions
+
+
+
+#+BEGIN_SRC perl
+  #为了让程序健壮和可移植 使用File::Spec::Functions
+
+  use File::Spec::Functions;
+
+  opendir my $somedir,$dirname or die "Cannot open$dirnmame:$!";
+  while(my $name = readdir $somedir){
+
+      next if $name =~ /^\./; # 跳过点号开头的文件
+      $name =catfile($dirname,$name); #拼合完整路径
+      next unless -f $name and -r $name; #如果没有拼合路径，文件测试操作符会在当前目录下查找文件，而不是在$dirname指定目录下。
+  }
+#+END_SRC
+
+
+**** 递归访问目录 Fild::Find
+
+
+File::Find:Rule和File::Finder都是基于File::Find
+
+**** 删除文件unlink
+
+unlink 'slate'; #会把当期目录下的slate文件扔进粉碎纸机，消失在系统中
+unlink glob '*.o';
+unlink <'*.o'>;
+
+
+my $successful = unlink "slate","bedrock","java";
+print "I deleted $successful file(s) just now\n"; #如果是0，表示没有删除任何文件
+** perl seek [#B]                                                     :perl:
+:LOGBOOK:
+CLOCK: [2018-08-28 周二 18:05]--[2018-08-28 周二 21:21] =>  3:16
+:END:
+                         Added: [2018-08-28 周二 18:05]
+                         
+                https://blog.csdn.net/bingfengxiao/article/details/6657696         
+
+#+BEGIN_SRC perl
+                  seek 设置文件的当前位置！
+
+                  当一个文件非常大时可以从指定位置读起。 
+                  seek FILEHANDLE,POSITION,WHENCE
+
+                  成功返回真，失败返回假。 
+                  POSITION 是读入的新位置（字节）。 
+                  WHENCE有3个值，0表示新位置是POSITION,1表示当前位置加上POSITION，2表示文件尾加上POSITION 
+                  例如：从file.txt的12字节开始读起并打印出来。 
+                  open (FILEHANDLE,"<file.txt") or die "cannot open file.txt"; 
+                  seek FILEHANDLE,12,0; 
+                  while (<FILEHANDLE>){ 
+                  print; 
+                  } 
+                  close (FILEHANDLE);
+#+END_SRC
+
+perl 在操作文件指针时，可以用seek 函数移动文件指针
+
+seek (filevar, distance, relative_to);
+seek (filevar, position, whence);
+在文件中向前/后移动，有三个参数：
+1、filevar，文件指针
+2、distance，移动的字节数，正数向前移动，负数往回移动
+3、reletive_to，值可为0、1或2。为0时，0表示新位置为position位置或者distance位置，为1时，相对于当前位置（将要读的下一行,）移动(当前位置加上position)，
+为2时，相对于文件末尾移动+position位置。
+运行成功返回真（非零值），失败则返回零，常与tell函数合用。
+
+
+如果用户想直接获得文件的字节数，可以先偏移到文件末尾(所以第二个参数为0，如果不为0，表示末尾数值加上该值)，再查看当前偏移位置来查看
+
+#+BEGIN_SRC perl
+open FILE, "<", "/opt/test/test.txt";
+
+seek(FILE, 0, 2);
+
+my $position = tell(FILE);
+#+END_SRC
+
+
+
+运用到实际程序
+
+
+#+BEGIN_SRC perl
+  #!/usr/bin/env perl
+  #===============================================================================
+  #
+  #         FILE: testOneFileDelete.pl
+  #
+  #        USAGE: ./testOneFileDelete.pl  
+  #
+  #  DESCRIPTION: 
+  #
+  #      OPTIONS: ---
+  # REQUIREMENTS: ---
+  #         BUGS: ---
+  #        NOTES: ---
+  #       AUTHOR: Ye Zhao Liang (YZL), yezhaoliang@ncepu.edu.cn
+  # ORGANIZATION: NCEPU
+  #      VERSION: 1.0
+  #      CREATED: 2018/8/28 17:32:03
+  #     REVISION: ---
+  #===============================================================================
+
+  use strict;
+  use warnings;
+  use utf8;
+
+
+  my	$journal2018_file_name = '20171000112.org';		# output file name
+
+  open  my $journal2018, '<', $journal2018_file_name
+      or die  "$0 : failed to open  output file '$journal2018_file_name' : $!\n";
+
+
+  my	$journalOut_file_name = 'outputTest.org';		# output file name
+
+  open  my $journalOut, '>', $journalOut_file_name
+      or die  "$0 : failed to open  output file '$journalOut_file_name' : $!\n";
+
+  while ( <$journal2018> ) {
+    
+      if (/^\*\skeep/ ) {
+          print tell $journal2018,"$_\n";
+          seek($journal2018,(tell $journal2018)+150,0);
+      }else{
+          print $journalOut $_;
+      }
+  }
+
+  close  $journal2018
+      or warn "$0 : failed to close output file '$journal2018_file_name' : $!\n";
+  close  $journalOut
+      or warn "$0 : failed to close output file '$journalOut_file_name' : $!\n";
+
+
+
+
+#+END_SRC
+** perl收集所有文件内容到一个文件 [#B]                                :perl:
+:LOGBOOK:
+CLOCK: [2018-08-28 周二 21:21]--[2018-08-28 周二 21:21] =>  0:00
+:END:
+                         Added: [2018-08-28 周二 21:21]
+                         
+
+#+BEGIN_SRC perl
+  #!/usr/bin/env perl
+  #===============================================================================
+  #
+  #         FILE: testCollect.pl
+  #
+  #        USAGE: ./testCollect.pl  
+  #
+  #  DESCRIPTION: 
+  #
+  #      OPTIONS: ---
+  # REQUIREMENTS: ---
+  #         BUGS: ---
+  #        NOTES: ---
+  #       AUTHOR: Ye Zhao Liang (YZL), yezhaoliang@ncepu.edu.cn
+  # ORGANIZATION: NCEPU
+  #      VERSION: 1.0
+  #      CREATED: 2018/8/28 17:07:32
+  #     REVISION: ---
+  #===============================================================================
+
+  use strict;
+  use warnings;
+  use utf8;
+
+
+
+  my	$journalOne_file_name = '../OneJournal.org';		# output file name
+
+  open  my $journalOne, '>', $journalOne_file_name
+      or die  "$0 : failed to open  output file '$journalOne_file_name' : $!\n";
+
+  #while ( glob("*") ) {
+  while ( <*> ) {
+
+      my	$journalF_file_name = "$_";# input file name
+
+      print "$_\n";
+      open  my $journalF, '<', $journalF_file_name
+          or die  "$0 : failed to open  input file '$journalF_file_name' : $!\n";
+
+      print $journalOne "* $_\n";
+      my  $lineNumber=1;
+      while ( <$journalF> ) {
+          if($lineNumber >8)
+          {
+              print $journalOne "$_\n";
+          }
+          $lineNumber=$lineNumber+1;
+      }
+      close  $journalF
+          or warn "$0 : failed to close input file '$journalF_file_name' : $!\n";
+
+  }
+
+  close  $journalOne
+      or warn "$0 : failed to close output file '$journalOne_file_name' : $!\n";
+
+
+
+#+END_SRC
+** Sun set(光符集 sun character set)
+
+sunset日落（日落字符)
+** json parser [#B]                                                :clojure:
+:LOGBOOK:
+CLOCK: [2018-08-29 周三 09:16]--[2018-08-29 周三 09:20] =>  0:04
+:END:
+                         Added: [2018-08-29 周三 09:16]
+                         
+https://github.com/jiacai2050/clj-json
+
+一个简易的clojure写的json-parser
+
+
+#+BEGIN_SRC org
+  \-?\d+(\.\d+)?([e|E][+|-]?\d+)?
+#+END_SRC
+
+
+结构挺清晰的，json-value中包含五种类型解析，我觉得可分为两类字面值解析和非字面值解析。
+
+1. 字面值解析包含字符串，数字和布尔值，分别对应json-string,json-number,json-literals;
+2. 非字面值解析包含数组和对象，分别对应json-array和json-object。实战中主要引用了parsatron库。
+
+clojure 里面很有有趣的库
+http://riemann.io/
+
+https://github.com/nathanmarz/specter/
+** perl正则匹配数字 [#B]                                              :perl:
+:LOGBOOK:
+CLOCK: [2018-08-29 周三 09:21]--[2018-08-29 周三 09:22] =>  0:01
+:END:
+                         Added: [2018-08-29 周三 09:20]
+                         
+
+#+BEGIN_SRC perl
+
+my  $source="I have a string: 34.5 then -34.5 , also -34.5E6 or -34.56e6, finally 34.5E+10 or 34.5E-10";
+
+
+while ( $source =~ m/(\-?\d+(\.\d+)?([e|E][+|-]?\d+)?)/xgm ) {
+print "$1\n";
+}
+
+#+END_SRC
+** 涡轮、压气机 [#B]                                                  :学术:
+:LOGBOOK:
+CLOCK: [2018-08-31 周五 12:26]--[2018-08-31 周五 12:36] =>  0:10
+:END:
+                         Added: [2018-08-31 周五 12:26]
+                         
+
+涡轮增压，航空领域（汽车、飞机）！涡轮增压器实际上是一种空气压缩机，通过压缩空气来增加进气量，它是利用惯性冲力来增加发动机的输出功率
+涡轮（Turbo），是在汽车或飞机的引擎中的风扇，通过利用废气（exhaust gases）把燃料蒸汽（fuel vapour ）吹入引擎，
+以提高引擎的性能。涡轮是一种将流动工质的能量转换为机械功的旋转式动力机械。
+它是航空发动机、燃气轮机和蒸汽轮机的主要部件之一。
+
+***  TURBO
+
+
+本体研究（本体部件研究） ： 涡轮和压气机（核心机）
+
+辅机： 泵与风机
+
+别单单研究纯流场（流场围绕部件做研究）
+
+
+高速转子是旋转机械(流体机械)的核心部,对其安全运行起至关重要的作用，在高效率清结构的旋转机械中更加不可忽视
+
+第一梯队：清华、工程热物理所（涡轮、压气机） 西交
+第二梯队： 哈工大，哈工程，北航，西工大
+第三梯队: 上海理工，中南大学..
+
+华电。。。
+
+
+两者都是引擎中的部件，压气机是由涡轮驱动（压气机的启动部分是涡轮，进气流道增压）。两者功能如下：
+压气机（compressor）：燃气涡轮发动机中利用高速旋转的叶片给空气作功以提高空气压力的部件。
+压气机叶轮叶片的前端部分呈弯曲状称为导轮，起作用是将气体无冲击的导入工作叶轮，减小气流冲击损失。
+小型增压器的压气机叶轮一般将导轮与工作叶轮制成一体。
+压气机的叶轮出口有扩压器，使气体在叶轮中获得的动能尽可能多地转化为压力。扩压器分为叶片式和缝隙式两种。
+压气机的外壳有气流的进口和出口。进口一般呈轴向布置，流道略呈渐缩，以减小进气阻力。出口一般设计成流道沿圆周渐扩的蜗壳状，使高速气流在那里继续扩压，提高增压器的总效率。压气机由涡轮驱动，其主要性能参数有：转速、流量、空气流量、增压比和效率等。
+涡轮（Turbo）,也叫作燃气机，就是平时说的涡轮喷气发动机，一般用于航空航天，（空气流动，增压），是在汽车或飞机的引擎中的风扇，通过利用废气（exhaust gases）把燃料蒸汽（fuel vapour ）吹入引擎，以提高引擎的性能。涡轮是一种将流动工质的能量转换为机械功的旋转式动力机械。它是航空发动机、燃气轮机和蒸汽轮机的主要部件之一。
+
+
+区别在于：
+1.涡轮，turbine（将流体潜能转化为机械能的机器：比如水轮机，汽轮机，燃气轮机，风力涡轮机, 四种不同介质产生不同的涡轮)的作用，
+是受到流动的气体所产生的力，使之旋转，而产生机械动力
+简单是说，就是将风能转换为机械能
+
+透平是英文turbine的音译，源于拉丁文turbo一词，意为旋转物体。
+透平最主要的部件是旋转元件(转子或叶轮），被安装在透平轴上，具有沿圆周均匀排列的叶片。流体
+所具有的能量在流动中经过喷管时转换成动能，流过转子时流体冲击叶片，推动转子转动，从而驱动
+透平旋转轴宣州。透平轴直接或经传动机构带动其他机械，输出机械功。
+
+透平按所用的流体工质不同可分为水轮机(用作水电站的动力源）
+汽轮机（用于火力发电厂、船舶推进等）
+燃气透平（用作喷气式飞机的推进动力、舰船动力，以及发电厂、尖峰负荷用小型电站等
+水轮机：
+2.压气机的作用
+一般有一个主动力，使压气机风扇旋转，使空气流动
+简单的说，就是将机械能转换成风能
+
+
+燃气涡轮发动机，主要有四种类型
+
+1. 涡轮喷气发动机（简称涡喷）
+2. 涡轮风扇发动机（简称涡扇）
+3. 涡轮螺旋桨发动机
+4. 涡轮轴发动机（直升机的发动机） 有两组涡轮：第一组涡轮用来带动压气机，第二组用输出轴功带动直升机旋翼（涡轮做功）
+
+涡喷发动机主要用在高速战斗机，早期的涡喷发动机与普通涡轮发动机一样，由
+轴流式压气机、环形燃烧室或环管燃烧室、轴流式涡轮组成。现在的涡喷发动机增加了动力
+燃烧室。----》主要功能产生高温高压燃气，从尾管中高速喷出产生推力，他就是飞机的推进器，涡喷仅
+带动压气机，不向外输出机械功。多级压气机----
+
+
+没有压气机和涡轮一样有推力，只不过热力循环不是最合适的。（涡轮是动力输出，压气机是高压气体输出）
+
+
+有压气机的地方就必须有涡轮？？尾喷管用于调节涡轮落压比，即调节涡轮做功
+
+
+涡轴发动机就能给直升机、坦克、舰船、发电机做动力（动力部件）
+
+Ma=3, YF-12A型歼击机进气道产生净推力的70% 前椎体产恒14%， 喷嘴27% 核心机（压气机+燃烧室+涡轮）只占17%
+说明进气道和尾喷管很重要，对于高速飞行飞机动力装置中起到关键性作用
+
+
+***  压气机原理
+
+一级涡轮吸收风能，使得空气流经压气机，进行压缩空气过程！
+
+登熵绝热压缩做功
+
+进气道压缩工程，
+压气机所需动力(机械能）由涡轮提供； 压气机对气流加工，压力增加，能量增加。
+
+
+增压比越大，热效率越高。发动机越好，压比越高（承受压力能力越强）
+
+2000 年，北航陈懋章院士作出了2级大小叶片压气机实 现压比6的方案。
+
+
+压气机的完整设计过程包括以下几个步骤：
+（1）确定转速和流道尺寸。
+（2）给定效率，确定压气机级数。
+（3）计算每一级平均半径处的气流角。
+（4）确定从叶根至叶尖的气流角变化。
+（5）压缩效应研究。
+（6）根据叶栅试验数据选择压气机叶型。
+（7）使用叶栅数据，核查之前假定的效率。
+（8）评估非设计点性能。
+（9）台架试验。 [3] 
+http://www.360doc.com/content/15/0525/20/14106735_473205015.shtml
+
+
+视频介绍不错！
+
+http://v.qq.com/iframe/player.html?vid=t1314x6rbtr&300&NaN&auto=0
+** tag system [#B]                                               :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-09-02 周日 16:25]--[2018-09-02 周日 17:04] =>  0:39
+:END:
+                         Added: [2018-09-02 周日 16:25]
+                         
+http://irreal.org/blog/?p=7447
+
+org mode --->tag system-->reproducible research methods
+
+  Over at the Emacs subreddit, rmberYou has a post on how he uses Org mode to get and stay organized()https://www.reddit.com/r/emacs/comments/9ajxqj/tip_how_i_organize_myself_with_orgmode/.
+The post is mainly a taxonomy of his Org mode files but his setup may be useful to others.
+
+  A couple of points are worth mentioning. First, he prefers a single large Org file for each general category.
+That’s the approach taken by Carsten Dominik1, the original developer of Org mode.
+I like that approach because every thing related to a given category is one place.
+This is especially helpful when you’re employing reproducible research methods.
+
+  Secondly, [one of the commentors](https://www.reddit.com/r/emacs/comments/9ajxqj/tip_how_i_organize_myself_with_orgmode/e4w71hl/) notes that you should also integrate a knowledge system
+to record and help you remember bits of knowledge even if they aren’t actionable. 
+I do this by recording things I’ve learned and might want later in my journal.
+Org mode is really good for this because of its tag system.
+I can simply add tags to the entry that reflect its content and then when I want it again,
+it’s easy to find if I can remember even one of the tags.
+
+  It’s worth spending a couple of minutes to read rmberYou’s post.
+He says being organized helps you deal with today’s hectic(繁忙的) pace.
+I’ve found that a little effort in being organized allows me to get things done while still indulging my basically lazy nature.
+** 科研? [#B]                                                       :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-04 周二 18:09]--[2018-09-04 周二 18:54] =>  0:45
+:END:
+                         Added: [2018-09-04 周二 18:09]
+                         
+
+                         
+我们如何把我们正在做的东西变成产品？ 能够有益于人们的认识，帮助人们》
+不是说只是为了做产品，而是做产品的态度，想着帮助人们，通过产品来表达你的态度。
+
+
+我们做的是科研？充满低级趣味的重复性工作,文库里面99%的东西都是没用的？！(陈芝麻烂谷子)
+现在做的科研不是那个带着问题，有逼迫性、必须解决这个问题才能继续的时代！！
+
+
+持续性的自主学习(知道自己的不足，并且会想着去弥补)-----这是一个博士最优秀的品质
+自己主动，这边的持续只是强调学习，其实还应该是不是加上一个专注？！
+
+需要持续学习的是沟通、交流(如何去沟通和表达)！
+
+https://www.cn-healthcare.com/article/20180222/content-500528.html
+MIT技术Review(From 克克老师)
+https://www.technologyreview.com/
+
+
+Phys.org
+https://phys.org/
+
+Science
+http://www.sciencemag.org/
+
+
+Nature:
+https://www.nature.com/
+
+
+
+MIT公开课
+https://ocw.mit.edu/index.htm
+
+网易公开课
+http://open.163.com/special/opencourse/
+
+
+
+百度开源的PaddlePaddle(google，faceBook,IBM也有，阿里也有，腾讯也有)
+https://www.aliyun.com/jiaocheng/151402.html?spm=5176.100033.1.22.60oQKb
+
+20180902华为 
+http://business.sohu.com/20180902/n548273375.shtml    麒麟980
+** auto-save for emacs [#B]                                      :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-09-05 周三 11:38]--[2018-09-05 周三 11:38] =>  0:00
+:END:
+                         Added: [2018-09-05 周三 11:38]
+                         
+https://www.jianshu.com/p/998ceaf522d1
+** 每页笔记想要传达的意思 [#B]                                      :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-05 周三 17:43]--[2018-09-05 周三 17:43] =>  0:00
+:END:
+                         Added: [2018-09-05 周三 17:43]
+                         
+这页笔记真的能够传达你想要表达的信息？？？？
+
+一份笔记应该尽可能都展示，但是一个ppt则是仅仅展示重点的部分（全部展示，等于都没有展示）
+
+研究的背景意义仅仅是想要提出一个你的研究问题
+
+而针对研究问题提出来的研究内容则需要仔细讲，细致讲（重点讲），具体和清晰的研究思路，研究逻辑（屡清逻辑思路）！
+你为什么研究这些内容，这些内容有什么意义？ 多个实现方法为什么最后选择它？ 
+比如CFD算法确认（做了三项内容，1 CFD于BPM的模型及你选哪个确认，最终选择CFD，2 CFD的网格影响（包括网格无关性的校验），3 CFD湍流模型的影响（不同湍流模型的比较，最终选择什么）
+
+
+概念第一次出现的时候，一定得介绍他的定义和物理意义（比如指向性分布：表示声音强度的相对值
+
+第一次出现的图，一定得描述横坐标表示什么意思，纵坐标表示什么意思！
+在多副图之间，一定要描述多副图之间的关系（他们的区别和联系）他们为什么这样变化！
+** dynamic pitching and yaw [#B]                                    :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-05 周三 20:57]--[2018-09-06 周四 15:19] => 18:22
+:END:
+                         Added: [2018-09-05 周三 20:57]
+                         
+Unsteady aerodynamics of offshore floating wind turbines in platform pitching motion using vortex lattice method
+
+Jeon[] 2014 applied vortice lattice method .
+
+李新凯-大厚度翼型数值计算方法研究3 (2)
+** 安装jekkly博客六步法 [#B]                                        :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-13 周四 14:21]--[2018-09-13 周四 15:08] =>  0:47
+:END:
+                         Added: [2018-09-13 周四 14:21]
+                         
+现在新机子上面配置github （ssh 不再root用户下）
+(补充：速度快的话，一个机子10min一个博客)
+第一步：
+https://help.github.com/articles/set-up-git  ----
+
+git config --user.name "Ye Zhaoliang"
+git config --user.email "zhaoturkkey@163.com"
+
+ssh-keygen -t rsa -C "zhaoturkkey@163.com" 
+ 
+eval "$(ssh-agent -s)" # Agent pid 59566 ssh-add ~/.ssh/id_rsa 
+
+sudo apt-get install xclip # Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`) xclip -sel clip < ~/.ssh/id_rsa.pub # Copies the contents of the id_rsa.pub file to your clipboard
+粘帖到你的github账户即可
+
+
+矫兔三库
+
+
+
+
+第二步：
+git clone https://github.com/jueqingsizhe66/jueqingsizhe66.github.com
+
+git checkout 最新的source9分支即可（sourcen)
+
+
+第三步：
+ruby 安装( 事先检查一下  ruby --versio n add by Yezhaoliang   没用还是执行这一步较好！
+             否则可能的报错是：RedCloth -v '4.2.9'无法安装) 
+apt-get install ruby1.9.3(一定要做好这一步！)
+(ruby supplied the gem tools)
+（切换不同版本的ruby ：  
+curl -L https://get.rvm.io | bash -s stable --ruby  
+rvm install 1.9.3  
+rvm use 1.9.3  
+rvm rubygems latest 
+***  To start using RVM you need to run `source /usr/local/rvm/scripts/rvm`
+    in all your open shell windows, in rare cases you need to reopen all shell windows.
+source /usr/local/rvm/scripts/rvm这是一个bug，经常需要执行这个，因为可能rvm就被关掉了，一关掉，rake就报错！！！切记
+有时候遇到rake问题最好的办法是，重新gem install bundler ， rehash，bundle install即可重新安装rake
+
+）
+
+
+
+第四步：
+
+gem sources --remove http://rubygems.org/   -----> should confirm to let it right
+gem sources -a http://ruby.taobao.org/
+修改gem的源 较好
+   源用 http://ruby.taobao.org 会比较快一些。
+apt-get install rake
+rake 安装：( 注意 这一步 是在 你的 当前 source7 的 根目录 下 执行的   add by yezhaoliang) 
+  
+(apt-get install rbnevy已经不管用了 在ubuntu 2015 4 -28
+*************apt-get install rbenv 因为写错了  应该该是rbenv***************
+)
+sudo gem install bundler ;apt-get install rbenv; rbenv rehash ; bundle install(
+sudo apt-get install ruby-dev  ; because RedCloth 
+)
+(切记 根目录下执行 还是错误！！)
+
+第五步：
+最重要的一步不要忘记了,这样才可以进行deploy
+（
+
+Rake的意思是Ruby Make，一个用ruby开发的代码构建工具。Rake的英文意思是耙子，一种很朴实的劳动工具。真的是很贴切，Rake正是一个功能强大、勤勤恳恳的劳动工具。
+）
+rake setup_github_pages
+(有可能遇到 这种情况，你的rake更新到了 rake 10.3.2 而你的Gemfile还是 rake 0.9版本，这时候就需要吧0.9改为10.3.2即可)
+可以了  ,我这样弄才可以 git@github.com:jueqingsizhe66/jueqingsizhe66.github.com
+
+第六步：
+rake generate  ; rake preview.......
+rake new_post[""] 
+rake deploy
+都是可行的
+ git pull origin  source7  拉取远程最新的source7分支覆盖当前分支 
+ 
+ 第一步： configure git
+第二步： clone your data
+第三步： ruby install
+第四步： rake install
+第五步： setup_github_pages
+第六步： preview 
+ 
+ 
+ 
+//windows版本的安装：
+
+
+
+**  测试PlantUML
+
+
+
+#+BEGIN_SRC plantuml :file testSequence.png :cmdline -charset UTF-8
+
+  title 时序图
+
+  == 鉴权阶段 ==
+
+  Alice -> Bob: 请求
+  Bob -> Alice: 应答
+
+  == 数据上传 ==
+
+  Alice -> Bob: 上传数据
+  note left: 这是显示在左边的备注
+
+  Bob --> Canny: 转交数据
+  ... 不超过 5 秒钟 ...
+  Canny --> Bob: 状态返回
+  note right: 这是显示在右边的备注
+
+  Bob -> Alice: 状态返回
+
+  == 状态显示 ==
+
+  Alice -> Alice: 给自己发消息
+#+END_SRC
+
+#+RESULTS:
+[[file:testSequence.png]]
+
+
+必须加上UTF-8否则乱码
+
+#+BEGIN_SRC plantuml :file test.uml.png :cmdline -charset UTF-8
+start
+:"步骤1处理";
+:"步骤2处理";
+if ("条件1判断") then (true)
+    :条件1成立时执行的动作;
+    if ("分支条件2判断") then (no)
+        :"条件2不成立时执行的动作";
+    else
+        if ("条件3判断") then (yes)
+            :"条件3成立时的动作";
+        else (no)
+            :"条件3不成立时的动作";
+        endif
+    endif
+    :"顺序步骤3处理";
+endif
+
+if ("条件4判断") then (yes)
+:"条件4成立的动作";
+else
+    if ("条件5判断") then (yes)
+        :"条件5成立时的动作";
+    else (no)
+        :"条件5不成立时的动作";
+    endif
+endif
+stop
+#+END_SRC
+
+#+RESULTS:
+[[file:test.uml.png]]
+
+
+#+BEGIN_SRC plantuml :file test_package.png :cmdline -charset UTF-8
+package "组件1" {
+    ["组件1.1"] - ["组件1.2"]
+    ["组件1.2"] -> ["组件2.1"]
+}
+
+node "组件2" {
+    ["组件2.1"] - ["组件2.2"]
+    ["组件2.2"] --> [负载均衡服务器]
+}
+
+cloud {
+    [负载均衡服务器] -> [逻辑服务器1]
+    [负载均衡服务器] -> [逻辑服务器2]
+    [负载均衡服务器] -> [逻辑服务器3]
+}
+
+database "MySql" {
+    folder "This is my folder" {
+        [Folder 3]
+    }
+
+    frame "Foo" {
+        [Frame 4]
+    }
+}
+
+[逻辑服务器1] --> [Folder 3]
+[逻辑服务器2] --> [Frame 4]
+[逻辑服务器3] --> [Frame 4]
+#+END_SRC
+
+中文必须加上charset
+
+#+RESULTS:
+[[file:test_package.png]]
+
+
+#+BEGIN_SRC plantuml :file testUseCase.png :cmdline -charset UTF8
+title 用例图
+left to right direction
+actor 消费者
+actor 销售员
+rectangle 买单 {
+消费者 -- (买单)
+(买单) .> (付款) : include
+(帮助) .> (买单) : extends
+(买单) -- 销售员
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:testUseCase.png]]
+
+** 测试dot graphviz
+
+
+#+BEGIN_SRC dot :file test_graphviz.png :cmdline -Kdot -Tpng
+  digraph G {
+    size="8,6"
+    ratio=expand
+    edge [dir=both]
+    plcnet [shape=box, label="PLC Network"]
+    subgraph cluster_wrapline {
+      label="Wrapline Control System"
+      color=purple
+      subgraph {
+      rank=same
+      exec
+      sharedmem [style=filled, fillcolor=lightgrey, shape=box]
+      }
+      edge[style=dotted, dir=none]
+      exec -> opserver
+      exec -> db
+      plc -> exec
+      edge [style=line, dir=both]
+      exec -> sharedmem
+      sharedmem -> db
+      plc -> sharedmem
+      sharedmem -> opserver
+    }
+    plcnet -> plc [constraint=false]
+    millwide [shape=box, label="Millwide System"]
+    db -> millwide
+ 
+    subgraph cluster_opclients {
+      color=blue
+      label="Operator Clients"
+      rankdir=LR
+      labelloc=b
+      node[label=client]
+      opserver -> client1
+      opserver -> client2
+      opserver -> client3
+    }
+  }
+ 
+#+END_SRC
+
+#+RESULTS:
+[[file:test_graphviz.png]]
+** workflow management system [#B]                                  :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-16 周日 03:35]--[2018-09-16 周日 03:44] =>  0:09
+:END:
+                         Added: [2018-09-16 周日 03:34]
+                         
+Since designing and launching a specialized workflow(knowledgement) mangement system in 2010,
+
+a reasearch team from the US Departement of Energy's Oak Ridge National Laboratory has continuously 
+updated the technology to help computaional scientists develop software, visualize data and solve
+problems. 
+
+Workflow management systems allow users to prepare ,produce and analyze scientific process to 
+help simplify complex simulations. Known as the Eclipse integrated Computational Environment, or ICE
+this particular system incorporates a comprehensive suite of scientific computing tools designed to 
+save time and effort expended during modeling and simulation experiments.
+
+Compiling these resources into a single platform both improves the overall user experience and 
+expedites scientific breakthroughts. Using ICE, software developers, engineers, scientists and programmers
+can define problems, run simulations locally on personal computers or remotely on other systems--
+even supercomputers--and then analyze results and archive data. Recently, the team published an 
+article in SoftwareX that both details the history of the system and previews the potential benefits of 
+upcoming versions.
+
+"What I really love about this project is making complicated computational science automatic," said Jay Jay Billings,
+a researcher in ORNL's Computer Science and Mathematicas Division who leads the ICE development team. "Building workflow
+management systems and automation tools is a type of futurism, and it's challenging and rewording to operate
+at the edge of what's possible.""
+
+upcoming versions.
+
+
+Researchers use ICE to study topics in fields including nuclear energy, astrophysics, additive manufacturing, 
+advanced materials, neutron science and quantum computing, answering questions such as how batteries behave 
+and how some 3-D-printed parts deform when exposed to heat.
+
+Several factors differentiate ICE from other workflow management systems. For example, 
+because ICE exists on an open-source software framework called the Eclipse Rich Client Platform,
+ anyone can access, download and use it. Users also can create custom combinations of reusable 
+resources and deploy simulation environments tailored to tackle specific research challenges.
+
+"Eclipse ICE is an excellent example of how open-source software can be leveraged to accelerate 
+science and discovery, especially in scientific computing," said Eclipse Foundation 
+Executive Director Mike Milinkovich. "The Eclipse Foundation, through its community-led
+ Science Working Group, is fostering open-source solutions for advanced research in all areas of science
+
+Additionally, ICE circumvents the steep and time-consuming learning curve that usually accompanies any computational science project. Although other systems require expert knowledge of the code and computer in question, ICE enables users to immediately begin facilitating their experiments, thus helping them gather data and achieve results much faster.
+
+"We've produced a streamlined interface to computational workflows that differs from complicated systems that you have to be specifically qualified in to use properly," Billings said.
+
+Throughout this project, Billings has also emphasized the importance of accessibility and usability to ensure that users of all ages and experience levels, including nonscientists, can use the system without prior training.
+cite:LiuLu-26025
+"The problem with a lot of workflow management systems and with modeling and simulation codes in general is that they are usually unusable to the lay person," Billings said. "We designed ICE to be usable and accessible so anyone can pick up an existing code and use it to address pressing computational science problems."
+
+ICE uses the programming language Java to define workflows, whereas other systems use more obscure languages. Thus, students in grade school, high school and college have successfully run codes using ICE.
+
+Finally, instead of relying on grid workflows—collections of orchestrated computing processes—ICE focuses on flexible modeling and simulation workflows that give users interactive control over their projects. Grid workflows are defined by strict parameters and executed without human intervention, but ICE allows users to input additional information during simulations to produce more complicated scenarios.
+
+"In ICE you can have humans in the loop, meaning the program can stop, ask questions and receive instructions before resuming activity," Billings said. "This feature allows system users to complete more complex tasks like looping and conditional branching."
+
+Next, the development team intends to combine the most practical aspects of ICE and other systems through workflow interoperability, a concept referring to the ability of two different systems to seamlessly communicate. Combining the best features of grid workflows with modeling and simulation workflows would allow scientists to address even greater challenges and solve scientific mysteries more efficiently.
+
+"If I'm using ICE and someone else is using a different system, we want to be able to address problems together with our combined resources," Billings said. "With workflow interoperability, our systems would have a standard method of 'talking' to one another."
+
+To further improve ICE's accessibility and usability, the team is also developing a cloud-based version to provide even more interactive computing services for simplifying scientific workflows.
+
+"That's what research is—we keep figuring out the next step to understand the system better," Billings said.
+
+Read more at: https://phys.org/news/2018-09-technology-science.html#jCp cite:叶昭良王晓东-26083 
+
+Read more at: https://phys.org/news/2018-09-technology-science.html#jCp
+
+https://phys.org/news/2018-09-technology-science.html
+
+cite:叶昭良王晓东-26083
+** 知识生态 [#B]                                                    :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-18 周二 15:56]--[2018-09-18 周二 16:16] =>  0:20
+:END:
+                         Added: [2018-09-18 周二 15:55]
+                         
+                         
+关键词: 技术佣兵,知识生态，产品生态，工业生态, 商业价值，未来走向
+
+
+地图导航，如果你纯粹用这个方式去做，你只是把一个拥挤的地方移到另外一个拥挤的地方。
+经济学，它对问题的建模是不一样的。它起点是假定是一个整体的一个生态，每个人的输入
+都是另外一个人的输出，你要用经济学的方式来描述地图导航的问题，你就会去算一个Equilibrium，市场也是这样
+
+知识构成一个一个的生态。
+
+
+前百度内部Engineering Leadership：陆奇（现Y Combinator中国创始人），作为计算机科学博士及优秀的管理者，
+他提出的五点要求，对每一位百度工程师都适用。
+
+    “我们一定要有一个坚定不移的深刻的理念，相信整个世界终究是为技术所驱动的。”
+
+    “有没有其他人已经解决这个问题？然后你可以把你的时间放在更好的创新上。” 
+
+    “做什么事情一定要做最好，一定要是做业界最强的。”
+
+    “我把自己想象是一个软件、一个代码，今天的版本一定要比昨天版本好，明天的版本肯定会比今天好。”
+
+    “看到问题也不要去问别人，就把它Fix。”
+
+
+
+
+
+
+= 01 Believe in 技术 =
+
+  
+首先要相信技术，我刚才已经讲了，整个我们工业界，特别是像百度这样的公司，对技术坚定的、不动摇的信念特别重要。
+
+我也分享一下，盖茨提到微软公司的宗旨就是：写软件代表的是世界的将来。
+
+为什么？未来任何一个工业都会变成软件工业。盖茨是对的，因为任何工业任何行业自动化的程度会越来越高，最后你所处理的就是信息和知识。
+
+但现在软件的做法又往前提了一次，因为在人工智能时代，不光是写代码，你必须懂算法，懂硬件，懂数据，整个人工智能的开发过程有一个很大程度的提高，
+但是，技术，特别是我们这个工业所代表的技术一定是将来任何工业的前沿。
+
+所以我们一定要有一个坚定不移的深刻的理念，相信整个世界终究是为技术所驱动的。
+
+
+
+= 02 站在巨人的肩膀上做创新 =
+
+重复了？ 你的灯还亮着?
+
+我们观察一下，在美国硅谷、在中国，互联网创业公司也好，大型公司也好，大家的起点是越来越高的。为什么现在创新速度那么快？
+主要是起点高了。我们可以使用的代码模块，使用的服务的能力，都是大大的提升。
+
+在内部我想强调这一点，很多大公司包括微软在内，内部的Code都重做了无数遍。
+
+我现在的要求是，每一次你写一行新的代码，第一要做的，先想一想你这行代码值得不值得写，是不是有人已经做了同样的工作，
+可能做得比你还好一点。有没有其他人已经解决这个问题，然后你可以把你的时间放在更好的创新上。
+
+特别是大公司里面重复或者是几乎重复的Code实在太多，浪费太多的资源，对每个人的职业生涯都不是好事情。
+
+我再强调，在大公司内部，你写代码之前想一想，你这行代码要不要写，是不是别人已经有了，站在别人的肩膀上去做这件事情。
+
+
+
+= 03 追求Engineering Excellence =
+
+     
+我要另外强调的一点就是Engineering Excellence，工程的技术的卓越性和能力。
+
+任何市场上竞争就像打仗一样，就看你的部队体能、质量，每一个士兵他的训练的程度，和你给他使机关枪、坦克，还是什么样的武器。
+
+所以Engineering Excellence跟这个类比，我们要建的是一支世界上最强的部队，每一个士兵，每一个领军人，每个人的能力，
+他的训练都是超强的，然后我们给每个人提供的工具和武器都是一流的。
+
+所以Engineering Excellence是一个永无止境的、个人的、团队的，能力的追求和工具平台的创新，综合在一起可以给
+我们带来的长期的、核心的竞争力，为社会创造价值，最终的目的是给每个用户、每个企业、整个社会创造价值。
+
+我另外还要在这里强调的一点就是Relentless pursuit of excellence：永无止境的不断的持续的追求。
+
+我们要么不做，要做的事情一定做最好，这是我对大家的要求。数据库也好，做大平台也好，大数据也好，我们要做什么事情，
+我们一定要下决心，这是我对你们每个人的要求，做什么事情一定要做最好，一定要是做业界最强的。
+
+
+
+= 04 每天学习 =
+
+
+每天学习，可能是对每个人都是最最重要的。
+
+我今天分享一下，我自己怎么想我自己的。就很简单一个概念，我把自己想象是一个软件、一个代码，
+今天的版本一定要比昨天版本好，明天的版本肯定会比今天好，因为即使犯了错误，我里面有If statement，说如果见到这个错误，绝对不要再犯。
+
+英语，另外有一句说法就是Life is too short, don’t live the same day twice. 同样一天不要重活两次。
+每天都是不一样，每天为什么不一样，因为每天都变成最好，每天都变得更好。今天的版本一定要比昨天好，
+每个好的、杰出的工程师，杰出的技术领袖，一定要保持自己学习的能力，特别是学习的范围。
+
+在这上面我也稍微引申一下，做Computer science的，如果只学Computer science，不去学一些其他的行业，肯定不够。
+我举个例子，经济学必须要学。为什么这样讲？Computer science它有个很大的限制，他是假定你有输入以后有输出，
+这种解决问题的方式有它的好处，但有它的限制性。
+
+我给大家举个例子，地图导航，如果你纯粹用这个方式去做，你只是把一个拥挤的地方移到另外一个拥挤的地方。
+经济学，它对问题的建模是不一样的。它起点是假定是一个整体的一个生态，每个人的输入都是另外一个人的输出，
+你要用经济学的方式来描述地图导航的问题，你就会去算一个Equilibrium，市场也是这样。
+
+如果把深度学习真的要想彻底，必须把物理重学一遍，把生物学看一遍，再把进化论再看一遍。
+因为深度学习跟这些东西完全相关，自己肯定想不清楚，要彻底想清楚，必须学。
+
+另外，学产品，我以前跟所有的工程师都讲，如果不懂产品，你不可能成为一个最好的工程师。
+真正要做世界一流的工程师不光要懂产品，还要懂整个商业，懂生态。因为你的工作的责任，
+是能够看到将来，把技术展望到将来的需求，把平台、把开发流程、把你的团队为将来做准备。所以学习是非常非常重要的。
+
+
+
+= 05 Ownership =
+
+     
+最后是从我做起。
+
+我们公司有个非常大的使命，用科技让复杂的世界更简单。整个世界非常非常复杂，人其实所做的事情基本上都是Reduce entropy。
+
+因为从热力学第二定律来讲，世界是会变得越来越乱的，我们想做的事情就是把它变的更简单，让我们生活变得更美好。
+
+而且具体的，我们可以通过人工智能技术来做到唤醒万物，但是这一切是通过每一个人的一点一滴的行为累计起来，
+从我做起。还有Ownership，看到机会不需要问别人，有机会就去做，看到问题也不要去问别人，就把它Fix。
+
+把我们的使命、把我们的公司当成我们自己每个人的事业来做，我可以坦诚的给每个人讲，如果你把公司的使命，
+把公司的事业，当成你自己个人的事业，Own everything，你在职业生涯一定是走得最快。从我做起，从身边的每一件事情做起。
+
+Believe in 技术、站在巨人的肩膀上做创新、追求Engineering Excellenc
+** 穷病真没法治? [#B]                                                 :学术:
+:LOGBOOK:
+CLOCK: [2018-09-19 周三 02:40]--[2018-09-19 周三 02:51] =>  0:11
+:END:
+                         Added: [2018-09-19 周三 02:39]
+                         
+
+药贩子真的觉得穷病没法治？
+
+
+虽然很多人不想买假烟，假酒等，但为什么市场就会有那么多假玩意？因为大家缺钱？
+是的，正经生意不挣钱，只好作假的。
+
+那为什么有些人喜欢通过走私人渠道、走海外通道、走水货？因为便宜，自己缺钱！
+
+经济的到底最终都是平衡，为什么有那么多人没钱？因为很多钱流入一些人手中。
+
+怎么从这些人手中拿出来？ 抢、起义、偷、骗、坑、蒙，没有再生，只是交换，不平衡了
+就会有这种事情发生。
+
+
+穷病如何治？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？
+** 一个目标 [#B]                                                    :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-19 周三 22:23]--[2018-09-19 周三 22:24] =>  0:01
+:END:
+                         Added: [2018-09-19 周三 22:23]
+                         
+瞄准一个目标，纹丝不动，反复琢磨
+
+1. 目标goal
+2. 计划Plan, sketch, outline
+3. 分派任务 specify  or impletation(指定谁来做，自己做，别人做)
+4. 执行 do， perform
+5. 获得perceive 观察
+6. 解释interpret
+7. 比较compare
+** 对文字的敬畏 [#B]                                                :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-20 周四 19:05]--[2018-09-20 周四 19:05] =>  0:00
+CLOCK: [2018-09-20 周四 17:13]--[2018-09-20 周四 17:13] =>  0:00
+CLOCK: [2018-09-20 周四 15:09]--[2018-09-20 周四 16:40] =>  1:31
+CLOCK: [2018-09-20 周四 13:49]--[2018-09-20 周四 15:09] =>  1:20
+:END:
+                         Added: [2018-09-20 周四 13:49]
+                         
+文字生来得让人敬畏。搞了几年文字工作，特别觉得有道理。文字上得下功夫，
+因为这也能看到一个人对于工作的态度，以及对于他完成目标的决心。
+
+有些东西可以随意，但是写出来的白纸黑字最好不要随意。
+
+写出来的东西一定得仔细琢磨，这是老一辈科学家经常用到的，当然现在也是。
+
+因为敬畏，所以放慢了前进的脚步，坚定了批判性的思考（不断地反思、纠正)
+
+生而为人，应有所敬畏!懂得尊重文字，把握分寸，守住底线。
+
+敬畏虽有畏字，但不代表害怕、怯弱，而更加强调的是一种敬，尊敬，友好，对文字工作和个人的
+尊敬。
+
+What am I investigating?
+What am I doing?
+What am I feeling?
+What am I needing right now?
+Do I have a request of myself or someone else?
+
+
+Give yourself kindness & care ==  self-compassion
+Remind yourself pain is part of shared human experiment
+** thought of helping and thinking copy [#B]                        :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-20 周四 16:40]--[2018-09-20 周四 17:13] =>  0:33
+:END:
+                         Added: [2018-09-20 周四 16:39]
+                         
+But I shouldn’t let this get in my way(Fuck, get out of my way), since people don’t expect me to be those things.
+ (And if they do, that’s under their control, not mine.) Instead, I can focus on the fact that people are often 
+looking for a discussion of workflow options with some ideas, and that they’re going to translate those thoughts
+ into something applicable to their situation anyway.(Tranlate the thought in your brains to his brain)
+** Learn to think [#B]                                              :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-21 周五 02:39]--[2018-09-21 周五 02:40] =>  0:01
+CLOCK: [2018-09-20 周四 17:13]--[2018-09-20 周四 19:05] =>  1:52
+:END:
+                         Added: [2018-09-20 周四 17:13]
+                         
+                         
+You know that feeling of struggling to learn something that everyone else seems to have an easy time with?
+ The one that makes you think, “Maybe this isn’t a good fit for me.” Or worse, “Maybe I’m not smart enough.”
+
+That one.
+
+Embrace it. Learn how to deal with it. This is the real hard work in a degree in computer science or IT or whatever.
+ The rest is just implementation.
+
+You see, there will always be more to learn. There will always be challenges to pick apart and overcome.
+ If you’re not running into them, you’re not pushing yourself enough. There will always be those moments when you think,
+ “How on earth do I even begin to learn how to solve this?”
+
+1. You aren’t learning a computer language or a platform or a system of abstract concepts.
+2. You are learning a way of thinking.
+3. You are learning how to break down a big challenge into smaller pieces.
+4. You are learning how to try different approaches to understand and solve each small part.
+5. You are learning to set aside your worries and fears so that you can focus. You are learning how to adapt,
+ even as changes come quicker and quicker.
+6. You are learning how to organize your thoughts. It just so happens that you’re organizing them in a way a computer can understand.
+
+What can help you build your confidence? Start by building a small base of things you know well.
+ Celebrate that. Expand through practice and curiosity. Ask for the help you need. If you don’t get it,
+ fight on anyway. All learning feels weird in the beginning. It only becomes natural through repetition.
+
+1. If you’re taking a course, learn what you have to learn, but leave yourself room to learn what you want to learn at your own pace.
+ You don’t have to learn everything the first time around. 
+2. If you know it takes you several tries to understand something, start before you take something up in class.
+That way, you’ll have better questions. Continue afterwards, too.
+ Computer science lessons build on each other, like the way mathematics lessons do.
+ They assume you understand the previous material. Practice and questions pay off.
+
+[Awesome person] There will always be people who have learned what you want to learn,
+ or who will pick up things faster than you can. Most of these people are awesome.
+ They know that your questions can help them learn even more,
+ and they’re happy to pay it forward because people helped them too.
+ Pay them back by writing about what you’ve learned and sharing that with them and others.
+ Other people who are also learning will find your questions and answers useful, too.
+ This is true whether you’re learning in class or on the Internet, so go ahead and share your journey.
+
+There will always be some people who haven’t quite figured out their own insecurities – 
+people who want to establish their position by putting you down.
+ You can learn how to recognize what they’re doing. That makes it easier to ignore them.
+ Don’t mind them if they try to make you feel bad for asking stupid questions.
+ It just means they’re missing out on opportunities to learn how to ask and learn how to learn.
+ Don’t partner with them. Look for people who help others up, not tear them down.
+
+It is not easy to wrap your mind around new topics or break down a complex unknown.
+ If you can get good enough at it, you may come to enjoy that excitement when a problem looks like it’s solvable.
+ You’ll learn how to tell if you’re going in roughly the right direction.
+ You’ll be able to celebrate even the tiniest progress. If you can do that, you’ll do fine.
+
+Besides, the real world is little like the classroom.
+ Even if you never get the hang of the artificial projects you do for education,
+ you may find that you like working with technology. Don’t count yourself out just yet!
+
+ 
+
+People don’t need more information. They need to figure out where to start.
+ For me, the value I provide in the Helpout is in the back-and-forth of a quick conversation that clarifies what people need.
+ That way, I can either point them to the right resources or give them some tips in case there are no such resources handy.
+ (And then I can build those!) It’s a little difficult to do with a group session, although maybe if I get better at Q&A,
+ I might be able to pull that off.
+** Emacs not a text-based tools [#B]                             :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-09-21 周五 19:19]--[2018-09-21 周五 19:43] =>  0:24
+:END:
+                         Added: [2018-09-21 周五 19:19]
+                         
+There are few pieces of software as widely misunderstood as Emacs. Emacs
+is frequetyly advertised as a text editor, but please be clear on this:
+Emacs is not just a text editor.
+
+Emacs is a platform for developing end-user applications with a text-based core.
+The Emacs platform ships with a few built-in applications, such as: a calculator,
+a terminal shell, a fill manager, a merge tool, and yes , a text editor. You can
+extend it into the mail reading tools, music listening tools, movie playing tools,  also gtd tools.
+
+
+I started using Emacs a
+ 
+
+** 2018蜜柚 [#B]                                              :@NCEPU:crypt:
+-----BEGIN PGP MESSAGE-----
+
+hQEMAw7kGOoigxp9AQgAqxkts04AyZuRGP13/kpwbmOZasqhpDFDW0MGAsSphqps
+mju4nE5gchNIj2aSJ68YIREIfjvzQ7NhhT59FsIivqxKBxrnxBBZRJag8gSUVACv
+FZkXKnAwO5mlxlGgSZydudTsljFSh/E0OvCtBF1/h72QMVf3DPFZ8P5fqQYEE4ih
+/gt9iLbAdc9f2d8ort739XSsxQiXwPWIKs5BlCVSZpXIm5M9Iwu/1BrDtUZdjPik
+Cvc1m+q3Nk/4ShmrmT8Lhjy1OyDL5QzJ0SrpYbjpcTJpYPnUpfJd36u3VGUmDuPr
+yVSuKjCbHjHIjyTOjm/rpYI9Ppw+gWlLqlURh6FH6tLpAQZiqWvkSieIfUunv/lr
+dFJfxB2vu6FhRl5a2aLNwil8s8IE5/XaJ9IHgkHK4IT/Dq/7OyLgsXwx/Fb5ii3m
+gzuA+pGcXiYVEpPgidGwQBFknXYvFZzeQY5Y0Py3bplL6u/5VinX3XMfybTruRGw
+vUp7Gb6FVr4dszYdaD60wqL0Iw27Qn0BG2ZyVhonF8GfTJ4gSjSIdRZZQTaEUOMa
+VBnTo4qL9ll6G6GAVuVJhMF7WbQZ8mD2laxniccw7hWyO3/GCR8UN9g06Y5ulNHa
+xH/ivjPJvv3JB5m9LlDmgWP8RKygOy2EDB6eIZetLGWM8F+dFmvHJ0W/D1UDzFVs
+rwgl1FHCfISoIm66uZkmrP6tyRmRR1PJnp/26HIutw2UwzJZiEfBB54Zb3bQ4JuI
+7AzIojaex+vM2RhbRro5dd/ZrvXbJvuIUqduWHcP0XqRKs7YSNgsWF6iXqEVw5Dp
+swFiHicVO1n1l6TZh1y4A5tR3b/9weUsOtFZl3a0YI005usOBprgjJFwS2aE2SCe
+w/Ya9iQ49fwJTvILygMX/krLXrkx5I3NJZJEjNlB0yioP8iBasSZYbQTOstsByTt
+lhYO0nRrUj3POSYkByx0/f0Fl2tMOTf/aVM5aj5ElOE/l2cQcU+R0UsPNhC9oRDc
+uBvArBS+pzJhfmBa6y4paZ3AtLVy2CiaP8H+ifHHqzz9NWSe/1gXiW5m9BeIaYOj
+9t/llhkYEgHqYMCb6/0Ll+XUtFUIgaz4pQEbjOCkvkPOPoOzfJ043ajJr38ddh6Q
+ZC70ZawYib84u+6ovlHb82n3C4Zz4xeqAN/+NI2LxvoWC7/z3eR0rJFtH7/c0PKI
+HuexH36V7Jcp9nJY48jqYnpPzeg+WsYVSCrxfaVBSPsR4vn4wHLDpXmBmYa1FEfo
+cegtPQv0w26KnaJwtcLLKR4FzZD/WAW1z3dz/yJ+xvjz7uwc/zbaOfcc/STHfWLf
+rZ+mlTubgB7oTwVszSbcXOKwlDo6nU2tsxmDgrZDZHqt6e4E8BdYehK2W4ZMZP47
+KWtNi/ykUt8DouRgQo4FYk45YhJdSa3eAjY7aJTQ0BnTwPYSZ4c2YtD5+krBcK1Z
+Km60ZDl09w4LkwGlH91dIFYG/VtSU9o5xQZXIN5KNMI/Z5aH68iuP/IYEBLKuywE
+4p9RcH6DLw==
+=TIDR
+-----END PGP MESSAGE-----
+** 计算机程序技术 [#B]                                            :@Company:
+:LOGBOOK:
+CLOCK: [2018-09-22 周六 16:11]--[2018-09-22 周六 17:01] =>  0:50
+:END:
+                         Added: [2018-09-22 周六 16:11]
+                         
+                         
+                         
+第一步： 读COSMaC ELF http://www.cosmacelf.com/publications/books/short-course-in-programming.html 
+      最好自已试着实現它的 emulator，以了解计算机原理和汇编
+第二步: 再把 http://www.cs.utexas.edu/users/boyer/acl.pdf (400页)和一些papers http://www.cs.utexas.edu/users/moore/publications/acl2-papers.html#Books
+第三步: 看看The Scientific Computation System http://www.axiom-developer.org/axiom-website/books.html 主要是源代码 
+ 并学会它们的用法，以了解逻辑和数学，再开始看第一卷
+相比之下，Maxima (Axiom 也是用 Common Lisp 写的 CAS，但实际上技術含量远高于 Maxima)，PlantUML，Emacs Lisp 涉及的內容太 trivial 了
+
+The art of computer programming(TAOCP)一直在更新
+
+https://www-cs-faculty.stanford.edu/~knuth/taocp.html
+
+量子计算的博文，和现在的编程技术貌似有很大的区别
+
+Computer-Aided Reasoning 5 是 A Computational Logic 的续作，后者并非是 ACL2 而是其旧版本，
+但大部分通用而且是 Public Domain 的，前者并非免費且定价挺高(不過 Appendices 可以免費看，是个简要使用说明，还比較有用)，
+是不是要看就看个人意愿了。
+
+http://www.cs.utexas.edu/users/moore/acl2/current/combined-manual/?topic=ACL2____BOOKS-CERTIFICATION
+真要說的話 ACL2 超过了 TAOCP 的內容，但我也只是指望你能过一遍，这樣的好处在于：
+
+看到 TAOCP 中偏向数学和逻辑的部分不会立马懵逼。
+不会再产生「学会这个有什麼用」的问題。能解決几亿美圓问題的工具会沒用？
+TAOCP 中的一些习題用 ACL2 做可以减少心智负担，也就是說你知道 ACL2 怎么工作，然後能用 ACL2 证明就代表你会做这个证明，
+而不用亲自去做证明，which 对习慣写代碼的人很伤。
+
+
+PVS 和 HOL是Higher Order Logic,  ACL2 是 first class logic。
+Higher Order Logic 通常涉及 type theory，建议深入学习 Haskell 或 Standard ML 或 Ocaml 中一個再去了解。
+Knuth 的书并沒有涉及 Higher Order Logic，而且使用 high order logic 的 proof assistant 自动化程度并不高，总之对于看 TAOCP 沒有太多帮助。
+
+
+
+1. TeX 是一个偏向于美学的工具，能从中受益的基本是字体设计和排版方面的从业者。TeX 宏语言也算不上多好的编程语言，
+   甚至可以当作编程语言设计和软件项目管理的反面教材。
+2. LaTeX 只是一个封装，就算熟练使用它也不见得需要对 TeX 有多少理解，Don Knuth 写了说明书 The TeXbook，
+然而同上条所说，这本书讲的完全是排版上的美学，和符号更是完全不沾边
+当然，花点时间学会基本的使用还是值得的。反正就是想学就学，不需要什么理由，实际上写几份 paper 基本就熟悉了
+
+到今天我认为全世界顶级 Emacs 黑客中, 日本开发者的数量和顶级程度最恐怖.
+IRC 里面有很多和 RMS 同样时代的日本 emacser.
+包括当年和我一起开发 anything 的 rubkitch 也是牛逼的不行了, 用 600x480 的分辨率屏幕码代码.
+就freenode里面的#emacs频道，有一些六十多岁的emacs开发者，简直牛逼的不行了
+
+
+
+这种重构主要对语言支持比较好的情况, 比如Java, 非常成熟和安全. 但是对于那些脚本语言, 很难保证重构的正确性.
+
+IDE 的 rename refactor 主要是对变量的重构比较方便, 有时候会进行一些代码级别复杂API重构,IDE就很难做到.
+
+举个例子: 在项目中找到匹配某个正则表达式的行并进行 API 重新设计:
+
+1. color-moccur.el 中进行正则表达式匹配, 找到整个项目中所有匹配的行, 而不仅仅只是一个变量
+2. 在 moccur buffer 中按 r 进入编辑模式
+3. 然后在 moccur buffer 中用 multiple-cursor.el 进行批量匹配编辑, 多光标改 API
+4. 最后 Ctrl + C Ctrl + C 重构所有 API
+这种级别的操作时, IDE 那种只是单纯的改变量和函数名称的动作就做不了了.
+color-moccur。把相同文件名的聚合在一起，文件名单独一行，比较方便
+
+
+现在IDE都做的不错, 只是不喜欢点鼠标, 点一下, 我就忍不住卸载了.
+我装 IDE 的目的就是定期去模仿一下他们优秀的插件.
+商业世界, 唯快不破.
+IDE世界都是面向鼠标快速出产品的, 没人像 Emacs/VIM 这些黑客慢慢磨细节.
+
+主要是要基于抽象语法树来做这些基础设施, Emacs底层是正则表达式, 这种东西在复杂场景一定都不靠谱.
+
+可以使用ag.el, 搜索文件, 然后生成一个类似occur的buffer, 在里面开启wgrep, 就可以同样的操作了, 一直在用.
+
+（很多都改用rg)ag.el: https://github.com/Wilfred/ag.el 3 wgrep: https://github.com/mhayashi1120/Emacs-wgrep 8
+
+跟你说的操作方式很类似, 不过这两个有人维护.
+** rg-color.el [#B]                                                 :@NCEPU:
+:LOGBOOK:
+:END:
+                         Added: [2018-09-22 周六 17:01]
+                         
+https://github.com/manateelazycat/color-rg
+
+https://github.com/dajva/rg.el    https://github.com/mhayashi1120/Emacs-wgrep
+我只说差异吧:
+
+rg.el 一旦改成分组模式显示分组, wgrep 就废了, color-rg.el 自己就包含了 rg.el 和 wgrep.el 功能, 不需要额外安装 wgrep.el
+默认尽量少问问题, 快速搜索, 搜索后觉得需要缩小范围再动态过滤不想看的文件类型
+默认智能的抓取当前光标处的单词, 而不仅仅是 symbol , 比如 CSS 的 class name, .foo 和 #foo 自动回转换成 foo 再搜索 (当然搜索之前都可以调), 避免大部分情况, 要各种删除 . 或者 # 才能搜索
+如果正则表达式搜索错误以后, 会智能探测, 并用 literal 模式重新刷一遍 (这个 rg.el 没有)
+如果搜索出来的东西需要全部从文件中删除, 直接 C-c C-D 行了, 具体的更多贴心命令看上面的 keymap 吧.
+删除的地方是先标记, 最后 C-c C-c 再删除 filter 是过滤显示结果, 不是删除 替换操作就是 query-replace 操作, 当然也有那种全部一键替换的操作.
+
+color-rg.el 的功能非常复杂, 我建议你尝试一下, 不喜欢就不用. 这样一个一个的问, 也没有直观的认识.
+
+
+rg.el比ag功能还是多不少，看看顶部的几个toggles，运行时可以随时切换，不必全部从来一次。
+ 几个比较好用的命令：rg, rg-dwim, rg-project, rg-literal。 默认键绑定c-c s
+ 
+在lsp(分层服务提供商)还没有成熟的时候，这种简单的重构工具还是挺常用的，经常用，用的ag.el，调用的命令是rg。
+它的搜索结果buffer是基于compilation-mode，不太好定制，因为不是专门的major-mode，功能有一些局限，
+比如不能记住搜索的关键词，不能在搜索结果里的关键词之间跳转，不能二次过滤和手动删除不想要的结果项。
+
+二次过滤和手动删除，这个功能比较需要，喜欢的体验是类似dired的效果，可以先标记，再删除。
+标记好之后方便检查一遍有没有标记错误，避免删错，如果能只显示标记项，暂时隐藏其他，这样更方便检查。还可以用搜索的方式来标记，也类似dired
+
+
+https://www.emacswiki.org/emacs/color-moccur.el 19 color-moccur.el 的作用是搜索指定的目录, 然后按匹配的文件进行匹配行导航
+
+如果要重构文档, 直接按 r 进入编辑模式 (类似 wdired 的感觉), 在 moccur buffer 编辑完成以后, 按 Ctrl + C Ctrl + C 就可以改动到实际的文件中.
+
+十年前从一个日本人的 ftp 里面翻出来的时候都把我惊呆了, 这个插件是我这么多年开发必用的超级大杀器.
+
+然后配合我写的 https://www.emacswiki.org/emacs/moccur-extension.el (已废弃，不用) 各种方便.
+
+给一张霸气截图, 不要小看截图, 按照我上面的方法操作, 你们会震惊的
+** languge server protocol(LSP) [#B]                             :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-09-22 周六 23:20]--[2018-09-22 周六 23:22] =>  0:02
+:END:
+                         Added: [2018-09-22 周六 23:19]
+ LSP (Language Server Protocol) 是微软领导开发的编程语言语法补全和代码分析框架, 
+好处是全世界黑客都一起开发 LSP 后端, 不论你用的是 Emacs, Vim 还是 Sublime, VSCode,
+ Elicpse, IntelliJ 等编程工具, 都可以享受同等智能的语法补全后端.                        
+LSP-mode: Emacs client/library for the Language Server Protocol
+https://github.com/emacs-lsp/lsp-mode 
+
+lsp-mode provides a handful of hooks that can be used to extend and
+ configure the behaviour of language servers. A full list of hooks is available in the API documentation.
+ 
+
+https://github.com/joaotavora/eglot
+** 美丽的git [#B]                                                      :git:
+:LOGBOOK:
+CLOCK: [2018-09-26 周三 16:45]--[2018-09-26 周三 16:46] =>  0:01
+:END:
+                         Added: [2018-09-26 周三 16:44]
+                         
+
+
+#+BEGIN_SRC bash
+git log --pretty=oneline --graph
+#+END_SRC
+** what is a graph？ [#B]                                           :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-26 周三 20:26]--[2018-09-26 周三 20:37] =>  0:11
+:END:
+                         Added: [2018-09-26 周三 20:25]
+                         
+
+    A graph refers to a collection of nodes and a collection of edges that connect pairs of nodes.
+
+Graph theory can be used to describe a lot of things,
+but I'll start off with one of the most straightforward examples: maps.
+You can think of graph theory as a way of encoding information about two aspects of a map:
+
+1. places to go, and 
+2. ways to get there.
+
+Each land mass can be represented by a point, and each bridge is just a line between two points.
+
+Hook is a tool  for connection as edge, a bridge, which let you cross the wide gap(river).

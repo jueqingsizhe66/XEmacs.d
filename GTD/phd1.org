@@ -1,0 +1,473 @@
+* TODO PhD Dissertation
+** 作者简介
+叶昭良(1990-),男，福建漳州人，博士研究生。主要研究方向为流体机械原理与
+风力机空气动力学。通讯地址：北京市昌平区回龙观镇北农路2号话华北电力大学
+(102206),联系电话:15101077156,Email:yezhaoliang@ncepu.edu.cn
+** TODO Preparation [/]
+- State "TODO"       from              [2017-10-10 周二 00:55]
+  1. [ ] one
+  2. [ ] 
+  3. [ ] 
+  4. [ ] 
+  5. [ ] 
+
+
+** TODO Outline [%]
+
+- State "TODO"       from              [2017-10-10 周二 00:55]
+** TODO Wind Energy
+
+- State "TODO"       from              [2017-10-10 周二 00:55]
+*** Introduction
+
+*** Methods
+
+*** Results and discussion
+
+**** steady analysis
+
+**** unsteady analysis
+
+**** dynamic analysis
+
+*** Summary
+
+
+** TODO Sun Papers
+
+- State "TODO"       from              [2017-10-10 周二 00:55]
+*** Introduction
+
+**** something
+
+*** Methods
+
+*** Results and discussion
+**** dynamic charcateristics
+**** Total Power characteristics
+**** ...
+*** Conclusion
+
+** TODO China papers
+
+- State "TODO"       from              [2017-10-10 周二 00:55]
+*** 图
+
+*** Introduction
+
+*** Methods
+
+*** Results and Analysis
+
+*** Summary
+
+** TODO Introduction
+
+- State "TODO"       from              [2017-10-10 周二 00:56]
+*** Basic from func...
+
+*** Multi axis
+
+*** Robot
+
+*** wind energy
+
+*** wind tunnel
+
+** TODO Conclusion
+
+- State "TODO"       from              [2017-10-10 周二 00:56]
+*** one
+
+*** two
+
+** TODO Abstraction
+
+- State "TODO"       from              [2017-10-10 周二 00:56]
+*** One 
+
+*** two
+
+*** three
+
+** TODO Format & typesetting
+
+- State "TODO"       from              [2017-10-10 周二 00:56]
+*** 排版
+
+*** 缩写 文章汇总第一次出现的专业术语，要有英文注释
+
+*** 文献  人名缩写
+
+*** 页眉页脚
+
+** TODO Revision  from professor  wang
+
+- State "TODO"       from              [2017-10-10 周二 00:56]
+*** One
+
+*** two
+
+*** three
+
+** TODO Revision from professor Kang
+
+- State "TODO"       from              [2017-10-10 周二 00:56]
+*** one
+*** two
+*** three
+** TODO My Revision
+
+- State "TODO"       from              [2017-10-10 周二 00:56]
+** 多轴角项目
+*** 项目名称 
+基于多轴角运动模型的风轮非定常气动特性与三维流动研究
+*** 中文摘要    [%]                                                 :crypt:
+-----BEGIN PGP MESSAGE-----
+
+hQEMAw1pL9obieEVAQf/by15nA1d6a3Rl3Jtxlc9q8GJqxwihaa3GyFnQ6YlpatO
+0RdroFqQKR2DxBHMtey9IHUBbTFRDV7mYsdcFJCRJW/OpJjEQE9LgmVAdGfigadD
+79XFzDYcFfNMD0BC/I/BIq8/9djG2EJ5kHRXWfCzCvXQ5psFIxF1zXfwyJ+pkT3O
+JICDgCKRlYuctBZwOdThSEnJULfPHvxFcCQy2OAfQ7lyk60TP8UrufZ4C0GvXezO
+BC4V87qal3ywUwi/5a3/tJ7QDnMKCcqleVMkEZO8RVX/dD2Z5LdNqYLArR/VyBqM
+JgFb1ePqivfkyaac9qp68lBBrZbyNwYbqRgN6QD7adLpARfwIMs1v1X3yir26qCh
+rLwsyO5osHUQq8q/9KsZf43VbZ8UjvN+5LooxUWv7JSItO5XJurW4ICpNB6iR3rE
+NjO714GbDPQn47r+2eR1uBWHS71LDBsgKUYF+7QlI3tVJqHBd8xtFPyUwWLGWRON
+7MKRUV4ET9VJHvVpN+yLsdVasWZKq7lqxUuJYb3h2zk4xD61uCRWGZKU6IBbbyy8
+HTxZZzneFwOQmsFtrM975POPONYajWR/DUWpa/o5xCBmQdfMYXFRd6bDT0FtWsfn
+lIooGyeRw2td/C2sFR/rAZTpsj5MhN0/bzwDF3+oMrIYR+JwjD59HKoN8pXDcI6c
+a1SIc9P4pIGFu7pvPP6moslpNBb4GALa1Iye/ndLViusHSZj5dZ6dRThBpW23SKz
+vtHa96bsVLGtu1CAD8t0YYYUPb3siKS08c+5GCRwA7bvuzmlZlXWTCBeAeiYY7Hz
+4u0WhJuQ4Nr/utLDkAV/JYb/QelIMy04RHnrLpTHEabKhJbGhiEWgcGEJ7AZO2w/
+zDI/4O/ZXWg86TtcQyyotuJeofoGMcXCDLFQkWkjS7c3lhfF06nVuu96MXOmm1kf
+c37jYtEMdcBY23sb2kb+SdmAngHktpUFe9G/hHkq68NEYEwcUHkOcjm/ZtAFW6De
+gco5Pwzcn1ncvh0IJoLuid3Au2pLPuDUzak4lnXO5QtFePknOsjLhzXt72oKDHr1
+VZOZDLevaslzbFxgSRuj72uGwV5955BlcY1UfE/LyQiSEm0Z4ZKGQ4aEiT6A1ypC
+7RsvfY4QpnIHjo14rYZFejbmx/BNhSM6tb72FP4hut84RuXhh97mM+GBGP2nTDWP
+GHifz0d9mQgaiC4OoC13QB17eQfejvPc0u1p8tLtJ4fsOaL69q4fL3hpUHBFmtzp
+6HBaEpgCc2G8+iXwraEgQaWgR9dSBdB1Du3FmWES7rnDVbCCVhp68VpD5KQjbBMR
+/pv3PnrwsR9mpMTCJxvwmvBmZu5kq0LZmz1+i4MRlau+7vhWO8KzMG1PAnfKkU9x
+LtJc1N+1gejYWNDRn4TPPOZYX+k3O1nzFFJEH4mD2QAF1Zt38oljQnw3wyBhUBAx
+bWx59sohut8NKaogc4rWwP6g3Vlv28SJ9D2gkK2Adbf+rVsDFcbCX/PpaG9T/6a4
+IfzIdqRHUYvXUsZRwJI=
+=xnhA
+-----END PGP MESSAGE-----
+*** Abstraction                                                   
+-----BEGIN PGP MESSAGE-----
+
+hQEMAw1pL9obieEVAQf/d69a7hAFErw2KQwweVF5u/CmaII+su4zmJX6CKRYFKiU
+zw4/SZAf0lt7X+lOWtEe6YOcGYbVt5U72rb+BGb/x4MnzgqhLe14LcbSSXAHBlgB
+YwkpOl/9tMxLnZsq2Bo3oATDKAVCSOLJsFIJcueMR1G6NKEIpmWcMKh4gVpLvjIF
+wdfFrd2fFlZtF8wl9CG5UqZbBH2xUyfDqO9yn+Ds3o1DW0Fn3zdM5/T16WirMq2m
+VexIzWrF5XAjVNnhbjwX2SYYh8LG+6dHqHlFRe9ueslzK6UdnI2OnjfkYdnw4FQo
+MJwxyhJCj+KDqQxgLnqtEOniazC8zwmTOJhGTqmRttI7AXCQk9Q3lcyTjgG1TN7h
+JEa3ZuYoe4j9tqaQ+mpLvW1jMj45/PXm2dhN9A/Hcjzoapi2HuJ/JYscqTM=
+=ecfL
+-----END PGP MESSAGE-----
+
+*** keyword
+horizontal axis wind turbine; multi-axis angular motion; unsteady flow;
+CFD simulations; wind tunnel experiments
+*** 预算说明书                                                      :crypt:
+-----BEGIN PGP MESSAGE-----
+
+jA0EBwMCiDYsg3tnAG/C0uoBYJoTRMnJRN7gSKsYRePupqPLO3eq5D47JVLHgFfU
+LWHH2wdEzn3ReuFwZA68RNFTnGf/brR1sbiMiVsT9VZtS9141/v0/dy5DaEMI5Vu
+u0X6juMUGhcT3YRWStDKgdysYCbGIi0ByuCGIhEn/Yoyb9qG86tXNBJlnUjf0Bsi
+56BfX/WXnE5NMSBwEVG7LwY2AfJWXTgAYTaj/W/hl74JLGqshQXPljCnWXAXaE4V
+pZ7TmlePkmVO1JTUhuw/g4yGEXUWmgAjzelOSttLGHHA7+2+iVGzlID+4948Jcdz
+LAAhFfUkPdlclhalBGWu4i6tiJyYnquTV8xNMIMKDWxuBd07YBg5Zz5ToXCvkZaU
+4Qb3GSdbhqzotnF1x28U8mPvInmWj30On71R+VxgmQIsB+jay1ZJJhuJeAZPLHiA
+HCEAtGB3+fYiZUZ2vRqEqRzxwo53JMeDN97huylCucUrgNn0ADbg6ll50/4RjXxE
+HU16V2IbMA1egmfn3biUrX67mDaZk8ZnYDQCtS0zcLw8/9/IIAN2+KhGkSCNwh2W
+XgyhF0b6quRykztA+vTvOiyqWoLDQ/GZ7LQjn65ztWme8dO3f0LhskRhFyUySzGN
+ckvtBqmLDsHhwQjZ2JO57sRDO0ZWLSP51551e0nRxs3+EAGNwcicKSChwjKsHdJc
+rwJxZfZxtxW7/ZhnKdPixvnpEULW1tYgyqvn+jhQDYFkskw6rc+4gdpSI4m+KWeO
+XSm8xrz8HXzAlBdCj6Zl1EuE6g3vg2FlS4okNdhpHrFjkK95bdeNDTSstGOFYZb3
+dR/A3jmL+4nIgQdBiRkUPTfw56nXP9Lbt8xs2aiLcxvax7++sFXvz7PQlMTjaw/8
+0Muop1cSRaQYbzOmM4sZyRSDsm+grQZrhst03d0hdvbj67T4+2y0Lf45O9SFUQjG
+Ud5j2yVZHWdByWXAiCl2+OcYUYLWzcS6HJuG29XVfXel7YXy4Mpdch3oWyfFTDdA
+40VxAuTZK+j44fxvH8gNtdEtHNfD4ehXreuJp1naRaWL0SK3/L7bWLsCK9k6Biso
+GLtTVtk5Q6Pl40U51MBKEsqVlDp6cc9mVYl2j/i0s3vfUkcSqq8HgROe1IIE5uwC
+LIfmRmVPW2gZihmuqJNRj17sC+5Rd5s+GXJZOhhE4K3vJos5ILmMEnX80bgY2o0+
+A0TUAAzIUcRhinduEoqEIHiXjImzB2JAElYZ+q5NYmh/wq6wWtx1RaoU56cBnMS2
+EPtqgtmd0hkQVdD52uGEt1pdPvCEM7RambxrEFF3F0254a5u8yVZ12JT2hxid9am
+ITGMN2nU/Q50Rv37CKdZ8YzG6Z80O/dlWNRw3esIe5KGIOZfzmtXQNm3jO1wAgFa
+F8eWfZ09vPoFWjhnfYUqm92U
+=A6vW
+-----END PGP MESSAGE-----
+
+
+*** 研究内容                                                        :crypt:
+-----BEGIN PGP MESSAGE-----
+
+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
+=4DGw
+-----END PGP MESSAGE-----
+
+
+
+*** 拟采用的研究方案和技术路线                                      :crypt:
+-----BEGIN PGP MESSAGE-----
+
+hQEMAw1pL9obieEVAQgAhyhM6daElK2Zu97I6vi0vTZm+YhDyE4BfG4T52Z+wGGb
+rP6hll3tgNBmWwt61a8+XHEbDCZTEG8cLbkSHsEfsuPS7r9J3Nlo8oBSMujukkOB
+QSnrYif/BjiiNbDg7x3ChSn6/U9Eb1KEewlACEZGQapmIpcfjQEP6d0a7z/qseAI
+SuTetGxT4XflrjzTjzKsyg5lXXrCfcejENzh8rHzAWR/UEjkbfV714fyaHSx/MGg
+d72TbEM/VQseDHs0F2yxTPBgdqR7RfzsD1puoFvZO/0yQ5jOtiZw/XANaKTX99FE
+25EA8widjQfLPUBhdZ+jSwWigMNQ7ih70c5gg5jqcNLpAdpL8IFr5ffmucsKABsW
+7gKHEjNntrTthE4WwubQmFR65LAcneSmP1tTIpPj4q+DdvAj+TiP02NnsfME4SIe
+KwAUgNblYDqsbvz154GcBYuhabBh1RkEaX0N3tPVBiPjBcEPxcRXhp62EKIWbZC2
+Nrqg/Vv3I4hvydTBbfaxIOqr4H2Bq/fqjWTE+HmFSvobM684D9x9wAYS68rRsFI/
+AEcpntXc3NfMp2BywnvN+lTDUWeUclPb2acGVTcXbXfuNqtgMUFct1qgsPnTEVQB
+MHllxxet3UXbwvaWWGluFOxO/bEN6qwv9Ss35qlGMJQkmRoILcNAE0HHI0zN9fks
+J5L6GL0QAvhmKzHvAEut1FWZdrXbQe5SzVCdiy4EAa7JsL6xTHsMyOFAA2azc6lA
+LKD9TOhT60ChQghuGfdlN6XXLRSeiHnrNgq+mTSOZ6sZtIod549q05aqPnkeY9Kj
+T6NY2aSv9eOOyWO3LZlqSzALzn66XMAbeYB4BysWa/DBmE2h1DSoDZj3sDm3yLD/
+CFn3+9XU8cBG8tZuwUiOVIBgmMqWTda+mftqb8dOC0HAUZtuJcbozF0TupvYSJtU
+6avFBI8UTKwcW+w7r983+pXqs9oRM5slJRpJv6mrRkZcLJTirK+2ak8Qsw/1JStq
+tmXn5jIrsZ3H2A9Jgek8/p7AEyaqWmiCSk5r07jlCOe6OXEVWWVzYJWcSCZkqDZK
+Tmtw8uVig09v5GyQ2YETuk6zoeuJZn4OgMmYzyoHiF5mQiNsrHqD51rxZJAwxpa8
+gf92AMm3VXKrPYVh3VJyy6pvlf4pi2aDGhEx8bHZS7xPFBQXfgnwhqvdFx1bLUQ0
+VprAltuPj6oR3uHJFTb78yWKA2oLfNbjRbI6tIKGX6VbPNDJp3g8VxHcmDJtKY0Q
+/uFdlUHOdItFZDivp+gjOOl+mZQer8utcI+9S8Rg9pnve2/HZhY=
+=qhJB
+-----END PGP MESSAGE-----
+
+*** 预期成果
+
+*** 可行性分析
+
+在本课题研究之前，实验组于2012年开始关于风力机叶轮失谐影响的课题展开研究，开发了基于自由涡尾迹的风力机涡分析方法，构建了
+CFD/CSD的全三维流固耦合模拟平添。在方法正确的基础上，针对风轮系统的多种失谐因素，建立了基于非嵌入式概率配置点法风轮失谐
+敏感性分析方法，从而可以分析、减少或利用那些具有高敏感度的失谐问题对风力机高效稳定运行的影响。
+课题采用递进增加复杂度的方法进行研究。以创建风轮多轴角运动为目标，首先研究单个角运动对三维非定常的影响。然后，进行两个角运动
+叠加对风轮和塔架的三维非定常流动的影响。以此递进增加复杂度。同时，通过敏感性分析可以获得各个角运动对流动的影响程度，对影响程度
+小的进一步进行简化。
+*** 创新点
+
+1. 建立多轴角运动模型，用于。。。
+*** 
+- [ ] 前后往复运动
+  - [ ] 可以在数值风洞中实现(CFD里面试一下）
+- [ ] 多轴角运动
+- [ ] 典型控制规律
+
+  
+* 升力面和升力线
+升力面方法一般是在环量求解时基于流动无分离假设，当解出叶片攻角后再通过翼型气动数据算出气动力，因此
+叶片绕流分离越大时，叶片环量计算偏差越大。
+升力线方法在叶片环量计算时就引入翼型气动数据，环量计算更有效。但是，叶片环量方程组是隐式非线性方程组，在
+较大偏航角工况等叶片环量分布存在较强的非线性时，方程迭代比较容易发散。
+  
+* 偏航机理
+
+均匀来流条件下，大小相等方向相反的偏航来流，会在风轮旋转平面上产生完全相反的气动载荷分布。其原因主要在于
+偏航风速平行于风轮旋转平面的速度分量，与叶片的相对运动状态：若同向，则气动载荷增大，反之，则气动载荷下降。
+并且，若偏航风造成风轮上半部分载荷高，下半部分载荷低，在叠加了垂直切变风的作用后，上半部分载荷会更高，而下半部分的载荷
+更低，叶片的气动载荷波动幅值会增大，更容易造成叶片疲劳。相反，若偏航风造成风轮下半部分载荷高，上半部分载荷低，
+则叠加垂直切变风的作用后载荷的波动幅值会有所下降。(垂直切变风在风轮上半部分风速较高，下半部分风速较低，因此风轮气动载荷
+也呈现出相同的分布特点。)
+
+
+切变影响:整个风轮的气弹载荷仍然显示出2p(3p)波动；单个叶片载荷和流动参数随方位角呈近似余弦函数式的周期性波动，在整个风轮
+旋转平面内呈现上下不对成分布
+
+耦合影响: 风轮载荷和叶片变形呈周期性震荡；平移变形显示出滞后性(怎么看平移变形),但对于风速的相位差沿展向基本不变，而扭转变形
+与载荷的周向变化保持相同的规律，可见叶片的扭转变形是影响载荷分布的主要原因：耦合作用使內叶展扭角减小，攻角增大，载荷增加；
+外叶展相反，进而减小了轴向载荷极值；。。。
+
+上下不对称会引起俯仰力矩，而左右不对称会产生偏航力矩，从而影响塔架以及整个风力机的振动规律
+
+* 2017年10月20号组会记录
+
+方法--
+气动特性
+目标？
+思路？
+** 清楚的PPT的重要性
+也有人采用。。在。。。
+谁做了。。。（涡轮叶片)
+
+为什么要用第一种方法？ 第一种方法相比较于其他方法的优点是什么？存在这些优点，拟采用这种方法。。
+
+翼型段流动分离改为翼型流动分离(为了把某种方法应用于风力机、需要掌握不同。。。结构。。。这些结构需要如何掌握
+
+国外内学者在风洞实验都有做过哪些方面的研究(关于介绍现有的国内外风洞的实验)
+
+未见以水平轴风力机叶片(立轴?)--->未见以风力机叶片
+
+成果：理论成果和技术成果
+技术路线：每走一步一个结果(技术路线不一定是逐顺序)
+
+常用动词:理清、揭示、探索、掌握什么科学问题
+非技术问题（不要技术问题）比如该如何选取、如何排布、是否会影响控制
+
+边界层转捩延迟？那就是有一个问题，如何增加边界层稳定性？（增加流动动量）
+几何参数-----气动参数(研究物理问题）
+
+转捩怎么研究？分离怎么研究
+
+那个点(重点)应该怎么控制？
+
+非定常特性研究--落实到塔顶！--掌握多轴运动下的非定常绕流特性---造成叶片的结构疲劳，
+对风电机组的可靠性进行研究(BEM FVM  CFD)
+
+角运动都由两部分组成角运动旋转轴和角运动旋转速率，课题首先得就多轴角运动进行介绍，解释好多轴角到底是什么
+风力机上面都有哪些轴
+
+
+
+
+边界层：平板  + 大气边界层（不单单讲平板。。)
+
+叶片气动力对桨矩角的变化十分敏感，独立变桨技术被应用于减小剪切风、偏航风等作用
+
+
+涡尾迹：叶片环量方程组是隐式非线性方程组，在较大偏航角工况等叶片环量分布存在较强的非线性时，方程迭代比较容易发散
+
+Weissenger-L升力面模型与升力线模型非常相似，主要的区别在于叶片附着涡环量的求解方法
+1. W-L升力面是基于叶片绕流为势流、无流动分离的假设，以流线平行于升力面为边界条件求解叶片附着涡环量
+2. 升力线模型构建了叶片当地截面翼型气动数据与当地环量之间的函数关系，通过迭代求解附着涡环量
+
+
+BEM方法是一种二维准稳态方法（对于风切变或偏航条件下）
+叶片展向攻角分布随叶片旋转轴是不断变化的，风轮流场是非定常的，这时也不满足BEM的假设条件。
+
+
+全球风电 2016-2021年 累积容量超过800GW(当前486.8GW 2017）
+（2016年中国168GW 1.68亿千瓦)
+以国论，则按GW，也可以是亿千瓦
+国家的逐年增长采用万千瓦
+小型国家按MW即可
+
+风轮将风的动能部分吸收，转化为风轮扭矩，并通过传动链传输，让发电机绕磁场切割，进而发电
+
+
+中财主要介绍以下几个部分
+1. 叶片网格升程技术
+   1. 带Nacelle
+   2. 带tower
+   3. 细部结构网格(VGS 格林襟翼。。
+2. unsteady数值模拟
+   1. URANS(SA KE KW SST
+   2. DES
+   3. LES
+   4. DNS
+3. 多软件耦合介绍
+   1. abaqus+ansys
+   2. fvm+fast
+4. 可信度(verification validation)
+   1. 误差分析
+   2. 网格收敛
+
+* 气弹非稳定性调研
+
+气弹失稳包含三种类型：
+1. 失速诱导振动(stall-induced vibrations) 主要是失速型风力机，变桨型风力机主要是
+是在停机、较大公交。。
+2. 经典颤振(classical flutter) 主要存在于变桨型风力机(为什么失速型不存在？)
+
+3. 控制系统诱发失稳， 基本上都是变桨型
+
+** 影响因素
+
+1. 翼型气动特性(翼型失速特性）
+2. 振动方向（叶片相对于风轮平面的振动方向)
+3. 结构阻尼(若有负气动阻尼，需要结构阻尼补偿
+
+** 必要条件
+1. 附着流动(叶片向攻角增大方向扭转时，流动依然是附着的)
+2. 高尖速比（叶片附着流动相对速度足够大，比如：超速、片行风
+3. 较低的刚度（叶片扭转模态和挥舞弯曲模态的自然频率足够低，在颤振中耦合
+4. 质心后移(叶片截面的质心位于气动中心之后，保证颤振的弯曲和扭转部分处于正确的
+相位
+** 三维失速延迟模型与动态失速模型的结合
+
+三维失速延迟模型：Du-Selig模型
+动态失速模型：Beddoes-Leishman模型分为以下四个部分的计算
+1. 附着流(环量项+脉冲项)
+2. 分离流（尾缘分离)
+3. 涡升力(前缘分离)
+4. 叠加
+*** 存在的问题
+Du-selig的计算过程，首先加载2D翼型启动数据，然后选择某个计算位置，叶片
+展向截面位置，计算该截面的AOA，进而查表得到对应的CL CD，进行Du-Selig
+模型的3D计算(三维修正)
+
+而Beddoes-Leishman既可以在2D翼型数据也可以在3D翼型数据的基础上进行计算--
+也是类似道理，找到对应截面的AOA，查找2D或者3D对应的升阻力系数随攻角变化
+
+曲线表，进而确定该截面的CL CD,然后把该截面的气动特性载入到动态气动计算模型
+(Beddoes-Leishman模型)，进而获得动态条件的Cl Cd
+
+然而这种耦合存在的问题是三维失速延迟模型与动态失速模型不相容（不对肯定相容的）
+(理论上来说）
+(SDM:三维失速模型   DSM:动态失速模型）
+*** 两种模型的结合
+
+** test                                                              :crypt:
+-----BEGIN PGP MESSAGE-----
+
+hQEMAw7kGOoigxp9AQgAjUbLnnAv6PzD68eMXiHsoVOxjj5M+/qU2bzyRIVgtRpR
+Nu+67YhQXd4qOipgW+bHIiM5yc1G5I1aYUBvk3mrHYpz5YaLqIQ9DW3atnD+YEuo
+36bQuN/hbBsnAZ8DIuBp3w//3VS1CsNXpbbqhRua7hBNJyBp2OOJiSnnEknF0p6W
+E1kqcAQ3ADGmznAyAB5yGh2b6Qmc/AChmRsmtGz0MI022VJQZ7mXICB7FyALMNSr
+N5dzNRg2G4e8A5IpPFjaY/BFPyjQX+4q9NkzBQb3xE/aSA0Lo2FC1w+sqxIqD/TL
+cRLKliNWzpBUFyov42xZpqhIlrjOChzUYzclozcLpNJBAQArWyhDqPX4L+LXXnNF
+rZ2jk9CEGXtM1FemNw9ktjoKfn/8JXwQu8whgUa9rOL78KLlnJxYrOfa3YEWw3v9
++HE=
+=+ZuB
+-----END PGP MESSAGE-----
+
+

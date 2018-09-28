@@ -1,0 +1,52 @@
+
+Archived entries from file c:/Users/YeZhao/AppData/Roaming/.emacs.d/GTD/newgtd.org
+
+
+* TODO Etc.
+:PROPERTIES:
+:ARCHIVE_TIME: 2017-10-07 周六 15:34
+:ARCHIVE_FILE: ~/.emacs.d/GTD/newgtd.org
+:ARCHIVE_OLPATH: Tasks
+:ARCHIVE_CATEGORY: newgtd
+:ARCHIVE_TODO: TODO
+:END:
+
+That's your gtd
+
+| Date              | Category | Money |
+|-------------------+----------+-------|
+| <2017-10-07 周六> | Book     |  30.6 |
+| <2017-10-09 周一> | Film     |  70.6 |
+|                   |          |       |
+|                   |          |       |
+|-------------------+----------+-------|
+|                   | Total:   | 101.2 |
+#+TBLFM: @>$3=vsum(@2..@-1)   
+
+* DONE [#B] Capture the Class name in project folder <2018-02-14 鍛ㄤ笁 12:11> :@Home:
+CLOSED: [2018-02-14 鍛ㄤ笁 18:27]
+:PROPERTIES:
+:ARCHIVE_TIME: 2018-06-20 鍛ㄤ笁 11:23
+:ARCHIVE_FILE: ~/.emacs.d/GTD/orgBoss/newgtd.org
+:ARCHIVE_OLPATH: Tasks
+:ARCHIVE_CATEGORY: newgtd
+:ARCHIVE_TODO: DONE
+:END:
+- State "DONE"       from "TODO"          [2018-02-14 鍛ㄤ笁 18:27]
+                    :PROPERTIES:
+:
+
+                    :Effort: 1:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-02-14 鍛ㄤ笁 17:48]--[2018-02-14 鍛ㄤ笁 17:48] =>  0:00
+                    CLOCK: [2018-02-14 鍛ㄤ笁 12:29]--[2018-02-14 鍛ㄤ笁 17:48] =>  5:19
+                    CLOCK: [2018-02-14 鍛ㄤ笁 12:12]--[2018-02-14 鍛ㄤ笁 12:28] =>  0:16
+                    :END:
+                    
+           ag鏀寔姝ｅ垯琛ㄨ揪寮廻ttps://segmentfault.com/a/1190000011328038
+
+
+                    #+BEGIN_SRC sh
+                      G:\JavaBookmarks\hutool>ag "public\sclass\s\w*"
+                    #+END_SRC
