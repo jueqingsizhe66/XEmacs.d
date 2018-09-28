@@ -7719,6 +7719,10 @@ machine api.github.com login jueqingsizhe66^ghub password "你的github 针对gh
 machine api.github.com login jueqingsizhe66^magithub password 你的magithub的github token"
 ```
 
+其中尖角号后面的ghub和magithub代表的是具体的package(插件名字)
+
+到此为止， 你也可以很方便使用`magithub-comment-new`评论一个问题，或者关闭一个问题`magithub-issue-close`等。
+
 当你打开一个 Git 文件, 直接用命令 magithub-browse-file 可以打开 github 对应的那一行的连接, 就像这样 . 
 
 感觉到很多技术hacker真把自己的工具，打磨得特别适用自己。
