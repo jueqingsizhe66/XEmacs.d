@@ -7370,6 +7370,16 @@ Hook is a tool  for connection as edge, a bridge.
 
 [magit小技巧][431]
 
+### 156. emms更新失败
+
+emms和projectile在<2018-09-29 03:02>更新失败，出现
+如下错误
+
+```
+Setting current directory: No such file or directory，  ~/.emacs.d/error: no program name specified
+```
+
+
 ----------
 
 ----------
