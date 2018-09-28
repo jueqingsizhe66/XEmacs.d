@@ -2725,3 +2725,247 @@ You can think of graph theory as a way of encoding information about two aspects
 Each land mass can be represented by a point, and each bridge is just a line between two points.
 
 Hook is a tool  for connection as edge, a bridge, which let you cross the wide gap(river).
+** 老一代技术 [#B]                                               :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-09-28 周五 23:15]--[2018-09-28 周五 23:22] =>  0:07
+:END:
+                         Added: [2018-09-28 周五 23:15]
+                         
+CISC: 1964 IBM System/360
+RISC: 1960’s, various
+SIMD: 1966, ILLIAC IV
+GPGPU: well, it’s only meaningful after the definition of GPU came up, so just don’t count it. In fact there’s no difference to SIMD.
+FGPA: 1982
+TPU: it’s one instance of ASIC, which can be dated to 1981
+Container: 1979, Unix V7
+Distributed: 1960, ARPANET
+AI: 这个不用多说了，ML 理论基础都是老早的了。传统 AI？ARPANET 就是用来做这个的。
+IoT: 1985
+
+现在的操作系统也懂得跟着进化，容器化、分布式、实时操作系统，为大数据、AI、IoT提供支撑。
+如果你没有做过十年以上的操作系统的开发, 请不要借用朋友圈烂大街的理论去评论别人.
+
+https://github.com/manateelazycat/emacs-application-framework
+
+这个世界总有那么多人, 不懂得谦逊, 自己学的越多自己发现自己就是傻逼, 只有学业不精的人才有闲暇时间去浪费自己和别人的时间, 他们从和别人的争论上显得自己很牛逼.
+
+每个人这一辈子就是傻逼的过这一辈子, 如果没有自知之明的好好学习, 只会无聊的和别人争论, 指点江山, 真的很可悲.
+
+你想要社区版, 那是你自己的想法, 你觉得操作系统应该怎么做, 那是你自己的事情. 请不要去假设别人一定会按照你的想法做, 也不要假设别人的想法, 更不要去评价你根本不了解的事情和人.
+
+我已经离开 deepin 了, 不要再和我讨论 deepin 和操作系统的事情, 谢谢!
+
+http://lambda-the-ultimate.org/node/5335
+当然现在很多程序员都是改配置，改插件，真正内核的、部件的东西不会涉及，比较少涉及核心的算法东西。
+    According to Sussman, his students spend most of their time reading manuals for these 
+    libraries to  Recent comments  figure out how to stitch them together to get a job done
+    
+现在大部分程序员做的工作，1.装插件 2.阅读插件帮助文档 3. 修改配置文档
+    
+1. computer graphics
+2. computer vision
+3. graph theory
+4. set theory
+5. robotics
+6. embedded system
+7. category theory
+8. mathematics
+9. What is the fixed point? and why it matters? ----the solution of the problem inside the domain specific language
+10. Automate theory
+11. Turing Completeness
+12. Program language theory/ Lambda theory(PLT)
+13. Hardware infrustrument
+
+
+Languages provide abstractions (does anyone still recall the    
+   data abstraction/procedural abstractions/control abstraction    
+   typology?). Consider how people studying SICP knew about    
+   lazy data-structures (streams) when this was something    
+   mainstream programmers weren't thinking about. And how    
+   about Luke's reminders about Thinking Machines LISP and    
+   so forth. 
+   
+*** a Compiler is an arrow?
+This is simply not true, or true at the level "a compiler is an    
+   arrow." I am not interested in people who can explain to me    
+   that compilers are arrows, I am interested in people who can    
+   explain how to implement compilers. Neither is there anything    
+   in category theory which helps you study set theory or    
+   different logics particularly well.    
+   
+我认为是对的。
+它是一座桥梁,字符的桥梁，通往逻辑殿堂，走向物理本质.
+
+
+Apart from that, I think most CS students are better of with    
+   general knowledge of applied math than foundational issues.    
+   Dijkstra once pushed an agenda that programmers should be    
+   able to prove everything, hence CS adopted the foundational    
+   research from the mathematicians.    
+       
+   But history seems to have taken another course than that    
+   what Dijkstra envisioned. Math is still important, a computer is    
+   an expensive calculator, but I am not sure CS students are    
+   better of being able to implement fluid dynamics simulators    
+   than anything else. Seems more relevant than being able to    
+   reproduce the Hilbert program.    
+
+    http://lambda-the-ultimate.org/node/5335
+
+ The route probably was that a popular FP construct was    
+    given a categorical underpinning. It usually goes that    
+    way. And I always found the categorical underpinning of    
+    monads nonsensical. But I guess that's known on this    
+    site, and I forgot half the reasons why.    
+       
+   This is not right. The history goes roughly as follows:    
+       
+   1. Godemont invents monads in 1958, under the name    
+   "standard construction".     
+       
+   2. In 1963, Bill Lawvere applies them to model constructions    
+   in formal algebra -- basically, he works out how to use    
+   monads to model substitution in theories of languages    
+   without binders, like the formal language of monoids, groups,    
+   and rings.     
+       
+   3. In the late 1960s (roughtly 1968-1969), Dana Scott and    
+   Christopher Strachey invent denotational semantics. Initially,    
+   they work in very concrete models of languages (Scott's    
+   D-infinity model of the lambda calculus was initially defined in    
+   terms of complete lattices and continuous functions, and then    
+   weakened to CPOs).     
+       
+   4. Throughout the 1970s, denotational models of more and    
+   more effectful languages -- state, control, concurrency, and IO    
+   -- are invented.    
+       
+   5. As the complexity of the languages under study goes up,    
+   people begin using a variety of semantic structures -- not just    
+   lattices and domains, but also metric spaces and so on. To    
+   organize the structure common to all of these approaches,    
+   people begin using categorical methods. Michael Smyth and    
+   Gordon Plotkin's 1982 paper The Category-Theoretic    
+   Solution of Recursive Domain Equations is a good example    
+   that remains relevant to this day. (I learned how to solve    
+   domain equations from it, in fact.)     
+       
+   6. In 1989, Eugenio Moggi recognized that there was a    
+   common structure to how effects are modelled in semantics    
+   -- namely, monads -- and showed how this worked for a very    
+   wide variety of effects.    
+       
+   7. Shortly after publication of this work, Phil Wadler    
+   recognized that Moggi's semantics could be used to replace    
+   Haskell's IO system (which had a very clumsy CPS-based    
+   API), with a much simpler monadic API. See his 1992 paper    
+   The essence of functional programming. This led to the    
+   adoption of monadic IO in Haskell 1.3, in 1996.     
+       
+   8. In his PhD thesis, Andrejz Filinski proved a representation    
+   theorem for definable monadic effects -- he proved that    
+   delimited continuations (or alternately, full continuations plus    
+   state) could be used to implement and definable monadic    
+   effect.    
+       
+   9. Shortly after the turn of the millenium (2001-2003), Gordon    
+   Plotkin and John Power proposed using Lawvere's idea of    
+   modelling substitution on trees with monads to turn an    
+   algebraic theories of effects directly into a categorical    
+   semantics of effects.     
+       
+   10. A few years later, Matija Pretnar (first with Gordon Plotkin    
+   and then Andrej Bauer) made use of Filinski's representation    
+   theorem for effects to invent "effect handlers". The idea was    
+   that you could separate the definition of an effect from its use    
+   by client code, and dynamically control how effects get    
+   implemented. See Sam Lindley, Ohad Kammar and Nicolas    
+   Oury's 2013 paper Handlers in Action.     
+       
+   So far, the theory has preceded the application, not just    
+   once, but *twice*. Furthermore, I'm pretty sure this will happen    
+   at least once more -- in his work on call-by-push-value, Paul    
+   Blain Levy has shown how the decomposition of a monad into    
+   an adjunction naturally splits semantics into a living in a pair of    
+   categories, one for values and another category of algebras    
+   for effects, which is sure to shape the design of the next    
+   generation of functional language.    
+       
+   By neelk at Wed, 2016-05-18 09:58 | login or register to    
+   post comments    
+    
+   *** lambda closure is acually 吸水的海绵
+
+   *** merge physics intuition into math,and computers
+
+I'm old enough to remember the pre-6.001 intro to computer    
+   science at MIT, so I may be biased, but it was a truly brilliant    
+   innovation, especially once they got rid of the vestigial bit of    
+   Algol programming mandated by the department. It definitely    
+   taught you a new way of looking at complex problems and    
+   behaviors, and provided you with a toolkit for figuring out how    
+   to solve those problems and emulate those behaviors.    
+   Deceptively simple at times, like the classic and thin G Polya    
+   book How to Solve It.    
+       
+   I'm a bit worried about suggestions that we need to simplify    
+   or temporarily replace essential parts with substitutes, and    
+   then teach those essential parts later.    
+       
+   All I can think here is that I took elementary mechanics twice,    
+   once without calculus and once with, and it was so much    
+   simpler once you had the right math to describe what was    
+   going on with the physics. And conversely, it was easier to    
+   understand the calculus when you had some physical intuition    
+   to base that understanding on. The same is true in    
+   crystallography which is a bitch without linear algebra but    
+   almost frighteningly simple with it.     
+       
+   Turns out that it's often a big win if you can teach two subjects    
+   together, and that if you can't, you end up teaching much of    
+   the material twice.    
+       
+   Any possibility that we can combine more of the underlying    
+   math bits with the "computer science" bits at the same time?    
+   Here's where I need to put on my "Just another dumb    
+   engineer" hat, and will leave the best sequencing and    
+   combination of these subjects to the experts.    
+    
+** 王勇emacs-china [#B]                                          :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-09-28 周五 23:36]--[2018-09-28 周五 23:46] =>  0:10
+:END:
+                         Added: [2018-09-28 周五 23:35]
+                         
+          
+*** Emacs的生态理解而言              
+https://github.com/manateelazycat/emacs-application-framework
+通过 python/qt 补强了 Emacs 的图形性能不足, 又保持不对核心 elisp 生态的侵入, 在保证现在 elisp 生态持续发展的基础之上, 拓展 Emacs 的图形渲染能力.
+
+重新用 Qt/Gtk+ 做一个 Emacs 不会成功的, 原因主要是, 不论图形性能多么强大的编程语言, 都没法替代 Lisp 语言对编辑器核心的
+高速开发的能力, 更无法替换几十年 Elisp 黑客的巨大插件生态.
+elisp生态的力量太强大了，elisp外围插件是全球黑客几十年的结晶。
+https://emacs-china.org/t/elisp-emacs/5100/126
+*** color-rg
+
+https://emacs-china.org/t/ripgrep/6833
+
+https://emacs-china.org/t/topic/6313/94
+
+https://github.com/manateelazycat/color-rg
+
+*** insert-translated-name
+
+https://github.com/manateelazycat/insert-translated-name
+
+https://emacs-china.org/t/emacs/7098/33
+
+*** magit-submodule-remove
+
+https://emacs-china.org/t/submodule/6926/7
+
+*** awesome-tab
+
+https://emacs-china.org/t/awesome-tab-1-0-emacs/7053
+
+https://github.com/manateelazycat/awesome-tab

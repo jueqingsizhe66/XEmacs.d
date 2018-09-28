@@ -551,8 +551,16 @@ https://github.com/manateelazycat/insert-translated-name/commit/51e409a58f5519c4
 
 https://github.com/manateelazycat/color-rg
 *** emacs-china
+https://emacs-china.org/t/emacs
+
 https://emacs-china.org/t/emacs/7098/31
 
 https://emacs-china.org/t/awesome-tab-1-0-emacs/7053/108
 
 https://emacs-china.org/t/topic/6313/139
+** 极简哲学
+ [431]: https://emacs-china.org/t/topic/6161/4
+[432]: https://suckless.org/philosophy/
+[433]: https://github.com/bbatsov/emacs.d
+[434]: https://www.joelonsoftware.com/2009/09/23/the-duct-tape-programmer/
+

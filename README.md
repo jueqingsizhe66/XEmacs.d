@@ -2,6 +2,7 @@
 次要目的: clojure(closure) learning ----Clojureable
 
     Use your force, make it reachable(reference--relationship), Zhao!
+    Make it useable!
 
 能为他人创造点价值，那是最好的feedback([故事编程story programming][300])
 
@@ -7351,6 +7352,24 @@ Hook is a tool  for connection as edge, a bridge.
 
 [References make commit reachable][427], reference means commit blob, tag, local branch, remote branches etc(what is reachable? what is a -able? Make it able! Make it available).
 
+
+### 155. Magit-submodule-remove
+
+该功能诞生的[背景][429]
+
+[ magithub ][430]可以方便提问题`M-x mgithub-issue-new`和浏览问题`M-x magithub-issue-view`
+`M-x magithub-browse-file`
+当你打开一个 Git 文件, 直接用命令 magithub-browse-file 可以打开 github 对应的那一行的连接, 就像这样 . 
+
+感觉到很多技术hacker真把自己的工具，打磨得特别适用自己。
+
+1. [极简哲学][432]
+2. [极简配置库][433]
+3. [The Duct Tape Programer][434], complexity doesn't means 优越性!很优秀!
+
+
+[magit小技巧][431]
+
 ----------
 
 ----------
@@ -7785,3 +7804,9 @@ Hook is a tool  for connection as edge, a bridge.
 [426]: http://think-like-a-git.net/assets/images2/bridges_of_konigsberg.jpg
 [427]: http://think-like-a-git.net/sections/experimenting-with-git/references-make-commits-reachable.html
 [428]: https://github.com/magnars/multiple-cursors.el/issues/17
+[429]: https://emacs-china.org/t/submodule/6926
+[430]: https://github.com/vermiculus/magithub
+[431]: https://emacs-china.org/t/topic/6161/4
+[432]: https://suckless.org/philosophy/
+[433]: https://github.com/bbatsov/emacs.d
+[434]: https://www.joelonsoftware.com/2009/09/23/the-duct-tape-programmer/
