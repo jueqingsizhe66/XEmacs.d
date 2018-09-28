@@ -1,6 +1,6 @@
 # 主要目的: Emacs learning(org-mode) ---Emacsable
-次要目的: clojure(closure) learning ----Clojureable
-最终目的: Exercise yourself! Train yourself! Teach yourself! Tell yourself something!
+## 次要目的: clojure(closure) learning ----Clojureable
+### 最终目的: Exercise yourself! Train yourself! Teach yourself! Tell yourself something!
          You should know how to help yourself(your baby too)
          Finally, just image yourself, imagine your future, focus let you start one activity!
          focus let you achieve your thinking.
