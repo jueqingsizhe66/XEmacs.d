@@ -7551,7 +7551,7 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 
 
 
-[1]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/new.jpg
+[1]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/new.jpg
 [2]:https://github.com/clojure-emacs/clj-refactor.el 
 [3]:https://github.com/jaypei/emacs-neotree 
 [4]:https://github.com/domtronn/all-the-icons.el 
@@ -7569,7 +7569,7 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [16]:http://www.yinwang.org/blog-cn/2013/04/11/scheme-setup 
 [17]:http://www.cnblogs.com/robertzml/archive/2010/02/19/1669204.html
 [18]: https://www.masteringemacs.org/article/beginners-guide-to-emacs
-[19]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/holyshit.jpg
+[19]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/holyshit.jpg
 [20]:https://www.braveclojure.com/basic-emacs/
 [21]:https://github.com/magnars/multiple-cursors.el
 [22]:https://github.com/tpope/vim-surround
@@ -7579,7 +7579,7 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [26]:http://oremacs.com/swiper/
 [27]:https://github.com/abo-abo/swiper
 [28]:https://github.com/emacs-helm/helm
-[29]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/calenar.jpg
+[29]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/calenar.jpg
 [30]:https://github.com/winterTTr/ace-jump-mode
 [31]:https://github.com/emacs-evil/evil-surround
 [32]:https://github.com/company-mode/company-mode
@@ -7593,23 +7593,23 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [40]:http://emacsrocks.com/e09.html
 [41]:http://emacsrocks.com/e02.html
 [42]:http://emacsrocks.com/e16.html
-[43]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/dired.jpg
-[44]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/ace.png
+[43]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/dired.jpg
+[44]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/ace.png
 [45]:http://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html
 [46]:https://github.com/magnars/.emacs.d 
 [47]:https://github.com/rooney/zencoding
 [48]:https://github.com/emacsfodder/move-text
 [49]:https://github.com/sachac/baby-steps-org-todo/blob/master/index.org
-[50]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/baby-org-mode.png
+[50]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/baby-org-mode.png
 [51]:https://github.com/bbatsov/projectile
 [52]:https://github.com/vim-ctrlspace/vim-ctrlspace
 [53]:https://github.com/fxbois/web-mode
 [54]:http://web-mode.org/
-[55]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/projectile.jpg
+[55]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/projectile.jpg
 [56]:http://lists.gnu.org/archive/html/emacs-orgmode/2010-03/msg00367.html
 [57]:https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
 [58]:https://github.com/nashamri/spacemacs-theme
-[59]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/spacemacs.jpg
+[59]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/spacemacs.jpg
 [60]:http://todotxt.org/
 [61]:https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-thread-last-all
 [62]:https://github.com/clojure-emacs/clj-refactor.el/wiki/cljr-thread-first-all
@@ -7622,15 +7622,15 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [69]:https://github.com/ffevotte/fortran-index-args
 [70]:http://showterm.io/f5554b8857041dd28dd38#slow
 [71]:https://github.com/rosenbrockc/fortpy-el
-[72]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/f90mode.jpg
+[72]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/f90mode.jpg
 [74]:http://www.jianshu.com/p/1bd09e10f6db
-[75]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/quicksort.png
+[75]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/quicksort.png
 [76]:http://www.howardism.org/Technical/Emacs/literate-devops.html
 [77]:http://orgmode.org/worg/org-contrib/babel/how-to-use-Org-Babel-for-R.html
 [78]:http://www.howardism.org/
 [79]:http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html
-[80]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/org-bullet.jpg
-[81]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/betterbullet.jpg
+[80]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/org-bullet.jpg
+[81]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/betterbullet.jpg
 [82]:http://doc.norang.ca/org-mode.html#ClockingInDefaultTask
 [83]:http://gettingthingsdone.com/
 [84]:https://www.atlassian.com/git/tutorials/comparing-workflows
@@ -7654,7 +7654,7 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [102]:http://orgmode.org/org.html#Capture
 [103]:https://github.com/howardabrams/dot-files/blob/master/emacs-org.org#auto-insert-a-journal-template
 [104]:https://github.com/bastibe/org-journal
-[105]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/oo.jpg
+[105]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/oo.jpg
 [106]:https://github.com/howardabrams/dot-files/blob/master/emacs-org.org#presentations
 [107]:https://github.com/takaxp/org-tree-slide
 [108]:https://github.com/hakimel/reveal.js/
@@ -7666,13 +7666,13 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [114]:https://github.com/Malabarba/speed-of-thought-clojure/blob/ceac82aa691e8d98946471be6aaff9c9a4603c32/sotclojure.el#L117
 [115]:https://github.com/vvvvalvalval/scope-capture/blob/master/doc/Tutorial.md
 [116]:https://github.com/vvvvalvalval/scope-capture
-[117]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/purple.jpg
+[117]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/purple.jpg
 [118]:https://www.gnu.org/software/emms/
 [119]:http://oss.netfarm.it/mplayer/
 [120]:http://www.mplayerhq.hu/design7/news.html
 [121]:http://darksun.blog.51cto.com/3874064/1339029
 [122]:https://github.com/noinil/prelude/blob/75d41be0c5da3383cde1bd073c2aa5a9f4b7d792/personal/noinil.el#L195
-[123]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/music.jpg
+[123]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/music.jpg
 [124]:http://pragmaticemacs.com/emacs/dynamically-filter-directory-listing-with-dired-narrow/
 [125]:http://lifegoo.pluskid.org/wiki/EnhanceDired.html
 [126]:https://github.com/Fuco1/dired-hacks
@@ -7684,7 +7684,7 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [132]:http://pragmaticemacs.com/emacs/tree-style-directory-views-in-dired-with-dired-subtree/
 [133]:http://graphviz.org/
 [134]:https://github.com/theodorewiles/org-mind-map
-[135]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/map.jpg
+[135]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/map.jpg
 [136]:http://www.jianshu.com/p/cf43baf957a5
 [137]:https://github.com/jwiegley/alert
 [138]:https://github.com/spegoraro/org-alert
@@ -7694,13 +7694,13 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [142]:https://www.gnupg.org/download/
 [143]:https://www.gpg4win.org/download.html
 [144]:https://coldnew.github.io/4bb1df06/
-[145]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/crypt.jpg
-[146]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/gnupg.jpg
+[145]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/crypt.jpg
+[146]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/gnupg.jpg
 [147]:https://github.com/TeMPOraL/nyan-mode/
-[148]:https://github.com/jueqingsizhe66/ranEmacs.d#56-%E5%A6%82%E4%BD%95%E6%8A%8Ajournalorg%E5%88%86%E6%88%90%E6%AF%8F%E5%A4%A9%E6%97%A5%E5%BF%97%E7%9A%84%E5%BD%A2%E5%BC%8F
-[149]:https://github.com/jueqingsizhe66/ranEmacs.d#55-failed-enable-flyspell-mode-in-window10
-[150]:https://github.com/jueqingsizhe66/ranEmacs.d#66-%E6%9C%89%E4%BA%9Btopic%E4%B8%8D%E6%83%B3%E8%AE%A9%E5%88%AB%E4%BA%BA%E7%9C%8B%E5%88%B0org-crypt
-[151]:https://github.com/jueqingsizhe66/ranEmacs.d#16-multiple-cursorseditiingel
+[148]:https://github.com/jueqingsizhe66/XEmacs.d#56-%E5%A6%82%E4%BD%95%E6%8A%8Ajournalorg%E5%88%86%E6%88%90%E6%AF%8F%E5%A4%A9%E6%97%A5%E5%BF%97%E7%9A%84%E5%BD%A2%E5%BC%8F
+[149]:https://github.com/jueqingsizhe66/XEmacs.d#55-failed-enable-flyspell-mode-in-window10
+[150]:https://github.com/jueqingsizhe66/XEmacs.d#66-%E6%9C%89%E4%BA%9Btopic%E4%B8%8D%E6%83%B3%E8%AE%A9%E5%88%AB%E4%BA%BA%E7%9C%8B%E5%88%B0org-crypt
+[151]:https://github.com/jueqingsizhe66/XEmacs.d#16-multiple-cursorseditiingel
 [152]:https://github.com/alphapapa/org-bookmark-heading
 [153]:https://github.com/Fuco1/org-clock-budget
 [154]:https://github.com/dfeich/org-clock-convenience
@@ -7709,7 +7709,7 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [157]:https://github.com/rust-lang/rust-mode
 [158]:https://rustbyexample.com/
 [159]:https://github.com/kwrooijen/cargo.el
-[160]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/clock-in.png
+[160]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/clock-in.png
 [161]:http://mirrors.ustc.edu.cn/gnu/emacs/windows/
 [162]: https://www.gpg4win.org/download.html
 [163]:http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -7726,15 +7726,15 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [174]:https://wolfgangmehner.github.io/vim-plugins
 [175]:https://www.cnblogs.com/yangwen0228/p/6418969.html
 [176]:http://www.runoob.com/python/python-exercise-example12.html
-[177]:https://github.com/jueqingsizhe66/ranEmacs.d#84-everything-and-totalcmd
+[177]:https://github.com/jueqingsizhe66/XEmacs.d#84-everything-and-totalcmd
 [178]:https://www.emacswiki.org/emacs/OrgJournal
-[179]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/b3fe1e49b86a79e6c54b28635e9c3ee7af8a6eb8/.orgConf.el#L540
-[180]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/b3fe1e49b86a79e6c54b28635e9c3ee7af8a6eb8/.orgConf.el#L804
-[181]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/b3fe1e49b86a79e6c54b28635e9c3ee7af8a6eb8/.orgConf.el#L858
-[182]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/9d5718b40992c163f82c2c822cd309f5cbf32c40/.orgConf.el#L415
+[179]:https://github.com/jueqingsizhe66/XEmacs.d/blob/b3fe1e49b86a79e6c54b28635e9c3ee7af8a6eb8/.orgConf.el#L540
+[180]:https://github.com/jueqingsizhe66/XEmacs.d/blob/b3fe1e49b86a79e6c54b28635e9c3ee7af8a6eb8/.orgConf.el#L804
+[181]:https://github.com/jueqingsizhe66/XEmacs.d/blob/b3fe1e49b86a79e6c54b28635e9c3ee7af8a6eb8/.orgConf.el#L858
+[182]:https://github.com/jueqingsizhe66/XEmacs.d/blob/9d5718b40992c163f82c2c822cd309f5cbf32c40/.orgConf.el#L415
 [183]:https://stackoverflow.com/questions/25671785/git-fatal-unable-to-auto-detect-email-address
-[184]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/custom.el
-[185]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/f9f7c4b308930b41f797931dade1de4bba27a776/customizations/ui.el#L159
+[184]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/custom.el
+[185]:https://github.com/jueqingsizhe66/XEmacs.d/blob/f9f7c4b308930b41f797931dade1de4bba27a776/customizations/ui.el#L159
 [186]:https://orgmode.org/manual/Storing-searches.html#Storing-searches
 [187]:http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/
 [188]:http://yannesposito.com/Scratch/en/blog/Vim-as-IDE/
@@ -7745,7 +7745,7 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [193]:https://github.com/jacktasia/dumb-jump
 [194]:https://github.com/jacktasia/dumb-diff
 [195]:https://github.com/ggreer/the_silver_searcher#installing
-[196]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/dumb-diff.png
+[196]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/dumb-diff.png
 [197]:https://github.com/jacktasia/dumb-jump/issues/168
 [198]:https://github.com/monochromegane/the_platinum_searcher
 [199]:http://blog.csdn.net/u011729865/article/details/53240101#%E6%95%88%E6%9E%9C%E7%9A%84%E8%A7%86%E9%A2%91%E6%AC%A3%E8%B5%8F
@@ -7758,7 +7758,7 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [206]:https://github.com/tpope/vim-surround
 [207]:https://github.com/syohex/emacs-git-gutter
 [208]:https://github.com/airblade/vim-gitgutter
-[209]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/git-gutter.png
+[209]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/git-gutter.png
 [210]:https://github.com/pidu/git-timemachine
 [211]:https://github.com/emacs-evil/evil 
 [212]:https://github.com/redguardtoo/evil-matchit 
@@ -7766,9 +7766,9 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [214]:https://github.com/syl20bnr/evil-escape 
 [215]:https://github.com/nschum/window-numbering.el 
 [216]:https://jingyan.baidu.com/article/466506581be13ef549e5f82a.html 
-[217]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/gnucrypt.png
-[218]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/gpa.png
-[219]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/secret.png
+[217]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/gnucrypt.png
+[218]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/gpa.png
+[219]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/secret.png
 [220]:http://cnlox.is-programmer.com/posts/34114.html 
 [221]:https://www.tuicool.com/articles/FBzANvE 
 [222]:https://clisp.sourceforge.io/ 
@@ -7785,11 +7785,11 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [233]:https://github.com/zonuexe/emacs-presentation-mode 
 [234]:https://opensource.com/article/18/2/how-create-slides-emacs-org-mode-and-revealjs 
 [235]:http://nadeausoftware.com/articles/2007/11/latency_friendly_customized_bullets_using_unicode_characters 
-[236]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/math.png
+[236]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/math.png
 [237]:http://www.howardism.org/Technical/Emacs/literate-database-example.html 
 [238]:https://www.gnu.org/software/emacs/manual/html_node/org/Priorities.html#Priorities 
 [239]:https://www.gnu.org/software/emacs/manual/html_node/org/Property-syntax.html#Property-syntax 
-[240]:https://github.com/jueqingsizhe66/ranEmacs.d#65-org-mind-map-%E7%BB%93%E5%90%88grpahviz%E5%88%9B%E5%BB%BA%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE 
+[240]:https://github.com/jueqingsizhe66/XEmacs.d#65-org-mind-map-%E7%BB%93%E5%90%88grpahviz%E5%88%9B%E5%BB%BA%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE 
 [241]:https://github.com/theodorewiles/org-mind-map/issues/22 
 [242]:http://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html 
 [243]:http://www.howardism.org/Technical/Emacs/calc.html#Top 
@@ -7813,29 +7813,29 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [261]:http://www.howardism.org/Technical/Other/code-reviews.html 
 [262]:https://www.gnu.org/software/emacs/manual/html_node/elisp/Major-Modes.html#Major-Modes 
 [263]:https://www.gnu.org/software/emacs/manual/html_node/elisp/Minor-Modes.html#Minor-Modes 
-[264]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/cause.png
+[264]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/cause.png
 [265]:http://www.xuefo.net/nr/article47/474653.html 
 [266]:http://irreal.org/blog/?p=7198 
 [267]:https://github.com/bnbeckwith/writegood-mode 
 [268]:http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/ 
 [269]:https://www.cnblogs.com/qlwy/archive/2012/06/15/2551034.html 
 [270]:https://github.com/jueqingsizhe66/windowVimYe#%E8%B7%B3%E8%BD%AC%E5%8E%9F%E7%90%86 
-[271]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/learning.png
+[271]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/learning.png
 [272]:https://github.com/rakanalh/emacs-dashboard 
 [273]:https://github.com/bard/org-dashboard 
 [274]:https://github.com/mhinz/vim-startify 
-[275]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/org-dash.png
+[275]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/org-dash.png
 [276]:https://github.com/purcell/page-break-lines 
 [277]:http://ergoemacs.org/emacs/emacs_line_ending_char.html 
 [278]:https://github.com/dfeich/org-listcruncher 
 [279]:http://orgmode.org/manual/Library-of-Babel.html 
 [280]:https://dfeich.github.io/www/org-mode/emacs/reproducible-research/2018/05/20/reproducible-research-for-management.html 
 [281]:http://org-babel.readthedocs.io/en/latest/ 
-[282]:https://github.com/jueqingsizhe66/ranEmacs.d#102-orgmode-%E8%A1%A8%E6%A0%BC%E8%AF%B4%E6%98%8E 
+[282]:https://github.com/jueqingsizhe66/XEmacs.d#102-orgmode-%E8%A1%A8%E6%A0%BC%E8%AF%B4%E6%98%8E 
 [283]:https://github.com/dfeich/org-babel-examples/blob/master/library-of-babel/dfeich-lob.org 
 [284]:https://github.com/dfeich/org-babel-examples/blob/master/calc/calc.org 
 [285]:https://raw.githubusercontent.com/dfeich/org-babel-examples/master/tables/tables.org
-[286]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/tablestar.png
+[286]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/tablestar.png
 [287]:http://kdr2.com/tech/emacs/1805-approach-org-ref-code-to-text.html
 [288]:https://orgmode.org/worg/org-contrib/babel/library-of-babel.html
 [289]: https://github.com/alphapapa/org-sidebar
@@ -7849,7 +7849,7 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [297]: https://github.com/mpf/spot/
 [298]: https://papers.nips.cc/paper/5735-randomized-block-krylov-methods-for-stronger-and-faster-approximate-singular-value-decomposition
 [299]: https://github.com/yangyangwithgnu/use_vim_as_ide#45-%E4%BB%A3%E7%A0%81%E6%94%B6%E8%97%8F
-[300]: https://github.com/jueqingsizhe66/ranEmacs.d#109-%E4%BC%9F%E5%A4%A7%E7%9A%84awk-and-rename
+[300]: https://github.com/jueqingsizhe66/XEmacs.d#109-%E4%BC%9F%E5%A4%A7%E7%9A%84awk-and-rename
 [301]: http://blog.chinaunix.net/uid-21374062-id-3189744.html
 [302]: http://blog.chinaunix.net/uid-10540984-id-3421486.html
 [303]: https://segmentfault.com/a/1190000005713784
@@ -7858,11 +7858,11 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [306]: https://www.ledger-cli.org/3.0/doc/ledger3.html#Introduction-to-Ledger
 [307]: https://github.com/ledger/ledger-mode
 [308]: https://www.ledger-cli.org/download.html
-[309]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/ledger.png
-[310]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/buffer.png
-[311]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/right.png
+[309]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/ledger.png
+[310]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/buffer.png
+[311]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/right.png
 [312]: https://www.jianshu.com/p/f509c9a9cac0
-[313]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/ledger2.png
+[313]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/ledger2.png
 [314]: https://github.com/abo-abo/ace-window
 [315]: https://github.com/winterTTr/ace-jump-mode
 [316]: https://github.com/ericdanan/counsel-projectile
@@ -7883,32 +7883,32 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [331]: https://github.com/vim-scripts/sketch.vim/blob/master/sketch.tut
 [332]: https://github.com/jueqingsizhe66/windowVimYe#26-sketch-and-drawit
 [333]:http://www.nongnu.org/geiser/geiser_2.html#Installation 
-[334]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/racket.png
-[335]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/chez.png
+[334]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/racket.png
+[335]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/chez.png
 [336]: http://www.nongnu.org/geiser/
 [337]: https://github.com/clojure-emacs/cider
 [338]: https://github.com/xiaohanyu/ac-geiser
-[339]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/racket2.png
+[339]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/racket2.png
 [340]: http://www.nongnu.org/geiser/geiser_3.html#Choosing-a-Scheme-implementation
 [341]: http://docs.racket-lang.org/scribble/getting-started.html
-[342]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/scribble.png
+[342]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/scribble.png
 [343]: http://www.nongnu.org/geiser/geiser_3.html#index-scheme-init-file
 [344]: https://github.com/gregsexton/origami.el
 [345]: https://github.com/gregsexton/origami.el/blob/master/origami-parsers.el
 [346]: https://github.com/alexmurray/evil-vimish-fold 
 [347]: https://github.com/mrkkrp/vimish-fold
-[348]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/vimish-fold.png
+[348]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/vimish-fold.png
 [349]: https://github.com/jgm/pandoc/blob/master/INSTALL.md
 [350]: https://github.com/abo-abo/ace-link
-[351]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/deft.png
+[351]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/deft.png
 [352]: https://jblevins.org/projects/deft/
 [353]: https://github.com/Pranshu258/emacsdoctor
 [354]: https://github.com/howardabrams/dot-files/blob/master/emacs.org#multiple-cursors
 [355]: https://github.com/howardabrams/dot-files/blob/master/emacs.org#block-wrappers
 [356]: https://github.com/rudolfolah/org-doing
 [357]: https://github.com/ttscoff/doing/
-[358]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/shift.png
-[359]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/shift2.png
+[358]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/shift.png
+[359]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/shift2.png
 [360]: https://github.com/rejeep/wrap-region.el
 [361]: https://github.com/bbatsov/projectile/commit/e2762f20d65a4372d4eed766d1c71b09e9e4ef8c
 [362]: https://github.com/bbatsov/projectile/commit/9c6e9813abec6e067c659e9107bf356086a95e04
@@ -7938,12 +7938,12 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [386]: https://github.com/sachac/artbollocks-mode
 [387]: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org#avoiding-weasel-words
 [388]: https://github.com/SirVer/ultisnips
-[389]: https://github.com/jueqingsizhe66/ranEmacs.d/tree/develop/snippets/python-mode
+[389]: https://github.com/jueqingsizhe66/XEmacs.d/tree/develop/snippets/python-mode
 [390]: https://github.com/davidhalter/jedi-vim/
 [391]: https://github.com/davidhalter/jedi
 [392]: https://www.emacswiki.org/emacs/AutoInsertMode
-[393]: https://github.com/jueqingsizhe66/ranEmacs.d/tree/develop/snippets/perl-mode
-[394]: https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/setup-autoinsert.el
+[393]: https://github.com/jueqingsizhe66/XEmacs.d/tree/develop/snippets/perl-mode
+[394]: https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/setup-autoinsert.el
 [395]: https://github.com/WolfgangMehner/vim-plugins
 [396]: https://github.com/manateelazycat/color-rg
 [397]: https://github.com/Wilfred/ag.el
@@ -7964,13 +7964,13 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [412]: https://github.com/jwiegley/emacs-release/blob/master/lisp/jit-lock.el
 [413]: https://elpa.gnu.org/packages/nlinum.html
 [414]: https://github.com/xuchunyang/youdao-dictionary.el
-[415]: https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/init-utils.el
-[416]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/youdao.png
+[415]: https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/init-utils.el
+[416]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/youdao.png
 [417]: https://github.com/manateelazycat/awesome-tab
 [418]: https://emacs-china.org/t/awesome-tab-1-0-emacs/7053
 [419]: https://github.com/yqrashawn/.emacs.d/blob/master/modules/org-agenda.el
 [420]: http://yqrashawn.com/2018/09/17/record-org-mode-recent-activity/
-[421]: https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/.orgConf.el
+[421]: https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/.orgConf.el
 [422]: https://emacs-china.org/t/topic/4815/78
 [423]: https://github.com/bbatsov/emacs-lisp-style-guide#functions
 [424]: https://emacs-china.org/t/topic/3671/3
@@ -7994,7 +7994,7 @@ This snippet creates a personal collection of abbrevs of spelling mistakes, whic
 [442]: https://ssrss.space/user/article?id=20
 [443]: https://github.com/gabesoft/evil-mc
 [444]: https://github.com/manateelazycat/aweshell
-[445]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/org-evil.png
+[445]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/org-evil.png
 [446]: https://github.com/Somelauw/evil-org-mode
 [447]: https://github.com/cofi/evil-leader
 [448]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/setup-evil.el
