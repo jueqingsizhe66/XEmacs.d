@@ -2937,6 +2937,8 @@ CLOCK: [2018-09-28 周五 23:36]--[2018-09-28 周五 23:46] =>  0:10
 :END:
                          Added: [2018-09-28 周五 23:35]
                          
+
+https://emacs-china.org/
           
 *** Emacs的生态理解而言              
 https://github.com/manateelazycat/emacs-application-framework
@@ -2969,3 +2971,37 @@ https://emacs-china.org/t/submodule/6926/7
 https://emacs-china.org/t/awesome-tab-1-0-emacs/7053
 
 https://github.com/manateelazycat/awesome-tab
+** 孙膑斗庞涓 [#B]                                                    :学术:
+:LOGBOOK:
+CLOCK: [2018-09-29 周六 16:43]--[2018-09-29 周六 16:47] =>  0:04
+:END:
+                         Added: [2018-09-29 周六 16:43]
+                         
+
+                         
+岳武穆大破金兵
+
+如何迷惑别人，虚假结合
+
+以多胜少
+                      
+孙膑斗庞涓，边走边扔装备带、子弹、锅盔等，目的迷惑敌人，这是大部队，把敌人引向别处。
+
+
+但是有时候就应该不能撤退?
+比如日本攻南京城的时候，真正士兵没法撤退，没法投降，只能顶上去，这是必死之境地，但依然不能退，退则生灵涂炭。
+
+** 老实人 [#B]                                                      :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-09-29 周六 17:21]--[2018-09-29 周六 17:21] =>  0:00
+:END:
+                         Added: [2018-09-29 周六 17:16]
+                         
+
+                         
+就是一类没胆没主意的人？
+
+要有idea和brave的老实人
+
+老实人的做着本分的工作，但又不是让别人觉得难事，而是能够让人尊敬的事情
+忍耐！坚持到底，水滴石穿!

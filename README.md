@@ -1003,6 +1003,7 @@ A minor mode is also provided that adds key bindings for all these commands on t
 2. counsel-projectile是连接projectile和ivy的工具，相当于map过程，把projectile输出的结果，通过ivy封装，利用ivy的一个特性，list显示出来所有
 选项，使得显示效果好看些.(原来ivy是一个图形化的list列表显示工具)
 
+<2018-09-29 21:03>  C-x C-r 跳转到最近打开的文件
 
 ### 34. Web-mode介绍
 
@@ -7379,6 +7380,15 @@ emms和projectile在<2018-09-29 03:02>更新失败，出现
 Setting current directory: No such file or directory，  ~/.emacs.d/error: no program name specified
 ```
 
+### 157. good org-export-dispatcher css theme
+
+`C-x C-e` so you can export the org file into html file, add [ the following line ][435] into the head of the
+org file ,you will get the good style of your new html file.
+
+``` html
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://gongzhitaao.org/orgcss/org.css"/>
+```
+
 
 ----------
 
@@ -7820,3 +7830,4 @@ Setting current directory: No such file or directory，  ~/.emacs.d/error: no pr
 [432]: https://suckless.org/philosophy/
 [433]: https://github.com/bbatsov/emacs.d
 [434]: https://www.joelonsoftware.com/2009/09/23/the-duct-tape-programmer/
+[435]: https://github.com/gongzhitaao/orgcss

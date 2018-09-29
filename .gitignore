@@ -21,3 +21,4 @@ vimish-fold/
 emms/
 eshell/
 .python-environments/
+*.docx

@@ -60,7 +60,7 @@ with 81 cells along the span.
 
 An inflow boundary condition was placed D upstream of the rortor, and pressure
 outlet was placed D down-stream. The no-slip wall was assigned on other 
-surfaces.  
+surfaces.   
 ** 3.2 NREL 5MW wind turbine
 y+=0.3
 * Results and Discussion
