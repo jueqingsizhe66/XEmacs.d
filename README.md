@@ -7436,6 +7436,18 @@ org file ,you will get the good style of your new html file.
 
 有空研究一下 [cider-spy][439], [cider-eval-sexp-fu][440]没什么用
 
+### 160. 科学上网
+
+源自于shadowsocket的[ssrss.space][441], 使用时需要注意
+
+1. [设置dns][442]，不要自动获取,使用114.114.114.144 
+2. 关闭禁止广告插件等，在chrome中可以停用！否则会使得浏览器不走本地代理
+3. 其他按照教程走即可，先添加订阅，然后不适用网络代理更新订阅即可。
+
+
+现在使用感觉还不错。
+
+
 
 ----------
 
@@ -7883,3 +7895,5 @@ org file ,you will get the good style of your new html file.
 [438]: https://github.com/clojure-emacs/helm-cider
 [439]: https://github.com/jonpither/cider-spy
 [440]: https://github.com/clojure-emacs/cider-eval-sexp-fu
+[441]: https://ssrss.space/user/article?id=13
+[442]: https://ssrss.space/user/article?id=20
