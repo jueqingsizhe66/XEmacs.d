@@ -1068,7 +1068,7 @@ It super
 
 #### 函数
 
-1. [cljr-thread-last-all][61] 使用-->进行重构，-->意思抽取最后一个参数放在第一行，然后倒数第二个第二行 依次排列
+1. [cljr-thread-last-all][61] 使用-->进行重构，-->意思抽取最后一个参数放在第一行，然后倒数第二个第二行 依次排列(<2018-10-05 00:23> 在第一个圆括号处)
 2. [cljr-thread-first-all][62] 使用->进行重构, -> 意思抽取最内层的第一个参数放在第一行 然后递归出来。
 3. [cljr-unwind-all][63] -->和->的反向操作
 4. [cljr-unwind][64]
@@ -7078,7 +7078,9 @@ org-ref设置
 
 [ Artbollocks-mode ][386] is written by [sachac][387] who is very keen on the development of the emacs.
 
-通过该mode可以让一些关键字、重复字和你定义的术语显示出来，自己再进行修改
+通过该mode可以让一些关键字、重复字和你定义的术语显示出来(避免一些陈腔滥调cliches和一些坏语法bad grammer)，自己再进行修改
+<2018-10-03 14:58>回顾了一遍。
+
 
 ```
 (use-package artbollocks-mode
@@ -7105,10 +7107,34 @@ org-ref设置
                            "leverage") t) "\\b"))
     ;; Don't show the art critic words, or at least until I figure
     ;; out my own jargon
-    (setq artbollocks-jargon nil)))
+    (setq artbollocks-jargon nil)
+    (add-hook 'text-mode-hook 'artbollocks-mode)
+    (add-hook 'markdown-mode-hook 'artbollocks-mode)
+    (add-hook 'org-mode-hook 'artbollocks-mode)
+   
+))
 ```
 
+If you do not add the add-hook statements to your .emacs file, you will have to
+enable artbollocks-mode manually by typing the following in Emacs:
 
+`M-x artbollocks-mode`
+
+NOTE: If you manually enable artbollocks-mode, you might need to force
+re-fontification initially. To do so, type the following in Emacs:
+
+`M-x font-lock-fontify-buffer`
+
+Art Bollocks Mode highlights those pesky weasel words that slip into
+writing.
+
+To load it automatically, add this to your ~/.emacs.d/init.el or ~/.emacs:
+
+```
+(add-to-list 'load-path "/wherever/you/extracted/artbollocks-mode")
+(require 'artbollocks-mode)
+(add-hook 'text-mode-hook 'artbollocks-mode)
+```
 ### 147. 记录一下你的敲击速度
 
 
@@ -7387,7 +7413,28 @@ org file ,you will get the good style of your new html file.
 
 ``` html
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://gongzhitaao.org/orgcss/org.css"/>
+
 ```
+
+
+### 158. Super auto save
+
+突然间电脑断电了，也能自动保存，切换buffer也能自动保存。使得你在ace-window的情况下或者查找文件的时候也能保存。
+大多数总会忘记保存的。
+
+[super-save blogs][437]
+
+[Super-save][436] 不错的插件，用于自动保存。
+
+### 159. helm-cider
+
+[helm-cider][438] is good interface for helm connected to cider.
+
+1. `M-x helm-cider-apropos-ns` 查看一些帮助信息
+
+2. `M-x helm-cider-cheetsheet` 可以看到一些常用的函数
+
+有空研究一下 [cider-spy][439], [cider-eval-sexp-fu][440]没什么用
 
 
 ----------
@@ -7831,3 +7878,8 @@ org file ,you will get the good style of your new html file.
 [433]: https://github.com/bbatsov/emacs.d
 [434]: https://www.joelonsoftware.com/2009/09/23/the-duct-tape-programmer/
 [435]: https://github.com/gongzhitaao/orgcss
+[436]: https://github.com/bbatsov/super-save/
+[437]: http://emacsredux.com/blog/2018/09/29/super-save-0-dot-3/
+[438]: https://github.com/clojure-emacs/helm-cider
+[439]: https://github.com/jonpither/cider-spy
+[440]: https://github.com/clojure-emacs/cider-eval-sexp-fu

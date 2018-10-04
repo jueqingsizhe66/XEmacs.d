@@ -1,4 +1,4 @@
-* Abstract
+* 1. Abstract
 :LOGBOOK:
 CLOCK: [2018-09-21 周五 14:33]--[2018-09-21 周五 15:17] =>  0:44
 :END:
@@ -28,9 +28,9 @@ Keywords: unsteady, yawing, aerodynamic performance, flow-field analysis
 
 We used two different turbine models to assess how the size of the  turbine rotor
 affects the farm efficiency and effectiveness of the control starategy. T
-* Introduction
+* 2. Introduction
 
-* Test cases
+* 3. Test cases
 First, the NREL Phase VI[13] wind turbine was employed due to available test 
 data under yaw. Seven test cases under yaw were considered, and the results 
 were compared to experiments. 
@@ -63,7 +63,67 @@ outlet was placed D down-stream. The no-slip wall was assigned on other
 surfaces.   
 ** 3.2 NREL 5MW wind turbine
 y+=0.3
-* Results and Discussion
+The DTU 10MW reference wind turbine(RWT) designed by NREL[13] was also 
+employed in this paper. The blade uses the DU-w aerofoil family[30] with 
+relative thickness ranging from 20% to 40%. The blade has non-linear 
+distribution of the chord,relative thickness and twist angle. The rotor
+diameter is 126m, and the wind turbine operates at a wind speed of 11.4m/s
+with a rotational speed of 12.1rpm, resulting in the tip speed ratio lambda
+=7. The blades have a pre-conding of 2.5°.
+*** 3.2.1 Grid and computational parameters
+The NREL 5MW RWT rotor was modelled without nacelle and tower. The grid
+consisted of 3.67w cells, giving 1.3 cells per blade. The grid density is
+adequate for the studied wind turbine, as show in Sec. 4.1. Work of Tran and
+Kim[41] employed 6M cells grid for 5MW wind turbine. The normal distance 
+for the first cells of the blocks adjacent to the blade surface was 
+1*10^-6m. Based on the free-stream condition and the size of the first 
+cell, the y+ parameterwas y+=0.3. The first layer consisted of 12 cells
+in the normal direction to the blade surface, and 132 cells were distributed
+around the aerofoil section. The blade surface was resolved with 93 cells
+along the span. 
+
+An inflow boundary condition was placed 124D blade radius upstream of the 
+rotor, and pressure outlet boundary condition was placed 200 blade radius 
+downstream. The ...
+
+The Computational domain with the corresponding boundaries, a slice through
+the mesh close to the blade surface, and the surface mesh of the blade
+are shown in Fig.3. This domain size was based on the previous studies[34].
+
+T-SST turbulence model was employed. The time step for the unsteady 
+computations was set to deltaT=6.9*10^-2s, and corrsponds to the time required
+for the rotor to perform five degree of revolution. This step is thought 
+to be adequate for the studied wind turbine. Work of Tran and Kim[43] employed
+2.0 degree increment of azimuth angle.
+
+
+* 4. Results and Discussion
+** 4.1 Grid convergence study
+First, a grid convergence study for the NREL-5MW RWT was performed. The conditions
+selected for the mesh convergence study are presented in Tab.3. This case
+
+The first grid had 1.6M cells, and was then refined up to the size of 6.2M
+cells. Convergence of the loads as function of the grid size are presented
+in Fig.4.
+
+The conclusion from the grid convergence tests is that the grid size of about
+3M cells per blade is sufficient to obtain load estimates at thest conditions.
+
+N
+
+** 4.2 NREL PhaseVI wind turbine
+
+** 4.3 NREL 5MW RWT
+
+** Static  and dynamci yawing of NREL 5MW RWT
+This section presents the results obtained for NREL 5MW RWT with static and 
+dynamic yaw misalignment. First, the comparsion of the aligned and static 
+yaw cases is performed in this section. This involves comparison of the 
+aligned case A0 and the fixed yaw case of 3°. Next, the sinusoidal  yawing 
+case Y3 with yaw amplitude A=30° and period Tyaw=5s is compared to the fixed
+yaw cases(不要用Y1 Y2). The frequency of motion was chosen based on the most
+probable frequency of the sea.
+
 
 * Conclusion
 

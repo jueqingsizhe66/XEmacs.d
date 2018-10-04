@@ -43,7 +43,18 @@
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory
                                                "backups"))))
 (setq auto-save-default nil)
+(use-package super-save
+  :ensure t
+  :config
+  (super-save-mode +1)
+  (setq super-save-auto-save-when-idle t)
+ ;; add integration with ace-window
+  (add-to-list 'super-save-triggers 'ace-window) 
+;; save on find-file
+  (add-to-list 'super-save-hook-triggers 'find-file-hook)
+  (setq auto-save-default nil)
 
+)
 
 ;; comments
 (defun toggle-comment-on-line ()

@@ -236,6 +236,9 @@ Captured %<%Y-%m-%d %H:%M>
            ;;               "** %^{BriefDesc} %T %^g\n%?"   :clock-in t :clock-resume t :immediate-finish t ) 
           ("b" "Book" entry  (file+olp+datetree "~/.emacs.d/GTD/orgBoss/Book/book.org")   
                         "** %^{Enter the Book Name} %t :BOOK: \n%[~/.emacs.d/GTD/orgTemplate/.book_template.txt]\n")
+          ("o" "Reference add" entry  (file+olp+datetree "~/.emacs.d/GTD/orgBoss/Book/reference.org")   
+                        "** %^{Enter the Chapter Name} %t :Chapter: \n%[~/.emacs.d/GTD/orgTemplate/.book_template.txt]\n")
+
           ("f" "Film" entry (  file+olp+datetree "~/.emacs.d/GTD/orgBoss/Film/film.org")  
                         "** %^{Enter the Film Name} %t :FILM: \n%[~/.emacs.d/GTD/orgTemplate/.film_template.txt]\n")
           ("d" "Daily Review" entry   (file+olp+datetree "~/.emacs.d/GTD/orgBoss/DailyReview/daily.org")  
@@ -917,7 +920,7 @@ In ~%s~:
 ;;bind key `C-c s i’ to the function org-inser-src-block
 (add-hook 'org-mode-hook '(lambda ()
                             ;; turn on flyspell-mode by default
-                            (flyspell-mode 0)
+                            (flyspell-mode 1)
                             ;;(flyspell-mode 1)
                             ;; C-TAB for expanding
                             (local-set-key (kbd "C-<tab>")
@@ -1688,10 +1691,15 @@ e.g. Sunday, September 17, 2000."
                            "nice"
                            "action"
                            "utilize"
-                           "leverage") t) "\\b"))
+                           "leverage"
+                           "obvious") t) "\\b"))
     ;; Don't show the art critic words, or at least until I figure
     ;; out my own jargon
-    (setq artbollocks-jargon nil)))
+    (setq artbollocks-jargon nil)
+    (add-hook 'text-mode-hook 'artbollocks-mode)
+    (add-hook 'markdown-mode-hook 'artbollocks-mode)
+    (add-hook 'org-mode-hook 'artbollocks-mode)
+))
 
 ;;; http://emacsredux.com/blog/2013/03/27/open-file-in-external-program/
 (defun prelude-open-with (arg)

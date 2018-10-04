@@ -1,4 +1,3 @@
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://gongzhitaao.org/orgcss/org.css"/>
 * 创意
 ** Introduction
 *** subtree
@@ -68,7 +67,7 @@
 也许只有明白这个过程，你的人生才能得到进一步的生活。
 
 叶：认识源于过程，专业始于投入
-
+<2018-09-29 22:06> 依然有用
 这阶段、今年、五年内你要做什么最重要的一件事情呢？
 ** 任何一项研究，都得写明背景 
 
@@ -176,13 +175,18 @@ mean subtly different concepts. I'll also use terms explore and
 filter in describing various phases in user interaction.
 
 ***  Suggestion
-Offer the user some suggestions that help explore the space of choices. (metaphor: avoid the blank sheet of paper syndrome).
+Offer the user some suggestions that help explore the space of choices. 
+(metaphor: avoid the blank sheet of paper syndrome).
 ***  Completion
-Filter the available choices based on user input with the goal of reaching the target as rapidly as possible.
+Filter the available choices based on user input with the goal of 
+reaching the target as rapidly as possible.
 ***  Explore
-User does not necessarily know what he is looking for, but expects to be able to recognize what he wants from the displayed choices.
+User does not necessarily know what he is looking for, but expects to be 
+able to recognize what he wants from the displayed choices.
 ***  Target
-User knows exactly what he wants, e.g., filename, or function-name, but would still like to get there with the fewest possible number of keystrokes, along with the needed memory aids to guide the decision.
+User knows exactly what he wants, e.g., filename, or function-name, 
+but would still like to get there with the fewest possible number of 
+keystrokes, along with the needed memory aids to guide the decision.
 
 
 Note that in practice, suggestions and completions work
@@ -221,9 +225,11 @@ mean subtly different concepts. I'll also use terms explore and
 filter in describing various phases in user interaction.
 
 Suggestion
-Offer the user some suggestions that help explore the space of choices. (metaphor: avoid the blank sheet of paper syndrome).
+Offer the user some suggestions that help explore the space of choices. 
+(metaphor: avoid the blank sheet of paper syndrome).
 Completion
-Filter the available choices based on user input with the goal of reaching the target as rapidly as possible.
+Filter the available choices based on user input with the goal of 
+reaching the target as rapidly as possible.
 Explore
 User does not necessarily know what he is looking for, but expects to be able to recognize what he wants from the displayed choices.
 Target
@@ -236,8 +242,8 @@ guiding the user through the pace of available choices. In a typical
 user interaction session, the space of suggestions gets filtered by
 user input to produce the available completions (choices) for the next
 round of user input — think of this as a
-Suggest/Input/Filter/Target (SIFT) interaction loop. Similarly, explore and
-target type activities typically go hand-in-hand, with explore
+Suggest/Input/Filter/Target (SIFT) interaction loop. Similarly, explore 
+and target type activities typically go hand-in-hand, with explore
 serving as a memory-aid for locating the target.
 
 
@@ -524,7 +530,6 @@ old with adaption and modern with more powerful
 当然别人可能就不好这口也有可能，有些菜只能提供给一些人！
 
 但是洗干净、工作做好，是第一步!
-** 
 ** 协作带来成长 
 
 合作的魅力
@@ -625,3 +630,23 @@ old with adaption and modern with more powerful
 
 对自己要求高，对别人要求低，活得就舒心了
  [[file:~/.emacs.d/GTD/orgBoss/Site/www.site.org::*mastodon][mastodon]]
+** Slow down and stop before burning out 
+
+slowdown
+slow-down
+学会判断的能力 甄子丹《大师兄》, 在失败中成长，而不是在失败中自暴自弃。
+之所以谨慎，因为吃过亏，没吃过亏的人，通常是自己过不去，吃过亏长点
+记性，反而会一致对外。
+
+
+Writing code, documentation, helping users
+about bugs or helm usage etc., ant it was too much.
+
+I've learned to stop or slow down before burning out. Helm package作者Thierry
+Volpiatto一个攀岩爱好者。
+
+在截稿前放慢自己的步调，有时候是一种沉淀。
+这也是一种学习。
+
+
+http://sachachua.com/blog/2018/09/interview-with-thierry-volpiatto/

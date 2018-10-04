@@ -91,3 +91,5 @@
 
 
 (key-chord-define-global "fe" 'cljr-create-fn-from-example)
+
+(helm-cider-mode 1)

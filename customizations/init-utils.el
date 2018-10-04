@@ -23,7 +23,9 @@
 (use-package wgrep
   :init
   (setq wgrep-auto-save-buffer t)
+  (setq wgrep-enable-key "r")
   (setq wgrep-change-readonly-file t))
+;; You can change the default key binding to switch to wgrep.
 
 (use-package ag
   :defines projectile-command-map

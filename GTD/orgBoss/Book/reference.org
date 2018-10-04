@@ -1,0 +1,16 @@
+
+* 2018
+** 2018-10 十月
+*** 2018-10-04 星期四
+**** Design of a wind turbine rotor for maximum aerodynamic efficiency <2018-10-04 周四> :Chapter: 
+ :PROPERTIES:
+ :Title:   Design of a wind turbine  
+ :Author: Johansen et al. 
+ :Year:      2009
+ :Publisher:
+ :END:
+ Comments:
+ 
+***** Flow visualizations
+
+To get further physical insight into the flow around the present rotor, some visualization plots will be given ..

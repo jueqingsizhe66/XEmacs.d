@@ -2464,7 +2464,7 @@ You see, there will always be more to learn. There will always be challenges to 
 1. You aren’t learning a computer language or a platform or a system of abstract concepts.
 2. You are learning a way of thinking.
 3. You are learning how to break down a big challenge into smaller pieces.
-4. You are learning how to try different approaches to understand and solve each small part.
+4. You are learning how to try different approaches to understand and solve each small part.(方法总比问题多)
 5. You are learning to set aside your worries and fears so that you can focus. You are learning how to adapt,
  even as changes come quicker and quicker.
 6. You are learning how to organize your thoughts. It just so happens that you’re organizing them in a way a computer can understand.
@@ -2492,7 +2492,7 @@ There will always be some people who haven’t quite figured out their own insec
 people who want to establish their position by putting you down.
  You can learn how to recognize what they’re doing. That makes it easier to ignore them.
  Don’t mind them if they try to make you feel bad for asking stupid questions.
- It just means they’re missing out on opportunities to learn how to ask and learn how to learn.
+ It just means they’re missing out on opportunities to learn how to ask and learn how to learn.(try to ask yourself questions)
  Don’t partner with them. Look for people who help others up, not tear them down.
 
 It is not easy to wrap your mind around new topics or break down a complex unknown.
@@ -2533,32 +2533,36 @@ I started using Emacs a
 ** 2018蜜柚 [#B]                                              :@NCEPU:crypt:
 -----BEGIN PGP MESSAGE-----
 
-hQEMAw7kGOoigxp9AQgAqxkts04AyZuRGP13/kpwbmOZasqhpDFDW0MGAsSphqps
-mju4nE5gchNIj2aSJ68YIREIfjvzQ7NhhT59FsIivqxKBxrnxBBZRJag8gSUVACv
-FZkXKnAwO5mlxlGgSZydudTsljFSh/E0OvCtBF1/h72QMVf3DPFZ8P5fqQYEE4ih
-/gt9iLbAdc9f2d8ort739XSsxQiXwPWIKs5BlCVSZpXIm5M9Iwu/1BrDtUZdjPik
-Cvc1m+q3Nk/4ShmrmT8Lhjy1OyDL5QzJ0SrpYbjpcTJpYPnUpfJd36u3VGUmDuPr
-yVSuKjCbHjHIjyTOjm/rpYI9Ppw+gWlLqlURh6FH6tLpAQZiqWvkSieIfUunv/lr
-dFJfxB2vu6FhRl5a2aLNwil8s8IE5/XaJ9IHgkHK4IT/Dq/7OyLgsXwx/Fb5ii3m
-gzuA+pGcXiYVEpPgidGwQBFknXYvFZzeQY5Y0Py3bplL6u/5VinX3XMfybTruRGw
-vUp7Gb6FVr4dszYdaD60wqL0Iw27Qn0BG2ZyVhonF8GfTJ4gSjSIdRZZQTaEUOMa
-VBnTo4qL9ll6G6GAVuVJhMF7WbQZ8mD2laxniccw7hWyO3/GCR8UN9g06Y5ulNHa
-xH/ivjPJvv3JB5m9LlDmgWP8RKygOy2EDB6eIZetLGWM8F+dFmvHJ0W/D1UDzFVs
-rwgl1FHCfISoIm66uZkmrP6tyRmRR1PJnp/26HIutw2UwzJZiEfBB54Zb3bQ4JuI
-7AzIojaex+vM2RhbRro5dd/ZrvXbJvuIUqduWHcP0XqRKs7YSNgsWF6iXqEVw5Dp
-swFiHicVO1n1l6TZh1y4A5tR3b/9weUsOtFZl3a0YI005usOBprgjJFwS2aE2SCe
-w/Ya9iQ49fwJTvILygMX/krLXrkx5I3NJZJEjNlB0yioP8iBasSZYbQTOstsByTt
-lhYO0nRrUj3POSYkByx0/f0Fl2tMOTf/aVM5aj5ElOE/l2cQcU+R0UsPNhC9oRDc
-uBvArBS+pzJhfmBa6y4paZ3AtLVy2CiaP8H+ifHHqzz9NWSe/1gXiW5m9BeIaYOj
-9t/llhkYEgHqYMCb6/0Ll+XUtFUIgaz4pQEbjOCkvkPOPoOzfJ043ajJr38ddh6Q
-ZC70ZawYib84u+6ovlHb82n3C4Zz4xeqAN/+NI2LxvoWC7/z3eR0rJFtH7/c0PKI
-HuexH36V7Jcp9nJY48jqYnpPzeg+WsYVSCrxfaVBSPsR4vn4wHLDpXmBmYa1FEfo
-cegtPQv0w26KnaJwtcLLKR4FzZD/WAW1z3dz/yJ+xvjz7uwc/zbaOfcc/STHfWLf
-rZ+mlTubgB7oTwVszSbcXOKwlDo6nU2tsxmDgrZDZHqt6e4E8BdYehK2W4ZMZP47
-KWtNi/ykUt8DouRgQo4FYk45YhJdSa3eAjY7aJTQ0BnTwPYSZ4c2YtD5+krBcK1Z
-Km60ZDl09w4LkwGlH91dIFYG/VtSU9o5xQZXIN5KNMI/Z5aH68iuP/IYEBLKuywE
-4p9RcH6DLw==
-=TIDR
+hQEMAw7kGOoigxp9AQgAjzbErrUi29/y7sPri8ike1I1TV7qDhOCMRgcFAjtfjqB
+sWCGgNqt14RiJmVzGm3v2G5iKzGIFkizv413iQMrs674VAs10QBfPfHsVu5izB1T
+cwgo16MM2HTwZIurrwCugVK+LQmC4maUExzJaQ0mmzW0NqgFuypC0Ov0V01XPecw
+eGFfhZtWcyQo91W+EePwRyGA6kEhdYB3lsFX4FJIZx6cpKFR8wUNcDDcFZ2R962s
+GnHOOHDRS4W8DYFkQCJFGAKheAeVE9u6x6a3rdl7XOUiFtsgiBZOj9WfWTiTye92
+8WfafDVElfx3EbrtDCfCpT3gRnZ1pW3wkl+mWunuWtLqAX2U3pqJfHvzB6wSiXyH
+1HjFnzcolFM5VcXPgvnaYGwWC673IMT7SPrFZoZFd2N28G0RSP5M3EWccLzdK2tg
+zTUYsPQG0nSm+1raK+YU/NFtNiQQ1iTf+H4Oxsmhl9ht80+r/SvKeWz/nlwG6RXf
+86BqOZ9hgYdYWJ85y3KfQ2zzQqZTnKNSZXjg+O9XK2ASEfrGASxx1QyCjJ8W/Hvo
+CJOYvKW2NKA7MmqxaFv7N7aja6v7LnzSZACw6+isbTzNba6WUHdwqhK28pT5tUBN
+0iQD479NTQFvTA447lUCh7Spy40b9RLbGstSq8ibBhkeM3OAZw/Aza4o3UcmK/7y
+dkjgkrlPkm4UAOfwT6PVi27KmshUYiBaPyzz0ZBeSbvWEXIRv9Lb4/bA2vk+/wcy
+X7WGAj+ZJ/m38mrp9zAOWp9XoIyYUL25tYyVj946EkEmqr0EdODNAvxCZ2FmHKQ8
+t+D7AUORi6HEYxDn2cR9xyoUVNbHOJDNg1qEEkT6lxuMM2ovbH+TKg4awze9RfuB
+SNUquzoPsSnuvni+PnaQDqNh/3FNYLHWLzIbElSU4dvywgHBjMzT6GcX8CP6ephC
+3OIgytJyHe9HQq847xPlbF96LtZ/i453KkDKLxc7IsGlNZBn4b7Cp3wRg6Jc8GEw
+ciYZXhsiCmW8Mt7ri4RHCZoMAFN0+rIRr9P3oH+/1DLTvyGRqTFt7fGBOCSgcVIH
+1qktFClClME/DMQVf/Bu4I8DW36ri9Qh0C7e1VU+TsjaoiJ9zAWXz9W6mj8qE3DJ
+btPhnjmeMjb8rgfn4GCPkelhFKOgBxImQOWKU4amccA6bLDtOm2x+4mDu7++JytP
+axESwhZFTObXCw3RF3ojaipJtyTTi+NEU5fQw2K9k5BFtqHJ1hyL7smu8rf6/haq
+wnnaYaTFyPCXHfsz/Bd06mMy57F1oa0PC3eDHmuL+Qe1Bi5CmqZALxCQoUyr/UZE
+DiPpzA5zgl2X+sb1SU1ZiliQgDyBPKLCMaJpEcpd95Af1+Qqn8bhIFaUmHcWIHgb
+7pOuGGnQ9Ox9nep2OgnTav5ETQ/p6dKJP6EtFAkCt2KG4w4nWYExJcVf9VbMsrf7
+70mavsqnYvDn2NUEhpce0C/8fuz0KXGkG5ChVqs8QHnXY0a04xUGeW6O0tcqwV0e
+yxUW3O9iplGcGVbyX8rilNt8XijOl+H8TKMG0pQ2C5t8FhMjedP1fCV78YvEiaCk
+H+RQBFBvymJaXHGXgOVPwkvIKwmSCO7+ZFl2a97PuiCYDcpaQpJeL8QVbd2E71b1
+9r0NDEWB9DwmlGHmSdQvyRh4cW2lFiiY7/X4YxHAQGgs9aNVNbh07eY56BSH7Xwn
+QlXQxEGQltVTRlOrMGdlG0wcxidtKKxVodt6F+Ar6bBsseEotQ3n7HuQ8OKd4nOg
+t6DlLMAnEbfzljjIb+YJn644U9yzvfdgYiZeEBLcusBGJMyyoI33
+=vrbf
 -----END PGP MESSAGE-----
 ** 计算机程序技术 [#B]                                            :@Company:
 :LOGBOOK:
@@ -3005,3 +3009,38 @@ CLOCK: [2018-09-29 周六 17:21]--[2018-09-29 周六 17:21] =>  0:00
 
 老实人的做着本分的工作，但又不是让别人觉得难事，而是能够让人尊敬的事情
 忍耐！坚持到底，水滴石穿!
+** turbulent intensity for turbsim [#B]                               :学术:
+:LOGBOOK:
+:END:
+                         Added: [2018-10-02 周二 08:37]
+
+I know that the turbulence intensity is the standard deviation /mean value of a time series of
+U component at a specific point.
+** sectioning and organization [#B]                              :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-10-03 周三 09:39]--[2018-10-03 周三 09:39] =>  0:00
+- Clocked out on T:[2018-10-03 周三 09:39] \\
+
+  Below I break down a discussion of features as I found them when I was considering each package.
+  Since all of the software I consider is under rapid development, my discussion
+  may be dated or incomplete. I divide my discussion into several groups. The first group described
+  in Table 1 covers features for writing latex or in some cases markdown code for
+  adding text narratives to your document. The features I am interested in are \(LateX\) math, previewing equations for debugging, sectioning and document organization, referencing
+  and footnotes, etc. One of the most important features here is the quality of the pdf output. It is a subjective consideration, but for my purposes I am referring to how close the output is
+  to a submission ready manuscript (or blog post).
+http://rlhick.people.wm.edu/posts/reproducible-research.html#fnr.16
+
+:END:
+                         Added: [2018-10-03 周三 09:39]
+** 为什么总是会忘了什么？(10s) [#B]                                  :@Home:
+:LOGBOOK:
+CLOCK: [2018-10-04 周四 09:50]--[2018-10-04 周四 09:53] =>  0:03
+:END:
+                         Added: [2018-10-04 周四 09:49]
+                         
+
+忘记该做的事情
+
+为何不闭上眼睛(10s)钟，仔细聆听你的心声，让所有事情在你的脑海里面过一遍。
+
+在你准备付诸行动之前，一定得记住这个10s
