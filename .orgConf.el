@@ -8,7 +8,8 @@
 ;设置之后，打开 .org 扩展的文件会自动进入 org 模式;
 ;; The following lines are always needed. Choose your own keys.
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\|wiki\\)$" . org-mode))
-(setq shr-external-browser "chromium-browser")
+
+;(setq shr-external-browser "chromium-browser")
 (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 ;(global-set-key "\C-c l" 'org-store-link) ;;有问题
 ;(global-set-key "\C-c a" 'org-agenda) ;; 有问题
@@ -268,9 +269,6 @@ Captured %<%Y-%m-%d %H:%M>
           )
          ("h" "Habit" entry (file "~/.emacs.d/GTD/orgBoss/Habit/habits.org")
           "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"  :clock-in t :clock-resume t )
-        ("k" "work" entry (file+headline org-default-notes-file "Cocos2D-X") 
-           "* Cos [#A] %?\n  %i\n %U"                                          
-           :empty-lines 1)                                                     
         ("c" "code snippet" entry (file "~/.emacs.d/GTD/orgBoss/code-snippets.org")
             "* %?\n%(my/org-capture-code-snippet \"%F\")")        
 ))
@@ -1393,7 +1391,9 @@ e.g. Sunday, September 17, 2000."
 ;;          "~/.emacs.d/GTD/orgBoss/newgtd.org"        ;;
 ;;          "\\* Articles")))                          ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq browse-url-browser-function 'eww-browse-url)
+
+;; comment it， don't want emacs to browse url with firefox
+;(setq browse-url-browser-function 'eww-browse-url)
 
 
 (defvar my/espeak-command "c://eSpeak//command_line//espeak.exe")
@@ -1494,9 +1494,11 @@ e.g. Sunday, September 17, 2000."
   (setq org-brain-file-entries-use-title nil)
   (setq org-id-track-globally t)
   (setq org-id-locations-file "~/.emacs.d/.org-id-locations")
-  (push '("b" "Brain" plain (function org-brain-goto-end)
-          "* %i%?" :empty-lines 1)
-        org-capture-templates)
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; (push '("b" "Brain" plain (function org-brain-goto-end) ;;
+  ;;         "* %i%?" :empty-lines 1)                        ;;
+  ;;       org-capture-templates)                            ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (setq org-brain-visualize-default-choices 'all)
   (setq org-brain-title-max-length 12))
 
@@ -1692,15 +1694,21 @@ e.g. Sunday, September 17, 2000."
                            "action"
                            "utilize"
                            "leverage"
-                           "obvious") t) "\\b"))
+                           "obvious"
+                           "detail"
+                           "can"
+                           "there are"
+) t) "\\b"))
     ;; Don't show the art critic words, or at least until I figure
     ;; out my own jargon
     (setq artbollocks-jargon nil)
+    (autoload 'artbollocks-mode "artbollocks-mode")
     (add-hook 'text-mode-hook 'artbollocks-mode)
     (add-hook 'markdown-mode-hook 'artbollocks-mode)
     (add-hook 'org-mode-hook 'artbollocks-mode)
 ))
 
+;(setq artbollocks-mode t)
 ;;; http://emacsredux.com/blog/2013/03/27/open-file-in-external-program/
 (defun prelude-open-with (arg)
   "Open visited file in default external program.

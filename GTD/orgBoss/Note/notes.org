@@ -2975,6 +2975,17 @@ https://emacs-china.org/t/submodule/6926/7
 https://emacs-china.org/t/awesome-tab-1-0-emacs/7053
 
 https://github.com/manateelazycat/awesome-tab
+*** Emacs Application Framework(EAF)
+https://www.jianshu.com/p/3ebbfa41248c
+
+Emacs Application Framework 的目标
+增强Emacs的图形化能力, 所有需要高性能图形绘制的功能都用EAF来实现
+让Emacs专注于文本编程环境的开发, 并保持 Elisp 现有的生态不会因为引入图形化功能发生重大的变化
+通过增强Emacs的图形化插件来获得现代IDE的很多能力, 使得Emacser能够永久的生活在Emacs中.
+
+
+https://www.emacswiki.org/emacs/AndyStewart
+
 ** 孙膑斗庞涓 [#B]                                                    :学术:
 :LOGBOOK:
 CLOCK: [2018-09-29 周六 16:43]--[2018-09-29 周六 16:47] =>  0:04
@@ -3044,3 +3055,125 @@ CLOCK: [2018-10-04 周四 09:50]--[2018-10-04 周四 09:53] =>  0:03
 为何不闭上眼睛(10s)钟，仔细聆听你的心声，让所有事情在你的脑海里面过一遍。
 
 在你准备付诸行动之前，一定得记住这个10s
+** 口臭 [#B]                                                      :@Company:
+:LOGBOOK:
+CLOCK: [2018-10-06 周六 12:30]--[2018-10-06 周六 12:30] =>  0:00
+- Clocked out on T:[2018-10-06 周六 12:30] \\
+  鲁迅曾说过，人有四件事藏不住
+  
+  咳嗽、贫穷、喜欢
+  
+  还有口臭
+:END:
+                         Added: [2018-10-06 周六 12:30]
+                         
+
+                         
+引用名人名言瞎说,不好！
+口腔内的细菌生态平衡就会被打破
+
+滋生出大量的厌氧菌
+
+发出浓烈的臭味
+
+这时，就会形成口臭
+** pyqt [#B]                                                        :python:
+:LOGBOOK:
+CLOCK: [2018-10-06 周六 12:59]--[2018-10-06 周六 12:59] =>  0:00
+- Clocked out on T:[2018-10-06 周六 12:59] \\
+  Python 是一个完美写Qt/Gtk的语言，而且Python可以直接调用很多线程的库，可以在短时间内极大的扩展emacs的能力。 就像上面的文件名类型判断， 一个 pymediainfo, 几行代码就搞定了。
+:END:
+                         Added: [2018-10-06 周六 12:59]
+                         
+   https://emacs-china.org/t/topic/6199/60                      
+我们想不到，是因为我们对 emacs 和 xlib 等底层信息了解的不多，所以我们就不会产生这种想法
+
+不断追逐底层的过程，你才会发现能做的事情很多，完全架空干起来就没干劲，要有专研的精神。
+
+
+eaf 是用来开发 GUI 的应用程序，为了无缝集成应用程序，做了很多框架性的东西，比如事件伪造和转发，窗口混合，窗口管理等工作。
+
+如果要做一个Company的东西，非常简单，一个PyQT5窗口，然后 xlib reparent 粘贴上去，给 
+elisp post-command-insert-hook 加一个 hook ,PyQt5窗口跟着光标一动就可以了。
+
+GUI版的下拉框太简单了
+
+Emacs 需要的是分屏以后，可以快速组合不同的 mode 的buffer进行协同工作。
+
+如果只是一个控件嵌入，没法提升Emacs的协同作战的能力
+
+换个靠谱点的包管理器，比如 nix 。
+brew 主要都是些 Xcode 用户在用，社区基本没有跨平台开发者。
+哈哈哈，在Mac这么封闭的平台上居然可以要我玩 Nix , 哈哈哈哈，好欢乐啊。
+
+nix 你玩过吗？确认可以解决我上面的问题吗？
+
+
+话说有一个 xelb 的库, 可以通过 elisp 和 xserver 进行通讯.
+
+不管什么编程语言, 都是再向 xserver 发送消息,所有的绘制都在服务端, 并通过显卡进行图层硬件混合的.
+
+作为使用十几年的Linuxer, 我个人感觉, Mac 在保护系统稳定的架构设计和应用生态还是非常好的,
+ 比较适合开发商业程序和不用涉及底层的程序.
+ 
+涉及到要定制操作系统方面,就很麻烦了,什么都不能改.理性看待 Mac, Mac 现在的现状可是所有Linux 发行版都没有达到的高度
+
+
+再给你们打个预防针，Mac的硬件质量也非常糟糕．
+
+我用过４台Mac, 有两台电池鼓包（是很大的那种，大到把机器整个给撑裂了）
+
+还有一台用了不到三个月，键盘，触摸板完全失灵， 去保修的时候还是很大方的， 
+好像出了主板都换成新的了，可惜没过３个月又都坏了， 应该是设计问题， 还
+好我一直是用外接键盘． 后来一直撑到多苹果失去信心．．．下决心换了Linux
+
+Mac现在就是做消费品了…但是它消费品做的体验就是好，消费者不需要折腾。
+
+方便的话请在项目里面加个 requirements.txt，这样 python 的包有添加的话，pip install 下就可以了
+然后我发现 pdf 用了 poppler 这个东西，又得装一堆库，有方便些的办法吗？
+
+
+已经用 mupdf 替换 poppler 重写 pdfviewer 了： 
+https://github.com/manateelazycat/emacs-application-framework/commit/bb5983b47203b03187b262b7353f470e0cdfa961 
+
+现在只用做 sudo pacman -S python-xlib python-pyqt5 python-pymediainfo PyMuPDF 就可以安装全部依赖了，不用自己编译。
+
+等我把 QWebEngine 折腾好， 所有依赖都可以用 pip 搞定。
+
+
+mupdf 果然比 poppler 快很多，现在的速度应该是 emacs 里面渲染性能最高的 pdf 阅读器了。
+
+
+如果往好的方向上想, 苹果是最早做窗口混合的图形桌面环境的,所以底层一定有这样的接口.
+
+如果往坏的方向上想, 苹果不让开发者定制它的窗口管理器,就是有接口估计也够不着.
+
+所以等我以后,好好学习苹果的图形开发库以后,看看有没有线索吧, 现在只能在我的另外一台linux电脑上开发了.
+
+
+You need split emacs first, then edit in Emacs, markdown previewer will update once your save markdown file.
+** Build Server Protocol(BSP) [#B]                                  :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-06 周六 22:13]--[2018-10-06 周六 22:18] =>  0:05
+:END:
+                         Added: [2018-10-06 周六 22:12]
+                         
+又注意到一個新奇的玩意兒，Build Server Protocol
+
+https://github.com/scalacenter/bsp/blob/master/docs/bsp.md
+
+The problem this document aims to address is the multiplied effort required to
+ integrate between available language servers/editors and build tools. Currently,
+ every language server must implement a custom integration for each supported 
+build tool in order to extract compilation information such as classpaths,
+ source directories or compiler diagnostics. Likewise, new build tools are 
+expected to integrate with all available IDEs. The growing number of language 
+servers and build tools in the wider programming community means tooling developers
+ spend a lot of time working on these integrations.
+
+ 
+
+The Build Server Protocol aims to define common functionality that both build tools (servers)
+ and language servers/editors (clients) understand. This common functionality enables tooling
+ developers to provide their end users the best developer experience while supporting build 
+tools and language servers with less effort and time.

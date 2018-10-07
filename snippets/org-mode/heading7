@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: heading 7
+# key: h7
+# --
+******* $1
+
+$0

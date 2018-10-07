@@ -115,10 +115,9 @@
   '((((supports :underline (:style wave)))
      :underline (:style wave :color "cyan"))
     (((class color))
-     (:inherit font-lock-warning-face :background "LemonChiffon")))
+     (:inherit font-lock-warning-face :background "Lemonchiffon")))
   "Writegood face for passive-voice"
   :group 'writegood)
-
 (defcustom writegood-passive-voice-irregulars
   '("awoken" "been" "born" "beat" "become" "begun" "bent" "beset"
     "bet" "bid" "bidden" "bound" "bitten" "bled" "blown" "broken"

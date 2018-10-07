@@ -14,3 +14,44 @@
 ***** Flow visualizations
 
 To get further physical insight into the flow around the present rotor, some visualization plots will be given ..
+*** 2018-10-05 星期五
+**** Wind tunnel experiments on wind turbine wakes in yaw effects of inflow turbulence and shear <2018-10-05 周五> :Chapter: 
+ :PROPERTIES:
+ :Title:   wind tunnel effects(yaw inflow) 
+ :Author:  Jan Bartl et al.
+ :Year:     2017 
+ :Publisher: Wind Energy
+ :END:
+ Comments:
+ 
+1. different wake deflection mechanisms
+2. with respect to
+3. shed lien on
+4. can help to gain a deeper understanding of the effects on the wake flow.
+5. In a follow-up study,
+6. showed clear asymmetries
+7. Another yaw experiment was conducted by ... on...
+8. These experimental results were later used by ... as verification data for a wake deflection model ..
+9. An extensive study of flow and load characteristics on a yawed wind turbine rotor on.... was presented by..
+10. The topic of utilizing yaw misalignment for improved wind farm control was thoroughly investigated by
+    Fleming et al.(2015) and Gebraad et al.(2016). They analyzed wake mitigation strategies by using both
+    a parametric wake model and the advanced computational fluid dynamics(CFD) tool SOWFA.
+11. In another LES investigation Vollmer et al.(2016) studied the influence of three ..
+12. Another LES study on yaw mislaignment was performed by Wang et al.(2017), who highlighted the importance
+    of including nacelle and tower structures in the computational model when comparing with the experimental results
+13. These studies encouraged a more detailed investigation of the inflow-dependent wake flow behind a yawed turbine.
+    As for the present study, we aim to close 
+    
+补充关于LES wake方面的文章，当做一小节
+
+也引用了Haans w. 和Sant T.(2005)的实验文章
+**** Wind tunnel experiments on wind turbine wakes in yaw redefining the wake width <2018-10-05 周五> :Chapter: 
+ :PROPERTIES:
+ :Title:  Wind tunnel experiemnt(yaw wake : redefining the wake length)
+ :Author:  
+ :Year:      
+ :Publisher:
+ :END:
+ Comments:
+
+ 1. To gain a deeper insight, we extend our analysis to two-point statistics.

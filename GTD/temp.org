@@ -24,10 +24,13 @@ loads of the yawing wind turbine become more sensitively changed due to
 the varition of yaw angle. 
 
 
+
 Keywords: unsteady, yawing, aerodynamic performance, flow-field analysis
 
 We used two different turbine models to assess how the size of the  turbine rotor
 affects the farm efficiency and effectiveness of the control starategy. T
+
+
 * 2. Introduction
 
 * 3. Test cases
@@ -114,6 +117,10 @@ N
 ** 4.2 NREL PhaseVI wind turbine
 
 ** 4.3 NREL 5MW RWT
+
+I think obvious.
+
+
 
 ** Static  and dynamci yawing of NREL 5MW RWT
 This section presents the results obtained for NREL 5MW RWT with static and 

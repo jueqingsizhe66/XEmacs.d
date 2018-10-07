@@ -520,6 +520,8 @@ First mark, and then add cursors.
 
 工作流第一步选择单词(然后才会进行mark)
 
+<2018-10-05 11:40> 再学一遍[evil-mc][443]
+
 1. 选择功能:(第一步)
 
 `g r m` 三个组合字母进入多cursors模式, `C-n 和C-p`支持向上选择和向下选择(完全等同于vim的操作方式)
@@ -4938,7 +4940,16 @@ find   ./   -mtime   -1   -type f   -ok   ls -l   {} \;
 于是试试[writegood Mode][267],会把夸张的词语勾出来，画个波浪线。
 
 
+提供三种类型词处理
+
+1. weasel words(writegood-weasels-face)
+2. passive words(writegood-passive-voice-face)
+3. Duplicate words(writegood-duplicates-face) 紫色
+
+
+
 ``` org
+
 
 * Weasel words
 Weasel words--phrases or words that sound good without conveying information--obscure precision.
@@ -7897,3 +7908,4 @@ org file ,you will get the good style of your new html file.
 [440]: https://github.com/clojure-emacs/cider-eval-sexp-fu
 [441]: https://ssrss.space/user/article?id=13
 [442]: https://ssrss.space/user/article?id=20
+[443]: https://github.com/gabesoft/evil-mc

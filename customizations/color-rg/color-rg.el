@@ -6,8 +6,8 @@
 ;; Maintainer: Andy Stewart <lazycat.manatee@gmail.com>
 ;; Copyright (C) 2018, Andy Stewart, all rights reserved.
 ;; Created: 2018-08-26 14:22:12
-;; Version: 2.2
-;; Last-Updated: 2018-09-22 16:20:10
+;; Version: 2.5
+;; Last-Updated: 2018-10-03 16:36:46
 ;;           By: Andy Stewart
 ;; URL: http://www.emacswiki.org/emacs/download/color-rg.el
 ;; Keywords:
@@ -67,6 +67,15 @@
 ;;
 
 ;;; Change log:
+;;
+;; 2018/10/03
+;;      * Use `color-rg-update-header-line-hits' update keywoard hits after filter operation.
+;;
+;; 2018/09/26
+;;      * Make the save window configuration more robust when user do `color-rg-*' multiple times.
+;;
+;; 2018/09/23
+;;      * Add `--heading' option force to make group matches work always to support Windows.
 ;;
 ;; 2018/09/22
 ;;      * Add `color-rg-unfilter'
@@ -250,9 +259,9 @@ Setting this to nil or 0 will turn off the indicator."
   "Save window configuration before search,
 used to restore window configuration after finish search.")
 
-(defvar color-rg-search-counter 0
-  "Just save window configuration when this counter is 0.
-Avoid multiple search overwrite window configuration.")
+(defvar color-rg-buffer-point-before-search nil
+  "Save buffer point before search,
+used to restore buffer point after finish search.")
 
 (defvar color-rg-window-configuration-before-apply nil
   "Save window configuration before apply changed,
@@ -272,6 +281,8 @@ used to restore window configuration after apply changed.")
 
 (defvar color-rg-changed-lines nil
   "The list that record the changed lines.")
+
+(defvar color-rg-read-input-history nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; color-rg mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar color-rg-mode-map
@@ -459,7 +470,15 @@ CASE-SENSITIVE determinies if search is case-sensitive."
   (let ((command-line
          (append
 
-          (list "-i --column --color=always --heading")
+          (list "--column --color=always")
+
+          ;; NOTE:
+          ;;
+          ;; ripgrep is default use heading option (group matches by each file) in all OS's terminal.
+          ;; But not greoup matches on Windows/Emacs.
+          ;; So we add this option force to make group matches work always.
+          ;;
+          (list "--heading")
 
           (when no-ignore
             (list "--no-ignore"))
@@ -517,7 +536,13 @@ CASE-SENSITIVE determinies if search is case-sensitive."
 
 (defun color-rg-read-input ()
   (let* ((current-symbol (color-rg-pointer-string))
-         (input-string (string-trim (read-string (format "COLOR-RG Search (%s): " current-symbol)))))
+         (input-string
+          (string-trim
+           (read-string
+            (format "COLOR-RG Search (%s): " current-symbol)
+            current-symbol
+            'color-rg-read-input-history
+            ))))
     (when (string-blank-p input-string)
       (setq input-string current-symbol))
     input-string))
@@ -578,15 +603,15 @@ This assumes that `color-rg-in-string-p' has already returned true, i.e.
 (defun color-rg-get-match-file ()
   (save-excursion
     (search-backward-regexp color-rg-regexp-file nil t)
-    (string-remove-suffix "\n" (buffer-substring-no-properties (beginning-of-thing 'line) (end-of-thing 'line)))))
+    (string-remove-suffix "\n" (thing-at-point 'line))))
 
 (defun color-rg-get-match-line ()
   (beginning-of-line)
-  (string-to-number (buffer-substring-no-properties (beginning-of-thing 'symbol) (end-of-thing 'symbol))))
+  (string-to-number (thing-at-point 'symbol)))
 
 (defun color-rg-get-match-column ()
   (search-forward ":")
-  (string-to-number (buffer-substring-no-properties (beginning-of-thing 'symbol) (end-of-thing 'symbol))))
+  (string-to-number (thing-at-point 'symbol)))
 
 (defun color-rg-get-match-buffer (filepath)
   (catch 'find-match
@@ -729,7 +754,9 @@ This assumes that `color-rg-in-string-p' has already returned true, i.e.
         (if match-regexp
             (message (format "Remove %s lines not match regexp '%s'." remove-counter filter-regexp))
           (message (format "Remove %s lines match regexp '%s'." remove-counter filter-regexp)))
-        ))))
+        )))
+  ;; Update hit number in header line.
+  (color-rg-update-header-line-hits))
 
 (defun color-rg-filter-files (match-files)
   (let (file-extensions start end)
@@ -762,7 +789,9 @@ This assumes that `color-rg-in-string-p' has already returned true, i.e.
               (if (string-equal file-extension filter-extension)
                   (color-rg-remove-lines-under-file)
                 (end-of-line))))
-          )))))
+          ))))
+  ;; Update hit number in header line.
+  (color-rg-update-header-line-hits))
 
 (defun color-rg-remove-lines-under-file ()
   (let (start end)
@@ -816,13 +845,35 @@ this function a no-op."
     (setq next-error-highlight-timer
           (run-at-time delay nil 'compilation-goto-locus-delete-o))))
 
+(defun color-rg-update-header-line-hits ()
+  (setq color-rg-hit-count (color-rg-stat-hits))
+  (color-rg-update-header-line))
+
+(defun color-rg-stat-hits ()
+  (let ((hit-count 0))
+    (save-excursion
+      (goto-char (point-min))
+      (while (not (eobp))
+        (let ((plist (text-properties-at (point)))
+              (next-change
+               (or (next-property-change (point) (current-buffer))
+                   (point-max))))
+          (dolist (property plist)
+            (when (string-equal (format "%s" property) "color-rg-font-lock-match")
+              (setq hit-count (+ hit-count 1))))
+          (goto-char next-change)))
+      hit-count)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Interactive functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun color-rg-search-input (&optional keyword directory argument)
   (interactive)
   ;; Save window configuration before do search.
-  (when (equal color-rg-search-counter 0)
-    (setq color-rg-window-configuration-before-search (current-window-configuration)))
-  (setq color-rg-search-counter (+ 1 color-rg-search-counter))
+  ;; Just save when `color-rg-window-configuration-before-search' is nil
+  ;; Or current buffer is not `color-rg-buffer' (that mean user not quit color-rg and search again in other place).
+  (when (or (not color-rg-window-configuration-before-search)
+            (not (string-equal (buffer-name) color-rg-buffer)))
+    (setq color-rg-window-configuration-before-search (current-window-configuration))
+    (setq color-rg-buffer-point-before-search (point)))
   ;; Set `enable-local-variables' to :safe, avoid emacs ask annoyingly question when open file by color-rg.
   (setq enable-local-variables :safe)
   ;; Search.
@@ -889,7 +940,9 @@ this function a no-op."
         (insert (with-current-buffer color-rg-temp-buffer
                   (buffer-substring (point-min) (point-max))))
         (read-only-mode 1)
-        ))))
+        )
+      ;; Update hit number in header line.
+      (color-rg-update-header-line-hits))))
 
 (defun color-rg-remove-line-from-results ()
   (interactive)
@@ -1138,8 +1191,9 @@ from `color-rg-cur-search'."
   ;; Restore window configuration before search.
   (when color-rg-window-configuration-before-search
     (set-window-configuration color-rg-window-configuration-before-search)
-    (setq color-rg-window-configuration-before-search nil))
-  (setq color-rg-search-counter 0))
+    (goto-char color-rg-buffer-point-before-search)
+    (setq color-rg-window-configuration-before-search nil)
+    (setq color-rg-buffer-point-before-search nil)))
 
 (defun color-rg-beginning-of-line ()
   (interactive)

@@ -650,3 +650,49 @@ Volpiatto一个攀岩爱好者。
 
 
 http://sachachua.com/blog/2018/09/interview-with-thierry-volpiatto/
+** 孤独的旅程(I still carry on)---pain
+每个人的成长都得伴随着一段孤独的旅程，学会自己寻找方向，自己发现问题，
+提出一种方法去解决他。 中国素质教育伴随着太多的考试制度，导致一没有老师
+的指点，自己就做不了了，这是很要人命的。
+
+要面对自己的恐惧(face your fear)，要是要心存希望(carry on with hope)。
+不要放手(Don't let it go)，别让我失望(don't let me down)
+我知道前面还有慢慢长路(I know it is  far way)
+我会一直支持你(I'll care you)
+知道我无法继续支持你(till I can't go on)
+无法承受这份(hold this pain)
+我会努力不懈，坚持下去(I still carry on,oh oh, I still carry on)
+
+ https://www.xiami.com/song/1774417231?spm=a1z1s.7154410.1996860241.3.BLxSxJ
+
+It is your job! 不要再次放逐你自己了。
+
+自主学习，自主行动， action by yourself. Independent you, Independent soul, Independent solution.
+或者说每个人成长的日子都是追逐独立自主的过程。（Rich Stallman)
+
+你是一个醒着的人？你的灯还亮着？
+
+I'll care you的you代表什么？(你的爱好，你在乎的人，你在乎的事)
+
+ [[file:~/.emacs.d/GTD/orgBoss/Note/notes.org::*%E8%80%81%E5%AE%9E%E4%BA%BA%20%5B#B%5D][老实人 {#B}]]
+** 衣服得蕴含有趣-崔哥 (sense of funny)
+
+衣服除了穿和美之外，是不是还得哟一种有趣的味道。
+
+正如写代码也是需要一点有趣的地方
+
+I think that it's extraordinarily important that we in computer science keep fun in computing.
+When it started out, it was an awful lot of fun. Of course, the paying customers got shafted 
+every now and then, and after a while we began to take their complaints seriously. We began to 
+feel as if we really were responsible for the successful, error-free perfect use of these machines.
+I don't think we are. I think we're responsible for stretching them, setting them off in new directions,
+and keeping fun in the house. I hope the field of computer science never loses its sense of fun. 
+Above all, I hope we don't become missionaries. Don't feel as if you're Bible salesmen. 
+The world has too many of those already. What you know about computing other people will learn. 
+Don't feel as if the key to successful computing is only in your hands. What's in your hands,
+ I think and hope, is intelligence: the ability to see the machine as more than when you were 
+first led up to it, that you can make it more.
+
+https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-3.html
+ 
+ [[file:~/.emacs.d/GTD/orgBoss/Note/notes.org::*pyqt%20%5B#B%5D][pyqt {#B}]]

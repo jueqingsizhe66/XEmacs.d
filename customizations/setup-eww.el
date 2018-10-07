@@ -115,7 +115,7 @@
   (setq browse-url-browser-function
         '((".*google.*maps.*" . browse-url-generic)
           ;; Github goes to firefox, but not gist
-          ("http.*\/\/github.com" . browse-url-generic)
+          ;("http.*\/\/github.com" . browse-url-generic)
           ("groups.google.com" . browse-url-generic)
           ("docs.google.com" . browse-url-generic)
           ("melpa.org" . browse-url-generic)
