@@ -5,6 +5,40 @@
 
 (define-abbrev-table 'Info-edit-mode-abbrev-table '())
 
+(define-abbrev-table 'Rd-mode-abbrev-table
+  '(
+    ("`ag" "\\arguments" nil 0)
+    ("`al" "\\alias" nil 0)
+    ("`au" "\\author" nil 0)
+    ("`bf" "\\bold" nil 0)
+    ("`co" "\\code" nil 0)
+    ("`de" "\\describe" nil 0)
+    ("`dn" "\\description" nil 0)
+    ("`dt" "\\details" nil 0)
+    ("`em" "\\emph" nil 0)
+    ("`en" "\\enumerate" nil 0)
+    ("`ex" "\\examples" nil 0)
+    ("`fi" "\\file" nil 0)
+    ("`fo" "\\format" nil 0)
+    ("`it" "\\item" nil 0)
+    ("`iz" "\\itemize" nil 0)
+    ("`kw" "\\keyword" nil 0)
+    ("`li" "\\link" nil 0)
+    ("`me" "\\method" nil 0)
+    ("`na" "\\name" nil 0)
+    ("`no" "\\note" nil 0)
+    ("`re" "\\references" nil 0)
+    ("`sa" "\\seealso" nil 0)
+    ("`se" "\\section" nil 0)
+    ("`so" "\\source" nil 0)
+    ("`ss" "\\subsection" nil 0)
+    ("`sy" "\\synopsis" nil 0)
+    ("`ta" "\\tabular" nil 0)
+    ("`ti" "\\title" nil 0)
+    ("`us" "\\usage" nil 0)
+    ("`va" "\\value" nil 0)
+   ))
+
 (define-abbrev-table 'ag-mode-abbrev-table '())
 
 (define-abbrev-table 'awk-mode-abbrev-table
@@ -45,13 +79,21 @@
 
 (define-abbrev-table 'debugger-mode-abbrev-table '())
 
+(define-abbrev-table 'diary-fancy-display-mode-abbrev-table '())
+
+(define-abbrev-table 'diary-mode-abbrev-table '())
+
 (define-abbrev-table 'diff-mode-abbrev-table '())
 
 (define-abbrev-table 'dsssl-mode-abbrev-table '())
 
+(define-abbrev-table 'edebug-eval-mode-abbrev-table '())
+
 (define-abbrev-table 'edit-abbrevs-mode-abbrev-table '())
 
 (define-abbrev-table 'elisp-byte-code-mode-abbrev-table '())
+
+(define-abbrev-table 'elisp-refs-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-mode-abbrev-table
   '(
@@ -75,9 +117,19 @@
 
 (define-abbrev-table 'eshell-mode-abbrev-table '())
 
+(define-abbrev-table 'ess-julia-mode-abbrev-table '())
+
 (define-abbrev-table 'evil-command-window-mode-abbrev-table '())
 
 (define-abbrev-table 'evil-list-view-mode-abbrev-table '())
+
+(define-abbrev-table 'eww-bookmark-mode-abbrev-table '())
+
+(define-abbrev-table 'eww-buffers-mode-abbrev-table '())
+
+(define-abbrev-table 'eww-history-mode-abbrev-table '())
+
+(define-abbrev-table 'eww-mode-abbrev-table '())
 
 (define-abbrev-table 'ffip-diff-mode-abbrev-table '())
 
@@ -582,9 +634,6 @@
     ("hewas" "he was" nil 0)
     ("hge" "he" nil 0)
     ("hier" "heir" nil 0)
-    ("hightlight" "highlight" nil 0)
-    ("hightlight-red" "highlight-red" nil 0)
-    ("hightlight-blue" "highlight-blue" nil 0)
     ("hismelf" "himself" nil 0)
     ("hiten" "hitting" nil 0)
     ("hitten" "hitting" nil 0)
@@ -979,7 +1028,7 @@
     ("theyve" "they've" nil 0)
     ("thgat" "that" nil 0)
     ("thge" "the" nil 0)
-    ("thier" "their" nil 0)
+    ("thier" "their" nil 1)
     ("thigsn" "things" nil 0)
     ("thisyear" "this year" nil 0)
     ("thna" "than" nil 0)
@@ -1096,11 +1145,15 @@
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 
+(define-abbrev-table 'html-mode-abbrev-table '())
+
 (define-abbrev-table 'ibuffer-mode-abbrev-table '())
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
 (define-abbrev-table 'inf-ruby-mode-abbrev-table '())
+
+(define-abbrev-table 'inferior-julia-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-scheme-mode-abbrev-table '())
 
@@ -1111,6 +1164,8 @@
 (define-abbrev-table 'java-mode-abbrev-table
   '(
    ))
+
+(define-abbrev-table 'julia-mode-abbrev-table '())
 
 (define-abbrev-table 'ledger-check-mode-abbrev-table '())
 
@@ -1186,9 +1241,13 @@
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
 
+(define-abbrev-table 'perl-mode-abbrev-table '())
+
 (define-abbrev-table 'pike-mode-abbrev-table
   '(
    ))
+
+(define-abbrev-table 'plantuml-mode-abbrev-table '())
 
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
@@ -1210,6 +1269,10 @@
 
 (define-abbrev-table 'select-tags-table-mode-abbrev-table '())
 
+(define-abbrev-table 'sgml-mode-abbrev-table '())
+
+(define-abbrev-table 'sh-mode-abbrev-table '())
+
 (define-abbrev-table 'shell-mode-abbrev-table '())
 
 (define-abbrev-table 'snippet-mode-abbrev-table '())
@@ -1218,7 +1281,13 @@
 
 (define-abbrev-table 'speedbar-mode-abbrev-table '())
 
+(define-abbrev-table 'tablist-mode-abbrev-table '())
+
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
+
+(define-abbrev-table 'tar-mode-abbrev-table '())
+
+(define-abbrev-table 'term-mode-abbrev-table '())
 
 (define-abbrev-table 'text-mode-abbrev-table '())
 

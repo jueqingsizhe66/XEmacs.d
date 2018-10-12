@@ -22,16 +22,7 @@
 
     * 三维流动引起的三维旋转效应非定常
     * 分离引起的分离非定常效应。
-*** 不均质来流风, 轴流工况下翼型非定常特性。
-:PROPERTIES:
-:reveal_background: image
-:reveal_background_trans: cube
-:reveal_background_size: 200
-:END:
-
-#+BEGIN_NOTES
-注释
-#+END_NOTES
+*** 不均匀来流风, 轴流工况下翼型非定常特性。
 #+ATTR_REVEAL: :frag (highlight-blue)
     * 风剪切
     * 偏航风
