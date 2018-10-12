@@ -7487,6 +7487,7 @@ org file ,you will get the good style of your new html file.
 ### 162. Awesome shell
 
 
+
 改造你的eshell变成类似于bash-it的风格。
 
 [awesomeshell安装][444]
@@ -7505,7 +7506,8 @@ I like it!
 
 All the setting have been saved inside the [setup-evil.el][448]
 
-我的习惯是，事先`C-x 3` 创建一个vertical panel, 否则有可能由于标题空间的
+我的习惯:
+事先`C-x 3` 创建一个vertical panel, 否则有可能由于标题空间的
 限制，会使得新的indirect窗口跳转到水平窗口下，看起来效果不好(行长度较长，为了显示完整，通常是水平划分的)!`C-x 3`所以
 `C-x 3` 得经常使用了（对应的左右窗口切换，向左`C-h`,向右`C-l`当然直接用
 `M-o` ace-window的其他功能也不错。
@@ -7520,8 +7522,8 @@ you can open todo outline in the org-mode with `SPC t `
 
 类似性工作:
 
-1.[Replacing Scrivener with Emacs and Vim][454], 通过他改进了我的配置
 
+1. [Replacing Scrivener with Emacs and Vim][454], 通过他改进了我的配置
 2. [ Emacs for writers][449]-----[emacs config for writer][450]
 
 #### Abbrev
@@ -7533,12 +7535,16 @@ you can open todo outline in the org-mode with `SPC t `
     Its value is "~/.emacs.d/customization/.abbrev_defs"
 
 [correct spell error][451] ,对应视频[Auto-correcting typos in Emacs][453],
-操作方式是`ctrl-x ctrl-i`, the command now searches backward for the closest wrong word. So you can just hit C-x C-i even if the mistake happened several words ago. [github init.el][455]
+
+操作方式是`ctrl-x ctrl-i`, the command now searches backward for the closest wrong word. 
+So you can just hit C-x C-i even if the mistake happened several words ago. [github init.el][455]
 
 
-This snippet creates a personal collection of abbrevs of spelling mistakes, which grows with time and thus is "smarter".
+This snippet creates a personal collection of abbrevs of spelling mistakes,
+which grows with time and thus is "smarter".
 
-你认为错误的、有疑问的，不妨`Ctrl-x Ctrl-I` 进行修正。
+      你认为错误的、有疑问的，不妨`Ctrl-x Ctrl-I` 进行修正。
+      时不时去增加.abbrev-def的global-abbrev-table内容,充实他。
 
 
 
