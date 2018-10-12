@@ -1226,7 +1226,7 @@ Use a prefix arg to get regular RET. "                                          
 ;(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
 ;(setq org-reveal-root "https://libs.cdnjs.net/reveal.js/3.5.0/")
 (setq org-reveal-postamble "Ye Zhaoliang")
-
+(setq org-reveal-hlevel 1)
 
 ;;org-tree-slide
 ; (use-package org-tree-slide

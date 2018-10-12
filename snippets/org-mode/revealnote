@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: reveal note
+# key: rn
+# --
+#+BEGIN_NOTES
+   $1
+#+END_NOTES

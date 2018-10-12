@@ -2189,6 +2189,12 @@ Evaluates all the code in the opened file
 ```
 
 #### 定制css样式(伟大的CSS)
+<2018-10-12 20:38>
+
+1. 通过`M-x ivy-yasnippet reveal`快速插入reveal相关的org-mode slide相关snippets.
+2. 通过`M-x org-property action`快速插入背景属性相关的property
+
+
 
 比如有一个样式叫做jr0cket.css，对应的使用是在org文件开头的 `#+REVEAL_THEME: jr0cket`
 

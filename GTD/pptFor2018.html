@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>偏航过程下风力机气动性能分析</title>
+<meta name="author" content="(Ye Zhaoliang)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///k:/reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="file:///k:/reveal.js/css/theme/jr0cket.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///k:/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">偏航过程下风力机气动性能分析</h1><h2 class="author">Ye Zhaoliang</h2><p class="date">Created: 2018-10-12 周五 20:31</p>
+</section>
+
+
+<section>
+<section id="slide-orgb5f8e4b">
+<h2 id="orgb5f8e4b">背景</h2>
+<p>
+自然风的随机变化，引起风轮的姿态变化，
+使得风轮的气动问题变得更加复杂。
+调研发现早先的风力机CFD数值模拟主要采用固定姿态角的方式进行
+简化模拟，而现在提出一种基于sliding grid的方法对偏航过程进行
+建模分析。
+</p>
+
+</section>
+<section id="slide-org0393b69">
+<h3 id="org0393b69">风力机非定常气动性能分为</h3>
+<ul>
+<li class="fragment highlight-blue">不均质来流风,轴流工况下翼型非定常特性</li>
+<li class="fragment highlight-blue">均匀来流风下,特定姿态下的翼型的非定常特性</li>
+<li class="fragment highlight-blue">均匀来流风下,连续姿态变化下的翼型的非定常特性</li>
+
+<li class="fragment highlight-blue">三维流动引起的三维旋转效应非定常</li>
+<li class="fragment highlight-blue">分离引起的分离非定常效应。</li>
+
+</ul>
+</section>
+<section id="slide-org04fb6af" data-background-transition="cube">
+<h4 id="org04fb6af">不均质来流风, 轴流工况下翼型非定常特性。</h4>
+<aside class="notes">
+<p>
+hello world
+</p>
+
+</aside>
+<ul>
+<li class="fragment highlight-blue">风剪切</li>
+<li class="fragment highlight-blue">偏航风</li>
+<li class="fragment highlight-blue">阵风</li>
+<li class="fragment highlight-blue">湍流风 etc</li>
+
+</ul>
+
+</section>
+<section id="slide-orgcd491cb">
+<h4 id="orgcd491cb">均匀来流风下,特定姿态下的翼型非定常特性</h4>
+<ul>
+<li class="fragment highlight-blue">特定偏航角</li>
+<li class="fragment highlight-blue">特定变桨角</li>
+<li class="fragment highlight-blue">特定偏摆角度</li>
+
+</ul>
+</section>
+<section id="slide-orgeacb396">
+<h4 id="orgeacb396">均匀来流风下,动态姿态变化过程的翼型非定常特性</h4>
+<ul>
+<li class="fragment highlight-blue">动态入流</li>
+<li class="fragment highlight-blue">机舱偏航、偏摆、偏旋</li>
+
+</ul>
+
+</section>
+<section >
+</section>
+<section id="slide-org95fc964">
+<h3 id="org95fc964">姿态的连续变化又受到如下影响:</h3>
+<ul>
+<li class="fragment highlight-blue">姿态角振幅</li>
+<li class="fragment highlight-blue">姿态角频率</li>
+
+</ul>
+
+<p>
+本文主要针对特定振幅和频率下的动态姿态变化过程与特定姿态角的对比.
+针对总体性能和截面气动性能作对比分析。
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org2b1ecf1">
+<h2 id="org2b1ecf1">数值方法</h2>
+<ol>
+<li class="fragment highlight-blue">Numeca+Icem</li>
+<li class="fragment highlight-blue">Fluent-Sliding grid(multigrid)</li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-org2a409bd">
+<h2 id="org2a409bd">理论分析</h2>
+<ul>
+<li class="fragment highlight-blue">I appear.</li>
+<li class="fragment highlight-blue">I appear.</li>
+<li class="fragment highlight-blue">I appear.</li>
+
+</ul>
+
+</section>
+<section id="slide-org14f4707">
+<h3 id="org14f4707">Advance</h3>
+</section>
+</section>
+<section>
+<section id="slide-orgf6d1209">
+<h2 id="orgf6d1209">结果与讨论</h2>
+<div class="outline-text-2" id="text-orgf6d1209">
+</div>
+</section>
+<section id="slide-org65a5fd0">
+<h3 id="org65a5fd0">总体性能分析</h3>
+
+</section>
+<section id="slide-org2a557fc">
+<h3 id="org2a557fc">截面气动性能分析</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org58bd06a">
+<h2 id="org58bd06a">结论</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd96801c">
+<h2 id="orgd96801c">展望</h2>
+</section>
+</section>
+</div>
+</div>
+Ye Zhaoliang
+<script src="file:///k:/reveal.js/lib/js/head.min.js"></script>
+<script src="file:///k:/reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'file:///k:/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'file:///k:/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///k:/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///k:/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'file:///k:/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

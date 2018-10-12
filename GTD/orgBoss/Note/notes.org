@@ -3355,7 +3355,6 @@ Ctrl + Shift + L: aweshell-sudo-toggle
 Ctrl + H: company-complete-selection
 ** 10projects in 2018 for  python [#B]                              :python:
 :LOGBOOK:
-CLOCK: [2018-10-11 周四 10:32]
 :END:
                          Added: [2018-10-11 周四 10:32]
                          
@@ -3395,3 +3394,13 @@ https://github.com/pypa/pipenv
 *** Project development
 
 *** Conclusion
+** decorate table in org-mode [#B]                               :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-10-12 周五 16:07]--[2018-10-12 周五 16:07] =>  0:00
+- Clocked out on T:[2018-10-12 周五 16:07] \\
+  done it
+:END:
+                         Added: [2018-10-12 周五 16:07]
+                         
+                         
+https://emacsnotes.wordpress.com/2018/09/24/delim-col-a-handy-tool-for-creating-pretty-tables-and-converting-those-to-different-table-formats/

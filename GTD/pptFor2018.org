@@ -1,0 +1,81 @@
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_TRANS: slide
+#+REVEAL_THEME: jr0cket
+#+Title: 偏航过程下风力机气动性能分析
+#+Author:  Ye Zhaoliang
+#+Email: yezhaoliang@ncepu.edu.cn
+
+
+* 背景
+自然风的随机变化，引起风轮的姿态变化，
+使得风轮的气动问题变得更加复杂。
+调研发现早先的风力机CFD数值模拟主要采用固定姿态角的方式进行
+简化模拟，而现在提出一种基于sliding grid的方法对偏航过程进行
+建模分析。
+
+**  风力机非定常气动性能分为
+
+#+ATTR_REVEAL: :frag (highlight-blue)
+    * 不均质来流风,轴流工况下翼型非定常特性
+    * 均匀来流风下,特定姿态下的翼型的非定常特性
+    * 均匀来流风下,连续姿态变化下的翼型的非定常特性
+
+    * 三维流动引起的三维旋转效应非定常
+    * 分离引起的分离非定常效应。
+*** 不均质来流风, 轴流工况下翼型非定常特性。
+:PROPERTIES:
+:reveal_background: image
+:reveal_background_trans: cube
+:reveal_background_size: 200
+:END:
+
+#+BEGIN_NOTES
+注释
+#+END_NOTES
+#+ATTR_REVEAL: :frag (highlight-blue)
+    * 风剪切
+    * 偏航风
+    * 阵风
+    * 湍流风 etc
+
+*** 均匀来流风下,特定姿态下的翼型非定常特性
+#+ATTR_REVEAL: :frag (highlight-blue)
+    * 特定偏航角
+    * 特定变桨角
+    * 特定偏摆角度
+*** 均匀来流风下,动态姿态变化过程的翼型非定常特性
+#+ATTR_REVEAL: :frag (highlight-blue)
+    * 动态入流
+    * 机舱偏航、偏摆、偏旋
+         
+#+REVEAL: split
+** 姿态的连续变化又受到如下影响:
+
+#+ATTR_REVEAL: :frag (highlight-blue)
+    * 姿态角振幅
+    * 姿态角频率
+      
+本文主要针对特定振幅和频率下的动态姿态变化过程与特定姿态角的对比.
+针对总体性能和截面气动性能作对比分析。
+* 数值方法
+
+#+ATTR_REVEAL: :frag (highlight-blue)
+    1. Numeca+Icem
+    2. Fluent-Sliding grid(multigrid)
+* 理论分析
+
+#+ATTR_REVEAL: :frag (highlight-blue)
+    * I appear.
+    * I appear.
+    * I appear.
+
+** Advance
+* 结果与讨论
+
+** 总体性能分析
+
+** 截面气动性能分析
+
+* 结论
+
+* 展望
