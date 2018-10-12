@@ -2017,6 +2017,9 @@ F9后一页slide(后一个标题)
 (setq org-reveal-postamble "Ye Zhaoliang")
 ```
 
+<2018-10-12 15:31> 加入了[ AutoInsert ][456]的控制
+[reveal.js常用设置][457]
+
 注意一定得在磁盘根目录下的reveal.js文件夹下
 
 <2018-05-02 02:36>  再次学习怎么使用[emacs+reveal.js做演讲][234]
@@ -2229,6 +2232,16 @@ code....
  :END:
 
 ```
+
+#### 改进CDN
+
+Thanks for this nice post on Org mode and reveal.js. Have you tried setting `org-reveal-root` to CDN. So you can use reveal.js 3.0 using,
+
+```
+(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+```
+
+[常用CDN加速链接][458]
 
 ### 58. Good job for clojure and lisp
 
@@ -7183,6 +7196,8 @@ kinds of config style out there in the file,
 In addition, [Perl-mode yasnippet][393] have been injected in the current emacs config, which originates from
 the [WolfgangMehner Perl-support][395].
 
+<2018-10-12 15:33>加入了org-mode打开，填入slide风格的抬头(C-c C-e R R导出幻灯片)。
+
 ### 149. color-rg代码重构利器
 
 [color-rg][396]源自作者 [manateelazycat][398]在emacs-china.org中的讨论, 支持二次过滤和关键词跳转。
@@ -7547,6 +7562,7 @@ which grows with time and thus is "smarter".
       时不时去增加.abbrev-def的global-abbrev-table内容,充实他。
 
 
+`C-x C-r` 打开最近的文档!<2018-10-12 15:06> 有用!
 
 
 
@@ -8011,3 +8027,6 @@ which grows with time and thus is "smarter".
 [453]: https://www.youtube.com/watch?v=fhI_riv_6HM&feature=youtu.be
 [454]: https://www.youtube.com/watch?v=VOfSjLwQY28
 [455]: https://gist.github.com/slackorama/1d93e8c4d9194979bcd2
+[456]: https://github.com/jueqingsizhe66/XEmacs.d#148-auto-insert-file-header-with-suffix-specified
+[457]: https://www.awesomes.cn/repo/hakimel/reveal-js
+[458]: https://libs.cdnjs.net/

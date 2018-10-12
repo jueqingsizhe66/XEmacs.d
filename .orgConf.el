@@ -1223,6 +1223,8 @@ Use a prefix arg to get regular RET. "                                          
 ;(setq org-reveal-root "file:///~/.emacs.d/GTD/reveal.js")
 ;(setq org-reveal-root "~/.emacs.d/GTD/reveal.js/")
 (setq org-reveal-root "file:///k:/reveal.js")
+;(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+;(setq org-reveal-root "https://libs.cdnjs.net/reveal.js/3.5.0/")
 (setq org-reveal-postamble "Ye Zhaoliang")
 
 

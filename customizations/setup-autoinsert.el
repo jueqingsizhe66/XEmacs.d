@@ -69,6 +69,7 @@
      '(auto-insert-alist '((("\\.\\([Hh]\\|hh\\|hpp\\)\\'" . "C / C++ header") . ["template.h" c++-mode my/autoinsert-yas-expand])
                            (("\\.sh\\'" . "Shell script") . ["sh-template.sh" my/autoinsert-yas-expand])
                            (("\\.el\\'" . "Emacs Lisp") . ["template.el" my/autoinsert-yas-expand])
+                           (("\\.org\\'" . "org-mode") . ["org-template.org" my/autoinsert-yas-expand])
                            (("\\.pm\\'" . "Perl module") . ["template.pm" my/autoinsert-yas-expand])
                            (("\\.py\\'" . "Python script") . ["py-template.py" my/autoinsert-yas-expand])
                            (("[mM]akefile\\'" . "Makefile") . ["cmake-template" my/autoinsert-yas-expand])
