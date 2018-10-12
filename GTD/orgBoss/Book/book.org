@@ -261,3 +261,9 @@ http://k.sina.com.cn/article_6629948294_18b2cfb8600100cpwm.html
 
 
 安禄山是居住在当下辽宁朝阳的胡人，据说他的祖先是从今伊朗迁移而来
+
+Explain what is specially different by your method?
+
+Give sufficient detail that the reader can reproduce what you did.
+
+Method should be an easy section to Paper just say what you did

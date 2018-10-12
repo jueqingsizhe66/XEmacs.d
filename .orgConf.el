@@ -3,6 +3,24 @@
 (setq load-path (cons "~/.emacs.d/contrib/lisp" load-path))
 (require 'org-install)
 (require 'org)
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-document-title ((t (:inherit default :weight bold :foreground "#9F5F9F" :font "Source Sans Pro" :height 1.4 :underline nil))))
+ '(org-done ((t (:foreground "PaleGreen" :weight normal :strike-through t))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "LightSalmon" :strike-through t))))
+ '(org-level-1 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.5))))
+ '(org-level-2 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.25))))
+ '(org-level-3 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.15))))
+ '(org-level-4 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.05))))
+ '(org-level-5 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))
+ '(org-level-6 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))
+ '(org-level-7 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))
+ '(org-level-8 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro")))))
 ;(require 'org-mouse) ;;加载这个包报错 muse变量未定义
 ;把下面几行加到 .emacs 文件里。后三行是为命令定义全局快捷键――请改成适合你自己的。 
 ;设置之后，打开 .org 扩展的文件会自动进入 org 模式;
@@ -85,12 +103,6 @@
 (ido-mode (quote both))
 
 
-
-
-(setq ido-default-file-method 'selected-window)
-(setq ido-default-buffer-method 'selected-window)
-; Use the current window for indirect buffer display
-(setq org-indirect-buffer-display 'current-window)
 
 ;;;; Refile settings
 ; Exclude DONE state tasks from refile targets

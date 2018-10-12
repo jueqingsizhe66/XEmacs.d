@@ -55,3 +55,6 @@ To get further physical insight into the flow around the present rotor, some vis
  Comments:
 
  1. To gain a deeper insight, we extend our analysis to two-point statistics.
+
+
+In view of the above,

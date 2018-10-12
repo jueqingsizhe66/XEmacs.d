@@ -12,6 +12,7 @@
 ;;(global-linum-mode)
 ;;(global-linum-mode -1)
 (global-nlinum-mode 1)
+;(global-nlinum-mode 1)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

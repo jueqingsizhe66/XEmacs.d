@@ -50,3 +50,12 @@ CLOSED: [2018-02-14 周三 18:27]
                     #+BEGIN_SRC sh
                       G:\JavaBookmarks\hutool>ag "public\sclass\s\w*"
                     #+END_SRC
+
+* 4. you need to schedule the most important thing to be done , so you don't take off the ball and focus a little things(You dont'
+:PROPERTIES:
+:ARCHIVE_TIME: 2018-10-11 周四 20:07
+:ARCHIVE_FILE: ~/.emacs.d/GTD/orgBoss/newgtd.org
+:ARCHIVE_OLPATH: Tasks/GetThingsDone
+:ARCHIVE_CATEGORY: newgtd
+:END:
+worry about missing deadline.(scheduled tasks will be informed of you)

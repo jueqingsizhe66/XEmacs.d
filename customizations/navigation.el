@@ -87,14 +87,6 @@
 ;; <2018-09-22 16:49> company with emacs-wgrep  https://github.com/mhayashi1120/Emacs-wgrep
 ;; to edit buffer, then apply buffer to the file
 ;;<2018-08-18 21:52>
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-;Ivy-resume and other commands
-;(require 'persp-projectiles)
-;;(define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project)
-;    ivy-resume resumes the last Ivy-based completion.
-
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 
 

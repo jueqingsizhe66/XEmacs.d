@@ -7458,6 +7458,90 @@ org file ,you will get the good style of your new html file.
 
 现在使用感觉还不错。
 
+### 161. 深蓝色表头+白色字体(for excel)
+
+1. 在表头中加入深蓝色的背景和白色字体，会让读者更加容易阅读。
+
+
+2. 在表头中加入红色的背景和黑色字体，并会让读者更加容易阅读。
+
+3. 注释部分用黄色北京即可
+
+4. 在选择区域的时候，多摁下几次F4试试，
+   5. 一次代表转变为绝对坐标
+   6. 两次代表转变为列不变 行变
+   7. 三次代表转变为行不变 列变
+   8. 四次恢复相对坐标
+   
+5. 有点诡异的`Ctrl`+\
+
+该命令就好使general number formating keybord: what you see is what is in the cell(不带渲染功能)
+比如所有日期变为从cell的日期到1989年最后一天的差值， 公式会显示出来等。
+再摁一次就返回来
+
+
+6. ctrl+1
+
+设置cell格式，有时候可以format一下数字的显示风格,和上一行的差值？ 单位设置？ 缩减数字?。
+
+### 162. Awesome shell
+
+
+改造你的eshell变成类似于bash-it的风格。
+
+[awesomeshell安装][444]
+
+`Ctrl+;` 进行代码注释
+
+### 163. evil-org makes org-mode better(Emacs for writes and researcher)
+
+
+I like it!
+
+![org-evil][445]
+
+
+[evil-org][446] and [evil-leader][447] makes the org-mode much better for writing .
+
+All the setting have been saved inside the [setup-evil.el][448]
+
+我的习惯是，事先`C-x 3` 创建一个vertical panel, 否则有可能由于标题空间的
+限制，会使得新的indirect窗口跳转到水平窗口下，看起来效果不好(行长度较长，为了显示完整，通常是水平划分的)!`C-x 3`所以
+`C-x 3` 得经常使用了（对应的左右窗口切换，向左`C-h`,向右`C-l`当然直接用
+`M-o` ace-window的其他功能也不错。
+
+
+so now you use `SPC o` to open a url link(对应的命令org-open-at-point)
+
+you can open todo outline in the org-mode with `SPC t `
+
+`Alt+up-arrow` 向上移动当前标题
+`Alt+down-arrow` 向下移动当前标题
+
+类似性工作:
+
+1.[Replacing Scrivener with Emacs and Vim][454], 通过他改进了我的配置
+
+2. [ Emacs for writers][449]-----[emacs config for writer][450]
+
+#### Abbrev
+
+
+[ abbrev-file-name ][452] is a variable defined in `abbrev.el'.
+    Its value is "~/.emacs.d/abbrev_defs"abbrev-file-name
+    abbrev-file-name is a variable defined in `abbrev.el'.
+    Its value is "~/.emacs.d/customization/.abbrev_defs"
+
+[correct spell error][451] ,对应视频[Auto-correcting typos in Emacs][453],
+操作方式是`ctrl-x ctrl-i`, the command now searches backward for the closest wrong word. So you can just hit C-x C-i even if the mistake happened several words ago. [github init.el][455]
+
+
+This snippet creates a personal collection of abbrevs of spelling mistakes, which grows with time and thus is "smarter".
+
+你认为错误的、有疑问的，不妨`Ctrl-x Ctrl-I` 进行修正。
+
+
+
 
 
 ----------
@@ -7909,3 +7993,15 @@ org file ,you will get the good style of your new html file.
 [441]: https://ssrss.space/user/article?id=13
 [442]: https://ssrss.space/user/article?id=20
 [443]: https://github.com/gabesoft/evil-mc
+[444]: https://github.com/manateelazycat/aweshell
+[445]:https://github.com/jueqingsizhe66/ranEmacs.d/blob/develop/customizations/img/org-evil.png
+[446]: https://github.com/Somelauw/evil-org-mode
+[447]: https://github.com/cofi/evil-leader
+[448]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/setup-evil.el
+[449]: https://www.youtube.com/watch?v=FtieBc3KptU
+[450]: https://github.com/incandescentman/Emacs-Settings
+[451]: http://endlessparentheses.com/ispell-and-abbrev-the-perfect-auto-correct.html
+[452]: http://doc.endlessparentheses.com/Var/abbrev-file-name
+[453]: https://www.youtube.com/watch?v=fhI_riv_6HM&feature=youtu.be
+[454]: https://www.youtube.com/watch?v=VOfSjLwQY28
+[455]: https://gist.github.com/slackorama/1d93e8c4d9194979bcd2

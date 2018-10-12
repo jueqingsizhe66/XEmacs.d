@@ -230,29 +230,9 @@
 (global-set-key (kbd "C-c i") 'my/insert-line-before)
 
 
-(require 'evil)
-(evil-mode 1)
-
-
-
-(use-package evil-surround
-  :ensure t
-  :config
-  (global-evil-surround-mode 1))
-
-
-;;for global evil-visualstar
-(global-evil-visualstar-mode)
-
-
-
-;;for evil escape   similar to keychord.el
-(setq-default evil-escape-key-sequence "jk")
-(setq-default evil-escape-delay 0.2)
-
-(global-set-key (kbd "C-c C-g") 'evil-escape)
-
-
+(load "setup-evil.el")
+(load "setup-abbrev.el")
+;(load "setup-persp.el")
 
 ;;fold-this
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -371,6 +351,6 @@ This function also supports some `org-mode' wrappers:
 
 
 
-(persp-mode)
+
 
 

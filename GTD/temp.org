@@ -7,14 +7,14 @@ CLOCK: [2018-09-21 周五 14:33]--[2018-09-21 周五 15:17] =>  0:44
 significantly influenced by the existence of wind shear, turbulence, gust
 and yaw motion of the nacelle. For a yawing wind turbine, flow characteristics
 become more complex than those of a fixed yaw wind turbine, the additional 
-effect of the wind contribution which is basiccally transmitted to the rotor 
+effect of the wind contribution which is basically transmitted to the rotor 
 due to the nacelle motion needs to be considered. Therefore, the accurate 
 prediction of unsteady aerodynamic load which is calculated by many conventional 
 numerical approaches is still questionable for an yawing wind turbine. 
 In this study, the unsteady computational fluid dynamics(CFD) simulations 
 based on the sliding mesh technique were applied for analyzing the yawing
  motion of the wind turbine due to the nacelle motion. The yawing motion 
-of the rotating turbine blades due to the nacelle motion is considered to 
+of the rotating turbine blades due to the nacelle motion was considered to 
 investigate the effects of vortex-wake-blade interaction for the aerodynamic 
 performance . The work first validated the employed computational fluid 
 dynamics(CFD) method with the fixed yaw and yawing of NREL PhaseVI wind 
@@ -102,8 +102,9 @@ to be adequate for the studied wind turbine. Work of Tran and Kim[43] employed
 
 * 4. Results and Discussion
 ** 4.1 Grid convergence study
-First, a grid convergence study for the NREL-5MW RWT was performed. The conditions
-selected for the mesh convergence study are presented in Tab.3. This case
+First, a grid convergence study for the NREL-5MW RWT was performed.
+ The conditions selected for the mesh convergence study are presented
+ in Tab.3. This case
 
 The first grid had 1.6M cells, and was then refined up to the size of 6.2M
 cells. Convergence of the loads as function of the grid size are presented
@@ -112,17 +113,29 @@ in Fig.4.
 The conclusion from the grid convergence tests is that the grid size of about
 3M cells per blade is sufficient to obtain load estimates at thest conditions.
 
-N
 
 ** 4.2 NREL PhaseVI wind turbine
 
+Seven yaw angles were investigated for the NREL PhaseVI wind turbine, these 
+were from 0° to 30° yaw angle with 5° intervals. 
+
+
+The results for 0° yaw m for the surface pressure coefficient distributions
+at a various radial locations along the blade are shown in Fig.8(a-c). Good
+agreement between the measured and computed pressure can be seen.
+
+The results for 10° and 30° yaw misalignments are shown in Fig.7(d-f) and Fi..
+respectively. The agreement with the experimental data for those cases is not
+as good as expere
+
+
 ** 4.3 NREL 5MW RWT
+The results presented in this section are to assess the magnitude of the yaw and
+yawing physical flow characteristic . 
 
-I think obvious.
 
 
-
-** Static  and dynamci yawing of NREL 5MW RWT
+** Static  and dynamic yawing of NREL 5MW RWT
 This section presents the results obtained for NREL 5MW RWT with static and 
 dynamic yaw misalignment. First, the comparsion of the aligned and static 
 yaw cases is performed in this section. This involves comparison of the 
@@ -134,4 +147,15 @@ probable frequency of the sea.
 
 * Conclusion
 
+The paper presented the results of numerical computations for a 5MW wind turbine
+undergoing prescribed motion in yaw. The Simple CFD solver was used to compute
+to compute the aerodynamic flow and resulting loads on the wind turbine. The
+blades were considered rigid for the cases with prescribed motion, and the tower
+was not included in the computational domain. 
+
+The results suggest larger variations in power for the case of dynamic yaw, as
+compared to fixed yaw cases. Differences of up to 2.5% were seen for the studied
+dynamic yaw cases. 
+
+One of the future steps is to include 
 

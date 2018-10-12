@@ -1,0 +1,94 @@
+** 安装环境
+*** jedi安装
+
+pip install jedi
+M-x package-install jedi
+
+
+https://github.com/gabrielelanaro/emacs-for-python
+
+https://www.youtube.com/watch?v=m4vCXM7_p_o
+
+https://github.com/jkitchin/ob-ipython/tree/c632871f5ed76e429bfcfb272cb6961caf3210a2
+**  pip自身更新
+
+1. pip install update pig
+2. python -m pip install --upgrade pip
+
+*** 1.test error
+
+#+BEGIN_SRC python
+  print('This is ok')
+  5/0
+  print('We here')
+#+END_SRC
+
+#+RESULTS:
+
+
+*** numpy
+
+
+#+BEGIN_SRC python
+  import numpy as np
+  from scipy.integrate import odeint
+
+  Vspan = np.linspace(0,2)
+
+  #DF/DV=F
+  def dFdV(F,V,v0):
+      return F
+
+  print(odeint(dFdV,1.0,Vspan))
+#+END_SRC
+
+#+RESULTS:
+
+***  pandas numpy
+
+#+BEGIN_SRC python  :results output
+         import pandas as pd
+         import numpy as np
+         Series = pd.Series([0,1,2,3,4,5])
+         print Series.replace(0,10000000000000)
+#+END_SRC
+
+#+RESULTS:
+: 0    10000000000000
+: 1                 1
+: 2                 2
+: 3                 3
+: 4                 4
+: 5                 5
+: dtype: int64
+
+
+#+BEGIN_SRC python
+  import pip
+  from subprocess import call
+
+  for dist in pip.get_installed_distributions():
+      call("pip install --upgrade " + dist.project_name, shll=True)
+    
+#+END_SRC
+
+#+RESULTS:
+
+
+
+
+#+BEGIN_SRC python :results output
+  import pandas as pd
+  import numpy as np
+  czf_data = pd.DataFrame(np.random.randn(6,4),columns=list('ABCD')) 
+  print czf_data
+#+END_SRC
+
+#+RESULTS:
+:           A         B         C         D
+: 0  0.111754  1.459913  2.260979 -0.276068
+: 1 -1.024089 -1.418502  0.070983  0.243004
+: 2 -0.983664  1.155758  1.048280  0.055379
+: 3 -1.983894 -1.571108  0.332578  0.136215
+: 4  1.292562 -0.226775  0.488803  0.503390
+: 5 -0.067828  1.509220 -2.323284  1.320461

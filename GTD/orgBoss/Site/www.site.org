@@ -588,4 +588,4 @@ https://github.com/DeathKing/Learning-SICP
 ** emacs and orgmode go paperless
  https://admiralakber.github.io/2016/12/21/emacs-org-mode-journal-and-log/
 ** awesome emacs(一堆emacs相关)
- https://github.com/emacs-tw/awesome-emacs
+https://github.com/emacs-tw/awesome-emacs

@@ -1,5 +1,50 @@
 * Tasks
 #+BEGIN: clocktable :maxlevel 2 :scope subtree
+#+CAPTION: Clock summary at [2018-10-09 周二 12:44]
+| Headline                                                             | Time     |           |
+|----------------------------------------------------------------------+----------+-----------|
+| *Total time*                                                           | *34d 5:36* |           |
+|----------------------------------------------------------------------+----------+-----------|
+| Tasks                                                                | 34d 5:36 |           |
+| \_  开题报告+文献综述+中央高校基金                                   |          |      0:53 |
+| \_  turbsim reading   [2017-10-15 周日...                            |          |      0:48 |
+| \_  干好一件事 <2017-10-16 周一 23:48>                               |          |      0:01 |
+| \_  确认长峪城下雨情况 <2017-10-18 周三 14:39>                       |          |      0:01 |
+| \_  Somethings need to be done by...                                 |          |      0:01 |
+| \_  SCI结果后处理 <2017-10-21 周六 21:58>                            |          |      0:50 |
+| \_  [100%]入党申请 <2017-10-24 周二 15:38>                           |          |      0:05 |
+| \_  strggle(1.02^365=1377.4) <2017-10-26...                          |          |      0:04 |
+| \_  [100%]查新报告 <2017-10-27 周五 12:48>                           |          |      0:05 |
+| \_  番茄时间(30min) <2017-10-28 周六 16:21 >                         |          |      0:02 |
+| \_  工程热物理会议ppt <2017-11-01 周三 16:42>...                     |          |   4d 5:26 |
+| \_  两圈风轮20 30 60收集 <2017-11-02 周四 20:48>                     |          |  1d 19:50 |
+| \_  机舱偏航绘制 <2017-11-15 周三 10:44>                             |          |   1d 3:01 |
+| \_  clojure学习 <2017-11-20 周一 13:52 +1w>                          |          |     10:49 |
+| \_  3页的报告 <2017-11-17 周五 13:05>                                |          |   1d 2:25 |
+| \_  [100%]舍友属性约减程序 <2017-11-17 周五 13:22>                   |          |      0:01 |
+| \_  领取开题报告查新报告并打印开题报告及文献综述 <2017-11-20 周一... |          |      0:01 |
+| \_  SPACECLaim前处理几何 <2017-11-21 周二 22:38>                     |          |      0:01 |
+| \_  提交基金进展报告 <2017-12-01 周五 14:40>                         |          |      0:01 |
+| \_  流场可视化专利申请 <2017-12-06 周三 14:53>                       |          |      0:01 |
+| \_  本科校友聚会 <2017-12-07 周四 01:10>                             |          |   1d 7:40 |
+| \_  中央高校基金写作 <2017-12-08 周五 08:46>                         |          |  1d 13:17 |
+| \_  attengding xilei wedding <2018-01-01...                          |          |      0:01 |
+| \_  年后报增 <2018-01-26 周五 17:30>                                 |          |      0:02 |
+| \_  如鹏提高docker <2018-01-30 周二 15:19>                           |          |      0:01 |
+| \_  提交文章初稿给王老师 <2018-02-04 周日 11:43>                     |          |      0:01 |
+| \_  Capture the Class name in project...                             |          |      5:35 |
+| \_  查阅energy投稿信息 <2018-05-23 周三 17:08>                       |          |      0:21 |
+| \_  Tourist <2018-06-12 周二 20:53>                                  |          |  7d 14:09 |
+| \_  基于多轴角运动的气动特性和流场分析大论文 <2018-06-25 周一...     |          | 13d 22:02 |
+| \_  取工程热物理发票 <2018-07-31 周二 16:05>                         |          |      0:01 |
+| \_  校医院取外敷药 <2018-07-31 周二 16:17>                           |          |      0:19 |
+| \_  修正nrel5MW处理cn ct代码 <2018-08-29 周三 10:33>                 |          |      0:21 |
+| \_  2018论文版面费 <2018-09-07 周五 19:17>                           |          |      0:01 |
+| \_  修改2018工程热物理录用全文 <2018-09-07 周五 19:18>               |          |      0:01 |
+| \_  学习Excel <2018-10-08 周一 17:09 +2d>                            |          |     17:18 |
+#+END:
+
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
 #+CAPTION: Clock summary at [2018-01-28 周日 19:48]
 | Headline                                                             | Time      |          |
 |----------------------------------------------------------------------+-----------+----------|
@@ -79,8 +124,6 @@ Captured 2017-09-27 22:52
 *** 2. you capture your todos with time, so you have time pocket(momentum); However
 *** 2.5 however, you will be overwhelmed by tasks, so you can also group tasks into projects or context.(group tasks into project)
 *** 3. List your todos or tasks with routines and checklists, so you can do things consistently even if fuzzy brains
-*** 4. you need to schedule the most important thing to be done , so you don't take off the ball and focus a little things(You dont'
-worry about missing deadline.(scheduled tasks will be informed of you)
 *** 5. but still too much. So be realistics and add priviledge to your schedule tasks, eliminate some not so important not so hurry
 *** 6. finally you track all you task (so you know what the time went by)
 *** 7. also you do some overview the process (so you do appreciate how things adds up)
@@ -331,15 +374,15 @@ DEADLINE: <2019-10-21 周一>
 Somethings you need to be done by yourself
 ** DONE [#A] SCI结果后处理 <2017-10-21 周六 21:58>                      :@work:
 CLOSED: [2018-04-20 周五 02:21] DEADLINE: <2017-11-06 周一> SCHEDULED: <2017-10-29 周日>
-                    :PROPERTIES:
-                    :Effort: 4:00
-                    :END:
-                    - State "DONE"       from "TODO"          [2018-04-20 周五 02:21]
-                    :LOGBOOK:
-                    CLOCK: [2017-10-21 周六 21:58]--[2017-10-21 周六 22:48] =>  0:50
-                    :END:
-                    
-                    
+:PROPERTIES:
+:Effort:   4:00
+:END:
+- State "DONE"       from "TODO"          [2018-04-20 周五 02:21]
+:LOGBOOK:
+CLOCK: [2017-10-21 周六 21:58]--[2017-10-21 周六 22:48] =>  0:50
+:END:
+
+
 关于动态偏航和动态入流，分三个阶段写：定常  非定常（时均解） 动态入流
 
 *** 非定常结果 [%]
@@ -1539,11 +1582,13 @@ CLOSED: [2018-08-12 周日 19:59] DEADLINE: <2018-08-08 周三>
 
 通过建行快速查找你的付款日期
 ** TODO [#C] 取邮局版面费 <2018-07-31 周二 16:06>                      :@NCEPU:
-DEADLINE: <2018-10-08 周一> SCHEDULED: <2018-10-02 周二>
+DEADLINE: <2018-10-16 周二> SCHEDULED: <2018-10-02 周二>
                     :PROPERTIES:
                     :Effort: 0:30
                     :END:
                     :LOGBOOK:
+                    - New deadline from "[2018-10-08 周一]" on T:[2018-10-08 周一 15:39] \\
+                      还未收到
                     - New deadline from "[2018-10-01 周一]" on T:[2018-10-03 周三 15:37] \\
                       重新规划
                     CLOCK: [2018-07-31 周二 16:06]--[2018-07-31 周二 16:06] =>  0:00
@@ -1601,6 +1646,7 @@ SCHEDULED: <2018-08-29 周三>
 3. [ ] 在你的计算目录下phaseAngle.csv修正
 4. [ ] 提取扭矩曲线
 5. [ ] 
+
 ** DONE [#B] 2018论文版面费 <2018-09-07 周五 19:17>                    :@NCEPU:
 CLOSED: [2018-09-19 周三 02:55] SCHEDULED: <2018-09-15 周六> DEADLINE: <2018-09-30 周日>
                     :PROPERTIES:
@@ -1626,12 +1672,13 @@ CLOSED: [2018-09-16 周日 00:43] DEADLINE: <2018-09-15 周六>
                     
                     
 必须完成
-** ABORT [#B] 办理借款  <2018-09-26 周三 16:30>   [25%]             :@NCEPU:
-CLOSED: [2018-09-29 周六 03:42] DEADLINE: <2018-10-10 周四> SCHEDULED: <2018-09-26 周三>
+** CANCELED [#B] 办理借款  <2018-09-26 周三 16:30>   [25%]                 :@NCEPU:
+CLOSED: [2018-09-29 周六 03:42]  SCHEDULED: <2018-09-26 周三>
                     :PROPERTIES:
                     :Effort: 1:00
                     :END:
                     :LOGBOOK:
+                    - State "CANCELED"   from "ABORT"      T:[2018-10-08 周一 11:17]
                     - State "ABORT"      from "TODO"       T:[2018-09-29 周六 03:42] \\
                       通过公务卡还款
                     CLOCK: [2018-09-26 周三 16:30]--[2018-09-26 周三 16:30] =>  0:00
@@ -1640,12 +1687,13 @@ CLOSED: [2018-09-29 周六 03:42] DEADLINE: <2018-10-10 周四> SCHEDULED: <2018
 2. [ ] 注册费缴纳
 3. [ ] 火车票预定
 4. [X] 酒店预订
-** TODO [#B] 订火车票 <2018-10-04 周四 15:24>                         :学术:
-SCHEDULED: <2018-10-06 周六>
+** DONE [#B] 订火车票 <2018-10-04 周四 15:24>                            :学术:
+CLOSED: [2018-10-08 周一 11:17] SCHEDULED: <2018-10-06 周六>
                     :PROPERTIES:
                     :Effort: 1:00
                     :END:
                     :LOGBOOK:
+                    - State "DONE"       from "TODO"          T:[2018-10-08 周一 11:17]
                     CLOCK: [2018-10-04 周四 15:25]--[2018-10-04 周四 15:25] =>  0:00
                     :END:
                     
@@ -1653,3 +1701,201 @@ SCHEDULED: <2018-10-06 周六>
 
 
                     I think 
+** TODO [#B] 参加风能展览 <2018-10-08 周一 15:42>                     :学术:
+SCHEDULED: <2018-10-17 周三>
+                    :PROPERTIES:
+                    :Effort: 4:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-10-08 周一 15:42]--[2018-10-08 周一 15:42] =>  0:00
+                    :END:
+                    
+                    
+                    
+10-17~19
+** TODO [#B] 学习Excel <2018-10-08 周一 17:09 +2d>                       :学术:
+DEADLINE: <2018-10-20 周六>
+                    :PROPERTIES:
+                    :Effort: 1:00
+                    :ORDERED:  t
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-10-08 周一 17:09]--[2018-10-08 周一 17:14] =>  0:05
+                    :END:
+                    
+                    
+***  1. Formulas
+***  2. VLOOKUP & INDEX
+了解过
+***  3. PivotTables
+(已经会了，很方便做数据分析，特别是不同区域的销售记录)
+***  4. Recorded Macros
+:LOGBOOK:
+CLOCK: [2018-10-08 周一 19:42]--[2018-10-08 周一 19:51] =>  0:09
+- Clocked out on T:[2018-10-08 周一 19:51] \\
+  理解macro只是键盘宏
+:END:
+不熟悉，没怎么用过哦
+
+Ctrl+shift+->   选择到右边
+ctrl+shift+down 向下选择
+
+Ctrl+A 和Ctrl+*类似
+
+ctrl+1 定制选择区域的格式
+
+转置录制键盘
+***  5. Charts
+:LOGBOOK:
+CLOCK: [2018-10-08 周一 19:51]--[2018-10-08 周一 22:29] =>  2:38
+- Clocked out on T:[2018-10-08 周一 22:29] \\
+  Alt+F11 and F11
+CLOCK: [2018-10-08 周一 19:26]--[2018-10-08 周一 19:42] =>  0:16
+- Clocked out on T:[2018-10-08 周一 19:42] \\
+  bye
+:END:
+作图会
+
+
+Alt+f11 柱状图
+F11 new sheet shows colume figure.
+
+selection, ctrl 1 to format the region your selected
+
+save as template, save as default
+
+
+Date type selected---->Customize number format(ctrl 1)
+
+***  6. Keyboards
+
+https://people.highline.edu/mgirvin/excelisfun.htm
+
+https://www.youtube.com/watch?v=kNaxTNSAtLk
+
+Detailed and easy_understanding instruction
+
+Ctrl+backspace----> 类似于ctrl c w,定位，或者mark没方便调回来
+Ctrl+down---> jump to the down of table till the empty cell
+ctrl+left -->  jump horizontal
+highlight 2--> ctrl+shift+down  hightlight all the table
+Editing-->填充----series----自动填充一个序列，类似于linux的seq
+
+*** 2017版本
+:LOGBOOK:
+CLOCK: [2018-10-08 周一 22:30]--[2018-10-09 周二 00:00] =>  1:30
+- Clocked out on T:[2018-10-09 周二 00:00] \\
+  完成2017第一节学习
+:END:
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+#+CAPTION: Clock summary at [2018-10-09 周二 12:43]
+| Headline   | Time  |
+|------------+-------|
+| *Total time* | *14:10* |
+|------------+-------|
+#+END:
+
+https://www.youtube.com/watch?v=RsDFonVtKGM
+
+F4--在公式中改变为绝对左坐标
+F4两次列固定，行不固定
+F4三次行固定，列不固定(一个妙用，根据某列hightlight整行 formatline --> 新建规则=$E10="X")
+F2 显示公式
+
+=vloopup(查找词，词典，第几列值，false精确查找)
+
+
+在学习excel的过程中也让我想起了emacs、awk、linux bash语言
+
+
+flash fill适合格式化数据
+
+
+**** power query
+:LOGBOOK:
+CLOCK: [2018-10-09 周二 00:00]--[2018-10-09 周二 12:40] => 12:40
+- Clocked out on T:[2018-10-09 周二 12:40] \\
+  Dark blue with white fonts make reader easy reading
+:END:
+
+ctrl+Enter: put thing in cell and keep cell selected
+shift+Enter: put thing in cell and move cell selected up
+Enter: put thing in cell and   selecte cell down
+tab: put thing in cell and   selecte cell right
+shift tab: put thing in cell and   selecte cell left
+
+
+1. 准备一个文件夹
+2. Data--查询---from 文件夹----> 然后新建一个，在binary文件内容字段有一个下拉两箭头进行设置接口
+3. 
+*****  Data analysis and business intelligence
+
+Data analysis : Convert Raw data into useful info for decision makers(DM)
+Business intelligence: conver Raw datza into useful/Actionable info for DM in a business situation
+
+1. Raw data
+2. clean data
+3. tranform data
+4. report: goal of data analysis and business intelligence
+   create usefule,updateable,actionable info for decision makers
+
+   
+***** the schools of Thought for stylistic formating:
+
+i. Field names or column headers should be bold.(Bold)
+ii. Use Number Formatting sparingly.(sparinly)
+iii. Don’t use alignment.
+iv. The default gray lines in the spreadsheet are the only borders you need.
+v. Sometimes red is used to indicate importance(Color)
+ii. Font Color and Fill Color must have a large value difference so that it is easy to read:(学到了一招，很有用)
+    1. Dark Blue Fill Color and White Font Color have a large value difference.
+    2. Red Fill Color and Black Font Color do NOT have a large value difference.
+
+**** what excel does?
+
+1. Make calculations---numeric ,locical and text calculations
+2. Data analysis--->Convert raw data into useful info for decision makers
+
+   sumifs, countifs, maxifs,minifs,averageifs
+   
+都是类似于vlookpup函数的风格，第一个区间是要进行计算的数据，
+后面是选择的标准，根据标准选择数据进行计算，定位数据。
+
+=SUMIFS(E1:E17,E1:E17,">=100")  某列大于100
+
+类似于，下面对满足条件的进行求职
+=SUMIF(E1:E17,">=100")
+VLOOKUP: =VLOOKUP( lookup_value , table_array , col_index_num , [range_lookup] )
+多条件求和函数、数数函数
+
+
+criteria argument contains the condition or criteria that tells the function what to count.
+1. Conditions and criteria can be:
+    i. Text (like “West”).
+    ii. Numbers: numbers, Dates, Times.
+    iii. Logical values (TRUE or FALSE).
+    iv. Numbers (or Text) with comparative operators:
+        1. Example: >=1000 can be used as criteria
+            i. You can type >=1000 in a cell and refer to it in formula
+            with cell reference.
+            or
+            ii. You can type 1000 in cell and join the comparative
+                operator to the cell reference that points to the number
+               like: “>=”&F30, where:
+                1. Number is in cell F30 (for this example)
+                2. Comparative operator must be in double quotes
+2. You can enter up to 126 range/criteria pairs
+** TODO [#B] python programming <2018-10-11 周四 10:15 +1w>            :python:
+SCHEDULED: <2018-10-11 周四>
+                    :PROPERTIES:
+                    :Effort: 1:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-10-11 周四 10:15]--[2018-10-11 周四 10:16] =>  0:01
+                    :END:
+                    
+                    
+http://www.newthinktank.com/2014/11/python-programming/
+
+
+https://www.youtube.com/watch?v=N4mEzFDjqtA

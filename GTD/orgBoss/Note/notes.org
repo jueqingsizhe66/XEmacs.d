@@ -287,6 +287,7 @@ SCHEDULED: <2015-04-04 Sat 09:00-12:00 ++1d>
                          
 如何在一个org文件创建clock summary
 C-c C-x C-r
+
 ** org blog jekyll [#B]                                              :@work:
                          Added: [2017-10-09 周一 22:16]
                          
@@ -796,6 +797,7 @@ JumpStatio诞生几个月以前的“What's New”页面（腾讯科技配图）
 
 对于追随弗莱彻其后建立起网络搜索引擎的人们来说，当前的这种媒介已经让他们赚到了大笔的钞票。但是，弗莱彻这位出生于英格兰自治市斯卡伯勒（Scarborough）的先驱者并不对此感到遗憾。“我的父母以我为骄傲，我的妻子和孩子也是如此。对我来说，这才是无价之宝，所以我感到非常幸福。”
 ** 最喜欢的一段perl代码 [#B]                                        :@NCEPU:
+** 
                          Added: [2018-08-05 周日 03:47]
                          
 
@@ -2533,36 +2535,36 @@ I started using Emacs a
 ** 2018蜜柚 [#B]                                              :@NCEPU:crypt:
 -----BEGIN PGP MESSAGE-----
 
-hQEMAw7kGOoigxp9AQgAjzbErrUi29/y7sPri8ike1I1TV7qDhOCMRgcFAjtfjqB
-sWCGgNqt14RiJmVzGm3v2G5iKzGIFkizv413iQMrs674VAs10QBfPfHsVu5izB1T
-cwgo16MM2HTwZIurrwCugVK+LQmC4maUExzJaQ0mmzW0NqgFuypC0Ov0V01XPecw
-eGFfhZtWcyQo91W+EePwRyGA6kEhdYB3lsFX4FJIZx6cpKFR8wUNcDDcFZ2R962s
-GnHOOHDRS4W8DYFkQCJFGAKheAeVE9u6x6a3rdl7XOUiFtsgiBZOj9WfWTiTye92
-8WfafDVElfx3EbrtDCfCpT3gRnZ1pW3wkl+mWunuWtLqAX2U3pqJfHvzB6wSiXyH
-1HjFnzcolFM5VcXPgvnaYGwWC673IMT7SPrFZoZFd2N28G0RSP5M3EWccLzdK2tg
-zTUYsPQG0nSm+1raK+YU/NFtNiQQ1iTf+H4Oxsmhl9ht80+r/SvKeWz/nlwG6RXf
-86BqOZ9hgYdYWJ85y3KfQ2zzQqZTnKNSZXjg+O9XK2ASEfrGASxx1QyCjJ8W/Hvo
-CJOYvKW2NKA7MmqxaFv7N7aja6v7LnzSZACw6+isbTzNba6WUHdwqhK28pT5tUBN
-0iQD479NTQFvTA447lUCh7Spy40b9RLbGstSq8ibBhkeM3OAZw/Aza4o3UcmK/7y
-dkjgkrlPkm4UAOfwT6PVi27KmshUYiBaPyzz0ZBeSbvWEXIRv9Lb4/bA2vk+/wcy
-X7WGAj+ZJ/m38mrp9zAOWp9XoIyYUL25tYyVj946EkEmqr0EdODNAvxCZ2FmHKQ8
-t+D7AUORi6HEYxDn2cR9xyoUVNbHOJDNg1qEEkT6lxuMM2ovbH+TKg4awze9RfuB
-SNUquzoPsSnuvni+PnaQDqNh/3FNYLHWLzIbElSU4dvywgHBjMzT6GcX8CP6ephC
-3OIgytJyHe9HQq847xPlbF96LtZ/i453KkDKLxc7IsGlNZBn4b7Cp3wRg6Jc8GEw
-ciYZXhsiCmW8Mt7ri4RHCZoMAFN0+rIRr9P3oH+/1DLTvyGRqTFt7fGBOCSgcVIH
-1qktFClClME/DMQVf/Bu4I8DW36ri9Qh0C7e1VU+TsjaoiJ9zAWXz9W6mj8qE3DJ
-btPhnjmeMjb8rgfn4GCPkelhFKOgBxImQOWKU4amccA6bLDtOm2x+4mDu7++JytP
-axESwhZFTObXCw3RF3ojaipJtyTTi+NEU5fQw2K9k5BFtqHJ1hyL7smu8rf6/haq
-wnnaYaTFyPCXHfsz/Bd06mMy57F1oa0PC3eDHmuL+Qe1Bi5CmqZALxCQoUyr/UZE
-DiPpzA5zgl2X+sb1SU1ZiliQgDyBPKLCMaJpEcpd95Af1+Qqn8bhIFaUmHcWIHgb
-7pOuGGnQ9Ox9nep2OgnTav5ETQ/p6dKJP6EtFAkCt2KG4w4nWYExJcVf9VbMsrf7
-70mavsqnYvDn2NUEhpce0C/8fuz0KXGkG5ChVqs8QHnXY0a04xUGeW6O0tcqwV0e
-yxUW3O9iplGcGVbyX8rilNt8XijOl+H8TKMG0pQ2C5t8FhMjedP1fCV78YvEiaCk
-H+RQBFBvymJaXHGXgOVPwkvIKwmSCO7+ZFl2a97PuiCYDcpaQpJeL8QVbd2E71b1
-9r0NDEWB9DwmlGHmSdQvyRh4cW2lFiiY7/X4YxHAQGgs9aNVNbh07eY56BSH7Xwn
-QlXQxEGQltVTRlOrMGdlG0wcxidtKKxVodt6F+Ar6bBsseEotQ3n7HuQ8OKd4nOg
-t6DlLMAnEbfzljjIb+YJn644U9yzvfdgYiZeEBLcusBGJMyyoI33
-=vrbf
+hQEMAw7kGOoigxp9AQf/XBsInzg7gs0BpbKJSveAFzNQUU1t2TcaWdkeM98M5dQb
+FV3bU/kskHWyKBDIs7BcKn6QZlVpe7BsqVyOOBvspPF1l7/yU9QUGSVbqU6xYOXp
+CSuXE7tvhoZMJoR3xm9YD0zq2nAxKp7yi6WIkV6ViTfzbJcoLhpMcosR+MgQ4hMa
+0SESfMM2W32tYF0SvXDd9QiwiZWs7WROorgx/VGrmCAGiyvo2oq/dUgDwlVE6svG
+BvWml/ga9lG7VovHUZzegBVfJm85L2k3GH5DlzaBsxFyFa1wvLMdyfIz9Emhmgsy
+5SE2Bn+0xnTw+hAM+jShTEPnNOiU7C0/uKBRSChEutLqAWhYWKfgiJ/wseyUIGVq
+xW31FRipDpT055tmsYGdiTsQTnNEkZBwJDdPfsQOIpS5G9zZZYxarvhyRkP79Tr1
+CQtYlGomYW6R/dLy9gw/IuvlhIgPn2HEQyjchbKpp7d1Db+dSWd3e+Iz1LbxwD4/
+kXDvUljz8tN2bpkj2Qv2kvWcphoTx/4V7j1CnD2XfuI942yAkWIQMUk39cxb2DnZ
+P/sFNuUnKnQy9vuMNsJu3ah7LnW6EOxfyvtMBIsX+KkRkfOjpmf1GFpBAxoRU1ki
+zsEP35hG+imMxeJJxeTUNcS2EW9uRXQYlzNxphskzWnnvVgEMLy22hUx7xuqBFQ/
+lOvbRaT6BYwqDiNgBuFU7wBJYgEc8T92cRCG57AFMTiCvLlCMJ5kqk6qCKtcc1m3
+D3JPNAR1P11YEAgspU/7pb3SZjwHQWHcwUI0lwah3bVlrgDiScwAnkBDiuoj7S/G
+jmxCz9Olsp4Gi7Gvivy5GXvaVx6RoPL8WpTJKiuV1xw04itLamZfT/paGT8aJcBA
+bwfP1MRfzMeZKjBg1QVPcKbubHrMbf28jpPuAgGs2NdYnrJ55CtZLafHgogcIMvq
+Vy7eGfiONzPyz73D984ta8Zc/myPj4+RAccfKrwxrwV3dRe1rQEwaNPgaPy56TQt
+UKyU2/mApUhJ4dLGdyalb9XgxfBTAX0jWW8yESNC8ouRhJQh9scHbIoNWISaBODR
+dtK7kQ4BI3mtwmrVz64fBwmkCBx2D0QHfGw7gUrfNzn2gnwGX9QwDsfSTTYOhKEZ
+88t84DK+BptSReR2HEmg1sF1n3Iy/1JYFmYrSUZDiTbvFx3XF90OOMZu7+8J1jKE
+n/v2qxQMTd1lL48t0G3RMHmlddV2Tsx+1sx3updWhRJASWuL2Mnxni0Xg0nxwVIh
+okvMrk9RGbhvsTJ92SwsgxQS3608bcwdxh3i/THvIpHW/C42/ld/1jVGGvlpCP/H
+bD6K26qQWu/UglNdKR1eJuCYQLvnkY0/utmgu02GaD4KFYWobvddJt/DNrzeqCnP
+DAbqyHH3I74p6O4DWf2uJrkvAoVV5/BRl4SRN+V36/Yu0OxIeBypeGrNCzjFT4El
+2QoI7d6HflU3rTTbRwvmS+ZrO17i8yXvpFITWKuZc0MsMPG7D+mh56BXBM95xmLi
+nf0mhll5ldZZXBRJCps+IA5y89GbH2vMN+jAyfBqOyM2uy7OYTOXNgYqRZxPOMDb
+o/85tGcNu6dYniZRDUmRs53VT+lQVeynvzLzRR8Q2ByVlAxw+PDslGgsHHb9RtnB
+oqTe1AZTb82UhtMXSAGjxVZQqNtgcAZRdAX10AfYGfihxc9W+eaDaAP/dXpojp6V
+k1EuFUJFgz/xcG9L36viIp7wzMGhBZilk5BOR5fmp6rCmAcHBXacoyQzUAxhpv8W
+G8tTDA025cCaZeNbDcUcDI0a/iVE4dn2LqubHaHNJhBuKx8=
+=seTR
 -----END PGP MESSAGE-----
 ** 计算机程序技术 [#B]                                            :@Company:
 :LOGBOOK:
@@ -3177,3 +3179,219 @@ The Build Server Protocol aims to define common functionality that both build to
  and language servers/editors (clients) understand. This common functionality enables tooling
  developers to provide their end users the best developer experience while supporting build 
 tools and language servers with less effort and time.
+** Emacs Application Frame(EAF-Ubuntu) [#B]                      :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-10-07 周日 18:40]--[2018-10-07 周日 18:55] =>  0:15
+CLOCK: [2018-10-07 周日 17:08]--[2018-10-07 周日 18:25] =>  1:17
+- Clocked out on T:[2018-10-07 周日 18:25] \\
+  ** 何为势？
+     
+  造势，看出势之所在。
+  柔不是弱，而是含，收，容。 
+  
+  太盛则折，太弱泽泻
+  
+  阴阳，有用
+  
+  造势妙哉奇迹，千变万化中，对方一动，势就可以入，就可导。高手你入他很难，这就要损
+  
+  损她一个子儿，损自己一个子儿，先导开，或找眼钉下，止住他的入势，铺排下自己的入势
+  
+  这时你可不可死损，势式要相机而动。势式有相因之气，势套势，小势开导，大势含而化之。
+  
+  根连根，套可以算出百步之远，但无势，不成气候！
+  
+  为棋不为生，为棋是为养性，生会坏性，所以生不可太盛。
+  
+  棋盘上无非是道同势不同，天下可不一样，子儿都不全摆上，棋就没法下了。
+:END:
+                         Added: [2018-10-07 周日 17:08]
+
+     sudo pip install dbus-python PyMuPDF grip qrcode pyqt5 python-xlib                     
+     
+*** dbus-python
+提示：No package ‘dbus-1’ found 
+安装：$sudo apt-get install libdbus-1-dev
+
+提示：No package ‘dbus-glib-1’ found 
+安装：$sudo apt-get install libdbus-glib-1-dev
+
+---------------------
+
+*** pyMupdf
+
+apt-get install mupdf
+apt-get install fitz(后来改为pip3 install fitz 还是不行)
+apt-get install libjbig2dec-dev
+apt-get install libjpeg-dev
+apt-get install libfreetype6-dev
+apt-get install libopenjpeg-dev
+
+pip3 install pyMupdf
+*** grip
+
+pip3 install grip
+*** qrcode
+
+pip3 install qrcode
+*** pyqt5
+
+*** python-xlib
+
+pip3 install qrcode
+** All is well [#B]                                                 :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-07 周日 21:01]--[2018-10-07 周日 21:02] =>  0:01
+:END:
+                         Added: [2018-10-07 周日 21:01]
+                         
+All is well（一切顺利) A li zi ben
+
+世上无难事-----会变好的
+** 很多人都想知道未来会怎么样？(势) [#B]                              :学术:
+:LOGBOOK:
+CLOCK: [2018-10-07 周日 21:25]--[2018-10-07 周日 21:32] =>  0:07
+:END:
+                         Added: [2018-10-07 周日 21:25]
+                         
+                         
+1. 预测
+2. 知道一个人最后的发展趋势，他会不会比别人出色
+3. 但是真的能够找到将来的自己？
+4. 每个人都具有反思过去的能力，一个人拥有的是过去和现在，可以发展的是将来
+5. 所有预测结果都是相信会变好，结果是越来约好的
+   
+未来是什么样子？只有一些个别人知道，你就知足吧，吃好，睡好，码好，写好，足矣。
+
+人这辈子，总得有点儿有意思的东西。
+
+让你的生活多添点乐趣funny。
+
+未来由势所生，由势所运，运势而生，既得未来。
+**  [#B]  剑和剑道的相互结合                                        :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-08 周一 11:34]--[2018-10-08 周一 11:40] =>  0:06
+:END:
+                         Added: [2018-10-08 周一 11:34]
+                         
+花更多的时间去学习新的技术和陪伴家人, 而不是无穷无尽的折腾 Emacs, 
+折腾Emacs而不学习高深的技术, 就像一个永远只会淬炼刀剑的却没有时间
+练习剑法工匠一样, Emacs这个工具始终是为了探索好奇心服务, Emacs本身不应该成为学习的目标
+
+手中有了一把剑足矣，接下来就是用这把剑探究各种剑法，而不是老磨剑。
+
+要识别出来你现在看的东西哪些是工具的内容，哪些是剑法、枪法、功法的部分(道)
+
+最后你一定要学会 Elisp 编程才会把Emacs这把屠龙刀打造的尽可能顺手(不是每个人都能使用屠龙刀)
+
+剑在手，含而化势，只为披荆斩棘，还一方净土。
+所向披靡，屠尽天下又何妨，非吾愿。
+
+https://emacs-china.org/t/emacs-melpa/7256
+** tufts [#B]                                                         :学术:
+:LOGBOOK:
+CLOCK: [2018-10-08 周一 19:28]--[2018-10-08 周一 19:29] =>  0:01
+:END:
+                         Added: [2018-10-08 周一 19:27]
+                         
+
+                         
+The main forces acting on tufts glued to a rotating blade.(aerodynamics and centrigugal forces, the latter
+causing the tuft orientation to be biased radically outboard
+** 法治社会 [#B]                                                    :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-10 周三 15:19]--[2018-10-10 周三 15:20] =>  0:01
+:END:
+                         Added: [2018-10-10 周三 15:19]
+                         
+非法制社会（刀制)
+
+得水治
+
+
+市场经济面前就是产权明确，公买公卖。
+** 阿兹海默症 [#B]                                                  :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-10 周三 16:27]--[2018-10-10 周三 16:29] =>  0:02
+:END:
+                         Added: [2018-10-10 周三 16:27]
+                         
+要关注身边的亲人、老人 脾气，脾气暴躁是不是得了抑郁症，还有阿尔兹海默症（老年痴呆)
+
+脑里多了点东西
+** Awesome shell [#B]                                            :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-10-11 周四 02:24]--[2018-10-11 周四 02:25] =>  0:01
+:END:
+                         Added: [2018-10-11 周四 02:24]
+                         
+https://emacs-china.org/t/aweshell-1-0/6676
+
+
+Emacs中执行终端命令, 最近看见大家都在折腾 EShell, 晚上花了一个小时写了一个 Aweshell 141
+
+Aweshell 基于 eshell, 希望提供一个开箱即用的 eshell 使用环境, 下载下来就可以使用, 不用浪费时间折腾.
+
+主要的增强功能有:
+
+像 MultiTerm 一样对 eshell 进行多bufffer创建和切换功能
+添加了一些方便的函数, 比如 clear buffer, toggle sudo , 感谢 @Samray
+默认集成 eshell-prompt-extras.el , 提供长路径缩写, git分支, 远程shell等状态增强, 类似oh-my-zsh的效果
+默认集成 esh-autosuggest.el , 提供类似 Fish 的历史命令补全功能, 包括对 bash/zsh 历史的补全
+实时检查命令是否有效, 并对无效命令/别名提前进行高亮显示, 避免执行后发现敲错字符, 感谢 @casouri
+eshell更改目录的时候, 同步更新 buffer name, 感谢 @casouri
+通过集成 exec-path-from-shell.el 来修复Mac下 eshell 报 “Command not found” 的错误, 主要是 /usr/local/bin/ 等路径没有导入 eshell path
+内置一些方便的别名: f (find-file), fo (find-file-other-window), d (dired), ll (list files)
+添加 git 命令的补全支持
+集成 eshell-up
+unpack 命令可以直接解压压缩文件, 不用记住那么多解压命令
+命令敲错的时候, 显示 didi you mean 的帮助
+cat 命令的输出有语法高亮
+后台命令完成或终止时提醒用户
+默认按键:
+
+Ctrl + L : aweshell-clear-buffer
+Ctrl + Shift + L: aweshell-sudo-toggle
+Ctrl + H: company-complete-selection
+** 10projects in 2018 for  python [#B]                              :python:
+:LOGBOOK:
+CLOCK: [2018-10-11 周四 10:32]
+:END:
+                         Added: [2018-10-11 周四 10:32]
+                         
+https://prettier.io/docs/en/browser.html
+
+prettier
+
+
+https://github.com/DiegoVicen/som-tsp
+
+
+important!
+https://github.com/donnemartin/system-design-primer
+
+
+好好学算法
+https://github.com/keon/algorithms
+
+
+面部识别
+https://github.com/ageitgey/face_recognition
+
+video
+https://github.com/NVIDIA/vid2vid
+
+
+pipenv
+
+pip和virtualenv的结合
+https://github.com/pypa/pipenv
+** what it is? [#B]                                                 :@NCEPU:
+                         Added: [2018-10-12 周五 09:49]
+                         
+                         
+*** Launch or background?
+
+*** Project development
+
+*** Conclusion
