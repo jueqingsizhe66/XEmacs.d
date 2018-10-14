@@ -577,6 +577,30 @@ add `evil-surround` into my-package list
 12. counsel-git-grep
 13. swiper
 
+
+#### 很有意思的切换
+
+<2018-10-13 13:51>
+
+```
+
+    C-s runs the command counsel-grep-or-swiper (found in
+    counsel-mode-map), which is an interactive autoloaded compiled Lisp
+    function in ‘counsel.el’.
+
+    It is bound to C-s.
+
+    (counsel-grep-or-swiper &optional INITIAL-INPUT)
+
+    Call ‘swiper’ for small buffers and ‘counsel-grep’ for large ones.
+    When non-nil, INITIAL-INPUT is the initial search pattern.
+
+[back]
+```
+
+大文件使用counsel-grep,小文件使用swiper
+
+
 我见过比较好的[git教程][84]
 
 git配置
@@ -3897,6 +3921,8 @@ easy for  life!!!
 在vim中你可以使用`qa`或者`qb`等录制一个名字为a或者b的宏，并通过`@a`或者`@b`来执行 也可以通过`100@a`进行100次执行[<2018-05-03 22:38> 由于引入了evil-mode也可以在emacs使用该方式录制键盘宏]
 
 而在emacs中，你可以通过`C-x(` 开始录制， 通过`C-x)`结束录制，并通过`C-x e`执行录制宏，还可以通过`C-u 9 C-x e`或者`C-9 C-x e` 进行9次执行等。注意可以通过`M-x name-last-kbd-macro {Your macro name}`来持久化你的宏，然后通过`M-x {Your macro name}`进行调用。
+<2018-10-13 23:09>有用，在你的写作系统中F3代表`C-x (`
+F4代表`C-x )`
 
 类似的重复性概念，还不如你可以`C-n`多次下移光标，但同时也可以通过`C-9 C-n`进行9行下移，对于阅读代码有帮助，当然也可以用`C-v`或者`M-v`进行正向和反向半屏阅读。    
 
@@ -7570,6 +7596,25 @@ which grows with time and thus is "smarter".
 
 `C-x C-r` 打开最近的文档!<2018-10-12 15:06> 有用!
 
+### 164. counsel-grep configure correction
+
+
+当存在大文件buffer时候，`C-s`调用的counsel-grep-or-swiper会切换到`Counsel-grep`
+
+但是`counsel-grep`老是调用错误，参考 [counsel-grep not working][459],修正如下
+
+```
+;; i  must be lower-case option
+(setq counsel-grep-base-command "rg -i -U -M 120 --no-heading --line-number --color never %s %s"
+    counsel-rg-base-command "rg -U -S --no-heading --line-number --color never %s ."
+    counsel-ag-base-command "ag --vimgrep -S --nocolor --line-number --nogroup %s"
+)
+```
+
+这样在本地文件,就可以支持counsel-grep的搜索了
+
+[中文搜索rg-grep-ag][460],几个插件都有点问题，真不行，手动使用`M-x swiper`即可,另外还有你的笔记本系统`Deft`.
+
 
 
 ----------
@@ -8036,3 +8081,5 @@ which grows with time and thus is "smarter".
 [456]: https://github.com/jueqingsizhe66/XEmacs.d#148-auto-insert-file-header-with-suffix-specified
 [457]: https://www.awesomes.cn/repo/hakimel/reveal-js
 [458]: https://libs.cdnjs.net/
+[459]: https://github.com/abo-abo/swiper/issues/1269
+[460]: https://emacs-china.org/t/topic/4267

@@ -1,5 +1,6 @@
 rubbish*/
 *.swp
+*.html
 backups/*
 .recentf
 .recentf~

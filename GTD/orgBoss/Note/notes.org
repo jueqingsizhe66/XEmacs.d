@@ -3412,6 +3412,7 @@ CLOCK: [2018-10-13 周六 01:14]--[2018-10-13 周六 03:45] =>  2:31
                          
 https://www.youtube.com/watch?v=BOgH6sZJX5w
 
+周润发：
 1. 倒过来想着人生， 年轻时候，吃得苦越多，年老的时候就会比较轻松
    反而年轻时候越轻松，年老的时候越难受, 倒过来想问题. 能够倒着过来
    想问题，太不容易了
@@ -3426,7 +3427,13 @@ https://www.youtube.com/watch?v=BOgH6sZJX5w
 EQ高比IQ高來的重要 心裡的委屈是告解另個自我  要活在一二不要活在不如意八九 當個平凡人 心自在
 
 
+
+
 我应该回复到会笑的那个阶段
+
+
+1. 换位过来, 站在对方角度进行倒序过来
+2. 倒序过来, 所有相互之间的基本过程
 ** 撇开成本说新能源都是耍流氓 [#B]                                    :学术:
 :LOGBOOK:
 CLOCK: [2018-10-13 周六 03:58]--[2018-10-13 周六 03:59] =>  0:01
@@ -3437,3 +3444,97 @@ CLOCK: [2018-10-13 周六 03:58]--[2018-10-13 周六 03:59] =>  0:01
 成本+ 可持续发展必须都得考虑。
 
 我突然喜欢能量转换了
+** 科技的发展让人越宅 [#B]                                          :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-13 周六 15:39]--[2018-10-13 周六 15:43] =>  0:04
+:END:
+                         Added: [2018-10-13 周六 15:39]
+                         
+                         
+三个方向， 信息技术，核能，航空技术，往外发展的核能和航空技术反而没怎么
+发展。反而是计算机信息技术越来越发展，也就是越宅发展的越多
+
+
+先下手为强的原理是因为，人们的认识机制
+人们对不熟悉的东西首先 先接受，认为是对的，等到某一天再回想起来，可能才会怀疑
+而不是（我先怀疑，慢慢经过很长一个阶段再接受)
+** 基数是什么? [#B]                                                 :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-13 周六 15:49]--[2018-10-13 周六 16:02] =>  0:13
+:END:
+                         Added: [2018-10-13 周六 15:49]
+                         
+                         
+有多大的基数(分母)? 基数就是说某物体的总数量, 中国基数大
+老年人基数也大!
+你跟他讲政策，他跟你讲身份。你跟他讲比例，他跟你讲基数。
+
+人总得被套一次，才能反被套
+** 自我教养，自我调教 [#B]                                          :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-13 周六 20:41]--[2018-10-13 周六 21:10] =>  0:29
+:END:
+                         Added: [2018-10-13 周六 20:40]
+                         
+      https://www.youtube.com/watch?v=um_xKcji7kc                   
+
+
+李健:
+
+平常心，自己跟自己谈话才是最重要的。
+
+要有自我警觉.  严于律己，宽以待人
+
+当你向生活要很多东西的时候，你也等于失去很多东西。
+
+30岁在这个时代很难立起来，也许40岁也不错。 30岁之前是父母的基因遗传
+30岁之后得自己去把握，去改造，去修复和改善你自己的体质
+
+音乐诗人，秋裤男神， 白马王子(白马王爷)
+** 关你屁事 [#B]                                                    :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-13 周六 21:11]--[2018-10-13 周六 21:39] =>  0:28
+:END:
+                         Added: [2018-10-13 周六 21:10]
+                         
+                         
+所以, 我以后写的任何代码和文章首先会让我自己觉得有趣我才会去写, 如果别人喜欢看我很高兴, 不喜欢看我也觉得很正常 (人和人本来就不一样嘛), 而不是仅仅只是让别人开心.
+
+我一向以来崇尚的快乐大法:
+https://emacs-china.org/t/emacs-melpa/7256/17
+
+很多事情, 就是
+关你屁事, 关我屁事
+做点好玩的事情博得自己的开心最重要.(我做点自己喜欢的东西就好，李健)
+
+我相信每个人只有让自己先快乐, 这个操蛋的社会才能进步, 哈哈哈哈.
+And von Neumannn gave me an interesting idea: that you don’t have to be responsible for the world that you’re in.
+ So I have developed a very powerful sense of social irresponsiblity as a result of von Neumann’s advice.
+ It made me a very happy man ever since.
+** fishc资源包 [#B]                                                 :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-13 周六 21:41]--[2018-10-13 周六 21:41] =>  0:00
+:END:
+                         Added: [2018-10-13 周六 21:39]
+                         
+                         
+https://fishc.com.cn/thread-51842-1-1.html
+** 只有你懂他，你才能写他 [#B]                                      :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-13 周六 21:54]--[2018-10-13 周六 21:57] =>  0:03
+:END:
+                         Added: [2018-10-13 周六 21:54]
+                         
+                         
+Allow enough time:
+  Before you can write about the research, you have to understand it.
+
+Allot at least half the time that you spend on this assignment to reading and
+understanding the article. Before you can write about the research, you have to understand it. This
+takes more time than most students realize. Does the author's study make sense to you in lay terms
+(could you explain the study to your roommate)? When you can clearly explain the study in your own
+words, then you are ready to write about it. Here's how to proceed.
+
+你用你自己的words来写，然后接着就是你用大家的words来写====这是一种方式
+
+我们在文章中都有一些假设， 假设刚性！也是一种前提。

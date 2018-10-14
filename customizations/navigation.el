@@ -89,7 +89,13 @@
 ;;<2018-08-18 21:52>
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 
+(global-set-key (kbd "C-s") 'swiper) 
 
+;; i  must be lower-case option
+(setq counsel-grep-base-command "rg -i -U -M 120 --no-heading --line-number --color never %s %s")
+(setq counsel-rg-base-command "rg -U -S --no-heading --line-number --color never %s ."
+    counsel-ag-base-command "ag --vimgrep -S --nocolor --line-number --nogroup %s")    
+    ;counsel-ag-base-command "ag -U -S --nocolor --line-number --nogroup %s ."
 ;; setting for ace-jump-mode 
 (autoload
   'ace-jump-mode
@@ -182,7 +188,7 @@
 ;;   (setq x-underline-at-descent-line t)            ;;
 ;;   (moody-replace-mode-line-buffer-identification) ;;
 ;;   (moody-replace-vc-mode))                        ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; for helpful
 ;; http://xenodium.com/#basic-imenu-in-helpful-mode
 (defun helpful--create-imenu-index ()

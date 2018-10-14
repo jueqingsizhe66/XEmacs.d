@@ -589,3 +589,6 @@ https://github.com/DeathKing/Learning-SICP
  https://admiralakber.github.io/2016/12/21/emacs-org-mode-journal-and-log/
 ** awesome emacs(一堆emacs相关)
 https://github.com/emacs-tw/awesome-emacs
+** 5min ruby block
+ 
+https://mixandgo.com/learn/mastering-ruby-blocks-in-less-than-5-minutes
