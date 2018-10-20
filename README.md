@@ -3,6 +3,11 @@
 
     Use your force, make it reachable(reference--relationship), Zhao!
     Make it useable!
+    
+    Let it(means something) connect with functionality or with relationship
+    it maybe unexisted
+    
+    Extension of function without modification
 
 能为他人创造点价值，那是最好的feedback([故事编程story programming][300])
 

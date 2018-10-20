@@ -67,6 +67,23 @@
 
 ** 截面气动性能分析
 
+** 尾迹云图
+Complicated aerodynamics occur when a horizontal axis wind turbine
+(HAWT) operates in yawed conditions.
+The skewed wake in relation to the rotor plane causes a non-uniform
+induced flow over the rotor and in particular at high rotor thrust
+coefficients. This contributes to a cyclic variation of the inflow
+to the rotating blade section where considerable influence from 
+unsteady aerodynamics such as dynamic stall and shed vortices is
+seen.
+
+Aerodynamic modelling of yawed flow is thus a challenging task
+subject to considerable uncertainties. 
+
+In order to minimize the influence of experimental parameters
+with no direct link to yaw aerodynamics(such as tower shadow
+and structural dynamics)-----> minimize the influence of uncertainties
+
 * 结论
 
 * 展望

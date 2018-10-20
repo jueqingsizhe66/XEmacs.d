@@ -3538,3 +3538,449 @@ words, then you are ready to write about it. Here's how to proceed.
 你用你自己的words来写，然后接着就是你用大家的words来写====这是一种方式
 
 我们在文章中都有一些假设， 假设刚性！也是一种前提。
+** 利用python imageio做gif动画 [#B]                                 :python:
+:LOGBOOK:
+CLOCK: [2018-10-15 周一 11:02]--[2018-10-15 周一 11:02] =>  0:00
+:END:
+                         Added: [2018-10-15 周一 11:02]
+                         
+                         
+                         
+需要配合上ImageIO
+
+https://blog.csdn.net/guduruyu/article/details/77540445
+
+
+https://blog.csdn.net/qq_24885695/article/details/70176386
+
+
+解决乱序问题，事先对文件进行排序
+
+字符排序
+https://blog.csdn.net/Teeyohuang/article/details/79809652
+
+数字排序
+https://blog.csdn.net/ccpw_cn/article/details/51372122
+
+shell解决方式
+
+#+BEGIN_SRC python
+  >>> files=os.listdir(".")
+  >>> files.sort()
+  >>> print files
+  ['1.txt', '10.txt', '11.txt', '2.txt', '3.txt']
+  >>> files.sort(key= lambda x:int(x[:-4]))
+  >>> print files
+  ['1.txt', '2.txt', '3.txt', '10.txt', '11.txt']
+
+
+
+  files=['2.txt','1.txt','12.txt','18.txt','13.txt']
+  print files
+  ['2.txt', '1.txt', '12.txt', '18.txt', '13.txt']
+  files.sort()
+  print files
+  ['1.txt', '12.txt', '13.txt', '18.txt', '2.txt']
+  files.sort(key=lambda x:int(x[:-4]))
+  print files
+  ['1.txt', '2.txt', '12.txt', '13.txt', '18.txt']
+
+
+
+  files=['2.md','1.md','12.md','18.md','13.md']
+  print files
+  ['2.md', '1.md', '12.md', '18.md', '13.md']
+  files.sort()
+  print files
+  ['1.md', '12.md', '13.md', '18.md', '2.md']
+  files.sort(key=lambda x:int(x[:-3]))
+  print files
+  ['1.md', '2.md', '12.md', '13.md', '18.md']
+#+END_SRC
+** 社会实践 [#B]                                                      :学术:
+:LOGBOOK:
+CLOCK: [2018-10-16 周二 16:56]--[2018-10-16 周二 16:56] =>  0:00
+:END:
+                         Added: [2018-10-16 周二 16:56]
+                         
+2015年10月,在内蒙古呼和浩特突泉县风电场实习，进行涡发生器和丝线相关实验; 
+2016年4月,在山西偏岭风电场实习，进行叶片丝线实验和表面压力测量实验，现场拍摄叶片表面流动照片;
+2016年7月~9月，在金风科技公司参与流场可视化算法和测量压力数据处理的软件设计
+** learning express your english [#B]                         :EnglishPaper:
+:LOGBOOK:
+CLOCK: [2018-10-19 周五 20:13]--[2018-10-19 周五 20:14] =>  0:01
+- Clocked out on T:[2018-10-19 周五 20:14] \\
+  fine
+CLOCK: [2018-10-19 周五 20:11]--[2018-10-19 周五 20:11] =>  0:00
+- Clocked out on T:[2018-10-19 周五 20:11] \\
+  fine
+CLOCK: [2018-10-19 周五 14:43]--[2018-10-19 周五 14:43] =>  0:00
+- Clocked out on T:[2018-10-19 周五 14:43] \\
+  hi
+CLOCK: [2018-10-16 周二 19:16]--[2018-10-19 周五 13:26] => 66:10
+- Clocked out on T:[2018-10-19 周五 13:26] \\
+  ok
+:END:
+                         Added: [2018-10-16 周二 19:16 +1d]
+                         
+That is important
+
+Go over and over again
+
+Form your independent vision
+
+
+How to let your audience engaged with your title.
+with subtle nerd comedy combined with a strong underlying understanding of the subject matter
+
+Let it connect with function or with relation, make it useful
+** 样本意义 [#B]                                                    :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-19 周五 13:26]--[2018-10-19 周五 14:43] =>  1:17
+:END:
+                         Added: [2018-10-19 周五 13:25]
+                         
+                         
+同一阵容没有样本意义
+
+合法迫害性（平时做了没问题 有问题了就得依法办理)
+
+在税金流向如此不光荣的环境里， 没有感觉到一点点的光荣
+
+
+一个企业对应一个ICP证
+
+Ray-ban 太阳镜(雷朋太阳镜)
+** 党员转正 [#B]                                                    :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-19 周五 14:43]--[2018-10-19 周五 20:11] =>  5:28
+:END:
+                         Added: [2018-10-19 周五 14:43]
+                         
+                         
+                         
+P14
+支部大会讨论预备党员转正的主要程序是：
+1.预备党员汇报一年来各方面的情况，特别是针对党支部接收预备党员大会上党员的意见进行改进的情况；
+2.与会党员对预备党员能否转正进行充分讨论，并采取无记名投票方式进行表决。
+讨论预备党员转正的支部大会，对到会人数、赞成人数等要求与讨论接收预备党员的支部大会相同。
+
+** 需提交材料
+存入本人档案。学生党员材料由基层党委保存
+*** 1. 《入党志愿书》  
+
+*** 2. 入党申请书【已有】
+
+*** 3. 思想汇报
+
+*** 4. 《入党积极分子培养考察表》【已有】
+
+*** 5. 入党积极分子培养考察表【已有】
+
+*** 6. 入党积极分子培训班结业证书
+
+*** 7. 发展对象培训班结业证书原件或复印件
+
+*** 8. 《征求党员、群众意见情况》 座谈会【已有】
+
+*** 9. 政治审查材料【已有】 函调表等
+
+*** 10.《预备党员教育考察情况表》
+
+*** 11. 转正申请书
+
+** 已准备
+*** TODO 1. 转正申请书(一份, 手写)
+:LOGBOOK:
+- State "TODO"       from "DONE"          T:[2018-10-19 周五 16:05]
+- State "DONE"       from "TODO"          T:[2018-10-19 周五 16:02]
+- State "TODO"       from              T:[2018-10-19 周五 16:02]
+:END:
+*** TODO 2. 转正思想汇报(4份，手写)
+:LOGBOOK:
+- State "TODO"       from              T:[2018-10-19 周五 16:02]
+:END:
+*** DONE 3. 接受预备档案党员备案名册(一份，xls）
+CLOSED: [2018-10-19 周五 16:05]
+:LOGBOOK:
+- State "DONE"       from "TODO"          T:[2018-10-19 周五 16:05]
+- State "TODO"       from              T:[2018-10-19 周五 16:04]
+:END:
+*** DONE 4. 转正党员备案名册(一份，xls)
+CLOSED: [2018-10-19 周五 16:05]
+:LOGBOOK:
+- State "DONE"       from "TODO"          T:[2018-10-19 周五 16:05]
+- State "TODO"       from              T:[2018-10-19 周五 16:01]
+:END:
+*** DONE 5. 预备党员教育考察情况表(2份，半年制,已打印)
+CLOSED: [2018-10-19 周五 16:02]
+:LOGBOOK:
+- State "DONE"       from              T:[2018-10-19 周五 16:02]
+:END:
+（二十五）预备期内的教育和考察
+党支部应当通过党的组织生活、听取本人汇报、个别谈心、
+集中培训、实践锻炼等方式，对预备党员进行教育和考察。
+一般应由预备党员的入党介绍人继续担负教育考察的责任。
+入党介绍人、党支部分别将教育考察情况写入《预备党员教
+育考察情况表》（参考模板14），发现问题要及时同本人谈话。
+
+每半年一次，2张纸
+*** 预备党员接受大会，自述一年内的经历
+
+预备党员
+
+
+
+*** 时间节点
+（二十八）召开讨论预备党员转正的支部大会
+党支部应在预备党员预备期满一个月内召开支部大会，讨论其能否
+转为正式党员，不得无故提前或拖延。认真履行党员义务、具备党
+员条件的，应当按期转为正式党员；需要继续考察和教育的，可以
+延长一次预备期，延长时间不能少于半年，最长不超过一年；不履
+行党员义务、不具备党员条件的，应当取消其预备党员资格.
+** 2天内干掉的坏事 [#B]                                             :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-19 周五 20:11]--[2018-10-19 周五 20:13] =>  0:02
+:END:
+                         Added: [2018-10-19 周五 20:11]
+                         
+                         
+只不过有一件事情没把师姐夫交代的事情办好哈。
+
+这两天去国谊宾馆帮忙整理，所有纸质版文件没问题，说是电子版少了几份，
+没对好，电子版得新建Excel重新按照纸字版录入专家分数，给那边添点事情了。 
+我其实知道电子版可能没有齐全，因为有3个u盘传来传去，覆盖来覆盖去(打印
+的文件没问题，都是最新版，一有最新我们就打印出来，就是电子版出点小意外），
+快到结束的时候，我看组长也没想到核对一下，只是确认一下纸质版数目。 以后
+工作的时候，我也得尽量吧我觉得有疑问的地方提出来（即使大家着急走，我也得
+核对清楚），省的事后时候留下麻烦。
+** 车管所驾照期满换证 [#B]                                          :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-20 周六 14:27]--[2018-10-20 周六 15:27] =>  1:00
+:END:
+                         Added: [2018-10-20 周六 14:27]
+                         
+                         
+http://www.bjjtgl.gov.cn/jgj/94025/index.html
+
+车管所查询
+
+http://www.bjjtgl.gov.cn/map/Index.html?type=%E8%BD%A6%E7%AE%A1%E6%89%80
+
+
+周一至周五 8:30 ~ 18:00
+周六、日  9:30~16:00
+** perl读取一个文件夹内所有txt文件 [#B]                               :perl:
+:LOGBOOK:
+CLOCK: [2018-10-21 周日 01:10]--[2018-10-21 周日 01:27] =>  0:17
+:END:
+                         Added: [2018-10-21 周日 01:10]
+                         
+                         
+有时候，你需要不断往一个文件夹内添加记录数据，比如`20180912.txt`
+`20180913.txt`,`20180914.txt`等
+
+而这些文件内只有一列数据，每一行都有其特殊的含义，有数字和字符串，比如
+
+```
+CY11
+11
+14
+32
+45
+```
+
+于是你定义了
+
+#+BEGIN_SRC perl
+  my @cols=['data_name','math','chem','phys','body'];
+
+#+END_SRC
+
+把这些数据都按照cols中的字段进行映射
+也就是
+data_name='CY11'
+math=11
+chem=14
+phys=32
+body=45
+
+于是你就想着定一个引用
+
+#+BEGIN_SRC perl
+  my %rec;
+  $rec[@cols]=@temp;
+#+END_SRC
+
+
+@temp如何获取就是一番尝试后的结果
+
+学习到chomp的使用，chomp默认返回值是1，不是你要处理的字符串
+也就是chomp $_,得到的返回值是1，而真正你需要的是$_,此时经过
+chomp处理之后，该新值不包含换行符
+
+于是我们逐个对文件进行记录
+
+
+#+BEGIN_SRC perl
+  while(<fileOpen>)
+  {
+      chomp $_;
+      $rec{$cols[$count]} = $_;
+      $count=$count+1;
+  }
+#+END_SRC
+
+
+于是你就会想着把rec hash类型存入数组中，于是就有了
+
+#+BEGIN_SRC perl
+  push @records, \%rec;
+#+END_SRC
+
+但是你发现每次插入的都是最新的数据，而不是保留原先数值的情况继续插入
+这是因为在循环遍历每个文件的时候，都得my %rec,这样才会使得每一次的
+%rec对应的pointer都是不一样的内存地址，这样你存入的数据才是最新的，
+且不会覆盖原先的数据。之所以没存上，只保留最后一个最新的数据，就是因为
+没有把my %rec放在循环内部里头。 这是必须记得，因为%rec是一个引用值。
+只有其发生变化才是有效的push过程， 也就是在每一个迭代过程中都得
+新建hash 值
+
+
+
+#+BEGIN_SRC perl
+  opendir my $dirOpen, $dirOpen_file_name
+  my @txtFileList=grep(/.txt$/,readdir $dirOpen);
+
+  while(<dirOpen>)
+  {
+      my %rec;
+      $count=0;
+      open $<fileOpen>, '<',$file_Open_file_name
+      while(<$fileOpen>)
+       {
+           chomp $_;
+           $rec{$cols[$count]}=$_;
+           $count=$count+1;
+         }
+    
+      push @records,\%rec;
+     
+      close $<fileOpen>
+
+
+  }
+
+  closedir $dirOpen;
+#+END_SRC
+
+
+实际最终的实现:
+
+
+#+BEGIN_SRC perl
+  #!/usr/bin/env perl
+  #===============================================================================
+  #
+  #         FILE: analysisDirectory.pl
+  #
+  #        USAGE: ./analysisDirectory.pl  
+  #
+  #  DESCRIPTION: 
+  #
+  #      OPTIONS: ---
+  # REQUIREMENTS: ---
+  #         BUGS: ---
+  #        NOTES: ---
+  #       AUTHOR: Ye Zhao Liang (YZL), yezhaoliang@ncepu.edu.cn
+  # ORGANIZATION: NCEPU
+  #      VERSION: 1.0
+  #      CREATED: 2018/10/20 22:29:12
+  #     REVISION: ---
+  #===============================================================================
+
+  use strict;
+  use warnings;
+  use utf8;
+  use Data::Dumper;
+  use File::Spec;
+
+  my  $dir_name='C:\\Users\\yzl\\perl\\testTXT\\';
+
+
+  my	$dirOpen_file_name = "$dir_name";# input file name
+
+  opendir  my $dirOpen, $dirOpen_file_name
+      or die  "$0 : failed to open  input file '$dirOpen_file_name' : $!\n";
+
+  my  @txtFileList = grep(/.txt$/,readdir $dirOpen);
+
+  my @cols = ('data_name', 'f1', 'f2','f3','f4');
+
+  my @records;
+
+  my  $count; 
+
+   foreach my $txtFile ( @txtFileList ) {
+       print File::Spec->catfile($dir_name,$txtFile),"\n";
+
+       my	$fileOpen_file_name = File::Spec->catfile($dir_name,$txtFile);		# input file name
+
+       open  my $fileOpen, '<', $fileOpen_file_name
+           or die  "$0 : failed to open  input file '$fileOpen_file_name' : $!\n";
+
+    
+       ## you must put it here, because rec need to be changed with pointer!
+       # when define with my, it means requst for the new memory, or it will
+       # use the old memory address
+      my	%rec;
+       $rec{'file_name'}=$txtFile;
+       ## directly
+       # @temp=<$fileOpen>;
+       $count=0; 
+       while ( <$fileOpen> ) {
+           #print "$_\n";
+           # $rec{$cols[$count]}=chomp($_);
+           #my  @temp1=split /" "/;
+           chomp $_; ## return1
+            # print "while:",$cols[$count], chomp $temp1[0]," \n";
+            # print "while:",$cols[$count], $_," \n";
+            $rec{$cols[$count]}=$_;
+           $count=$count+1;
+       }
+
+       # print "temp length $temp[0] : @temp\n";
+       #print Dumper \@temp,"\n";
+       #$rec{@cols}=@temp;
+       #$rec{@cols}=split /\\n/ <$fileOpen>;
+
+        push @records,\%rec;
+
+       #  print Dumper \%rec,"\n";
+       #  print "The newest array:\n";
+       #  print Dumper \@records,"\n";
+
+       close  $fileOpen
+           or warn "$0 : failed to close input file '$fileOpen_file_name' : $!\n";
+
+  }
+
+   # print "OKKKKKK\n";
+   # print Dumper \@records,"\n";
+   #
+   #
+
+   foreach ( @records ) {
+       print "$_->{'file_name'} $_->{'data_name'} $_->{'f1'}   $_->{'f2'}   $_->{'f3'}   $_->{'f4'}\n";
+   }
+
+
+
+  closedir  $dirOpen
+      or warn "$0 : failed to close input file '$dirOpen_file_name' : $!\n";
+
+
+
+#+END_SRC
+
+

@@ -592,3 +592,12 @@ https://github.com/emacs-tw/awesome-emacs
 ** 5min ruby block
  
 https://mixandgo.com/learn/mastering-ruby-blocks-in-less-than-5-minutes
+
+You need to learn elixir programming language
+https://elixir-lang.org/
+**  youtube some useful technique
+ https://ambrevar.xyz/emacs2/
+ 
+https://ambrevar.xyz/emacs/index.html
+下载youtube视频，命令行工具
+https://youtube-dl.org/

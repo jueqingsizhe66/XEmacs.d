@@ -363,6 +363,23 @@
  '(smtpmail-smtp-service 25))
 
 
+;; https://ambrevar.xyz/emacs2/
+;;; Temporarily reduce garbage collection during startup. Inspect `gcs-done'.
+(defun ambrevar/reset-gc-cons-threshold ()
+  (setq gc-cons-threshold (car (get 'gc-cons-threshold 'standard-value))))
+(setq gc-cons-threshold (* 64 1024 1024))
+(add-hook 'after-init-hook #'ambrevar/reset-gc-cons-threshold)
+
+;;; Temporarily disable the file name handler.
+(setq default-file-name-handler-alist file-name-handler-alist)
+(setq file-name-handler-alist nil)
+(defun ambrevar/reset-file-name-handler-alist ()
+  (setq file-name-handler-alist
+	(append default-file-name-handler-alist
+		file-name-handler-alist))
+  (cl-delete-duplicates file-name-handler-alist :test 'equal))
+(add-hook 'after-init-hook #'ambrevar/reset-file-name-handler-alist)
+(setq load-prefer-newer t)
 
 ; (load
 ;  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))

@@ -141,3 +141,117 @@ https://ocw.mit.edu/index.htm
 
 网易公开课
 http://open.163.com/special/opencourse/
+* imageio 创建gif 
+file:c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/Note/notes.org::3757
+In ~车管所驾照期满换证 [#B]~:
+
+duration代表时间， 时间越长越慢
+#+BEGIN_SRC python
+#coding=utf-8
+# -*- coding: utf-8 -*-
+import os
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+# def GetFileList(dir, fileList):
+#     newDir = dir
+#     if os.path.isfile(dir):
+#         fileList.append(dir.decode('gbk'))
+#     elif os.path.isdir(dir):
+#         for s in os.listdir(dir):
+#             newDir=os.path.join(dir,s)
+#             GetFileList(newDir, fileList)
+#     return fileList
+#
+# list = GetFileList('L:\\newMovieGif\\NacelleContour\\png\\', [*.png])
+
+import imageio
+
+# -*- coding: utf-8 -*-
+import os
+
+
+def listdir(path, list_name):  # 传入存储的list
+    #file2=os.listdir('L:\\newMovieGif\\NacelleContour\\png\\')
+    files=os.listdir(path)
+    files.sort()
+    for file in files:
+        file_path = os.path.join(path, file)
+        if os.path.isdir(file_path):
+            # listdir(file_path, list_name)
+            continue
+        else:
+            list_name.append(file_path)
+    return
+
+def listdirNum(path, list_name):  # 传入存储的list
+    #file2=os.listdir('L:\\newMovieGif\\NacelleContour\\png\\')
+    files=os.listdir(path)
+    for i in range(len(files)):
+        files[i]=files[i].split('.')
+        files[i][0]= int(files[i][0])
+
+    files.sort()
+    for i in range(len(files)):
+        files[i][0]=str(files[i][0])
+        files[i]=  files[i][0] + '.' + files[i][1]
+
+    for file in files:
+        file_path = os.path.join(path, file)
+        if os.path.isdir(file_path):
+            # listdir(file_path, list_name)
+            continue
+        else:
+            list_name.append(file_path)
+    return
+
+def create_gif(image_list, gif_name):
+    frames = []
+    for image_name in image_list:
+        frames.append(imageio.imread(image_name))
+    # Save them as frames into a gif
+    # imageio.mimsave(gif_name, frames, 'GIF', duration=0.07)
+    # duration means velocity
+    imageio.mimsave(gif_name, frames, 'GIF', duration=0.1)
+
+    return
+
+
+def main():
+    # image_list = ['test_gif-0.png', 'test_gif-2.png', 'test_gif-4.png',
+    #               'test_gif-6.png', 'test_gif-8.png', 'test_gif-10.png']
+    # file2=[x for x in os.listdir('L:\\newMovieGif\\NacelleContour\\png\\')]
+    file2=[]
+    # listdir('L:\\newMovieGif\\NacelleContour\\png\\',file2)
+    #listdir('L:\\newMovieGif\\NacelleTKE\\newMoo\\png\\',file2)
+    #listdir work for 1.png 101.png
+    # listdirNum('K:\\MatlabHome\\matlab-develop\\pressureCode\\com.gw.core\\cfxPost\\CFXGui\\nacelleMovie\\imgOut\\',file2)
+    # listdirNum('K:\\MatlabHome\\matlab-develop\\pressureCode\\com.gw.core\\cfxPost\\CFXGui\\CNTMovie\\png\\',file2)
+    #listdirNum('K:\\MatlabHome\\matlab-develop\\pressureCode\\com.gw.core\\cfxPost\\CFXGui\\AoAMovie\\png\\',file2)
+    # listdirNum('K:\\MatlabHome\\matlab-develop\\pressureCode\\com.gw.core\\cfxPost\\CFXGui\\TipMovie\\png\\',file2)
+    #listdirNum('M:\\NacelleYaw\\NacelleYaw\\YAWMoive\\',file2) # error
+    listdir('M:\\NacelleYaw\\NacelleYaw\\YAWMoive\\png',file2)
+    # listdirNum('K:\\MatlabHome\\matlab-develop\\pressureCode\\com.gw.core\\cfxPost\\CFXGui\\CTMovie\\png\\',file2)
+    #listdirNum('L:\\newMovieGif\\streamline\\',file2)
+    # listdir('L:\\newMovieGif\\streamline\\',file2)
+    # file2=os.listdir('L:\\newMovieGif\\NacelleContour\\png\\')
+    # file2.sort()
+    # listdir('L:\\newMovieGif\\NacelleContour\\png\\',file2)
+    # gif_name = 'Torque.gif'
+    # gif_name = 'CNMovie.gif'
+
+    #gif_name = 'AoAMovie.gif'
+    gif_name = 'YawMovie.gif'
+    #gif_name = 'TipMovie.gif'
+
+    # gif_name = 'CTMovie.gif'
+    create_gif(file2, gif_name)
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+#+END_SRC
