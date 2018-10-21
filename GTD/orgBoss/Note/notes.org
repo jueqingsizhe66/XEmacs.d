@@ -3700,6 +3700,21 @@ P14
 :LOGBOOK:
 - State "TODO"       from              T:[2018-10-19 周五 16:02]
 :END:
+**** 思想汇报3
+
+#+BEGIN_SRC org
+  华电: 
+
+  深入学习党的十九大精神，以习近平新时代中国特色社会主义为思想为指导
+  努力实现"2218"的发展目标  加快建设具有全球竞争力的世界一流能源企业
+  全面落实新发展理念，努力实现高质量发展
+  强化责任落实， 夯(hang)实安全环保基础
+  深化改革创新  激发发展动力活力
+  落实国家“一带一路”倡议，加快海外发展,推动公司最强做优做大
+  坚持和坚强党的全面领导,推动全面从严治党向纵深发展
+  http://www.chd.com.cn/webfront/webpage/web/contentPage/id/235bdda0e2534862b865db3d330b81c4
+#+END_SRC
+
 *** DONE 3. 接受预备档案党员备案名册(一份，xls）
 CLOSED: [2018-10-19 周五 16:05]
 :LOGBOOK:
@@ -3728,6 +3743,7 @@ CLOSED: [2018-10-19 周五 16:02]
 *** 预备党员接受大会，自述一年内的经历
 
 预备党员
+
 
 
 
@@ -3982,5 +3998,122 @@ chomp处理之后，该新值不包含换行符
 
 
 #+END_SRC
+** perl创建匿名hash array [#B]                                        :perl:
+:LOGBOOK:
+CLOCK: [2018-10-21 周日 16:14]--[2018-10-21 周日 17:57] =>  1:43
+:END:
+                         Added: [2018-10-21 周日 16:14]
+                         
+                         
+                         
+https://www.xuebuyuan.com/1424600.html
+[ ITEMS ] 创建了一个新的、匿名的数组，并返回一个指向这个数组的'引用'。 
+{ ITEMS } 创建了一个新的、匿名的哈希，并返回那个哈希的一个'引用'。 
+
+#+BEGIN_SRC perl
+      $aref = [ 1, "foo", undef, 13 ];   
+      # $aref 保存了这个数组的'引用' 
+      $href = { APR =>; 4, AUG =>; 8 };    
+      # $href 保存了这个哈希的'引用' 
+#+END_SRC
 
 
+如何传递数组到子程序？
+
+一般使用@_或者shift逐个弹出，@_直接幅值
+
+
+#+BEGIN_SRC perl
+  ## define
+   sub statisticsRec{
+       # you cannot use $_ instead
+       my  $res=shift;
+    
+       print Dumper $res,"\n";
+       my $countF1=0;
+       foreach my $record ( @$res ) {
+          $countF1=$countF1+$record->{"f1"};
+          print $record->{'data_name'}," ",$record->{'f1'},"\n";
+       }
+       print "F1 sum is : $countF1\n";
+   }
+
+
+
+  ## usage
+  statisticsRec(\@records);
+#+END_SRC
+
+
+
+*** 统计函数加入了判断
+
+
+
+#+BEGIN_SRC perl
+  sub statisticsRec{
+       # you cannot use $_ instead
+       my  $res=shift;
+    
+       print Dumper $res,"\n";
+       my $countCYF1=0;
+       my $countDJF1=0;
+       foreach my $record ( @$res ) {
+        
+           if ( $record->{'data_name'}  =~ m/CY/xm) {
+              $countCYF1=$countCYF1+$record->{"f1"};
+              print "** CY : ",$record->{'data_name'}," ",$record->{'f1'},"\n";
+           }
+           elsif ( $record->{'data_name'}  =~ m/DJ/xm) {
+              $countDJF1=$countDJF1+$record->{"f1"};
+              print "** DJ : ",$record->{'data_name'}," ",$record->{'f1'},"\n";
+           }
+           else {
+              print "**** Not CY and DJ: ",$record->{'data_name'}," ",$record->{'f1'},"\n";
+           }
+          print $record->{'data_name'}," ",$record->{'f1'},"\n";
+       }
+       print "CY F1 sum is : $countCYF1", "\t DJ F1 sum is : $countDJF1 \n";
+   }
+
+#+END_SRC
+** 摘要四句话 [#B]                                                    :学术:
+:LOGBOOK:
+CLOCK: [2018-10-21 周日 23:07]
+:END:
+                         Added: [2018-10-21 周日 23:07]
+ 
+结果意味着什么??? 得从前言中或者引言中去思考，由此才能导出你要的结论.                        
+                         
+1. 目的(为什么要做该研究)
+2. 方法(怎么做)
+3. 结果(研究发现了什么, 规律性)
+4. 结论(结果意味着什么)
+   
+结论通常是不同于之前的结果讨论，而是升华版本，是对结果讨论的浓缩，通过该结果，该规律
+我们可以得到什么结论，可以怎么去运用。
+
+*** 前言
+前言有两个作用，一是引起读者对研究的兴趣，其次是为读者提供足够的信息来理解文献。
+一般来说，前言一般是先介绍公认的信息（本研究时行时已知的信息），
+然后介绍更具体的信息（本研究未知的问题），
+最后引出一个焦点（作者提出并回答了什么问题）。因此，作者首先描述的是以前的工作，
+让读者理解目前研究（广义的），然后把研究工作着眼于某一问题（具体的）
+
+
+*** 结果和讨论
+结果部分包含了所有的研究结果，研究发现了什么，并以可视化（图表）的形式显示研究数据。
+通常情况下，结果部分不包含引用参考文献，不与其他人的研究结果相比较。与其他人研究
+结果相比较是在讨论中进行的，讨论中需要把自己的研究结果与他人进行广泛的比较。讨论
+有助于对引言中提出的问题作出明确的答复，并解释结果如何支持结论。
+
+
+*** 你的疑问
+	• 这项研究的特征性问题是什么？为什么它很重要？
+	• 研究方法用的恰当吗？还有没有更好的研究方法？
+	• 这项研究特征性结果是什么？我能否把结果总结成一两句话？
+	• 研究结果有没有令人信服的证据支持？
+	• 作者未提到的数据有没有其他解释？
+	• 研究结果有无有独创性/新颖性/独特性，或有无该领域其他研究支持？
+	• 这些研究结果与我的研究内容有什么关系？与我读过的其他研究有没有关系？
+  . 研究结果所展示的思想的具体意义是什么？还有没有进一步实验以回答剩余的问题的价值？

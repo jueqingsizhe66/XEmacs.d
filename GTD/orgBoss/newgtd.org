@@ -1917,12 +1917,13 @@ https://www.youtube.com/watch?v=rfscVS0vtbw
 
 
 input get the characters from input keyboards
-** TODO [#B] 车管所换证 <2018-10-20 周六 15:27>                     :@NCEPU:
-DEADLINE: <2018-10-21 周日>
+** DONE [#B] 车管所换证 <2018-10-20 周六 15:27>                     :@NCEPU:
+CLOSED: [2018-10-21 周日 18:10] DEADLINE: <2018-10-21 周日>
                     :PROPERTIES:
                     :Effort: 1:00
                     :END:
                     :LOGBOOK:
+                    - State "DONE"       from "TODO"          T:[2018-10-21 周日 18:10]
                     CLOCK: [2018-10-20 周六 15:27]--[2018-10-20 周六 15:28] =>  0:01
                     :END:
                     
@@ -3025,3 +3026,204 @@ perl生词表
 https://metacpan.org/pod/distribution/perlfaq/lib/perlglossary.pod
 
 perl FAQ
+** TODO [#B] pandas 数据分析学习 <2018-10-21 周日 18:09 +2d>          :python:
+DEADLINE: <2018-11-11 周日>
+                    :PROPERTIES:
+                    :Effort: 1:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-10-22 周一 02:37]
+                    CLOCK: [2018-10-21 周日 23:33]--[2018-10-22 周一 00:02] =>  0:29
+                    - Clocked out on T:[2018-10-22 周一 00:02] \\
+                      testOk
+                    CLOCK: [2018-10-21 周日 18:09]--[2018-10-21 周日 18:10] =>  0:01
+                    :END:
+
+ 《利用python进行数据分析》  pandas作者之一所著
+
+目的： 
+   学会简单统计
+   整合常用脚本
+
+                    
+http://pandas.pydata.org/
+                         
+如何使用?
+
+运用场景?
+
+    每本书都有其运用场景，这本书不是以一种普通学者的方式教你
+    而是让你能够` 加载点儿数据，做点计算，再画点儿图` 
+
+    关注处理大数据集高性能数组计算工具
+
+    常常需要把乱七八糟的数据进行结构化（处理成漂亮点的结构数据）
+常用函数？
+
+注意点
+
+*** 软件安装
+pip install ..
+1. numpy
+2. scipy
+3. matplotlib
+4. imageio
+5. jupyter
+   1. pyqt5
+6. requests
+IPython 
+Jupyter内核的Ipython  http://ipython.org/
+    https://jupyter.org/
+
+    Jupeter notebook
+https://jupyter.readthedocs.io/en/latest/install.html
+    #+BEGIN_SRC python
+      pip install jupyter
+    #+END_SRC
+于共存我弄好了，我想了想还是说说吧。 
+将两个文件夹都放到环境变量中，同时不要用 PYTHONHOME 这个变量值。最后，我把 python3.4 的文件夹中的 python.exe 重命名为 python3.exe 了，这样在命令行可以直接以 python 与 python3 分别调用。 
+
+#+BEGIN_SRC python
+  四个环境变量配置好
+  1.c:\Python27
+  2.c:\Python27\Scripts
+  3.c:\Python37
+  4.c:\Python37\Scripts
+
+  进入python3.7安装目录。找到python.exe程序，把它重命名为python3.exe
+
+  pip的问题 
+  两个python版本分别安装了pip以后怎么区分它们。进入python安装路径找到Scripts文件夹，进入里面找到pip*-script.py，打开修改第一句为你要指定的那个python解释器
+
+  如果使用版本3就执行pip3 (这是python2没有的)
+#+END_SRC
+
+**** jupyter notebook
+*****  启动notebook   
+
+#+BEGIN_SRC python
+  jupyter notebook  # default port 8888
+
+  jupyter notebook *.ipynb
+
+  jupyter notebook --port 7194
+
+
+#+END_SRC
+
+***** 启动qtconcole
+
+
+
+#+BEGIN_SRC python
+  jupyter console
+  jupyter qtconsole  # need pyqt5
+#+END_SRC
+
+
+***** 安装jupyter拓展
+
+
+http://www.elecfans.com/d/650252.html
+
+#+BEGIN_SRC python
+  pip install jupyter_nbextensions_configurator jupyter_contrib_nbextensions
+
+# 目的 download插件文件
+  jupyter contrib nbextension install --user
+# 使插件生效
+  jupyter nbextensions_configurator enable --user
+
+
+#+END_SRC
+
+
+1. Notify
+2. Collapsible headings
+3. code folding
+4. tqdm botebok
+5. table of contents
+6. debug
+
+https://github.com/ipython-contrib/jupyter_contrib_nbextensions 
+
+
+
+
+直接使用 http://localhost:8888/jupyter/nbextensions 打开拓展页面
+或者直接通过命令行安装
+比如
+
+到c://Python37/lib/site_packages//jupyter_nbextensions_configurator//nbextensions// 目录下找到拓展
+  jupyter nbextensions_configurator enable zenmode/main (main代表main.js)
+
+  jupyter nbextensions_configurator enable notify/notify (notify代表notify.js)
+  
+
+C:\Python37\Lib\site-packages\jupyter_contrib_nbextensions\nbextensions
+
+当拷贝你的python37目录到其他电脑，记得重新下载和enable一下
+这样才能使用  http://localhost:8888/nbextensions
+链接。
+***** 装载文件和运行文件
+
+
+
+#+BEGIN_SRC python
+
+  %load *.py
+  %run *.py
+#+END_SRC
+
+
+***** jupyter 代码snippets
+
+在cmd运行
+
+#+BEGIN_SRC bash
+
+  jupyter --data-dir
+#+END_SRC
+
+
+    C:\Users\yzl\AppData\Roaming\jupyter\nbextensions
+    
+找到snippets文件夹修改对应的snippets.json文件即可
+
+所以这个文件夹也是挺重要的哈！得备份！
+  在该文件进行编辑
+
+
+  ,#+BEGIN_SRC js
+
+    {
+        "snippets" : [
+            {
+                "name" : "example",
+                "code" : [
+                    "# This is an example snippet!",
+                    "# To create your own, add a new snippet block to the",
+                    "# snippets.json file in your jupyter nbextensions directory:",
+                    "# /nbextensions/snippets/snippets.json",
+                    "import this"
+                ]
+            }
+          {
+          
+                "name" : "Newer imports",
+                "code" : [
+                    "import numpy as np",
+                    "import matplotlib as mpl",
+                    "print('spam')"
+                ]
+           }
+        ]
+    }
+#+END_SRC
+
+可能需要重启一下 jupyter notebook,  不但添加{}块(注意在不同的blocks之间使用逗号进行分割)，定义name和code即可 每行语句通过双引号包裹，
+并放入中括号匿名数组中。
+
+
+
+https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/snippets
