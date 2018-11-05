@@ -248,8 +248,9 @@ c-x r b : 跳转
 Tab打开标题
 
 查找:--------
-    c-c c-n 光标沿标题方向向下移动
+    c-c c-n 光标沿标题方向向下移动(跳转<2018-10-23 22:52>)
     c-c c-p 光标沿标题方向向上移动
+        可以通过shift+tab打开overview
     c-c c-q 添加标题的tag
     c-c a 打开agender
     c-c c-t 添加当前标题的todo
@@ -541,6 +542,7 @@ First mark, and then add cursors.
 
 3. 退出功能
 `g r u` 三个组合字母退出多cursors模式(finally,工作流的最后一步
+<2018-10-23 23:05> 再一次使用该命令
 
 很多其他的工具命令都是跳过不跳过，mark不mark的关系
 

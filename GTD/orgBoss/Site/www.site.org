@@ -601,3 +601,9 @@ https://elixir-lang.org/
 https://ambrevar.xyz/emacs/index.html
 下载youtube视频，命令行工具
 https://youtube-dl.org/
+** python programming
+ https://pythonprogramming.net/
+ 
+相当好的一个网站
+** CPU排名
+ http://itianti.sinaapp.com/index.php/cpu/

@@ -4079,7 +4079,6 @@ https://www.xuebuyuan.com/1424600.html
 #+END_SRC
 ** 摘要四句话 [#B]                                                    :学术:
 :LOGBOOK:
-CLOCK: [2018-10-21 周日 23:07]
 :END:
                          Added: [2018-10-21 周日 23:07]
  
@@ -4117,3 +4116,79 @@ CLOCK: [2018-10-21 周日 23:07]
 	• 研究结果有无有独创性/新颖性/独特性，或有无该领域其他研究支持？
 	• 这些研究结果与我的研究内容有什么关系？与我读过的其他研究有没有关系？
   . 研究结果所展示的思想的具体意义是什么？还有没有进一步实验以回答剩余的问题的价值？
+** 查看重复中文 [#B]                                                :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-10-22 周一 20:24]--[2018-10-22 周一 20:24] =>  0:00
+- Clocked out on T:[2018-10-22 周一 20:24]
+:END:
+                         Added: [2018-10-22 周一 20:24]
+                         
+                         
+                         
+使用正则表达式测试序工具
+([\u4e00-\u9fa5\w])\1+
+
+([a-zA-Z0-9]+)\1+  查找重复英文
+** delimited continuous for clojure [#B]                           :clojure:
+:LOGBOOK:
+CLOCK: [2018-10-23 周二 17:21]--[2018-10-23 周二 17:23] =>  0:02
+:END:
+                         Added: [2018-10-23 周二 17:21]
+                         
+
+
+                         
+clojure趋势
+ https://trends.google.com/trends/explore?q=%2Fm%2F0_lcrx4,%2Fm%2F091hdj,%2Fm%2F03yb8hb                        
+
+https://github.com/swannodette/delimc?tdsourcetag=s_pctim_aiomsg
+
+不过 Clojure 确实少一个杀手级的应用，Scala 有 kafka/play， Kotlin 有 android
+'
+storm 基本被 jstorm 取代了
+要玩就玩scratch
+** c语言输出正弦曲线点 [#B]                                         :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-11-01 周四 16:31]--[2018-11-01 周四 16:32] =>  0:01
+:END:
+                         Added: [2018-11-01 周四 16:30]
+                         
+
+#+BEGIN_SRC C
+#include <math.h>
+#include <stdio.h>
+
+void main(){
+    double pi = 3.1415926535;
+    double x, y;
+    double t;
+    double frequency=0.1;
+    for(t=0;t<20;t=t+0.1){
+    x = t;
+    y = 10*sin( 2* pi * frequency * t );
+
+    printf("%f,%f\n",x,y);
+    }
+    /** printf( "sin( %f ) = %f\n", x, y ); */
+    /** y = sinh( x ); */
+    /** printf( "sinh( %f ) = %f\n",x, y ); */
+    /** y = cos( x ); */
+    /** printf( "cos( %f ) = %f\n", x, y ); */
+    /** y = cosh( x ); */
+    /** printf( "cosh( %f ) = %f\n",x, y );     */
+}
+
+#+END_SRC
+** 什么是数据结构 [#B]                                              :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-11-04 周日 17:02]--[2018-11-05 周一 14:12] => 21:10
+:END:
+                         Added: [2018-11-04 周日 17:02]
+                         
+                         
+数据结构的研究是数据的存储和数据的操作的一门学问
+
+数据的存储分为两部分:
+1. 个体的存储
+2. 个体关系的存储
+   从某个角度而言，数据的存储最核心的就是个体关系的存储，个体的存储忽略不计（额不错）

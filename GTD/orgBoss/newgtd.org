@@ -4,7 +4,7 @@
 | Headline                                                             | Time     |           |
 |----------------------------------------------------------------------+----------+-----------|
 | *Total time*                                                           | *34d 5:36* |           |
-|----------------------------------------------------------------------+----------+-----------|
+||-----------------------------------------------------------------------------------------------+----------+-----------|
 | Tasks                                                                | 34d 5:36 |           |
 | \_  开题报告+文献综述+中央高校基金                                   |          |      0:53 |
 | \_  turbsim reading   [2017-10-15 周日...                            |          |      0:48 |
@@ -1582,11 +1582,13 @@ CLOSED: [2018-08-12 周日 19:59] DEADLINE: <2018-08-08 周三>
 
 通过建行快速查找你的付款日期
 ** TODO [#C] 取邮局版面费 <2018-07-31 周二 16:06>                      :@NCEPU:
-DEADLINE: <2018-10-16 周二> SCHEDULED: <2018-10-02 周二>
+DEADLINE: <2018-11-29 周四> SCHEDULED: <2018-10-02 周二>
                     :PROPERTIES:
                     :Effort: 0:30
                     :END:
                     :LOGBOOK:
+                    - New deadline from "[2018-10-16 周二]" on T:[2018-10-22 周一 14:56] \\
+                      ok
                     - New deadline from "[2018-10-08 周一]" on T:[2018-10-08 周一 15:39] \\
                       还未收到
                     - New deadline from "[2018-10-01 周一]" on T:[2018-10-03 周三 15:37] \\
@@ -1595,7 +1597,10 @@ DEADLINE: <2018-10-16 周二> SCHEDULED: <2018-10-02 周二>
                     :END:
                     
                     一般3个月期限，比如0529== 0728过期!
+
                     82543103
+                    
+
                     
 
 ** DONE [#C] 校医院取外敷药 <2018-07-31 周二 16:17>
@@ -1866,7 +1871,7 @@ ii. Font Color and Fill Color must have a large value difference so that it is e
 都是类似于vlookpup函数的风格，第一个区间是要进行计算的数据，
 后面是选择的标准，根据标准选择数据进行计算，定位数据。
 
-=SUMIFS(E1:E17,E1:E17,">=100")  某列大于100
+=SUMIFS(E1:E17,">=100")  某列大于100
 
 类似于，下面对满足条件的进行求职
 =SUMIF(E1:E17,">=100")
@@ -1894,29 +1899,8 @@ criteria argument contains the condition or criteria that tells the function wha
 
 一定要回想countifs(区域，条件，区域，条件,...) 一定要注意行数必须一致才可以
 不能有单元格合并的情况，否则报错
-** TODO [#B] python programming <2018-10-11 周四 10:15 +1w>            :python:
-SCHEDULED: <2018-10-11 周四>
-                    :PROPERTIES:
-                    :Effort: 1:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-10-16 周二 13:32]--[2018-10-16 周二 16:36] =>  3:04
-                    - Clocked out on T:[2018-10-16 周二 16:36] \\
-                      finished it ,nothing get
-                    CLOCK: [2018-10-11 周四 10:15]--[2018-10-11 周四 10:16] =>  0:01
-                    :END:
                     
                     
-http://www.newthinktank.com/2014/11/python-programming/
-
-
-https://www.youtube.com/watch?v=N4mEzFDjqtA
-
-Learning
-https://www.youtube.com/watch?v=rfscVS0vtbw
-
-
-input get the characters from input keyboards
 ** DONE [#B] 车管所换证 <2018-10-20 周六 15:27>                     :@NCEPU:
 CLOSED: [2018-10-21 周日 18:10] DEADLINE: <2018-10-21 周日>
                     :PROPERTIES:
@@ -3032,36 +3016,90 @@ DEADLINE: <2018-11-11 周日>
                     :Effort: 1:00
                     :END:
                     :LOGBOOK:
-                    CLOCK: [2018-10-22 周一 02:37]
+                    CLOCK: [2018-10-23 周二 22:55]--[2018-10-23 周二 23:33] =>  0:38
+                    - Clocked out on T:[2018-10-23 周二 23:33] \\
+                      学习pandas 分析网络数据，并使用jupyter记录数据
+                    CLOCK: [2018-10-23 周二 22:54]--[2018-10-23 周二 22:55] =>  0:01
+                    - Clocked out on T:[2018-10-23 周二 22:55] \\
+                      fine
+                    CLOCK: [2018-10-23 周二 22:47]--[2018-10-23 周二 22:47] =>  0:00
+                    - Clocked out on T:[2018-10-23 周二 22:47] \\
+                      fine
+                    CLOCK: [2018-10-23 周二 22:46]--[2018-10-23 周二 22:47] =>  0:01
+                    - Clocked out on T:[2018-10-23 周二 22:47] \\
+                      fine
+                    CLOCK: [2018-10-22 周一 02:37]--[2018-10-22 周一 12:54] => 10:17
+                    - Clocked out on T:[2018-10-22 周一 12:54] \\
+                      安装了jupyter,和所有常用的python3.7的库，比如scipy,numpy
                     CLOCK: [2018-10-21 周日 23:33]--[2018-10-22 周一 00:02] =>  0:29
                     - Clocked out on T:[2018-10-22 周一 00:02] \\
                       testOk
                     CLOCK: [2018-10-21 周日 18:09]--[2018-10-21 周日 18:10] =>  0:01
                     :END:
 
- 《利用python进行数据分析》  pandas作者之一所著
+ 《利用python进行数据分析》  pandas作者之一Wes Mckinney 所著
+ 
+
 
 目的： 
    学会简单统计
    整合常用脚本
+   主要功能就是进行数据清理(by qiu）
 
                     
 http://pandas.pydata.org/
                          
-如何使用?
+***  What pandas solve?
 
-运用场景?
+Python has long been great for data munging(整理) and preparation, but less so for data
+analysis and modeling(数据分析和建模). pandas helps fill this gap, enabling you to carry out your
+entire data analysis workflow in Python without having to switch to a more domain
+specific language like R.
 
+
+*** Library Highlights¶
+
+**** A fast and efficient DataFrame object for data manipulation with integrated
+ indexing; 
+**** Tools for reading and writing data between in-memory data structures and
+ different formats: CSV and text files, Microsoft Excel, SQL databases, and the
+ fast HDF5 format; 
+**** Intelligent data alignment and integrated handling of missing data: gain
+ automatic label-based alignment in computations and easily manipulate messy
+ data into an orderly form; 
+**** Flexible reshaping and pivoting of data sets; 
+**** Intelligent label-based slicing, fancy indexing, and subsetting of large data
+ sets; 
+**** Columns can be inserted and deleted from data structures for size mutability; 
+**** Aggregating or transforming data with a powerful group by engine allowing
+ split-apply-combine operations on data sets; 
+**** High performance merging and joining of data sets; 
+**** Hierarchical axis indexing provides an intuitive way of working with
+ high-dimensional data in a lower-dimensional data structure; 
+**** Time series-functionality: date range generation and frequency conversion,
+ moving window statistics, moving window linear regressions, date shifting and
+ lagging. Even create domain-specific time offsets and join time series without
+ losing data; 
+**** Highly optimized for performance, with critical code paths written in Cython or
+ C. 
+**** Python with pandas is in use in a wide variety of academic and commercial
+ domains, including Finance, Neuroscience, Economics, Statistics, Advertising,
+ Web Analytics, and more. 
+
+
+***  如何使用?
+
+*** 运用场景?
     每本书都有其运用场景，这本书不是以一种普通学者的方式教你
     而是让你能够` 加载点儿数据，做点计算，再画点儿图` 
 
     关注处理大数据集高性能数组计算工具
 
     常常需要把乱七八糟的数据进行结构化（处理成漂亮点的结构数据）
-常用函数？
+*** 常用函数？
 
-注意点
-
+  注意点
+    
 *** 软件安装
 pip install ..
 1. numpy
@@ -3098,7 +3136,7 @@ https://jupyter.readthedocs.io/en/latest/install.html
   如果使用版本3就执行pip3 (这是python2没有的)
 #+END_SRC
 
-**** jupyter notebook
+*** jupyter notebook
 *****  启动notebook   
 
 #+BEGIN_SRC python
@@ -3194,7 +3232,7 @@ C:\Python37\Lib\site-packages\jupyter_contrib_nbextensions\nbextensions
   在该文件进行编辑
 
 
-  ,#+BEGIN_SRC js
+#+BEGIN_SRC js
 
     {
         "snippets" : [
@@ -3227,3 +3265,155 @@ C:\Python37\Lib\site-packages\jupyter_contrib_nbextensions\nbextensions
 
 
 https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/snippets
+
+
+*** Python Programming 网格
+:LOGBOOK:
+CLOCK: [2018-10-23 周二 22:48]--[2018-10-23 周二 22:49] =>  0:01
+:END:
+https://pythonprogramming.net/using-pandas-structure-process-data/
+
+https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
+
+https://www.liaoxuefeng.com
+
+http://www.newthinktank.com/2014/11/python-programming/
+
+
+https://www.youtube.com/watch?v=N4mEzFDjqtA
+
+Learning
+https://www.youtube.com/watch?v=rfscVS0vtbw
+
+input get the characters from input keyboards
+
+*** pandas_datareader
+
+pandas主要处理的是data formats or file formats,虽然他能处理
+许多data types. 但是很多人在说道pandas的“Data Type”一般是指
+data format。
+
+
+Location of python install might not be the same,
+make sure you use pandas_datareader instead of pandas.oi.data 
+and ensure that you have it installed - pip install pandas-datareader.
+ other than that the code should work.
+** TODO [#B] 图3的情况 <2018-10-25 周四 20:54>                      :@NCEPU:
+DEADLINE: <2018-11-01 周四>
+                    :PROPERTIES:
+                    :Effort: 1:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-10-25 周四 20:55]--[2018-10-25 周四 20:56] =>  0:01
+                    :END:
+                    
+                    
+                    
+<Unsteady aerodynamics of offshore floating wind turbines in platform
+pitching motion using vortex lattice method>
+图3是我昨天跟你说的情况，就是一定叶展高度的水平面的图
+** TODO [#B] 流畅的python <2018-10-31 周三 20:16 +7d>                  :python:
+DEADLINE: <2018-12-10 周一> SCHEDULED: <2018-11-01 周四>
+                    :PROPERTIES:
+                    :Effort: 2:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-11-01 周四 17:19]--[2018-11-02 周五 00:13] =>  6:54
+                    - Clocked out on T:[2018-11-02 周五 00:13] \\
+                      pandas,datetime, string模块等学习
+                    CLOCK: [2018-10-31 周三 20:16]--[2018-10-31 周三 20:17] =>  0:01
+                    :END:
+                    
+                    
+                    
+花一段时间学习，据说这本书不错
+
+http://python.jobbole.com/88735/
+
+FluentPython源码阅读
+https://github.com/fluentpython/example-code
+
+
+有经验的程序员experienced programmers(bend python)
+
+**** Python data model
+: understand how special methods are the key to the consistent behavior of objects
+**** Data structures 
+: take full advantage of built-in types, and understand the text vs bytes duality in the Unicode age
+**** Functions as objects
+: view Python functions as first-class objects, and understand how this affects popular design patterns
+**** Object-oriented idioms
+: build classes by learning about references, mutability, interfaces, operator overloading,
+: and multiple inheritance
+**** Control flow
+: leverage context managers, generators, coroutines, and concurrency with the concurrent.
+: futures and asyncio packages
+**** Metaprogramming
+: understand how properties, attribute descriptors, class decorators, and metaclasses work
+
+python-pandas
+https://github.com/paulQuei/pandas_tutorial
+
+
+
+新的学习平台
+https://www.safaribooksonline.com/videos/python-for-beginners/9781789617122/9781789617122-video11_2
+
+
+***** chapter1. Course Overview
+0. Section Overview
+***** chapter2. Python setup(different platform)
+0. Section Overview
+***** chapter3. String and variabls
+0. Section Overview
+***** chapter4. numbers and math
+0. Section Overview
+***** chapter5. booleans and conditions
+0. Section Overview
+
+x>6 and y<10
+
+***** chapter6. functions
+  DRY= Don't repeat yourself(write one time,use many place，times)
+0. Section Overview
+  **** Functions,Part I
+  **** Functions,Part II
+***** chapter7. lists
+0. Section Overview
+1. Exception handling
+2. Sorting and Ranges
+3. section summary
+
+***** Chapter8. Dictionaries
+0. Section Overview
+  **** Dictionaries,Part I
+  **** Dictionaries,Part II
+***** Chapter9. Tuples
+***** Chapter10. Files
+0. Section Overview
+  **** Files,Part I
+  **** Files,Part II
+  1. Section summary
+
+***** Chapter11. Modules
+
+
+dir(module_name) 有用哈
+
+
+还是需要进一步沉稳！
+
+python的所有东西都是对象。同时也需要结合函数式编程方式，来学习面向对象编程。
+** TODO [#B] 摩托车驾照考试科目一 <2018-11-04 周日 16:58>           :@NCEPU:
+DEADLINE: <2018-11-09 周五>
+                    :PROPERTIES:
+                    :Effort: 1:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-11-04 周日 16:59]--[2018-11-04 周日 16:59] =>  0:00
+                    - Clocked out on T:[2018-11-04 周日 16:59]
+                    :END:
+                    
+                    
+
+下午考试                  
