@@ -4,6 +4,18 @@
 (require 'org-install)
 (require 'org)
 
+;(load "org-sidebar.el")
+;(load "org-agenda-ng.el")
+;(load "org-ql.el")
+
+(load "org-listcruncher.el")
+(add-to-list 'load-path "~/.emacs.d/customizations/emacs-presentation-mode/")
+(load "presentation.el")
+
+(add-to-list 'load-path "~/.emacs.d/customizations/counsel-org-clock/")
+(load "counsel-org-clock.el")
+;; keep company with org-mru-clock
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -86,7 +98,7 @@
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
-
+(setq org-refile-use-outline-path 'file)
 ; Use full outline paths for refile targets - we file directly with IDO
 (setq org-refile-use-outline-path t)
 

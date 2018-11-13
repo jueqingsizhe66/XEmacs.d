@@ -607,3 +607,13 @@ https://youtube-dl.org/
 相当好的一个网站
 ** CPU排名
  http://itianti.sinaapp.com/index.php/cpu/
+** fortran john burkardt
+ http://people.sc.fsu.edu/~jburkardt/f_src/f_src.html
+ 
+fortran库
+http://people.sc.fsu.edu/~jburkardt/f_src/fem1d_bvp_linear/fem1d_bvp_linear_prb_output.txt
+** 学习org-refile
+ https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
+ 
+Refile gives you the power to dynamically restructure your existing and new notes in the blink of an eye.
+refile动态创建你的笔记

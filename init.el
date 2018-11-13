@@ -5,38 +5,6 @@
 ;; Define package repositories
 (require 'package)
 
-; (add-to-list 'package-archives
-;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
-;
-; (add-to-list 'package-archives
-;              '("tromey" . "http://tromey.com/elpa/") t)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (add-to-list 'package-archives                             ;;
-;;              '("gnu" . "http://elpa.gnu.org/packages/") t) ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (add-to-list 'package-archives                                    ;;           ;;
-;;              '(("melpa" . "http://melpa.milkbox.net/packages/")                ;;
-;;                ;("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/") ;;
-;;                ;("melpa" . "http://elpa.emacs-china.org/melpa/")               ;;
-;;                ;("marmalada" . "http://elpa.emacs-china.org/marmalade/")       ;;
-;;                ) ) ;;                                                          ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (add-to-list 'package-archives                                          ;;
-;;              '("melpa-stable" . "https://staable.melpa.org/packages/")) ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (add-to-list 'package-archives                                     ;; ;;
-;;              '("melpa" . "http://melpa.org/packages/") t) ;;          ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (add-to-list 'package-archives                                     ;; ;;
-;;              '("melpa" . "http://melpa.mill.box.net/packages/") t) ;; ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (add-to-list 'package-archives                                         ;;
@@ -54,16 +22,6 @@
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 ;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
 ;;                          ("melpa" . "http://melpa-stable.milkbox.net/packages/")))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")                                             ;;
-;;                          ("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/")))                           ;;
-;; (add-to-list 'package-archives                                                                                      ;;
-;;            ;;  '("melpa-stable" . "http://stable.melpa.org/packages/") t;; many packages won't show if using stable ;;
-;;              '("melpa" . "http://melpa.milkbox.net/packages/")                                                      ;;
-;;              )                                                                                                      ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
                          ("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/")
@@ -73,12 +31,7 @@
 ;; packages are loaded before you start trying to modify them.
 ;; This also sets the load path.
 (package-initialize)
-;(setq temporary-file-directory "D://SlimeTemp//") 
-;(setq temporary-file-directory "C:\\Users\\yzl\\SlimeTemp") 
-;(setq temporary-file-directory "C:/Users/Administrator/AppData/Local/Temp/") 
 (setq temporary-file-directory "C:/Users/yzl/AppData/Local/Temp/") 
-;(setq temporary-file-directory "C:/Users/Default/AppData/Local/Temp/") 
-;;(setq temporary-file-directory "C://Documents and Settings//Administrator//Local Settings//Temp") 
 ;; Download the ELPA archive description if needed.
 ;; This informs Emacs about the latest versions of all packages, and
 ;; makes them available for download.
@@ -203,12 +156,7 @@
     (package-install p)))
 
 
-;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
-;; to load them.
-;;
-;; For example, if you download yaml-mode.el to ~/.emacs.d/vendor,
-;; then you can add the following code to this file:
-;;
+
 ;; (require 'yaml-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 ;; 
@@ -253,7 +201,6 @@
 ;; For editing lisps
 (load "elisp-editing.el")
 (load "scheme-editing.el")
-
 (load "setup-ledger.el")
 
 ;; Langauage-specific
@@ -276,23 +223,12 @@
 ;(load "org-wiki.el")
 ;(load "doom-todo-ivy.el")
 
-(load "org-listcruncher.el")
-;(load "org-sidebar.el")
-;(load "org-agenda-ng.el")
-;(load "org-ql.el")
 ;dashboard
 ;(load "setup-dashboard.el")
 
 ;; music
 (load "setup-emms.el")
 ;;(require 'server)
-
-(add-to-list 'load-path "~/.emacs.d/customizations/emacs-presentation-mode/")
-(load "presentation.el")
-
-(add-to-list 'load-path "~/.emacs.d/customizations/counsel-org-clock/")
-(load "counsel-org-clock.el")
-;; keep company with org-mru-clock
 
 (server-start)
 (custom-set-variables
@@ -388,14 +324,7 @@
 (setq default-directory "~/.emacs.d/")
 ; (require 'org-install)
 ;
-; ;; The following lines are always needed. Choose your own keys.
-; (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-; (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
-; (global-set-key "\C-cl" 'org-store-link)
-; (global-set-key "\C-ca" 'org-agenda)
-; (global-set-key "\C-cb" 'org-iswitchb)
-; (setq org-src-fontify-natively t)
-;
+
 
 ;; my personal setup, other major-mode specific setup need it.
 ;; It's dependent on init-site-lisp.el
@@ -410,13 +339,6 @@
 ;(server-start))
 
 
-;(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
-; '(window-numbering-face ((t (:foreground "DeepPink" :underline "DeepPink" :weight bold))) t))
-
 
 (eval-after-load 'dired '(require 'setup-dired))
 (require 'setup-yasnippet)
@@ -429,110 +351,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (eval-when-compile       ;;
 ;;  (require 'use-package)) ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;From Sasha Chua
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (use-package engine-mode                                                                       ;; ;;
-;;   :config                                                                                      ;; ;;
-;;   (progn                                                                                       ;; ;;
-;;     (defengine my-blog "https://www.google.ca/search?q=site:sachachua.com+%s" :keybinding "b") ;; ;;
-;;     (defengine my-photos "http://www.flickr.com/search/?w=65214961@N00&q=%s" :keybinding "f")  ;; ;;
-;;     (defengine mail "https://mail.google.com/mail/u/0/#search/%s" :keybinding "m")             ;; ;;
-;;     (defengine google "http://google.com/search?q=%s" :keybinding "g")                         ;; ;;
-;;     (defengine emacswiki "http://google.com/search?q=site:emacswiki.org+%s" :keybinding "e")   ;; ;;
-;;     (bind-key* "C-c /" 'my/engine-mode-hydra/body)                                             ;; ;;
-;;     (engine-mode))                                                                             ;; ;;
-;;  )                                                                                                ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;(find-file "~/.emacs.d/GTD/newgtd.org")
-
-
-;;better bookmark
-;;https://github.com/howardabrams/dot-files/blob/master/emacs.org
-; (setq bookmark-save-flag 1)
-; (defun ha/add-bookmark (name)
-;   (interactive
-;    (list (let* ((filename  (file-name-base (buffer-file-name)))
-;                 (project   (projectile-project-name))
-;                 (func-name (which-function))
-;                 (initial   (format "%s::%s:%s " project filename func-name)))
-;            (read-string "Bookmark: " initial))))
-;   (bookmark-set name))
-;
-; (global-unset-key (kbd "C-x r m"))
-; (global-unset-key (kbd "C-x r b"))
-; (global-set-key (kbd "C-x r b") 'helm-bookmarks)
-; (global-set-key (kbd "C-x r m") 'ha/add-bookmark)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (use-package bookmark                                                           ;;
-;;   :init                                                                         ;;
-;;   :config                                                                       ;;
-;;   (defun ha/add-bookmark (name)                                                 ;;
-;;     (interactive                                                                ;;
-;;      (list (let* ((filename  (file-name-base (buffer-file-name)))               ;;
-;;                   (project   (projectile-project-name))                         ;;
-;;                   (func-name (which-function))                                  ;;
-;;                   (initial   (format "%s::%s:%s " project filename func-name))) ;;
-;;              (read-string "Bookmark: " initial))))                              ;;
-;;     (bookmark-set name))                                                        ;;
-;;   :bind  (("C-c b m" . ha/add-bookmark)                                         ;;
-;;           ("C-x r m" . ha/add-bookmark)                                         ;;
-;;           ("C-x r b" . helm-bookmarks)))                                        ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;https://www.emacswiki.org/emacs/PrettyGreek
-
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; (defun pretty-greek ()                                                                                                 ;;
- ;;  (let ((greek '("alpha" "beta" "gamma" "delta" "epsilon" "zeta" "eta" "theta" "iota" "kappa" "lambda" "mu" "nu" "xi" "omicron" "pi" "rho" "sigma_final" "sigma" "tau" "upsilon" "phi" "chi" "psi" "omega"))) ;;
- ;;    (loop for word in greek                                                                                             ;;
- ;;          for code = 97 then (+ 1 code)                                                                                 ;;
- ;;          do  (let ((greek-char (make-char 'greek-iso8859-7 code)))                                                     ;;
- ;;                (font-lock-add-keywords nil                                                                             ;;
- ;;                                        `((,(concatenate 'string "\\(^\\|[^a-zA-Z0-9]\\)\\(" word "\\)[a-zA-Z]")        ;;
- ;;                                           (0 (progn (decompose-region (match-beginning 2) (match-end 2))               ;;
- ;;                                                     nil)))))                                                           ;;
- ;;                (font-lock-add-keywords nil                                                                             ;;
- ;;                                        `((,(concatenate 'string "\\(^\\|[^a-zA-Z0-9]\\)\\(" word "\\)[^a-zA-Z]")       ;;
- ;;                                           (0 (progn (compose-region (match-beginning 2) (match-end 2)                  ;;
- ;;                                                                     ,greek-char)                                       ;;
- ;;                                                     nil)))))))))  (add-hook 'lisp-mode-hook 'pretty-greek)             ;;
- ;;  (add-hook 'emacs-lisp-mode-hook 'pretty-greek)                                                                        ;;
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 设置编辑环境
 (set-language-environment 'utf-8)
 
-
-
-                                        ;(set-language-environment "Chinese-GB")
-
-                                        ;(set-language-environment-charset "utf-8")
-                                        ;(set-language-environment-coding-systems "utf-8")
-
-
+(global-set-key (kbd "C-x C-e") 'eval-last-sexp)
+(toggle-truncate-lines 1)
   
 
-  (global-set-key (kbd "C-x C-e") 'eval-last-sexp)
-                                        ; (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-                                        ; '(org-level-1 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.75))))
-                                        ; '(org-level-2 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.5))))
-                                        ; '(org-level-3 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.25))))
-                                        ; '(org-level-4 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.1))))
-                                        ; '(org-level-5 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))
-                                        ; '(org-level-6 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))
-                                        ; '(org-level-7 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))
-                                        ; '(org-level-8 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro")))))
-
-
-  (toggle-truncate-lines 1)
-  
-
-  (load "setup-eww.el")
+(load "setup-eww.el")
 
 
 (load "init-const.el")      ;;
