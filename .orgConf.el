@@ -87,6 +87,10 @@
                        "~/.emacs.d/GTD/phd1.org"
                        "~/.emacs.d/GTD/Dissertation.org"
                        "~/.emacs.d/GTD/thesis-proposal.org"
+                       "~/.emacs.d/GTD/orgBoss/pythonLearning.org"
+                       "~/.emacs.d/GTD/orgBoss/perlLearning.org"
+                       "~/.emacs.d/GTD/orgBoss/clojureLearning.org"
+                       "~/.emacs.d/GTD/orgBoss/rubyLearning.org"
                        ;(append (file-expand-wildcards "~/.emacs.d/GTD/orgBoss/Journal/2*"))
                        ;"~/.emacs.d/GTD/orgBoss/Journal/"
                         ))  
@@ -942,6 +946,7 @@ In ~%s~:
 ;;bind key `C-c s i’ to the function org-inser-src-block
 (add-hook 'org-mode-hook '(lambda ()
                             ;; turn on flyspell-mode by default
+                            ;<2018-11-18 18:28> 
                             (flyspell-mode 1)
                             ;;(flyspell-mode 1)
                             ;; C-TAB for expanding
@@ -1209,9 +1214,12 @@ Use a prefix arg to get regular RET. "                                          
 
 (setq flyspell-issue-welcome-flag t) ;; fix flyspell problem
 
-(custom-set-variables
-    '(ispell-dictionary "british")
-    '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe"))
+
+;;;<2018-11-18 18:27>                                                          ;;
+(custom-set-variables                                                          ;;
+    '(ispell-dictionary "british")                                             ;;
+    '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")) ;;
+
 
 
 ;;;M-x reinstall many times ,finally get installed

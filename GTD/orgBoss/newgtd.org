@@ -122,6 +122,96 @@ Captured 2017-09-27 22:52
                     Captured 2017-09-28 11:21
 *** 1. you capture the ideas or todos(capture--refile--consider,organize---review---do)
 *** 2. you capture your todos with time, so you have time pocket(momentum); However
+**** PENDING [#B] clojure学习 <2017-11-20 周一 13:52 +1w>          :@F708:
+                    :PROPERTIES:
+                    :Effort: 1:00
+                    :LAST_REPEAT: [2017-12-22 周五 10:38]
+                    :END:
+                    
+                    - State "DONE"       from "PENDING"    [2017-12-22 周五 10:38]
+                    :LOGBOOK:
+                    CLOCK: [2017-11-22 周三 12:07]--[2017-11-22 周三 13:38] =>  1:31
+                    CLOCK: [2017-11-21 周二 17:51]--[2017-11-21 周二 22:38] =>  4:47
+                    CLOCK: [2017-11-21 周二 15:42]--[2017-11-21 周二 17:20] =>  1:38
+                    CLOCK: [2017-11-21 周二 10:57]--[2017-11-21 周二 11:23] =>  0:26
+                    CLOCK: [2017-11-20 周一 10:13]--[2017-11-20 周一 11:46] =>  1:33
+                    CLOCK: [2017-11-16 周四 13:52]--[2017-11-16 周四 14:46] =>  0:54
+                    :END:
+                    
+                    
+https://github.com/marshallshen/clojure-katas  clojure-katas
+我挺喜欢firefox 中的vimEx的y功能，复制当前的网址到剪贴板
+
+https://www.braveclojure.com/writing-macros/
+the macro has a name, an optional document string, an argument list
+also a body, just like function. The body will almost return a list.
+
+macro can be recursive and also use the rest arguments list with `& next`
+
+第二次学习
+<2017-11-20 10:13>
+
+
+Clojure needn't type declaration; clojure have many walls of data and function, so as to 
+build a big building.
+
+Clojure need you to keep focus on the code, to think the syntax of programming, to think th
+hierarchy of inheritance,to think the data structure. Writing code(or just writing)is against
+to the distraction.
+
+"It is better to have 100 functions operate on one data structure than to have 10 functions 
+operate on 10 data structures." - Alan J. Perlis
+
+
+第三次学习
+<2017-11-21 10:59>
+
++ sequential  +sequence  + seq
+they mean specific things in Clojure
+
+1. Collection: A composite data types
+2. sequential : ordered series of values  [1 2 3 4] (1 2 3 4)
+3. sequence : A sequential collection that may or may not exist yet,(the result of (map a-fun a-colltion)
+4. seq :Simple ApI for navigating collections :first ,rest,nil and (){calling seq on a collection}
+5. clojure.core/seq:A function that returns an object implementing the seq API :(seq []) ::=> nil and (seq [1 2]):: =>(1 2)
+
+
+<2017-11-21 15:42>
+collection function: filter, map, for, doseq, take, partition...
+O(log32n) for those based on the persistent hash trie 
+O(log2n)  for the sorted structures.
+O(logn) or logarithmic for accessing an element in a clojure persistent structure by index
+
+In practice, you may notice some difference, because for a billion objects O(log2n) would
+require approximately 30 comparisons for a lookup, whereas O(log32n) would require only 
+about 6.
+
+clojure provides polymorphism via protocols, which let you attach a set of behaviors to 
+any number of existing types and classes(similar to mix-ins ,traits, interfaces in other
+languages)
+we can then use extend-type function, to extent the exist type into many new functions.
+
+
+#+BEGIN_SRC clojure
+(defprotocol Concatenatable
+   (cat [this other]))
+
+(extend-type String
+   Concatenatable
+   (cat [this other]
+      (.concat this other)))
+
+(extend-type java.util.List
+   Concatenatable 
+   (cat [this other]
+      (concat this other)))
+
+
+#+END_SRC
+
+
+
+
 *** 2.5 however, you will be overwhelmed by tasks, so you can also group tasks into projects or context.(group tasks into project)
 *** 3. List your todos or tasks with routines and checklists, so you can do things consistently even if fuzzy brains
 *** 5. but still too much. So be realistics and add priviledge to your schedule tasks, eliminate some not so important not so hurry
@@ -278,12 +368,14 @@ CLOSED: [2018-06-27 周三 15:36]
                     Captured 2017-10-15 00:29
                     
 刘文为主
-** 学习 [#B] 干好一件事 <2017-10-16 周一 23:48>                      :@work:
+** DONE [#B] 干好一件事 <2017-10-16 周一 23:48>                         :@work:
+CLOSED: [2018-11-19 周一 23:24]
                     :PROPERTIES:
                     :Effort: 4:00
                     :END:
                     - State "学习"       from "TODO"          [2018-06-27 周三 15:36]
                     :LOGBOOK:
+                    - State "DONE"       from "学习"       T:[2018-11-19 周一 23:24]
                     CLOCK: [2017-10-16 周一 23:48]--[2017-10-16 周一 23:49] =>  0:01
                     :END:
                     
@@ -360,13 +452,14 @@ CLOSED: [2017-12-11 周一 19:57] SCHEDULED: <2017-10-26 周四>
 23. [ ] 
 24. [ ] 
 
-** 学习 [#B] Somethings need to be done by yourself <2017-10-21 周六 21:12> :@work:
-DEADLINE: <2019-10-21 周一>
+** DONE [#B] Somethings need to be done by yourself <2017-10-21 周六 21:12> :@work:
+CLOSED: [2018-11-19 周一 22:22] DEADLINE: <2019-10-21 周一>
                     :PROPERTIES:
                     :Effort: 1:00
                     :END:
                     - State "学习"       from "TODO"          [2018-06-27 周三 15:36]
                     :LOGBOOK:
+                    - State "DONE"       from "学习"       T:[2018-11-19 周一 22:22]
                     CLOCK: [2017-10-21 周六 21:13]--[2017-10-21 周六 21:14] =>  0:01
                     :END:
                     
@@ -495,10 +588,18 @@ CLOSED: [2017-10-30 周一 20:04] DEADLINE: <2017-11-05 周日>
 6.仍需单独开题的同学，联系导师开题之后，自己交材料即可。
 7.其他年级资格审查表，不在我这里，需要由同组实验室同学通知去F617领取。*  Tasks
 
-** 学习 Most important thing that you have to do             :学术:紧急重要:
+** DONE Most important thing that you have to do                :学术:紧急重要:
+CLOSED: [2018-11-19 周一 22:22]
+:LOGBOOK:
+- State "DONE"       from "学习"       T:[2018-11-19 周一 22:22]
+:END:
 
 - State "学习"       from "TODO"          [2018-06-27 周三 15:36]
-** 学习 Second most important thing that you have to do
+** DONE Second most important thing that you have to do
+CLOSED: [2018-11-19 周一 22:22]
+:LOGBOOK:
+- State "DONE"       from "学习"       T:[2018-11-19 周一 22:22]
+:END:
 - State "学习"       from "TODO"          [2018-06-27 周三 15:37]
 You can also take notes underneath each heading, like this
 ** DONE 花销(expense)
@@ -680,103 +781,15 @@ CLOSED: [2017-12-11 周一 19:56]
                     CLOCK: [2017-11-15 周三 10:49]--[2017-11-15 周三 10:49] =>  0:00
                     CLOCK: [2017-11-15 周三 10:47]--[2017-11-15 周三 10:47] =>  0:00
                     :END:
-** TODO [#B] 风洞试验NREL5MW 错误排除 <2017-11-15 周三 11:06>        :@work:
+** DONE [#B] 风洞试验NREL5MW 错误排除 <2017-11-15 周三 11:06>           :@work:
+CLOSED: [2018-11-19 周一 22:22]
                     :PROPERTIES:
                     :Effort: 6:00
                     :END:
                     :LOGBOOK:
+                    - State "DONE"       from "TODO"          T:[2018-11-19 周一 22:22]
                     CLOCK: [2017-11-15 周三 11:07]--[2017-11-15 周三 11:07] =>  0:00
                     :END:
-** PENDING [#B] clojure学习 <2017-11-20 周一 13:52 +1w>              :@F708:
-                    :PROPERTIES:
-                    :Effort: 1:00
-                    :LAST_REPEAT: [2017-12-22 周五 10:38]
-                    :END:
-                    
-                    - State "DONE"       from "PENDING"    [2017-12-22 周五 10:38]
-                    :LOGBOOK:
-                    CLOCK: [2017-11-22 周三 12:07]--[2017-11-22 周三 13:38] =>  1:31
-                    CLOCK: [2017-11-21 周二 17:51]--[2017-11-21 周二 22:38] =>  4:47
-                    CLOCK: [2017-11-21 周二 15:42]--[2017-11-21 周二 17:20] =>  1:38
-                    CLOCK: [2017-11-21 周二 10:57]--[2017-11-21 周二 11:23] =>  0:26
-                    CLOCK: [2017-11-20 周一 10:13]--[2017-11-20 周一 11:46] =>  1:33
-                    CLOCK: [2017-11-16 周四 13:52]--[2017-11-16 周四 14:46] =>  0:54
-                    :END:
-                    
-                    
-https://github.com/marshallshen/clojure-katas  clojure-katas
-我挺喜欢firefox 中的vimEx的y功能，复制当前的网址到剪贴板
-
-https://www.braveclojure.com/writing-macros/
-the macro has a name, an optional document string, an argument list
-also a body, just like function. The body will almost return a list.
-
-macro can be recursive and also use the rest arguments list with `& next`
-
-第二次学习
-<2017-11-20 10:13>
-
-
-Clojure needn't type declaration; clojure have many walls of data and function, so as to 
-build a big building.
-
-Clojure need you to keep focus on the code, to think the syntax of programming, to think th
-hierarchy of inheritance,to think the data structure. Writing code(or just writing)is against
-to the distraction.
-
-"It is better to have 100 functions operate on one data structure than to have 10 functions 
-operate on 10 data structures." - Alan J. Perlis
-
-
-第三次学习
-<2017-11-21 10:59>
-
-+ sequential  +sequence  + seq
-they mean specific things in Clojure
-
-1. Collection: A composite data types
-2. sequential : ordered series of values  [1 2 3 4] (1 2 3 4)
-3. sequence : A sequential collection that may or may not exist yet,(the result of (map a-fun a-colltion)
-4. seq :Simple ApI for navigating collections :first ,rest,nil and (){calling seq on a collection}
-5. clojure.core/seq:A function that returns an object implementing the seq API :(seq []) ::=> nil and (seq [1 2]):: =>(1 2)
-
-
-<2017-11-21 15:42>
-collection function: filter, map, for, doseq, take, partition...
-O(log32n) for those based on the persistent hash trie 
-O(log2n)  for the sorted structures.
-O(logn) or logarithmic for accessing an element in a clojure persistent structure by index
-
-In practice, you may notice some difference, because for a billion objects O(log2n) would
-require approximately 30 comparisons for a lookup, whereas O(log32n) would require only 
-about 6.
-
-clojure provides polymorphism via protocols, which let you attach a set of behaviors to 
-any number of existing types and classes(similar to mix-ins ,traits, interfaces in other
-languages)
-we can then use extend-type function, to extent the exist type into many new functions.
-
-
-#+BEGIN_SRC clojure
-(defprotocol Concatenatable
-   (cat [this other]))
-
-(extend-type String
-   Concatenatable
-   (cat [this other]
-      (.concat this other)))
-
-(extend-type java.util.List
-   Concatenatable 
-   (cat [this other]
-      (concat this other)))
-
-
-#+END_SRC
-
-
-
-
 ** DONE [#B] 3页的报告 <2017-11-17 周五 13:05>               :@work:紧急不重要:
 CLOSED: [2017-12-05 周二 12:10] DEADLINE: <2017-11-24 周五> SCHEDULED: <2017-11-22 周三>
                     :PROPERTIES:
@@ -1258,345 +1271,6 @@ CLOSED: [2018-09-29 周六 03:43] SCHEDULED: <2017-11-14 周二>
                     - State "TODO"       from "DONE"          [2017-12-22 周五 10:38]
                     - State "DONE"       from "TODO"          [2017-12-22 周五 10:38]
                       LIC算法改进
-** TODO [#A] 基于多轴角运动的气动特性和流场分析大论文 <2018-06-25 周一 16:19>[3/4] :学术:
-DEADLINE: <2019-04-15 周一>
-                    :PROPERTIES:
-                    :Effort: 16:00
-                    :END:
-                    - State "TODO"       from "TODO"          [2018-08-23 周四 19:46]
-                    - State "TODO"       from "TODO"          [2018-08-23 周四 19:46]
-                    - State "TODO"       from "TODO"       [2018-08-23 周四 16:50]
-                    - State "TODO"       from "TODO"          [2018-08-21 周二 15:38]
-                    - State "TODO"       from "TODO"       [2018-08-18 周六 15:59]
-                    - State "TODO"       from "TODO"          [2018-08-18 周六 10:04]
-                    - State "TODO"       from "TODO"       [2018-08-04 周六 23:06]
-                    - State "TODO"       from "TODO"          [2018-08-04 周六 23:06]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 10:49]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 10:49]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 10:49]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 10:48]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 10:48]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 09:51]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 09:50]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 09:48]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 09:48]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 09:47]
-                    - State "TODO"       from "TODO"          [2018-08-01 周三 09:41]
-                    - State "TODO"       from "TODO"       [2018-08-01 周三 08:48]
-                    - State "TODO"       from "TODO"          [2018-07-31 周二 16:19]
-                    :LOGBOOK:
-                    CLOCK: [2018-06-25 周一 16:19]--[2018-06-26 周二 12:02] => 19:43
-                    :END:
-                    
-
-                    
-1. [ ] 绪论
-2. [ ] 第二章 方法介绍
-3. [ ] 第三章 NREL PhaseVI 小风力机
-4. [ ] 第四章 NREL 5MW 大风力机的
-5. [ ] 第五章 结论
-
-*** DONE [#A] 修改静态偏航工况的文章，再投稿 <2018-06-23 周六 11:47>  [1/1] :学术:
-SCHEDULED: <2018-07-01 周日>
-                    :PROPERTIES:
-                    :Effort: 4:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-08-20 周一 11:04]--[2018-08-21 周二 09:05] => 22:01
-                    CLOCK: [2018-06-23 周六 11:48]--[2018-06-23 周六 11:48] =>  0:00
-                    :END:
-                    
-                    
-                    务必完成关系到你的毕业
-
-**** DONE [#A] CFX30°给定偏航补充计算 <2018-06-25 周一 08:30>      [100%] :学术:
-CLOSED: [2018-08-23 周四 16:50] DEADLINE: <2018-07-01 周日>
-                    :PROPERTIES:
-                    :Effort: 4:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-08-18 周六 10:04]--[2018-08-18 周六 15:58] =>  5:54
-                    CLOCK: [2018-08-01 周三 11:44]--[2018-08-01 周三 11:45] =>  0:01
-                    CLOCK: [2018-06-25 周一 08:37]--[2018-06-25 周一 08:37] =>  0:00
-                    CLOCK: [2018-06-25 周一 08:34]--[2018-06-25 周一 08:36] =>  0:02
-                    CLOCK: [2018-06-25 周一 08:30]--[2018-06-25 周一 08:34] =>  0:04
-                    :END:
-                    
-1. [X] 不同网格的验证，选择一种湍流模型
-   1. [X] k-omega
-   2. [X] SST
-   3. [X] T-SST
-2. [X] 选择完网格之后，再进行湍流模型的验证
-   1. [X] 244w
-   2. [X] 350w
-   3. [X] 453w
-   4. [X] 559w
-   5. [X] 622w
-3. [X] 验证完湍流模型之后，为了表示非定常时间步选择的合理性，再考虑使用不同时间步
-4. [X] 负偏航角计算(-30°)
-   1. [X] 绘制网格(采用原先的inlet计算有问题
-   2. [X] 设置计算(定常+非定常(5deg 72*2))
-   3. [X] 处理结果
-
-*** DONE [#A] PhaseVI双滑移英文初稿 <2018-06-20 周三 10:54>    [100%]   :学术:
-CLOSED: [2018-08-23 周四 19:46] DEADLINE: <2018-07-08 周日>
-                    :PROPERTIES:
-                    :Effort:   4:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-08-05 周日 16:16]--[2018-08-06 周一 11:48] => 19:32
-                    CLOCK: [2018-08-04 周六 16:59]--[2018-08-04 周六 17:33] =>  0:34
-                    CLOCK: [2018-08-01 周三 09:41]--[2018-08-01 周三 09:48] =>  0:07
-                    CLOCK: [2018-08-01 周三 08:48]--[2018-08-01 周三 09:10] =>  0:22
-                    CLOCK: [2018-06-23 周六 22:53]--[2018-06-24 周日 01:02] =>  2:09
-                    CLOCK: [2018-06-23 周六 14:33]--[2018-06-23 周六 22:53] =>  8:20
-                    CLOCK: [2018-06-20 周三 11:49]--[2018-06-20 周三 11:51] =>  0:02
-                    CLOCK: [2018-06-20 周三 10:55]--[2018-06-20 周三 10:58] =>  0:03
-                    :END:
-                    
-                    Good writing starts with a plan(I need to finish it)
-
-
-
-**** DONE [#A] Fluent双滑移的验证case <2018-06-25 周一 08:36>     [100%] :学术:
-CLOSED: [2018-08-01 周三 09:41] DEADLINE: <2018-07-14 周六>
-                    :PROPERTIES:
-                    :Effort: 14:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-06-25 周一 08:53]--[2018-06-25 周一 08:54] =>  0:01
-                    CLOCK: [2018-06-25 周一 08:42]--[2018-06-25 周一 08:43] =>  0:01
-                    CLOCK: [2018-06-25 周一 08:37]--[2018-06-25 周一 08:38] =>  0:01
-                    CLOCK: [2018-06-25 周一 08:36]--[2018-06-25 周一 08:37] =>  0:01
-                    :END:
-                    
-Numeca激活完毕
-  1. [X] 不同网格的验证，选择一种湍流模型(无论Fluent还是CFX定常计算的结果流场不对)
-     1. [X] k-omega SST(2)
-     2. [X] k-kl SST(3)
-     3. [X] transition SST(4)
-  2. [X] 选择完网格之后，再进行湍流模型的验证
-     1. [X] 250w
-     2. [X] 370w
-     3. [X] 490w
-  3. [X] 验证完湍流模型之后，为了表示非定常时间步选择的合理性，再考虑使用不同时间步
-     1. [X] 1deg
-     2. [X] 2.5deg
-     3. [X] 5deg
-
-**** DONE [#A] 双滑移(phaseVI)的数据处理 <2018-06-25 周一 08:38>        [100%] :学术:
-CLOSED: [2018-08-01 周三 08:48] DEADLINE: <2018-07-03 周二>
-                    :PROPERTIES:
-                    :Effort: 4:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-07-28 周六 19:50]--[2018-07-29 周日 17:58] => 22:08
-                    CLOCK: [2018-07-24 周二 15:44]--[2018-07-25 周三 10:50] => 19:06
-                    CLOCK: [2018-07-24 周二 15:42]--[2018-07-24 周二 15:43] =>  0:01
-                    CLOCK: [2018-07-24 周二 15:40]--[2018-07-24 周二 15:41] =>  0:01
-                    CLOCK: [2018-06-28 周四 20:10]--[2018-06-28 周四 20:21] =>  0:11
-                    CLOCK: [2018-06-28 周四 10:11]--[2018-06-28 周四 14:32] =>  4:21
-                    CLOCK: [2018-06-27 周三 20:52]--[2018-06-27 周三 23:32] =>  2:40
-                    CLOCK: [2018-06-27 周三 15:40]--[2018-06-27 周三 20:52] =>  5:12
-                    CLOCK: [2018-06-27 周三 15:22]--[2018-06-27 周三 15:38] =>  0:16
-                    CLOCK: [2018-06-26 周二 21:23]--[2018-06-26 周二 21:27] =>  0:04
-                    CLOCK: [2018-06-26 周二 12:02]--[2018-06-26 周二 13:15] =>  1:13
-                    CLOCK: [2018-06-25 周一 16:05]--[2018-06-25 周一 16:19] =>  0:14
-                    CLOCK: [2018-06-25 周一 08:38]--[2018-06-25 周一 08:42] =>  0:04
-                    :END:
-                    
-                    
-1. [X] 静态总体性能处理(时均结果)
-2. [X] 静态截面气动性能处理
-   1. [X] 平均Cp
-   2. [X] Cn Ct分布
-3. [X] 动态总体性能处理
-4. [X] 动态截面气动性能处理
-   1. [X] 平均Cp
-   2. [X] Cn Ct 分布
-5. [X] 静态和动态截面云图对比(如果分析出来 气动性能有差别，可以从定性角度先进性观察)
-
-**** ABORT [#A] 英文写作[20%]                    
-CLOSED: [2018-08-23 周四 19:46]
-1. [X] 方法部分
-2. [ ] 结果处理部分
-3. [ ] 结论部分
-4. [ ] 引言部分
-   1. [ ] 看过的有用文章 
-5. [ ] 摘要部分
-
-| Experimental process         | Section of Paper           |
-|------------------------------+----------------------------|
-| What did I do in a nutshell? | Abstract                   |
-| What is the problem?         | Introduction               |
-| How did I solve the problem? | Materials and Methods      |
-| What did I find out?         | Results                    |
-| What does it mean?           | Discussion                 |
-| Who helped me out?           | Acknowledgments (optional) |
-| Whose work did I refer to?   | Literature Cited           |
-| Extra Information            | Appendices (optional)      |
-|                              |                            |
-
-
-*** TODO [#A] NREL 5MW fluent静态和动态偏航计算 <2018-06-25 周一 08:42>[2/5] :学术:
-DEADLINE: <2018-08-01 周三>
-                    :PROPERTIES:
-                    :Effort: 16:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-06-25 周一 08:43]--[2018-06-25 周一 08:53] =>  0:10
-                    :END:
-**** DONE NREL5MW网格绘制[100%]
-CLOSED: [2018-08-01 周三 10:49]
-1. [X] 风轮部分(Numeca)
-2. [X] 偏航部分(圆柱) 
-3. [X] 偏摆部分(圆球) 
-4. [X] 外场部分(矩形域)
-**** TODO 静态计算部分      [75%]             
-:LOGBOOK:
-:END:
-1. [X] 静态工况下的网格验证(定常)
-   1. [X] 160w
-   2. [X] 309w
-   3. [X] 367w
-   4. [X] 531w
-   5. [X] 603w
-2. [X] 静态工况下的湍流模型验证(定常)
-   1. [X] k-omega
-   2. [X] SST
-   3. [X] T-SST
-3. [X] 静态工况下的非定常时间步验证
-   1. [X] 5deg
-   2. [X] 2.5deg
-   3. [X] 1deg
-4. [ ] 不同偏航角下计算
-   1. [ ] 0°
-   2. [ ] 5°
-   3. [ ] 10°
-   4. [ ] 15°
-   5. [ ] 20°
-   6. [ ] 25°
-   7. [ ] 30°
-   8. [ ] -30°(所以边界条件得设置好)
-**** TODO 动态计算部分 [16%]
-:LOGBOOK:
-CLOCK: [2018-08-22 周三 16:29]--[2018-08-22 周三 16:53] =>  0:24
-CLOCK: [2018-08-21 周二 22:58]--[2018-08-22 周三 11:21] => 12:23
-CLOCK: [2018-08-21 周二 13:26]--[2018-08-21 周二 22:58] =>  9:32
-:END:
-1. [-] 偏航过程的计算
-   1. [X] 动态偏航
-   2. [ ] 动态偏摆
-2. [ ] 静态数据结果的处理
-   1. [ ] matlab代码针对不同翼型的处理
-      1. [ ] 不同截面的翼型数据
-      2. [ ] 不同截面段运用不同的翼型数据
-   2. [ ] 总体性能分析
-   3. [ ] 细节分析
-      1. [ ] Cp,Cn,Ct
-      2. [ ] 截面云图
-3. [X] 动态数据结果的处理
-
-   你当前的处理过程跟phaseVI有何不同？基本上一致，可能到时候进行matlab处理的时候弦长需要进行修改！
-   根据你的处理思路，首先得知道初始叶尖处于哪个位置，比如(0,63，0）等 这样才可以根据该段长度进行截取百分之几长度
-   然后你得知道哪几个截面，处理截面也得清楚风轮是否发生了偏转！不偏转怎么处理？偏转又是怎么处理？
-   
-4. [ ] 静态-动态的数据对比处理
-5. [ ] NREL5MW相关的几何数据、模拟数据、计算结果等
-   1. [ ] 几何数据
-   2. [ ] 模拟数据
-   3. [ ] 计算结果
-6. [ ] NREL5MW英文文章结构？研究思路？
-    这篇文章偏向于物理性问题的研究， 流动特性更为主要， 因为实际风力机也可以作为参考； 饶流特性该研究哪几块？
-    首先，叶片上的表面流动特性分析，然后近尾迹区域的流动分析，涡系结构是如何演变的？ 给定偏航角和动态过程有什么不同？ 
-注意，流动分析是叶片附近的流动分析, 不是整个流场和远尾流的计
-
-
-**** DONE 其他计算 [100%]
-CLOSED: [2018-08-01 周三 10:48]
-1. [X] Free vortex method and BEM (不同偏航角下)
-   1. [X] Free vortex method
-   2. [X] BEM
-**** NREL 5MW偏航+变桨实验 [0/3]
-1. [ ] 偏航实验
-2. [ ] 变桨实验
-3. [ ] PIV实验
-
-
-**** TODO [#A]  NREL5MW动态数据处理+文章写作 <2018-08-23 周四 18:52> :@NCEPU:
-DEADLINE: <2018-08-28 周二> SCHEDULED: <2018-08-23 周四>
-                    :PROPERTIES:
-                    :Effort: 4:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-09-29 周六 16:47]--[2018-10-05 周五 13:11] => 140:24
-                    - Clocked out on T:[2018-10-05 周五 13:11]
-                    - Clocked out on T:[2018-09-29 周六 17:16] \\
-                      ei
-                    CLOCK: [2018-09-29 周六 16:23]--[2018-09-29 周六 16:43] =>  0:20
-                    :END:
-                    
-                    
-                    
-非定常动态特性配合上流动特性分析
-
-配合上NRELPhaseVI的动态特性作为验证case
-
-
-***** DOING 1. 网格无关性数据整理
-:LOGBOOK:
-CLOCK: [2018-08-27 周一 10:24]--[2018-08-27 周一 11:47] =>  1:23
-CLOCK: [2018-08-24 周五 14:55]--[2018-08-25 周六 19:28] => 28:33
-:END:
-*** DONE [#A] 工程热物理初稿 <2018-06-27 周三 15:38>        [100%]      :学术:
-CLOSED: [2018-07-31 周二 16:19] DEADLINE: <2018-07-04 周三>
-                    :PROPERTIES:
-                    :Effort: 10:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-07-24 周二 15:43]--[2018-07-24 周二 15:43] =>  0:00
-                    CLOCK: [2018-06-30 周六 17:10]--[2018-06-30 周六 20:33] =>  3:23
-                    CLOCK: [2018-06-30 周六 14:09]--[2018-06-30 周六 17:08] =>  2:59
-                    CLOCK: [2018-06-27 周三 15:38]--[2018-06-27 周三 15:40] =>  0:02
-                    :END:
-                    
-1. [X] 引言
-2. [X] 方法
-3. [X] 结果和分析
-4. [X] 结论
-5. [X] 摘要
-LINK:info:org:Top
-LINK:info:markdown:Top
-*** TODO [#B] 图3的情况 <2018-10-25 周四 20:54>                       :@NCEPU:
-DEADLINE: <2018-11-01 周四>
-                    :PROPERTIES:
-                    :Effort: 1:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-10-25 周四 20:55]--[2018-10-25 周四 20:56] =>  0:01
-                    :END:
-                    
-                    
-                    
-<Unsteady aerodynamics of offshore floating wind turbines in platform
-pitching motion using vortex lattice method>
-图3是我昨天跟你说的情况，就是一定叶展高度的水平面的图
-*** TODO [#B] 修正nrel5MW处理cn ct代码 <2018-08-29 周三 10:33>        :@NCEPU:
-SCHEDULED: <2018-08-29 周三>
-                    :PROPERTIES:
-                    :Effort: 4:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-08-29 周三 10:33]--[2018-08-29 周三 10:54] =>  0:21
-                    :END:
-                    
-          
-1. [ ] 弦长，扭角修正
-2. [ ] 风速修正，旋转速度修正
-3. [ ] 在你的计算目录下phaseAngle.csv修正
-4. [ ] 提取扭矩曲线
-5. [ ] 
-
 ** DONE [#C] 取工程热物理发票 <2018-07-31 周二 16:05>               :@NCEPU:
 CLOSED: [2018-08-12 周日 19:59] DEADLINE: <2018-08-08 周三>
                     :PROPERTIES:
@@ -1929,1487 +1603,7 @@ CLOSED: [2018-10-21 周日 18:10] DEADLINE: <2018-10-21 周日>
 明天过去换证
 1、车辆管理所京北分所
 地址：北京市昌平区马池口镇马池口村北方检测场旁
-<2018-10-21 15:27>
-最近三天的perl发布包
 
-https://metacpan.org/recent
-
-
-Perl Author上传说明
-http://www.cpan.org/modules/04pause.html
-
-
-perl blogs
-http://blogs.perl.org/
-
-perl intro
-http://perldoc.perl.org/index-tutorials.html
-https://www.nntp.perl.org/group/perl.perl5.changes/
-https://www.nntp.perl.org/group/perl.perl5.porters/
-= Contents =
-    - [[#0. Perl man|0. Perl man]]
-    - [[#1. I Love perl example|1. I Love perl example]]
-    - [[#2. I Love perl code books|2. I Love perl code books]]
-    - [[#3. dead simple,flexible,and fewer dependencies for a new web application ---"Dancer"|3. dead simple,flexible,and fewer dependencies for a new web application ---"Dancer"]]
-    - [[#4. what''s new on Cpan|4. what''s new on Cpan]]
-    - [[#5. dead dame bigger book|5. dead dame bigger book]]
-    - [[#6. Authors(Larry Walls) book|6. Authors(Larry Walls) book]]
-    - [[#7. Collection of Perl One line|7. Collection of Perl One line]]
-    - [[#8. Why "Modern Perl" Anyway?|8. Why "Modern Perl" Anyway?]]
-    - [[#Scalar behaves like a number or a string?|Scalar behaves like a number or a string?]]
-        - [[#Scalar behaves like a number or a string?#Comparing scalars as numbers and strings|Comparing scalars as numbers and strings]]
-        - [[#Scalar behaves like a number or a string?#常用字符串函数|常用字符串函数]]
-            - [[#Scalar behaves like a number or a string?#常用字符串函数#1、字符串函数|1、字符串函数]]
-            - [[#Scalar behaves like a number or a string?#常用字符串函数#2、定义字符串|2、定义字符串]]
-    - [[#Array Scalars|Array Scalars]]
-        - [[#Array Scalars#Array:|Array:]]
-        - [[#Array Scalars#Hash:|Hash:]]
-        - [[#Array Scalars#标量化|标量化]]
-            - [[#Array Scalars#标量化#指针数组化|指针数组化]]
-            - [[#Array Scalars#标量化#指针hash化|指针hash化]]
-        - [[#Array Scalars#=> is just ,|=> is just ,]]
-        - [[#Array Scalars#List values cannot nested|List values cannot nested]]
-            - [[#Array Scalars#List values cannot nested#array list become flattened into a long list|array list become flattened into a long list]]
-            - [[#Array Scalars#List values cannot nested#hash list become flattened into a long list|hash list become flattened into a long list]]
-        - [[#Array Scalars#综合例子|综合例子]]
-    - [[#Context-sensitive evaluation feature|Context-sensitive evaluation feature]]
-        - [[#Context-sensitive evaluation feature#Special scalar operation|Special scalar operation]]
-    - [[#好用的print|好用的print]]
-    - [[#References|References]]
-        - [[#References#${}等效于->|${}等效于->]]
-            - [[#References#${}等效于->#声明引用|声明引用]]
-            - [[#References#${}等效于->#通过引用访问值|通过引用访问值]]
-            - [[#References#${}等效于->#解引用  数组的引用通过 @ 符号 ， 哈希的引用通过 % 符号；|解引用  数组的引用通过 @ 符号 ， 哈希的引用通过 % 符号；]]
-        - [[#References#anonymous arrays and hashes|anonymous arrays and hashes]]
-            - [[#References#anonymous arrays and hashes#传统的list方法|传统的list方法]]
-            - [[#References#anonymous arrays and hashes#新式的匿名hash和array|新式的匿名hash和array]]
-            - [[#References#anonymous arrays and hashes#更为简短的形式|更为简短的形式]]
-    - [[#标签|标签]]
-    - [[#In-place array operator|In-place array operator]]
-        - [[#In-place array operator#creating new arrays from old(not in-place)|creating new arrays from old(not in-place)]]
-            - [[#In-place array operator#creating new arrays from old(not in-place)#join|join]]
-            - [[#In-place array operator#creating new arrays from old(not in-place)#reverse|reverse]]
-            - [[#In-place array operator#creating new arrays from old(not in-place)#map|map]]
-            - [[#In-place array operator#creating new arrays from old(not in-place)#grep|grep]]
-                - [[#In-place array operator#creating new arrays from old(not in-place)#grep#返回grep的下标 scalar grep|返回grep的下标 scalar grep]]
-            - [[#In-place array operator#creating new arrays from old(not in-place)#sort|sort]]
-                - [[#In-place array operator#creating new arrays from old(not in-place)#sort#$a and $b|$a and $b]]
-            - [[#In-place array operator#creating new arrays from old(not in-place)#哈希函数|哈希函数]]
-    - [[#Brackets is braces?  subroutine|Brackets is braces?  subroutine]]
-    - [[#system code|system code]]
-    - [[#File handler|File handler]]
-        - [[#File handler#open|open]]
-        - [[#File handler#readline|readline]]
-        - [[#File handler#Chomp|Chomp]]
-        - [[#File handler#eof|eof]]
-        - [[#File handler#<> to instead readline|<> to instead readline]]
-        - [[#File handler#File tests|File tests]]
-            - [[#File handler#File tests#-e exists|-e exists]]
-            - [[#File handler#File tests#-d directory|-d directory]]
-            - [[#File handler#File tests#-f file|-f file]]
-    - [[#Regular expressions|Regular expressions]]
-        - [[#Regular expressions#=~m//|=~m//]]
-            - [[#Regular expressions#=~m//#sub match|sub match]]
-        - [[#Regular expressions#~ s///|~ s///]]
-        - [[#Regular expressions#/g|/g]]
-        - [[#Regular expressions#/i|/i]]
-        - [[#Regular expressions#/x|/x]]
-    - [[#Modules and packages are different|Modules and packages are different]]
-    - [[#OOP|OOP]]
-        - [[#OOP#A class|A class]]
-        - [[#OOP#A method|A method]]
-        - [[#OOP#Aniaml.pm|Aniaml.pm]]
-        - [[#OOP#Make use of Animal.pm|Make use of Animal.pm]]
-        - [[#OOP#Constructor|Constructor]]
-        - [[#OOP#Inheritance|Inheritance]]
-
-= 0. Perl man =
-[[perl模块查询]]
-= 1. I Love perl example =
-[[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//perlexample.chm]]
-
-
-= 2. I Love perl code books =
-
-
-https://github.com/chef-cookbooks/perl
-
-= 3. dead simple,flexible,and fewer dependencies for a new web application ---"Dancer" =
-http://perldancer.org/quickstart
-
-{{{
-    cpanm Test::Time --force
-    cpanm Cookie::Baker
-    cpanm Plack::Middleware
-    cpanm Plack::Middleware::FixMissingBodyInRedirect
-    cpanm Plack::Middleware::RemoveRedundantBody
-    cpanm CGI::Deurl::XS
-    cpanm Crypt::URandom 
-    cpanm HTTP::XSHeaders
-    cpanm Math::Random::ISAAC::XS
-    cpanm MooX::TypeTiny
-    cpanm Scope::Upper
-    cpanm Type::Tiny::XS
-    cpanm URL::Encode::XS
-    curl -L http://cpanmin.us | perl - --sudo Dancer2
-}}}
-
-= 4. what's new on Cpan =
-
-Perl官方网站
-https://www.perl.com/
-https://www.perl.com/article/what-s-new-on-cpan---june-2018/
-
-
-
-= 5. dead dame bigger book =
-
-- TLS  [[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//Learning Perl, 7th Edition.pdf]] 
-- TSS [[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//"InterMediate Perl".pdf ]]
-- TRS  [[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//MasteringPerl2nd2014.pdf]]
-
-
-= 6. Authors(Larry Walls) book =
-
-Programming Perl 第三版CHM  [[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//perl大骆驼.chm]]
-Programming Perl 第四版 [[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//Programming.Perl.4th.english.pdf]]
-= 7. Collection of Perl One line =
-https://github.com/pkrumins/perl1line.txt
-
-[[perlOne1Line]]
-
-= 8. Why "Modern Perl" Anyway? =
-
-{{{
-    By chromatic on January 23, 2009 9:15 PM | 1 Comment | 1 TrackBack
-    Perl 5 -- the current version of Perl -- is fourteen years old now. It's had several major revisions in that time. (See Perl History for more details.) These major revisions add new features, fix old bugs, and generally improve the language. All of these changes come from real-world users who use the language themselves.
-
-    The current stable major version of Perl is Perl 5.10, released in December 2007. This release includes several features backported from Perl 6, the next stage in evolution of Perl.
-
-    Perl's a popular language. It's been around for 21 years, and it was the language of server-side programming back in the day. It's still popular. There are hundreds of books and thousands of tutorials available all over the Internet. You can learn Perl with little more than a text editor and a web browser, if you so desire.
-
-    Remember, however, the Internet rarely forgets. A Perl tutorial which represented the best version of Perl from 1991 may still be around -- and thanks to search engines, it may be the most highly recommended tutorial anywhere. Eighteen years later, Perl's moved on. We've learned a lot since then.
-
-    The best way to write Perl programs in 1991 or 2001 or 2004 isn't necessarily the best way to write Perl programs in 2009. It's time to discuss and document and disseminate all of the wisdom of the greater Perl community. It's time to talk about modern Perl.
-}}}
-
-
-A scalar vairable:
-    1. 基础变量值  a number  , a string,  a boolean(no!! perl has no boolean data type)
-       A scalar in an `if` statement evaluates to boolean "false" if and only if it is one of the following:
-       - undef
-       - number 0
-       - string ""
-       - string "0"
-       The Perl documentation repeatedly claims that functions return "true" or "false" values in certain situations.
-       1. In practice, when a function is claimed to return "true" it usually returns 1, 1
-       2. and when it is claimed to return false it usually returns the empty string, ""
-    2. a references to any other variables, such as variable,array,hash,subroutine,filehandler,socket etc
-    3. undef
-
-
-= Scalar behaves like a number or a string? =
-
-Whether a scalar behaves like a number or a string depends on the operator with which it is used.
-(a number or a string  =========>   operator)
-
-自动转变:
-    When used as a string , a scalar will behave like a string.
-    When used as a number,  a scalar will behave like a number.
-    
-    
-== Comparing scalars as numbers and strings ==
-
-1. Numerical operators
-    1. <
-    2. >
-    3. <=
-    4. >=
-    5. ==
-    6. !=
-    7. <=>
-    8. +
-    9. *
-2. String Operators
-    1. lt
-    2. gt
-    3. le
-    4. ge
-    5. eq
-    6. ne
-    7. cmp
-    8. .
-    9. x
-
-== 常用字符串函数 ==
-
-=== 1、字符串函数 ===
-`print`　　`chomp`　　`chop`　　`length`　　`uc`　　`lc`　　`index`
-
-`ord`　　　　#转符号为ASCII的数字
-
-`chr`　　　　#转数字为ASCII的字母
-
-`substr($string,offset,length)`　　#提取子串部分
-
-　　    例子：`substr($_,5,length($_)-10)`　　　　#截取序列的前后各5pb的bases
-
-　　    offset代表起始字符的位置,length代表引用的字符串长度，如果省略length则代表从起始值到字符串的最后一个字符长度。而
-　　    offset如果是负值的话，就会从字符串右边开始指定字符。
-
-`join(':',@F)`　　　　　　　　#数组链接为字符串
-
-=== 2、定义字符串 ===
-　　`q()`　　  #单引号 quote　　　　　　　　`qq()`　#双引号 quote quote　　
-
-　　`qw()`　　#单词表 quote word　　　　　`qx()`　#执行外部程序 quote execute
-= Array Scalars =
-
-An array variable is a list of scalars indexed by integers beginning at 0. *0*(Python: list; PHP: array)
-A hash variable is a list of scalars indexed by strings(Python: dictionary; PHP: array)
-== Array: ==
-{{{
-    my @array = (
-        "print",
-        "these",
-        "strings",
-        "out",
-        "for",
-        "me", # trailing comma is okay
-    );
-}}}
-== Hash: ==
-{{{
-    my %scientists = (
-        "Newton" => "Isaac",
-        "Einstein" => "Albert",
-        "Darwin" => "Charles",
-    );
-}}}
-
-An array or a hash is declared using a parenthesised list of scalars(字面值或者引用),亦或者成对值(组成hash),
-也就是array变量还是hash变量右边值都是list 变量(a list), 但是`A list is not a variable`
-{{{
-    A list is an ephemeral value which can be assigned to an array or a hash variable.
-    This is why the syntax for declaring array and hash variables is identical. T
-
-
-}}}
-引用时，Array使用中括号(square parenthesis)，Hash使用大括号(brace)!
-
-== 标量化 ==
-
-`my length=@arrayName;`
-
-
-定义复杂结构 [[#References]]
-{{{
-    my %account = (
-        "number" => "31415926",
-        "opened" => "3000-01-01",
-        "owners" => [
-            {
-                "name" => "Philip Fry",
-                "DOB" => "1974-08-06",
-            },
-            {
-                "name" => "Hubert Farnsworth",
-                "DOB" => "2841-04-09",
-            },
-        ],
-    );
-}}}
-{{{
-
-    my $ownersRef = $account{"owners"};
-    my @owners = @{ $ownersRef };
-    my $owner1Ref = $owners[0];
-    my %owner1 = %{ $owner1Ref };
-    my $owner2Ref = $owners[1];
-    my %owner2 = %{ $owner2Ref };
-    print "Account #", $account{"number"}, "\n";
-    print "Opened on ", $account{"opened"}, "\n";
-    print "Joint owners:\n";
-    print "\t", $owner1{"name"}, " (born ", $owner1{"DOB"}, ")\n";
-    print "\t", $owner2{"name"}, " (born ", $owner2{"DOB"}, ")\n";
-
-
-    # For short
-    my @owners = @{ $account{"owners"} };
-    my %owner1 = %{ $owners[0] };
-    my %owner2 = %{ $owners[1] };
-    print "Account #", $account{"number"}, "\n";
-    print "Opened on ", $account{"opened"}, "\n";
-    print "Joint owners:\n";
-    print "\t", $owner1{"name"}, " (born ", $owner1{"DOB"}, ")\n";
-    print "\t", $owner2{"name"}, " (born ", $owner2{"DOB"}, ")\n";
-}}}
-=== 指针数组化 ===
-
-`my @owners = @{ $account{"owners"} };`
-=== 指针hash化 ===
-{{{
-my %owner1 = %{ $owners[0] };
-my %owner2 = %{ $owners[1] };
-
-}}}
-== => is just , ==
-
-Remember that  `=>` in hash is just a `,`
-
-{{{
-    ("one", 1, "three", 3, "five", 5)
-    ==
-    ("one" => 1, "three" => 3, "five" => 5)
-
-}}}
-The use of `=> `hints that one of these lists is an array declartion and the other is a hash declaration.
-
-
-事实上，本质上，他们都是lists！！！！！！！！！！！！！！！！！！！！！！！
-
-也就是空list  `()` 既可以声明为array变量也可以变为hash变量
-
-== List values cannot nested ==
-
-Once you understand this odd aspect of Perl, you will also understand why the following fact must
-be true: List values cannot be nested.
-
-=== array list become flattened into a long list ===
-
-{{{
-    my @array = (
-        "apples",
-        "bananas",
-        (
-            "inner",
-            "list",
-            "several",
-            "entries",
-        ),
-        "cherries",
-    );
-}}}
-
-Perl has no way of knowing whether `("inner", "list", "several", "entries")` is
-supposed to be an inner array or an inner hash. Therefore, Perl assumes that it is
-neither and flattens the list out into a single long list:
-
-{{{
-    print $array[0]; # "apples"
-    print $array[1]; # "bananas"
-    print $array[2]; # "inner"
-    print $array[3]; # "list"
-    print $array[4]; # "several"
-    print $array[5]; # "entries"
-    print $array[6]; # "cherries"
-}}}
-
-
-=== hash list become flattened into a long list ===
-
-{{{
-    my %hash = (
-        "beer" => "good",
-        "bananas" => (
-            "green" => "wait",
-           "yellow" => "eat",
-           ),
-        );
-}}}
-
-
-
-{{{
-    # The above raises a warning because the hash was declared using a 7-element list
-    print $hash{"beer"}; # "good"
-    print $hash{"bananas"}; # "green"
-    print $hash{"wait"}; # "yellow";
-    print $hash{"eat"}; # undef, so raises a warning and prints ""
-}}}
-
-== 综合例子 ==
-
-{{{
-use Data::Dumper;
-
-    my @bones = ("humerus", ("jaw", "skull"), "tibia");
-    my @fingers = ("thumb", "index", "middle", "ring", "little");
-    my @parts = (@bones, @fingers, ("foot", "toes"), "eyeball", "knuckle");
-    print Dumper(\@parts);
-
-}}}
-
-{{{
-I:\ScienceBase.Attachments\PaperWriting\pdfForLanguage\perl>perl testArray2.pl
-$VAR1 = [
-          'humerus',
-          'jaw',
-          'skull',
-          'tibia',
-          'thumb',
-          'index',
-          'middle',
-          'ring',
-          'little',
-          'foot',
-          'toes',
-          'eyeball',
-          'knuckle'
-        ];
-
-
-}}}
-So finally, list cannot become nested!
-
-
-= Context-sensitive evaluation feature =
-
-Every expression in Perl is evaluated either in scalar context or list context,
-
-== Special scalar operation ==
-
-
-`my @array = "Mendeleev"; # same as 'my @array = ("Mendeleev");`
-
-`my $scalar = ("Alpha", "Beta", "Gamma", "Pie"); # Value of $scalar is now "Pie"`
-
-
-{{{
-    my @array = ("Alpha", "Beta", "Gamma", "Pie");
-    my $scalar = @array; # Value of $scalar is now 4
-}}}
-
-
-= 好用的print =
-
-
-The print built-in function evaluates all of its arguments in list context. In fact, print
-accepts an unlimited list of arguments and prints each one after the other, which means
-it can be used to print arrays directly:
-
-按照list环境进行打印()
-原理： 按照list context evaluates all of its arguments(in list context)
-    使用scalar(list变量)可以强制解析为scalar context(事实上，这也是为什么可以使用scalar to retrieve the length of an array)
-    
-    
-    
-= References =
-
-A refence is a scalar variable may contain a reference to any variable, including an array variable or a hash variable.
-这也是为什么complicated data structures are created in Perl.
-
-1. A reference is created using a backslash  `my $colour="Indigo";my $scalarRef=\$colour; `
-2. Dump a reference using `${}`.
-   {{{
-        print $colour; # "Indigo"
-        print $scalarRef; # e.g. "SCALAR(0x182c180)"
-        print ${ $scalarRef }; # "Indigo" 
-   }}}
-   
-        `print $$scalarRef; # "Indigo" `
-        
-        brace大括号可以被省略掉!
-        
-== ${}等效于-> ==
-If your reference is a reference to an array or hash variable, you can get data out of it
-using braces or using the more popular arrow operator, `->`:
-
-
-
-{{{
-    my @colours = ("Red", "Orange", "Yellow", "Green", "Blue");
-    my $arrayRef = \@colours;
-    print $colours[0]; # direct array access
-    print ${ $arrayRef }[0]; # use the reference to get to the array
-    print $arrayRef->[0]; # exactly the same thing
-    my %atomicWeights = ("Hydrogen" => 1.008, "Helium" => 4.003, "Manganese" => 54.94
-    my $hashRef = \%atomicWeights;
-    print $atomicWeights{"Helium"}; # direct hash access
-    print ${ $hashRef }{"Helium"}; # use a reference to get to the hash
-    print $hashRef->{"Helium"}; # exactly the same thing - this is very common
-
-}}}
-
-  使用 `\` 符号， 声明一个引用外，还可以声明一个匿名引用， 数组的引用使用 `[  ]` 操作符， 哈希的引用使用 `{  }` 操作符；
-
-=== 声明引用 ===
-
-{{{
-    my @array     = (1, 2, 3);
-    my $array_ref = \@array;                   my $array_ref = [1, 2, 3, 4];
-    my %hash     = (1, 2, 3, 4);
-    my $hash_ref = \%hash;                     my $hash_ref  = {1, 2, 3, 4}
-
-}}}
-
-=== 通过引用访问值 ===
-
-{{{
-    print $array_ref->[0];    #数组的引用, 是->[ ] 中括号, 加上对应的下标.     匿名数组一样
-    print $array_ref->{1};    #哈希的引用，通过->{} 大括号, 加上对应的key      匿名哈希一样
-}}}
-
-=== 解引用  数组的引用通过 @ 符号 ， 哈希的引用通过 % 符号； ===
-
-{{{
-      my @array_new = @{$array_ref};
-      my %hash_new = %{$hash_ref};
-}}}
-== anonymous arrays and hashes ==
-
-=== 传统的list方法 ===
-{{{
-    my %owner1 = (
-        "name" => "Santa Claus",
-        "DOB" => "1882-12-25",
-    );
-    my %owner2 = (
-        "name" => "Mickey Mouse",
-        "DOB" => "1928-11-18",
-    );
-    my @owners = ( \%owner1, \%owner2 );
-    my %account = (
-        "number" => "12345678",
-        "opened" => "2000-01-01",
-        "owners" => \@owners,
-    );
-
-}}}
-
-=== 新式的匿名hash和array ===
-
-匿名hash直接采用大括号替换hash的parenthesis，以及
-匿名array直接采用中括号(square brackets)替换hash的parenthesis，以及
-
-所以my @arr1=[1,2,3,4,5],其实是一个元素，一个reference
-my @arr1=(1,2,3,4,5); 才是5元素的素组
-{{{
-    # Braces denote an anonymous hash
-    my $owner1Ref = {
-        "name" => "Santa Claus",
-        "DOB" => "1882-12-25",
-    };
-    my $owner2Ref = {
-        "name" => "Mickey Mouse",
-        "DOB" => "1928-11-18",
-    };
-    # Square brackets denote an anonymous array
-    my $ownersRef = [ $owner1Ref, $owner2Ref ];
-    my %account = (
-        "number" => "12345678",
-        "opened" => "2000-01-01",
-        "owners" => $ownersRef,
-    );
-}}}
-
-
-小结:
-    新式的perl写法都是采用左边变量充当reference，右边则是匿名的hash或者array，进而构造复杂的表达式
-    全过程不需要出现`\` backslash来构造reference,而是采用{}或者[]间接表明hash或者array
-    计算过程所有都是scalar变量的形式!
-
-
-=== 更为简短的形式 ===
-
-{{{
-    my %account = (
-        "number" => "31415926",
-        "opened" => "3000-01-01",
-        "owners" => [
-            {
-                "name" => "Philip Fry",
-                "DOB" => "1974-08-06",
-            },
-            {
-                "name" => "Hubert Farnsworth",
-                "DOB" => "2841-04-09",
-            },
-        ],
-    );
-}}}
-
-
-= 标签 =
-
-
-{{{
-    CANDIDATE: for my $candidate ( 3 .. 100 ) {
-        for my $divisor ( 2 .. sqrt $candidate ) {
-            next CANDIDATE if $candidate % $divisor == 0;
-        }
-        print $candidate." is prime\n";
-    }
-}}}
-
-= In-place array operator =
-
-We'll use @stack to demonstrate these:
-    my @stack = ("Fred", "Eileen", "Denise", "Charlie");
-    print @stack; # "FredEileenDeniseCharlie"
-`pop `extracts and returns the final element of the array. This can be thought of as the topof the stack:
-
-{{{
-    print pop @stack; # "Charlie"
-    print @stack; # "FredEileenDenise"
-
-}}}
-
-`push` appends extra elements to the end of the array:
-
-{{{
-    push @stack, "Bob", "Alice";
-    print @stack; # "FredEileenDeniseBobAlice"
-}}}
-
-`shift` extracts and returns the first element of the array:
-{{{
-    print shift @stack; # "Fred"
-    print @stack; # "EileenDeniseBobAlice"
-}}}
-
-`unshift` inserts new elements at the beginning of the array:
-
-{{{
-    unshift @stack, "Hank", "Grace";
-    print @stack; # "HankGraceEileenDeniseBobAlice"
-}}}
-    
-pop, push, shift and unshift are all special cases of splice. `splice` removes and
-returns an array slice, replacing it with a different array slice:
-
-{{{
-    print splice(@stack, 1, 4, "<<<", ">>>"); # "GraceEileenDeniseBob"
-    print @stack; # "Hank<<<>>>Alice"
-}}}
-
-`delete $F[3]`　　　　#删除数组中该元素
-
-`exists $F[3]`　　#判断该元素是否存在
-不同的是，join,reverse,map,grep,sort等会创建新的数组
-== creating new arrays from old(not in-place) ==
-
-=== join ===
-{{{
-    my @elements = ("Antimony", "Arsenic", "Aluminum", "Selenium");
-    print @elements; # "AntimonyArsenicAluminumSelenium"
-    print "@elements"; # "Antimony Arsenic Aluminum Selenium"
-    print join(", ", @elements); # "Antimony, Arsenic, Aluminum, Selenium"
-}}}
-
-
-=== reverse ===
-
-{{{
-    print reverse("Hello", "World"); # "WorldHello"
-    print reverse("HelloWorld"); # "HelloWorld"
-    print scalar reverse("HelloWorld"); # "dlroWolleH"
-    print scalar reverse("Hello", "World"); # "dlroWolleH"
-}}}
-
-1. In list context, the `reverse` function returns a list in reverse order.
-2. In scalar context, `reverse` concatenates the whole list together and then reverses it as a single word.
-
-
-=== map ===
-
-                    map operator arrayname;
-The operation to perform is provided in the form of a single expression inside braces 
-{{{
-    my @capitals = ("Baton Rouge", "Indianapolis", "Columbus", "Montgomery", "Helena"
-    print join ", ", map { uc $_ } @capitals;
-    # "BATON ROUGE, INDIANAPOLIS, COLUMBUS, MONTGOMERY, HELENA, DENVER, BOISE"
-}}}
-
-
-=== grep ===
-
-It takes an array as input and returns a filtered array as output by filter operation
-{{{
-    print join ", ", grep { length $_ == 6 } @capitals;
-    # "Helena, Denver"
-
-}}}
-
-==== 返回grep的下标 scalar grep ====
-Obviously, the length of the resulting array is the number of successful matches, which
-means you can use grep to quickly check whether an array contains an element:
-{{{
-    print scalar grep { $_ eq "Columbus" } @capitals; # "1"
-}}}
-
-
-
-=== sort ===
-
-{{{
-    my @elevations = (19, 1, 2, 100, 3, 98, 100, 1056);
-    print join ", ", sort @elevations;
-    # "1, 100, 100, 1056, 19, 2, 3, 98"
-}}}
-
-
-==== $a and $b ====
-However, similar to grep and map, you may supply some code of your own. Sorting is
-always performed using a series of comparisons between two elements. Your block
-receives `$a` and `$b` as inputs and should return -1 if `$a` is "less than" `$b`, 0 if they are
-"equal" or 1 if `$a` is "greater than" `$b`.
-
-For strings,
-
-{{{
-    print join ", ", sort { $a cmp $b } @elevations;
-    # "1, 100, 100, 1056, 19, 2, 3, 98"
-}}}
-
-For numbers,
-{{{
-    print join ", ", sort { $a <=> $b } @elevations;
-    # "1, 2, 3, 19, 98, 100, 100, 1056"
-}}}
-
-{{{
-        sub comparator {
-            # lots of code...
-            # return -1, 0 or 1
-        }
-    print join ", ", sort comparator @elevations;
-}}}
-
-You can't do this for `grep` or `map` operations.
-
-=== 哈希函数 ===
-`keys`　　`values`　　`each`　　`delete`　　`exists`
-
-= Brackets is braces?  subroutine=
-
-    Although the brackets are optional, subroutines should always be invoked using brackets,
-even when called with no arguments. This makes it clear that a subroutine call is happening.
-
-
-{{{
-    sub hyphenate {
-        # Extract the first argument from the array, ignore everything else
-        my $word = shift @_;
-        # An overly clever list comprehension
-        $word = join "-", map { substr $word, $_, 1 } (0 .. (length $word) - 1);
-        return $word;
-    }
-    print hyphenate("exterminate"); # "e-x-t-e-r-m-i-n-a-t-e"
-}}}
-
-= system code =
-
-1. $? has been populated with the status word that was returned from that child process's termination. 
-2. You can get the return code by taking just the highest 8 of those 16 bits: $? >> 8.
-
-{{{
-    my $rc = system "perl", "anotherscript.pl", "foo", "bar", "baz";
-    $rc >>= 8;
-    print $rc; # "37";
-}}}
-
-1. Alternatively, you can use backticks `` to run an actual command at the command line
-and capture the standard output from that command.
-2. In scalar context the entire output is returned as a single string.
-3. In list context, the entire output is returned as an array of strings, each one representing a line of output
-   
-{{{
-    my $text = `perl anotherscript.pl foo bar baz`;
-    print $text; # "foobarbaz"
-}}}
-
-= File handler =
-
-http://www.cnblogs.com/renping/p/7441669.html
-
-== open ==
-{{{
-    open(my $fh, "<", $f) || die "Couldn't open '".$f."' for reading because: ".$!;
-}}}
-== readline ==
-{{{
-    while(1) {
-        my $line = readline $fh;
-        last unless defined $line;
-        # process the line...
-    }
-}}}
-== Chomp ==
-    To truncate that possible trailing line break
-   `chomp $lien` 
-   
-== eof ==   
-
-`eof` to detect that the end of file has been reached.
-
-{{{
-    while(!eof $fh) {
-        my $line = readline $fh;
-        # process $line...
-    }
-}}}
-
-== <> to instead readline ==
-But beware of just using `while(my $line = readline $fh)`, because if `$line` turns out to
-be `"0"`, the loop will terminate early. If you want to write something like that, Perl
-provides the `<>` operator which wraps up `readline` in a fractionally safer way. This is
-very commonly-seen and perfectly safe:
-{{{
-    while(my $line = <$fh>) {
-        # process $line...
-    }
-}}}
-
-And even,
-{{{
-    while(<$fh>) {
-        # process $line...
-    }
-}}}
-
-== File tests ==
-
-
-=== -e exists===
-The function `-e` is a built-in function which tests whether the named file exists.
-{{{
-    print "what" unless -e "/usr/bin/perl";
-}}}
-=== -d directory===
-
-{{{
-    The function -d is a built-in function which tests whether the named file is a directory.
-}}}
-=== -f file===
-{{{
-    The function -f is a built-in function which tests whether the named file is a plain file.
-}}}
-
-= Regular expressions =
-
-
-== =~m// ==
-1. In scalar context,` =~ m//` returns true on success, false on failure.
-2. In list context,  `=~ m//` returns `$1,$2,...` as a list
-{{{
-    my $string = "Hello world";
-    if($string =~ m/(\w+)\s+(\w+)/) {
-    print "success";
-    }
-}}}
-
-
-{{{
-    my $string = "colourless green ideas sleep furiously";
-    my @matches = $string =~ m/(\w+)\s+((\w+)\s+(\w+))\s+(\w+)\s+(\w+)/;
-    print join ", ", map { "'".$_."'" } @matches;
-    # prints "'colourless', 'green ideas', 'green', 'ideas', 'sleep', 'furiously'"
-}}}
-=== sub match ===
-
-Parentheses perform sub-matches. After a successful match operation is performed, the
-sub-matches get stuffed into the built-in variables `$1, $2, $3, ...:`
-{{{
-    print $1; # "Hello"
-    print $2; # "world"
-}}}
-
-== ~ s/// ==
-
-{{{
-    my $string = "Good morning world";
-    $string =~ s/world/Vietnam/;
-    print $string; # "Good morning Vietnam"
-}}}
-
-== /g ==
-
-1. In scalar context, each `=~ m//g` call finds another match after the previous one,
-returning true on success, false on failure. You can access `$1` and so on afterwards in
-the usual way. For example:
-{{{
-    my $string = "a tonne of feathers or a tonne of bricks";
-    while($string =~ m/(\w+)/g) {
-    print "'".$1."'\n";
-    }
-}}}
-
-2. In list context, an `=~ m//g` call returns all of the matches at once.
-{{{
-    my @matches = $string =~ m/(\w+)/g;
-    print join ", ", map { "'".$_."'" } @matches;
-}}}
-An` =~ s///g` call performs a global search/replace and returns the number of matches.
-Here, we replace all vowels with the letter "r".
-{{{
-    # Try once without /g.
-    $string =~ s/[aeiou]/r/;
-    print $string; # "r tonne of feathers or a tonne of bricks"
-    # Once more.
-    $string =~ s/[aeiou]/r/;
-    print $string; # "r trnne of feathers or a tonne of bricks"
-    # And do all the rest using /g
-    $string =~ s/[aeiou]/r/g;
-    print $string, "\n"; # "r trnnr rf frrthrrs rr r trnnr rf brrcks"
-}}}
-
-== /i ==
-The `/i` flag makes matches and substitutions case-insensitive.
-== /x ==
-The `/x` flag allows your regular expression to contain whitespace (e.g., line breaks) and
-comments.
-{{{
-    "Hello world" =~ m/
-    (\w+) # one or more word characters
-    [ ] # single literal space, stored inside a character class
-    world # literal "world"
-    /x;
-
-    # returns true
-
-}}}
-
-
-= Modules and packages are different =
-
-In Perl, modules and packages are different things.
-1. A module is a .pm file that you can include in another Perl file (script or module). :: as  a directory separator 
-2. A package is a namespace in which subroutines can be declared, :: as  a namespace separator 
-
-因为Perl5分开package和module概念，所以导致很多perl程序员遵守如下规则
-
-1. Perl script (.pl file) must always contain exactly zero package
-declarations.
-2. A Perl module (.pm file) must always contain exactly one package
-declaration, corresponding exactly to its name and location. E.g. module
-Demo/StringUtils.pm must begin with package Demo::StringUtils.
-
-[[定义模块module]]
-= OOP =
-
-1. An object is simply a reference
-2. use `bless` to defien object(指向任何类)
-3. to find  out what class a reference's referent belongs to, use `ref`,查看属于哪个类
-
-== A class ==
-    A class is simply a package that happens to contain methods.
-    
-== A method ==
-
-1. Object methods are invoked using `$obj->method();` 
-2. class methods are invoked using `Package::Name->method().`
-
-
-== Aniaml.pm ==
-
-{{{
-    use strict;
-    use warnings;
-    package Animal;
-    sub eat {
-        # First argument is always the object to act upon.
-        my $self = shift @_;
-        foreach my $food ( @_ ) {
-            if($self->can_eat($food)) {
-                print "Eating ", $food;
-            } else {
-                print "Can't eat ", $food;
-            }
-        }
-    }
-    # For the sake of argument, assume an Animal can eat anything.
-    sub can_eat {
-        return 1;
-    }
-    return 1;
-}}}
-
-== Make use of Animal.pm ==
-
-{{{
-    require Animal;
-    
-    my $animal = {
-        "legs" => 4,
-        "colour" => "brown",
-    }; # $animal is an ordinary hash reference
-    print ref $animal; # "HASH"
-    bless $animal, "Animal"; # now it is an object of class "Animal"
-    print ref $animal; # "Animal"
-}}}
-
-从这边也可以看出Hash也是一种类!
-使用`bless`可以转变标量为任意类型`class`,
-
-Note: literally any reference can be blessed into any class.
-It's up to you to ensure that
-(1) the referent can actually be used as an instance of this class and 
-(2) that the class in question exists and has been loaded.
-
-This final call is equivalent to `Animal::eat($animal, "insects", "curry","eucalyptus").`
-
-== Constructor ==
-
-A constructor is a class method which returns a new object
-
-If you want one, just declare one. You can use any name you like.
-For class methods, the first argument passed is not an object but a class name.
-In this case, "Animal":
-{{{
-    use strict;
-    use warnings;
-    package Animal;
-    sub new {
-        my $class = shift @_;
-        return bless { "legs" => 4, "colour" => "brown" }, $class;
-    }
-    # ...etc.
-}}}
-
-
-{{{
-    my $animal = Animal->new();
-}}}
-
-== Inheritance ==
-
-To create a class inheriting from a base class, populate the @`ISA` package variable. Let's
-suppose we subclassed `Animal` with `Koala`, located at `Koala.pm:`
-
-
-{{{
-    use strict;
-    use warnings;
-    package Koala;
-    # Inherit from Animal
-    require Animal;
-    our @ISA = ("Animal");
-    # Override one method
-    sub can_eat {
-        my $self = shift @_; # Not used. You could just put "shift @_;" here
-        my $food = shift @_;
-        return $food eq "eucalyptus";
-    }
-    return 1;
-}}}
-
-Use it,
-
-{{{
-    use strict;
-    use warnings;
-    require Koala;
-    my $koala = Koala->new();
-    $koala->eat("insects", "curry", "eucalyptus"); # eat only the eucalyptus
-}}}
-
-
-This final method call tries to invoke `Koala::eat($koala, "insects", "curry","eucalyptus")`, but a subroutine eat() isn't defined in the Koala package. However,because `@Koala::ISA` has been populated with a parent class Animal, the Perl interpreter
-tries calling `Animal::eat($koala, "insects", "curry", "eucalyptus")` instead, which
-works. Note how the class `Animal` had to be loaded explicitly by `Koala.pm`.
-Since `@ISA` is an array, Perl supports `multiple inheritance`, with all the benefits and
-horrors this entails.
-
-http://www.cnblogs.com/renping/p/7441669.html
-
-
-Tar the files
-http://perldoc.perl.org/Archive/Tar.html
-
-[[perl cephers数学库]]
-https://metacpan.org/pod/distribution/perl/pod/perlop.pod
-
-perl生词表
-https://metacpan.org/pod/distribution/perlfaq/lib/perlglossary.pod
-
-perl FAQ
-** TODO [#B] python pandas 数据分析学习 <2018-10-21 周日 18:09 +2d>    :python:
-DEADLINE: <2018-11-11 周日>
-                    :PROPERTIES:
-                    :Effort: 1:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-10-23 周二 22:55]--[2018-10-23 周二 23:33] =>  0:38
-                    - Clocked out on T:[2018-10-23 周二 23:33] \\
-                      学习pandas 分析网络数据，并使用jupyter记录数据
-                    CLOCK: [2018-10-23 周二 22:54]--[2018-10-23 周二 22:55] =>  0:01
-                    - Clocked out on T:[2018-10-23 周二 22:55] \\
-                      fine
-                    CLOCK: [2018-10-23 周二 22:47]--[2018-10-23 周二 22:47] =>  0:00
-                    - Clocked out on T:[2018-10-23 周二 22:47] \\
-                      fine
-                    CLOCK: [2018-10-23 周二 22:46]--[2018-10-23 周二 22:47] =>  0:01
-                    - Clocked out on T:[2018-10-23 周二 22:47] \\
-                      fine
-                    CLOCK: [2018-10-22 周一 02:37]--[2018-10-22 周一 12:54] => 10:17
-                    - Clocked out on T:[2018-10-22 周一 12:54] \\
-                      安装了jupyter,和所有常用的python3.7的库，比如scipy,numpy
-                    CLOCK: [2018-10-21 周日 23:33]--[2018-10-22 周一 00:02] =>  0:29
-                    - Clocked out on T:[2018-10-22 周一 00:02] \\
-                      testOk
-                    CLOCK: [2018-10-21 周日 18:09]--[2018-10-21 周日 18:10] =>  0:01
-                    :END:
-
- 《利用python进行数据分析》  pandas作者之一Wes Mckinney 所著
- 
-
-
-目的： 
-   学会简单统计
-   整合常用脚本
-   主要功能就是进行数据清理(by qiu）
-
-                    
-http://pandas.pydata.org/
-                         
-***  What pandas solve?
-
-Python has long been great for data munging(整理) and preparation, but less so for data
-analysis and modeling(数据分析和建模). pandas helps fill this gap, enabling you to carry out your
-entire data analysis workflow in Python without having to switch to a more domain
-specific language like R.
-
-
-*** Library Highlights¶
-
-**** A fast and efficient DataFrame object for data manipulation with integrated
- indexing; 
-**** Tools for reading and writing data between in-memory data structures and
- different formats: CSV and text files, Microsoft Excel, SQL databases, and the
- fast HDF5 format; 
-**** Intelligent data alignment and integrated handling of missing data: gain
- automatic label-based alignment in computations and easily manipulate messy
- data into an orderly form; 
-**** Flexible reshaping and pivoting of data sets; 
-**** Intelligent label-based slicing, fancy indexing, and subsetting of large data
- sets; 
-**** Columns can be inserted and deleted from data structures for size mutability; 
-**** Aggregating or transforming data with a powerful group by engine allowing
- split-apply-combine operations on data sets; 
-**** High performance merging and joining of data sets; 
-**** Hierarchical axis indexing provides an intuitive way of working with
- high-dimensional data in a lower-dimensional data structure; 
-**** Time series-functionality: date range generation and frequency conversion,
- moving window statistics, moving window linear regressions, date shifting and
- lagging. Even create domain-specific time offsets and join time series without
- losing data; 
-**** Highly optimized for performance, with critical code paths written in Cython or
- C. 
-**** Python with pandas is in use in a wide variety of academic and commercial
- domains, including Finance, Neuroscience, Economics, Statistics, Advertising,
- Web Analytics, and more. 
-
-
-***  如何使用?
-
-*** 运用场景?
-    每本书都有其运用场景，这本书不是以一种普通学者的方式教你
-    而是让你能够` 加载点儿数据，做点计算，再画点儿图` 
-
-    关注处理大数据集高性能数组计算工具
-
-    常常需要把乱七八糟的数据进行结构化（处理成漂亮点的结构数据）
-*** 常用函数？
-
-  注意点
-    
-*** 软件安装
-pip install ..
-1. numpy
-2. scipy
-3. matplotlib
-4. imageio
-5. jupyter
-   1. pyqt5
-6. requests
-IPython 
-Jupyter内核的Ipython  http://ipython.org/
-    https://jupyter.org/
-
-    Jupeter notebook
-https://jupyter.readthedocs.io/en/latest/install.html
-    #+BEGIN_SRC python
-      pip install jupyter
-    #+END_SRC
-于共存我弄好了，我想了想还是说说吧。 
-将两个文件夹都放到环境变量中，同时不要用 PYTHONHOME 这个变量值。最后，我把 python3.4 的文件夹中的 python.exe 重命名为 python3.exe 了，这样在命令行可以直接以 python 与 python3 分别调用。 
-
-#+BEGIN_SRC python
-  四个环境变量配置好
-  1.c:\Python27
-  2.c:\Python27\Scripts
-  3.c:\Python37
-  4.c:\Python37\Scripts
-
-  进入python3.7安装目录。找到python.exe程序，把它重命名为python3.exe
-
-  pip的问题 
-  两个python版本分别安装了pip以后怎么区分它们。进入python安装路径找到Scripts文件夹，进入里面找到pip*-script.py，打开修改第一句为你要指定的那个python解释器
-
-  如果使用版本3就执行pip3 (这是python2没有的)
-#+END_SRC
-
-*** jupyter notebook
-*****  启动notebook   
-
-#+BEGIN_SRC python
-  jupyter notebook  # default port 8888
-
-  jupyter notebook *.ipynb
-
-  jupyter notebook --port 7194
-
-
-#+END_SRC
-
-***** 启动qtconcole
-
-
-
-#+BEGIN_SRC python
-  jupyter console
-  jupyter qtconsole  # need pyqt5
-#+END_SRC
-
-
-***** 安装jupyter拓展
-
-
-http://www.elecfans.com/d/650252.html
-
-#+BEGIN_SRC python
-  pip install jupyter_nbextensions_configurator jupyter_contrib_nbextensions
-
-# 目的 download插件文件
-  jupyter contrib nbextension install --user
-# 使插件生效
-  jupyter nbextensions_configurator enable --user
-
-
-#+END_SRC
-
-
-1. Notify
-2. Collapsible headings
-3. code folding
-4. tqdm botebok
-5. table of contents
-6. debug
-
-https://github.com/ipython-contrib/jupyter_contrib_nbextensions 
-
-python最佳实战(可阅读版本)
-https://pythonguidecn.readthedocs.io/zh/latest/
-
-https://docs.python-guide.org/
-
-
-
-
-直接使用 http://localhost:8888/jupyter/nbextensions 打开拓展页面
-或者直接通过命令行安装
-比如
-
-到c://Python37/lib/site_packages//jupyter_nbextensions_configurator//nbextensions// 目录下找到拓展
-  jupyter nbextensions_configurator enable zenmode/main (main代表main.js)
-
-  jupyter nbextensions_configurator enable notify/notify (notify代表notify.js)
-  
-
-C:\Python37\Lib\site-packages\jupyter_contrib_nbextensions\nbextensions
-
-
-当拷贝你的python37目录到其他电脑，记得重新下载和enable一下
-这样才能使用  http://localhost:8888/nbextensions
-链接。
-***** 装载文件和运行文件
-
-
-
-#+BEGIN_SRC python
-
-  %load *.py
-  %run *.py
-#+END_SRC
-
-
-***** jupyter 代码snippets
-
-在cmd运行
-
-#+BEGIN_SRC bash
-
-  jupyter --data-dir
-#+END_SRC
-
-
-    C:\Users\yzl\AppData\Roaming\jupyter\nbextensions
-    
-找到snippets文件夹修改对应的snippets.json文件即可
-
-所以这个文件夹也是挺重要的哈！得备份！
-  在该文件进行编辑
-
-
-#+BEGIN_SRC js
-
-    {
-        "snippets" : [
-            {
-                "name" : "example",
-                "code" : [
-                    "# This is an example snippet!",
-                    "# To create your own, add a new snippet block to the",
-                    "# snippets.json file in your jupyter nbextensions directory:",
-                    "# /nbextensions/snippets/snippets.json",
-                    "import this"
-                ]
-            }
-          {
-          
-                "name" : "Newer imports",
-                "code" : [
-                    "import numpy as np",
-                    "import matplotlib as mpl",
-                    "print('spam')"
-                ]
-           }
-        ]
-    }
-#+END_SRC
-
-可能需要重启一下 jupyter notebook,  不但添加{}块(注意在不同的blocks之间使用逗号进行分割)，定义name和code即可 每行语句通过双引号包裹，
-并放入中括号匿名数组中。
-
-
-
-https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/snippets
-
-
-*** Python Programming 网格
-:LOGBOOK:
-CLOCK: [2018-10-23 周二 22:48]--[2018-10-23 周二 22:49] =>  0:01
-:END:
-https://pythonprogramming.net/using-pandas-structure-process-data/
-
-https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000
-
-https://www.liaoxuefeng.com
-
-http://www.newthinktank.com/2014/11/python-programming/
-
-
-https://www.youtube.com/watch?v=N4mEzFDjqtA
-
-Learning
-https://www.youtube.com/watch?v=rfscVS0vtbw
-
-input get the characters from input keyboards
-
-*** pandas_datareader
-
-pandas主要处理的是data formats or file formats,虽然他能处理
-许多data types. 但是很多人在说道pandas的“Data Type”一般是指
-data format。
-
-
-Location of python install might not be the same,
-make sure you use pandas_datareader instead of pandas.oi.data 
-and ensure that you have it installed - pip install pandas-datareader.
- other than that the code should work.
-*** TODO [#B] 流畅的python <2018-10-31 周三 20:16 +7d>                :python:
-DEADLINE: <2018-12-10 周一> SCHEDULED: <2018-11-01 周四>
-                    :PROPERTIES:
-                    :Effort: 2:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-11-01 周四 17:19]--[2018-11-02 周五 00:13] =>  6:54
-                    - Clocked out on T:[2018-11-02 周五 00:13] \\
-                      pandas,datetime, string模块等学习
-                    CLOCK: [2018-10-31 周三 20:16]--[2018-10-31 周三 20:17] =>  0:01
-                    :END:
-                    
-                    
-                    
-花一段时间学习，据说这本书不错
-
-http://python.jobbole.com/88735/
-
-FluentPython源码阅读
-https://github.com/fluentpython/example-code
-
-
-有经验的程序员experienced programmers(bend python)
-
-***** Python data model
-: understand how special methods are the key to the consistent behavior of objects
-***** Data structures 
-: take full advantage of built-in types, and understand the text vs bytes duality in the Unicode age
-***** Functions as objects
-: view Python functions as first-class objects, and understand how this affects popular design patterns
-***** Object-oriented idioms
-: build classes by learning about references, mutability, interfaces, operator overloading,
-: and multiple inheritance
-***** Control flow
-: leverage context managers, generators, coroutines, and concurrency with the concurrent.
-: futures and asyncio packages
-***** Metaprogramming
-: understand how properties, attribute descriptors, class decorators, and metaclasses work
-
-python-pandas
-https://github.com/paulQuei/pandas_tutorial
-
-
-
-新的学习平台
-https://www.safaribooksonline.com/videos/python-for-beginners/9781789617122/9781789617122-video11_2
-
-
-****** chapter1. Course Overview
-0. Section Overview
-****** chapter2. Python setup(different platform)
-0. Section Overview
-****** chapter3. String and variabls
-0. Section Overview
-****** chapter4. numbers and math
-0. Section Overview
-****** chapter5. booleans and conditions
-0. Section Overview
-
-x>6 and y<10
-
-****** chapter6. functions
-  DRY= Don't repeat yourself(write one time,use many place，times)
-0. Section Overview
-  **** Functions,Part I
-  **** Functions,Part II
-****** chapter7. lists
-0. Section Overview
-1. Exception handling
-2. Sorting and Ranges
-3. section summary
-
-****** Chapter8. Dictionaries
-0. Section Overview
-  **** Dictionaries,Part I
-  **** Dictionaries,Part II
-****** Chapter9. Tuples
-****** Chapter10. Files
-0. Section Overview
-  **** Files,Part I
-  **** Files,Part II
-  1. Section summary
-
-****** Chapter11. Modules
-
-
-dir(module_name) 有用哈
-
-
-还是需要进一步沉稳！
-
-python的所有东西都是对象。同时也需要结合函数式编程方式，来学习面向对象编程。
 ** DONE [#B] 摩托车驾照考试科目一 <2018-11-04 周日 16:58>           :@NCEPU:
 CLOSED: [2018-11-09 周五 22:31] DEADLINE: <2018-11-09 周五>
                     :PROPERTIES:
@@ -3429,7 +1623,6 @@ CLOSED: [2018-11-09 周五 22:31] DEADLINE: <2018-11-09 周五>
                     :Effort: 1:00
                     :END:
                     :LOGBOOK:
-                    CLOCK: [2018-11-12 周一 21:05]
                     CLOCK: [2018-11-11 周日 14:06]--[2018-11-11 周日 14:26] =>  0:20
                     - Clocked out on T:[2018-11-11 周日 14:26] \\
                       通道
@@ -3961,6 +2154,7 @@ JPEG支持路径，但是不支持alpha通道
 
 1. 混合剪贴法
 2. 路径
+   处理清晰轮廓
 3. 调整边缘(先建立选区--输出到带有图层蒙版的图层（这样就可以用画笔进行了，很色遮罩，白色补上)
    注意输出完之后，蒙版作用没了之后删除( (前提只针对发丝，且是周边而不是里边）会提醒你进行运用），
    然后使用黑色画笔在头发周边刷一下，可以输出透明的毛发
@@ -3984,6 +2178,8 @@ JPEG支持路径，但是不支持alpha通道
       
    上述方法不适合人像，存在复杂背景情况下，反而是在绘画中可能有用，想要不抓出来形状。
 6. 最差劲选择工具
+ 方便快捷，但是得切到蒙版模式编辑，这样就可以删除和恢复了。（蒙版编辑在工具栏的下面一个矩形+内部圆形)
+ 这样就可以使用黑白画笔进行修改 , 可以建立一个灰色背景（这样背景变成简单)！
 7. 排列---》平铺很有用---》把添加进来的素材建立一个组（Ctrl+G)
 8. 污点修复画笔很好用，细节线修复（抹掉，用背景色填充，通过新建一个图层，
 9. 图章更细节修复（沿着一个方向修复）---一定选择当前层（不要选择所有层---肯定会忘记）
@@ -4023,14 +2219,41 @@ Alt+鼠标左键还可以点击鼠标左右键。专门复制光（做细节处�
 
 路径--可以贴出边缘来，新建一个选区---清晰轮廓通过路径--配合调整边缘
 点击---然后不要添加断开鼠标节点。
-** TODO [#B] 确认小巴车（跟司机打电话） <2018-11-12 周一 16:22>     :@NCEPU:
-DEADLINE: <2018-11-16 周五>
+** DONE [#B] 确认小巴车（跟司机打电话） <2018-11-12 周一 16:22>        :@NCEPU:
+CLOSED: [2018-11-17 周六 21:25] DEADLINE: <2018-11-16 周五>
                     :PROPERTIES:
                     :Effort: 0:30
                     :END:
                     :LOGBOOK:
+                    - State "DONE"       from "TODO"          T:[2018-11-17 周六 21:25]
                     CLOCK: [2018-11-12 周一 16:22]--[2018-11-12 周一 16:22] =>  0:00
                     :END:
                     
                     
 确认
+** DONE [#B] 确认康老师入住宾馆 <2018-11-13 周二 13:21>                :@NCEPU:
+CLOSED: [2018-11-17 周六 21:25] DEADLINE: <2018-11-16 周五>
+                    :PROPERTIES:
+                    :Effort: 0:30
+                    :END:
+                    :LOGBOOK:
+                    - State "DONE"       from "TODO"          T:[2018-11-17 周六 21:25]
+                    CLOCK: [2018-11-13 周二 13:21]--[2018-11-13 周二 13:24] =>  0:03
+                    - Clocked out on T:[2018-11-13 周二 13:24] \\
+                      确定
+                    :END:
+** TODO [#B] 动态偏航是否结束? <2018-11-15 周四 03:11>                :学术:
+DEADLINE: <2018-11-21 周三>
+                    :PROPERTIES:
+                    :Effort: 16:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-11-15 周四 03:11]--[2018-11-15 周四 03:11] =>  0:00
+                    - Clocked out on T:[2018-11-15 周四 03:11]
+                    :END:
+                    
+                    
+                    
+                    
+                    
+风轮55圈是否计算完成？！

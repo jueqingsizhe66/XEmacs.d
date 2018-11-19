@@ -5744,7 +5744,7 @@ void put(Elephant elephant, Fridge fridge) {
 ```org
 
 1. 基础的数值。比如整数，字符串，布尔值等(固定数值)。
-3. 表达式。包括基本的算术表达式，嵌套的表达式。
+2. 表达式。包括基本的算术表达式，嵌套的表达式。
 3. 变量(输入设备，固定数值,信息诞生的地方)和赋值语句。
 4. 分支语句。(查看的地方)
 5. 函数和函数调用(传输的方式，赋值，函数调用，返回值)
@@ -6406,7 +6406,7 @@ data into it)
     on it!
 ```
 ----------
-
+<2018-11-18 21:15>
 
                                                    Go ahead, the young!
 
@@ -6416,7 +6416,7 @@ data into it)
 
 ### 130. Vinsualize your wiki into your brain
 
-[org-brain][323] 金字塔原理的一个实现, 类似于[org-wiki][324], [vimwiki][325]的wiki系统，主要体现的思想是parent-children.
+[org-brain][323] 金字塔原理的一个实现(relationship chart flow), 类似于[org-wiki][324], [vimwiki][325]的wiki系统，主要体现的思想是parent-children.
 
 1. 当前heading(每一个heading都可以进行v，`M-x org-brain-visualize entry-your-select`, 也叫作active Thought(当前思考的内容)
 2. 当前Heading的同级Heading(brother and sister..) ; map图的右边显示active thought(或者当前heading)的siblings图
@@ -7010,7 +7010,7 @@ Each perspective == A window configuration + a set of buffers related by project
 ```
 Switching to a perspective activates its window configuration, and when in a perspective only its buffers are available by default.
 
-[persp-projectile][365] connect projectile with perspective
+[persp-projectile][365] connect projectile with perspective(persp-mode.el基于perspectile(自身提供persp-mode))
 
 <2018-09-05 11:55> 这个persp-mode挺好玩的，比如你保存一个code-mode
 在保存一个org-mode,再保存一个main等，打开对应persp相当于打开一个新的
@@ -7033,7 +7033,33 @@ persp视角看看吧！或者你在main视角上网, 好用!
 9. p, `<left>` -- persp-prev: Switch to previous perspective
 
 
+#### Newer perspective
+
+``` elisp
+(use-package perspective
+  :ensure t
+  :bind ("C-x x x" . persp-switch-last)
+  :init (persp-mode +1)
+
+  (use-package persp-projectile
+    :ensure t
+    :bind ("C-x x P" . projectile-persp-switch-project))
+
+  :config
+    (setq persp-interactive-completion-function #'ido-completing-read)
+    (persp-turn-off-modestring))
+```
+
+My workflow consists of:
+
+1. C-x x P to investigate a new project with its new perspective (this also saves off whatever I was doing)
+2. C-x x x switches to whatever I was doing before
+3. C-x x s switches to a project’s perspective based on its name(切换视角)
+4. C-c c b switches buffers inside one project.类似于`M-x ido-swith-buffer`
+
+核心是： 一个项目一张办公桌。
 ### 141. 折腾的道理
+
 
 生命在于折腾，越折腾越年轻。
 
@@ -7622,11 +7648,19 @@ which grows with time and thus is "smarter".
 
 [中文搜索rg-grep-ag][460],几个插件都有点问题，真不行，手动使用`M-x swiper`即可,另外还有你的笔记本系统`Deft`.
 
+### 165. Org-refile
 
 
-----------
+一个好的习惯的养成需要21天？那不然就用org-refile
 
-----------
+Aaron Bieber 给我们介绍它是如何使用[org-refile][461]
+
+        The main thing you can configure about Refile is where the target list comes from and how it is presented.
+
+
+    ----------
+
+    ----------
 
 
 
@@ -8090,3 +8124,4 @@ which grows with time and thus is "smarter".
 [458]: https://libs.cdnjs.net/
 [459]: https://github.com/abo-abo/swiper/issues/1269
 [460]: https://emacs-china.org/t/topic/4267
+[461]: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html

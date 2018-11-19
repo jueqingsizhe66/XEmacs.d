@@ -308,9 +308,10 @@ This function also supports some `org-mode' wrappers:
 
   ;; We create a table of "odd balls" where the front and the end are
   ;; not the same string.
-  (let* ((s-table '(("#e" . ("#+BEGIN_EXAMPLE\n" "\n#+END_EXAMPLE") )
-                    ("#s" . ("#+BEGIN_SRC \n"    "\n#+END_SRC") )
-                    ("#q" . ("#+BEGIN_QUOTE\n"   "\n#+END_QUOTE"))
+  (let* ((s-table '(("#e" . ("\n#+BEGIN_EXAMPLE\n" "#+END_EXAMPLE\n\n") )
+                    ("#s" . ("\n#+BEGIN_SRC python\n"    "#+END_SRC\n\n") )
+                    ;; ("#s" . ("#+BEGIN_SRC python\n"    "\n#+END_SRC") )
+                    ("#q" . ("\n#+BEGIN_QUOTE\n"   "#+END_QUOTE\n\n"))
                     ("<"  . ("<" ">"))
                     ("("  . ("(" ")"))
                     ("{"  . ("{" "}"))

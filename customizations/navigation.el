@@ -26,6 +26,7 @@
 ;; name, ido will narrow down the list of buffers to match the text
 ;; you've typed in
 ;; http://www.emacswiki.org/emacs/InteractivelyDoThings
+;; greatest thing By Mickey(mastering Emacs programming)
 (ido-mode t)
 
 ;; This allows partial matches, e.g. "tl" will match "Tyrion Lannister"
@@ -232,3 +233,19 @@
               ("M-<RET>" . newline))
   :commands (goto-address-prog-mode
              goto-address-mode))
+
+
+;;;; https://github.com/howardabrams/dot-files/blob/master/emacs.org#perspective
+
+(use-package perspective
+  :ensure t
+  :bind ("C-x x x" . persp-switch-last)
+  :init (persp-mode +1)
+
+  (use-package persp-projectile
+    :ensure t
+    :bind ("C-x x P" . projectile-persp-switch-project))
+
+  :config
+    (setq persp-interactive-completion-function #'ido-completing-read)
+    (persp-turn-off-modestring))

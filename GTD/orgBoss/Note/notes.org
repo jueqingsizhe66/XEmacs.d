@@ -4258,3 +4258,23 @@ CLOCK: [2018-11-11 周日 13:57]--[2018-11-11 周日 13:59] =>  0:02
                          
 有些政策性的笑话，可能会延续到将来某一阶段，待那时才讲述出来。
 比如黄西在C-span的演讲
+** markdown编辑网页 [#B]                                         :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-11-14 周三 12:47]--[2018-11-14 周三 12:47] =>  0:00
+:END:
+                         Added: [2018-11-14 周三 12:47]
+                         
+                         
+http://pandao.github.io/editor.md/examples/themes.html?tdsourcetag=s_pctim_aiomsg
+** IDO mode [#B]                                                 :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-11-19 周一 20:35]--[2018-11-19 周一 20:36] =>  0:01
+:END:
+                         Added: [2018-11-19 周一 20:34]
+                         
+                         
+IDO: Interactive Do things!
+
+According to Mickey, IDO is the greatest thing
+
+https://github.com/howardabrams/dot-files/blob/master/emacs.org#ido-interactively-do-things

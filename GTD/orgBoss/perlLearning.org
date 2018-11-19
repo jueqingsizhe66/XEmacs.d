@@ -1,0 +1,1097 @@
+
+** perl学习
+<2018-10-21 15:27>
+最近三天的perl发布包
+
+https://metacpan.org/recent
+
+
+Perl Author上传说明
+http://www.cpan.org/modules/04pause.html
+
+
+perl blogs
+http://blogs.perl.org/
+
+perl intro
+http://perldoc.perl.org/index-tutorials.html
+https://www.nntp.perl.org/group/perl.perl5.changes/
+https://www.nntp.perl.org/group/perl.perl5.porters/
+= Contents =
+    - [[#0. Perl man|0. Perl man]]
+    - [[#1. I Love perl example|1. I Love perl example]]
+    - [[#2. I Love perl code books|2. I Love perl code books]]
+    - [[#3. dead simple,flexible,and fewer dependencies for a new web application ---"Dancer"|3. dead simple,flexible,and fewer dependencies for a new web application ---"Dancer"]]
+    - [[#4. what''s new on Cpan|4. what''s new on Cpan]]
+    - [[#5. dead dame bigger book|5. dead dame bigger book]]
+    - [[#6. Authors(Larry Walls) book|6. Authors(Larry Walls) book]]
+    - [[#7. Collection of Perl One line|7. Collection of Perl One line]]
+    - [[#8. Why "Modern Perl" Anyway?|8. Why "Modern Perl" Anyway?]]
+    - [[#Scalar behaves like a number or a string?|Scalar behaves like a number or a string?]]
+        - [[#Scalar behaves like a number or a string?#Comparing scalars as numbers and strings|Comparing scalars as numbers and strings]]
+        - [[#Scalar behaves like a number or a string?#常用字符串函数|常用字符串函数]]
+            - [[#Scalar behaves like a number or a string?#常用字符串函数#1、字符串函数|1、字符串函数]]
+            - [[#Scalar behaves like a number or a string?#常用字符串函数#2、定义字符串|2、定义字符串]]
+    - [[#Array Scalars|Array Scalars]]
+        - [[#Array Scalars#Array:|Array:]]
+        - [[#Array Scalars#Hash:|Hash:]]
+        - [[#Array Scalars#标量化|标量化]]
+            - [[#Array Scalars#标量化#指针数组化|指针数组化]]
+            - [[#Array Scalars#标量化#指针hash化|指针hash化]]
+        - [[#Array Scalars#=> is just ,|=> is just ,]]
+        - [[#Array Scalars#List values cannot nested|List values cannot nested]]
+            - [[#Array Scalars#List values cannot nested#array list become flattened into a long list|array list become flattened into a long list]]
+            - [[#Array Scalars#List values cannot nested#hash list become flattened into a long list|hash list become flattened into a long list]]
+        - [[#Array Scalars#综合例子|综合例子]]
+    - [[#Context-sensitive evaluation feature|Context-sensitive evaluation feature]]
+        - [[#Context-sensitive evaluation feature#Special scalar operation|Special scalar operation]]
+    - [[#好用的print|好用的print]]
+    - [[#References|References]]
+        - [[#References#${}等效于->|${}等效于->]]
+            - [[#References#${}等效于->#声明引用|声明引用]]
+            - [[#References#${}等效于->#通过引用访问值|通过引用访问值]]
+            - [[#References#${}等效于->#解引用  数组的引用通过 @ 符号 ， 哈希的引用通过 % 符号；|解引用  数组的引用通过 @ 符号 ， 哈希的引用通过 % 符号；]]
+        - [[#References#anonymous arrays and hashes|anonymous arrays and hashes]]
+            - [[#References#anonymous arrays and hashes#传统的list方法|传统的list方法]]
+            - [[#References#anonymous arrays and hashes#新式的匿名hash和array|新式的匿名hash和array]]
+            - [[#References#anonymous arrays and hashes#更为简短的形式|更为简短的形式]]
+    - [[#标签|标签]]
+    - [[#In-place array operator|In-place array operator]]
+        - [[#In-place array operator#creating new arrays from old(not in-place)|creating new arrays from old(not in-place)]]
+            - [[#In-place array operator#creating new arrays from old(not in-place)#join|join]]
+            - [[#In-place array operator#creating new arrays from old(not in-place)#reverse|reverse]]
+            - [[#In-place array operator#creating new arrays from old(not in-place)#map|map]]
+            - [[#In-place array operator#creating new arrays from old(not in-place)#grep|grep]]
+                - [[#In-place array operator#creating new arrays from old(not in-place)#grep#返回grep的下标 scalar grep|返回grep的下标 scalar grep]]
+            - [[#In-place array operator#creating new arrays from old(not in-place)#sort|sort]]
+                - [[#In-place array operator#creating new arrays from old(not in-place)#sort#$a and $b|$a and $b]]
+            - [[#In-place array operator#creating new arrays from old(not in-place)#哈希函数|哈希函数]]
+    - [[#Brackets is braces?  subroutine|Brackets is braces?  subroutine]]
+    - [[#system code|system code]]
+    - [[#File handler|File handler]]
+        - [[#File handler#open|open]]
+        - [[#File handler#readline|readline]]
+        - [[#File handler#Chomp|Chomp]]
+        - [[#File handler#eof|eof]]
+        - [[#File handler#<> to instead readline|<> to instead readline]]
+        - [[#File handler#File tests|File tests]]
+            - [[#File handler#File tests#-e exists|-e exists]]
+            - [[#File handler#File tests#-d directory|-d directory]]
+            - [[#File handler#File tests#-f file|-f file]]
+    - [[#Regular expressions|Regular expressions]]
+        - [[#Regular expressions#=~m//|=~m//]]
+            - [[#Regular expressions#=~m//#sub match|sub match]]
+        - [[#Regular expressions#~ s///|~ s///]]
+        - [[#Regular expressions#/g|/g]]
+        - [[#Regular expressions#/i|/i]]
+        - [[#Regular expressions#/x|/x]]
+    - [[#Modules and packages are different|Modules and packages are different]]
+    - [[#OOP|OOP]]
+        - [[#OOP#A class|A class]]
+        - [[#OOP#A method|A method]]
+        - [[#OOP#Aniaml.pm|Aniaml.pm]]
+        - [[#OOP#Make use of Animal.pm|Make use of Animal.pm]]
+        - [[#OOP#Constructor|Constructor]]
+        - [[#OOP#Inheritance|Inheritance]]
+
+= 0. Perl man =
+[[perl模块查询]]
+= 1. I Love perl example =
+[[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//perlexample.chm]]
+
+
+= 2. I Love perl code books =
+
+
+https://github.com/chef-cookbooks/perl
+
+= 3. dead simple,flexible,and fewer dependencies for a new web application ---"Dancer" =
+http://perldancer.org/quickstart
+
+{{{
+    cpanm Test::Time --force
+    cpanm Cookie::Baker
+    cpanm Plack::Middleware
+    cpanm Plack::Middleware::FixMissingBodyInRedirect
+    cpanm Plack::Middleware::RemoveRedundantBody
+    cpanm CGI::Deurl::XS
+    cpanm Crypt::URandom 
+    cpanm HTTP::XSHeaders
+    cpanm Math::Random::ISAAC::XS
+    cpanm MooX::TypeTiny
+    cpanm Scope::Upper
+    cpanm Type::Tiny::XS
+    cpanm URL::Encode::XS
+    curl -L http://cpanmin.us | perl - --sudo Dancer2
+}}}
+
+= 4. what's new on Cpan =
+
+Perl官方网站
+https://www.perl.com/
+https://www.perl.com/article/what-s-new-on-cpan---june-2018/
+
+
+
+= 5. dead dame bigger book =
+
+- TLS  [[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//Learning Perl, 7th Edition.pdf]] 
+- TSS [[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//"InterMediate Perl".pdf ]]
+- TRS  [[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//MasteringPerl2nd2014.pdf]]
+
+
+= 6. Authors(Larry Walls) book =
+
+Programming Perl 第三版CHM  [[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//perl大骆驼.chm]]
+Programming Perl 第四版 [[file:I://ScienceBase.Attachments//PaperWriting//pdfForLanguage//perl//Programming.Perl.4th.english.pdf]]
+= 7. Collection of Perl One line =
+https://github.com/pkrumins/perl1line.txt
+
+[[perlOne1Line]]
+
+= 8. Why "Modern Perl" Anyway? =
+
+{{{
+    By chromatic on January 23, 2009 9:15 PM | 1 Comment | 1 TrackBack
+    Perl 5 -- the current version of Perl -- is fourteen years old now. It's had several major revisions in that time. (See Perl History for more details.) These major revisions add new features, fix old bugs, and generally improve the language. All of these changes come from real-world users who use the language themselves.
+
+    The current stable major version of Perl is Perl 5.10, released in December 2007. This release includes several features backported from Perl 6, the next stage in evolution of Perl.
+
+    Perl's a popular language. It's been around for 21 years, and it was the language of server-side programming back in the day. It's still popular. There are hundreds of books and thousands of tutorials available all over the Internet. You can learn Perl with little more than a text editor and a web browser, if you so desire.
+
+    Remember, however, the Internet rarely forgets. A Perl tutorial which represented the best version of Perl from 1991 may still be around -- and thanks to search engines, it may be the most highly recommended tutorial anywhere. Eighteen years later, Perl's moved on. We've learned a lot since then.
+
+    The best way to write Perl programs in 1991 or 2001 or 2004 isn't necessarily the best way to write Perl programs in 2009. It's time to discuss and document and disseminate all of the wisdom of the greater Perl community. It's time to talk about modern Perl.
+}}}
+
+
+A scalar vairable:
+    1. 基础变量值  a number  , a string,  a boolean(no!! perl has no boolean data type)
+       A scalar in an `if` statement evaluates to boolean "false" if and only if it is one of the following:
+       - undef
+       - number 0
+       - string ""
+       - string "0"
+       The Perl documentation repeatedly claims that functions return "true" or "false" values in certain situations.
+       1. In practice, when a function is claimed to return "true" it usually returns 1, 1
+       2. and when it is claimed to return false it usually returns the empty string, ""
+    2. a references to any other variables, such as variable,array,hash,subroutine,filehandler,socket etc
+    3. undef
+
+
+= Scalar behaves like a number or a string? =
+
+Whether a scalar behaves like a number or a string depends on the operator with which it is used.
+(a number or a string  =========>   operator)
+
+自动转变:
+    When used as a string , a scalar will behave like a string.
+    When used as a number,  a scalar will behave like a number.
+    
+    
+== Comparing scalars as numbers and strings ==
+
+1. Numerical operators
+    1. <
+    2. >
+    3. <=
+    4. >=
+    5. ==
+    6. !=
+    7. <=>
+    8. +
+    9. *
+2. String Operators
+    1. lt
+    2. gt
+    3. le
+    4. ge
+    5. eq
+    6. ne
+    7. cmp
+    8. .
+    9. x
+
+== 常用字符串函数 ==
+
+=== 1、字符串函数 ===
+`print`　　`chomp`　　`chop`　　`length`　　`uc`　　`lc`　　`index`
+
+`ord`　　　　#转符号为ASCII的数字
+
+`chr`　　　　#转数字为ASCII的字母
+
+`substr($string,offset,length)`　　#提取子串部分
+
+　　    例子：`substr($_,5,length($_)-10)`　　　　#截取序列的前后各5pb的bases
+
+　　    offset代表起始字符的位置,length代表引用的字符串长度，如果省略length则代表从起始值到字符串的最后一个字符长度。而
+　　    offset如果是负值的话，就会从字符串右边开始指定字符。
+
+`join(':',@F)`　　　　　　　　#数组链接为字符串
+
+=== 2、定义字符串 ===
+　　`q()`　　  #单引号 quote　　　　　　　　`qq()`　#双引号 quote quote　　
+
+　　`qw()`　　#单词表 quote word　　　　　`qx()`　#执行外部程序 quote execute
+= Array Scalars =
+
+An array variable is a list of scalars indexed by integers beginning at 0. *0*(Python: list; PHP: array)
+A hash variable is a list of scalars indexed by strings(Python: dictionary; PHP: array)
+== Array: ==
+{{{
+    my @array = (
+        "print",
+        "these",
+        "strings",
+        "out",
+        "for",
+        "me", # trailing comma is okay
+    );
+}}}
+== Hash: ==
+{{{
+    my %scientists = (
+        "Newton" => "Isaac",
+        "Einstein" => "Albert",
+        "Darwin" => "Charles",
+    );
+}}}
+
+An array or a hash is declared using a parenthesised list of scalars(字面值或者引用),亦或者成对值(组成hash),
+也就是array变量还是hash变量右边值都是list 变量(a list), 但是`A list is not a variable`
+{{{
+    A list is an ephemeral value which can be assigned to an array or a hash variable.
+    This is why the syntax for declaring array and hash variables is identical. T
+
+
+}}}
+引用时，Array使用中括号(square parenthesis)，Hash使用大括号(brace)!
+
+== 标量化 ==
+
+`my length=@arrayName;`
+
+
+定义复杂结构 [[#References]]
+{{{
+    my %account = (
+        "number" => "31415926",
+        "opened" => "3000-01-01",
+        "owners" => [
+            {
+                "name" => "Philip Fry",
+                "DOB" => "1974-08-06",
+            },
+            {
+                "name" => "Hubert Farnsworth",
+                "DOB" => "2841-04-09",
+            },
+        ],
+    );
+}}}
+{{{
+
+    my $ownersRef = $account{"owners"};
+    my @owners = @{ $ownersRef };
+    my $owner1Ref = $owners[0];
+    my %owner1 = %{ $owner1Ref };
+    my $owner2Ref = $owners[1];
+    my %owner2 = %{ $owner2Ref };
+    print "Account #", $account{"number"}, "\n";
+    print "Opened on ", $account{"opened"}, "\n";
+    print "Joint owners:\n";
+    print "\t", $owner1{"name"}, " (born ", $owner1{"DOB"}, ")\n";
+    print "\t", $owner2{"name"}, " (born ", $owner2{"DOB"}, ")\n";
+
+
+    # For short
+    my @owners = @{ $account{"owners"} };
+    my %owner1 = %{ $owners[0] };
+    my %owner2 = %{ $owners[1] };
+    print "Account #", $account{"number"}, "\n";
+    print "Opened on ", $account{"opened"}, "\n";
+    print "Joint owners:\n";
+    print "\t", $owner1{"name"}, " (born ", $owner1{"DOB"}, ")\n";
+    print "\t", $owner2{"name"}, " (born ", $owner2{"DOB"}, ")\n";
+}}}
+=== 指针数组化 ===
+
+`my @owners = @{ $account{"owners"} };`
+=== 指针hash化 ===
+{{{
+my %owner1 = %{ $owners[0] };
+my %owner2 = %{ $owners[1] };
+
+}}}
+== => is just , ==
+
+Remember that  `=>` in hash is just a `,`
+
+{{{
+    ("one", 1, "three", 3, "five", 5)
+    ==
+    ("one" => 1, "three" => 3, "five" => 5)
+
+}}}
+The use of `=> `hints that one of these lists is an array declartion and the other is a hash declaration.
+
+
+事实上，本质上，他们都是lists！！！！！！！！！！！！！！！！！！！！！！！
+
+也就是空list  `()` 既可以声明为array变量也可以变为hash变量
+
+== List values cannot nested ==
+
+Once you understand this odd aspect of Perl, you will also understand why the following fact must
+be true: List values cannot be nested.
+
+=== array list become flattened into a long list ===
+
+{{{
+    my @array = (
+        "apples",
+        "bananas",
+        (
+            "inner",
+            "list",
+            "several",
+            "entries",
+        ),
+        "cherries",
+    );
+}}}
+
+Perl has no way of knowing whether `("inner", "list", "several", "entries")` is
+supposed to be an inner array or an inner hash. Therefore, Perl assumes that it is
+neither and flattens the list out into a single long list:
+
+{{{
+    print $array[0]; # "apples"
+    print $array[1]; # "bananas"
+    print $array[2]; # "inner"
+    print $array[3]; # "list"
+    print $array[4]; # "several"
+    print $array[5]; # "entries"
+    print $array[6]; # "cherries"
+}}}
+
+
+=== hash list become flattened into a long list ===
+
+{{{
+    my %hash = (
+        "beer" => "good",
+        "bananas" => (
+            "green" => "wait",
+           "yellow" => "eat",
+           ),
+        );
+}}}
+
+
+
+{{{
+    # The above raises a warning because the hash was declared using a 7-element list
+    print $hash{"beer"}; # "good"
+    print $hash{"bananas"}; # "green"
+    print $hash{"wait"}; # "yellow";
+    print $hash{"eat"}; # undef, so raises a warning and prints ""
+}}}
+
+== 综合例子 ==
+
+{{{
+use Data::Dumper;
+
+    my @bones = ("humerus", ("jaw", "skull"), "tibia");
+    my @fingers = ("thumb", "index", "middle", "ring", "little");
+    my @parts = (@bones, @fingers, ("foot", "toes"), "eyeball", "knuckle");
+    print Dumper(\@parts);
+
+}}}
+
+{{{
+I:\ScienceBase.Attachments\PaperWriting\pdfForLanguage\perl>perl testArray2.pl
+$VAR1 = [
+          'humerus',
+          'jaw',
+          'skull',
+          'tibia',
+          'thumb',
+          'index',
+          'middle',
+          'ring',
+          'little',
+          'foot',
+          'toes',
+          'eyeball',
+          'knuckle'
+        ];
+
+
+}}}
+So finally, list cannot become nested!
+
+
+= Context-sensitive evaluation feature =
+
+Every expression in Perl is evaluated either in scalar context or list context,
+
+== Special scalar operation ==
+
+
+`my @array = "Mendeleev"; # same as 'my @array = ("Mendeleev");`
+
+`my $scalar = ("Alpha", "Beta", "Gamma", "Pie"); # Value of $scalar is now "Pie"`
+
+
+{{{
+    my @array = ("Alpha", "Beta", "Gamma", "Pie");
+    my $scalar = @array; # Value of $scalar is now 4
+}}}
+
+
+= 好用的print =
+
+
+The print built-in function evaluates all of its arguments in list context. In fact, print
+accepts an unlimited list of arguments and prints each one after the other, which means
+it can be used to print arrays directly:
+
+按照list环境进行打印()
+原理： 按照list context evaluates all of its arguments(in list context)
+    使用scalar(list变量)可以强制解析为scalar context(事实上，这也是为什么可以使用scalar to retrieve the length of an array)
+    
+    
+    
+= References =
+
+A refence is a scalar variable may contain a reference to any variable, including an array variable or a hash variable.
+这也是为什么complicated data structures are created in Perl.
+
+1. A reference is created using a backslash  `my $colour="Indigo";my $scalarRef=\$colour; `
+2. Dump a reference using `${}`.
+   {{{
+        print $colour; # "Indigo"
+        print $scalarRef; # e.g. "SCALAR(0x182c180)"
+        print ${ $scalarRef }; # "Indigo" 
+   }}}
+   
+        `print $$scalarRef; # "Indigo" `
+        
+        brace大括号可以被省略掉!
+        
+== ${}等效于-> ==
+If your reference is a reference to an array or hash variable, you can get data out of it
+using braces or using the more popular arrow operator, `->`:
+
+
+
+{{{
+    my @colours = ("Red", "Orange", "Yellow", "Green", "Blue");
+    my $arrayRef = \@colours;
+    print $colours[0]; # direct array access
+    print ${ $arrayRef }[0]; # use the reference to get to the array
+    print $arrayRef->[0]; # exactly the same thing
+    my %atomicWeights = ("Hydrogen" => 1.008, "Helium" => 4.003, "Manganese" => 54.94
+    my $hashRef = \%atomicWeights;
+    print $atomicWeights{"Helium"}; # direct hash access
+    print ${ $hashRef }{"Helium"}; # use a reference to get to the hash
+    print $hashRef->{"Helium"}; # exactly the same thing - this is very common
+
+}}}
+
+  使用 `\` 符号， 声明一个引用外，还可以声明一个匿名引用， 数组的引用使用 `[  ]` 操作符， 哈希的引用使用 `{  }` 操作符；
+
+=== 声明引用 ===
+
+{{{
+    my @array     = (1, 2, 3);
+    my $array_ref = \@array;                   my $array_ref = [1, 2, 3, 4];
+    my %hash     = (1, 2, 3, 4);
+    my $hash_ref = \%hash;                     my $hash_ref  = {1, 2, 3, 4}
+
+}}}
+
+=== 通过引用访问值 ===
+
+{{{
+    print $array_ref->[0];    #数组的引用, 是->[ ] 中括号, 加上对应的下标.     匿名数组一样
+    print $array_ref->{1};    #哈希的引用，通过->{} 大括号, 加上对应的key      匿名哈希一样
+}}}
+
+=== 解引用  数组的引用通过 @ 符号 ， 哈希的引用通过 % 符号； ===
+
+{{{
+      my @array_new = @{$array_ref};
+      my %hash_new = %{$hash_ref};
+}}}
+== anonymous arrays and hashes ==
+
+=== 传统的list方法 ===
+{{{
+    my %owner1 = (
+        "name" => "Santa Claus",
+        "DOB" => "1882-12-25",
+    );
+    my %owner2 = (
+        "name" => "Mickey Mouse",
+        "DOB" => "1928-11-18",
+    );
+    my @owners = ( \%owner1, \%owner2 );
+    my %account = (
+        "number" => "12345678",
+        "opened" => "2000-01-01",
+        "owners" => \@owners,
+    );
+
+}}}
+
+=== 新式的匿名hash和array ===
+
+匿名hash直接采用大括号替换hash的parenthesis，以及
+匿名array直接采用中括号(square brackets)替换hash的parenthesis，以及
+
+所以my @arr1=[1,2,3,4,5],其实是一个元素，一个reference
+my @arr1=(1,2,3,4,5); 才是5元素的素组
+{{{
+    # Braces denote an anonymous hash
+    my $owner1Ref = {
+        "name" => "Santa Claus",
+        "DOB" => "1882-12-25",
+    };
+    my $owner2Ref = {
+        "name" => "Mickey Mouse",
+        "DOB" => "1928-11-18",
+    };
+    # Square brackets denote an anonymous array
+    my $ownersRef = [ $owner1Ref, $owner2Ref ];
+    my %account = (
+        "number" => "12345678",
+        "opened" => "2000-01-01",
+        "owners" => $ownersRef,
+    );
+}}}
+
+
+小结:
+    新式的perl写法都是采用左边变量充当reference，右边则是匿名的hash或者array，进而构造复杂的表达式
+    全过程不需要出现`\` backslash来构造reference,而是采用{}或者[]间接表明hash或者array
+    计算过程所有都是scalar变量的形式!
+
+
+=== 更为简短的形式 ===
+
+{{{
+    my %account = (
+        "number" => "31415926",
+        "opened" => "3000-01-01",
+        "owners" => [
+            {
+                "name" => "Philip Fry",
+                "DOB" => "1974-08-06",
+            },
+            {
+                "name" => "Hubert Farnsworth",
+                "DOB" => "2841-04-09",
+            },
+        ],
+    );
+}}}
+
+
+= 标签 =
+
+
+{{{
+    CANDIDATE: for my $candidate ( 3 .. 100 ) {
+        for my $divisor ( 2 .. sqrt $candidate ) {
+            next CANDIDATE if $candidate % $divisor == 0;
+        }
+        print $candidate." is prime\n";
+    }
+}}}
+
+= In-place array operator =
+
+We'll use @stack to demonstrate these:
+    my @stack = ("Fred", "Eileen", "Denise", "Charlie");
+    print @stack; # "FredEileenDeniseCharlie"
+`pop `extracts and returns the final element of the array. This can be thought of as the topof the stack:
+
+{{{
+    print pop @stack; # "Charlie"
+    print @stack; # "FredEileenDenise"
+
+}}}
+
+`push` appends extra elements to the end of the array:
+
+{{{
+    push @stack, "Bob", "Alice";
+    print @stack; # "FredEileenDeniseBobAlice"
+}}}
+
+`shift` extracts and returns the first element of the array:
+{{{
+    print shift @stack; # "Fred"
+    print @stack; # "EileenDeniseBobAlice"
+}}}
+
+`unshift` inserts new elements at the beginning of the array:
+
+{{{
+    unshift @stack, "Hank", "Grace";
+    print @stack; # "HankGraceEileenDeniseBobAlice"
+}}}
+    
+pop, push, shift and unshift are all special cases of splice. `splice` removes and
+returns an array slice, replacing it with a different array slice:
+
+{{{
+    print splice(@stack, 1, 4, "<<<", ">>>"); # "GraceEileenDeniseBob"
+    print @stack; # "Hank<<<>>>Alice"
+}}}
+
+`delete $F[3]`　　　　#删除数组中该元素
+
+`exists $F[3]`　　#判断该元素是否存在
+不同的是，join,reverse,map,grep,sort等会创建新的数组
+== creating new arrays from old(not in-place) ==
+
+=== join ===
+{{{
+    my @elements = ("Antimony", "Arsenic", "Aluminum", "Selenium");
+    print @elements; # "AntimonyArsenicAluminumSelenium"
+    print "@elements"; # "Antimony Arsenic Aluminum Selenium"
+    print join(", ", @elements); # "Antimony, Arsenic, Aluminum, Selenium"
+}}}
+
+
+=== reverse ===
+
+{{{
+    print reverse("Hello", "World"); # "WorldHello"
+    print reverse("HelloWorld"); # "HelloWorld"
+    print scalar reverse("HelloWorld"); # "dlroWolleH"
+    print scalar reverse("Hello", "World"); # "dlroWolleH"
+}}}
+
+1. In list context, the `reverse` function returns a list in reverse order.
+2. In scalar context, `reverse` concatenates the whole list together and then reverses it as a single word.
+
+
+=== map ===
+
+                    map operator arrayname;
+The operation to perform is provided in the form of a single expression inside braces 
+{{{
+    my @capitals = ("Baton Rouge", "Indianapolis", "Columbus", "Montgomery", "Helena"
+    print join ", ", map { uc $_ } @capitals;
+    # "BATON ROUGE, INDIANAPOLIS, COLUMBUS, MONTGOMERY, HELENA, DENVER, BOISE"
+}}}
+
+
+=== grep ===
+
+It takes an array as input and returns a filtered array as output by filter operation
+{{{
+    print join ", ", grep { length $_ == 6 } @capitals;
+    # "Helena, Denver"
+
+}}}
+
+==== 返回grep的下标 scalar grep ====
+Obviously, the length of the resulting array is the number of successful matches, which
+means you can use grep to quickly check whether an array contains an element:
+{{{
+    print scalar grep { $_ eq "Columbus" } @capitals; # "1"
+}}}
+
+
+
+=== sort ===
+
+{{{
+    my @elevations = (19, 1, 2, 100, 3, 98, 100, 1056);
+    print join ", ", sort @elevations;
+    # "1, 100, 100, 1056, 19, 2, 3, 98"
+}}}
+
+
+==== $a and $b ====
+However, similar to grep and map, you may supply some code of your own. Sorting is
+always performed using a series of comparisons between two elements. Your block
+receives `$a` and `$b` as inputs and should return -1 if `$a` is "less than" `$b`, 0 if they are
+"equal" or 1 if `$a` is "greater than" `$b`.
+
+For strings,
+
+{{{
+    print join ", ", sort { $a cmp $b } @elevations;
+    # "1, 100, 100, 1056, 19, 2, 3, 98"
+}}}
+
+For numbers,
+{{{
+    print join ", ", sort { $a <=> $b } @elevations;
+    # "1, 2, 3, 19, 98, 100, 100, 1056"
+}}}
+
+{{{
+        sub comparator {
+            # lots of code...
+            # return -1, 0 or 1
+        }
+    print join ", ", sort comparator @elevations;
+}}}
+
+You can't do this for `grep` or `map` operations.
+
+=== 哈希函数 ===
+`keys`　　`values`　　`each`　　`delete`　　`exists`
+
+= Brackets is braces?  subroutine=
+
+    Although the brackets are optional, subroutines should always be invoked using brackets,
+even when called with no arguments. This makes it clear that a subroutine call is happening.
+
+
+{{{
+    sub hyphenate {
+        # Extract the first argument from the array, ignore everything else
+        my $word = shift @_;
+        # An overly clever list comprehension
+        $word = join "-", map { substr $word, $_, 1 } (0 .. (length $word) - 1);
+        return $word;
+    }
+    print hyphenate("exterminate"); # "e-x-t-e-r-m-i-n-a-t-e"
+}}}
+
+= system code =
+
+1. $? has been populated with the status word that was returned from that child process's termination. 
+2. You can get the return code by taking just the highest 8 of those 16 bits: $? >> 8.
+
+{{{
+    my $rc = system "perl", "anotherscript.pl", "foo", "bar", "baz";
+    $rc >>= 8;
+    print $rc; # "37";
+}}}
+
+1. Alternatively, you can use backticks `` to run an actual command at the command line
+and capture the standard output from that command.
+2. In scalar context the entire output is returned as a single string.
+3. In list context, the entire output is returned as an array of strings, each one representing a line of output
+   
+{{{
+    my $text = `perl anotherscript.pl foo bar baz`;
+    print $text; # "foobarbaz"
+}}}
+
+= File handler =
+
+http://www.cnblogs.com/renping/p/7441669.html
+
+== open ==
+{{{
+    open(my $fh, "<", $f) || die "Couldn't open '".$f."' for reading because: ".$!;
+}}}
+== readline ==
+{{{
+    while(1) {
+        my $line = readline $fh;
+        last unless defined $line;
+        # process the line...
+    }
+}}}
+== Chomp ==
+    To truncate that possible trailing line break
+   `chomp $lien` 
+   
+== eof ==   
+
+`eof` to detect that the end of file has been reached.
+
+{{{
+    while(!eof $fh) {
+        my $line = readline $fh;
+        # process $line...
+    }
+}}}
+
+== <> to instead readline ==
+But beware of just using `while(my $line = readline $fh)`, because if `$line` turns out to
+be `"0"`, the loop will terminate early. If you want to write something like that, Perl
+provides the `<>` operator which wraps up `readline` in a fractionally safer way. This is
+very commonly-seen and perfectly safe:
+{{{
+    while(my $line = <$fh>) {
+        # process $line...
+    }
+}}}
+
+And even,
+{{{
+    while(<$fh>) {
+        # process $line...
+    }
+}}}
+
+== File tests ==
+
+
+=== -e exists===
+The function `-e` is a built-in function which tests whether the named file exists.
+{{{
+    print "what" unless -e "/usr/bin/perl";
+}}}
+=== -d directory===
+
+{{{
+    The function -d is a built-in function which tests whether the named file is a directory.
+}}}
+=== -f file===
+{{{
+    The function -f is a built-in function which tests whether the named file is a plain file.
+}}}
+
+= Regular expressions =
+
+
+== =~m// ==
+1. In scalar context,` =~ m//` returns true on success, false on failure.
+2. In list context,  `=~ m//` returns `$1,$2,...` as a list
+{{{
+    my $string = "Hello world";
+    if($string =~ m/(\w+)\s+(\w+)/) {
+    print "success";
+    }
+}}}
+
+
+{{{
+    my $string = "colourless green ideas sleep furiously";
+    my @matches = $string =~ m/(\w+)\s+((\w+)\s+(\w+))\s+(\w+)\s+(\w+)/;
+    print join ", ", map { "'".$_."'" } @matches;
+    # prints "'colourless', 'green ideas', 'green', 'ideas', 'sleep', 'furiously'"
+}}}
+=== sub match ===
+
+Parentheses perform sub-matches. After a successful match operation is performed, the
+sub-matches get stuffed into the built-in variables `$1, $2, $3, ...:`
+{{{
+    print $1; # "Hello"
+    print $2; # "world"
+}}}
+
+== ~ s/// ==
+
+{{{
+    my $string = "Good morning world";
+    $string =~ s/world/Vietnam/;
+    print $string; # "Good morning Vietnam"
+}}}
+
+== /g ==
+
+1. In scalar context, each `=~ m//g` call finds another match after the previous one,
+returning true on success, false on failure. You can access `$1` and so on afterwards in
+the usual way. For example:
+{{{
+    my $string = "a tonne of feathers or a tonne of bricks";
+    while($string =~ m/(\w+)/g) {
+    print "'".$1."'\n";
+    }
+}}}
+
+2. In list context, an `=~ m//g` call returns all of the matches at once.
+{{{
+    my @matches = $string =~ m/(\w+)/g;
+    print join ", ", map { "'".$_."'" } @matches;
+}}}
+An` =~ s///g` call performs a global search/replace and returns the number of matches.
+Here, we replace all vowels with the letter "r".
+{{{
+    # Try once without /g.
+    $string =~ s/[aeiou]/r/;
+    print $string; # "r tonne of feathers or a tonne of bricks"
+    # Once more.
+    $string =~ s/[aeiou]/r/;
+    print $string; # "r trnne of feathers or a tonne of bricks"
+    # And do all the rest using /g
+    $string =~ s/[aeiou]/r/g;
+    print $string, "\n"; # "r trnnr rf frrthrrs rr r trnnr rf brrcks"
+}}}
+
+== /i ==
+The `/i` flag makes matches and substitutions case-insensitive.
+== /x ==
+The `/x` flag allows your regular expression to contain whitespace (e.g., line breaks) and
+comments.
+{{{
+    "Hello world" =~ m/
+    (\w+) # one or more word characters
+    [ ] # single literal space, stored inside a character class
+    world # literal "world"
+    /x;
+
+    # returns true
+
+}}}
+
+
+= Modules and packages are different =
+
+In Perl, modules and packages are different things.
+1. A module is a .pm file that you can include in another Perl file (script or module). :: as  a directory separator 
+2. A package is a namespace in which subroutines can be declared, :: as  a namespace separator 
+
+因为Perl5分开package和module概念，所以导致很多perl程序员遵守如下规则
+
+1. Perl script (.pl file) must always contain exactly zero package
+declarations.
+2. A Perl module (.pm file) must always contain exactly one package
+declaration, corresponding exactly to its name and location. E.g. module
+Demo/StringUtils.pm must begin with package Demo::StringUtils.
+
+[[定义模块module]]
+= OOP =
+
+1. An object is simply a reference
+2. use `bless` to defien object(指向任何类)
+3. to find  out what class a reference's referent belongs to, use `ref`,查看属于哪个类
+
+== A class ==
+    A class is simply a package that happens to contain methods.
+    
+== A method ==
+
+1. Object methods are invoked using `$obj->method();` 
+2. class methods are invoked using `Package::Name->method().`
+
+
+== Aniaml.pm ==
+
+{{{
+    use strict;
+    use warnings;
+    package Animal;
+    sub eat {
+        # First argument is always the object to act upon.
+        my $self = shift @_;
+        foreach my $food ( @_ ) {
+            if($self->can_eat($food)) {
+                print "Eating ", $food;
+            } else {
+                print "Can't eat ", $food;
+            }
+        }
+    }
+    # For the sake of argument, assume an Animal can eat anything.
+    sub can_eat {
+        return 1;
+    }
+    return 1;
+}}}
+
+== Make use of Animal.pm ==
+
+{{{
+    require Animal;
+    
+    my $animal = {
+        "legs" => 4,
+        "colour" => "brown",
+    }; # $animal is an ordinary hash reference
+    print ref $animal; # "HASH"
+    bless $animal, "Animal"; # now it is an object of class "Animal"
+    print ref $animal; # "Animal"
+}}}
+
+从这边也可以看出Hash也是一种类!
+使用`bless`可以转变标量为任意类型`class`,
+
+Note: literally any reference can be blessed into any class.
+It's up to you to ensure that
+(1) the referent can actually be used as an instance of this class and 
+(2) that the class in question exists and has been loaded.
+
+This final call is equivalent to `Animal::eat($animal, "insects", "curry","eucalyptus").`
+
+== Constructor ==
+
+A constructor is a class method which returns a new object
+
+If you want one, just declare one. You can use any name you like.
+For class methods, the first argument passed is not an object but a class name.
+In this case, "Animal":
+{{{
+    use strict;
+    use warnings;
+    package Animal;
+    sub new {
+        my $class = shift @_;
+        return bless { "legs" => 4, "colour" => "brown" }, $class;
+    }
+    # ...etc.
+}}}
+
+
+{{{
+    my $animal = Animal->new();
+}}}
+
+== Inheritance ==
+
+To create a class inheriting from a base class, populate the @`ISA` package variable. Let's
+suppose we subclassed `Animal` with `Koala`, located at `Koala.pm:`
+
+
+{{{
+    use strict;
+    use warnings;
+    package Koala;
+    # Inherit from Animal
+    require Animal;
+    our @ISA = ("Animal");
+    # Override one method
+    sub can_eat {
+        my $self = shift @_; # Not used. You could just put "shift @_;" here
+        my $food = shift @_;
+        return $food eq "eucalyptus";
+    }
+    return 1;
+}}}
+
+Use it,
+
+{{{
+    use strict;
+    use warnings;
+    require Koala;
+    my $koala = Koala->new();
+    $koala->eat("insects", "curry", "eucalyptus"); # eat only the eucalyptus
+}}}
+
+
+This final method call tries to invoke `Koala::eat($koala, "insects", "curry","eucalyptus")`, but a subroutine eat() isn't defined in the Koala package. However,because `@Koala::ISA` has been populated with a parent class Animal, the Perl interpreter
+tries calling `Animal::eat($koala, "insects", "curry", "eucalyptus")` instead, which
+works. Note how the class `Animal` had to be loaded explicitly by `Koala.pm`.
+Since `@ISA` is an array, Perl supports `multiple inheritance`, with all the benefits and
+horrors this entails.
+
+http://www.cnblogs.com/renping/p/7441669.html
+
+
+Tar the files
+http://perldoc.perl.org/Archive/Tar.html
+
+[[perl cephers数学库]]
+https://metacpan.org/pod/distribution/perl/pod/perlop.pod
+
+perl生词表
+https://metacpan.org/pod/distribution/perlfaq/lib/perlglossary.pod
+
+perl FAQ
