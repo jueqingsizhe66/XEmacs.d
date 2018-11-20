@@ -572,7 +572,7 @@ https://mp.weixin.qq.com/s/o9RZObStZNLPT9I7Y7wmuQ
 
 是按照距离来判断的，方圆多少米要降低到一定范围内，具体数值记不太清了
 
-** TODO [#A] 基于多轴角运动的气动特性和流场分析大论文 <2018-06-25 周一 16:19>[3/4] :学术:
+** TODO [#A] 基于多轴角运动的气动特性和流场分析大论文 <2018-06-25 周一 16:19>[4/6] :学术:
 DEADLINE: <2019-04-15 周一>
                     :PROPERTIES:
                     :Effort: 16:00
@@ -599,6 +599,7 @@ DEADLINE: <2019-04-15 周一>
                     - State "TODO"       from "TODO"       [2018-08-01 周三 08:48]
                     - State "TODO"       from "TODO"          [2018-07-31 周二 16:19]
                     :LOGBOOK:
+                    - State "TODO"       from "TODO"          T:[2018-11-20 周二 13:48]
                     CLOCK: [2018-06-25 周一 16:19]--[2018-06-26 周二 12:02] => 19:43
                     :END:
                     
@@ -881,8 +882,8 @@ CLOSED: [2018-07-31 周二 16:19] DEADLINE: <2018-07-04 周三>
 5. [X] 摘要
 LINK:info:org:Top
 LINK:info:markdown:Top
-*** TODO [#B] 图3的情况 <2018-10-25 周四 20:54>                       :@NCEPU:
-DEADLINE: <2018-11-01 周四>
+*** DONE [#B] 图3的情况 <2018-10-25 周四 20:54>                       :@NCEPU:
+CLOSED: [2018-11-20 周二 13:48] DEADLINE: <2018-11-01 周四>
                     :PROPERTIES:
                     :Effort: 1:00
                     :END:

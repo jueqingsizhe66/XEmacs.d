@@ -1,4 +1,11 @@
 
+
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_TRANS: linear
+#+REVEAL_THEME: jr0cket
+#+Title: Perl-Road
+#+Author:  Ye Zhaoliang
+#+Email: yezhaoliang@ncepu.edu.cn
 ** perl学习
 <2018-10-21 15:27>
 最近三天的perl发布包

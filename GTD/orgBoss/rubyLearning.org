@@ -1,0 +1,9 @@
+
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_TRANS: linear
+#+REVEAL_THEME: jr0cket
+#+Title: Ruby-Classroom
+#+Author:  Ye Zhaoliang
+#+Email: yezhaoliang@ncepu.edu.cn
+
+* First Title

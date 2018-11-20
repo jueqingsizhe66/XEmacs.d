@@ -351,7 +351,23 @@ This function also supports some `org-mode' wrappers:
 ;(require 'doom-todo-ivy)
 
 
+;; https://github.com/howardabrams/dot-files/blob/master/emacs.org#aggressive-auto-indention
+(defun indent-defun ()
+  "Indent current defun.
+Do nothing if mark is active (to avoid deactivaing it), or if
+buffer is not modified (to avoid creating accidental
+modifications)."
+  (interactive)
+  (unless (or (region-active-p)
+              buffer-read-only
+              (null (buffer-modified-p)))
+    (let ((l (save-excursion (beginning-of-defun 1) (point)))
+          (r (save-excursion (end-of-defun 1) (point))))
+      (cl-letf (((symbol-function 'message) #'ignore))
+        (indent-region l r)))))
 
 
-
-
+(defun activate-aggressive-indent ()
+  "Locally add `ha/indent-defun' to `post-command-hook'."
+  (add-hook 'post-command-hook
+            'indent-defun nil 'local))

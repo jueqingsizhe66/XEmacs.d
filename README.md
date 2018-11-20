@@ -7050,7 +7050,7 @@ persp视角看看吧！或者你在main视角上网, 好用!
     (persp-turn-off-modestring))
 ```
 
-My workflow consists of:
+[My workflow][462] consists of:
 
 1. C-x x P to investigate a new project with its new perspective (this also saves off whatever I was doing)
 2. C-x x x switches to whatever I was doing before
@@ -7255,7 +7255,7 @@ Auto insert file header with specified file suffix have been
 setted in the [setup_autoinsert.el][394], there are two different
 kinds of config style out there in the file, 
 
-1. yasnippet style and emacs
+1. yasnippet style and Emacs(yasnippet-expand-snippet比较好使)
 2. expression evaluation style
 
 In addition, [Perl-mode yasnippet][393] have been injected in the current emacs config, which originates from
@@ -7657,10 +7657,12 @@ Aaron Bieber 给我们介绍它是如何使用[org-refile][461]
 
         The main thing you can configure about Refile is where the target list comes from and how it is presented.
 
+一个加入org-agenda-files的文件，只有具有标题，才能让`org-refile`捕捉得到，只要有标题就可以查到。
 
-    ----------
 
-    ----------
+
+----------
+----------
 
 
 
@@ -8125,3 +8127,4 @@ Aaron Bieber 给我们介绍它是如何使用[org-refile][461]
 [459]: https://github.com/abo-abo/swiper/issues/1269
 [460]: https://emacs-china.org/t/topic/4267
 [461]: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
+[462]: https://github.com/howardabrams/dot-files/blob/master/emacs.org#perspective

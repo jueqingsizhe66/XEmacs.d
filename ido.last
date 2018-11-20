@@ -17,6 +17,10 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/customizations/" (23539 42045 0 0) "ui.el" "shell-integration.el" "setupsbcl.el" "setup-tab.el" "setup-rust.el" "setup-ruby-mode.el" "setup-python.el" "setup-ledger.el" "setup-js.el" "setup-git.el" "setup-find-file-in-project.el" "setup-eww.el" "setup-evil.el" "setup-eshell.el" "setup-erc.el" "setup-emms.el" "setup-dashboard.el" "setup-clojure.el" "setup-autoinsert.el" "setup-abbrev.el" "scheme-editing.el" "ruby-end.el" "quicklisp.lisp" "protocol.reg" "plantuml.jar" "pip/" "perl-editing.el" "org-listcruncher.el" "orca.el" "navigation.el" "misc.el" "magnars/" "init-utils.el" "init-projectile.el" "init-ivy.el" "init-custom.el" "init-const.el" "img/" "highlight-indentation.el" "git-timemachine.el" "fortran-index-args.el" "fortran-editing.el" "font-lock+.el" "find-file-in-project.el" "emacs-presentation-mode/" "elisp-editing.el" "editing.el" "counsel-org-clock/" "color-rg/" "b.pl" "aspell.rar" "alphapapa/" "a.pl" ".abbrev_defs" "../" "./")
+
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/template/" (23489 62010 0 0) "sh-template.sh" "py-template.py" "pl-template.pl" "org-template.org" "cmake-template.txt" "c-template.c" "c-plusplus-template.cpp" "../" "./")
+
  ("k:/pythonHOme/pythonLearning/" (23538 47338 0 0) "zhao.jpg" "YawMovie.gif" "WrongContour.gif" "VortexDingMovie.gif" "VelocityMovie.gif" "Velocity1116Movie.gif" "Torque1116Movie.gif" "Torque.gif" "TKE.gif" "TipVortexMovie.gif" "TipMovie.gif" "testPyEmd1.py" "testMain.py" "test.csv" "TailDingMovie.gif" "Streamline.gif" "Simple.py" "scatter.py" "pointArrow.py" "GifMaker.py" "feedBackMovie.gif" "dyanmciLine.py" "drawLineWithCSV.py" "drawLine.py" "dotCloud.py" "CTMovie.gif" "ContourDingMovie.gif" "Contour.gif" "CNMovie.gif" "cn.eps" "cloudmodelfeature.png" "AoAMovie.gif" "141220121254.jpg" ".idea/" ".gitignore" ".git/" "../" "./")
 
  ("k:/clojure-home/book-source/first-edition/src/joy/gui/" (23206 39676 0 0) "socks.clj" "DynaFrame.clj" "../" "./")

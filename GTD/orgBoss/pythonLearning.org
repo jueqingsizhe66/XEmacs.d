@@ -1,3 +1,9 @@
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_TRANS: linear
+#+REVEAL_THEME: jr0cket
+#+Title: Python-Front
+#+Author:  Ye Zhaoliang
+#+Email: yezhaoliang@ncepu.edu.cn
 * 学习笔记
 # 导入包的默认格式
 #+BEGIN_SRC  python

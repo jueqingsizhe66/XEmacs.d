@@ -114,7 +114,7 @@ CLOSED: [2017-12-11 周一 19:56]
 :END:
 - State "DONE"       from "TODO"          [2017-12-11 周一 19:56]
 Captured 2017-09-27 22:52
-** 学习 GetThingsDone
+** 学习 Get Things Done
                     :PROPERTIES:
                     :Effort: 4:00
                     :END:
@@ -2242,18 +2242,3 @@ CLOSED: [2018-11-17 周六 21:25] DEADLINE: <2018-11-16 周五>
                     - Clocked out on T:[2018-11-13 周二 13:24] \\
                       确定
                     :END:
-** TODO [#B] 动态偏航是否结束? <2018-11-15 周四 03:11>                :学术:
-DEADLINE: <2018-11-21 周三>
-                    :PROPERTIES:
-                    :Effort: 16:00
-                    :END:
-                    :LOGBOOK:
-                    CLOCK: [2018-11-15 周四 03:11]--[2018-11-15 周四 03:11] =>  0:00
-                    - Clocked out on T:[2018-11-15 周四 03:11]
-                    :END:
-                    
-                    
-                    
-                    
-                    
-风轮55圈是否计算完成？！
