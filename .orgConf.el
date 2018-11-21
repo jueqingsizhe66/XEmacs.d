@@ -1544,6 +1544,14 @@ e.g. Sunday, September 17, 2000."
                                                          ;;
 (add-hook 'org-brain-after-visualize-hook #'aa2u-buffer) ;;
 
+;; deft connect to org-brain(search only in the org-brain-path rather than deft-directory)
+(defun org-brain-deft ()
+  "Use `deft' for files in `org-brain-path'."
+  (interactive)
+  (let ((deft-directory org-brain-path)
+        (deft-recursive t)
+        (deft-extensions '("org")))
+    (deft)))
 
 ;; Here’s a command which uses org-cliplink to add a link from the clipboard as an org-brain resource. It guesses the description from the URL title. Here I’ve bound it to L in org-brain-visualize.
 

@@ -1116,7 +1116,6 @@ In view of all that has been mentioned so far, one may suppose that …
 There remain several aspects of X about which relatively little is known.
 ** judy swan, Scientific writing:Beyong Tips and tricks
 :LOGBOOK:
-CLOCK: [2018-11-20 周二 01:51]
 CLOCK: [2018-11-20 周二 01:27]--[2018-11-20 周二 01:38] =>  0:11
 - Clocked out on T:[2018-11-20 周二 01:38] \\
   stop for a moment
@@ -1270,5 +1269,9 @@ Listen to the readers!
 (Do you mean this?!)
 
 substance 内容！
+** CADCAE自由空间
+王推荐: http://www.hao007.net/bbs/forum.php
 
-
+额外搜出来的
+http://www.mechbbs.com/forum.php?mod=forumdisplay&fid=38
+http://www.cncaetech.com/

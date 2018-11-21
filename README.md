@@ -6553,6 +6553,21 @@ to find the help files for the org-mode.(刚才提到的org-brain的`V`类似于
 
 `M-x aa2u`之后，会直接把横线连城直线, 进一步可以学习[sketch的用法][332]
 
+#### org-brain 配合上deft
+
+
+``` elisp
+(defun org-brain-deft ()
+  "Use `deft' for files in `org-brain-path'."
+  (interactive)
+  (let ((deft-directory org-brain-path)
+        (deft-recursive t)
+        (deft-extensions '("org")))
+    (deft)))
+```
+
+调用deft来查找所有在org-brain-path目录下的文件，而不是org-deft-path目录下的文件(针对您脑图系统
+的重要更新)。
 ### 131. 重复命令
 
 
@@ -7658,6 +7673,12 @@ Aaron Bieber 给我们介绍它是如何使用[org-refile][461]
         The main thing you can configure about Refile is where the target list comes from and how it is presented.
 
 一个加入org-agenda-files的文件，只有具有标题，才能让`org-refile`捕捉得到，只要有标题就可以查到。
+
+### 166. Counsel-outline
+
+
+`M-x counel-outline`可以快速打开markdown或者org-mode的目录!
+对应的快捷键`C-c o`
 
 
 
