@@ -1,2 +1,4 @@
+#+BRAIN_FRIENDS: K-e
+
 #+BRAIN_PARENTS: 湍流模型
 

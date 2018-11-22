@@ -1,0 +1,9 @@
+* 单机气动研究
+:PROPERTIES:
+:ID:       1a7a6ce7-04ff-4c68-b14f-9f4c61ef2474
+:BRAIN_PARENTS:
+:END:
+* 微观选址
+:PROPERTIES:
+:ID:       1140b5b2-550f-4286-a109-0e6cf83183a8
+:END:

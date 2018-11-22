@@ -1,2 +1,4 @@
+#+BRAIN_FRIENDS: SA
+
 #+BRAIN_PARENTS: 湍流模型
 

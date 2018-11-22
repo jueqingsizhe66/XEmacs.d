@@ -1623,6 +1623,7 @@ CLOSED: [2018-11-09 周五 22:31] DEADLINE: <2018-11-09 周五>
                     :Effort: 1:00
                     :END:
                     :LOGBOOK:
+                    CLOCK: [2018-11-21 周三 22:17]
                     CLOCK: [2018-11-11 周日 14:06]--[2018-11-11 周日 14:26] =>  0:20
                     - Clocked out on T:[2018-11-11 周日 14:26] \\
                       通道
@@ -1724,6 +1725,7 @@ RGB颜色模式----对应尺寸10.6*10.6（印刷留3cm)----300ppi ---->针对�
 
 3. 艺术，让人脱颖而出
    发现、联系、重组（发现很重要，联系也重要，最后得重组)
+
    王阳明有一句话:" 你未看此花时，此花与汝同归于寂；你来看此花时，则此花颜色一时明白起来"
      口语：”有一段花开了，你没看他时，就好像她没开；你看它时，那么花瞬时在你眼前明亮起来“,要用艺术的眼光欣赏
 
@@ -1805,7 +1807,13 @@ Adams： 我们不只是用相机拍照，我们带到摄影中去的是所有�
 
 了解你从事的东西的背景（仓鼠，重复的工作）, 要跳出你的圈子，进入到速度曲线内(能把你弹出去）。
 
-
+[[file:~/.emacs.d/README.md][readme]]
+Remember there are no hard and fast rules here. It’s your Brain. 
+However, there are some basic information architecture principles that should be followed 
+when organizing information sets. 
+1. Things that are a part of a group should all be together below as Child Thoughts.(组合的思想)
+2. Things that define a group should be above as Parent Thoughts. 
+3. Things that are related but not part of the main group should be linked on the left as Jump Thoughts.(联想）
 
 *** 穿越苍穹
  https://v.qq.com/x/cover/0p0e0dhv8v1non9.html?ptag=baidu.aladdin.movie

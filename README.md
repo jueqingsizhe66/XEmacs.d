@@ -6416,13 +6416,34 @@ data into it)
 
 ### 130. Vinsualize your wiki into your brain
 
+使用org-brain之前，你得去了解你的读者是怎么思考?它是怎么解释这个过程【hierarchy】? 一定得去琢磨读者的第一思维过程。
+【第一思维】
+
+一方面你是在展现你的brain，但是其实更重要的是你在effect the thinking process of your readers(
+中国有一句古话：知己知彼、百战不殆).
+
 [org-brain][323] 金字塔原理的一个实现(relationship chart flow), 类似于[org-wiki][324], [vimwiki][325]的wiki系统，主要体现的思想是parent-children.
 
 1. 当前heading(每一个heading都可以进行v，`M-x org-brain-visualize entry-your-select`, 也叫作active Thought(当前思考的内容)
 2. 当前Heading的同级Heading(brother and sister..) ; map图的右边显示active thought(或者当前heading)的siblings图
 3. 当前父Heading(p   大写P去除父heading）  map图当前heading上方显示
 4. 当前子Heading(c   大写C去除子Heading)   map图当前heading下方显示
-5. 不属与当前heading范畴的其他heading([Friend or jump heading][324] ) map图当前heading平行显示
+5. 不属与当前heading范畴的其他heading([Friend or jump heading][324] , 但是你联想到的) map图当前heading平行显示
+
+你可以使用父子parent-child relationship 来interpret你接触到的信息,报告,阅读的内容(山谷节奏，音乐节奏，联想都是有坡起、下降的过程)。
+
+vertical thinking(vertical market, vertical relationship.. 比如风电，风力机，齿轮箱，轴承，对于本体和部件的思考)
+horizontal thining(horizontal market, horizontal relationship.. such as 除了风电还有火电，水电等)
+
+1. "if-else" decision tree--->"if-else" thinking
+2. project management
+3. market analysis and research
+4. IT network and application
+5. Company and department mappings(start with bigger, such as, head offices, then subdivisions or taskforces)
+6. Offer request
+People linked to their corresponding departments, their family etc as Jump nodes(Jump thoughts 跳跃性思维)
+
+
 
 
 org-brain最重要的是他的org-id(虽然也可以使用org file形式来进行，但是速度慢)
@@ -6461,19 +6482,21 @@ org-brain最重要的是他的org-id(虽然也可以使用org file形式来进�
 ```
 
 `h` or `*`是指在当前active idea文件下产生一个headline，而`c`会产生一个新文件，并让其成为当前文件的下级文件
+当然有时候我们需要让他们建立联系（并且这种联系是内在的联系，分组的联系）这时候就需要使用`c`来create values between
+each other, 通过大写的`C`解除cancel彼此之间的联系<2018-11-22 13:53> 
 
 `t`我发现也挺好用的，经常你可能进行重命名
 
-`v`为了快速定位到某个node，也可以直接用v然后输入entry即可。
+`v`为了快速定位到某个node，也可以直接用v然后输入entry即可。`m`命令挺好用的，方便你进行观察
 
 ####   going up to broader topics or drilling down into more specifics
 
 Remember there are no hard and fast rules here. It’s your Brain. 
 However, there are some basic information architecture principles that should be followed 
 when organizing information sets. 
-1. Things that are a part of a group should all be together below as Child Thoughts. 
+1. Things that are a part of a group should all be together below as Child Thoughts.(组合的思想)
 2. Things that define a group should be above as Parent Thoughts. 
-3. Things that are related but not part of the main group should be linked on the left as Jump Thoughts.
+3. Things that are related but not part of the main group should be linked on the left as Jump Thoughts.(联想,还不能叫做联想，应该叫做跳跃性思维,peripheral外围的、次要的、 和主体相关，但是并未被分组到当前主题）
 
 For instance, say you are building a Brain of your hobbies. “Hobbies” is the Parent Thought because it defines the group. 
 Your actual hobbies, being subcategories of this concept, would then be displayed below as Child Thoughts.
