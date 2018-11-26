@@ -625,8 +625,12 @@ click [magit][5]
 
 
 <2018-05-03 13:25> 在magit的log view中可以使用 l来进行界面的更改
-```
 
+S 把所有untracked files变成tracked状态,相当于git add .
+s 把当前光标下的文件变成tracked状态 ，相当于 git add 文件名
+c 进行commit（提示选择功能，再c一次，完成commit）
+```
+使用magit，不需要在Emacs和Terminal之间来回切换，提高了效率。
 
 阅读[emacs教程][25]安装了git blame
 git blame 安装
@@ -4043,6 +4047,7 @@ setq-default evil-escape-key-sequence "jk")
 
 ```
 
+<2018-11-26 23:02>不错
 还可以使用M-x git-timemachine show nth version: 指定具体某个版本
 
 
@@ -7708,7 +7713,7 @@ Aaron Bieber 给我们介绍它是如何使用[org-refile][461]
 One news: [doom-modeline 5x released faster][463]
 
 需要[all-the-icons][4]的支持, 于是`M-x all-the-icons-install-fonts`，提示安装路径，会下载fonts，然后把那些
-ttf结尾的字体文件拷贝到`C:/windows/fonts`进行安装。 重启Emacs，ok！
+ttf结尾的字体文件拷贝到`C:/windows/fonts`进行安装(Linux和macs自动安装了)。 重启Emacs，ok！
 
 
 更改ui.el底下的主题为`doom-dracula` ,并删除nyan-mode. 你可以使用`M-x load-theme`进行尝试，确定哪个主题比较好用
