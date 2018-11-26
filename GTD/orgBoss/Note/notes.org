@@ -4278,3 +4278,38 @@ IDO: Interactive Do things!
 According to Mickey, IDO is the greatest thing
 
 https://github.com/howardabrams/dot-files/blob/master/emacs.org#ido-interactively-do-things
+** the brain9几个用法 [#B]                                          :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-11-23 周五 12:57]--[2018-11-23 周五 13:11] =>  0:14
+:END:
+                         Added: [2018-11-23 周五 12:57]
+                         
+                         
+1. 更加丰富的note风格
+2. 更加方便的child created(f6),parent created(f7), jump created(f8), 通过分号进行划分，比如 1;2;3;4会创建4个节点
+3. 可以遗忘节点，然后options可以显示被遗忘的节点，可以右键被遗忘节点选择删除和记起（符合人脑的记忆）
+    当右键单击想法的同时按住shift，出来的菜单里面就是“删除”而不是“遗忘”了（默认右键是遗忘forget)。
+    呵呵，提醒一下，点击有风险，删除需谨慎
+4. 可以创建pin节点，快速切入
+5. Ctrl+左键可创立选集，然后遗忘和删除等
+** after-init-hook [#B]                                          :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-11-26 周一 13:30]--[2018-11-26 周一 13:30] =>  0:00
+- Clocked out on T:[2018-11-26 周一 13:30] \\
+  fine
+:END:
+                         Added: [2018-11-26 周一 13:29]
+                         
+                         
+是的, 其实用after-init-hook的延迟加载时是一个相当自欺欺人的事情, 现在我用这个hook加载的,
+ 一般是evil-mode这种十万火急的mode以及keyfreq和super-save这种与编辑文本如影随形悄无声息的mode.
+
+对于ivy, 我参考doom-emacs的方式, 用run-with-idle-timer加载, 同时在pre-command-hook挂临时钩子.
+ 一旦有命令运行, 就立刻强制(require 'ivy) 加载. 这样感觉上会比挂在after-init-hook好不少.
+ company就直接用run-with-idle-timer就完事了.
+
+其实最让我烦躁的就是lisp-interaction-mode, 这个模式名不副实. 想象一下如果我要写一段代码,
+ 为什么我不用elisp-mode, 如果要交互式运行, 为什么不用ielm-mode呢?
+ 最恶心的是这个小东西是开始时随着*scratch*被强制加载的, 还属于prog-mode.
+ 导致一票诸如aggressive-indent-mode lispy hs-minor-mode 也被这个家伙加载起来了.
+ 事实上我们用scratch buffer并不会立马用到这么多高级功能. 它一开emacs就加载反而影响我的体验.

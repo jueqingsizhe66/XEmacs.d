@@ -48,7 +48,8 @@
 (add-to-list 'load-path "~/.emacs.d/themes/spacemacs-theme")
 ;(load-theme 'tomorrow-night-bright t)
 ;(load-theme 'spacemacs-dark t)
-(load-theme 'srcery t)
+;(load-theme 'srcery t)
+(load-theme 'doom-dracula t)
   (setq spacemacs-theme-org-agenda-height nil)
   (setq spacemacs-theme-org-height nil)
 ;; set sizes here to stop spacemacs theme resizing these
@@ -101,29 +102,6 @@
 ;; no bell
 (setq ring-bell-function 'ignore)
 
-;
-;(require 'neotree)
-;(global-set-key [f6] 'neotree-toggle)
-
-
-
-
-; 语法高亮。除 shell-mode 和 text-mode 之外的模式中使用语法高亮。
-;进行语法加亮。
-
-;(require 'all-the-icons)
-; (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-
-
-
-;;----------日历设置--------------------
-
-;;设置日历的一些颜色
-;(setq calendar-load-hook
-;'(lambda ()
-;;(set-face-foreground 'diary-face "")
-;;(set-face-background 'holiday-face "slate blue")
-;;(set-face-foreground 'holiday-face "white")))
 
 ;;设置我所在地方的经纬度，calendar里有个功能是日月食的预测，和你的经纬度相联系的。
 ;; 让emacs能计算日出日落的时间，在 calendar 上用 S 即可看到
@@ -206,113 +184,46 @@
 (setq islamic-holidays nil)
 (setq solar-holidays nil)
 
-
-;;Calendar模式支持各种方式来更改当前日期
-;;（这里的“前”是指还没有到来的那一天，“后”是指已经过去的日子）
-;; q 退出calendar模式
-;; C-f 让当前日期向前一天
-;; C-b 让当前日期向后一天
-;; C-n 让当前日期向前一周
-;; C-p 让当前日期向后一周
-;; M-} 让当前日期向前一个月
-;; M-{ 让当前日期向后一个月
-;; C-x ] 让当前日期向前一年
-;; C-x [ 让当前日期向后一年
-;; C-a 移动到当前周的第一天
-;; C-e 移动到当前周的最后一天
-;; M-a 移动到当前月的第一天
-;; M-e 多动到当前月的最后一天
-;; M-< 移动到当前年的第一天
-;; M-> 移动到当前年的最后一天
-
-;;Calendar模式支持移动多种移动到特珠日期的方式
-;; g d 移动到一个特别的日期
-;; o 使某个特殊的月分作为中间的月分
-;; . 移动到当天的日期
-;; p d 显示某一天在一年中的位置，也显示本年度还有多少天。
-;; C-c C-l 刷新Calendar窗口
-
-;; Calendar支持生成LATEX代码。
-;; t m 按月生成日历
-;; t M 按月生成一个美化的日历
-;; t d 按当天日期生成一个当天日历
-;; t w 1 在一页上生成这个周的日历
-;; t w 2 在两页上生成这个周的日历
-;; t w 3 生成一个ISO-SYTLE风格的当前周日历
-;; t w 4 生成一个从周一开始的当前周日历
-;; t y 生成当前年的日历
-
-;;EMACS Calendar支持配置节日：
-;; h 显示当前的节日
-;; x 定义当天为某个节日
-;; u 取消当天已被定义的节日
-;; e 显示所有这前后共三个月的节日。
-;; M-x holiday 在另外的窗口的显示这前后三个月的节日。
-
-
-;; 另外，还有一些特殊的，有意思的命令：
-;; S 显示当天的日出日落时间(是大写的S)
-;; p C 显示农历可以使用
-;; g C 使用农历移动日期可以使用
-
-;;-----------日历设置结束----------------
-;;-----------日记设置---------------------
-
 (setq diary-file "~/.emacs.d/CalendarDairy/diary.org");; 默认的日记文件
 (setq diary-mail-addr "zhaoturkkey@163.com")
-;;(add-hook 'diary-hook 'appt-make-list)
-;;当你创建了一个'~/diary'文件，你就可以使用calendar去查看里面的内容。你可以查看当天的事件，相关命令如下 ：
-;; d 显示被选中的日期的所有事件
-;; s 显示所有事件，包括过期的，未到期的等等
+;(nyan-mode t)
 
-;; 创建一个事件的样例：
-;; 02/11/1989
-;; Bill B. visits Princeton today
-;; 2pm Cognitive Studies Committee meeting
-;; 2:30-5:30 Liz at Lawrenceville
-;; 4:00pm Dentist appt
-;; 7:30pm Dinner at George's
-;; 8:00-10:00pm concert
-
-;; 创建事件的命令：
-;; i d 为当天日期添加一个事件
-;; i w 为当天周创建一个周事件
-;; i m 为当前月创建一个月事件
-;; i y 为当前年创建一个年事件
-;; i a 为当前日期创建一个周年纪念日
-;; i c 创建一个循环的事件
-
-;;----------日记设置结束-----------------
+(use-package doom-modeline
+      :ensure t
+      :defer t
+      :hook (after-init . doom-modeline-init))
 
 
-;;;magit configure from http://whattheemacsd.com/
+;; How tall the mode-line should be (only respected in GUI Emacs).
+(setq doom-modeline-height 25)
 
-;; C-c C-a to amend without any prompt
+;; How wide the mode-line bar should be (only respected in GUI Emacs).
+(setq doom-modeline-bar-width 3)
+(setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
+
+;; What executable of Python will be used (if nil nothing will be showed).
+(setq doom-modeline-python-executable "python")
+
+;; Whether show `all-the-icons' or not (if nil nothing will be showed).
+;; The icons may not be showed correctly on Windows. Disable to make it work.
+(setq doom-modeline-icon t)
+
+;; Whether show the icon for major mode. It should respect `doom-modeline-icon'.
+(setq doom-modeline-major-mode-icon t)
+
+;; Don’t compact font caches during GC.
+;; If you are expereicing the laggy issue especially on Windows, please set to
+;; non-nil.
+(setq inhibit-compacting-font-caches t)
+;(use-package all-the-icons)
 
 
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    ;; (setq default-mode-line-format                                                                   ;;
-    ;;       (list ""                                                                                   ;;
-    ;;             'mode-line-modified                                                                  ;;
-    ;;             "<"                                                                                  ;;
-    ;;             "YeZhaoliang"                                                                        ;;
-    ;;             "> "                                                                                 ;;
-    ;;             "%10b"                                                                               ;;
-    ;;             '(:eval (when nyan-mode (list (nyan-create))));;注意添加此句到你的format配置列表中   ;;
-    ;;             " "                                                                                  ;;
-    ;;             'default-directory                                                                   ;;
-    ;;             " "                                                                                  ;;
-    ;;             "%[("                                                                                ;;
-    ;;             'mode-name                                                                           ;;
-    ;;             'minor-mode-list                                                                     ;;
-    ;;             "%n"                                                                                 ;;
-    ;;             'mode-line-process                                                                   ;;
-    ;;             ")%]--"                                                                              ;;
-    ;;             "Line %l--"                                                                          ;;
-    ;;             '(-3 . "%P")                                                                         ;;
-    ;;             "-%-"))                                                                              ;;
-    ;; (nyan-mode t);;启动nyan-mode                                                                     ;;
-    ;; ;(nyan-start-animation);;开始舞动吧（会耗cpu资源）                                               ;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(nyan-mode t)
+(use-package all-the-icons-ivy
+  :ensure t
+  :config
+  (all-the-icons-ivy-setup))
+;(setq all-the-icons-ivy-buffer-commands '())
+(setq all-the-icons-ivy-file-commands
+      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir))
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)

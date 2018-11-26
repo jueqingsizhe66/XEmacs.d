@@ -101,6 +101,9 @@ DEADLINE: <2018-11-11 周日>
                     :Effort: 1:00
                     :END:
                     :LOGBOOK:
+                    CLOCK: [2018-11-24 周六 15:30]--[2018-11-24 周六 19:51] =>  4:21
+                    - Clocked out on T:[2018-11-24 周六 19:51] \\
+                      python生态了解
                     CLOCK: [2018-10-23 周二 22:55]--[2018-10-23 周二 23:33] =>  0:38
                     - Clocked out on T:[2018-10-23 周二 23:33] \\
                       学习pandas 分析网络数据，并使用jupyter记录数据
@@ -135,7 +138,23 @@ https://note.youdao.com/share/?id=d73ecd8bfe94d2328316bd194b5de781&type=notebook
 
                     
 http://pandas.pydata.org/
-                         
+
+python科学计算之Pandas
+ http://www.datadependence.com/2016/05/scientific-python-pandas/                         
+ 
+kaggle kernal
+https://www.youtube.com/watch?v=ENPBTl0uNOE
+
+https://www.kaggle.com/   kaggle kernal is just the same as  the jupyter notebook
+
+The ingredients to grow your work as a data scientists
+
+Kaggle kernals is a great place to showcase your work, learn new things, and collaborate
+
+With a large community of 1.1MM data scientists, we can learn valuable industry trends.
+
+Apache kaggle组织
+https://github.com/apachecn/kaggle
 ***  What pandas solve?
 
 Python has long been great for data munging(整理) and preparation, but less so for data
@@ -483,7 +502,30 @@ dir(module_name) 有用哈
 还是需要进一步沉稳！
 
 python的所有东西都是对象。同时也需要结合函数式编程方式，来学习面向对象编程。
+
+python使用手册
+https://docs.python.org/3.7/contents.html
+
+*** pyCharm快捷键使用
+Alt+左右箭头，代表切换tab
+Alt+上下箭头，代表切换上下函数定义(切换快的作用)
+
+
+在学习的时候特别适合这种方式:
+问题：在pycharm中点击run运行程序，发现没有打开run窗口，而是打开的Python console窗口。
+解决方法：打开菜单栏run->edit configurations，把下图中的复选框取消(复选框的意义是说run with Python Console)就可以了。
+
+或者  runfile('learnPython.py')
+
 *  第一、二章 准备与例子
+:LOGBOOK:
+CLOCK: [2018-11-23 周五 13:11]--[2018-11-23 周五 14:14] =>  1:03
+- Clocked out on T:[2018-11-23 周五 14:14] \\
+  help(json.loads)
+CLOCK: [2018-11-23 周五 12:21]--[2018-11-23 周五 12:57] =>  0:36
+- Clocked out on T:[2018-11-23 周五 12:57] \\
+  二维数组用法
+:END:
 第一章 准备工作
 今天开始码这本书--《利用python进行数据分析》。R和python都得会用才行，
 这是码这本书的原因。首先按照书上说的进行安装，google下载了epd_free-7.3-1-win-x86.msi，译者建议按照作者的版本安装,EPDFree包括了 Numpy,Scipy,matplotlib,Chaco,IPython.这里的pandas需要自己安装，对应版本为pandas-0.9.0.win32-py2.7.exe.数据下载地址：github.com/pydata/pydata-book.下面是一个文档：

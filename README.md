@@ -7703,11 +7703,24 @@ Aaron Bieber 给我们介绍它是如何使用[org-refile][461]
 `M-x counel-outline`可以快速打开markdown或者org-mode的目录!
 对应的快捷键`C-c o`
 
+### 167. doom-modeline
+
+One news: [doom-modeline 5x released faster][463]
+
+需要[all-the-icons][4]的支持, 于是`M-x all-the-icons-install-fonts`，提示安装路径，会下载fonts，然后把那些
+ttf结尾的字体文件拷贝到`C:/windows/fonts`进行安装。 重启Emacs，ok！
+
+
+更改ui.el底下的主题为`doom-dracula` ,并删除nyan-mode. 你可以使用`M-x load-theme`进行尝试，确定哪个主题比较好用
+
+并安装了 [all-the-icons-ivy][464]和[all-the-icons-dired][465]
+
+![all-the-icons][466]
+
 
 
 ----------
 ----------
-
 
 
 
@@ -8172,3 +8185,7 @@ Aaron Bieber 给我们介绍它是如何使用[org-refile][461]
 [460]: https://emacs-china.org/t/topic/4267
 [461]: https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
 [462]: https://github.com/howardabrams/dot-files/blob/master/emacs.org#perspective
+[463]: https://www.reddit.com/r/emacs/comments/9ytk8l/doommodeline_081_released_5x_faster/
+[464]: https://github.com/asok/all-the-icons-ivy
+[465]: https://github.com/jtbm37/all-the-icons-dired
+[466]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/all-the-icons.png
