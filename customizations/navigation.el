@@ -249,3 +249,21 @@
   :config
     (setq persp-interactive-completion-function #'ido-completing-read)
     (persp-turn-off-modestring))
+
+;(load "inertial-scroll.el")
+;(require 'inertial-scroll)
+
+
+(require 'inertial-scroll)
+(inertias-global-minor-mode 1)
+(setq inertias-initial-velocity 70)
+(setq inertias-friction 200)
+(setq inertias-update-time 50)
+(setq inertias-rest-coef 0.1)
+
+
+(global-set-key (kbd "C-S-u") 'inertias-down)
+(global-set-key (kbd "C-S-d") 'inertias-up)
+(global-set-key (kbd "C-S-<SPC>") 'inertias-stop) 
+
+;; continut c-s-d then you will stop

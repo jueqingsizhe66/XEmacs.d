@@ -535,6 +535,7 @@ First mark, and then add cursors.
 `g r j` 表示向下行插入cursor
 `g r k` 表示向上行插入cursor
 
+<2018-11-27 04:24> 又想起了你! grm!
 2. 切换功能:
 
 `g r f` 调到第一个mark cursor, `g r l` 跳到最后一个
@@ -631,6 +632,16 @@ s 把当前光标下的文件变成tracked状态 ，相当于 git add 文件名
 c 进行commit（提示选择功能，再c一次，完成commit）
 ```
 使用magit，不需要在Emacs和Terminal之间来回切换，提高了效率。
+
+``` org
+magit diff
+输入对应节点的commit hash
+然后n向下，p向上
+j快捷键打开两个分支的不同
+
+你可以使用 magit-log-all 然后配合上magit-diff 观看不同点， git-timemachine一个好处是只针对一个文件进行
+所以相对来说会更快一些，magit-diff是针对一个commit点之间的比较。
+```
 
 阅读[emacs教程][25]安装了git blame
 git blame 安装
@@ -7722,6 +7733,13 @@ ttf结尾的字体文件拷贝到`C:/windows/fonts`进行安装(Linux和macs自�
 
 ![all-the-icons][466]
 
+### 168. inertial-scroll
+
+
+仿照[comfortable-motion.vim][467] , 利用[Emacs-inertial-scroll][468]提高访问文件的感觉
+
+可以在navigation.el进行修改;
+
 
 
 ----------
@@ -8193,4 +8211,5 @@ ttf结尾的字体文件拷贝到`C:/windows/fonts`进行安装(Linux和macs自�
 [463]: https://www.reddit.com/r/emacs/comments/9ytk8l/doommodeline_081_released_5x_faster/
 [464]: https://github.com/asok/all-the-icons-ivy
 [465]: https://github.com/jtbm37/all-the-icons-dired
-[466]:https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/all-the-icons.png
+[466]: https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/all-the-icons.png
+[467]: https://github.com/yuttie/comfortable-motion.vim
