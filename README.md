@@ -6567,7 +6567,7 @@ Think up, think down! Think others! All depends on you! Just free yourself
 
 org-brain只是针对当前entry的前后关系的展示（an visualization for current entry）
 
-1. 打开一个idea的文件，然后`org-brain-visualization`,紧接着你就可以不断的`c` and `p` 甚至`f`(注意active idea一般指的是字体颜色为白色，有链接的entry都不是当前的entry!)
+1. [ ] 打开一个idea的文件，然后`org-brain-visualization`,紧接着你就可以不断的`c` and `p` 甚至`f`(注意active idea一般指的是字体颜色为白色，有链接的entry都不是当前的entry!)
 2. 当然现在的方式是你可以使用`C-c c` 选择`b`,然后可以针对某个具有id的entry添加内容(但不带id，也就是无法成为entry),
    为了可以成为id `M-x org-id`即可!
 3. 当你在org-brain窗口下，你可以使用`v`跳转到你要的entry下，并进行相应的编辑(也就是变成白色字体),最简单的方式是摁下`<Cr>`键即可，
@@ -6640,8 +6640,8 @@ M-x package-install ac-geiser
 
 ``` scheme
 (setq geiser-active-implementations '(racket))
-(setq geiser-racket-binary "c:\\Program Files\\Racket\\Racket.exe")
 ```
+(setq geiser-racket-binary "c:\\Program Files\\Racket\\Racket.exe")
 
 ![racket][334]
 
@@ -7740,7 +7740,109 @@ ttf结尾的字体文件拷贝到`C:/windows/fonts`进行安装(Linux和macs自�
 
 可以在navigation.el进行修改;
 
+### 169. python completion (elpy anaconda-mode)
 
+
+试过[ jedi-mode ][451], [ lsp-mode ][450]都不好使，于是改用[elpy][468]和[anaconda-mode][469]
+
+
+``` python
+pip33 install 
+# Either of these
+pip3 install rope
+pip3 install jedi
+# flake8 for code checks
+pip3 install flake8
+# importmagic for automatic imports
+pip3 install importmagic
+# and autopep8 for automatic PEP8 formatting
+pip3 install autopep8
+# and yapf for code formatting
+pip3 install yapf
+pip3 install black
+
+
+ 
+One-line install: pip3 install jedi flake8 importmagic autopep8 black
+```
+
+
+`M-x package-install elpy`
+
+
+``` org
+(package-initialize)
+(elpy-enable)
+```
+然后检查一下`M-x elpy-config`看一下是不是都齐全了
+
+Ei,yes!点号，等上一小会就会有提示出现了(实现了你的目标了)
+
+你就可以使用`C-c C-c` 直接运行python代码(elpy提供很多格式化代码的方法)
+同样的道理你也是可以send class,def等进行局部编译,这是很好玩的地方，也就是可以测试语句，一个函数等
+
+不妨敲入`C-c C-y `  e表示执行statement  f代表函数(相当于把这个语句黏贴到python后台进行输出，看看效果对不对)
+``` Emacs-lisp
+(defvar elpy-shell-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "e") 'elpy-shell-send-statement)
+    (define-key map (kbd "E") 'elpy-shell-send-statement-and-go)
+    (define-key map (kbd "s") 'elpy-shell-send-top-statement)
+    (define-key map (kbd "S") 'elpy-shell-send-top-statement-and-go)
+    (define-key map (kbd "f") 'elpy-shell-send-defun)
+    (define-key map (kbd "F") 'elpy-shell-send-defun-and-go)
+    (define-key map (kbd "c") 'elpy-shell-send-defclass)
+    (define-key map (kbd "C") 'elpy-shell-send-defclass-and-go)
+    (define-key map (kbd "o") 'elpy-shell-send-group)
+    (define-key map (kbd "O") 'elpy-shell-send-group-and-go)
+    (define-key map (kbd "w") 'elpy-shell-send-codecell)
+    (define-key map (kbd "W") 'elpy-shell-send-codecell-and-go)
+    (define-key map (kbd "r") 'elpy-shell-send-region-or-buffer)
+    (define-key map (kbd "R") 'elpy-shell-send-region-or-buffer-and-go)
+    (define-key map (kbd "b") 'elpy-shell-send-buffer)
+    (define-key map (kbd "B") 'elpy-shell-send-buffer-and-go)
+    (define-key map (kbd "C-e") 'elpy-shell-send-statement-and-step)
+    (define-key map (kbd "C-S-E") 'elpy-shell-send-statement-and-step-and-go)
+    (define-key map (kbd "C-s") 'elpy-shell-send-top-statement-and-step)
+    (define-key map (kbd "C-S-S") 'elpy-shell-send-top-statement-and-step-and-go)
+    (define-key map (kbd "C-f") 'elpy-shell-send-defun-and-step)
+    (define-key map (kbd "C-S-F") 'elpy-shell-send-defun-and-step-and-go)
+    (define-key map (kbd "C-c") 'elpy-shell-send-defclass-and-step)
+    (define-key map (kbd "C-S-C") 'elpy-shell-send-defclass-and-step-and-go)
+    (define-key map (kbd "C-o") 'elpy-shell-send-group-and-step)
+    (define-key map (kbd "C-S-O") 'elpy-shell-send-group-and-step-and-go)
+    (define-key map (kbd "C-w") 'elpy-shell-send-codecell-and-step)
+    (define-key map (kbd "C-S-W") 'elpy-shell-send-codecell-and-step-and-go)
+    (define-key map (kbd "C-r") 'elpy-shell-send-region-or-buffer-and-step)
+    (define-key map (kbd "C-S-R") 'elpy-shell-send-region-or-buffer-and-step-and-go)
+    (define-key map (kbd "C-b") 'elpy-shell-send-buffer-and-step)
+    (define-key map (kbd "C-S-B") 'elpy-shell-send-buffer-and-step-and-go)
+    map)
+  "Key map for the shell related commands")
+```
+
+
+`C-c C-o` 提出当前文件下的所有定义，类似于markdown文件org文件的`C-c o`的outline功能
+但是跳转定义老是有问题，提示timeout(有时候而已，可能一两次)
+`M-x elpy-goto-definition` 也是不错啦!
+
+`C-c C-d`也是不错哈,类似下面的anaconda-mode！
+有必要说一下`S-RET`插入一个tab长度，直接Ret有问题的!
+`C-c C-v`可以进行flake8检查(C-c C-t进行测试)
+
+``` Emacs-lisp
+
+    (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
+    (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+
+    (define-key map (kbd "<C-return>") 'elpy-shell-send-statement-and-step)
+
+```
+
+anaconda-mode的`M-?`查看文档(和elpy-doc一样好使)，特别有用！ `M-r`查看引用, `C-M-i`进行补全，特别有用(第一步得先运行C-M-i，
+然后才可以启动(气动)elpy的自动补全!
+
+有了这么多功能，相信emacs下面的python开发也是不错的!
 
 ----------
 ----------
@@ -8213,3 +8315,7 @@ ttf结尾的字体文件拷贝到`C:/windows/fonts`进行安装(Linux和macs自�
 [465]: https://github.com/jtbm37/all-the-icons-dired
 [466]: https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/all-the-icons.png
 [467]: https://github.com/yuttie/comfortable-motion.vim
+[468]: https://elpy.readthedocs.io/en/latest/introduction.html
+[469]: https://github.com/proofit404/anaconda-mode
+[450]: https://github.com/emacs-lsp/lsp-mode
+[451]: https://github.com/tkf/emacs-jedi

@@ -25,12 +25,17 @@
 )
 
 (add-hook 'python-mode-hook 'anaconda-mode)
-
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-(setq python-shell-interpreter "c://Python27//python.exe")
+(setq python-shell-interpreter "c://Python37//python.exe")
 (setq python-shell-prompt-regexp "In \\[[0-9]+\\]: "
 python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: ")
-(setq python-shell-completion-native-enable nil)
+;;(setq python-shell-completion-native-enable nil)
+;(setq python-shell-completion-native-enable t)
+
+(elpy-enable)
+;(elpy-rpc-error-timeout 30)
+;(elpy-rpc-python-command "python3")
+;(elpy-rpc-timeout 30)
 ;	(defvar local-packages '(projectile auto-complete epc jedi))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (use-package jedi-core                                                   ;;

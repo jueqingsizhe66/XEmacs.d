@@ -1045,6 +1045,41 @@ Ture!---idea- -----write paper(force you search on line)-----do search
 
 
 
+** The fieldstone method [#B]                                       :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-11-29 周四 00:12]--[2018-11-29 周四 00:22] =>  0:10
+:END:
+                         Added: [2018-11-29 周四 00:12]
+                         
+                         
+I fill stones into wall ==== writing 
+(stone is something you and  I can understand. One ppt or one picture is also our wall)
+
+Every wall has its history, which don't need every stone.
+
+Language allow us to display space and time(因为语言是我们之间的桥梁,let me connect you by language!
+
+Language is an medium to communicate between each other.
+
+Treat yourself to a writing instrument that you love to hold in your hand .
+You are a special person, and your writing part is a special part of you, so you deserve this treat
+when you thought about choosing a special book and writing instrument for yourself,
+ how did you feel? what was it like to actually choose these very personal items?
+ 
+what message did you tell yourself? if you weren't able to do the assignment, 
+what did you tell yourself?
+
+
+编程语言不管怎么变, 能力也好还是哲学概念也好, 编程语言的本质是,
+ 建立代码和现实问题模型的桥梁, 如果编程语言本身的哲学理念和库能够极大简化解决现实问题的复杂度,
+ 这门编程语言就是好的, 适合某一领域.
+那些 OOP 语言再怎么吹工业级别的软件质量, 但是一旦还要写编译器的时候,
+ 函数式的威力就出来了, 极大的简化了编译器的各种状态和解析器的构建,
+ 你看当年唐凤单刀用 Haskell 写了 Perl6 编译器, 就知道函数式语言的威力在什么地方了.
+
+不是说这些技术和宣传不好, 关键是要保持头脑清醒, 多读书, 多锻炼, 自己的能力和独立思想才是关键.
+而是锻炼自己理解现实需求和抽象代码的能力, 这才是最优的方式
+(不断锻炼自己、让自己学习)
 * 升力面和升力线
 升力面方法一般是在环量求解时基于流动无分离假设，当解出叶片攻角后再通过翼型气动数据算出气动力，因此
 叶片绕流分离越大时，叶片环量计算偏差越大。
@@ -1543,6 +1578,12 @@ DEADLINE: <2018-12-14 周五> SCHEDULED: <2018-08-23 周四>
                     :Effort: 4:00
                     :END:
                     :LOGBOOK:
+                    CLOCK: [2018-11-28 周三 15:40]--[2018-11-28 周三 22:59] =>  7:19
+                    - Clocked out on T:[2018-11-28 周三 22:59] \\
+                      done
+                    CLOCK: [2018-11-28 周三 15:38]--[2018-11-28 周三 15:39] =>  0:01
+                    - Clocked out on T:[2018-11-28 周三 15:39] \\
+                      k
                     CLOCK: [2018-11-25 周日 18:51]
                     - New deadline from "[2018-08-28 周二]" on T:[2018-11-21 周三 18:13] \\
                       务必写完动态偏航的 初稿

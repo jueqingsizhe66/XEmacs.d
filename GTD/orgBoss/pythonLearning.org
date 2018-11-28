@@ -517,6 +517,13 @@ Alt+上下箭头，代表切换上下函数定义(切换快的作用)
 
 或者  runfile('learnPython.py')
 
+
+*** 安装python-mode for  vim
+https://github.com/python-mode/python-mode#troubleshootingdebugging
+cd ~/.vim/pack/foo/start
+git clone https://github.com/python-mode/python-mode.git
+cd python-mode
+git submodule update --init --recursive
 *  第一、二章 准备与例子
 :LOGBOOK:
 CLOCK: [2018-11-23 周五 13:11]--[2018-11-23 周五 14:14] =>  1:03
