@@ -1266,12 +1266,13 @@ CLOSED: [2018-08-12 周日 19:59] DEADLINE: <2018-08-08 周三>
 一般挂号信 学校一个月之内退回
 
 通过建行快速查找你的付款日期
-** TODO [#C] 取邮局版面费 <2018-07-31 周二 16:06>                      :@NCEPU:
-DEADLINE: <2018-11-29 周四> SCHEDULED: <2018-10-02 周二>
+** DONE [#C] 取邮局版面费 <2018-07-31 周二 16:06>                      :@NCEPU:
+CLOSED: [2018-11-29 周四 16:21] DEADLINE: <2018-11-29 周四> SCHEDULED: <2018-10-02 周二>
                     :PROPERTIES:
                     :Effort: 0:30
                     :END:
                     :LOGBOOK:
+                    - State "DONE"       from "TODO"          T:[2018-11-29 周四 16:21]
                     - New deadline from "[2018-10-16 周二]" on T:[2018-10-22 周一 14:56] \\
                       ok
                     - New deadline from "[2018-10-08 周一]" on T:[2018-10-08 周一 15:39] \\
@@ -2249,5 +2250,28 @@ DEADLINE: <2018-12-15 周六>
 奥登是星星的意思
 
 高娃是美丽的意思
-
+** TODO [#B] 练车 <2018-11-29 周四 14:31>                           :@NCEPU:
+DEADLINE: <2018-12-06 周四>
+                    :PROPERTIES:
+                    :Effort: 4:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-11-29 周四 14:31]--[2018-11-29 周四 14:32] =>  0:01
+                    :END:
+** TODO [#B] 练车2 <2018-11-29 周四 14:32>                          :@NCEPU:
+DEADLINE: <2018-12-07 周五>
+                    :PROPERTIES:
+                    :Effort: 4:00
+                    :END:
+** TODO [#B] 摩托车考试 <2018-11-29 周四 14:33>                     :@NCEPU:
+DEADLINE: <2018-12-10 周一>
+                    :PROPERTIES:
+                    :Effort: 4:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-11-29 周四 14:33]--[2018-11-29 周四 14:33] =>  0:00
+                    :END:
+                    
+                    
+                    
 

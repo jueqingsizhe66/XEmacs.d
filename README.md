@@ -7112,6 +7112,11 @@ persp视角看看吧！或者你在main视角上网, 好用!
 4. C-c c b switches buffers inside one project.类似于`M-x ido-swith-buffer`
 
 核心是： 一个项目一张办公桌。
+
+我有几个项目，则我有几张虚拟的办公桌.
+
+![PersepectiveWriting][472]
+
 ### 141. 折腾的道理
 
 
@@ -7743,7 +7748,7 @@ ttf结尾的字体文件拷贝到`C:/windows/fonts`进行安装(Linux和macs自�
 ### 169. python completion (elpy anaconda-mode)
 
 
-试过[ jedi-mode ][451], [ lsp-mode ][450]都不好使，于是改用[elpy][468]和[anaconda-mode][469]
+试过[ jedi-mode ][471], [ lsp-mode ][470]都不好使，于是改用[elpy][468]和[anaconda-mode][469]
 
 
 ``` python
@@ -8317,5 +8322,6 @@ anaconda-mode的`M-?`查看文档(和elpy-doc一样好使)，特别有用！ `M-
 [467]: https://github.com/yuttie/comfortable-motion.vim
 [468]: https://elpy.readthedocs.io/en/latest/introduction.html
 [469]: https://github.com/proofit404/anaconda-mode
-[450]: https://github.com/emacs-lsp/lsp-mode
-[451]: https://github.com/tkf/emacs-jedi
+[470]: https://github.com/emacs-lsp/lsp-mode
+[471]: https://github.com/tkf/emacs-jedi
+[472]: https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/perspectiveWriting.png
