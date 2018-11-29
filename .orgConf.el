@@ -975,7 +975,6 @@ In ~%s~:
  '(
    (shell . t)
    (python . t)
-   (R . t)
    (calc . t)
    (ruby . t)
    (ditaa . t)
@@ -986,6 +985,7 @@ In ~%s~:
    (C . t)
    (scheme . t)
    (plantuml . t)
+   (R . t) 
    ))
 
 (setq org-plantuml-jar-path (expand-file-name "~/.emacs.d/customizations/plantuml.jar"))

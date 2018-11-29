@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "org-wild-notifier" "20181128.1059" "Customizable org-agenda notifications" '((alert "1.2") (dash "2.13.0") (emacs "24.4")) :commit "12fd7a4994ee386b71b7d81f621ead7face60014" :keywords '("notification" "alert" "org" "org-agenda" "agenda") :authors '(("Artem Khramov" . "futu.fata@gmail.com")) :maintainer '("Artem Khramov" . "futu.fata@gmail.com") :url "https://github.com/akhramov/org-wild-notifier.el")

@@ -45,7 +45,6 @@
 
   (setq projectile-sort-order 'recentf)
   (setq projectile-use-git-grep t)
-
   ;; Use the faster searcher to handle project files:
   ;; ripgrep `rg', the platinum searcher `pt' or the silver searcher `ag'
   (let ((command
@@ -75,6 +74,7 @@
   (let ((val (or (getenv "P4CONFIG") ".p4config")))
     (add-to-list 'projectile-project-root-files-bottom-up val))
 
+  (setq projectile-git-submodule-command nil)
   ;; Rails project
   (use-package projectile-rails
     :diminish projectile-rails-mode

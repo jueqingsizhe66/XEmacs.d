@@ -1,5 +1,7 @@
 # 主要目的: Emacs learning(org-mode) ---Emacsable
 次要目的: clojure(closure) learning ----Clojureable
+最终目的: Exercise yourself! Train yourself! Teach yourself! Tell yourself something!
+         You should know how to help yourself(your baby too)
 
     Use your force, make it reachable(reference--relationship), Zhao!
     Make it useable!
@@ -3457,6 +3459,15 @@ TotalCmd:
 ```
 
 
+[tc的复制][473]路径命令
+
+```
+C+1=cm_CopySrcPathToClip  
+C+2=cm_CopyNamesToClip 
+C+3=cm_CopyFullnamesToClip 
+```
+
+其实还可以在命令行输入`explorer .` `cmd`等
 ### 85. 记录和查询记录
 
 1. 每次记录的时候添加tag, 归好类，事先想好下一次你会怎么找该条记录.
@@ -7809,7 +7820,7 @@ Ei,yes!点号，等上一小会就会有提示出现了(实现了你的目标了
     (define-key map (kbd "C-e") 'elpy-shell-send-statement-and-step)
     (define-key map (kbd "C-S-E") 'elpy-shell-send-statement-and-step-and-go)
     (define-key map (kbd "C-s") 'elpy-shell-send-top-statement-and-step)
-    (define-key map (kbd "C-S-S") 'elpy-shell-send-top-statement-and-step-and-go)
+    (define-key map (kbd "C-S-S") 'elpy-shell-send-top-statement-and-step-and-go
     (define-key map (kbd "C-f") 'elpy-shell-send-defun-and-step)
     (define-key map (kbd "C-S-F") 'elpy-shell-send-defun-and-step-and-go)
     (define-key map (kbd "C-c") 'elpy-shell-send-defclass-and-step)
@@ -8325,3 +8336,4 @@ anaconda-mode的`M-?`查看文档(和elpy-doc一样好使)，特别有用！ `M-
 [470]: https://github.com/emacs-lsp/lsp-mode
 [471]: https://github.com/tkf/emacs-jedi
 [472]: https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/perspectiveWriting.png
+[473]: http://www.newsmth.net/nForum/#!article/TotalCommander/55086

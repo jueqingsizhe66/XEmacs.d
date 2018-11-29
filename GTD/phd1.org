@@ -1306,7 +1306,7 @@ https://mp.weixin.qq.com/s/o9RZObStZNLPT9I7Y7wmuQ
 
 是按照距离来判断的，方圆多少米要降低到一定范围内，具体数值记不太清了
 
-** TODO [#A] 基于多轴角运动的气动特性和流场分析大论文 <2018-06-25 周一 16:19>[4/6] :学术:
+* TODO [#A] 基于多轴角运动的气动特性和流场分析大论文 <2018-06-25 周一 16:19>[5/10] :学术:
 DEADLINE: <2019-04-15 周一>
                     :PROPERTIES:
                     :Effort: 16:00
@@ -1333,6 +1333,7 @@ DEADLINE: <2019-04-15 周一>
                     - State "TODO"       from "TODO"       [2018-08-01 周三 08:48]
                     - State "TODO"       from "TODO"          [2018-07-31 周二 16:19]
                     :LOGBOOK:
+                    - State "TODO"       from "TODO"          T:[2018-11-29 周四 20:16]
                     - State "TODO"       from "TODO"          T:[2018-11-20 周二 13:48]
                     CLOCK: [2018-06-25 周一 16:19]--[2018-06-26 周二 12:02] => 19:43
                     :END:
@@ -1584,7 +1585,9 @@ DEADLINE: <2018-12-14 周五> SCHEDULED: <2018-08-23 周四>
                     CLOCK: [2018-11-28 周三 15:38]--[2018-11-28 周三 15:39] =>  0:01
                     - Clocked out on T:[2018-11-28 周三 15:39] \\
                       k
-                    CLOCK: [2018-11-25 周日 18:51]
+                    CLOCK: [2018-11-25 周日 18:51]--[2018-11-29 周四 17:10] => 94:19
+                    - Clocked out on T:[2018-11-29 周四 17:10] \\
+                      done
                     - New deadline from "[2018-08-28 周二]" on T:[2018-11-21 周三 18:13] \\
                       务必写完动态偏航的 初稿
                     CLOCK: [2018-09-29 周六 16:47]--[2018-10-05 周五 13:11] => 140:24
@@ -1657,8 +1660,8 @@ SCHEDULED: <2018-08-29 周三>
 3. [ ] 在你的计算目录下phaseAngle.csv修正
 4. [ ] 提取扭矩曲线
 5. [ ] 
-*** TODO [#B] 动态偏航是否结束? <2018-11-15 周四 03:11>                 :学术:
-DEADLINE: <2018-11-26 周一>
+*** DONE [#B] 动态偏航是否结束? <2018-11-15 周四 03:11>                 :学术:
+CLOSED: [2018-11-29 周四 20:16] DEADLINE: <2018-11-26 周一>
                     :PROPERTIES:
                     :Effort: 16:00
                     :END:
@@ -1674,3 +1677,26 @@ DEADLINE: <2018-11-26 周一>
                     
                     
 风轮55圈是否计算完成？！
+*** TODO [#B] YawingForRenewableEnergyChina <2018-11-29 周四 17:07>   :@NCEPU:
+DEADLINE: <2018-12-06 周四> SCHEDULED: <2018-11-29 周四>
+                    :PROPERTIES:
+                    :Effort: 16:00
+                    :END:
+*** TODO [#B] Yawing NREL 5MW for Energy <2018-11-29 周四 17:10>      :@NCEPU:
+DEADLINE: <2018-12-29 周六> SCHEDULED: <2018-11-29 周四>
+                    :PROPERTIES:
+                    :Effort: 12:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-11-29 周四 17:10]--[2018-11-29 周四 17:11] =>  0:01
+                    :END:
+*** TODO [#B] Platform motion with Pitching and Rolling of NREL 5MW for energy <2018-11-29 周四 17:11> :@NCEPU:
+DEADLINE: <2019-01-15 周二> SCHEDULED: <2018-11-29 周四>
+                    :PROPERTIES:
+                    :Effort: 10:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-11-29 周四 17:11]--[2018-11-29 周四 17:12] =>  0:01
+                    :END:
+                    
+                    
