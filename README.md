@@ -2,6 +2,8 @@
 次要目的: clojure(closure) learning ----Clojureable
 最终目的: Exercise yourself! Train yourself! Teach yourself! Tell yourself something!
          You should know how to help yourself(your baby too)
+         Finally, just image yourself, imagine your future, focus let you start one activity!
+         focus let you achieve your thinking.
 
     Use your force, make it reachable(reference--relationship), Zhao!
     Make it useable!
@@ -265,8 +267,8 @@ Tab打开标题
     c-c shift-> 添加calendar鼠标下的日期
     
     
-    C-c *  从普通文字切换到标题 <2018-09-04 23:36>
-    C-c -  从
+    C-c *  从普通文字切换到标题 <2018-09-04 23:36> <2018-11-30 10:46>终于用上了!
+    C-c -  添加列表项
 
 修改：------
 
@@ -288,11 +290,23 @@ C-c b 扫描所有的org文件！！！！【有用！】
 
 
 注意，在标题上面或者总任务上面的尾巴添加上[%]或者[/]即可，emacs org-mode会自动进行计算任务的[总进度][87]。
-只有在任务list才能添加勾选checkbox，标题不添加(操作方法，写上1.然后Alt+Shift+Enter, 既可以添加checkbox, 添加done标签标示完成 或者C-c C-c <2018-05-22 23:07>)。
+只有在任务list才能添加勾选checkbox，标题不添加(操作方法，写上1.然后Alt+Shift+Enter, 既可以添加checkbox, 添加done标签标示完成 或者C-c C-c <2018-05-22 23:07> <2018-11-30 11:19>)。
 
 标题加上任务状态(doing或者todo或者pending才会在大标题的统计中显示出来，否则子标题不会出现在父标题的统计状态下),
 然后在小标题里面再填写任务的各个状态[checkbox]，标题没有checkbox，只有标题tag、任务状态、标题权限,三种属性!父标题
 统计子标题状态，一定得添加任务状态! <2018-08-01 10:50>
+
+Done标签和checkbox的效果是类似的，只不过Done标签底下可以细分很多的checkbox，而checkbox不可以，
+它是任务的最小单位。(所有标题可以创建任务的分层 work breakdown models), 且在大标题上面可以添加
+`[%]`或者`[/]`来显示当前标题下的任务进度。 但是标题的任务状态只能手动改，checkbox做完后，不会自动
+修改标题的任务状态(大标题永远只会关心下一层级的任务状态todo还是done,而不会去越级关心更下一层级的事情)。
+
+org-dashboard-display,只会展示当前标题的任务是否百分之百，如果标题下面达到最小checkbox，当所有checkbox
+都打勾后，就不会显示该标题了，因为已经做完了。 而如果小标题之上还有更大标题，那么更大标题依然还会显示没做完，
+因为你得让小标题设置为Done状态，才不会被更大标题认为是做完了，也就是说标题之间通过done来确认是否做完。
+checkbox通过打钩确认做完。
+
+如果标题不带进度控制条`[/]`或者`[%]`,则不会在org-dashboard中显示.
 
 ### 8. chez-scheme的集成(scheme-editing.el)
 
@@ -588,6 +602,7 @@ add `evil-surround` into my-package list
 13. swiper
 
 
+counsel在不断进步，比如[增加ag，rg的冒号][474]
 #### 很有意思的切换
 
 <2018-10-13 13:51>
@@ -706,6 +721,9 @@ org-mode organize your life into plain text(朴素的文字形势)
 `C-c .`
 
 在查看org-agenda 的时候可以使用`v`来选择你要看的日、月、年视图等
+
+org-agenda可以通过`C-c C-x p`添加CATEGORY属性，这样就可以看到每个item的分类了,如果没有分类默认使用文件名(没有区分了)
+这就是CATEGORY属性的一种用法, 也可以在文件头添加`#+CATEGORY: 分类名`即可。
 
 有趣的org帮助 `LINK:info:org:Top`.(鼠标左键点击或者C-c C-o) 
 在该模式可以学到很多有趣的knowledge,比如你可以使用`g`进行跳转, 其实就是emacs强大的info系统，`C-h i`或者`F1 i`
@@ -1302,6 +1320,7 @@ seen from [jianshu][74]
 7. [Your Mind is for having ideas, not holding them---David Allen][83]  Use org-mode to hold it
 8. [A Brief Introduction to Literate Analytics With org-Babel][258]
 9. [Liiterate programming with org-more--Fregory J Stein][326]
+10. [Naural Project Planning with orgmode][475]
 
 a. Capture(collect what has your attention)
 ```
@@ -3541,6 +3560,12 @@ a    list all the holiday
                       (:newline)
                       (:startgroup . nil)
 
+                      ("PROJECT" . ?P)
+                      (:endgroup . nil)
+                      (:newline)
+
+                      (:startgroup . nil)
+
 
                       ("芝麻" . ?z)
                       ("橘子" . ?J)
@@ -3571,6 +3596,9 @@ a    list all the holiday
                       
 
 ```
+
+
+PROJECT means many next actions while next action means what you need to do next.
 2. 查询的时候执行`C-c a m` 查找对那个的tag即可查到你需要的，很方便的一种管理系统。比如:`芝麻`。
 
 
@@ -7439,6 +7467,8 @@ awesome-tab-kill-other-buffers-in-current-group
 
 That's it. Org-agenda show too many info, so you wanna simplify it, only shows the thing that changes in some periods.
 
+(<2018-11-30 10:28>重新使用了`C-c a R`, 因为我也添加了一个PROJECT标签，用于表明
+我可以从这个我做的project获得什么,产生远景or image,然后你才可以去逐步实现 commit他们`C-c a P`)
 
 The blog [record-org-mode-recent-activity][420] and [his agenda.el][419] will give you some advice about
 how to remember your working process. Detailed message can traced into [.orgConf.el][421]
@@ -8337,3 +8367,5 @@ anaconda-mode的`M-?`查看文档(和elpy-doc一样好使)，特别有用！ `M-
 [471]: https://github.com/tkf/emacs-jedi
 [472]: https://github.com/jueqingsizhe66/XEmacs.d/blob/develop/customizations/img/perspectiveWriting.png
 [473]: http://www.newsmth.net/nForum/#!article/TotalCommander/55086
+[474]: https://github.com/ericdanan/counsel-projectile/commit/2ce0efe47622b0e85864f778efe14b201b1ebc08
+[475]: http://members.optusnet.com.au/~charles57/GTD/Natural_Project_Planning.html

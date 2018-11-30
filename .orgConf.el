@@ -428,6 +428,7 @@ In ~%s~:
         ("lg" "git" tags "+git")
         ("ld" "Docker" tags "+Docker")
         ("lc" "CFD" tags "+CFD")
+        ("P" "Project" tags "+PROJECT") 
         ("R" "Recent activity"
                 ((tags "*"
                         ((org-agenda-overriding-header "Recent Activity")
@@ -572,7 +573,13 @@ In ~%s~:
 
                       ("crypt" . ?C)
                       (:endgroup . nil)
+
                       (:newline)
+                      (:startgroup . nil)
+                      ("PROJECT" . ?P)
+                      (:endgroup . nil)
+                      (:newline)
+
                       (:startgroup . nil)
 
 
@@ -1218,7 +1225,12 @@ Use a prefix arg to get regular RET. "                                          
 ;;;<2018-11-18 18:27>                                                          ;;
 (custom-set-variables                                                          ;;
     '(ispell-dictionary "british")                                             ;;
-    '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")) ;;
+    '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
+    '(org-agenda-ndays 1)
+    '(org-agenda-sorting-strategy (quote ((agenda time-up priority-down tag-up) (todo tag-up))))
+'(org-deadline-warning-days 7)
+
+) ;;
 
 
 
@@ -1272,11 +1284,12 @@ Use a prefix arg to get regular RET. "                                          
 
 ;;add alert notify
 (require 'org-alert)
-(setq alert-default-style 'libnotify) ;; libnotify need you path *.so in ubuntu platform
-;(setq alert-default-style 'x11) ;; libnotify need you path *.so in ubuntu platform
-(setq alert-default-style 'fringe)
+;(setq alert-default-style 'libnotify) ;; libnotify need you path *.so in ubuntu platform
+;; (setq alert-default-style 'x11) ;; libnotify need you path *.so in ubuntu platform
+;; (setq alert-default-style 'fringe)
 ;(setq alert-default-style 'mode-line)
-;(setq alert-default-style 'message)
+ (setq alert-default-style 'message)
+;; (setq alert-default-style 'growl)
 (setq org-alert-interval 1800);;default 300s
 
 
@@ -1488,6 +1501,7 @@ e.g. Sunday, September 17, 2000."
 (setq org-dashboard-files (list 
                            "~/.emacs.d/GTD/orgBoss/newgtd.org"
                            "~/.emacs.d/GTD/orgBoss/hello.org"
+                           "~/.emacs.d/GTD/phd1.org"
 ))
 
 ;For example, to avoid displaying entries that are finished (progress = 100), not started (progress = 0), or are tagged with "archive", use the following:

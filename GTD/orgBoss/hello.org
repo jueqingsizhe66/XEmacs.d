@@ -174,8 +174,12 @@ http://ul.io/nb/2018/04/30/literate-analytics-with-org-babel/
 :END:
 
 ** Milestones
-*** [66%] run 10 km/week
-**** TODO learn proper warmup
+*** DONE [100%] run 10 km/week
+:LOGBOOK:
+- State "DONE"       from              T:[2018-11-30 周五 11:28]
+:END:
+**** DONE learn proper warmup
+CLOSED: [2018-11-30 周五 11:28]
 **** DONE look for a jogging partner
 **** DONE run 10 minutes on monday
 
@@ -185,11 +189,25 @@ http://ul.io/nb/2018/04/30/literate-analytics-with-org-babel/
 :END:
 
 ** Milestones
-*** [1/6] release 0.1
+*** DONE [4/4] release 0.1
+:LOGBOOK:
+- State "DONE"       from "TODO"          T:[2018-11-30 周五 11:36]
+- State "TODO"       from "DONE"          T:[2018-11-30 周五 11:32]
+- State "DONE"       from "TODO"          T:[2018-11-30 周五 11:32]
+- State "TODO"       from "TODO"          T:[2018-11-30 周五 11:30]
+- State "TODO"       from              T:[2018-11-30 周五 11:30]
+:END:
 **** DONE git import
-**** TODO create github project
-**** TODO add readme
-**** TODO publish
+**** DONE create github project
+CLOSED: [2018-11-30 周五 11:30]
+**** DONE add readme
+CLOSED: [2018-11-30 周五 11:30]
+**** DONE publish [1/1]
+CLOSED: [2018-11-30 周五 11:36]
+1. [X] fdf
+   1. [X] dfd
+   2. [X] dfdf
+   3. [X] dfsd
 
 
 

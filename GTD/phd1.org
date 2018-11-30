@@ -1,4 +1,17 @@
 * TODO PhD Dissertation
+:PROPERTIES:
+:CATEGORY: Project
+:END:
+
+ This section is used to store details of each project I am working on. A project is a group of activities with a specific outcome that requires more than one action step and usually has a target date for completion.
+
+Each project is stored as as heading with a subheading to contain a description of the project,
+ and a work breakdown structure.
+
+I use a set of Project Verbs in a similar manner to how I write Tasks (Next Actions):
+
+Finalize, resolve, handle, look into, submit, maximize, organize, design, complete, ensure, research, 
+roll out, update, install, implement, set-up. 
 ** 作者简介
 叶昭良(1990-),男，福建漳州人，博士研究生。主要研究方向为流体机械原理与
 风力机空气动力学。通讯地址：北京市昌平区回龙观镇北农路2号话华北电力大学
@@ -1333,6 +1346,8 @@ DEADLINE: <2019-04-15 周一>
                     - State "TODO"       from "TODO"       [2018-08-01 周三 08:48]
                     - State "TODO"       from "TODO"          [2018-07-31 周二 16:19]
                     :LOGBOOK:
+                    - State "TODO"       from "TODO"          T:[2018-11-30 周五 11:24]
+                    - State "TODO"       from "TODO"          T:[2018-11-30 周五 11:23]
                     - State "TODO"       from "TODO"          T:[2018-11-29 周四 20:16]
                     - State "TODO"       from "TODO"          T:[2018-11-20 周二 13:48]
                     CLOCK: [2018-06-25 周一 16:19]--[2018-06-26 周二 12:02] => 19:43
@@ -1466,14 +1481,14 @@ CLOSED: [2018-08-01 周三 08:48] DEADLINE: <2018-07-03 周二>
    2. [X] Cn Ct 分布
 5. [X] 静态和动态截面云图对比(如果分析出来 气动性能有差别，可以从定性角度先进性观察)
 
-**** ABORT [#A] 英文写作[20%]                    
+**** ABORT [#A] 英文写作[100%]                    
 CLOSED: [2018-08-23 周四 19:46]
 1. [X] 方法部分
-2. [ ] 结果处理部分
-3. [ ] 结论部分
-4. [ ] 引言部分
-   1. [ ] 看过的有用文章 
-5. [ ] 摘要部分
+2. [X] 结果处理部分
+3. [X] 结论部分
+4. [X] 引言部分
+   1. [X] 看过的有用文章 
+5. [X] 摘要部分
 
 | Experimental process         | Section of Paper           |
 |------------------------------+----------------------------|
@@ -1488,7 +1503,7 @@ CLOSED: [2018-08-23 周四 19:46]
 |                              |                            |
 
 
-*** TODO [#A] NREL 5MW fluent静态和动态偏航计算 <2018-06-25 周一 08:42>[2/5] :学术:
+*** TODO [#A] NREL 5MW fluent静态和动态偏航计算 <2018-06-25 周一 08:42>[3/5] :学术:
 DEADLINE: <2018-08-01 周三>
                     :PROPERTIES:
                     :Effort: 16:00
@@ -1502,7 +1517,8 @@ CLOSED: [2018-08-01 周三 10:49]
 2. [X] 偏航部分(圆柱) 
 3. [X] 偏摆部分(圆球) 
 4. [X] 外场部分(矩形域)
-**** TODO 静态计算部分      [75%]             
+**** DONE 静态计算部分      [100%]             
+CLOSED: [2018-11-30 周五 11:24]
 :LOGBOOK:
 :END:
 1. [X] 静态工况下的网格验证(定常)
@@ -1519,24 +1535,24 @@ CLOSED: [2018-08-01 周三 10:49]
    1. [X] 5deg
    2. [X] 2.5deg
    3. [X] 1deg
-4. [ ] 不同偏航角下计算
-   1. [ ] 0°
-   2. [ ] 5°
-   3. [ ] 10°
-   4. [ ] 15°
-   5. [ ] 20°
-   6. [ ] 25°
-   7. [ ] 30°
-   8. [ ] -30°(所以边界条件得设置好)
-**** TODO 动态计算部分 [16%]
+4. [X] 不同偏航角下计算
+   1. [X] 0°
+   2. [X] 5°
+   3. [X] 10°
+   4. [X] 15°
+   5. [X] 20°
+   6. [X] 25°
+   7. [X] 30°
+   8. [X] -30°(所以边界条件得设置好)
+**** TODO 动态计算部分 [33%]
 :LOGBOOK:
 CLOCK: [2018-08-22 周三 16:29]--[2018-08-22 周三 16:53] =>  0:24
 CLOCK: [2018-08-21 周二 22:58]--[2018-08-22 周三 11:21] => 12:23
 CLOCK: [2018-08-21 周二 13:26]--[2018-08-21 周二 22:58] =>  9:32
 :END:
-1. [-] 偏航过程的计算
+1. [X] 偏航过程的计算
    1. [X] 动态偏航
-   2. [ ] 动态偏摆
+   2. [X] 动态偏摆
 2. [ ] 静态数据结果的处理
    1. [ ] matlab代码针对不同翼型的处理
       1. [ ] 不同截面的翼型数据
@@ -1677,26 +1693,53 @@ CLOSED: [2018-11-29 周四 20:16] DEADLINE: <2018-11-26 周一>
                     
                     
 风轮55圈是否计算完成？！
-*** TODO [#B] YawingForRenewableEnergyChina <2018-11-29 周四 17:07>   :@NCEPU:
+
+*** DOING [#B] YawingForRenewableEnergyChina <2018-11-29 周四 17:07> [0/6] :@NCEPU:
 DEADLINE: <2018-12-06 周四> SCHEDULED: <2018-11-29 周四>
                     :PROPERTIES:
                     :Effort: 16:00
+                    :CATEGORY: Project-Yawing
                     :END:
-*** TODO [#B] Yawing NREL 5MW for Energy <2018-11-29 周四 17:10>      :@NCEPU:
+
+1. [ ] Abstract
+2. [ ] Introduction
+3. [ ] Methods
+4. [ ] Results
+5. [ ] Conclusion
+6. [ ] References
+
+*** TODO [#B] Yawing NREL 5MW for Energy <2018-11-29 周四 17:10> [0/6] :@NCEPU:
 DEADLINE: <2018-12-29 周六> SCHEDULED: <2018-11-29 周四>
                     :PROPERTIES:
                     :Effort: 12:00
+                    :CATEGORY: Project-Yawing5MW
                     :END:
                     :LOGBOOK:
                     CLOCK: [2018-11-29 周四 17:10]--[2018-11-29 周四 17:11] =>  0:01
                     :END:
-*** TODO [#B] Platform motion with Pitching and Rolling of NREL 5MW for energy <2018-11-29 周四 17:11> :@NCEPU:
+
+                    
+1. [ ] Abstract
+2. [ ] Introduction
+3. [ ] Methods
+4. [ ] Results
+5. [ ] Conclusion
+6. [ ] References
+*** TODO [#B] Platform motion with Pitching and Rolling of NREL 5MW for energy <2018-11-29 周四 17:11>[0/6] :@NCEPU:
 DEADLINE: <2019-01-15 周二> SCHEDULED: <2018-11-29 周四>
                     :PROPERTIES:
                     :Effort: 10:00
+                    :CATEGORY: Project-PlatformMotion
                     :END:
                     :LOGBOOK:
                     CLOCK: [2018-11-29 周四 17:11]--[2018-11-29 周四 17:12] =>  0:01
                     :END:
-                    
+
+1. [ ] Abstract
+2. [ ] Introduction
+3. [ ] Methods
+4. [ ] Results
+5. [ ] Conclusion
+6. [ ] References
+
                     

@@ -4313,3 +4313,77 @@ CLOCK: [2018-11-26 周一 13:30]--[2018-11-26 周一 13:30] =>  0:00
  最恶心的是这个小东西是开始时随着*scratch*被强制加载的, 还属于prog-mode.
  导致一票诸如aggressive-indent-mode lispy hs-minor-mode 也被这个家伙加载起来了.
  事实上我们用scratch buffer并不会立马用到这么多高级功能. 它一开emacs就加载反而影响我的体验.
+** NPM(Natural Planning Model) [#B]                                 :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-11-30 周五 10:37]--[2018-11-30 周五 11:06] =>  0:29
+:END:
+                         Added: [2018-11-30 周五 10:36]
+                         
+                         
+                         
+Project=purposes+images(visual outcome)+commits(续延 continuation)+Done
+What is your image for your purpose?
+
+1. goal
+2. plan
+3. specify(细化)
+4. perform(do it)
+5. Perceive(获得，观察)
+6. interpret(解释你的结果)
+7. compare(比较)
+*** The Natural Planning Model
+
+Thinking in more effective ways about projects and situations can make things happen sooner,
+ better and more successfully.
+
+When you think about doing something that requires several steps,
+ your mind goes through five steps:
+
+****  Defining purpose and principles. 
+
+Purpose is your intention to do something, for example, "Let's go out to dinner".
+ Your principles create the boundaries of your plan, for example,
+ "I want to eat at a quality restaurant with good service and located in a convenient part of town".
+**** Outcome visioning.
+ In the previous step, you identified why you want to do something.
+ In this step you create an image of what you want to achieve or get out of completing the activity.
+ For example, "I want to host an unforgettable dining experience for my overseas visitors".
+ 
+Most projects don't need much more than a clear statement of the outcome 
+and the next action you need to take. This is all you may need to do to 
+get the project off your mind so you stop thinking and worrying about it. 
+(大胆去做)
+**** Brainstorming.
+ This is when you start to think about many aspects of the project.
+ - why(first place when you do your project)---what will the project look like when it is done?
+ How would this completed project feel, sound, smell, taste and look like.
+ Use all your senses. Draw a picture of the completed project or some visual representation of completion
+ - focus(When you focus , world is looking at you ) Focus helps us get started with an activity
+   Please focus on your image(并不是每个人都有它的image的)
+   Image yourself, imagine your future, focus let you achieve your thinking.
+ Who, what, when, where, why and how? 
+ How much time and money are available?
+ Who needs to be involved?
+ What needs to be done?
+ This thinking process can be quite chaotic and it may not be possible to complete this thinking in one session.
+ What you are trying to do in this step is identifying 
+what needs to happen to take you from your present situation 
+to achieving the desired purpose and outcome.
+**** Organizing.
+ Once you have generated a sufficient number of ideas and details,
+ you need to organise them into some sort of structure or sequence.
+ One way is to organise the project into a hierarchical structure called a "Work Breakdown structure" (WBS).
+ You identify the resources, costs, people and skills needed,
+ - resources
+ - costs
+ - people
+ - skills
+ as well as determining a rough sequence of events and dependencies.
+**** Identifying Next Actions(续延,cps, continuation).
+ Now that you have completed the previous four steps, decide if you are committed to go ahead with the project.
+ What is the next action that you need to take to move closer to completion?
+
+ **** what is next action and project?
+ A next action is something you can do that would complete a task to achieve a desired outcome,
+ for example "Make photocopy of letter". A project is an outcome that requires more than one next action to complete, for example "Organize a conference". 
+

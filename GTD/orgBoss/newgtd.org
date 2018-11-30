@@ -1,4 +1,7 @@
 * Tasks
+:PROPERTIES:
+:CATEGORY: Tasks
+:END:
 #+BEGIN: clocktable :maxlevel 4 :scope subtree
 #+CAPTION: Clock summary at [2018-11-26 周一 22:37]
 | Headline                                                             | Time     |          |       |       |
@@ -236,7 +239,13 @@ CLOSED: [2017-10-26 周四 10:29] DEADLINE: <2017-10-22 周日> SCHEDULED: <2017
                     :END:
                     Captured 2017-10-03 14:15
        开题报告得包含以下几个部分，
-***** TODO 数值模拟 静态偏航+动态偏航+ 流固耦合(参考仇永兴 姚世刚 陈晓明 范钟瑶 李媛 任会来) [0%]
+***** DONE 数值模拟 静态偏航+动态偏航+ 流固耦合(参考仇永兴 姚世刚 陈晓明 范钟瑶 李媛 任会来) [0%]
+CLOSED: [2018-11-30 周五 11:25]
+:LOGBOOK:
+- State "DONE"       from "ABORT"      T:[2018-11-30 周五 11:26]
+- State "ABORT"      from "TODO"          T:[2018-11-30 周五 11:25] \\
+  已在其他部分分解
+:END:
 - State "TODO"       from "TODO"       [2017-10-03 周二 14:25]
 - State "TODO"       from "ABORT"      [2017-10-03 周二 14:25] [ ] 
 - [-] 任务分解 [20%]
@@ -390,7 +399,7 @@ CLOSED: [2017-10-26 周四 11:07]
                     
                     
 入党申请
-** DONE [#B] [25%]学习sketchup和几何画板 <2017-10-19 周四 20:02>        :@work:
+** DONE [#B] [100%]学习sketchup和几何画板 <2017-10-19 周四 20:02>       :@work:
 CLOSED: [2017-12-11 周一 19:57] SCHEDULED: <2017-10-26 周四>
                     :PROPERTIES:
                     :Effort: 1:00
@@ -408,25 +417,7 @@ CLOSED: [2017-12-11 周一 19:57] SCHEDULED: <2017-10-26 周四>
 4. [X] 直线 点构造圆，通过直线长度控制圆的半径
 5. [X] 构造角平分线 垂线  平行线（有约束关系在里头，这句话数学老师不好讲，得有工科背景的学生能说）三角形三条角平分线的焦点构成内心
 6. [X] 绘制点的运动轨迹(C-T)  构造---轨迹
-7. [ ] 利用箭头工具组（包含平移 旋转  缩放三组）
-8. [ ] 
-9. [ ] 
-10. [ ] 
-11. [ ] 
-12. [ ] 
-13. [ ] 
-14. [ ] 
-15. [ ] 
-16. [ ] 
-17. [ ] 
-18. [ ] 
-19. [ ] 
-20. [ ] 
-21. [ ] 
-22. [ ] 
-23. [ ] 
-24. [ ] 
-
+7. [X] 利用箭头工具组（包含平移 旋转  缩放三组）
 ** DONE [#B] Somethings need to be done by yourself <2017-10-21 周六 21:12> :@work:
 CLOSED: [2018-11-19 周一 22:22] DEADLINE: <2019-10-21 周一>
                     :PROPERTIES:
@@ -621,7 +612,6 @@ That's your gtd
 
 http://www.howardism.org/Technical/Emacs/spreadsheet.html
 #+END_EXAMPLE
-
 
 
 ** PENDING [#B] 番茄时间(30min) <2017-10-28 周六 16:21 >             :@work:
@@ -1047,6 +1037,8 @@ CLOSED: [2018-04-09 周一 20:28] DEADLINE: <2018-02-14 周三> SCHEDULED: <2018
 
 ** DONE [#B] Capture the Class name in project folder <2018-02-14 周三 12:11> :@Home:
 CLOSED: [2018-02-14 周三 18:27]
+:PROPERTIES:
+:END:
 - State "DONE"       from "TODO"          [2018-02-14 周三 18:27]
                     :PROPERTIES:
 :
@@ -1350,7 +1342,7 @@ CLOSED: [2018-09-16 周日 00:43] DEADLINE: <2018-09-15 周六>
                     
                     
 必须完成
-** CANCELED [#B] 办理借款  <2018-09-26 周三 16:30>   [25%]                 :@NCEPU:
+** CANCELED [#B] 办理借款  <2018-09-26 周三 16:30>   [100%]                :@NCEPU:
 CLOSED: [2018-09-29 周六 03:42]  SCHEDULED: <2018-09-26 周三>
                     :PROPERTIES:
                     :Effort: 1:00
@@ -1361,9 +1353,9 @@ CLOSED: [2018-09-29 周六 03:42]  SCHEDULED: <2018-09-26 周三>
                       通过公务卡还款
                     CLOCK: [2018-09-26 周三 16:30]--[2018-09-26 周三 16:30] =>  0:00
                     :END:
-1. [ ] 借款
-2. [ ] 注册费缴纳
-3. [ ] 火车票预定
+1. [X] 借款
+2. [X] 注册费缴纳
+3. [X] 火车票预定
 4. [X] 酒店预订
 ** DONE [#B] 订火车票 <2018-10-04 周四 15:24>                            :学术:
 CLOSED: [2018-10-08 周一 11:17] SCHEDULED: <2018-10-06 周六>
@@ -2263,7 +2255,7 @@ DEADLINE: <2018-12-07 周五>
                     :PROPERTIES:
                     :Effort: 4:00
                     :END:
-** TODO [#B] 摩托车考试 <2018-11-29 周四 14:33>                     :@NCEPU:
+** TODO [#B] 摩托车考试 <2018-11-29 周四 14:35>                     :@NCEPU:
 DEADLINE: <2018-12-10 周一>
                     :PROPERTIES:
                     :Effort: 4:00
@@ -2271,3 +2263,33 @@ DEADLINE: <2018-12-10 周一>
                     :LOGBOOK:
                     CLOCK: [2018-11-29 周四 14:33]--[2018-11-29 周四 14:33] =>  0:00
                     :END:
+** TODO [#B] 下午四点训练自己40min <2018-11-30 周五 08:49 +1d>         :@NCEPU:
+DEADLINE: <2019-03-02 周六>
+                    :PROPERTIES:
+                    :Effort: 0:30
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-11-30 周五 08:50]--[2018-11-30 周五 08:51] =>  0:01
+                    :END:
+                    
+                    
+争取每天做到
+** TODO [#B] 博士大论文写作 <2018-11-30 周五 11:47>[0%]                  :学术:
+DEADLINE: <2019-03-25 周一>
+                    :PROPERTIES:
+                    :Effort: 4:00
+                    :CATEGORY: Thesis
+                    :END:
+                    :LOGBOOK:
+                    - State "TODO"       from "TODO"          T:[2018-11-30 周五 11:49]
+                    CLOCK: [2018-11-30 周五 11:47]
+                    :END:
+                    
+*** TODO 第一章 引言
+*** TODO 第一章 方法
+*** TODO 第一章 验证
+*** TODO 第一章 Yawing
+*** TODO 第一章 Platform motion
+                    
+                    
+
