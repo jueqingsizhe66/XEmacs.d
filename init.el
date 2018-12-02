@@ -281,8 +281,6 @@
  '(git-gutter:separator-sign "|")
  '(git-gutter:update-interval 2)
  '(git-gutter:window-width 2)
- '(ispell-dictionary "british")
- '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
  '(muse-project-alist
    (quote
     (("WikiPlanner"

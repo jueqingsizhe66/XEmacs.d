@@ -417,6 +417,9 @@ DEADLINE: <2018-12-10 周一> SCHEDULED: <2018-11-01 周四>
                     :Effort: 2:00
                     :END:
                     :LOGBOOK:
+                    CLOCK: [2018-11-30 周五 14:48]--[2018-11-30 周五 18:57] =>  4:09
+                    - Clocked out on T:[2018-11-30 周五 18:57] \\
+                      数组、元组、字典
                     CLOCK: [2018-11-01 周四 17:19]--[2018-11-02 周五 00:13] =>  6:54
                     - Clocked out on T:[2018-11-02 周五 00:13] \\
                       pandas,datetime, string模块等学习
@@ -525,6 +528,10 @@ cd ~/.vim/pack/foo/start
 git clone https://github.com/python-mode/python-mode.git
 cd python-mode
 git submodule update --init --recursive
+https://docs.python.org/3/reference/datamodel.html
+
+python不错的菜鸟教程
+http://www.runoob.com/python/python-exceptions.html
 *  第一、二章 准备与例子
 :LOGBOOK:
 CLOCK: [2018-11-23 周五 13:11]--[2018-11-23 周五 14:14] =>  1:03

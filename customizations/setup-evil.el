@@ -71,6 +71,8 @@
             (visual-fill-column-mode)
             (define-key evil-normal-state-local-map [S-return] (quote org-tree-open-in-right-frame))
             (define-key evil-normal-state-local-map [return] (quote org-tree-to-indirect-buffer))
+
+            (writeroom-mode 1)
             (local-set-key [3 25] 'org-copy-subtree)))
 ;; 24 25 is ctrl-c ctrl-y
 

@@ -49,6 +49,10 @@ windows放在`C:\Users\用户名\AppData\Roaming`，linux系统放在~目录下�
 2. 下载emacs工具 ，[emacs25-3.1][161]
 3. 下载gnupg软件，[gnupg-for-win][162],配置相关密匙即可，进一步参考[标题66][150]
 4. 下载aspell 软件，已经在customization目录下，解压缩到`C:\Program Files (x86)\Aspell`即可，Aspell下一级目录为bin，data等，已包含对应字典(所以windows很方便),注意aspell的配置信息存放在.orgConf.el中。
+
+Windows10 Emacs25.3-x86-64----> 在init.el打开`(package-initialize)`
+Windows10 Emacs27.0.50-x86-64----> 在init.el关闭`(package-initialize)`
+
 5. clojure配置
    * 安装[java-se-9.0.1开发包][163] 
    * 搜索leiningen或者boot-cli，当前搜索[leiningen][164],并安装对应的lein.bat
@@ -397,9 +401,10 @@ emacs经常地使用方式是
 
 `C-h F` 函数说明`M-x describe-function`
 
-`C-h V` 变量说明`M-x describe-variable`
+`C-h V` 变量说明`M-x describe-variable` 
 
 `C-h a` 打开apropos symbol的regex字符关联的系统说明
+        也可以使用`M-x helm-apropos` 
 
 `C-h d` 类似于apropos的regex字符关联的系统文档
 
@@ -602,7 +607,8 @@ add `evil-surround` into my-package list
 13. swiper
 
 
-counsel在不断进步，比如[增加ag，rg的冒号][474]
+counsel在不断进步，比如[增加ag，rg的冒号][474], 也说明他们彼此没有侵入式
+的修改，只是一个wrapper而已(一个代码设计认识重要的提高)。
 #### 很有意思的切换
 
 <2018-10-13 13:51>
@@ -1794,6 +1800,20 @@ linux版本需要额外配置一下。(另外如果不配置也不会另org-agen
 ```
 
 If Aspell can not determine the language from the LC_MESSAGES locale than it will default to ``en_US''
+
+3. 替换Aspell为hunspell
+
+``` elisp
+ (setq ispell-program-name "C:\\hunspell\\bin\\hunspell.exe")
+ (setq ispell-local-dictionary "en_US")
+ (setq ispell-local-dictionary-alist
+        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US" "-p" "C:\\hunspell\\share\\hunspell\\en_US.dic") nil utf-8)))
+        
+```
+
+
+下载[ hunspell ][476],并把hunspell.exe所在目录添加到path中。
+
 
 
 ### 56. 如何把journal.org分成每天日志的形式
@@ -4061,6 +4081,13 @@ setq-default evil-escape-key-sequence "jk")
 
 (global-set-key (kbd "C-c C-g") 'evil-escape)
 ```
+
+#### 常用命令
+
+1. 選擇 v-select块--大S, 然后添加括号边界。
+2. 單詞 ysiw( 添加word的括号, yssb或者yss(代表添加line括號
+3. 修改 cs--delimeterOld--delimiterNew-> 比如cs([表示把(变成中括号
+4. 刪除 ds--delimiterOld--delimiterNew-> ds([
 
 
 ### 97. git-gutter
@@ -7687,7 +7714,8 @@ I like it!
 All the setting have been saved inside the [setup-evil.el][448]
 
 我的习惯:
-事先`C-x 3` 创建一个vertical panel, 否则有可能由于标题空间的
+事先`C-x 3` 创建一个vertical panel, 否则有可能由于标题空间的(注意使用`S-RET`来直接把cursor定位到新窗口中(编辑作用)
+`RET`只是浏览作用
 限制，会使得新的indirect窗口跳转到水平窗口下，看起来效果不好(行长度较长，为了显示完整，通常是水平划分的)!`C-x 3`所以
 `C-x 3` 得经常使用了（对应的左右窗口切换，向左`C-h`,向右`C-l`当然直接用
 `M-o` ace-window的其他功能也不错。
@@ -7889,6 +7917,44 @@ anaconda-mode的`M-?`查看文档(和elpy-doc一样好使)，特别有用！ `M-
 然后才可以启动(气动)elpy的自动补全!
 
 有了这么多功能，相信emacs下面的python开发也是不错的!
+
+### 170. All is about y=ax+b 直觉
+
+As we see, we put argument into sin function , we can get value.
+
+We set many options to let the yasnippets run with different modes.---(run(yasnippets,python-mode)
+or run(yasnippets, elisp-mode) etc)
+
+we found that, this is a good night, and we can also say more feeling with
+`I love all you at night, this is a fucking good night, thanks very fucking much`
+
+我们的直觉应该是y=f(x), 只不过会加入很多感情，来构成复杂性,产生选择。
+
+通过这里我们可以简化我们学到的知识为最简单的状态，而当你遇到不同情况在产生不同的
+statement即可，增加更多参数、更多的变量!
+
+### 171. 阅读《Mastering Emacs》
+
+`M-^`代表合并两行(有一个关键概念删除多余的空格，空格的定义)
+`C-M-o`代表在当前位置拆分为两行，有一个特点是自动缩进光标到当前point cursor位置(cursor代表着游标)。
+
+Transpose是不错的概念(区分于swap)
+
+1. Transpose char(C-t)
+2. Transpose word(M-t)
+3. Transpose S-exp(C-M-t)
+4. Transpose line(C-x C-t)
+5. Transpose Paragraph(M-x transpose-paragraph)
+
+这里有个不错的概念就是如何定义概念的边界，比如word boudanry， line segmentation等，要想置换位置，
+必须得事先识别出两种知识概念才可以!所以在这边的
+
+
+Emacs有一個有趣的特性`Case folding`,当你使用`C-r`或者`c-S`，如果使用大於等於2個大寫字母，則
+自動切換為大寫字母搜索模式(默認小寫字母，大小寫都進行匹配)
+
+`M-x set-input-method` 可以自動切換為
+
 
 ----------
 ----------
@@ -8369,3 +8435,4 @@ anaconda-mode的`M-?`查看文档(和elpy-doc一样好使)，特别有用！ `M-
 [473]: http://www.newsmth.net/nForum/#!article/TotalCommander/55086
 [474]: https://github.com/ericdanan/counsel-projectile/commit/2ce0efe47622b0e85864f778efe14b201b1ebc08
 [475]: http://members.optusnet.com.au/~charles57/GTD/Natural_Project_Planning.html
+[476]: https://lists.gnu.org/archive/html/help-gnu-emacs/2014-04/msg00030.html

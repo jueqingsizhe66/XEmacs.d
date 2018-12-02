@@ -4320,6 +4320,7 @@ CLOCK: [2018-11-30 周五 10:37]--[2018-11-30 周五 11:06] =>  0:29
                          Added: [2018-11-30 周五 10:36]
                          
                          
+ http://members.optusnet.com.au/~charles57/GTD/Natural_Project_Planning.html
                          
 Project=purposes+images(visual outcome)+commits(续延 continuation)+Done
 What is your image for your purpose?
@@ -4355,14 +4356,15 @@ get the project off your mind so you stop thinking and worrying about it.
 (大胆去做)
 **** Brainstorming.
  This is when you start to think about many aspects of the project.
- - why(first place when you do your project)---what will the project look like when it is done?
+ - why(first place when you do your project)---what will the project look like when it is done?----你得问问你自己
+   一定得学会ask yourself to image your outcome of project
  How would this completed project feel, sound, smell, taste and look like.
  Use all your senses. Draw a picture of the completed project or some visual representation of completion
  - focus(When you focus , world is looking at you ) Focus helps us get started with an activity
    Please focus on your image(并不是每个人都有它的image的)
    Image yourself, imagine your future, focus let you achieve your thinking.
  Who, what, when, where, why and how? 
- How much time and money are available?
+ How much time and money are available?(知道目标、预期的成果才会想着去做,想着去投入精力和钱财)
  Who needs to be involved?
  What needs to be done?
  This thinking process can be quite chaotic and it may not be possible to complete this thinking in one session.
@@ -4373,11 +4375,11 @@ to achieving the desired purpose and outcome.
  Once you have generated a sufficient number of ideas and details,
  you need to organise them into some sort of structure or sequence.
  One way is to organise the project into a hierarchical structure called a "Work Breakdown structure" (WBS).
- You identify the resources, costs, people and skills needed,
- - resources
- - costs
- - people
- - skills
+ You identify the resources(肯定会去思考), costs, people and skills needed,
+ - resources(资源)
+ - costs(highest cost,成本控制很重要)
+ - people(人员)
+ - skills(技能)
  as well as determining a rough sequence of events and dependencies.
 **** Identifying Next Actions(续延,cps, continuation).
  Now that you have completed the previous four steps, decide if you are committed to go ahead with the project.
@@ -4386,4 +4388,78 @@ to achieving the desired purpose and outcome.
  **** what is next action and project?
  A next action is something you can do that would complete a task to achieve a desired outcome,
  for example "Make photocopy of letter". A project is an outcome that requires more than one next action to complete, for example "Organize a conference". 
+
+
+ 后来，我看到有两个小伙伴在操场上踢球，一个小伙伴教另外一个小伙伴如何踢球，慢慢的运球、推球、感受球的存在，
+我感受到是在认真的交流，换位的传达.
+
+一门编程语言、一个程序模块你得去感受那是人类的智者用他们的精力谱写的作品，
+留给世人。【切勿想当然】
+** perl 训练 [#B]                                                     :perl:
+:LOGBOOK:
+CLOCK: [2018-12-02 周日 00:51]--[2018-12-02 周日 02:52] =>  2:01
+- Clocked out on T:[2018-12-02 周日 02:52] \\
+  有人看不见前门，有人找不见前门，就去走后门，一下子就送到了骗子的怀抱
+CLOCK: [2018-11-30 周五 23:38]--[2018-12-01 周六 19:13] => 19:35
+- Clocked out on T:[2018-12-01 周六 19:13]
+CLOCK: [2018-11-30 周五 19:53]--[2018-11-30 周五 23:07] =>  3:14
+- Clocked out on T:[2018-11-30 周五 23:07] \\
+  了解了perl的 tutorial
+:END:
+                         Added: [2018-11-30 周五 19:53]
+                         
+                         
+Perl Best practices!
+
+重要模块: Perl::TIdy ->  Perl code beautifier
+                      works beautifully--can be trusted
+                      supports many options for personal styles
+                      
+         Perl::Critic-> static Code Analysis for perl
+                         most based on Perl Best Practices
+                         Grouped into levels and themes
+                         Configurable and extensible for local policies
+                         and styles(includes over 120 policies) what is policy?
+
+                         
+         Test::*
+                     Perl culture takes testing seriously
+                     Excellent mature tools for testing
+                     <Perl Testing-A Developer's Notebook>
+                     
+          Devel::Cover
+                     Coverage Analysis for Perl
+                     Tells you what code has been executed, statements,
+                     condition, subroutine, pod, branch
+
+                     
+君子让人，仁者长寿
+
+
+人生天地间，高不赢七尺，寿不过百年，本无高低贵贱啊，
+
+水往低处流，人往高处走。不能自个儿瞧不起自个儿。
+
+老话说： 渴时一滴如甘露，醉酒添酒不如无
+
+茶飘香， 酒罢去，聚朋友，再回楼(茶峇楼）
+
+
+堂堂正正做自己的事，吃自己的饭。
+
+白手起家就得先有原则。
+
+
+羊有跪乳之恩，鸦有反哺之育
+
+咱北京人讲究的是德行、厚道、包容
+
+
+巴金老人家说得对:"有人看不见前门，有人找不见前门 ，就去走后门，一下子就找到骗子了"
+
+疑人不用 用人不疑!
+
+社会的意识形态是几千年积淀起来的
+时时刻刻站在别人的角度去思考。不要空有其表,制度存在虽然得无条件执行，但是得有人情味!
+
 

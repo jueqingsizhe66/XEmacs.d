@@ -1,4 +1,4 @@
-;;;org开始设置
+;;;or开始设置
 (setq load-path (cons "~/.emacs.d/lisp" load-path))
 (setq load-path (cons "~/.emacs.d/contrib/lisp" load-path))
 (require 'org-install)
@@ -8,6 +8,7 @@
 ;(load "org-agenda-ng.el")
 ;(load "org-ql.el")
 
+
 (load "org-listcruncher.el")
 (add-to-list 'load-path "~/.emacs.d/customizations/emacs-presentation-mode/")
 (load "presentation.el")
@@ -15,6 +16,22 @@
 (add-to-list 'load-path "~/.emacs.d/customizations/counsel-org-clock/")
 (load "counsel-org-clock.el")
 ;; keep company with org-mru-clock
+
+
+;;; aspell.exe
+    ;; '(ispell-dictionary "british")                                             ;;
+    ;; '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
+
+;;; hunspell faster;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; https://lists.gnu.org/archive/html/help-gnu-emacs/2014-04/msg00030.html
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;; (setq ispell-program-name "C:\\hunspell\\bin\\hunspell.exe")                                                                         ;;
+ ;; (setq ispell-local-dictionary "en_US")                                                                                               ;;
+ ;; (setq ispell-local-dictionary-alist                                                                                                  ;;
+ ;;        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US" "-p" "C:\\hunspell\\share\\hunspell\\en_US.dic") nil utf-8))) ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (custom-set-faces
@@ -1224,11 +1241,17 @@ Use a prefix arg to get regular RET. "                                          
 
 ;;;<2018-11-18 18:27>                                                          ;;
 (custom-set-variables                                                          ;;
-    '(ispell-dictionary "british")                                             ;;
-    '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
+
+     '(ispell-dictionary "british")                                             ;;
+     '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
+   ;; '(setq ispell-program-name "C:\\hunspell\\bin\\hunspell.exe")
+
+  ;; Please note that `ispell-local-dictionary` itself will be passed to hunspell cli with "-d"
+  ;; it's also used as the key to lookup ispell-local-dictionary-alist
+  ;; if we use different dictionary
     '(org-agenda-ndays 1)
     '(org-agenda-sorting-strategy (quote ((agenda time-up priority-down tag-up) (todo tag-up))))
-'(org-deadline-warning-days 7)
+    '(org-deadline-warning-days 7)
 
 ) ;;
 
