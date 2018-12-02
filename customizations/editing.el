@@ -371,3 +371,8 @@ modifications)."
   "Locally add `ha/indent-defun' to `post-command-hook'."
   (add-hook 'post-command-hook
             'indent-defun nil 'local))
+
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/customizations/my_plugins/company-english-helper/"))
+(require 'company-english-helper)
+
+

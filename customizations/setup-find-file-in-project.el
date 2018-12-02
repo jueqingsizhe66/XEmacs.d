@@ -6,6 +6,7 @@
 ;; Keywords: abbrev, abbrev, abbrev, 
 
 
+(add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/find-file-in-project/")
 (require 'find-file-in-project)
 (if (eq system-type 'windows-nt)
     (setq ffip-find-executable "c:\\\\cygwin\\\\bin\\\\find"))

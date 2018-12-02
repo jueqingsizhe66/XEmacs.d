@@ -64,3 +64,8 @@
   (when (projectile-project-p
          )
     (projectile-project-root)))
+
+
+
+(add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/aweshell/")
+(require 'aweshell)

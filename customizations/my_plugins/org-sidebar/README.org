@@ -1,0 +1,116 @@
+
+
+* org-sidebar
+
+This package presents a helpful sidebar view for Org buffers.  At the top is a chronological list of scheduled and deadlined tasks in the current buffer (similar to the Org agenda ,but without all its features), and below that is a list of all other non-done to-do items.  If the buffer is narrowed, the sidebar only shows items in the narrowed portion; this allows seeing an overview of tasks in a subtree.
+
+Please note: this package is in an early stage of development, so incompatible changes may be made in the future.  However, it's stable and usable now.  Feedback is appreciated.
+
+** Contents
+:PROPERTIES:
+:TOC:      siblings
+:END:
+    -  [[#screenshots][Screenshots]]
+    -  [[#installation][Installation]]
+    -  [[#usage][Usage]]
+    -  [[#changelog][Changelog]]
+    -  [[#notes][Notes]]
+
+** Screenshots
+
+[[images/screenshot.png]]
+
+** Installation
+
+Install these packages (e.g. from MELPA):
+
++  =dash=
++  =s= 
+
+=org-ql= and =org-ql-agenda= are also required; they are not on MELPA, but may be found at [[http://github.com/alphapapa/org-ql]].  Put them and this file in your =load-path=.
+
+** Usage
+:PROPERTIES:
+:TOC:      0
+:END:
+
+Load the package with =(require 'org-sidebar)= (or use ~use-package~).  Then call the commands below.
+
+Customization options are in the =org-sidebar= group.
+
+*** Key bindings
+
+In a sidebar buffer, these keys are bound:
+
++  =RET=, =mouse-1= :: Jump to an item in its buffer.
++  =g= :: Update the sidebar.
++  =q= :: Hide the sidebar.
+
+*** Commands
+
+**** ~org-sidebar~
+
+By default, and when called interactively, this command displays two sidebar windows:
+
++  At the top, a chronological list of scheduled and deadlined tasks in the current buffer
++  Below, a list of all other non-done to-do items.
+
+If the buffer is narrowed, the sidebar only shows items in the narrowed portion; this allows seeing an overview of tasks in a subtree.
+
+When called non-interactively, these keyword arguments can be specified to override defaults:
+
++  =:fns= :: A list of functions that return Org headline elements (as returned by ~org-element-headline-parser~).  Such functions should take a keyword argument ~:group~ which causes them to return elements grouped with the [[https://github.com/magnars/dash.el#-group-by-fn-list][-group-by]] function  (or they may omit grouping, in which case the ~:group~ argument to this function must not be used).
++  =:group= :: Whether to call each sidebar function with the =:group= argument set.  Each sidebar function is responsible for performing its own grouping.
++  =:super-groups= :: A list of [[https://github.com/alphapapa/org-super-agenda][org-super-agenda]] groups.  Disables the =:group= argument.
++  =:header= :: A string to use as the sidebar window header.  Set automatically if not specified.
+
+**** ~org-sidebar-ql~
+
+This interactive command prompts for an [[https://github.com/alphapapa/org-ql][org-ql]] query and displays matching items in a sidebar.  Without prefix, it searches the current Org buffer and performs no grouping.  With prefix, it prompts for which buffers/files to search and how to group results.  For example, you could:
+
+1.  Run @@html:<kbd>@@M-x org-ql-sidebar RET@@html:</kbd>@@.
+2.  At the =Query:= prompt, type ~(and (todo "TODO") (priority > "C"))~.
+3.  At the =Buffers/Files:= prompt, type a filename, like =~/org/main.org= (or a list of filenames, but spaces are /not/ currently handled in plain strings; use a sexp list of strings instead), or a sexp, like ~(org-agenda-files)~ (which evaluates the ~org-agenda-files~ function), or leave it blank, to use the current buffer.
+4.  At the =Group by:= prompt, select =priority=.
+5.  At the =Sort by:= prompt, select =date=.
+
+Then a sidebar would be displayed showing all =TODO= items with priority higher than =C= in the selected files or buffers, grouped by priority, and sorted by deadline or scheduled date, like:
+
+[[images/org-sidebar-ql.png]]
+
+*** Custom commands
+
+For examples of defining custom sidebar commands, please see [[examples.org]].
+
+** Changelog
+:PROPERTIES:
+:TOC:      0
+:END:
+
+*** 0.2-pre
+
+Nothing yet.
+
+*** 0.1
+
+First tagged version.
+
+** Notes
+
+This was inspired by [[https://www.reddit.com/r/emacs/comments/88mtrh/emacs_org_mode_with_atom_org_mode_design/][this /r/Emacs post]], which was inspired by [[https://github.com/MattFlower/organized/][Organized for Atom]].
+
+** License
+:PROPERTIES:
+:TOC:      ignore
+:END:
+
+GPLv3.
+
+** COMMENT Config
+:PROPERTIES:
+:TOC:      ignore
+:END:
+
+# Local Variables:
+# before-save-hook: org-make-toc
+# End:

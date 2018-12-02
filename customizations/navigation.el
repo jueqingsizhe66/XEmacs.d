@@ -254,6 +254,7 @@
 ;(require 'inertial-scroll)
 
 
+(add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/emacs-inertial-scroll")
 (require 'inertial-scroll)
 (inertias-global-minor-mode 1)
 (setq inertias-initial-velocity 70)

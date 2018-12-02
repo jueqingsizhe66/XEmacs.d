@@ -227,3 +227,5 @@
 (setq all-the-icons-ivy-file-commands
       '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir))
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
+(load "setup-tab.el")

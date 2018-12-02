@@ -1,0 +1,51 @@
+
+
+* Examples
+
+** Custom sidebar command
+
+It's easy to define a custom sidebar command.  Here's an example that shows items in =org-agenda-files= that are not done and either have a deadline on or before today, or are scheduled for today.  It defines a command named ~my-sidebar~.  The query (~(and ...~) uses [[https://github.com/alphapapa/org-agenda-ng][org-ql]] to select items.
+
+#+BEGIN_SRC elisp
+  (org-sidebar-defsidebar my-sidebar
+    :header "My Sidebar"
+    :sidebars ((and (not (done))
+                    (or (deadline <=)
+                        (date = today)))))
+#+END_SRC
+
+** Grouping with =org-super-agenda=
+
+=org-sidebar= also integrates with [[https://github.com/alphapapa/org-super-agenda][org-super-agenda]].  This command is like the previous one, but it groups items with =org-super-agenda= into several groups.
+
+#+BEGIN_SRC elisp
+  (org-sidebar-defsidebar today-sidebar
+    :header "Today"
+    :sidebars (((and (not (done))
+                     (or (deadline <=)
+                         (scheduled <=)
+                         (date = today)))))
+    :super-groups '((:time-grid t)
+                    (:name "Overdue" :scheduled past :deadline past)
+                    (:name "Due today" :scheduled today :deadline today)
+                    (:tag "bills")
+                    (:priority "A")
+                    (:name "Non-tasks"
+                           :todo nil)))
+#+END_SRC
+
+This shows a sidebar like this:
+
+[[images/custom-command.png]]
+
+# This source block is used to take a screenshot of the command in the block above, using example data from =org-super-agenda=:
+
+#+BEGIN_SRC elisp :exports none
+  (org-super-agenda--test-with-org-today-date "2017-07-05 12:00"
+    (org-super-agenda--test-with-mock-functions ((org-agenda-files (lambda ()
+                                                                     '("/home/me/src/emacs/org-super-agenda/test/test.org"))))
+      (today-sidebar)))
+#+END_SRC
+
+
+

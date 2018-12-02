@@ -25,7 +25,8 @@
 
 ;; awesome pair
 
-(require 'awesome-pair)
+(add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/awesome-pair")
+(eval-after-load 'prog-mode '(require 'awesome-pair))
 
 (dolist (hook (list
                'c-mode-common-hook

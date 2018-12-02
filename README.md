@@ -1814,6 +1814,9 @@ If Aspell can not determine the language from the LC_MESSAGES locale than it wil
 
 下载[ hunspell ][476],并把hunspell.exe所在目录添加到path中。
 
+由于[hunspell打开中文文档老是报错][479]，于是把hunspell修正回aspell(但是aspell0.5又不支持emacs26以上)
+只好等等新版本的aspell0.6(当前没有)
+
 
 
 ### 56. 如何把journal.org分成每天日志的形式
@@ -2522,7 +2525,7 @@ emms会去调用mplayer播放音乐和电影，所以得把mplayer下载，然�
                6 个文件     61,895,360 字节
                4 个目录 50,590,359,552 可用字节
 ```
-3. 添加E:/mplayer路径到path目录下
+3. 添加E:/mplayer路径到path目录下(的确不然没有动静，<2018-12-02 21:43> 最后有耐性等上1min左右）
 
 4. 回到emacs,在customizations文件夹下创建setup-emms.el,添加如下内容
 
@@ -2591,7 +2594,7 @@ emms会去调用mplayer播放音乐和电影，所以得把mplayer下载，然�
 5. 使用感受(m是music和movie的缩写）
 
 - 常用函数
-  + C-c m d(emms-play-directory-tree) 打开一个播放文件夹
+  + C-c m d(emms-play-directory-tree) 打开一个播放文件夹(创建一个播放列表)
   + C-c m g(emms-playlist-mode-go)  打开播放列表
   + RET 在播放列表下按下enter键表示播放
   ------------------------------------------------------以上三个命令够了
@@ -7624,6 +7627,8 @@ emms和projectile在<2018-09-29 03:02>更新失败，出现
 Setting current directory: No such file or directory，  ~/.emacs.d/error: no program name specified
 ```
 
+后来发现是projectile的原因，参考[project-git-submodule-command nil][479] 
+
 ### 157. good org-export-dispatcher css theme
 
 `C-x C-e` so you can export the org file into html file, add [ the following line ][435] into the head of the
@@ -7954,6 +7959,30 @@ Emacs有一個有趣的特性`Case folding`,当你使用`C-r`或者`c-S`，如�
 自動切換為大寫字母搜索模式(默認小寫字母，大小寫都進行匹配)
 
 `M-x set-input-method` 可以自動切換為
+
+`M-x`的意思是`execute extensive command`
+
+### 172. Highlight-indention for Emacs
+
+
+[highlight-indention-for Emacs][477] 提供两种高亮缩进的方式。
+
+`M-x highlight-intention-mode`
+
+
+### 173. 英文补全
+
+[company-English-helper][478] 边补全边复习英文单词，
+只要`M-x toggle-company-English-helper`即可。
+
+
+### 174. update-my-plugins.py
+
+有些emacs包不存在melpa，于是只能单独下载，为了保持更新，于是在customization写了update_my_plugins.py,使用
+python3执行,即可完成对自己插件的更新。
+
+
+
 
 
 ----------
@@ -8436,3 +8465,7 @@ Emacs有一個有趣的特性`Case folding`,当你使用`C-r`或者`c-S`，如�
 [474]: https://github.com/ericdanan/counsel-projectile/commit/2ce0efe47622b0e85864f778efe14b201b1ebc08
 [475]: http://members.optusnet.com.au/~charles57/GTD/Natural_Project_Planning.html
 [476]: https://lists.gnu.org/archive/html/help-gnu-emacs/2014-04/msg00030.html
+[477]: https://github.com/antonj/Highlight-Indentation-for-Emacs
+[478]: https://github.com/manateelazycat/company-english-helper
+[479]: https://github.com/bbatsov/projectile/issues/1302
+[480]: http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html

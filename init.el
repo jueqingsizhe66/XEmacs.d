@@ -9,7 +9,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (add-to-list 'package-archives                                         ;;
 ;;              '("org" . "http://orgmode.org/elpa/") t)                  ;;
-;;                                                                        ;;
+;;                                                                 ;;
 ;; (add-to-list 'package-archives                                         ;;
 ;;              '("marmalade" . "http://marmalade-repo.org/packages/") t) ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -174,15 +174,15 @@
 (add-to-list 'load-path "~/.emacs.d/customizations/")
 ;;for magnars folders
 (add-to-list 'load-path "~/.emacs.d/customizations/magnars/")
-(add-to-list 'load-path "~/.emacs.d/customizations/color-rg/")
-(add-to-list 'load-path "~/.emacs.d/customizations/color-rg/aweshell/")
+(add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/color-rg/")
+(add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/git-timemachine/")
+(add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/Highlight-Indentation-for-Emacs")
 ;(add-to-list 'load-path "~/.emacs.d/customizations/alphapapa/")
 ;;(set-fontset-font t 'han (font-spec :family "Microsoft Yahei" :size 16)
 (load "font-lock+.el")
 ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; environment variables
 (load "shell-integration.el")
-(load "color-rg.el")
 
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
@@ -214,11 +214,17 @@
 (load "fortran-index-args.el")
 (load "setup-ruby-mode.el")
 (load "ruby-end.el")
-(load "highlight-indentation.el")
-(load "find-file-in-project.el")
 (load "setup-find-file-in-project.el")
 (load "setup-python.el")
 (load "setup-git.el")
+
+;(load "highlight-indentation.el")
+(require 'highlight-indentation)
+(require 'color-rg)
+(require 'git-timemachine)
+;(load "color-rg.el")
+;(load "find-file-in-project.el")
+
 ;(load "orca.el")
 ;(load "org-wiki.el")
 ;(load "doom-todo-ivy.el")
@@ -226,8 +232,6 @@
 ;dashboard
 ;(load "setup-dashboard.el")
 
-;; music
-(load "setup-emms.el")
 ;;(require 'server)
 
 (server-start)
@@ -281,6 +285,8 @@
  '(git-gutter:separator-sign "|")
  '(git-gutter:update-interval 2)
  '(git-gutter:window-width 2)
+ '(ispell-dictionary "british")
+ '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
  '(muse-project-alist
    (quote
     (("WikiPlanner"
@@ -298,7 +304,7 @@
  '(org-deadline-warning-days 7)
  '(package-selected-packages
    (quote
-    (company-anaconda anaconda-mode elpy all-the-icons-dired all-the-icons-ivy doom-themes doom-modeline yasnippet-snippets persp-projectile perspective projectile-rails projectile-ripgrep counsel-projectile persp-mode-projectile-bridge evil-leader evil-org py-autopep8 python-pylint pylint exec-path-from-shell cider-eval-sexp-fu helm-cider-history helm-cider cider-decompile super-save srcery-theme magithub magit evil-mc-extras evil-mc youdao-dictionary nlinum-relative nlinum rg ivy-xref flx ivy-bibtex ripgrep artbollocks-mode plantuml-mode beginend link-hint helm-eww log4j-mode language-detection eww-lnum clj-refactor howm deft ace-link 4clojure evil-vimish-fold origami scribble-mode ac-geiser geiser ascii-art-to-unicode visual-ascii-mode org-brain suggest counsel-world-clock ivy-yasnippet helpful abyss-theme ledger-mode flycheck-ledger org-agenda-property org-link-minor-mode org-dashboard dashboard page-break-lines writeroom-mode writegood-mode poporg org-mru-clock epresent xpm window-numbering evil-visualstar git-timemachine git-gutter org-wild-notifier dumb-diff fringe-current-line ag highlight-indentation ruby-end ruby-tools ruby-refactor cljr-helm org-bookmark-heading org-alert org-mind-map spaceline dired-narrow dired-rainbow dired-subtree emms sotclojure sotlisp ox-reveal pretty-symbols org-journal org-autolist org-babel-eval-in-repl org-bullets request-deferred fortpy flycheck-clojure spacemacs-theme w3m use-package simplezen zencoding-mode move-text highlight-escape-sequences dired-details+ dired+ ace-jump-mode paredit-menu iy-go-to-char key-chord string-edit flycheck-perl6 company cal-china-x image+ 2048-game 0xc ivy-rich ivy-dired-history ivy smart-mode-line mo-git-blame evil-surround markdown-mode+ scheme-complete 0blayout org-plus-contrib cl-lib-highlight tagedit smex rainbow-delimiters paredit ido-ubiquitous clojure-mode-extra-font-locking cider)))
+    (ht company-anaconda anaconda-mode elpy all-the-icons-dired all-the-icons-ivy doom-themes doom-modeline yasnippet-snippets persp-projectile perspective projectile-rails projectile-ripgrep counsel-projectile persp-mode-projectile-bridge evil-leader evil-org py-autopep8 python-pylint pylint exec-path-from-shell cider-eval-sexp-fu helm-cider-history helm-cider cider-decompile super-save srcery-theme magithub magit evil-mc-extras evil-mc youdao-dictionary nlinum-relative nlinum rg ivy-xref flx ivy-bibtex ripgrep artbollocks-mode plantuml-mode beginend link-hint helm-eww log4j-mode language-detection eww-lnum clj-refactor howm deft ace-link 4clojure evil-vimish-fold origami scribble-mode ac-geiser geiser ascii-art-to-unicode visual-ascii-mode org-brain suggest counsel-world-clock ivy-yasnippet helpful abyss-theme ledger-mode flycheck-ledger org-agenda-property org-link-minor-mode org-dashboard dashboard page-break-lines writeroom-mode writegood-mode poporg org-mru-clock epresent xpm window-numbering evil-visualstar git-timemachine git-gutter org-wild-notifier dumb-diff fringe-current-line ag highlight-indentation ruby-end ruby-tools ruby-refactor cljr-helm org-bookmark-heading org-alert org-mind-map spaceline dired-narrow dired-rainbow dired-subtree emms sotclojure sotlisp ox-reveal pretty-symbols org-journal org-autolist org-babel-eval-in-repl org-bullets request-deferred fortpy flycheck-clojure spacemacs-theme w3m use-package simplezen zencoding-mode move-text highlight-escape-sequences dired-details+ dired+ ace-jump-mode paredit-menu iy-go-to-char key-chord string-edit flycheck-perl6 company cal-china-x image+ 2048-game 0xc ivy-rich ivy-dired-history ivy smart-mode-line mo-git-blame evil-surround markdown-mode+ scheme-complete 0blayout org-plus-contrib cl-lib-highlight tagedit smex rainbow-delimiters paredit ido-ubiquitous clojure-mode-extra-font-locking cider)))
  '(send-mail-function (quote smtpmail-send-it))
  '(session-use-package t nil (session))
  '(smtpmail-smtp-server "smtp.163.com")
@@ -346,6 +352,8 @@
 
 
 
+;; music
+(load "setup-emms.el")
 (eval-after-load 'dired '(require 'setup-dired))
 (require 'setup-yasnippet)
 (eval-after-load 'markdown-mode '(require 'setup-markdown-mode))
@@ -364,16 +372,13 @@
 (toggle-truncate-lines 1)
   
 
-(load "setup-eww.el")
-
+(eval-after-load 'eww-mode (load "setup-eww.el"))
 
 (load "init-const.el")      ;;
 (load "init-utils.el")      ;;
 
 (load "init-projectile.el") ;;
 (load "init-ivy.el")        ;;
-(load "setup-tab.el")
-(require 'aweshell)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

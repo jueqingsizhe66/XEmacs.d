@@ -1,25 +1,22 @@
 ;;;or开始设置
-(setq load-path (cons "~/.emacs.d/lisp" load-path))
-(setq load-path (cons "~/.emacs.d/contrib/lisp" load-path))
+;; (setq load-path (cons "~/.emacs.d/lisp" load-path))
+;; (setq load-path (cons "~/.emacs.d/contrib/lisp" load-path))
 (require 'org-install)
 (require 'org)
 
-;(load "org-sidebar.el")
-;(load "org-agenda-ng.el")
-;(load "org-ql.el")
 
-
+(add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/org-listcruncher/")
 (load "org-listcruncher.el")
-(add-to-list 'load-path "~/.emacs.d/customizations/emacs-presentation-mode/")
+(add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/emacs-presentation-mode/")
 (load "presentation.el")
 
-(add-to-list 'load-path "~/.emacs.d/customizations/counsel-org-clock/")
+(add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/counsel-org-clock/")
 (load "counsel-org-clock.el")
 ;; keep company with org-mru-clock
 
 
 ;;; aspell.exe
-    ;; '(ispell-dictionary "british")                                             ;;
+    ; '(ispell-dictionary "british")                                             ;;
     ;; '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
 
 ;;; hunspell faster;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -27,10 +24,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- ;; (setq ispell-program-name "C:\\hunspell\\bin\\hunspell.exe")                                                                         ;;
- ;; (setq ispell-local-dictionary "en_US")                                                                                               ;;
+ ;(setq ispell-program-name "C:\\hunspell\\bin\\hunspell.exe")                                                                         ;;
+ ;; (setq ispell-program-name "hunspell")                                                                         ;;
+ ;; (setq ispell-local-dictionary "en_GB")                                                                                               ;;
  ;; (setq ispell-local-dictionary-alist                                                                                                  ;;
- ;;        '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US" "-p" "C:\\hunspell\\share\\hunspell\\en_US.dic") nil utf-8))) ;;
+         ;; '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_GB" "-p" "C:\\hunspell\\share\\hunspell\\en_GB.dic") nil iso-8859-1))) ;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -1242,8 +1240,8 @@ Use a prefix arg to get regular RET. "                                          
 ;;;<2018-11-18 18:27>                                                          ;;
 (custom-set-variables                                                          ;;
 
-     '(ispell-dictionary "british")                                             ;;
-     '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
+      '(ispell-dictionary "british")                                             ;;
+      '(ispell-program-name "C:\\Program Files (x86)\\Aspell\\bin\\aspell.exe")
    ;; '(setq ispell-program-name "C:\\hunspell\\bin\\hunspell.exe")
 
   ;; Please note that `ispell-local-dictionary` itself will be passed to hunspell cli with "-d"
@@ -1894,3 +1892,5 @@ With a prefix ARG always prompt for command to use."
     (+org/last-update-before day)))    
 (defun +org/has-child-p ()
   (save-excursion (org-goto-first-child)))
+
+;(load "setup-sidebar.el")

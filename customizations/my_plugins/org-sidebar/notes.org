@@ -1,0 +1,320 @@
+
+
+* Tasks
+
+** TODO [#A] Document keymap
+
+** TODO [#B] Automatically cleanup old sidebar buffers
+
+e.g. when an Org buffer is closed, any of its sidebar buffers shouldn't be left open.
+
+** TODO [#B] Automatically update sidebars in buffers' =after-save-hook=
+
++  [ ] Add to hook in parent Org buffers when sidebar is opened
++  [ ] Remove from hook when sidebar killed 
+
+** TODO [#B] Improve fontification of tasks
+
+e.g. emphasis like =code= isn't applied, so the raw syntax is visible.
+
+** TODO [#C] Made sidebars more customizable
+
+*** TODO Customizable =org-ql= queries
+
+*** TODO Customizable window/buffer layout
+
+* Ideas
+
+** TODO Persistent list of nodes/searches
+
+I'd like to be able to add certain nodes of interest (sometimes with child nodes) to a sidebar.  It would also be nice to be able to add "views" or agenda searches for tags, etc (inspired by [[https://raw.githubusercontent.com/wakatara/HelvetiCan-Taskpaper-theme/master/HelvetiCan_taskpaper_theme_preview.png][this screenshot]]).
+
+[2018-08-02 Thu 10:55]  Thinking through this a bit more, here's how I think it could work:
+
++  defvar ~org-sidebar-persistent-items~ :: A list of formatted strings for displaying in a sidebar window.
++  defun ~org-sidebar-add-item (&optional position)~ :: Add item at ~position~ to persistent items.  ~position~ defaults to point.  Calls ~org-sidebar-show-persistent~ after adding item to list.
++  defcustom ~org-sidebar-persistent-slot~ :: Side window slot for persistent items window.
++  defun ~org-sidebar-show-persistent~ :: Show persistent items sidebar window.  Places it in slot defined by ~org-sidebar-persistent-slot~.
++  defun ~org-sidebar--update-persistent~ :: Update persistent items buffer.  Erases the buffer and inserts items from ~org-sidebar-persistent-items~.
++  defun ~org-sidebar-persistent-remove~ :: Remove item at point from persistent items buffer.
+
+** TODO Sort hierarchically
+
+Use a list of sorting functions, apply recursively, like in magit-todos.
+
+** MAYBE Automatically update sidebar buffers
+
+For small Org buffers, it should be no problem, and might even work on a timer or a hook.  For larger ones, it becomes expensive, and will probably have to be done manually.
+
+It would probably make sense, at least, to update it on the after-save-hook...
+
+** MAYBE Add outline-overview sidebar
+
+e.g. like what I have in my config, aka a minimap
+
+** MAYBE Automatically size windows
+
+e.g. when there are only a few lines in one buffer but many in another, it doesn't make sense for them to be equally sized.
+
+** MAYBE Customizeable grouping
+
+Especially for tasks.  It would be good to have a generalized implementation for grouping, printing items beneath headers, etc.
+
+** MAYBE Automatically switch sidebar buffers when Org buffer changes
+
+e.g. in the current window layout, if the Org buffer displayed in the main window is changed, maybe (optionally) the sidebar buffers should change, too.
+
+** MAYBE More commands for sidebar buffers
+
+e.g. changing TODO keyword, etc.  It would be good to reuse as much Org Agenda functionality as possible, but since they aren't actual agenda buffers (and since I think Org only allows one actual Agenda buffer), that may not be possible.
+
+** DONE Emacs 26 side windows
+CLOSED: [2018-08-02 Thu 11:03]
+:LOGBOOK:
+-  State "DONE"       from "MAYBE"      [2018-08-02 Thu 11:03]
+:END:
+
+e.g. as mentioned [[https://www.reddit.com/r/emacs/comments/7h5til/uelizaretskii_emacs_26_is_nearing_its_release_the/dqpdn9n/][here]].  Also from the changelog:
+
+#+BEGIN_QUOTE
+Support for side windows is now official. The display action function 'display-buffer-in-side-window' will display its buffer in a side window. Functions for toggling all side windows on a frame, changing and reversing the layout of side windows and returning the main (major non-side) window of a frame are provided. For details consult the section "(elisp) Side Windows" in the ELisp manual.
+
+Support for atomic windows - rectangular compositions of windows treated by 'split-window', 'delete-window' and 'delete-other-windows' like a single live window - is now official. For details consult the section "(elisp) Atomic Windows" in the ELisp manual.
+#+END_QUOTE
+
+** DONE Use library for window management
+CLOSED: [2018-08-01 Wed 10:11]
+:LOGBOOK:
+-  State "DONE"       from "MAYBE"      [2018-08-01 Wed 10:11]
+:END:
+
+*** =display-buffer-in-side-window=
+
+I did not know about this before.  It might be the right tool for the job...
+
+[[https://www.gnu.org/software/emacs/draft/manual/html_node/elisp/Side-Windows.html][GNU Emacs Lisp Reference Manual: Side Windows]]
+
+[2018-08-01 Wed 10:10]  Yep, this works very well!  Going to consider this idea done unless we need more powerful window management in the future.
+
+*** Libraries
+:PROPERTIES:
+:ID:       69401cff-34b3-4887-bd45-aa4613420172
+:END:
+
+**** =splitter=
+
+=splitter.el= looks like it may be useful, especially the functions =spl-grid= and =spl-split=.
+
+**** =tile.el=
+
+This also looks like it might be useful, but I don't see any examples, and it doesn't seem obvious how to use it, so some experimentation would be required.
+
+**** =wconf=
+
+This might also be useful.  From its readme:
+
+#+BEGIN_SRC org
+  ,* Concepts
+  The main idea is +stolen from+ inspired by =workgroups=.  We keep a list
+  of configuration pairs.  Each such pair consists of an /active/
+  configuration (what you see when you switch to this slot of the list),
+  and a /stored/ one (what you have in the back, and maybe save to disk at
+  some point).  In =workgroups= parlance, these are the working and base
+  configs.
+
+  At each point in time there is (at most) one configuration current.  You
+  can explictly store and restore the current active configuration to/from
+  the stored one, or do likewise for all configurations.  For example, you
+  might decide that you have a carefully hand-crafted set of
+  configurations that you always want to start from, but that you do not
+  wish to change this setup, except when doing so explicitly.  That's
+  easy: just remove the =(wconf-store-all)= call from the above hook
+  function.
+
+  A nice feature of =wconf= is that it does not alter any hooks or
+  settings outside its own small world, and I intend to keep it that way.
+  This implies that the currently active configuration is only updated
+  explicitly, via one the functions/commands in the package.
+  ,* Rationale, and Other Packages
+  I used https://github.com/tlh/workgroups.el for several years.  It is a
+  great package, which offers a lot of additional features besides the
+  core business of managing window configs.  It also has some
+  shortcomings, is somewhat complex (at 79k), and I occasionally
+  experienced minor glitches.  Most importantly, it has been unmaintained
+  for roughly 4 years now.
+
+  https://github.com/pashinin/workgroups2 promises to pick up where
+  workgroups left, and is actively maintained.  The main difference, as I
+  understand it, is the desire to restore "special" buffers as well (help,
+  info, org-mode agendas, notmuch mail, you name it).  Finally trying it,
+  it did not provide a lot of benefit for my personal needs, but added
+  still more complexity.  The functionality that I want should not require
+  179k of elisp.
+
+  Nowadays (at least since the GNU Emacs 24.4 release), there are proper
+  lisp-reader (de)serializations for both frame and window configurations,
+  and =window.el= and =frameset.el= provide functions to deal with them
+  (relatively) comfortably.  Desktop already (re)stores a single
+  configuration.  That's when I decided that it's time to roll my own:
+  build something light on top of what's already there, in order to
+  provide persistent switchable configurations.
+
+#+END_SRC
+
+**** =window-layout=
+
+This looks like it might do what I need, as it has "recipes":
+
+#+BEGIN_EXAMPLE
+  Split a frame or window into some windows according to a layout
+  recipe.
+
+  Example code
+
+  Layout function
+  -> three pane layout.
+  (setq wm ; <-- window management object
+        (wlf:layout
+         '(| (:left-size-ratio 0.3)
+             folder
+             (- (:upper-max-size 15)
+                summary
+                message))
+         '((:name folder
+            :buffer "folder buffer")
+           (:name summary
+            :buffer "summary buffer")
+           (:name message
+            :buffer "message buffer")
+          )))
+
+  Window controlling
+  (wlf:show    wm 'summary)
+  (wlf:hide    wm 'summary)
+  (wlf:toggle  wm 'summary)
+  (wlf:select  wm 'summary)
+  (wlf:toggle-maximize  wm 'summary)
+
+  Window updating
+  (wlf:refresh wm)
+  (wlf:reset-window-sizes wm)
+  (wlf:reset-init wm)
+
+  Accessing a buffer
+  (wlf:get-buffer wm 'summary) -> <#buffer object>
+  (wlf:set-buffer wm 'summary "*scratch*")
+
+  Accessing a window
+  (wlf:get-window wm 'summary)
+
+  Layout hook
+  (defun wlf:test-hook (wset) (message "HOOK : %s" wset))
+  (wlf:layout-hook-add wm 'wlf:test-hook)
+  (wlf:layout-hook-remove wm 'wlf:test-hook)
+
+  `wlf:layout' function
+
+  ,* Layout recipe:
+
+  ( (split type) (split option)
+                 (left window name or recipe)
+                 (right window name or recipe) )
+
+    - : split vertically
+    | : split horizontally
+
+  split option (the prefix 'left' can be replaced by 'right', 'upper' and 'lower'.)
+    :left-size  (column or row number) window size
+    :left-max-size  (column or row number) if window size is larger than this value, the window is shrunken.
+    :left-size-ratio  (0.0 - 1.0) window size ratio. the size of the other side is the rest.
+
+  Note:
+  The split option can be omitted.
+  The size parameters, :size, :max-size and :size-ratio, are mutually
+  exclusive.  The size of a window is related with one of the other
+  side window. So, if both side windows set size parameters, the
+  window size may not be adjusted as you write.
+
+  ,* Window options:
+
+    :name  [*] the window name.
+    :buffer  a buffer name or a buffer object to show the window. If nil or omitted, the current buffer remains. If symbol, it is evaluated as a global variable.
+    :default-hide  (t/nil) if t, the window is hided initially. (default: nil)
+    :fix-size  (t/nil) if t, when the windows are laid out again, the window size is remained. (default: nil)
+
+  ,* subwindow-p option:
+
+  If this option is not nil, this function splits the windows within
+  the current window. If this option is nil or omitted, this function
+  uses the entire space of the current frame. Because some user
+  actions and complicated window layouts may cause unexpected split
+  behaviors, it is easy to use the entire space of a frame.
+
+  ,* Return value (Window management object):
+
+  You should not access the management object directly, because it is not
+  intended direct access.
+  You can make some management objects to switch the window layout.
+
+  ,* Layout hook
+
+  After splitting windows, registered hook are called with one
+  argument, the window management object.
+#+END_EXAMPLE
+
+**** =window-purpose=
+
+This looks like it might be useful too:
+
+#+BEGIN_EXAMPLE
+  ---------------------------------------------------------------------
+  Full information can be found on GitHub:
+  https://github.com/bmag/emacs-purpose/wiki
+  ---------------------------------------------------------------------
+
+  Purpose is a package that introduces the concept of a "purpose" for
+  windows and buffers, and then helps you maintain a robust window
+  layout easily.
+
+  Installation and Setup:
+  Install Purpose from MELPA, or download it manually from GitHub. If
+  you download manually, add these lines to your init file:
+     (add-to-list 'load-path "/path/to/purpose")
+     (require 'window-purpose)
+  To activate Purpose at start-up, add this line to your init file:
+     (purpose-mode)
+
+  Purpose Configuration:
+  Customize `purpose-user-mode-purposes', `purpose-user-name-purposes',
+  `purpose-user-regexp-purposes' and
+  `purpose-use-default-configuration'.
+
+  Basic Usage:
+  1. Load/Save window/frame layout (see `purpose-load-window-layout',
+     `purpose-save-window-layout', etc.)
+  2. Use regular switch-buffer functions - they will not mess your
+     window layout (Purpose overrides them).
+  3. If you don't want a window's purpose/buffer to change, dedicate
+     the window:
+     C-c , d: `purpose-toggle-window-purpose-dedicated'
+     C-c , D: `purpose-toggle-window-buffer-dedicated'
+  4. To use a switch-buffer function that ignores Purpose, prefix it
+     with C-u. For example, [C-u C-x b] calls
+     `switch-buffer-without-purpose'.
+#+END_EXAMPLE
+
+* Code
+
+** Testing
+
+#+BEGIN_SRC elisp
+  (org-super-agenda--test-with-org-today-date "2017-07-08 00:00"
+    (org-sidebar))
+#+END_SRC
+
+#+BEGIN_SRC elisp
+  (org-super-agenda--test-with-org-today-date "2017-07-08 00:00"
+    (org-sidebar-ql '(and (todo "TODO") (priority > "C"))
+                    "/home/me/src/emacs/org-super-agenda/test/test.org"
+                    nil :priority 'date))
+#+END_SRC
