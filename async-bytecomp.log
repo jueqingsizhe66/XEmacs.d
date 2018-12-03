@@ -1,4 +1,0 @@
-
-In end of data:
-helm-dabbrev.el:389:1:Warning: the function `thread-alive-p' is not known to
-    be defined.

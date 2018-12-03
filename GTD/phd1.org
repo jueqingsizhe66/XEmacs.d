@@ -1701,6 +1701,11 @@ DEADLINE: <2018-12-06 周四> SCHEDULED: <2018-11-29 周四>
                     :Effort: 16:00
                     :CATEGORY: Project-Yawing
                     :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-12-03 周一 14:17]--[2018-12-03 周一 20:13] =>  5:56
+                    - Clocked out on T:[2018-12-03 周一 20:13] \\
+                      示意图处理完毕
+                    :END:
 
 1. [ ] Abstract
 2. [ ] Introduction

@@ -26,11 +26,8 @@ find-file-in-project https://github.com/technomancy/find-file-in-project
 git-timemachine https://github.com/emacsmirror/git-timemachine
 Highlight-Indentation-for-Emacs https://github.com/antonj/Highlight-Indentation-for-Emacs
 emacs-inertial-scroll https://github.com/kiwanami/emacs-inertial-scroll
-org-sidebar https://github.com/alphapapa/org-sidebar
-org-ql https://github.com/alphapapa/org-ql
 counsel-org-clock https://github.com/akirak/counsel-org-clock
 emacs-presentation-mode https://github.com/zonuexe/emacs-presentation-mode
-org-super-agenda https://github.com/alphapapa/org-super-agenda
 """.strip()
 
 

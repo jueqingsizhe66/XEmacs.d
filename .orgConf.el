@@ -1881,8 +1881,8 @@ With a prefix ARG always prompt for command to use."
                                 (let ((startpoint (point)))
                                   (forward-word 3)
                                   ;; Convert timestamp into days difference from today
-                                  (+org/date-diff startpoint (point)))
-                              (point-max)))))
+                           ‘       (+org/date-diff startpoint (point)))
+                           ’   (point-max)))))
       (if (and subtree-valid (>= subtree-valid since))
           next-headline
         nil))))
