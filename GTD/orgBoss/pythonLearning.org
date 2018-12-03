@@ -102,6 +102,9 @@ DEADLINE: <2018-11-11 周日>
                     :Effort: 1:00
                     :END:
                     :LOGBOOK:
+                    CLOCK: [2018-12-03 周一 20:58]--[2018-12-03 周一 23:29] =>  2:31
+                    - Clocked out on T:[2018-12-03 周一 23:29] \\
+                      小礼物
                     CLOCK: [2018-11-24 周六 15:30]--[2018-11-24 周六 19:51] =>  4:21
                     - Clocked out on T:[2018-11-24 周六 19:51] \\
                       python生态了解
@@ -532,6 +535,174 @@ https://docs.python.org/3/reference/datamodel.html
 
 python不错的菜鸟教程
 http://www.runoob.com/python/python-exceptions.html
+
+1. pandas read_csv忽略指定行
+
+
+#+BEGIN_SRC python
+pd.read_csv('test.csv', sep='|', skiprows=range(1, 10))
+#+END_SRC
+
+
+https://cloud.tencent.com/developer/ask/188794
+
+2. pandas read_csv指定分隔符
+
+https://blog.csdn.net/sinat_29957455/article/details/79054126
+
+#+BEGIN_SRC python
+data = pd.read_csv(path+"point-1.0-1.0r.out",sep=" ",skiprows=range(1,2))
+#+END_SRC
+
+3. pandas 信息整理
+
+https://blog.csdn.net/abcdrachel/article/details/80362623
+
+
+#+BEGIN_SRC python
+import pandas as pd
+# 读取文件
+# data = pd.read_csv("E:\\working\\2018_5_9\\data\\Cl_data\\grids.csv",header = None)
+data = pd.read_excel("E:\\working\\2018_5_9\\data\\Cl_data\\grids.xlsx",header = None)
+# 写入文件
+data1 = data[data[0]<60000]
+data1.to_excel("data1.xlsx",index = False)
+data2 = data[(data[0]>= 60000) & (data[0] <120000) ]
+data2.to_excel("data2.xlsx",index = False)
+data3= data[data[0]>=120000]
+data3.to_excel('data3.xlsx',index = False)
+#+END_SRC
+
+
+4. pandas数据压缩
+
+http://www.cnblogs.com/dev-liu/p/pandas_2.html
+
+5. os获取文件名
+
+#+BEGIN_SRC python
+使用到的函数有: 
+os.path.splitext():分离文件名与扩展名
+
+os.path.splitext(file)[0] 获得文件名
+
+os.path.splitext(file)[1] 获得文件扩展名
+#+END_SRC
+
+https://www.jianshu.com/p/1a787ff721ba
+
+6. python  the differences between split and splittext
+
+http://www.cnblogs.com/jielongAI/p/9323257.html
+
+7. 写入数据到不同的excel sheets中
+https://blog.csdn.net/F229338596/article/details/80475329
+
+新版本得通过openpyxl.reader.excel导入库
+
+pip3 install openpyxl
+#+BEGIN_SRC python
+    from openpyxl.reader.excel import load_workbook
+  #enter code here
+  # dataframe: 需要写入excel的数据
+  # outfile：输出的文件地址
+  # your_sheet_name: 单独的sheet的文件名称
+  def excelAddSheet(dataframe, outfile, your_sheet_name):
+      writer = pd.ExcelWriter(outfile, enginge='openpyxl')
+      if os.path.exists(outfile) != True:
+          dataframe.to_excel(writer, your_sheet_name, index=None)
+      else:
+          book = load_workbook(writer.path)
+          writer.book = book
+          dataframe.to_excel(excel_writer=writer, sheet_name = your_sheet_name, index=None)
+      writer.save()
+      writer.close()
+#+END_SRC
+
+8. python字符串截取功能
+
+在python中没有类似sub()或者subString()的方法，但是字符串的截取操作却是更加简单。
+
+只需要把字符串看作是一个字符数组，截取子串非常方便。
+
+多余的话就不啰嗦了，看下面的例子就明白了。
+
+
+#+BEGIN_SRC python
+str = ’0123456789′
+print str[0:3] #截取第一位到第三位的字符
+print str[:] #截取字符串的全部字符
+print str[6:] #截取第七个字符到结尾
+print str[:-3] #截取从头开始到倒数第三个字符之前
+print str[2] #截取第三个字符
+print str[-1] #截取倒数第一个字符
+print str[::-1] #创造一个与原字符串顺序相反的字符串
+print str[-3:-1] #截取倒数第三位与倒数第一位之前的字符
+print str[-3:] #截取倒数第三位到结尾
+print str[:-5:-3] #逆序截取，具体啥意思没搞明白？
+#+END_SRC
+
+9. 最后的礼物
+   
+
+#+BEGIN_SRC python
+
+  import pandas as pd
+  import os
+  import matplotlib.pyplot as plt
+
+  from openpyxl.reader.excel import load_workbook
+  def file_list(dirname, ext='.out'):
+      """获取目录下所有特定后缀的文件
+      @param dirname: str 目录的完整路径
+      @param ext: str 后缀名, 以点号开头
+      @return: list(str) 所有子文件名(不包含路径)组成的列表
+      """
+      return list(filter(
+          lambda filename: os.path.splitext(filename)[1] == ext,
+          os.listdir(dirname)))
+
+  # pip3 install openpyxl
+  #enter code here
+  # dataframe: 需要写入excel的数据
+  # outfile：输出的文件地址
+  # your_sheet_name: 单独的sheet的文件名称
+  def excelAddSheet(dataframe, outfile, your_sheet_name):
+      writer = pd.ExcelWriter(outfile, enginge='openpyxl')
+      if os.path.exists(outfile) != True:
+          dataframe.to_excel(writer, your_sheet_name, index=True)
+      else:
+          book = load_workbook(writer.path)
+          writer.book = book
+          dataframe.to_excel(excel_writer=writer, sheet_name = your_sheet_name, index=True)
+      writer.save()
+      writer.close()
+  ,#+END_SRC
+
+  processing=['M:\\fluentYaw0','M:\\fluentYaw5','M:\\fluentYaw15','M:\\fluentYaw20',
+              'M:\\fluentYaw30','P:\\NacelleYaw\\NacelleYaw','P:\\NacelleYaw\\NacelleYaw\\20181102Newer',
+              'P:\\NacelleYaw\\NacelleYaw\\20181102Newer\\19.1']
+  for path in processing:
+      #path = 'M:\\fluentYaw10\\'    # 设置文件路径
+      #df = pd.read_csv(path + '\\data\\ex1.csv')  # 自动识别csv文件的分隔符
+      #https://blog.csdn.net/sinat_29957455/article/details/79054126
+      folds=path.split("\\")
+      print(folds[folds.__len__()-1])
+      fileList=file_list(path,'.out')
+      for fileTemp in fileList:
+          words=fileTemp.split("-")
+          data = pd.read_csv(path+"\\"+fileTemp,sep=" ",skiprows=range(1,2))
+          print(words[1]," ", words[2][:-4])
+          excelAddSheet(data,path+"\\"+folds[1]+"-velocitySeries.xlsx",words[1]+"-"+words[2][:-4])
+
+      #    data.to_excel(path+"pp.xls",sheet_name=words[1]+"-"+words[2],index=False)
+
+  #print(data)
+#+END_SRC
+
+pandas厉害之处 6百万excel数据读入没问题, 听说亿级的也没问题。
+https://python.freelycode.com/contribution/detail/38
+
 *  第一、二章 准备与例子
 :LOGBOOK:
 CLOCK: [2018-11-23 周五 13:11]--[2018-11-23 周五 14:14] =>  1:03
