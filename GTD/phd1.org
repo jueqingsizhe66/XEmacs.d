@@ -1695,7 +1695,7 @@ CLOSED: [2018-11-29 周四 20:16] DEADLINE: <2018-11-26 周一>
                     
 风轮55圈是否计算完成？！
 
-*** DOING [#B] YawingForRenewableEnergyChina <2018-11-29 周四 17:07> [0/6] :@NCEPU:
+*** DOING [#B] YawingForRenewableEnergyChina <2018-11-29 周四 17:07> [0/6] :PROJECT:
 DEADLINE: <2018-12-06 周四> SCHEDULED: <2018-11-29 周四>
                     :PROPERTIES:
                     :Effort: 16:00
@@ -1714,7 +1714,7 @@ DEADLINE: <2018-12-06 周四> SCHEDULED: <2018-11-29 周四>
 5. [ ] Conclusion
 6. [ ] References
 
-*** TODO [#B] Yawing NREL 5MW for Energy <2018-11-29 周四 17:10> [0/6] :@NCEPU:
+*** TODO [#B] Yawing NREL 5MW for Energy <2018-11-29 周四 17:10> [0/6] :@NCEPU:PROJECT:
 DEADLINE: <2018-12-29 周六> SCHEDULED: <2018-11-29 周四>
                     :PROPERTIES:
                     :Effort: 12:00
@@ -1731,7 +1731,7 @@ DEADLINE: <2018-12-29 周六> SCHEDULED: <2018-11-29 周四>
 4. [ ] Results
 5. [ ] Conclusion
 6. [ ] References
-*** TODO [#B] Platform motion with Pitching and Rolling of NREL 5MW for energy <2018-11-29 周四 17:11>[0/6] :@NCEPU:
+*** TODO [#B] Platform motion with Pitching and Rolling of NREL 5MW for energy <2018-11-29 周四 17:11>[0/6] :@NCEPU:PROJECT:
 DEADLINE: <2019-01-15 周二> SCHEDULED: <2018-11-29 周四>
                     :PROPERTIES:
                     :Effort: 10:00

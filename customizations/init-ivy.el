@@ -112,7 +112,7 @@
   (let ((command
          (cond
           ((executable-find "rg")
-           "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
+           "rg -i -U -M 120 --no-heading --line-number --color never %s %s")
           ((executable-find "ag")
            "ag -i --noheading --nocolor --nofilename --numbers '%s' %s")
           (t counsel-grep-base-command))))
@@ -123,7 +123,8 @@
     (setq counsel-rg-base-command
           "rg -i -M 120 --no-heading --line-number --color never %s ."))
 
-  ;; Integration with `projectile'
+  (setq counsel-ag-base-command "ag --vimgrep -S --nocolor --line-number --nogroup %s")    
+; Integration with `projectile'
   (with-eval-after-load 'projectile
     (setq projectile-completion-system 'ivy))
 

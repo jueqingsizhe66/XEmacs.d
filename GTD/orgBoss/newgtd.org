@@ -614,16 +614,18 @@ http://www.howardism.org/Technical/Emacs/spreadsheet.html
 #+END_EXAMPLE
 
 
-** PENDING [#B] 番茄时间(30min) <2017-10-28 周六 16:21 >             :@work:
+** TODO [#B] 番茄时间(30min)-for 倒计时 <2017-10-28 周六 16:21>         :@work:
                     :PROPERTIES:
                     :Effort: 0:30
-                    :LAST_REPEAT: [2018-02-08 周四 13:07]
+                    :LAST_REPEAT: [2018-12-04 周二 14:06]
                     :END:
                     - State "DONE"       from "PENDING"    [2018-02-08 周四 13:07]
                     - State "DONE"       from "PENDING"    [2018-02-08 周四 13:06]
                     - State "PENDING"    from "PENDING"    [2018-02-08 周四 13:06]
                     - State "DONE"       from "TODO"          [2018-02-08 周四 13:06]
                     :LOGBOOK:
+                    - State "TODO"       from "PENDING"    T:[2018-12-04 周二 14:07]
+                    - State "DONE"       from "PENDING"    T:[2018-12-04 周二 14:06]
                     CLOCK: [2017-10-28 周六 16:22]--[2017-10-28 周六 16:24] =>  0:02
                     :END:
           #+BEGIN: clocktable :maxlevel 2 :scope subtree
@@ -632,12 +634,12 @@ http://www.howardism.org/Technical/Emacs/spreadsheet.html
           |-------------------------------------------------+--------+------|
           | *Total time*                                    | *0:02* |      |
           |-------------------------------------------------+--------+------|
-          | \_  番茄时间(30min) <2017-10-31 周二 16:21 +1w> |        | 0:02 |
+          | \_  番茄时间(30min) <2017-11-07 周二 16:21 +1w> |        | 0:02 |
           #+END:
           
                     
 这就是“番茄时间”，通过倒计时来激发你的决断力和专注力，调动你的情绪和潜能
-一般半小时足以，充当时间的衡量
+一般半小时足以，充当时间的衡量(倒计时开始)
 
 
 番茄时间无处不在
@@ -2294,6 +2296,14 @@ DEADLINE: <2019-03-25 周一>
 *** TODO 第一章 验证
 *** TODO 第一章 Yawing
 *** TODO 第一章 Platform motion
+** TODO [#A] 11点睡觉|7点起床 <2018-12-04 周二 10:48 +1d>              :@NCEPU:
+                    :PROPERTIES:
+                    :Effort: 0:30
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-12-04 周二 10:48]--[2018-12-04 周二 10:49] =>  0:01
+                    :END:
+                    
                     
                     
 

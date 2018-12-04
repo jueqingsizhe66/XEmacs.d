@@ -3338,6 +3338,7 @@ file:~/xx.org::MyTarget (找到目标<<My Target>>'
 info:org:External%20links
 ```
 
+<2018-12-04 13:00> `f1 i` 通过`d`返回最顶层，`[`,`]`进行上下翻页
 
 [vim-plugins is good things][174]: 叶， you need to practice it!
 使用`\ntw`书写个人信息存储到$HOME\vimfiles\perl-support\perl.templates(修改位置也可以)中，然后使用`\ntr`
@@ -6302,7 +6303,7 @@ You can also start by calling ace-window and then decide to switch the action to
 
 还有一些有趣的命令
 ```
-　上一章我们看到有些命令加了C-x 4这个前缀，这一类命令都是用来操作多窗口的。
+　上一章我们看到有些命令加了C-x 4这个前缀(一个窗口多frames)，这一类命令都是用来操作多窗口的。
 
 　　C-x 4 b bufname (switch-to-buffer-other-window) 在另一个窗口打开缓冲。
 　　C-x 4 C-o bufname (display-buffer) 在另一个窗口打开缓冲，但不选中那个窗口。
@@ -6311,14 +6312,17 @@ You can also start by calling ace-window and then decide to switch the action to
 　　C-x 4 m (mail-other-window) 在另一个窗口写邮件。
 　　C-x 4 r filename (find-file-read-only-other-window) 在另一个窗口以只读方式打开文件。
 
-C-x 0 (delete-window) 来关闭当前窗口
-C-x 1 (delete-other-windows) 关闭其它所有窗口
+C-x 0 (delete-window) 来关闭当前frame窗口
+C-x 1 (delete-other-windows) 关闭其它所有frames窗口
 如果想连窗口打开的缓冲一并关掉使用C-x 4 0 (kill-buffer-and-window)。
 
-C-x + 所有窗口等宽  C-x ^提高当前光标所在窗口
+C-x + 所有窗口等宽  C-x ^提高当前光标所所在frames
 ```
 
 现在`C-x 4 b` 成为我比较经常用的。
+
+`C-x 5 f` 在另外一个窗口打开文件
+`C-x 5 o` 切换另一个窗口`类似于Alt-tab`的功能
 
 
 ### 127. helpful 系统
@@ -7502,7 +7506,8 @@ That's it. Org-agenda show too many info, so you wanna simplify it, only shows t
 
 The blog [record-org-mode-recent-activity][420] and [his agenda.el][419] will give you some advice about
 how to remember your working process. Detailed message can traced into [.orgConf.el][421]
-
+(首先得开启logbook功能，然后该程序会搜索`:LOGBOOK:`底下的`T:` or `:CREATED:` or `:CLOSED:` timestamps.通过和
+当前时间作对比，确认最近做的事情, 进行CLOCK的时候会在clock out的时候添加`T:` ,当然切换工作状态的时候也会出现`T:`)
 
 ### 154. What is hook?
 
@@ -7980,6 +7985,19 @@ Emacs有一個有趣的特性`Case folding`,当你使用`C-r`或者`c-S`，如�
 
 有些emacs包不存在melpa，于是只能单独下载，为了保持更新，于是在customization写了update_my_plugins.py,使用
 python3执行,即可完成对自己插件的更新。
+
+
+### 175. Funny app in Emacs
+
+`M-x hanoi`
+
+`M-x doctor` 也许有用,跟你交流
+
+
+[Emacs programming language][481]
+
+[Emacs lisp programming guide][482]
+
 
 
 
@@ -8469,3 +8487,5 @@ python3执行,即可完成对自己插件的更新。
 [478]: https://github.com/manateelazycat/company-english-helper
 [479]: https://github.com/bbatsov/projectile/issues/1302
 [480]: http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html
+[481]: http://caiorss.github.io/Emacs-Elisp-Programming
+[482]: https://github.com/chrisdone/elisp-guide

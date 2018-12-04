@@ -93,9 +93,9 @@
 (global-set-key (kbd "C-s") 'swiper) 
 
 ;; i  must be lower-case option
-(setq counsel-grep-base-command "rg -i -U -M 120 --no-heading --line-number --color never %s %s")
-(setq counsel-rg-base-command "rg -U -S --no-heading --line-number --color never %s ."
-    counsel-ag-base-command "ag --vimgrep -S --nocolor --line-number --nogroup %s")    
+;; (setq counsel-grep-base-command "rg -i -U -M 120 --no-heading --line-number --color never %s %s")
+;; (setq counsel-rg-base-command "rg -U -S --no-heading --line-number --color never %s ."
+    ;; counsel-ag-base-command "ag --vimgrep -S --nocolor --line-number --nogroup %s")    
     ;counsel-ag-base-command "ag -U -S --nocolor --line-number --nogroup %s ."
 ;; setting for ace-jump-mode 
 (autoload

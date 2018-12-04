@@ -628,3 +628,8 @@ http://www.mechbbs.com/forum.php?mod=forumdisplay&fid=38
 http://www.cncaetech.com/
 ** Rich(clojure master)
  https://gist.github.com/richhickey
+** Emacs programming guide
+ http://caiorss.github.io/Emacs-Elisp-Programming/
+https://github.com/caiorss/Emacs-Elisp-Programming
+
+https://github.com/chrisdone/elisp-guide
