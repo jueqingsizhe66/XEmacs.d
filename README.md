@@ -7748,6 +7748,35 @@ you can open todo outline in the org-mode with `SPC t `
 1. [Replacing Scrivener with Emacs and Vim][454], 通过他改进了我的配置
 2. [ Emacs for writers][449]-----[emacs config for writer][450]
 
+```
+
+(evil-leader/set-leader "<SPC>")
+(global-evil-leader-mode)
+(evil-leader/set-key
+  "f" 'helm-find-files      ;;; 也不错哈
+  "b" 'helm-mini      ;;;;  也不错哈 显示所有的buffers
+  "-" 'text-scale-decrease
+  "+" 'text-scale-increase   ;;; 演示的时候经常需要
+  "x" 'helm-M-x    ;;; 速度还可以
+  "r" 'helm-M-x      ;;;; 快速找到xref-find-definitions
+  "k" 'kill-buffer ;; ok, 不需要每次再按下C-x k了，直接<SPC> k
+
+  "w" 'persp-switch  ;;;; 现在经常用
+  )
+
+
+  ;"d" 'neotree-toggle ;; comment it
+;; leader maps for org mode ;; increase orgmode
+(evil-leader/set-key-for-mode 'org-mode
+  "t"  'org-show-todo-tree    ;;; 如果你的项目有todo标题则会显示出来，很常用
+  "a"  'org-agenda
+  "c"  'org-archive-subtree   ;;删掉org的内容，并进行被分到当前文件名archive.org下
+  "o"  'org-open-at-point       ;; 经常用
+)
+
+```
+
+
 #### Abbrev
 
 
@@ -7870,6 +7899,7 @@ Ei,yes!点号，等上一小会就会有提示出现了(实现了你的目标了
 同样的道理你也是可以send class,def等进行局部编译,这是很好玩的地方，也就是可以测试语句，一个函数等
 
 不妨敲入`C-c C-y `  e表示执行statement  f代表函数(相当于把这个语句黏贴到python后台进行输出，看看效果对不对)
+很有意思的函数，发送statement到python解释器
 ``` Emacs-lisp
 (defvar elpy-shell-map
   (let ((map (make-sparse-keymap)))
@@ -7912,7 +7942,7 @@ Ei,yes!点号，等上一小会就会有提示出现了(实现了你的目标了
 
 `C-c C-o` 提出当前文件下的所有定义，类似于markdown文件org文件的`C-c o`的outline功能
 但是跳转定义老是有问题，提示timeout(有时候而已，可能一两次)
-`M-x elpy-goto-definition` 也是不错啦!
+`M-x elpy-goto-definition` 也是不错啦!(还有`M-x xref-goto-definition`)
 
 `C-c C-d`也是不错哈,类似下面的anaconda-mode！
 有必要说一下`S-RET`插入一个tab长度，直接Ret有问题的!
@@ -8015,7 +8045,23 @@ python3执行,即可完成对自己插件的更新。
 
 Also good for writing paper.
 
+### 177. xref.el
 
+
+看了[xref goto definitions][484],很有启发。
+
+在prog-mode中绑定了函数定义跳转`xref-find-definitions`, which is an
+interactive autoloaded compiled lisp function used to find the 
+definition of the identifier at poiint
+
+`xref-find-references` find references to the identifier at point,快捷键`M-?`，这个
+快捷键和`anaconda-mode`的查看文档命令有关
+
+我通常也会使用`F1 f`来查找光标下的函数，其实是一样的效果,我喜欢用它，因为可以知道详尽
+的关于该函数声明，来自哪里，什么功能，快捷键是什么。`F1 t`打开tutor文件
+
+`C-x 4 .`  在当前窗口的新frame打开标识符定义
+`C-x 5 .`  在新窗口打开光标下的标识符定义
 
 
 ----------
@@ -8505,3 +8551,4 @@ Also good for writing paper.
 [481]: http://caiorss.github.io/Emacs-Elisp-Programming
 [482]: https://github.com/chrisdone/elisp-guide
 [483]: http://musicforprogramming.net
+[484]: https://stackoverflow.com/questions/4222183/emacs-how-to-jump-to-function-definition-in-el-file

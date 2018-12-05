@@ -156,7 +156,9 @@
   "+" 'text-scale-increase
   "x" 'helm-M-x
   "r" 'helm-M-x
-  "k" 'kill-buffer)
+  "k" 'kill-buffer
+  "w" 'persp-switch
+)
 
   ;"w" 'persp-switch
   ;"d" 'neotree-toggle ;; comment it
