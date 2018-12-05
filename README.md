@@ -380,13 +380,17 @@ emacs经常地使用方式是
 使用 `C-h i` 可以得到一个info window, 一个不错的帮助平台（结合标题19进行学习）
 
 1. 使用space键执行翻屏(scroll one screen at a time)
-2. [ and ] Previous /Next node
-3. 使用n和p跳转上下章节(同级目录跳转）(Previous/next sibling node)
+2. [ and ] Previous /Next node(前后章连续小节跳转,顺序浏览当前书籍的前后张杰)
+3. 使用n和p跳转上下章节(同级目录跳转）(Previous/next sibling node), t返回当前插件(书籍)的首页, d返回info系统的主目录(所有书籍列表)
 4. l and r可以返回和向前跳转(in history)(l and r go back /forward in history)
 类似于浏览器的回退和前进
 5. Tab 表示在links之间跳转
-6. Enter进入链接, m 弹出一个prompt minibuffer, for a menu item name to choose it.
+6. Enter进入链接, m 弹出一个prompt minibuffer(挑选你需要学习的major modes), for a menu item name to choose it.
 7. q 推出info browser
+8. `^`
+9. `L`显示一个访问列表(visited history list)
+10. `?` 显示快捷键帮助信息
+11. `g` 是一个很好的显示node列表(书籍中的张继烈表)的工具
 
         Everyday reading
         For everyday reading, you want SPACE for browsing and reading 
@@ -7999,6 +8003,17 @@ python3执行,即可完成对自己插件的更新。
 [Emacs lisp programming guide][482]
 
 
+### 176. I like ielm
+
+
+`M-x ielm`可以打开elisp解释器,
+
+支持补全.
+
+
+[Music for pragramming][483] -----> Just listening
+
+Also good for writing paper.
 
 
 
@@ -8489,3 +8504,4 @@ python3执行,即可完成对自己插件的更新。
 [480]: http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html
 [481]: http://caiorss.github.io/Emacs-Elisp-Programming
 [482]: https://github.com/chrisdone/elisp-guide
+[483]: http://musicforprogramming.net

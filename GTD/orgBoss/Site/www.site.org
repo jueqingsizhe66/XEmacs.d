@@ -633,3 +633,7 @@ http://www.cncaetech.com/
 https://github.com/caiorss/Emacs-Elisp-Programming
 
 https://github.com/chrisdone/elisp-guide
+** music for programming 
+ http://musicforprogramming.net/
+** vim awesome
+ https://vimawesome.com/

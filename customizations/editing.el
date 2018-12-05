@@ -376,3 +376,11 @@ modifications)."
 (require 'company-english-helper)
 
 
+(defun insert-translated-name-current-parse-state ()
+  "Return parse state of point from beginning of defun."
+  (let ((point (point)))
+    (beginning-of-defun)
+    (parse-partial-sexp (point) point)))
+
+
+

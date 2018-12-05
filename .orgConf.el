@@ -2189,9 +2189,9 @@ With a prefix ARG always prompt for command to use."
   "Used to search through the logbook of subtrees.
 
     Looking for T:[2018-09-14 Fri 10:50] kind of time stamp in logbook."
-  (let* ((closed (re-search-forward "^CLOSED: \\[" end t)) 
+  (let* ((closed (re-search-forward "CLOSED: \\[" end t)) 
          (created (if (not closed) 
-                      (re-search-forward "^:CREATED: \\[" end t))) 
+                      (re-search-forward ":CREATED: \\[" end t))) 
          (logbook (if (not closed) 
                       (re-search-forward ".*T:\\[" end t))) 
          (result (or closed 
