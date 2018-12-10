@@ -7,6 +7,18 @@
 
 
 
+* regression analysis
+:PROPERTIES:
+:ID:       e634cc06-937b-4640-90e3-07a44bf86906
+:END:
+https://www.statisticshowto.datasciencecentral.com/probability-and-statistics/regression-analysis/
+
+https://www.wikihow.com/Run-Regression-Analysis-in-Microsoft-Excel
+Regression analysis is used in stats to find trends in data.
+
+https://www.sciencedirect.com/topics/neuroscience/regression-analysis
+
+[[file:WindPowerGeneration.org][Software detective for wind power generateion]]
 * 横向节点
 :PROPERTIES:
 :ID:       fcd4e90c-a7ca-4bcd-a262-c2f2479799dc

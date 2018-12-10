@@ -2244,28 +2244,33 @@ DEADLINE: <2018-12-15 周六>
 奥登是星星的意思
 
 高娃是美丽的意思
-** TODO [#B] 练车 <2018-11-29 周四 14:31>                           :@NCEPU:
-DEADLINE: <2018-12-06 周四>
+** DONE [#B] 练车 <2018-11-29 周四 14:31>                              :@NCEPU:
+CLOSED: [2018-12-07 周五 13:47] DEADLINE: <2018-12-06 周四>
                     :PROPERTIES:
                     :Effort: 4:00
                     :END:
                     :LOGBOOK:
+                    - State "DONE"       from "TODO"          T:[2018-12-07 周五 13:47]
                     CLOCK: [2018-11-29 周四 14:31]--[2018-11-29 周四 14:32] =>  0:01
                     :END:
-** TODO [#B] 练车2 <2018-11-29 周四 14:32>                          :@NCEPU:
-DEADLINE: <2018-12-07 周五>
-                    :PROPERTIES:
-                    :Effort: 4:00
-                    :END:
-** TODO [#B] 摩托车考试 <2018-11-29 周四 14:35>                     :@NCEPU:
-DEADLINE: <2018-12-10 周一>
+** DONE [#B] 练车2 <2018-11-29 周四 14:32>                             :@NCEPU:
+CLOSED: [2018-12-07 周五 13:47] DEADLINE: <2018-12-07 周五>
                     :PROPERTIES:
                     :Effort: 4:00
                     :END:
                     :LOGBOOK:
+                    - State "DONE"       from "TODO"          T:[2018-12-07 周五 13:47]
+                    :END:
+** DONE [#B] 摩托车考试 <2018-11-29 周四 14:35>                        :@NCEPU:
+CLOSED: [2018-12-10 周一 10:40] DEADLINE: <2018-12-10 周一>
+                    :PROPERTIES:
+                    :Effort: 4:00
+                    :END:
+                    :LOGBOOK:
+                    - State "DONE"       from "TODO"          T:[2018-12-10 周一 10:40]
                     CLOCK: [2018-11-29 周四 14:33]--[2018-11-29 周四 14:33] =>  0:00
                     :END:
-** PENDING [#B] 下午四点训练自己40min <2018-12-02 周日 15:49 +1d>   :@NCEPU:
+** PENDING [#C] 下午四点训练自己40min <2018-12-02 周日 15:49 +1d>   :@NCEPU:
 DEADLINE: <2019-03-02 周六>
                     :PROPERTIES:
                     :Effort: 0:30
@@ -2297,14 +2302,24 @@ DEADLINE: <2019-03-25 周一>
 *** TODO 第一章 验证
 *** TODO 第一章 Yawing
 *** TODO 第一章 Platform motion
-** TODO [#A] 11点睡觉|7点起床 <2018-12-04 周二 10:48 +1d>              :@NCEPU:
+** PENDING [#C] 11点睡觉|7点起床 <2018-12-05 周三 10:48 +1d>        :@NCEPU:
                     :PROPERTIES:
                     :Effort: 0:30
+                    :LAST_REPEAT: [2018-12-09 周日 07:46]
                     :END:
                     :LOGBOOK:
+                    - State "DONE"       from "TODO"          T:[2018-12-09 周日 07:46]
                     CLOCK: [2018-12-04 周二 10:48]--[2018-12-04 周二 10:49] =>  0:01
                     :END:
-                    
-                    
-                    
+** TODO [#B] 科目四考试 <2018-12-10 周一 10:41>                     :@NCEPU:
+DEADLINE: <2018-12-17 周一>
+                    :PROPERTIES:
+                    :CREATED: [2018-12-10 周一 10:41]
+                    :Effort: 1:00
+                    :END:
+                    :LOGBOOK:
+                    CLOCK: [2018-12-10 周一 10:41]--[2018-12-10 周一 10:41] =>  0:00
+                    :END:
 
+                    
+                    

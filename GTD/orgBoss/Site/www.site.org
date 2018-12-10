@@ -637,3 +637,41 @@ https://github.com/chrisdone/elisp-guide
  http://musicforprogramming.net/
 ** vim awesome
  https://vimawesome.com/
+** novel
+抗日之战将传奇
+ https://www.qu.la/book/35326/2057707.html
+ 
+最强医圣
+https://www.qu.la/book/20060/10629749.html
+    最新章节
+    http://www.biqukan.net/book/40730/
+** Emacs developer
+ https://savannah.gnu.org/projects/Emacs
+
+https://savannah.gnu.org/git/?group=emacs
+
+Soldiers , go on. 士兵 继续
+
+You can interpret it two ways!
+
+path(怕死)
+
+
+`make tags` /TAGS----->产生etags等等，进入emacs源码文件夹。
+`M-x visit-tag-table` ---->进入src文件夹，然后运行该命令即可
+
+LSP: lanaguage server protocol make  you programming faster!
+
+Intergrate it into your life.
+
+Jump here and there
+
+
+优秀的搜索引擎
+https://duckduckgo.com
+** dynamicYawEnergies
+ https://github.com/wmunters/paper_yawinduction_energies
+
+https://github.com/wmunters/paper_torque18
+
+https://github.com/wmunters/phd_thesis

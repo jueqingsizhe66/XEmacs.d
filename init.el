@@ -252,15 +252,12 @@
      (("\\.el\\'" . "Emacs Lisp")
       .
       ["template.el" my/autoinsert-yas-expand])
-     (("\\.pm\\'" . "Perl module")
-      .
-      ["template.pm" my/autoinsert-yas-expand])
+     (("\\.org\\'" . "org-mode") . ["org-template.org" my/autoinsert-yas-expand])
+     (("\\.pm\\'" . "Perl module") . ["template.pm" my/autoinsert-yas-expand])
      (("\\.py\\'" . "Python script")
       .
       ["py-template.py" my/autoinsert-yas-expand])
-     (("[mM]akefile\\'" . "Makefile")
-      .
-      ["cmake-template" my/autoinsert-yas-expand])
+     
      (("\\.tex\\'" . "TeX/LaTeX")
       .
       ["template.tex" my/autoinsert-yas-expand]))))
@@ -304,7 +301,7 @@
  '(org-deadline-warning-days 7)
  '(package-selected-packages
    (quote
-    (elisp-format ht company-anaconda anaconda-mode elpy all-the-icons-dired all-the-icons-ivy doom-themes doom-modeline yasnippet-snippets persp-projectile perspective projectile-rails projectile-ripgrep counsel-projectile persp-mode-projectile-bridge evil-leader evil-org py-autopep8 python-pylint pylint exec-path-from-shell cider-eval-sexp-fu helm-cider-history helm-cider cider-decompile super-save srcery-theme magithub magit evil-mc-extras evil-mc youdao-dictionary nlinum-relative nlinum rg ivy-xref flx ivy-bibtex ripgrep artbollocks-mode plantuml-mode beginend link-hint helm-eww log4j-mode language-detection eww-lnum clj-refactor howm deft ace-link 4clojure evil-vimish-fold origami scribble-mode ac-geiser geiser ascii-art-to-unicode visual-ascii-mode org-brain suggest counsel-world-clock ivy-yasnippet helpful abyss-theme ledger-mode flycheck-ledger org-agenda-property org-link-minor-mode org-dashboard dashboard page-break-lines writeroom-mode writegood-mode poporg org-mru-clock epresent xpm window-numbering evil-visualstar git-timemachine git-gutter org-wild-notifier dumb-diff fringe-current-line ag highlight-indentation ruby-end ruby-tools ruby-refactor cljr-helm org-bookmark-heading org-alert org-mind-map spaceline dired-narrow dired-rainbow dired-subtree emms sotclojure sotlisp ox-reveal pretty-symbols org-journal org-autolist org-babel-eval-in-repl org-bullets request-deferred fortpy flycheck-clojure spacemacs-theme w3m use-package simplezen zencoding-mode move-text highlight-escape-sequences dired-details+ dired+ ace-jump-mode paredit-menu iy-go-to-char key-chord string-edit flycheck-perl6 company cal-china-x image+ 2048-game 0xc ivy-rich ivy-dired-history ivy smart-mode-line mo-git-blame evil-surround markdown-mode+ scheme-complete 0blayout org-plus-contrib cl-lib-highlight tagedit smex rainbow-delimiters paredit ido-ubiquitous clojure-mode-extra-font-locking cider)))
+    (elisp-format ht company-anaconda anaconda-mode elpy all-the-icons-dired all-the-icons-ivy doom-themes doom-modeline yasnippet-snippets persp-projectile perspective projectile-rails projectile-ripgrep counsel-projectile persp-mode-projectile-bridge evil-leader evil-org py-autopep8 python-pylint pylint exec-path-from-shell cider-eval-sexp-fu helm-cider-history helm-cider cider-decompile super-save srcery-theme magit evil-mc-extras evil-mc youdao-dictionary nlinum-relative nlinum rg ivy-xref flx ivy-bibtex ripgrep artbollocks-mode plantuml-mode beginend link-hint helm-eww log4j-mode language-detection eww-lnum clj-refactor howm deft ace-link 4clojure evil-vimish-fold origami scribble-mode ac-geiser geiser ascii-art-to-unicode visual-ascii-mode org-brain suggest counsel-world-clock ivy-yasnippet helpful abyss-theme ledger-mode flycheck-ledger org-agenda-property org-link-minor-mode org-dashboard dashboard page-break-lines writeroom-mode poporg org-mru-clock epresent xpm window-numbering evil-visualstar git-timemachine git-gutter org-wild-notifier dumb-diff fringe-current-line ag highlight-indentation ruby-end ruby-tools ruby-refactor cljr-helm org-bookmark-heading org-alert org-mind-map spaceline dired-narrow dired-rainbow dired-subtree emms sotclojure sotlisp ox-reveal pretty-symbols org-journal org-autolist org-babel-eval-in-repl org-bullets request-deferred fortpy flycheck-clojure spacemacs-theme w3m use-package simplezen zencoding-mode move-text highlight-escape-sequences dired-details+ dired+ ace-jump-mode paredit-menu iy-go-to-char key-chord string-edit flycheck-perl6 company cal-china-x image+ 2048-game 0xc ivy-rich ivy-dired-history ivy smart-mode-line mo-git-blame evil-surround markdown-mode+ scheme-complete 0blayout org-plus-contrib cl-lib-highlight tagedit smex rainbow-delimiters paredit ido-ubiquitous clojure-mode-extra-font-locking cider)))
  '(send-mail-function (quote smtpmail-send-it))
  '(session-use-package t nil (session))
  '(smtpmail-smtp-server "smtp.163.com")

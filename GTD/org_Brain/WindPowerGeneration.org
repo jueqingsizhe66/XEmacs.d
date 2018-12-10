@@ -1,0 +1,33 @@
+* A software 'detective' for wind power generation
+August 31, 2016 by Koen Mortelmans, Youris.com
+Advanced detection of wind anomalies could help prolong the lifespan of wind turbine components and reduce the cost of wind energy generation. In this context, European researchers have developed smart control software
+
+Europeans have been generating energy from wind for centuries. Even early wind mills were very cleverly designed cybernetic tools. And the optimising of this technology is ongoing.
+
+"Mathematical patterns and algorithms play an important role in this process," says Sung-ho Hur, a postdoc researcher at the University of Strathclyde.
+
+The Scottish university is a partner of the Windtrust project, which aims to reduce the cost of wind energy generation by improving the reliability of key wind turbine components. Hur talks about the novel software solution, which he helped develop.
+
+** What is your innovative approach to boosting wind energy production?
+
+The impact of loads on the components and the structure of wind turbines, especially on the rotor blades, is a key issue. This impact can be induced by anomalies in the wind field and can have very diverse origins.
+
+For example, large unbalanced rotor loads can arise when the blades are sweeping through low-level air jets. Our basic idea is that the life span of the blades can be prolonged if those anomalies can be detected in advance and appropriately compensated.
+
+** How can this be done?
+
+It is impossible to measure every possible parameter. Therefore, we developed a new anomaly detection scheme that can be a useful aid in the early detection of anomalous conditions, such as wind shear and extreme gusts. The scheme also includes the early detection of structural anomalies, such as yaw misalignments, mass or aerodynamic imbalances.
+
+** This scheme is a purely theoretical construction?
+
+No, it isn't. Of course, its algorithms are based on advanced mathematics. But we apply them on real data.The algorithms we developed find the best possible balance between energy production and machine life. When anomalies are detected, the wind turbine controller must take appropriate diagnostic action to cope with such conditions.
+
+The detection uses an extended Kalman filter (EKF), a statistical tool for regression analysis. The EKF filters the needed information, out of the plenitude of registered data from 39 variables. It is based on a 3-D wind model and on a turbine with three blades.
+
+Conditions that can't be measured directly can be deduced from other variables. Using the detected and statistically processed information, we create a three-dimensional map of the wind field at the rotor field. This must provide us with a reasonably accurate model for the thrust, torque and maximal bending moments of each blade and for the complete rotor.
+
+** What's the concrete result of the use of a smarter controller?
+
+We can apply corrections in the working of a wind turbine by the temporary use of control strategies, such as individual pitch control, to deploy the wind turbine blades at the best angle for the wind to turn the rotor.
+
+This will reduce fatigue loads and help in characterisation and impact mitigation of faulty conditions. This will result in lower maintenance and replacement costs whilst increasing power production through better availability of the turbine. The turbine also will become more reliable through the reduced fatigue loading on various components.

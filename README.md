@@ -1,6 +1,9 @@
 # 主要目的: Emacs learning(org-mode) ---Emacsable
 ## 次要目的: clojure(closure) learning ----Clojureable
-### 最终目的: Exercise yourself! Train yourself! Teach yourself! Tell yourself something!
+### 最终目的: Exercise yourself! Train yourself(训练你自己)! Teach yourself! Tell yourself something!
+   Many options you need to add for your targets, for your life, to the end.
+   
+   
          You should know how to help yourself(your baby too)
          Finally, just image yourself, imagine your future, focus let you start one activity!
          focus let you achieve your thinking.
@@ -7761,7 +7764,7 @@ you can open todo outline in the org-mode with `SPC t `
   "r" 'helm-M-x      ;;;; 快速找到xref-find-definitions
   "k" 'kill-buffer ;; ok, 不需要每次再按下C-x k了，直接<SPC> k
 
-  "w" 'persp-switch  ;;;; 现在经常用
+  "w" 'persp-switch  ;;;; 现在经常用(cross big files in very big project)
   )
 
 
@@ -8045,7 +8048,7 @@ python3执行,即可完成对自己插件的更新。
 
 Also good for writing paper.
 
-### 177. xref.el
+### 177. xref.el(croos ref)
 
 
 看了[xref goto definitions][484],很有启发。
@@ -8061,6 +8064,7 @@ definition of the identifier at poiint
 的关于该函数声明，来自哪里，什么功能，快捷键是什么。`F1 t`打开tutor文件
 
 `C-x 4 .`  在当前窗口的新frame打开标识符定义
+
 `C-x 5 .`  在新窗口打开光标下的标识符定义
 
 

@@ -73,5 +73,5 @@
                         (("\\.org\\'" . "org-mode") . ["org-template.org" my/autoinsert-yas-expand])
                         (("\\.pm\\'" . "Perl module") . ["template.pm" my/autoinsert-yas-expand])
                         (("\\.py\\'" . "Python script") . ["py-template.py" my/autoinsert-yas-expand])
-                        (("[mM]akefile\\'" . "Makefile") . ["cmake-template" my/autoinsert-yas-expand])
-                        (("\\.tex\\'" . "TeX/LaTeX") . ["template.tex" my/autoinsert-yas-expand]))))
+                        (("\\.tex\\'" . "TeX/LaTeX") . ["template.tex" my/autoinsert-yas-expand])))
+)

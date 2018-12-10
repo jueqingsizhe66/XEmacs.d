@@ -4402,6 +4402,7 @@ to achieving the desired purpose and outcome.
 CLOCK: [2018-12-02 周日 00:51]--[2018-12-02 周日 02:52] =>  2:01
 - Clocked out on T:[2018-12-02 周日 02:52] \\
   有人看不见前门，有人找不见前门，就去走后门，一下子就送到了骗子的怀抱
+  有人看不见前门，有人找不见前门，结果走了后门，最后一头栽进骗子怀里
 CLOCK: [2018-11-30 周五 23:38]--[2018-12-01 周六 19:13] => 19:35
 - Clocked out on T:[2018-12-01 周六 19:13]
 CLOCK: [2018-11-30 周五 19:53]--[2018-11-30 周五 23:07] =>  3:14
@@ -4499,3 +4500,272 @@ CLOCK: [2018-12-04 周二 19:49]--[2018-12-04 周二 22:15] =>  2:26
 
 其生若浮,其死若休。”出自《庄子·刻意》。浮:轻。休:休息。
 整句话的意思是:把生看得很轻,把死看得像休息一样。
+** 不是耕耘就有收获 [#B]                                            :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-12-05 周三 13:16]--[2018-12-05 周三 13:55] =>  0:39
+:END:
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-05 周三 13:16]
+                    :END:
+                         
+                    
+李健《向往》
+
+对温暖的向往
+
+
+我知道并不是
+耕耘就有收获
+当泪水流干后
+生命还是那么脆弱
+多残忍你和我
+就像流星滑落
+多绚烂飞驰而过
+点亮黑夜最美烟火
+多想你在我身旁
+看命运变幻无常
+体会这默默忍耐的力量
+当春风掠过山岗
+依然能感觉寒冷
+却无法阻挡对温暖的向往
+** 重要的事情 [#B]                                                  :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-12-06 周四 18:59]--[2018-12-06 周四 19:01] =>  0:02
+:END:
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-06 周四 18:59]
+                    :END:
+                         
+                    
+重要的观点，你要说的主要结论通常是放在前面，让读者知道你的意图。
+比如:
+
+```
+在来流一定的情况下，机舱风速主要受到风电机组近尾流的影响。
+风电机组尾流流场可以分为近尾流区域和远尾流区域。近尾流区
+域主要是.....
+
+```
+
+这是评委、读者的观点，大家的观点。
+** 表面粗糙度 [#B]                                                    :学术:
+:LOGBOOK:
+CLOCK: [2018-12-07 周五 21:44]--[2018-12-09 周日 07:39] => 33:55
+- Clocked out on T:[2018-12-09 周日 07:39]
+:END:
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-07 周五 21:43]
+                    :END:
+                         
+At a given wind speed, increasing surface roughness elevates the 
+amount of shear at the surface. Stull [1] provides a useful table
+ of roughness heights.
+ 
+
+[A numerical study of the effects of atmospheric and wake turbulence on wind turbine dynamics]
+** 规划和格局 [#B]                                                    :学术:
+:LOGBOOK:
+CLOCK: [2018-12-09 周日 10:03]--[2018-12-09 周日 11:33] =>  1:30
+:END:
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-09 周日 10:01]
+                    :END:
+                         
+
+                    
+做事的厚道体现一个人的格局和境界。处处替你的伙伴考虑，而不是
+过于自私
+
+自我的转换能力，结果转换文章的能力
+
+
+藏书： 藏而隐，隐而明，明而静，静而开
+
+
+org-board---organization board
+
+
+Valuable-final-product(VFP)
+           high-quality-product  HQP(The quality of organization)
+               the quality of 友谊
+
+Put all the logic into sequence, spiral marching onto your target, (Accounting
+marketplace, product development)
+
+org-board用四个成语来解释，"各司其职, division management"
+和goal management的类似
+
+人-事划分，人(director,management, solider, HR, saler)
+          事（many goals)
+          人 assign thing on another persons(responsiblity任务指派), 并带上工作进度,是否到期!让老板一览无余
+          一个board，一个项目简介
+
+org-board的核心是Division(部分).（valuable final product)
+
+公司部门管理的意思。
+
+scientology 科学教
+https://www.youtube.com/watch?v=lrbp7L6r_WI
+** problem decomposition [#B]                                       :@NCEPU:
+:LOGBOOK:
+CLOCK: [2018-12-09 周日 17:20]--[2018-12-09 周日 17:21] =>  0:01
+:END:
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-09 周日 17:20]
+                    :END:
+                         
+                    
+Problem decomposition is a key skill: breaking a challenge down into small,
+ motivating steps, identifying the things you need to figure out first so
+ that you can build on top of them. It’s hard when you’re new, and easier w
+hen you’ve solved lots of similar problems. I want to get super-good at this
+, which probably means doing this with more breadth and depth so that we 
+have more building blocks to play with.
+http://sachachua.com/blog/category/idea/
+
+Start wit nothing--> do something(at school)---->do something at mid school
+--->branches(go high school, go do selling, go home) -----> go to school
+---->branches(go to university, go to work...) ---> continue reading
+----> go to work ----end of your life.
+
+Sometimes you work with others, sometime you work with yourself.
+
+All get things done is just focus on your heart!Focus your soul.如流水一般，
+只是希望能够抓住时间的缝隙，时间的棉絮，轻飘飘, 螺旋式的推进，在不断的
+推进中逐级分层推进。
+
+藏人(潜龙)
+藏而隐，隐而明，明而静，静而开。
+藏而隐，隐而明，明而静，静而开,开而思。
+
+藏思
+藏而隐，隐而明，明而静，静而思。
+
+人静而后安，安而能后定，定而能后慧，慧而能后悟，悟而能后得。
+静而安，安而定，定而慧，慧而悟，悟而得。
+
+一个真实的人(True man)
+
+叶静开(<2018-12-09 17:46>)。
+https://www.slideshare.net/sachac/how-to-draw-a-presentation/3
+
+佛法说,就是由戒而生定,由定而得到慧,
+戒、定、慧三学是佛法的基本内容.安,是指内心的平静,不生杂乱的妄想；
+由安而得到心态的稳定,所以说是安而后定；由于心智的平稳,所以思考能力集中专一,
+自然就是智慧思维的起源；由于得到细致认真的反思,自然就是觉悟的道路.
+真能够完成觉悟了,也就没有什么疑惑和烦恼了.
+从儒家来说也一样,《大学》中说:"
+            知止而后有定,定而后能静,静而后能安,安而后能虑,
+            虑而后能得.物有本末,事有终始,知所先后,则近道矣".
+
+止--静---停
+止而定，定而静，静而安，安而思，思而得        
+止而定，定而静(不一定静,得定而心静)，静而安(过渡到安宁)，安而定，定而慧，
+慧而悟，悟而得。       
+
+1. Lack of connection
+2. Lack of interaction
+https://www.slideshare.net/sachac/remote-presentations-that-rock-2011
+
+
+井淘三遍出好水，人从三师武艺高
+** Y combinator [#B]                                             :emacslisp:
+:LOGBOOK:
+CLOCK: [2018-12-10 周一 22:44]--[2018-12-10 周一 23:08] =>  0:24
+:END:
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-10 周一 22:44]
+                    :END:
+                         
+                    
+http://theschemer.org/t/150
+
+---->
+
+    https://eecs.ceas.uc.edu/~franco/C511/html/Scheme/ycomb.html
+
+
+    #+BEGIN_SRC scheme
+      (define fact
+        (lambda (x)
+          (if (zero? x)
+              1
+              (* x (fact (- x 1))))))
+#+END_SRC
+
+    
+      1. f(x) = (lambda (x) (f x) arg)
+       
+       
+      2. ((fact fact) x) ---> fact is a procedure, he need a procedure as its
+         parameter, and x should become smaller or bigger with time going,
+         in order to end. Yeah , it means F* below should satisfy two conditions
+         a. an end condition (stop condition), such as (null? lst) 
+            (null? (cdr lst))  (zero? x) (one? x) (atom? (car lst)) 
+            (lst? lst) (lst? (cdr lst))  (lat? (car lst)) 
+         b. the recursive part ,make x become bigger or smaller depend on the 
+            end condition constraints
+            when terminate line is 1, use *
+            When terminate line is 0, use +
+            When terminate line is (), use cons
+            When asking lat question is zero? , use (sub x) in the natural recursion
+            When asking lat question is null? , use (cdr lst) in the natural recursion
+            When asking list question is atom?, use (car lst) (cdr lst) in the natural recursion
+
+            lat for two questions! lsit for three questions， all have the 
+            correct answer "else", else means default correct answer.
+
+#+BEGIN_SRC scheme
+            #lang racket
+             (define Y
+                (lambda (X)
+                  ((lambda (procedure)
+                     (X (lambda (arg) ((procedure procedure) arg))))
+                   (lambda (procedure)
+                     (X (lambda (arg) ((procedure procedure) arg)))))))
+
+              (define F*
+                (lambda (func-arg)
+                  (lambda (n)
+                    (if (zero? n)
+                        1
+                        (* n (func-arg (- n 1)))))))
+
+            (define F1*
+                (lambda (func-arg)
+                  (lambda (lst)
+                    (if (null? lst)
+                        'not-list
+                        (if (null? (cdr lst))
+                            (car lst)
+                            (max (car lst) (func-arg (cdr lst)))
+                               )))))
+              (define F2*
+                (lambda (func-arg)
+                  (lambda (lst)
+                    (if (null? lst)
+                        'not-list
+                        (if (null? (cdr lst))
+                            (car lst)
+                            (if (> (car lst) (func-arg (cdr lst)))
+                                (car lst)
+                                (func-arg (cdr lst))))))))
+            
+
+#+END_SRC
+
+
+Y combinator 本身就是一种藏的能力，藏而无名，身本无名，只在螺旋推进
+借助于lambda,if, great than etc primitive operators without define,
+we can also create the world of no-name.
+
+无名则明，明则静，静则定，定则慧，慧则悟，悟则开，开则终
+
+
+

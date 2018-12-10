@@ -440,9 +440,11 @@ Captured %<%Y-%m-%d %H:%M>
                                "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"  
                                :clock-in t 
                                :clock-resume t ) 
+
                               ("c" "code snippet" entry (file
                                                          "~/.emacs.d/GTD/orgBoss/code-snippets.org")
                                "* %?\n%(my/org-capture-code-snippet \"%F\")")))
+
 
 ;;; http://www.howardism.org/Technical/Emacs/capturing-content.html
 ;;; copy item to the clock capture item
