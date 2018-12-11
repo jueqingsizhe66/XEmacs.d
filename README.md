@@ -670,7 +670,14 @@ magit diff
 j快捷键打开两个分支的不同
 
 你可以使用 magit-log-all 然后配合上magit-diff 观看不同点， git-timemachine一个好处是只针对一个文件进行
-所以相对来说会更快一些，magit-diff是针对一个commit点之间的比较。
+所以相对来说会更快一些(实时更改当前buffer的内容，并在一开始打开的时候会在mode-line显示是哪个版本，显示日期等)
+<2018-12-11 16:01> Holy-shit 发现一个类似magit-diff的神器，M-x git-timemachine-show-commit,可以直接显示
+和上一版本的不同,很开心
+
+
+，magit-diff是针对一个commit点之间的比较。
+
+magit-diff-range也是不错哈！！对于论文写作存在修改的情况，可以反复学习!
 ```
 
 阅读[emacs教程][25]安装了git blame
@@ -4140,6 +4147,8 @@ setq-default evil-escape-key-sequence "jk")
 
 
 `M-x git-timemachine`
+
+然后`M-x git-timemachine-show-commit`很棒的功能，也可以指定版本，也可以单文件操作
 
 
 ### 99. window-numbering

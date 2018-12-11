@@ -675,3 +675,5 @@ https://duckduckgo.com
 https://github.com/wmunters/paper_torque18
 
 https://github.com/wmunters/phd_thesis
+** using chicken scheme to make games
+ http://alex-charlton.com/posts/Prototype_to_polish_Making_games_in_CHICKEN_Scheme_with_Hypergiant/?tdsourcetag=s_pctim_aiomsg

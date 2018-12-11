@@ -1319,7 +1319,7 @@ https://mp.weixin.qq.com/s/o9RZObStZNLPT9I7Y7wmuQ
 
 是按照距离来判断的，方圆多少米要降低到一定范围内，具体数值记不太清了
 
-* TODO [#A] 基于多轴角运动的气动特性和流场分析大论文 <2018-06-25 周一 16:19>[5/10] :学术:
+* TODO [#A] 基于多轴角运动的气动特性和流场分析大论文 <2018-06-25 周一 16:19>[6/10] :学术:
 DEADLINE: <2019-04-15 周一>
                     :PROPERTIES:
                     :Effort: 16:00
@@ -1346,6 +1346,8 @@ DEADLINE: <2019-04-15 周一>
                     - State "TODO"       from "TODO"       [2018-08-01 周三 08:48]
                     - State "TODO"       from "TODO"          [2018-07-31 周二 16:19]
                     :LOGBOOK:
+                    - State "TODO"       from "TODO"          T:[2018-12-11 周二 14:43]
+                    - State "TODO"       from "TODO"          T:[2018-12-11 周二 14:43]
                     - State "TODO"       from "TODO"          T:[2018-11-30 周五 11:24]
                     - State "TODO"       from "TODO"          T:[2018-11-30 周五 11:23]
                     - State "TODO"       from "TODO"          T:[2018-11-29 周四 20:16]
@@ -1695,10 +1697,10 @@ CLOSED: [2018-11-29 周四 20:16] DEADLINE: <2018-11-26 周一>
                     
 风轮55圈是否计算完成？！
 
-*** DOING [#B] YawingForRenewableEnergyChina <2018-11-29 周四 17:07> [0/6] :PROJECT:
-DEADLINE: <2018-12-06 周四> SCHEDULED: <2018-11-29 周四>
-                    :PROPERTIES:
+*** DONE [#B] YawingForRenewableEnergyChina <2018-11-29 周四 17:07> [6/6] :PROJECT:
+CLOSED: [2018-12-11 周二 14:43] DEADLINE: <2018-12-06 周四> SCHEDULED: <2018-11-29 周四>
                     :Effort: 16:00
+                    :PROPERTIES:
                     :CATEGORY: Project-Yawing
                     :END:
                     :LOGBOOK:
@@ -1713,14 +1715,14 @@ DEADLINE: <2018-12-06 周四> SCHEDULED: <2018-11-29 周四>
                       示意图处理完毕
                     :END:
 
-1. [ ] Abstract
-2. [ ] Introduction
-3. [ ] Methods
-4. [ ] Results
-5. [ ] Conclusion
-6. [ ] References
+1. [X] Abstract
+2. [X] Introduction
+3. [X] Methods
+4. [X] Results
+5. [X] Conclusion
+6. [X] References
 
-*** TODO [#B] Yawing NREL 5MW for Energy <2018-11-29 周四 17:10> [0/6] :@NCEPU:PROJECT:
+*** DOING [#B] Yawing NREL 5MW for Energy <2018-11-29 周四 17:10> [0/6] :@NCEPU:PROJECT:
 DEADLINE: <2018-12-29 周六> SCHEDULED: <2018-11-29 周四>
                     :PROPERTIES:
                     :Effort: 12:00
