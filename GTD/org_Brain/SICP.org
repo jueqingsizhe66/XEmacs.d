@@ -1,3 +1,6 @@
+:RESOURCES:
+- [[https://www.youtube.com/watch?v=3EGOwfWok5s][org-brain teaching]]
+:END:
 https://github.com/gregsexton/SICP-Clojure
 
 http://mitpress.mit.edu/sites/default/files/sicp/index.html
@@ -9,6 +12,7 @@ http://mitpress.mit.edu/sites/default/files/sicp/index.html
 信息整合：https://learningsicp.github.io
 Racket FAQ：https://racket-zh.org/faq
 Racket编程指南: https://blog.csdn.net/chinazhangyong/article/details/79331809
+[[info:org][org the manual]]
 * Drracket
 
 :PROPERTIES:
@@ -377,6 +381,8 @@ little slice构成一片大蛋糕的过程。
 * Basic
 :PROPERTIES:
 :ID:       bbb1be03-6ae0-4ba9-9448-89d9ab4c1788
+:END:
+:RESOURCES:
 :END:
 ** 3 Modularity,Objects,and State
 :PROPERTIES:

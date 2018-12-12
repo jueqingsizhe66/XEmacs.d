@@ -13,7 +13,7 @@
 (evil-mode 1)
 
 
-(setq visual-fill-column-width 120)
+(setq visual-fill-column-width 130)
 (setq visual-fill-column-center-text t)
 ;; Give a little bit of whitespace around the edges of emacs. Delete this line if you
 ;; don't care for it.
@@ -57,6 +57,24 @@
   (org-tree-to-indirect-buffer)
   (windmove-right))
 
+
+
+
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (fringe-mode 0)
+            (visual-fill-column-mode)))
+
+(add-hook 'elisp-mode-hook
+          (lambda ()
+            (fringe-mode 0)
+            (visual-fill-column-mode)))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (fringe-mode 0)
+            (visual-fill-column-mode)))
+
 (add-hook 'org-mode-hook 
 
           (lambda ()
@@ -75,8 +93,15 @@
             (writeroom-mode 1)
             (local-set-key [3 25] 'org-copy-subtree)))
 ;; 24 25 is ctrl-c ctrl-y
+(with-eval-after-load 'writeroom-mode
+  (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
+  (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
+  (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width))
 
 
+;; https://github.com/joostkremers/visual-fill-column
+(advice-add 'text-scale-adjust :after
+  #'visual-fill-column-adjust)
 ;; This hides the bullets/asterisks in Org mode
 ;; Comment out if you want them back
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

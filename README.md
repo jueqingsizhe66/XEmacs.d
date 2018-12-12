@@ -5183,6 +5183,16 @@ are not actively supported.
 
 ```
 
+``` org
+
+(with-eval-after-load 'writeroom-mode
+  (define-key writeroom-mode-map (kbd "C-M-<") #'writeroom-decrease-width)
+  (define-key writeroom-mode-map (kbd "C-M->") #'writeroom-increase-width)
+  (define-key writeroom-mode-map (kbd "C-M-=") #'writeroom-adjust-width))
+```
+
+`C-M-S->`和`C-M-S-<`有点拉帘幕的感觉，good feeling.
+
 ### 113. Dashboard your life
 
 #### dashboard.el
@@ -6562,8 +6572,8 @@ org-brain最重要的是他的org-id(虽然也可以使用org file形式来进�
 | k or S-TAB | backward-button                    | Goto previous link                                         |
 |------------+------------------------------------+------------------------------------------------------------|
 | b          | org-brain-visualize-back           | Like the back button in a web browser.                     |
-| h or *     | org-brain-new-child                | Add a new child headline to entry                          |
-| c          | org-brain-add-child                | Add an existing entry, or a new file, as a child           |
+| h or *     | org-brain-new-child                | Add a new child headline to entry(只在当前entry文件内)                          |
+| c          | org-brain-add-child                | Add an existing entry, or a new file(如果这个entry不存在 则新建一个文件, as a child           |
 | C          | org-brain-remove-child             | Remove one the entry’s child relations                     |
 | p          | org-brain-add-parent               | Add an existing entry, or a new file, as a parent          |
 | P          | org-brain-remove-parent            | Remove one of the entry’s parent relations                 |
@@ -6574,15 +6584,16 @@ org-brain最重要的是他的org-id(虽然也可以使用org file形式来进�
 | t          | org-brain-set-title                | Change the title of the entry.                             |
 | T          | org-brain-set-tags                 | Change the tags of the entry.                              |
 | d          | org-brain-delete-entry             | Choose an entry to delete.                                 |
-| l          | org-brain-visualize-add-resource   | Add a new resource link in entry                           |
-| C-y        | org-brain-visualize-paste-resource | Add a new resource link from clipboard                     |
+| l          | org-brain-visualize-add-resource   | Add a new resource link in entry(会增加一个:RESOURCE: :END:字段                           |
+| C-y        | org-brain-visualize-paste-resource | Add a new resource link from clipboard(其实就是链接,超链接或者文件链接)                     工作方式： 先复制链接，切回emacs的org-brain窗口，执行`C-y`即可添加链接了！|  
+
 | a          | org-brain-visualize-attach         | Run org-attach on entry (headline entries only)            |
 | A          | org-brain-archive                  | Archive the entry (headline entries only)                  |
 | o          | org-brain-goto-current             | Open current entry for editing                             |
 | O          | org-brain-goto                     | Choose and edit one of your org-brain entries              |
 | v          | org-brain-visualize                | Choose and visualize a different entry                     |
 | r          | org-brain-visualize-random         | Visualize one of your entries at random.                   |
-| R          | org-brain-visualize-wander         | Visualize at random, in a set interval. R again to cancel. |
+| R          | org-brain-visualize-wander         | Visualize at random, in a set interval. R again to cancel.很好玩的一个命令 |
 
 ```
 
@@ -6594,6 +6605,11 @@ each other, 通过大写的`C`解除cancel彼此之间的联系<2018-11-22 13:53
 
 `v`为了快速定位到某个node，也可以直接用v然后输入entry即可。`m`命令挺好用的，方便你进行观察
 
+
+好玩的一招： 选择某个字段，比如`org the manual`,然后`C-c C-l`,选择`info:`(info:是很强大的一个系统，一定得时不时阅读,
+在写上`org`,即可添加一个resource
+
+`C-c C-l`也可以选择`brain:` , 会出现`brain:friend`,`brain:parent`,`brain:child`几个选项，然后在选择一个header项目即可。
 ####   going up to broader topics or drilling down into more specifics
 
 Remember there are no hard and fast rules here. It’s your Brain. 

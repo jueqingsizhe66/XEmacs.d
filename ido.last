@@ -20,11 +20,13 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/" (23567 29255 0 0) "__pycache__/" "vimish-fold/" "vim.exe.stackdump" "url/" "themes/" "testLisp.lisp" "test.py" "test.ledger" "test.el" "template/" "srecode-map.el" "snippets/" "server/" "rg.exe" "README.md" "projectile.cache" "projectile-bookmarks.eld" "magithub/" "ledger_3.1.1_win_bin/" "init.el" "ido.last~" "ido.last" "hello-graphviz.png" "GTD/" "geiser-history.racket" "geiser-history.chez" "eww-bookmarks" "eshell/" "emms/" "elpa/" "elisp-tutor.el" "diary" "customizations/" "custom.el" "CalendarDairy/" "bookmarks" "backups/" "auto-save-list/" "anaconda-mode/" "ag.exe" "ac-comphist.dat" "abbrev_defs" ".smex-items" ".session" ".recentf~" ".recentf" ".python-environments/" ".orgConf.el" ".org-id-locations" ".mc-lists.el" ".gitmodules" ".gitignore" ".git/" "../" "./")
+
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/myResearchPaper/DynamicYaw5MW/" (23207 35113 0 0) "Result.org" "paper.org" "Method.org" "Intro.org" "img/" "Conclusion.org" "Abstract.org" ".gitignore" ".git/" "../" "./")
+
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/myResearchPaper/BasicTemplateVersion/" (23567 28910 0 0) "Result.org" "paper.org" "Method.org" "Intro.org" "img/" "Conclusion.org" "Abstract.org" ".gitignore" ".git/" "../" "./")
 
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/myResearchPaper/DyanmicYawPhaseVi/" (23567 24664 0 0) "Result.org" "paper.org" "Method.org" "Intro.org" "img/" "draft.org" "Conclusion.org" "Abstract.org" ".gitignore" ".git/" "../" "./")
-
- ("c:/Users/yzl/AppData/Roaming/.emacs.d/" (23559 10226 0 0) "__pycache__/" "vimish-fold/" "vim.exe.stackdump" "url/" "themes/" "testLisp.lisp" "test.py" "test.ledger" "test.el" "template/" "srecode-map.el" "snippets/" "server/" "rg.exe" "README.md" "projectile.cache" "projectile-bookmarks.eld" "magithub/" "ledger_3.1.1_win_bin/" "init.el" "ido.last~" "ido.last" "hello-graphviz.png" "GTD/" "geiser-history.racket" "geiser-history.chez" "eww-bookmarks" "eshell/" "emms/" "elpa/" "elisp-tutor.el" "diary" "customizations/" "custom.el" "CalendarDairy/" "bookmarks" "backups/" "auto-save-list/" "anaconda-mode/" "ag.exe" "ac-comphist.dat" "abbrev_defs" ".smex-items" ".session" ".recentf~" ".recentf" ".python-environments/" ".orgConf.el" ".org-id-locations" ".mc-lists.el" ".gitmodules" ".gitignore" ".git/" "../" "./")
 
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/Site/" (23469 65076 0 0) "www.site.org" "../" "./")
 
