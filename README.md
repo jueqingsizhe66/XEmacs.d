@@ -6185,7 +6185,8 @@ Income: where money comes from,
 Liabilities: money you owe,
 Equity: the real value of your property.
 
-
+1. Net worth= Assets - Liabilities
+2. Net income = Income - Expenses
   
 ```
 
@@ -6194,10 +6195,13 @@ Equity: the real value of your property.
     in order to put it into (make a payment to) your bank. When you then spend that money, it leaves 
     your bank account (a withdrawal) and goes back to society (a payment). This is why Income will 
     appear negative—it reflects the money you have drawn from society—and why Expenses will be positive—
-    it is the amount you’ve given back. These additions and subtractions will always cancel each other out
+    it is the amount you’ve given back to society. These additions and subtractions will always cancel each other out
     in the end, because you don’t have the ability to create new money: it must always come from somewhere,
     and in the end must always leave. This is the beginning of economy, after which the explanation gets 
     terribly difficult.
+    
+    会计是站在社会的角度看经济的平衡，但是我们很多时候是站在自我的角度看收入平衡，现在我们也看到了会计的会和社会的会
+    站在社会的角度看经济你就是会计
 ```
 
 涡无法自发产生和消亡，正如钱无法自发产生和消亡,它总是从哪里产生，又消失到另外一个地方(This is the rule of economy). 
@@ -6208,7 +6212,7 @@ Equity: the real value of your property.
 
         Based on that explanation, here’s another way to look at your balance report: every negative figure means
     that that account or person or place has less money now than when you started your ledger; and every positive
-    figure means that that account or person or place has more money now than when you started your ledger. 
+    figure means that account or person or place has more money now than when you started your ledger. 
 ```
 
 也就是说，当你某个账户为正时候，表示该账户有更多的钱，比你第一次使用ledger的时候，反之亦然。你不可能总是借账(negative),
@@ -6218,20 +6222,34 @@ borrow money from others .你还需要还账(given back),来保证守恒关系�
     If you own a car worth $5000, then you have $5000 in equity in that car. In order to turn that car (a commodity)
 into a cash flow, or a credit to your bank account, you will have to debit the equity by selling it.
 
+What's the point? why you are doing that?
+1. It's your data by your economic activity
+2. Expressive reporting capability
     
-    ```
     
-When you start a ledger, you are probably already worth something. Your net worth is your current equity. 
+    `ledger -f test.ledger reg ^Liabili -b "last month"` 上个月的欠款
+    `ledger -f test.ledger reg ^Expense --period "last october"`  去年10月份的消费支出
+
+    `-M`意思每月,下面列出所有6月、7月、8月、9月的食物输出
+
+``` org
+:develop*? λ  ledger -f test.ledger reg Food -M
+18-Jun-01 - 18-Jun-30                          Expenses:Food                                          RMB 987.00             RMB 987.00
+18-Jul-01 - 18-Jul-31                          Expenses:Food                                           RMB 47.00            RMB 1034.00
+18-Aug-01 - 18-Aug-31                          Expenses:Food                                          RMB 121.00            RMB 1155.00
+18-Sep-01 - 18-Sep-30                          Expenses:Food                                          RMB 424.00            RMB 1579.0
+```
+    
+```
+    When you start a ledger, you are probably already worth something. Your net worth is your current equity. 
 By transferring the money in the ledger from your equity to your bank accounts, you are crediting the ledger 
 account based on your prior equity. That is why, when you look at the balance report, you will see a large 
 negative number for Equity that never changes: Because that is what you were worth (what you debited from 
 yourself in order to start the ledger) before the money started moving around. If the total positive value
 of your assets is greater than the absolute value of your starting equity, it means you are making money.
+Clear as mud? Keep thinking about it. Until you figure it out, put not Equity(表示不包含起始的钱数 the starting point for ledger)at the  end of your balance command, to remove the confusing figure from the total.
 
-Clear as mud? Keep thinking about it. Until you figure it out, put not Equity(表示不包含起始的钱数 the starting point for ledger
-)
-at the  end of your balance command, to remove the confusing figure from the total.
-    ```
+```
     
 Salary就是你的equlity源泉，不断的增长，代表你在不断挣钱。
 
@@ -6250,6 +6268,11 @@ Salary就是你的equlity源泉，不断的增长，代表你在不断挣钱。
 `ledger -f test.ledger cleared -b 2018 -e 2019 print >ledger-old.dat`  从2018开始的 2019截止的打印备份到ledger-old.dat
 
 一般cleared可以用bal和reg 后面跟的可以是选项，比如`-b` `-e` `not` `^e`什么开头的正则表达式等
+
+#### calc 计算器
+
+`M-x calc` ,输入两个参数，最后输入operator，比如`+,-,*,/`
+
 ### 123.显示buffer和右键菜单
 
 

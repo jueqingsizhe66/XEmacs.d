@@ -14,7 +14,7 @@
 ;; Expenses: where money goes,     ;;
 ;; Assets: where money sits,       ;;
 ;; Income: where money comes from, ;;
-;; Liabilities: money you owe,     ;;
+;; LIABILITIES: MONEY you owe,     ;;
 ;; Equity: the real value of your property. ;;
 
 (defun ledger-add-entry (title in amount out)

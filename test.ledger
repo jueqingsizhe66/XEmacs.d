@@ -186,8 +186,9 @@
     Expenses:Food  RMB 18
     Liabilities:花呗Huabei
 2018-08-04 麦当劳
-    Expenses:Food  RMB 45.4
-    Expenses:Food
+    Expenses:Food  RMB 45
+    Liabilities:花呗Huabei
+
 2018-08-14 金堂鱼粉
     Expenses:Food  RMB 13
     Liabilities:花呗Huabei
@@ -205,7 +206,7 @@
     Expenses:Fruits  RMB 130
     Liabilities:花呗Huabei
 2018-08-26 绝味
-     RMB 45
+    Expenses:Food  RMB 45
     Liabilities:花呗Huabei
     
 2018-08-26 苹果+桃子
@@ -231,3 +232,26 @@
 2018-09-26 麻辣烫小龙虾
     Expenses:Food  RMB 26
     Liabilities:花呗Huabei
+2018-12-12 国家奖学金
+    Assets:Savings:建行7889  RMB 18000
+    Income:SalaryKang
+2018-12-12 12月劳务费
+    Assets:Savings:建行7889  RMB 1000
+    Income:SalaryKang
+    
+
+2018-12-12 12月额外补贴
+    Assets:Savings:支付宝Alipay  RMB 500
+    Income:SalaryWang
+    
+2018-12-12 摩托车培训报名
+    Liabilities:Car-load  RMB 1220
+    Assets:Savings:支付宝Alipay
+
+2018-12-12 枕头
+    Equity:Wife  RMB 600
+    Assets:Savings:支付宝Alipay
+
+
+
+
