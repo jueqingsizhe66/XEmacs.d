@@ -4,7 +4,6 @@
 (require 'org-install)
 (require 'org)
 
-
 (add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/org-listcruncher/")
 (load "org-listcruncher.el")
 (add-to-list 'load-path "~/.emacs.d/customizations/my_plugins/emacs-presentation-mode/")
@@ -2238,3 +2237,14 @@ With a prefix ARG always prompt for command to use."
   (save-excursion (org-goto-first-child)))
 
                                         ;(load "setup-sidebar.el")
+(defun addTodo () 
+  (interactive)         ; permit invocation in minibuffer
+  (insert "TODO(YZL)"))
+
+(defun addFixme () 
+  (interactive)         ; permit invocation in minibuffer
+  (insert "FIXME(YZL)"))
+
+(defun addBug () 
+  (interactive)         ; permit invocation in minibuffer
+  (insert "BUG(YZL)"))

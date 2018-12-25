@@ -7923,6 +7923,10 @@ ttf结尾的字体文件拷贝到`C:/windows/fonts`进行安装(Linux和macs自�
 
 ![all-the-icons][466]
 
+![是不是doom-modeline加速了你的开emacs速度][487]
+    ``` org
+        测试中，这个版本的性能比之前版本至少提高5倍，比初始版本更是有10倍以上。更简洁更美观更快速。
+    ```
 ### 168. inertial-scroll
 
 
@@ -8157,6 +8161,37 @@ To use, add the backends to company-begin-backends in the buffers where you want
 还比如markdown-mode，只有针对于md结尾的文件，才进行markdown风格渲染，并且赋予对应的快捷键，具有某类行为.
 
 所以系统工程至少分为两个类数据基类和行为基类。
+
+### 180. 增加todo的高亮
+
+工作流分为两部分: 
+
+1. 添加TODO|FIXME|BUG|HACK|等 
+2. 查找对应的标签字段等。
+
+很多程序员会在写代码的时候，习惯性的用TODO, FIXME, HACK等作为一些注释的前缀。这样方便自己和后来者预先知道相关注释和代码的状况
+除了编程语言需要对TODO等关键字进行标记外(在注释中高亮显示所有的TODO,BUG,FIXME等关键字)，
+
+还可以在一些文档进行标记，根据[Emacs-china推荐][489],于是使用了[fixme-mode][488],对所有的TODO进行高亮，
+[ fic-mode ][490],专门只针对代码模式的注释进行高亮，跳到下一行显示高亮结果(evil-mode推出到visual模式，然后摁下`o`，
+跳到下一行),结合下面小函数，可以方便在你的代码见进行注释。可以结合`Ag/Ack`查找TODO等关键词(比如`C-c p s s|r`进行项目
+的ag或者rg查找)
+
+``` elisp
+(defun addTodo () 
+  (interactive)         ; permit invocation in minibuffer
+  (insert "TODO(YZL)"))
+
+(defun addFixme () 
+  (interactive)         ; permit invocation in minibuffer
+  (insert "FIXME(YZL)"))
+
+(defun addBug () 
+  (interactive)         ; permit invocation in minibuffer
+  (insert "BUG(YZL)"))
+
+```
+
 
 
 ----------
@@ -8649,3 +8684,7 @@ To use, add the backends to company-begin-backends in the buffers where you want
 [484]: https://stackoverflow.com/questions/4222183/emacs-how-to-jump-to-function-definition-in-el-file
 [485]: https://puntoblogspot.blogspot.com/2018/12/3-basic-org-agenda-tips-for.html
 [486]: https://github.com/TheBB/company-reftex
+[487]: https://emacs-china.org/t/doom-modeline-0-8-1/7640
+[488]: https://github.com/nflath/fixme-mode/blob/master/fixme-mode.el
+[489]: https://emacs-china.org/t/todo-fixme/3015
+[490]: https://github.com/lewang/fic-mode

@@ -383,4 +383,16 @@ modifications)."
     (parse-partial-sexp (point) point)))
 
 
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/customizations/my_plugins/fic-mode/"))
+(require 'fic-mode)
+;; (add-hook 'prog-mode-hook 'fixme-mode)
+;; (add-hook 'org-mode-hook 'fixme-mode)
+;; FIXME(yezhaoliang) 
+
+
+
+(add-hook 'prog-mode-hook 'fic-mode)
+(add-hook 'org-mode-hook 'fic-mode)
+
+
 

@@ -28,6 +28,7 @@ Highlight-Indentation-for-Emacs https://github.com/antonj/Highlight-Indentation-
 emacs-inertial-scroll https://github.com/kiwanami/emacs-inertial-scroll
 counsel-org-clock https://github.com/akirak/counsel-org-clock
 emacs-presentation-mode https://github.com/zonuexe/emacs-presentation-mode
+fic-mode https://github.com/lewang/fic-mode
 """.strip()
 
 
