@@ -8,7 +8,7 @@
          Finally, just image yourself, imagine your future, focus let you start one activity!
          focus let you achieve your thinking.
 
-    Use your force, make it reachable(reference--relationship), Zhao!
+    Use your force, make it reachable(reference--relationship---interaction), Zhao!
     Make it useable!
     
     Let it(means something) connect with functionality or with relationship
@@ -102,6 +102,7 @@ just remove the custom-set-variables info about the font please,  sorry for both
 a. `C-x x P`起开一个项目
 b. `C-x x w` 或者`SPC w`对应helm-switch-project, 切换项目
 c. `SPC f`查找当前路径下的所有文件
+d. `c-x 5 c-f`在新的emacs窗口下打开一个窗口。
 
 ### 1.为了引入clj-refactor(一个好用的补全包的工具)
 
@@ -267,6 +268,7 @@ Tab打开标题
     c-c c-n 光标沿标题方向向下移动(跳转<2018-10-23 22:52>)
     c-c c-p 光标沿标题方向向上移动
         可以通过shift+tab打开overview
+        或者通过C-c o 也是相当不错(可以列出整个文档的目录)
     c-c c-q 添加标题的tag
     c-c a 打开agender
     c-c c-t 添加当前标题的todo
@@ -8149,7 +8151,7 @@ To use, add the backends to company-begin-backends in the buffers where you want
 
 ### 179.系统的定义
 
-一个系统，比如deft，origami，markdown-mode, org-mode,helm,ivy等，比如deft针对所有deft-directory以及对应的拓展deft-extensions,来进行对象选择，
+一个系统，比如deft，origami，markdown-mode,org-brain,info org-mode,helm,ivy等，比如deft针对所有deft-directory以及对应的拓展deft-extensions,来进行对象选择，
 针对这些对象可以运用browsing,new,deleting,modifying,filtering,searching,等等行为，构成一类行为基类。
 
 还比如markdown-mode，只有针对于md结尾的文件，才进行markdown风格渲染，并且赋予对应的快捷键，具有某类行为.

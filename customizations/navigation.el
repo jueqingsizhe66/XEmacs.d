@@ -268,3 +268,18 @@
 (global-set-key (kbd "C-S-<SPC>") 'inertias-stop) 
 
 ;; continut c-s-d then you will stop
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; poet-theme                                                       ;;
+;;     (add-hook 'text-mode-hook                                       ;;
+;;                (lambda ()                                           ;;
+;;                 (variable-pitch-mode 1)))                           ;;
+;;     (set-face-attribute 'default nil :family "Iosevka" :height 130) ;;
+;;     (set-face-attribute 'fixed-pitch nil :family "Iosevka")         ;;
+;;     (set-face-attribute 'variable-pitch nil :family "Baskerville")  ;;
+;;     (olivetti-mode 1)        ;; Centers text in the buffer          ;;
+;;     (flyspell-mode 1)        ;; Catch Spelling mistakes             ;;
+;;     (typo-mode 1)            ;; Good for symbols like em-dash       ;;
+;;                                                                     ;;
+;;     (blink-cursor-mode 0)    ;; Reduce visual noise                 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
