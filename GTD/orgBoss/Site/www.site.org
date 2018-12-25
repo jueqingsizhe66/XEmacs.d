@@ -679,3 +679,7 @@ https://github.com/wmunters/phd_thesis
  http://alex-charlton.com/posts/Prototype_to_polish_Making_games_in_CHICKEN_Scheme_with_Hypergiant/?tdsourcetag=s_pctim_aiomsg
 ** pyTorch 深度学习框架
  https://pytorch.org/tutorials/
+** What is grammer?
+ https://academic.udayton.edu/SaverioPerugini/courses/cps343/lecture_notes/grammars.html
+ 
+

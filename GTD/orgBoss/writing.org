@@ -929,10 +929,12 @@ By Mr Kang
 要学会观察，先别着急，眼观周围环境，你的closure or surrounding environment决定着
 你程序是否能够正常运行，要记得你该记住的，这是你的环境变量，你周围的环境变量会
 让你的事情变得好办些，比如说副处长办公室在哪里？还需要找谁签字？该怎么跟他说话？
+(还比如 泥泞路上停下车来，仔细观察哪边可以涉水，可以平稳通过， 还比如等到人都上来了
+再开始走, 小车速大车距目的就是留下更多的时间让你去观察!)
 
 一件事情就是一道程序，只不过是这道程序可能需要各种审核，无非是让y=f(x)中的f变得
 更加复杂些，比如还需要找正处签字，还需要找校领导签字等等，为了完成这个程序于是
-你需要准备很多材料。生活中的很多事情无非是一道道程序，有些程序很流程，比较简单。
+你需要准备很多材料。生活中的很多事情无非是一道道程序，有些程序很流程，比较简单(干了什么事? 事情有多重要，得到了什么结果)。
 
 有些程序需要时间的配合，需要你的观察，需要你的表演才能进行下去，不要让生活的xyz难倒
 你，要去学会观察，逐步执行他们，就好像写一篇文章也是如此，你需要给编辑、给读者需要的
@@ -981,3 +983,315 @@ By Mr Kang
 心里面的那点傲气和信念
 
 厕所内的人，不着急，然而厕所外人则分外着急
+** 文章写作要点 
+ 
+ [[file:~/.emacs.d/GTD/orgBoss/pythonLearning.org::*pyCharm%E5%BF%AB%E6%8D%B7%E9%94%AE%E4%BD%BF%E7%94%A8][pyCharm快捷键使用]]
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-15 周六 17:59]
+                   <2018-12-15 20:47> 
+                    :End:
+
+                    
+一个博士论文得围绕一个主题、一件事
+至少达到 1. 干了什么  2. 有多么重要 3. 取得了什么成果
+
+文章写作前的要求
+
+1. 结果是否有实验数据?(实验、计算前就得进行查找)
+2. 章节结构前后有什么关联
+3. 创新点是结论性的东西？
+   干了一件事，有意义的事情(重要，并且没人做过，证明过的)
+   一般是：得到了(获得了)  2. 揭示。。。 3. 提出
+4. 标题放大，醒目
+5. 多图标尺一致，先说图中鲜明特点处，再说顶部、中部、下部
+   目的：讲图不要忘文字， 其次把读者引入图中(让读者有一个低门槛进入)
+6. 逻辑起点: 先说一条曲线，再说多条曲线(随着。。。增加，。。。增加)
+
+   
+**** 意义
+1. 提出新的问题
+2. 对老问题解决办法
+3. 整件事情的了解的知识面更深了
+   并引申到PPT中，每张PPT都包含着他的意义
+
+   研究内容（重点讲),包含研究方法(研究目的) 为什么用这种方法
+屡清你的逻辑思路，讲述图与图之间的变化，他们存在相同也存在着不同。
+
+*** 词的表述
+
+气动： 2D,3D
+绕流机理(3D)
+研究了涡发生器的作用和机理(作用太宽泛，可采用绕流机理)
+（是否油分离? 没分离的话，涡发生器没作用!)
+
+
+采用CFD方法在平板边界层流动中，研究了涡发生器的绕流机理
+
+研究了不同尺度的平板边界层的厚度，从而研究涡发生器的绕流机理
+
+要注意公式： [条件|前提] [模型]
+  条件:不同尺度    模型：平板边界层
+
+  1. 采用什么method(模型model) ----parameters
+  2. 变了几种边界层、多少尺寸
+  3. 以...为模型，采用CFD方法，研究了...
+     以...为模型，采用实验方法，研究了...
+     
+研究了不同风速 不至于內叶展的三种涡发生器结构(三角形、矩形、提醒)...
+涡发生器结构是条件? 感觉不行， 布置于內叶展的是几何? 感觉不是
+
+
+加强: 有利于
+减弱： 不利于
+
+位置(x,y)  高度(一个Y)  宽度(一个x)
+
+分号表示并列
+句号表示一个句子结束
+
+图中特征点、特征物理量随时间变化而得到
+随高度、宽度变化。。。。
+
+首次这个词一般是后人评阅时写的语言
+一般去掉首次，保留得出了即可
+
+
+
+然后这个词指的是另一件事
+其次这个词一般是指同一件事情的不同层次
+
+
+*** 物理量
+
+压力系数是最基本的气动系数,可以通过欧拉方程(势流方程)求解即可
+
+压力系数可以反映欧拉和N_S
+
+总之,黏性和无黏方程都满足压力系数分布
+
+分离点要么从鞍点引出，要么从螺旋结点引出
+
+大攻角会发生前缘分离(风力机叶片很少发生前缘分离，除非失速型风力机,因为稍微大一点，变桨就发生，现在变桨型风力机，一般没有前缘分离
+
+
+**** 近壁面效果(由于墙的存在，由于边界层的存在)
+1. 低Re
+2. 高剪切率
+3. 二元湍流
+4. wall blocking
+   
+**** 边界层厚度的影响因素
+1. 壁面粗糙度
+2. 湍流度(层流和湍流有关)
+3. 黏性系数(越大越厚)
+4. 来流速度
+   
+   1. 随着Re增大，惯性起主要作用，此时速度增大，回事边界层变薄，损失减小
+
+   2. Re继续增大，此时进入自模化区
+
+   3. 而继续提高来流速度，此时已是高速流动，需用Ma分析高速流动
+      Ma>1 会产生激波， 造成强的压强梯度，密度阶跃，会形成很大的损失
+      导致边界层变厚！（飞机的边界层厚度)
+
+      也就是整体边界层厚度随着速度增加，逐渐减小，在一定自模化区内保持不变，随后突然变大，处于高马赫数状态
+      
+一般层流边界层较薄，湍流边界层较厚，转捩边界层居中)
+**** 黏性
+1.层流黏性(物理黏性)
+2. 湍流粘性，分为自身黏性(黏性是一种现象，黏性系数是一种性质(同一工质是一样))
+   湍流黏性 miuT=sqrt(tw/ro)  AGS模型定义黏性为f(粘性系数，速度梯度) 如果梯度
+   为0，即使有黏性系数，也无黏性
+   
+分离的两个条件
+1. 黏性
+2. 一定的逆压梯度
+   湍流边界层的黏性阻力大于层流边界层的黏性阻力
+   
+功率：
+从黏性角度影响分析(影响较小) : 网格，y+ ，湍流模型，边界条件，失速模型
+从无黏角度(影响较大)  无旋、无涡： 整体几何 尺寸
+
+
+*** 尖速比
+lambda=omega*R/v, 但你的速度越大反而越好模拟，对应低尖速比，此时雷诺数起
+主要作用，而高尖速比情况下，速度一般较小，所以黏性起主要作用。而在风力机功率的计算中，黏性的影响主要包括，网格,y+,湍流模型，边界条件，失速模型，可能就是湍流模型
+此时会比较难于模拟。
+
+5m/s低风速，不好模拟（由于高尖速比)
+*** 湍流模型
+SST(k-w)适应外场高湍流度的情况，壁面函数相关(SST的r方程求解转捩长度，theta方程求解转捩位置, 转捩位置加入涡发生器等其他被动控制附件,未分离则不考虑涡发生器，比如负攻角，则不需要考虑涡发生器的影响。)
+SA模型更适应低湍流度模型。
+
+DU210: 攻角越大，会使分离提前, alpha=20°，涡发生器小翼的影响较大，alpha越大，基本上不能使涡发生器发挥作用
+相对厚度越厚(厚度/弦长) 的翼型，失速攻角减小，最大升力系数减小，越容易发生流动分离。
+
+*** 湍流度
+
+翼型升阻力系数发生质的变化
+
+由于分离泡生成（局部散热能力不同)，在高湍流度流动会发生明显失速现象
+
+湍流度Tu的增加加强了来流边界层的扰动，使得层流转捩提前
+从而促使分离泡形成（分离泡是什么？）
+
+分离泡产生则推迟了层流边界层的分离，使得翼型升力得到提升
+
+高Tu在特定公交下行程分离泡，并且发生失速现象， 湍流度越高，在翼型表面形成
+湍流边界层越厚（抑制层流边界层，所以湍流边界层起主要作用)
+
+低Tu翼型表面边界层较早就发生分离，观察不到分离泡（层流分离？湍流分离？a)
+随着湍流度Tu增加，转捩点提前，使层流分离变为湍流分离，因此推迟了分离。
+
+
+在特大攻角下，湍流度对升力系数影响不大。
+
+
+**** 粗糙度
+粗糙度越大，(提高来流边界层的湍动能，)转捩提前(层流变湍流)[全层流，转捩模型，全湍流模型]
+边界层厚度会增加，尾迹也会变宽。
+
+光滑没有分离，反而粗糙度度引入油分离
+
+《翼型薄翼理论》  《黏性翼型空气动力学》
+** 工程师就是文档大侠 
+ 
+ [[file:~/.emacs.d/GTD/writing/referencesBak/windEnergy.org]]
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-19 周三 22:36]
+                    :END:
+
+                    
+看文档知道过程的始末，知道事情的原由。
+
+干了什么，重要吗？ 结果是什么?  
+
+他是什么？ 有什么特点？优缺点? 我需要使用？ 怎么使用？ 使用它需要注意什么？ 有哪些领域可以使用?
+
+行为参数化---lambda编程----跟上java8
+
+
+你想学什么？ 你想干什么？ 你的wishful thinking是什么?
+你的期望是什么?
+** 经事 
+ 
+ [[file:k:/IntellijHome/The-Little-Java/README.md::%E6%8E%A5%E5%8F%A3%E9%97%B4%E5%8F%AF%E4%BB%A5%E7%9B%B8%E4%BA%92extends%EF%BC%81%EF%BC%81%E4%B8%80%E6%AC%A1%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%A4%9A%E4%B8%AA%E5%AE%9E%E7%8E%B0%E6%98%AFjava%E7%9A%84%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%E3%80%82]]
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-23 周日 01:39]
+                    :END:
+
+                    
+锻炼一个经事的能力，遇事沉着冷静。
+善于分析，善于思考
+
+
+别在人家心里不舒服的时候，扔石头进去，扔进去容易，但是捞出来就不容易了(进去容易，出去难 进气容易，出气难)
+
+学校真的只是打造自己一把锋利的刀刃? 用来解决实际问题！会思考的刀
+** 自证思想 
+ 
+ [[file:~/.emacs.d/README.md][file:~/.emacs.d/README.md]]
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-24 周一 00:21]
+                    :END:
+
+                    
+不严肃的想法
+
+代码有根据需求，可以生成需求代码
+
+其实我们更需要的思想，自生思想，发展思想，诱发思想，
+ automate thinking system(AST)--Abstract symbol tree
+
+思想决定着你的思维能动性(思维决定行动)。focus makes you generate thinking recursively.
+
+source of thinking(SOT)应该是一个Y-lambdas(本身就是一个虚拟的系统), 可以根据简单的过程，衍生出一定时间、一定空间(x,y,z)的得到物理的结果。
+
+有技术也得有科学。 你现在技术有一些，但是科学性还得增强
+机械(技术)+科学性都得分开
+
+还有比如人文性（历史）等都得学学。出了名的人干出了历史。
+
+(Y F)= (F (Y F))   F其实是closure
+
+Y具有驱动的作用
+
+http://deathking.github.io/2015/03/21/all-about-y-combinator/
+
+http://theschemer.org/t/150
+
+http://www.ece.uc.edu/~franco/C511/html/Scheme/ycomb.html
+
+https://cgi.soic.indiana.edu/~c311/lib/exe/fetch.php?media=cps-notes.scm
+
+
+http://gauss.ececs.uc.edu/Courses/C626/Lectures/Cryptol/
+** 数据的物理机制                                                    :crypt:
+-----BEGIN PGP MESSAGE-----
+
+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
+=Ksja
+-----END PGP MESSAGE-----
+-----BEGIN PGP MESSAGE-----
+
+hQEMAw7kGOoigxp9AQgAr7TDWEzaYOc5LuBJ1n5tuJ+BKnLtLcHDcwMNz7zqCVnJ
+8g6RtKY8VKbxsP/RiOaSHf6R8+kK00y+m9tVFuhCUL0sPE1XFn6vXkHeoHNOJSkc
+CoQ2OXy5eGfanQWHxqMPq9/VGJGdCU8jtCGhcYpDegArJHODq094Jf4o1dRuGQVT
+1A9yyDkcpXmnz1Ay2AQq4hUxpFiTy3u86M5UxJFYI28yiS1EECfrVxlbgJReMN+w
+A/RJSOuUy0JO4RJaS+tgqVtyJr6rrqnWCXpwDcFGOnJAcDeMEaO082FosUAFoCVV
+suX7pF5Re9VqA7ICYZ45LWrksS3B5f2ERGtIXW3S3tI7AVr3EjnRwpW/SIY3oegw
+OaGKGwFG6eMRSyIM4jdkwpypHKUbJOfqMcv6n7lLr26zuTK5xfoFQSlrVuA=
+=9AIY
+-----END PGP MESSAGE-----

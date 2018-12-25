@@ -1346,6 +1346,8 @@ DEADLINE: <2019-04-15 周一>
                     - State "TODO"       from "TODO"       [2018-08-01 周三 08:48]
                     - State "TODO"       from "TODO"          [2018-07-31 周二 16:19]
                     :LOGBOOK:
+                    - State "TODO"       from "TODO"       T:[2018-12-18 周二 08:38]
+                    - State "TODO"       from "TODO"       T:[2018-12-18 周二 08:38]
                     - State "TODO"       from "TODO"          T:[2018-12-11 周二 14:43]
                     - State "TODO"       from "TODO"          T:[2018-12-11 周二 14:43]
                     - State "TODO"       from "TODO"          T:[2018-11-30 周五 11:24]
@@ -1722,13 +1724,15 @@ CLOSED: [2018-12-11 周二 14:43] DEADLINE: <2018-12-06 周四> SCHEDULED: <2018
 5. [X] Conclusion
 6. [X] References
 
-*** DOING [#B] Yawing NREL 5MW for Energy <2018-11-29 周四 17:10> [0/6] :@NCEPU:PROJECT:
-DEADLINE: <2018-12-29 周六> SCHEDULED: <2018-11-29 周四>
+*** DOING [#B] Yawing NREL 5MW for Energy <2018-11-29 周四 17:10> [0/6] :@NCEPU:PROJECT:紧急重要:
+DEADLINE: <2018-12-22 周六> SCHEDULED: <2018-11-29 周四>
                     :PROPERTIES:
                     :Effort: 12:00
                     :CATEGORY: Project-Yawing5MW
                     :END:
                     :LOGBOOK:
+                    - New deadline from "[2018-12-29 周六]" on T:[2018-12-18 周二 08:39] \\
+                      抓紧
                     CLOCK: [2018-11-29 周四 17:10]--[2018-11-29 周四 17:11] =>  0:01
                     :END:
 

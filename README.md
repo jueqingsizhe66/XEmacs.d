@@ -96,6 +96,13 @@ just remove the custom-set-variables info about the font please,  sorry for both
 
 <2018-05-03 00:19> 后来我发现，如果没有安装graphviz到系统【指的是在path路径能够找到dot】,会报错误，详细看[标题65 org-mind-map][240]
 
+
+11. 我的工作流程
+
+a. `C-x x P`起开一个项目
+b. `C-x x w` 或者`SPC w`对应helm-switch-project, 切换项目
+c. `SPC f`查找当前路径下的所有文件
+
 ### 1.为了引入clj-refactor(一个好用的补全包的工具)
 
 click [clj-refactor][2]
@@ -142,14 +149,12 @@ click [all-the-icons][4]
 - single quote
 
 2. 并且在ui.el添加了
-```
 
+```
 (require 'neotree)
 (global-set-key [f6] 'neotree-toggle)
 (require 'all-the-icons)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-
-
 ```
 
 
@@ -7156,6 +7161,21 @@ del yaw-1.org
    4. Job Status
    5. Tab
    
+##### schedule的含义是什么? #####
+
+参考[Basic org aganda tips][485].
+
+
+``` org
+So with SCHEDULED, it works, and if the day passes and you haven't done anything about it,
+it carries over to next day, so you will end up doing something about it (or having a huge overdue list).
+
+So yeah. 'c-c c-s' all (most) of your entries.
+
+```
+
+也就是说如何你指派的任务不完成，你的agenda表就会越来越长，存放着一堆overdue的任务。
+
    再次温故[GTD流程][375]
   1. Collection. Collect all your stuff into a inbox.(基于一定主题的收集)
   2. Refile. Identify each stuff and make a decision on each of them with deleting, archive or generate a new task to do.
@@ -7906,7 +7926,7 @@ ttf结尾的字体文件拷贝到`C:/windows/fonts`进行安装(Linux和macs自�
 
 仿照[comfortable-motion.vim][467] , 利用[Emacs-inertial-scroll][468]提高访问文件的感觉
 
-可以在navigation.el进行修改;
+可以在navigation.el进行修改; <2018-12-24 17:05>不错!
 
 ### 169. python completion (elpy anaconda-mode)
 
@@ -8028,6 +8048,9 @@ we found that, this is a good night, and we can also say more feeling with
 通过这里我们可以简化我们学到的知识为最简单的状态，而当你遇到不同情况在产生不同的
 statement即可，增加更多参数、更多的变量!
 
+抽取對象中的大多數行為放入一個行為基類中，在對應的數據基類的函數形參consume行為V類即可.
+把一類事物放入一個數據基類，通過構造函數，来递归所有当前数据集,并运用(apply对应行为,evaluate所有数据集)
+
 ### 171. 阅读《Mastering Emacs》
 
 `M-^`代表合并两行(有一个关键概念删除多余的空格，空格的定义)
@@ -8114,6 +8137,24 @@ definition of the identifier at poiint
 `C-x 4 .`  在当前窗口的新frame打开标识符定义
 
 `C-x 5 .`  在新窗口打开光标下的标识符定义
+
+### 178. company-reftex
+
+[company-reftex][459]据说是不错的latex写作工具。
+
+
+``` org
+To use, add the backends to company-begin-backends in the buffers where you want them activated. Make sure that reftex-mode is enabled also.
+```
+
+### 179.系统的定义
+
+一个系统，比如deft，origami，markdown-mode, org-mode,helm,ivy等，比如deft针对所有deft-directory以及对应的拓展deft-extensions,来进行对象选择，
+针对这些对象可以运用browsing,new,deleting,modifying,filtering,searching,等等行为，构成一类行为基类。
+
+还比如markdown-mode，只有针对于md结尾的文件，才进行markdown风格渲染，并且赋予对应的快捷键，具有某类行为.
+
+所以系统工程至少分为两个类数据基类和行为基类。
 
 
 ----------
@@ -8604,3 +8645,5 @@ definition of the identifier at poiint
 [482]: https://github.com/chrisdone/elisp-guide
 [483]: http://musicforprogramming.net
 [484]: https://stackoverflow.com/questions/4222183/emacs-how-to-jump-to-function-definition-in-el-file
+[485]: https://puntoblogspot.blogspot.com/2018/12/3-basic-org-agenda-tips-for.html
+[486]: https://github.com/TheBB/company-reftex

@@ -6,8 +6,8 @@
 ;; Maintainer: Andy Stewart <lazycat.manatee@gmail.com>
 ;; Copyright (C) 2018, Andy Stewart, all rights reserved.
 ;; Created: 2018-08-13 23:18:35
-;; Version: 2.5
-;; Last-Updated: 2018-10-09 20:53:13
+;; Version: 3.0
+;; Last-Updated: 2018-12-22 15:25:37
 ;;           By: Andy Stewart
 ;; URL: http://www.emacswiki.org/emacs/download/aweshell.el
 ;; Keywords:
@@ -15,7 +15,7 @@
 ;;
 ;; Features that might be required by this library:
 ;;
-;; `eshell' `eshell-prompt-extras' `esh-autosuggest' `exec-path-from-shell' `cl' `subr-x'
+;; `eshell' `eshell-prompt-extras' `exec-path-from-shell' `cl' `subr-x'
 ;;
 
 ;;; This file is NOT part of GNU Emacs
@@ -46,7 +46,7 @@
 ;; 1. Create and manage multiple eshell buffers.
 ;; 2. Add some useful commands, such as: clear buffer, toggle sudo etc.
 ;; 3. Display extra information and color like zsh, powered by `eshell-prompt-extras'
-;; 4. Add Fish-like history autosuggestions, powered by `esh-autosuggest', support histories from bash/zsh/eshell.
+;; 4. Add Fish-like history autosuggestions.
 ;; 5. Validate and highlight command before post to eshell.
 ;; 6. Change buffer name by directory change.
 ;; 7. Add completions for git command.
@@ -57,11 +57,12 @@
 ;; 12. Output "did you mean ..." helper when you typo.
 ;; 13. Make cat file with syntax highlight.
 ;; 14. Alert user when background process finished or aborted.
+;; 15. Complete shell command arguments like IDE feeling.
 ;;
 
 ;;; Installation:
 ;;
-;; Put `aweshell.el', `esh-autosuggest.el', `eshell-prompt-extras.el', `exec-path-from-shell.el' to your load-path.
+;; Put `aweshell.el', `eshell-prompt-extras.el', `exec-path-from-shell.el' to your load-path.
 ;; The load-path is usually ~/elisp/.
 ;; It's set in your ~/.emacs like this:
 ;; (add-to-list 'load-path (expand-file-name "~/elisp"))
@@ -96,6 +97,20 @@
 
 ;;; Change log:
 ;;;
+;;
+;; 2018/12/22
+;;      * Mix best history and complete arguments just when history not exist in completion arguments.
+;;
+;; 2018/12/15
+;;      * Mix best match history and shell completions in company's completion menu.
+;;      * Fix error when completion.
+;;
+;; 2018/12/14
+;;      * Add new option `aweshell-autosuggest-backend' to swtich between fish-style and company-style.
+;;
+;; 2018/11/12
+;;      * Remove Mac color, use hex color instead.
+;;
 ;; 2018/10/19
 ;;      * Alert user when background process finished or aborted.
 ;;
@@ -206,12 +221,12 @@
   :group 'aweshell)
 
 (defface aweshell-alert-buffer-face
-  '((t (:foreground "SystemPinkColor" :bold t)))
+  '((t (:foreground "#ff2d55" :bold t)))
   "Alert buffer face."
   :group 'aweshell)
 
 (defface aweshell-alert-command-face
-  '((t (:foreground "SystemOrangeColor" :bold t)))
+  '((t (:foreground "#ff9500" :bold t)))
   "Alert command face."
   :group 'aweshell)
 
@@ -281,7 +296,7 @@ If called with prefix argument, open Aweshell buffer in current directory when t
       (while (equal major-mode 'eshell-mode)
         (switch-to-prev-buffer))
     ;; toggle on
-    (if arg
+    (if (eq arg 4)
         ;; open in current dir
         (let* ((dir default-directory)
                (existing-buffer
@@ -394,14 +409,6 @@ Create new one if no eshell buffer exists."
 (with-eval-after-load "esh-opt"
   (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-pipeline))
-
-;; esh-autosuggest
-;; Fish-like history autosuggestions in eshell
-(require 'esh-autosuggest)
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (esh-autosuggest-mode)
-            (define-key eshell-mode-map (kbd aweshell-complete-selection-key) 'company-complete-selection)))
 
 ;; Validate command before post to eshell.
 (defun aweshell-validate-command ()
@@ -576,6 +583,119 @@ Create new one if no eshell buffer exists."
                (propertize msg 'face 'aweshell-alert-command-face)))))
 
 (add-hook 'eshell-kill-hook #'eshell-command-alert)
+
+;; Auto suggestion.
+;; First completion candidate is best match that pick from shell history.
+;; Rest is completion arguments from shell completion.
+(defun aweshell-reload-shell-history ()
+  (with-temp-message ""
+    (let* ((shell-command (getenv "SHELL")))
+      (cond ((string-equal shell-command "/bin/bash")
+             (shell-command "history -r"))
+            ((string-equal shell-command "/bin/zsh")
+             (shell-command "fc -W; fc -R"))))))
+
+(defun aweshell-parse-bash-history ()
+  "Parse the bash history."
+  (if (file-exists-p "~/.bash_history")
+      (let (collection bash_history)
+        (aweshell-reload-shell-history)
+        (setq collection
+              (nreverse
+               (split-string (with-temp-buffer (insert-file-contents (file-truename "~/.bash_history"))
+                                               (buffer-string))
+                             "\n"
+                             t)))
+        (when (and collection (> (length collection) 0)
+                   (setq bash_history collection))
+          bash_history))
+    nil))
+
+(defun aweshell-parse-zsh-history ()
+  "Parse the bash history."
+  (if (file-exists-p "~/.zsh_history")
+      (let (collection zsh_history)
+        (aweshell-reload-shell-history)
+        (setq collection
+              (nreverse
+               (split-string (with-temp-buffer (insert-file-contents (file-truename "~/.zsh_history"))
+                                               (replace-regexp-in-string "^:[^;]*;" "" (buffer-string)))
+                             "\n"
+                             t)))
+        (when (and collection (> (length collection) 0)
+                   (setq zsh_history collection))
+          zsh_history))
+    nil))
+
+(defun aweshell-parse-shell-history ()
+  "Parse history from eshell/bash/zsh/ ."
+  (delete-dups
+   (mapcar
+    (lambda (str)
+      (string-trim (substring-no-properties str)))
+    (append
+     (ring-elements eshell-history-ring)
+     (aweshell-parse-bash-history)
+     (aweshell-parse-zsh-history)))))
+
+(defun aweshell-autosuggest--prefix ()
+  "Get current eshell input."
+  (catch 'no-prompt
+    (let* ((point-min (point-min))
+           (input-start
+            (save-excursion
+              (beginning-of-line)
+              (while (and (not (looking-at-p eshell-prompt-regexp))
+                          (not (eq point-min (point))))
+                (forward-line -1))
+              (when (eq point-min (point))
+                (throw 'no-prompt 'stop))
+              (eshell-bol)))
+           (prefix
+            (string-trim-left
+             (buffer-substring-no-properties
+              input-start
+              (line-end-position)))))
+      (if (not (string-empty-p prefix))
+          prefix
+        'stop))))
+
+(defun aweshell-autosuggest-candidates (prefix)
+  "Select the first eshell history candidate and shell completions that starts with PREFIX."
+  (let* ((most-similar (cl-find-if
+                        (lambda (str)
+                          (string-prefix-p prefix str))
+                        (aweshell-parse-shell-history)))
+         (command-prefix-args (mapconcat 'identity (nbutlast (split-string prefix)) " "))
+         (command-last-arg (car (last (split-string prefix))))
+         (completions (pcomplete-completions))
+         (shell-completions (if (typep completions 'cons)
+                                (remove-if-not (lambda (c) (string-prefix-p command-last-arg c)) completions)
+                              nil))
+         (suggest-completions (mapcar (lambda (c) (string-trim (concat command-prefix-args " " c))) shell-completions)))
+    ;; Mix best history and complete arguments just when history not exist in completion arguments.
+    (if (and most-similar
+             (not (member most-similar suggest-completions)))
+        (append (list most-similar) suggest-completions)
+      suggest-completions)
+    ))
+
+(defun aweshell-autosuggest (command &optional arg &rest ignored)
+  "`company-mode' backend to provide eshell history suggestion."
+  (interactive (list 'interactive))
+  (cl-case command
+    (interactive (company-begin-backend 'aweshell-autosuggest))
+    (prefix (and (eq major-mode 'eshell-mode)
+                 (aweshell-autosuggest--prefix)))
+    (candidates (aweshell-autosuggest-candidates arg))
+    (sorted nil)))
+
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (company-mode 1)
+            (setq-local company-idle-delay 0)
+            (setq-local company-backends '(aweshell-autosuggest))
+            ))
 
 (provide 'aweshell)
 

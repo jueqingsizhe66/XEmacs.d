@@ -102,6 +102,8 @@ DEADLINE: <2018-11-11 周日>
                     :Effort: 1:00
                     :END:
                     :LOGBOOK:
+                    CLOCK: [2018-12-15 周六 17:27]--[2018-12-15 周六 17:29] =>  0:02
+                    - Clocked out on T:[2018-12-15 周六 17:29]
                     CLOCK: [2018-12-03 周一 20:58]--[2018-12-03 周一 23:29] =>  2:31
                     - Clocked out on T:[2018-12-03 周一 23:29] \\
                       小礼物
@@ -525,6 +527,8 @@ Alt+上下箭头，代表切换上下函数定义(切换快的作用)
 或者  runfile('learnPython.py')
 
 
+`Ctrl+反引号`代表更换主题
+`Alt+Shift+C` 查看最近的改变文件
 *** 安装python-mode for  vim
 https://github.com/python-mode/python-mode#troubleshootingdebugging
 cd ~/.vim/pack/foo/start

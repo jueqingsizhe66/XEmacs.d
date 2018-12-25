@@ -886,7 +886,7 @@ In ~%s~:
   )
 
 ;; 300s =5min
-(run-with-idle-timer 300 t 'jump-to-org-agenda)
+(run-with-idle-timer 900 t 'jump-to-org-agenda)
 
 
 

@@ -1,3 +1,5 @@
+<img src="./aweshell.gif">
+
 # What is aweshell?
 
 I created `multi-term.el` and use it many years.
@@ -9,7 +11,7 @@ So I wrote `aweshell.el` to extend `eshell` with these features:
 1. Create and manage multiple eshell buffers.
 2. Add some useful commands, such as: clear buffer, toggle sudo etc.
 3. Display extra information and color like zsh, powered by `eshell-prompt-extras'
-4. Add Fish-like history autosuggestions, powered by `esh-autosuggest', support histories from bash/zsh/eshell.
+4. Add Fish-like history autosuggestions.
 5. Validate and highlight command before post to eshell.
 6. Change buffer name by directory change.
 7. Add completions for git command.
@@ -20,10 +22,11 @@ So I wrote `aweshell.el` to extend `eshell` with these features:
 12. Output "did you mean ..." helper when you typo.
 13. Make cat file with syntax highlight.
 14. Alert user when background process finished or aborted.
+15. Complete shell command arguments like IDE feeling.
 
 # Installation
 
-Put `aweshell.el`, `esh-autosuggest.el`, `eshell-prompt-extras.el`, `exec-path-from-shell.el` to your load-path.
+Put `aweshell.el`, `eshell-prompt-extras.el`, `exec-path-from-shell.el` to your load-path.
 The load-path is usually ~/elisp/.
 It's set in your ~/.emacs like this:
 ```Elisp
