@@ -49,5 +49,3 @@ close  $journal2018
 close  $journalOut
     or warn "$0 : failed to close output file '$journalOut_file_name' : $!\n";
 
-
-

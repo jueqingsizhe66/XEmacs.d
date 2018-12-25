@@ -391,8 +391,10 @@ modifications)."
 
 
 
+
 (add-hook 'prog-mode-hook 'fic-mode)
-(add-hook 'org-mode-hook 'fic-mode)
+(add-hook 'org-mode-hook 'fixme-mode)
+(add-hook 'markdown-mode-hook 'fixme-mode)
 
 
 

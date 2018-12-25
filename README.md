@@ -8172,8 +8172,8 @@ To use, add the backends to company-begin-backends in the buffers where you want
 很多程序员会在写代码的时候，习惯性的用TODO, FIXME, HACK等作为一些注释的前缀。这样方便自己和后来者预先知道相关注释和代码的状况
 除了编程语言需要对TODO等关键字进行标记外(在注释中高亮显示所有的TODO,BUG,FIXME等关键字)，
 
-还可以在一些文档进行标记，根据[Emacs-china推荐][489],于是使用了[fixme-mode][488],对所有的TODO进行高亮，
-[ fic-mode ][490],专门只针对代码模式的注释进行高亮，跳到下一行显示高亮结果(evil-mode推出到visual模式，然后摁下`o`，
+还可以在一些文档进行标记，根据[emacs-china推荐][489],于是使用了[fixme-mode][488],对所有非编程模式的TODO进行高亮，
+[ fic-mode ][490],专门只针对代码模式(prog-mode)的注释进行高亮，跳到下一行显示高亮结果(evil-mode推出到visual模式，然后摁下`o`，
 跳到下一行),结合下面小函数，可以方便在你的代码见进行注释。可以结合`Ag/Ack`查找TODO等关键词(比如`C-c p s s|r`进行项目
 的ag或者rg查找)
 
@@ -8189,7 +8189,6 @@ To use, add the backends to company-begin-backends in the buffers where you want
 (defun addBug () 
   (interactive)         ; permit invocation in minibuffer
   (insert "BUG(YZL)"))
-
 ```
 
 
