@@ -103,6 +103,7 @@ a. `C-x x P`起开一个项目
 b. `C-x x w` 或者`SPC w`对应helm-switch-project, 切换项目
 c. `SPC f`查找当前路径下的所有文件
 d. `c-x 5 c-f`在新的emacs窗口下打开一个窗口。
+e. `SPC b`查找所有buffer
 
 ### 1.为了引入clj-refactor(一个好用的补全包的工具)
 
@@ -262,7 +263,7 @@ c-x r b : 跳转
 常用快捷键
 
 ```
-Tab打开标题
+Tab打开标题(shift+Tab切换大小标题)
 
 查找:--------
     c-c c-n 光标沿标题方向向下移动(跳转<2018-10-23 22:52>)

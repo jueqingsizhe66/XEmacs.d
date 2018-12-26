@@ -2242,12 +2242,12 @@ With a prefix ARG always prompt for command to use."
                                         ;(load "setup-sidebar.el")
 (defun addTodo () 
   (interactive)         ; permit invocation in minibuffer
-  (insert "TODO(YZL)"))
+  (insert "(TODO(YZL))"))
 
 (defun addFixme () 
   (interactive)         ; permit invocation in minibuffer
-  (insert "FIXME(YZL)"))
+  (insert "(FIXME(YZL))"))
 
 (defun addBug () 
   (interactive)         ; permit invocation in minibuffer
-  (insert "BUG(YZL)"))
+  (insert "(BUG(YZL))"))
