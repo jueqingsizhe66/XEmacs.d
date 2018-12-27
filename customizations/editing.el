@@ -398,3 +398,5 @@ modifications)."
 
 
 
+
+(require 'init-thing-edit)

@@ -8243,6 +8243,17 @@ To use, add the backends to company-begin-backends in the buffers where you want
 ```
 
 
+### 182. thing-edit
+
+[thing-edit.el][494] 简单来说, 就是不用移动光标, 会自动把光标处的各种语法对象 (表达式、邮件地址(good)、文件名、URL(good)、单词、符号、函数定义、列表、句子、空格、段落、行、注释、括号内容等)进行识别并操作, 比如复制, 剪切或者粘贴 kill-ring 内容.
+
+[thing-edit][492] ,默认需要emacs内部包thinkapt的支持。
+下载了[onekey.el][493] 配合使用.
+
+并使用setup-evil使用`SPC o`打开菜单，然后输入单个字母命令(慢慢学习)，很方便，更加智能化.
+
+thing-edit不断处理文本字的系统，主要三个功能复制、剪切和替换，作用对象如上所示包含单词、链接、函数、符号、列表等。
+
 
 ----------
 ----------
@@ -8739,3 +8750,6 @@ To use, add the backends to company-begin-backends in the buffers where you want
 [489]: https://emacs-china.org/t/todo-fixme/3015
 [490]: https://github.com/lewang/fic-mode
 [491]: https://www.jianshu.com/p/ba6b42c9cc08?from=jiantop.com
+[492]: https://github.com/manateelazycat/thing-edit
+[493]: https://github.com/manateelazycat/lazycat-emacs/blob/master/site-lisp/extensions/lazycat/one-key.el
+[494]: https://emacs-china.org/t/emacs/7980

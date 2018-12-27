@@ -183,6 +183,7 @@
   "r" 'helm-M-x
   "k" 'kill-buffer
   "w" 'persp-switch
+  "o" 'one-key-menu-thing-edit
 )
 
   ;"w" 'persp-switch
