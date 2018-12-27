@@ -300,7 +300,7 @@ Tab打开标题(shift+Tab切换大小标题)
 <2018-04-26 23:59> M-x undo-tree-visualize(C-x u) 表示打开当前文件的undo tree，可以按照需要进行恢复，特别方便！！
 <2018-05-03 19:56> C-x k 删掉buffer ,在  C-x b切换buffer, C-x C-b 出现一个buffer列表
 
-C-c b 扫描所有的org文件！！！！【有用！】
+C-c b 扫描所有的org文件！！！！【有用！】 也不太需要!
 ```
 
 
@@ -4611,6 +4611,18 @@ If you want to compute time values use the T, t, or U flag, either in Calc formu
 
 ![table][286]
 
+#### 常用org-table快捷键
+
+```
+
+
+    |TAB| cell序列跳转(shift 则反跳a)|
+    |C-c Ret| 插入一行，并且光标也下移|
+    |C-c Spc| 删除当前cell文本| 
+    |<r>|<l>|  尖括号r代表向右对其，c-c C-c 进行表格格式化 <5> <10>表示控制字段长度
+```
+
+
 ### 103. presentation mode
 
 在init.el增加了对所有文件的展示功能，采用[presentation.el][233],`(load presentation.el)`, 可以让你打开的文件处于展示状态，文字放大方便观看，演示
@@ -8192,6 +8204,44 @@ To use, add the backends to company-begin-backends in the buffers where you want
   (insert "BUG(YZL)"))
 ```
 
+### 181. 我该写什么?
+
+我在做计划的时候会问：
+
+  1. 我需要解决哪些问题？ 这些问题哪些最重要、最紧急
+  2. 我打算从哪几个方面解决这些问题
+  3. 我需要花多长时间完成这些任务
+  4. 我要解决到什么程度？问题很大无法全部解决
+
+我在做总结、写报告、讲ppt前都会问自己
+
+  1. 干了什么?
+  2. 重要吗?
+  3. 得到了什么结果
+  
+而我真正把我做过的事情写到纸上的时候(甚至跟人交流、表达观点都是这样)，才感觉到胸中无笔墨,
+我问我自己
+
+  1. 第一段话、第一句话，表达我的什么结论?(观点和结论最重要的不同是观点没有支撑结论的论据、理由)
+  2. 第二、三、四句话等(2~4个部分)，我对我的论据，比如数据(实验数据、模拟数据)，参考文献(不谈实例、故事)
+  3. 我通过分解事情各个方面，表达我的观点，还得简化语言，形成风格（时间顺序，由浅入深,逻辑顺序,重要先行(特别是ppt))
+
+ 我在工程热物理的ppt汇报中，并没有注意到这一点，后来是经老师指点，才意识到,PPT的标题大多数情况就是结论。 
+  
+我在写这个小标题的时候，把你全部换成我的方式，虽然感觉很武断，但是我这个词让你形成了自己风格,[红色小书][491]。
+有了我的结论，我才能让自己存有灵魂。结论，分为认识到了什么规律，以及认识了之后指导我们该做什么和不该做什么。
+另外也可能说认识到了这个规律，减少或增加什么部分。
+
+
+
+``` org
+一句话总结:
+
+    ABCD: 在什么条件下(Condition),完成某个人物，Actor受众表现什么行为(Behavior),达到什么样的标准或水平
+
+    在所有员工掌握结构思考力技能的同时(C)，通过组织文化的建立，让全员(A)都达成统一的思考和表达标准(B)，大大提高(D)了工作效率
+```
+
 
 
 ----------
@@ -8688,3 +8738,4 @@ To use, add the backends to company-begin-backends in the buffers where you want
 [488]: https://github.com/nflath/fixme-mode/blob/master/fixme-mode.el
 [489]: https://emacs-china.org/t/todo-fixme/3015
 [490]: https://github.com/lewang/fic-mode
+[491]: https://www.jianshu.com/p/ba6b42c9cc08?from=jiantop.com

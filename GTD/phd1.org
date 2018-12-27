@@ -522,8 +522,10 @@ Listen to the readers!
 (Do you mean this?!)
 
 substance 内容！
-** 英文常用短语组合
+** 英文写作常用短语组合
 http://www.phrasebank.manchester.ac.uk/referring-to-sources/
+
+英文文章
 
 Referring to Sources
  
@@ -1093,6 +1095,79 @@ what did you tell yourself?
 不是说这些技术和宣传不好, 关键是要保持头脑清醒, 多读书, 多锻炼, 自己的能力和独立思想才是关键.
 而是锻炼自己理解现实需求和抽象代码的能力, 这才是最优的方式
 (不断锻炼自己、让自己学习)
+
+*** 技术词和生活用词收集
+
+|   | professional words | everyday words             | Notes |
+|---+--------------------+----------------------------+-------|
+|   |                <r> | <l>                        |       |
+|   |             absorb | take in                    |       |
+|   |           discover | find out                   |       |
+|   |         observe(d) | look at                    |       |
+|   |           transmit | pass on                    |       |
+|   |           indicate |                            |       |
+|   |               show |                            |       |
+|   |         illustrate |                            |       |
+|   |        demonstrate |                            |       |
+|   |             review |                            |       |
+|   |            outline |                            |       |
+|   |           describe |                            |       |
+|   |            explain |                            |       |
+|   |   研究的目的和范围 | 干了什么 和重要?           |       |
+|   |           研究方法 | 怎么干                     |       |
+|   |           研究成果 | 得到什么                   |       |
+|   |           研究结论 | ...         由此我们。。。 |       |
+|   |              Found |                            |       |
+|   |            concern | worry                      |       |
+|   |          eradicate | get rid of                 |       |
+|   |       considerable | a lot of                   |       |
+|   |       insufficient | not enough                 |       |
+|   |         difficulty | trouble                    |       |
+|   |        significant | big                        |       |
+|   |             method | way(of doing)              |       |
+|   |       synthesising | bring together             |       |
+|   |             object | thing                      |       |
+|   |    little research | not much research          |       |
+|   |        few studies | not many studies           |       |
+|   |       not evidence | isn't any evidence         |       |
+
+
+|   |            Compound words |     |   |
+|   |                       <r> | <l> |   |
+|---+---------------------------+-----+---|
+|   |               self-design |     |   |
+|   |                 span-wise |     |   |
+|   |           cross-sectional |     |   |
+|   |                 dust-free |     |   |
+|   |               water-proof |     |   |
+|   |         input-orientation |     |   |
+|   |         piece-wise-linear |     |   |
+|   | data transmission systems |     |   |
+|   | high precision instrument |     |   |
+
+
+|   | positive words | negative words |   |
+|---+----------------+----------------+---|
+|   |            <r> | <l>            |   |
+|   |       positive | negative       |   |
+|   |         linear | non-linear     |   |
+|   |        regular | irregular      |   |
+|   |        connect | disconnect     |   |
+|   |      divisible | indivisible    |   |
+|   |        organic | inorganic      |   |
+|   |      effective | ineffective    |   |
+|   |     parametric | nonparametric  |   |
+
+By understanding similarities and differences between two things, we can increase our understanding and learn more about both.
+
+|   | used sentense                           |     |   |
+|---+-----------------------------------------+-----+---|
+|   | <l>                                     | <r> |   |
+|   | On the basis of ..,                     |     |   |
+|   | the following conclusion can be made .. |     |   |
+|---+-----------------------------------------+-----+---|
+|   | To sum up, we have revealed             |     |   |
+
 * 升力面和升力线
 升力面方法一般是在环量求解时基于流动无分离假设，当解出叶片攻角后再通过翼型气动数据算出气动力，因此
 叶片绕流分离越大时，叶片环量计算偏差越大。
@@ -1731,6 +1806,8 @@ DEADLINE: <2018-12-22 周六> SCHEDULED: <2018-11-29 周四>
                     :CATEGORY: Project-Yawing5MW
                     :END:
                     :LOGBOOK:
+                    CLOCK: [2018-12-26 周三 14:47]--[2018-12-26 周三 19:39] =>  4:52
+                    - Clocked out on T:[2018-12-26 周三 19:39]
                     - New deadline from "[2018-12-29 周六]" on T:[2018-12-18 周二 08:39] \\
                       抓紧
                     CLOCK: [2018-11-29 周四 17:10]--[2018-11-29 周四 17:11] =>  0:01
