@@ -183,7 +183,8 @@
   "r" 'helm-M-x
   "k" 'kill-buffer
   "w" 'persp-switch
-  "o" 'one-key-menu-thing-edit
+  "i" 'one-key-menu-thing-edit
+  "p" 'projectile-persp-switch-project
 )
 
   ;"w" 'persp-switch

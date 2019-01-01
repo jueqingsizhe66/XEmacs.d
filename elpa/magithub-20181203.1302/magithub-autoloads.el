@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "magithub" "magithub.el" (23564 27815 0 0))
+;;;### (autoloads nil "magithub" "magithub.el" (23595 31665 0 0))
 ;;; Generated autoloads from magithub.el
  (autoload 'magithub-dispatch-popup "magithub" nil t)
 
@@ -11,7 +11,7 @@
 
 ;;;***
 
-;;;### (autoloads nil "magithub-ci" "magithub-ci.el" (23564 27814
+;;;### (autoloads nil "magithub-ci" "magithub-ci.el" (23595 31665
 ;;;;;;  0 0))
 ;;; Generated autoloads from magithub-ci.el
 
@@ -22,8 +22,8 @@ If this is a GitHub repository, insert the CI status header.
 
 ;;;***
 
-;;;### (autoloads nil "magithub-comment" "magithub-comment.el" (23564
-;;;;;;  27815 0 0))
+;;;### (autoloads nil "magithub-comment" "magithub-comment.el" (23595
+;;;;;;  31665 0 0))
 ;;; Generated autoloads from magithub-comment.el
 
 (autoload 'magithub-comment-new "magithub-comment" "\
@@ -39,7 +39,7 @@ initial contents of the reply if there is no draft.
 ;;;***
 
 ;;;### (autoloads nil "magithub-completion" "magithub-completion.el"
-;;;;;;  (23564 27814 0 0))
+;;;;;;  (23595 31665 0 0))
 ;;; Generated autoloads from magithub-completion.el
 
 (autoload 'magithub-completion-complete-issues "magithub-completion" "\
@@ -64,7 +64,7 @@ Enable completion of info from magithub in the current buffer.
 
 ;;;***
 
-;;;### (autoloads nil "magithub-core" "magithub-core.el" (23564 27814
+;;;### (autoloads nil "magithub-core" "magithub-core.el" (23595 31665
 ;;;;;;  0 0))
 ;;; Generated autoloads from magithub-core.el
 
@@ -106,7 +106,7 @@ this function: `github-user', `github-issue', `github-label',
 
 ;;;***
 
-;;;### (autoloads nil "magithub-dash" "magithub-dash.el" (23564 27814
+;;;### (autoloads nil "magithub-dash" "magithub-dash.el" (23595 31665
 ;;;;;;  0 0))
 ;;; Generated autoloads from magithub-dash.el
 
@@ -118,7 +118,7 @@ View your GitHub dashboard.
 ;;;***
 
 ;;;### (autoloads nil "magithub-edit-mode" "magithub-edit-mode.el"
-;;;;;;  (23564 27814 0 0))
+;;;;;;  (23595 31665 0 0))
 ;;; Generated autoloads from magithub-edit-mode.el
 
 (autoload 'magithub-edit-mode "magithub-edit-mode" "\
@@ -128,8 +128,8 @@ Major mode for editing GitHub issues and pull requests.
 
 ;;;***
 
-;;;### (autoloads nil "magithub-issue" "magithub-issue.el" (23564
-;;;;;;  27815 0 0))
+;;;### (autoloads nil "magithub-issue" "magithub-issue.el" (23595
+;;;;;;  31665 0 0))
 ;;; Generated autoloads from magithub-issue.el
 
 (autoload 'magithub-issue--insert-issue-section "magithub-issue" "\
@@ -145,7 +145,7 @@ Insert GitHub pull requests if appropriate.
 ;;;***
 
 ;;;### (autoloads nil "magithub-issue-tricks" "magithub-issue-tricks.el"
-;;;;;;  (23564 27815 0 0))
+;;;;;;  (23595 31665 0 0))
 ;;; Generated autoloads from magithub-issue-tricks.el
 
 (autoload 'magithub-pull-request-merge "magithub-issue-tricks" "\
@@ -158,7 +158,7 @@ pull-request object, that object is selected by default.
 ;;;***
 
 ;;;### (autoloads nil "magithub-issue-view" "magithub-issue-view.el"
-;;;;;;  (23564 27814 0 0))
+;;;;;;  (23595 31665 0 0))
 ;;; Generated autoloads from magithub-issue-view.el
 
 (autoload 'magithub-issue-view "magithub-issue-view" "\
@@ -170,7 +170,7 @@ Return the new buffer.
 ;;;***
 
 ;;;### (autoloads nil "magithub-settings" "magithub-settings.el"
-;;;;;;  (23564 27814 0 0))
+;;;;;;  (23595 31665 0 0))
 ;;; Generated autoloads from magithub-settings.el
  (autoload 'magithub-settings-popup "magithub-settings" nil t)
 
@@ -179,7 +179,7 @@ Return the new buffer.
 ;;;### (autoloads nil nil ("magithub-faces.el" "magithub-issue-post.el"
 ;;;;;;  "magithub-label.el" "magithub-notification.el" "magithub-orgs.el"
 ;;;;;;  "magithub-pkg.el" "magithub-repo.el" "magithub-user.el")
-;;;;;;  (23564 27815 0 0))
+;;;;;;  (23595 31665 0 0))
 
 ;;;***
 

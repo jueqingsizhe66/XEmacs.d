@@ -376,11 +376,13 @@ modifications)."
 (require 'company-english-helper)
 
 
-(defun insert-translated-name-current-parse-state ()
-  "Return parse state of point from beginning of defun."
-  (let ((point (point)))
-    (beginning-of-defun)
-    (parse-partial-sexp (point) point)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (defun insert-translated-name-current-parse-state ()     ;;
+;;   "Return parse state of point from beginning of defun." ;;
+;;   (let ((point (point)))                                 ;;
+;;     (beginning-of-defun)                                 ;;
+;;     (parse-partial-sexp (point) point)))                 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/customizations/my_plugins/fic-mode/"))

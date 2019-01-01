@@ -1,4 +1,11 @@
 (1
+ (projectile-extras .
+		    [(20181231 1319)
+		     ((emacs
+		       (24))
+		      (cl-lib
+		       (0 5)))
+		     "A few extra functions for projectile" single])
  (zone-tunnels .
 	       [(20180309 2155)
 		((emacs

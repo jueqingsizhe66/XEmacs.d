@@ -2,14 +2,15 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/" . "CalendarDairy/")
  ("c:/Users/yzl/AppData/Roaming/" . ".emacs.d/")
  ("H:/Classic/" . "Beethoven- Symphony No 9/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/myResearchPaper/DynamicYaw5MW/"
  "c:/Users/yzl/AppData/Roaming/.emacs.d/"
+ "c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/myResearchPaper/DynamicYaw5MW/"
  "c:/Users/yzl/AppData/Roaming/.emacs.d/customizations/"
 )
 
@@ -23,6 +24,14 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/CalendarDairy/" (23469 65076 0 0) "diary.org" "../" "./")
+
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/" (23595 33220 0 0) "__pycache__/" "vimish-fold/" "vim.exe.stackdump" "url/" "themes/" "testLisp.lisp" "test.py" "test.ledger" "test.el" "template/" "srecode-map.el" "snippets/" "server/" "rg.exe" "README.md" "projectile.cache" "projectile-bookmarks.eld" "magithub/" "ledger_3.1.1_win_bin/" "init.el" "ido.last~" "ido.last" "hello-graphviz.png" "GTD/" "geiser-history.racket" "geiser-history.chez" "eww-bookmarks" "eshell/" "emms/" "elpa/" "elisp-tutor.el" "diary" "customizations/" "custom.el" "CalendarDairy/" "bookmarks" "backups/" "auto-save-list/" "anaconda-mode/" "ag.exe" "ac-comphist.dat" "abbrev_defs" ".smex-items" ".session" ".recentf~" ".recentf" ".python-environments/" ".orgConf.el" ".org-id-locations" ".mc-lists.el" ".gitmodules" ".gitignore" ".git/" "../" "./")
+
+ ("k:/MatlabHome/matlab-develop/pressureCode/com.gw.core/" (23206 38188 0 0) "Ye1CnCt/" "unifyXlsAndCpImprove.m" "unifyXlsAndCp.m" "ThirdClCd.m" "testCpupZup.m" "Secondfengchang.m" "reLayoutCp.m" "getTimeMinMax.m" "getCnCt.m" "get9sAverage.m" "firstCoordinateTranslate.m" "filename" "FanCnct/" "cpx.txt" "closeToZero.m" "cfxPost/" "40.txt" "../" "./")
+
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/customizations/my_plugins/thing-edit/" (23594 13286 0 0) "thing-edit.gif" "thing-edit.el" "README.md" "../" "./")
+
  ("k:/clojure-home/emacs-25.3-x86_64/bin/" (23426 20702 0 0) "zlib1.dll" "xmllint.exe" "xmlcatalog.exe" "xml2-config" "tk86.dll" "tcl86.dll" "ssleay32.dll" "runemacs.exe" "libXpm-noX4.dll" "libxml2-2.dll" "libwinpthread-1.dll" "libunistring-2.dll" "libturbojpeg-0.dll" "libtre-5.dll" "libtiffxx-5.dll" "libtiff-5.dll" "libtermcap-0.dll" "libtasn1-6.dll" "libsystre-0.dll" "libstdc++-6.dll" "libssp-0.dll" "libsqlite3-0.dll" "librsvg-2-2.dll" "libreadline7.dll" "libquadmath-0.dll" "libpython3.6m.dll" "libpng16-16.dll" "libpixman-1-0.dll" "libpcreposix-0.dll" "libpcrecpp-0.dll" "libpcre32-0.dll" "libpcre16-0.dll" "libpcre-1.dll" "libpangowin32-1.0-0.dll" "libpangoft2-1.0-0.dll" "libpangocairo-1.0-0.dll" "libpango-1.0-0.dll" "libp11-kit-0.dll" "libnettle-6.dll" "libminizip-1.dll" "liblzo2-2.dll" "liblzma-5.dll" "liblcms2-2.dll" "libjpeg-8.dll" "libjasper-4.dll" "libintl-8.dll" "libidn2-0.dll" "libiconv-2.dll" "libhogweed-4.dll" "libhistory7.dll" "libharfbuzz-icu-0.dll" "libharfbuzz-gobject-0.dll" "libharfbuzz-0.dll" "libgthread-2.0-0.dll" "libgraphite2.dll" "libgomp-1.dll" "libgobject-2.0-0.dll" "libgnutlsxx-28.dll" "libgnutls-30.dll" "libgmpxx-4.dll" "libgmp-10.dll" "libgmodule-2.0-0.dll" "libglib-2.0-0.dll" "libgio-2.0-0.dll" "libgif-7.dll" "libgettextsrc-0-19-8-1.dll" "libgettextpo-0.dll" "libgettextlib-0-19-8-1.dll" "libgdk_pixbuf-2.0-0.dll" "libgcc_s_seh-1.dll" "libfreetype-6.dll" "libfreeglut.dll" "libfontconfig-1.dll" "libffi-6.dll" "libexpat-1.dll" "libeay32.dll" "libcroco-0.6-3.dll" "libcharset-1.dll" "libcairo-script-interpreter-2.dll" "libcairo-gobject-2.dll" "libcairo-2.dll" "libbz2-1.dll" "libatomic-1.dll" "libasprintf-0.dll" "hello.lisp" "etags.exe" "emacsclientw.exe" "emacsclient.exe" "emacs.exe" "emacs-25.3.exe" "edit_test_dll.exe" "edit.dll" "ebrowse.exe" "ctags.exe" "addpm.exe" "a.rs" "#xml2-config#" "../" "./")
 
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/customizations/" (23588 47741 0 0) "update_my_plugins.py" "ui.el" "shell-integration.el" "setupsbcl.el" "setup-tab.el" "setup-sidebar.el" "setup-rust.el" "setup-ruby-mode.el" "setup-python.el" "setup-ledger.el" "setup-js.el" "setup-git.el" "setup-find-file-in-project.el" "setup-eww.el" "setup-evil.el" "setup-eshell.el" "setup-erc.el" "setup-emms.el" "setup-dashboard.el" "setup-clojure.el" "setup-autoinsert.el" "setup-abbrev.el" "scheme-editing.el" "ruby-end.el" "quicklisp.lisp" "protocol.reg" "plantuml.jar" "pip/" "perl-editing.el" "orca.el" "navigation.el" "my_plugins/" "misc.el" "magnars/" "init-utils.el" "init-thing-edit.el" "init-projectile.el" "init-ivy.el" "init-custom.el" "init-const.el" "img/" "fortran-index-args.el" "fortran-editing.el" "font-lock+.el" "elisp-editing.el" "editing.el" "aspell.rar" "a.org" ".abbrev_defs" "../" "./")
@@ -30,8 +39,6 @@
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/" (23564 38199 0 0) "writing.org" "writing.html" "writing.docx" "Vocab/" "Someday/" "Site/" "rubyLearning.org" "reproductive-research-and-software-development-methods-for-management-tasks.org" "READMEForListCruncher.org" "pythonLearning.org" "protocol.org" "Private/" "perlLearning.org" "org-dashboard.org" "Note/" "newgtd.org_archive" "newgtd.org" "newgtd.html" "myWorkfluentYaw15.org" "myWork5.org" "mywork30.org" "myWork15.org" "myWork0.org" "myfit.org" "listcrunchertest.org" "listcruncher-grouped2.png" "listcruncher-grouped.png" "library-of-babel.org" "Journal/" "IDEA/" "how-to-use-Org-Babel-for-R.org" "hello.rs" "hello.org" "Habit/" "Financial/" "Film/" "elisp-cal.org" "dfreich-lob.org" "dfeich-tables.org" "dfeich-lisp-babel.org" "DailyReview/" "code-snippets.org" "clojureLearning.org" "Clipboard/" "CiteSpace/" "Book/" "a.png" "../" "./")
 
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/myResearchPaper/DynamicYaw5MW/" (23585 58384 0 0) "Result.org" "references.org" "paper.org" "Method.org" "Intro.org" "img/" "draft.org" "Conclusion.org" "Abstract.org" ".gitignore" ".git/" "../" "./")
-
- ("c:/Users/yzl/AppData/Roaming/.emacs.d/" (23567 29255 0 0) "__pycache__/" "vimish-fold/" "vim.exe.stackdump" "url/" "themes/" "testLisp.lisp" "test.py" "test.ledger" "test.el" "template/" "srecode-map.el" "snippets/" "server/" "rg.exe" "README.md" "projectile.cache" "projectile-bookmarks.eld" "magithub/" "ledger_3.1.1_win_bin/" "init.el" "ido.last~" "ido.last" "hello-graphviz.png" "GTD/" "geiser-history.racket" "geiser-history.chez" "eww-bookmarks" "eshell/" "emms/" "elpa/" "elisp-tutor.el" "diary" "customizations/" "custom.el" "CalendarDairy/" "bookmarks" "backups/" "auto-save-list/" "anaconda-mode/" "ag.exe" "ac-comphist.dat" "abbrev_defs" ".smex-items" ".session" ".recentf~" ".recentf" ".python-environments/" ".orgConf.el" ".org-id-locations" ".mc-lists.el" ".gitmodules" ".gitignore" ".git/" "../" "./")
 
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/myResearchPaper/BasicTemplateVersion/" (23567 28910 0 0) "Result.org" "paper.org" "Method.org" "Intro.org" "img/" "Conclusion.org" "Abstract.org" ".gitignore" ".git/" "../" "./")
 

@@ -1096,8 +1096,19 @@ what did you tell yourself?
 而是锻炼自己理解现实需求和抽象代码的能力, 这才是最优的方式
 (不断锻炼自己、让自己学习)
 
-*** 技术词和生活用词收集
+** TODO 技术词和生活用词收集
+:LOGBOOK:
+- State "TODO"       from              T:[2018-12-27 周四 21:32]
+:END:
 
+*** 写作原则
+
+1. 结构上，金字塔，结论而行，论据随后，总结陈述
+2. 语言上，简练(一个动词可解决，不要用多)，清楚，易读(clarify)，准确(concise)
+       一句话干了什么事？有用？如果有用，那么接下来讲什么?然后讲什么? 
+3. 风格上，主谓结构，简单句
+   
+***  单词和词组
 |   | professional words | everyday words             | Notes |
 |---+--------------------+----------------------------+-------|
 |   |                <r> | <l>                        |       |
@@ -1167,6 +1178,215 @@ By understanding similarities and differences between two things, we can increas
 |   | the following conclusion can be made .. |     |   |
 |---+-----------------------------------------+-----+---|
 |   | To sum up, we have revealed             |     |   |
+
+
+*** 常用副词
+
+|---------------------------+----------------|
+|                       <r> | <l>            |
+|---------------------------+----------------|
+|                  actually | 实际上         |
+|                 certainly | 可以肯定的     |
+|                 curiously | 奇怪的是       |
+|              conceptually | 从概念上讲     |
+|              functionally | 从功能上讲     |
+|                physically | 从物理概念上   |
+|            mathematically | 从数学上讲     |
+|             theoretically | 从理论上讲     |
+|            experimentally | 从实验上讲     |
+|        characteristically | 从特性上讲     |
+|               graphically | 从图形上讲     |
+|           chronologically | 从年代上看     |
+|             alternatively | 换言之         |
+|              analytically | 用解析的方法   |
+|                 certainly | 直观地讲       |
+|            conventionally | 按照惯例       |
+|               classically | 按照经典理论   |
+|              specifically | 具体的讲       |
+|                ordinarily | 在正常情况下   |
+|               essentially | 从本质上讲     |
+|             unfortunately | 遗憾的是       |
+|                  strictly | 严格的说       |
+|             operationally | 从功能上看     |
+|                admittedly | 应该承认       |
+|              incidentally | 顺便指出       |
+|              equivalently | 等效地讲       |
+|           correspondingly | 与之对应的是   |
+|                   ideally | 理想情况下     |
+|               inductively | 归纳起来       |
+|           architecturally | 从结构上看     |
+|                 logically | 从逻辑上讲     |
+|                personally | 就个人而言     |
+|            simultaneously | 与此同时       |
+|                presumably | 可能的情况是   |
+|                ultimately | 归根结底       |
+|              symbolically | 用符号表示的话 |
+|                    rarely | 很少           |
+|                   usually | 通常           |
+|                  visually | 从视觉效果上看 |
+|                   finally | 最后           |
+|              consequently | 结果/因此      |
+|                  probably | 或许           |
+|                   cleally | 很清楚         |
+|                   roughly | 粗略的讲       |
+|                    mainly | 从主要方面讲   |
+|               technically | 从技术上讲     |
+|              most notably | 最值得注意的是 |
+|     more/most importantly | 更/最重要的是  |
+|            more generally | 更一般的情况   |
+| more precisely/accurately | 更确切地说     |
+|      more briefly	 | 更简练地讲     |
+|                           |                |
+
+**** 频度副词
+
+|--------------+--------|
+|          <r> | <l>    |
+|--------------+--------|
+|       rarely | 罕有   |
+| occasionally | 偶尔有 |
+|    sometimes | 有时   |
+|        often | 常常   |
+|      usually | 通常   |
+|       always | 总是   |
+
+**** 不确定程度
+
+可能性
+|----------+--------|
+|      <r> | <l>    |
+|----------+--------|
+|    might | 可能   |
+|      may | 可以   |
+|    could | 能     |
+|      can | 能     |
+|   should | 能，该 |
+| ought to | 应该   |
+|    would | 愿意   |
+|     will | 愿意   |
+|     must | 必须   |
+
+递增
+|------------+------|
+|        <r> | <l>  |
+|------------+------|
+|      maybe | 也许 |
+|   probably | 可能 |
+|  certainly | 一定 |
+| definitely | 肯定 |
+
+
+
+好坏程度
+|---------------+-----|
+|           <r> | <l> |
+|---------------+-----|
+|           bad | 劣  |
+|          poor | 差  |
+| fair,ordinary | 中  |
+|          good | 良  |
+|     excellent | 优  |
+
+
+程度
+|----------+--------|
+|      <r> | <l>    |
+|----------+--------|
+|      nil | 无     |
+|   slight | 轻微的 |
+| moderate | 中等的 |
+|   severe | 严重的 |
+|  extreme | 极度的 |
+
+
+数量的大小和多少
+|--------------+------------|
+|          <r> | <l>        |
+|--------------+------------|
+|   negligible | 微不足道的 |
+| considerable | 相当多的   |
+|  substantial | 大量的     |
+|  appreciable | 可感知的   |
+|     material | 重大的     |
+
+
+|----------------------+--------|
+|                  <r> | <l>    |
+|----------------------+--------|
+|    a large number of | 大量的 |
+|         a great many |        |
+|             a lot of |        |
+|            plenty of |        |
+|----------------------+--------|
+| a moderate number of | 适量的 |
+|  a certain number of |        |
+|----------------------+--------|
+|                  few | 少量的 |
+|             not many |        |
+|                a few |        |
+|                 some |        |
+
+
+
+含extent短语
+|---------------------------+----------------|
+|                       <r> | <l>            |
+|---------------------------+----------------|
+|         to a small extent | 在不大程度上   |
+|            to what extent | 在多大程度上   |
+|       to different extent | 在不同程度上   |
+|            to some extent | 在某种程度上   |
+|           to great extent | 在很大程度上   |
+| to the extent practicable | 在可实用程度上 |
+
+
+强调重要性
+|---------------------------+---------------|
+|                       <r> | <l>           |
+|---------------------------+---------------|
+|    particularly important | 特别重要的    |
+|           be essential to | 对…是至关重要 |
+| by far the most important | 最重要的      |
+|              come to play | 开始起作用    |
+|         play a major role | 起主要作用    |
+|      play a dominant role | 起主导作用    |
+| deserve a special mention | 值得专门提到  |
+
+
+难易程度
+|----------------------------+-----------------|
+|                        <r> | <l>             |
+|----------------------------+-----------------|
+| … somewhat easier … than … | 多少比…容易一些 |
+|            … even easier … | 更容易一些      |
+|          … be readily to … | 容易地          |
+|      … relatively simple … | 相对简单        |
+|            … far simpler … | 简单得多        |
+|   … rather sophisticated … | 相当微妙的      |
+|          be self-evident … | 不言自明的      |
+
+
+强调数量
+|--------------------------------+----------------|
+|                            <r> | <l>            |
+|--------------------------------+----------------|
+|                   no more than | 不多于，仅仅占 |
+|                     a few more | 比…更多一点    |
+|            in part / partially | 部分的         |
+|                     throughout | 整个           |
+| be not sufficient to determine | 不足以确定…    |
+|                   more or less | 或多或少       |
+
+知名程度
+|--------------------------------+--------------|
+|                            <r> | <l>          |
+|--------------------------------+--------------|
+|                     well-known | 众所周知     |
+|        celebrated / best known | 著名的       |
+|               most outstanding | 最突出的     |
+|         remarkable achievement | 显赫的成就   |
+| most significant contributions | 最重要的贡献 |
+|                   epoch-making | 划时代的     |
 
 * 升力面和升力线
 升力面方法一般是在环量求解时基于流动无分离假设，当解出叶片攻角后再通过翼型气动数据算出气动力，因此
@@ -1802,10 +2022,16 @@ CLOSED: [2018-12-11 周二 14:43] DEADLINE: <2018-12-06 周四> SCHEDULED: <2018
 *** DOING [#B] Yawing NREL 5MW for Energy <2018-11-29 周四 17:10> [0/6] :@NCEPU:PROJECT:紧急重要:
 DEADLINE: <2018-12-22 周六> SCHEDULED: <2018-11-29 周四>
                     :PROPERTIES:
-                    :Effort: 12:00
+                    :Effort: 22:00
                     :CATEGORY: Project-Yawing5MW
                     :END:
                     :LOGBOOK:
+                    CLOCK: [2018-12-28 周五 22:27]--[2018-12-29 周六 01:57] =>  3:30
+                    - Clocked out on T:[2018-12-29 周六 01:57]
+                    CLOCK: [2018-12-28 周五 20:33]--[2018-12-28 周五 21:17] =>  0:44
+                    - Clocked out on T:[2018-12-28 周五 21:17]
+                    CLOCK: [2018-12-28 周五 14:11]--[2018-12-28 周五 16:19] =>  2:08
+                    - Clocked out on T:[2018-12-28 周五 16:19]
                     CLOCK: [2018-12-26 周三 14:47]--[2018-12-26 周三 19:39] =>  4:52
                     - Clocked out on T:[2018-12-26 周三 19:39]
                     - New deadline from "[2018-12-29 周六]" on T:[2018-12-18 周二 08:39] \\

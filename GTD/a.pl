@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use utf8;
 
+
 print "hello\n";
 
 my $fluent_file_name = '*.csv';		# input file name

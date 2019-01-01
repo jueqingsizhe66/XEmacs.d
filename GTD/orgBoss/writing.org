@@ -1294,4 +1294,38 @@ A/RJSOuUy0JO4RJaS+tgqVtyJr6rrqnWCXpwDcFGOnJAcDeMEaO082FosUAFoCVV
 suX7pF5Re9VqA7ICYZ45LWrksS3B5f2ERGtIXW3S3tI7AVr3EjnRwpW/SIY3oegw
 OaGKGwFG6eMRSyIM4jdkwpypHKUbJOfqMcv6n7lLr26zuTK5xfoFQSlrVuA=
 =9AIY
------END PGP MESSAGE-----
+-----END PGP MESSAGE-----
+** 纪律的重要性 
+ 
+ [[file:~/.emacs.d/README.md][file:~/.emacs.d/README.md]]
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-31 周一 13:07]
+                    :END:
+
+一个人的优秀习惯是由你一个人遵守的良好纪律决定的
+
+纪律规范到你的衣食住行，才能保证在不良局势下，能够止损。
+才能保证败军之际能够良好撤军。钢铁般的纪律。
+
+但是论到打战，战斗力远远比纪律更为重要，能够嗷嗷叫的不对和
+整齐的不对是不一样的。
+
+
+闲时要保证良好的纪律，忙时要有嗷嗷叫的架势。
+** 工作量的体现 
+ 
+ [[file:~/.emacs.d/README.md][file:~/.emacs.d/README.md]]
+
+                    :PROPERTIES:
+                    :CREATED: [2018-12-31 周一 13:14]
+                    :END:
+
+                    
+一个人的工作量不是靠你计算了多少case，你重复做了多少活
+
+而是看你分析了多少，你做了多少工作得到了一个结果。
+
+》》 答辩，交流等不是累积工作量，而是通过你的分析、总结来体现工作量
+
+为了这个目的(提取规律)，我需要做多少工作

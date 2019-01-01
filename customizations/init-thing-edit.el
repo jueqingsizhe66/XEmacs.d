@@ -110,6 +110,7 @@
         (("p" . "Copy Parentheses") . thing-copy-parentheses)
         (("l" . "Copy Line") . thing-copy-line)
         (("a" . "Copy To Line Begin") . thing-copy-to-line-beginning)
+        (("k" . "Copy the number") . thing-copy-number)
         (("e" . "Copy To Line End") . thing-copy-to-line-end)
         ;; Cut.
         (("W" . "Cut Word") . thing-cut-word)
@@ -127,12 +128,13 @@
         (("P" . "Cut Parentheses") . thing-cut-parentheses)
         (("L" . "Cut Line") . thing-cut-line)
         (("A" . "Cut To Line Begin") . thing-cut-to-line-beginning)
+        (("K" . "cut the number") . thing-cut-number)
         (("E" . "Cut To Line End") . thing-cut-to-line-end)
         
 ;; Replace
         (("r" . "Replace Word") . thing-replace-word)
         (("z" . "Replace Symbol") . thing-replace-symbol)
-        (("e" . "Replace email") . thing-replace-email)
+        (("N" . "Replace email") . thing-replace-email)
         (("n" . "Replace filename") . thing-replace-filename)
         (("q" . "Replace url") . thing-replace-url)
         (("Z" . "Replace sexp") . thing-replace-sexp)
@@ -142,7 +144,8 @@
         (("y" . "Replace whitespace") . thing-replace-whitespace)
         (("Y" . "Replace List") . thing-replace-list)
         (("j" . "Replace comment") . thing-replace-comment)
-        (("k" . "Replace defun") . thing-replace-defun)
+        (("J" . "Replace defun") . thing-replace-defun)
+        (("D" . "Replace number") . thing-replace-number)
         (("v" . "Replace parenthes") . thing-replace-parentheses)
         
 ))

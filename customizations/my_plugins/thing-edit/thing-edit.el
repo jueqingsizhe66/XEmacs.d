@@ -5,8 +5,8 @@
 ;; Copyright (C) 2008, 2009, Andy Stewart, all rights reserved.
 ;; Copyright (C) 2014, Arthur Miller <arthur.miller@live.com>, all rights reserved.
 ;; Created: 2008-06-08 00:42:07
-;; Version: 1.6
-;; Last-Updated: 2018-12-23 12:42:44
+;; Version: 2.0
+;; Last-Updated: 2018-12-28 23:18:35
 ;; URL: http://www.emacswiki.org/emacs/download/thing-edit.el
 ;; Keywords: thingatpt, edit
 ;; Compatibility: GNU Emacs 23.0.60.1
@@ -86,6 +86,10 @@
 ;; thing-copy-line                   copy current line.
 ;; thing-replace-line                replace current line with content of kill-ring.
 ;;
+;; thing-cut-region-or-line          cut current region or line.
+;; thing-copy-region-or-line         copy current region or line.
+;; thing-replace-region-or-line      replace current region or line with content of kill-ring.
+;;
 ;; thing-cut-to-line-end             cut string to end of line.
 ;; thing-copy-to-line-end            copy string to end of line.
 ;; thing-replace-to-line-end         replace string to end of line with content of kill-ring.
@@ -106,6 +110,14 @@
 ;; thing-copy-parentheses            copy parentheses around cursor.
 ;; thing-replace-parentheses         replace parentheses around cursor with content of kill-ring.
 ;;
+;; thing-cut-number                  cut number around cursor.
+;; thing-copy-number                 copy number around cursor.
+;; thing-replace-number              replace number around cursor with content of kill-ring.
+;;
+;; thing-cut-whole-buffer            cut whole buffer
+;; thing-copy-whole-buffer           copy whole buffer
+;; thing-replace-whole-buffer        replace whole buffer with content of kill-ring.
+;;
 
 ;;; Installation:
 ;;
@@ -116,6 +128,15 @@
 ;; No more need
 
 ;;; Change log:
+;;
+;; 2018/12/28
+;;      * Add `thing-*-number' functions.
+;;
+;; 2018/12/27
+;;      * Use `pulse-momentary-highlight-region' instead `thing-edit-flash-line'.
+;;      * Fix `comment-copy' not found.
+;;      * Add `thing-*-region-or-line' functions.
+;;      * Add `thing-*-whole-buffer' functions.
 ;;
 ;; 2018/12/23
 ;;      * Simplified code format.
@@ -205,20 +226,22 @@ Argument OBJECT-BEG the begin position that object.
 Argument OBJECT-END the end position of object.
 Optional argument KILL-CONDITIONAL default is do copy handle, if KILL-CONDITIONAL is non-nil do cut handle."
   (interactive)
-  (cond (kill-conditional
-         (when thing-edit-show-message-p
-           (message "%s [ %s ]"
-                    (propertize "Cut" 'face 'thing-edit-font-lock-action)
-                    (buffer-substring object-beg object-end)))
-         (kill-region object-beg object-end))
-        (t
-         (when thing-edit-show-message-p
-           (message "%s [ %s ]"
-                    (propertize "Copy" 'face 'thing-edit-font-lock-action)
-                    (buffer-substring object-beg object-end)))
-         ;; Flash before real copy operation.
-         (thing-edit-flash-line object-beg object-end)
-         (kill-ring-save object-beg object-end))))
+  (let ((pulse-iterations 1)
+        (pulse-delay thing-edit-flash-line-delay))
+    (cond (kill-conditional
+           (when thing-edit-show-message-p
+             (message "%s [ %s ]"
+                      (propertize "Cut" 'face 'thing-edit-font-lock-action)
+                      (buffer-substring object-beg object-end)))
+           (kill-region object-beg object-end))
+          (t
+           (when thing-edit-show-message-p
+             (message "%s [ %s ]"
+                      (propertize "Copy" 'face 'thing-edit-font-lock-action)
+                      (buffer-substring object-beg object-end)))
+           ;; Flash before real copy operation.
+           (pulse-momentary-highlight-region object-beg object-end 'thing-edit-font-lock-flash)
+           (kill-ring-save object-beg object-end)))))
 
 (defun thing-edit (thing &optional kill-conditional)
   "This function is a simple interface for `thing-edit-internal'.
@@ -554,8 +577,54 @@ otherwise copy object."
         (if (comment-search-forward end t)
             (if kill-conditional
                 (call-interactively 'comment-kill)
-              (call-interactively 'comment-copy))
+              (call-interactively 'thing-comment-copy))
           (goto-char end))))))
+
+(defun thing-comment-copy (arg)
+  "Copy the first comment on this line, if any.
+With prefix ARG, copy comments on that many lines starting with this one."
+  (interactive "P")
+  (comment-normalize-vars)
+  (dotimes (_ (prefix-numeric-value arg))
+    (save-excursion
+      (beginning-of-line)
+      (let ((cs (comment-search-forward (line-end-position) t)))
+        (when cs
+          (goto-char cs)
+          (skip-syntax-backward " ")
+          (setq cs (point))
+          (comment-forward)
+          (kill-ring-save cs (if (bolp) (1- (point)) (point)))
+          (indent-according-to-mode))))
+    (if arg (forward-line 1))))
+
+;;;###autoload
+(defun thing-cut-number ()
+  "Cut number at point."
+  (interactive)
+  (thing-copy-number t))
+
+;;;###autoload
+(defun thing-copy-number (kill-conditional)
+  "Copy number at point.
+With the universal argument, the text will also be killed"
+  (interactive "P")
+  (save-excursion
+    (when (thing-at-point-looking-at "-?[0-9]+\\.?[0-9]*" 500)
+      (thing-edit-internal
+       (match-beginning 0)
+       (match-end 0)
+       kill-conditional))))
+
+;;;###autoload
+(defun thing-replace-number ()
+  "Replace number at point with kill ring."
+  (interactive)
+  (save-excursion
+    (when (thing-at-point-looking-at "-?[0-9]+\\.?[0-9]*" 500)
+      (thing-replace-internal
+       (match-beginning 0)
+       (match-end 0)))))
 
 (defun thing-cut-parentheses ()
   "Cut content in match parentheses."
@@ -630,45 +699,48 @@ This assumes that `thing-edit-in-string-p' has already returned true, i.e.
     (beginning-of-defun)
     (parse-partial-sexp (point) point)))
 
-(defun thing-edit-flash-line (&optional pos end-pos face delay)
-  "Flash a temporary highlight to help the user find something.
+(defun thing-copy-region-or-line (&optional kill-conditional)
+  "Copy content of the current region or line.
+If `KILL-CONDITIONAL' is non-nil, kill object,
+otherwise copy object."
+  (interactive)
+  (save-excursion
+    (let* ((active (region-active-p))
+           (pos (or (and active (region-beginning))
+                    (line-beginning-position)))
+           (pos-end (or (and active (region-end))
+                        (line-end-position))))
+      (thing-edit-internal pos pos-end kill-conditional))))
 
-POS is optional, and defaults to the current point.
+(defun thing-cut-region-or-line ()
+  "Cut content of the current region or line."
+  (interactive)
+  (thing-copy-region-or-line t))
 
-If optional END-POS is set, flash the characters between the two
-points, otherwise flash the entire line in which POS is found.
+(defun thing-replace-region-or-line ()
+  "Replace the current region or line with the content."
+  (interactive)
+  (if (region-active-p)
+      (thing-replace 'region)
+    (thing-replace 'line)))
 
-The flash is normally not inclusive of END-POS.  However, when
-POS is equal to END-POS, the single character at POS will flash.
+(defun thing-copy-whole-buffer (&optional kill-conditional)
+  "Copy content of the current buffer.
+If `KILL-CONDITIONAL' is non-nil, kill object,
+otherwise copy object."
+  (interactive)
+  (save-excursion
+    (thing-edit-internal (point-min) (point-max) kill-conditional)))
 
-Optional FACE defaults to `thing-edit-font-lock-flash'.  Optional DELAY
-defaults to `thing-edit-flash-line-delay' seconds.  Setting DELAY to 0 makes
-this function a no-op."
-  (callf or pos (point))
-  (unless end-pos
-    (save-excursion
-      (let ((inhibit-point-motion-hooks t))
-        (goto-char pos)
-        (beginning-of-visual-line)
-        (setq pos (point))
-        (end-of-visual-line)
-        (setq end-pos (1+ (point))))))
-  (when (eq pos end-pos)
-    (incf end-pos))
-  (callf or delay thing-edit-flash-line-delay)
-  (callf or face 'thing-edit-font-lock-flash)
-  (when (and (numberp delay)
-             (> delay 0))
-    (when (timerp next-error-highlight-timer)
-      (cancel-timer next-error-highlight-timer))
-    (setq compilation-highlight-overlay (or compilation-highlight-overlay
-                                            (make-overlay (point-min) (point-min))))
-    (overlay-put compilation-highlight-overlay 'face face)
-    (overlay-put compilation-highlight-overlay 'priority 10000)
-    (move-overlay compilation-highlight-overlay pos end-pos)
-    (add-hook 'pre-command-hook 'compilation-goto-locus-delete-o)
-    (setq next-error-highlight-timer
-          (run-at-time delay nil 'compilation-goto-locus-delete-o))))
+(defun thing-cut-whole-buffer ()
+  "Cut content of the current buffer."
+  (interactive)
+  (thing-copy-whole-buffer t))
+
+(defun thing-replace-whole-buffer ()
+  "Replace the current buffer with the content."
+  (interactive)
+  (thing-replace 'buffer))
 
 (provide 'thing-edit)
 

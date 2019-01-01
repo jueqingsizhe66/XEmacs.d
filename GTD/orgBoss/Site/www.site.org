@@ -684,3 +684,5 @@ https://github.com/wmunters/phd_thesis
 ** 徐建中忆吴仲华
  徐建中忆吴仲华：绝江者托于船 致远者托于骥  http://news.sciencenet.cn/htmlnews/2018/12/421235.shtm
 [[file:%E5%BE%90%E5%BB%BA%E4%B8%AD%E5%BF%86%E5%90%B4%E4%BB%B2%E5%8D%8E.org][绝江者托于船]]
+** perl高质量帮助文档
+ https://perldoc.perl.org/perl.html?tdsourcetag=s_pctim_aiomsg
