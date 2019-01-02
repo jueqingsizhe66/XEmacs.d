@@ -1,0 +1,2440 @@
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_TRANS: linear
+#+REVEAL_THEME: jr0cket
+#+Title: T-io
+#+Author:  Ye Zhaoliang
+#+Email: yezhaoliang@ncepu.edu.cn
+* 11. T-io版本发布历史
+:PROPERTIES:
+:ID:       e065e50e-f484-43e6-882d-aa507dd26ec6
+:END:
+* 10. T-io源代码分析
+:PROPERTIES:
+:ID:       18b9627a-1b9e-42b6-9408-ddcaa696259a
+:END:
+* 9. T-io提供的工具类
+:PROPERTIES:
+:ID:       06e7fa7d-4d7e-44f8-8170-6579b18e920e
+:END:
+* 8. 基于tio-websocket生产项目的聊天室
+:PROPERTIES:
+:ID:       3d2f594d-28e9-4c94-b984-72884e9320c9
+:END:
+** 8.11 结束语和后记
+:PROPERTIES:
+:ID:       ae947208-0e20-4121-b414-48e375256404
+:END:
+** 8.10 写一个js client
+:PROPERTIES:
+:ID:       318cbb0c-e7cd-4af7-a83f-2e69aaa3147c
+:END:
+** 8.9启动服务器
+:PROPERTIES:
+:ID:       7e6ae3eb-2f98-4ce3-b167-edec9a100720
+:END:
+** 8.8 项目启动项
+:PROPERTIES:
+:ID:       32e399d7-91e0-4376-9874-88d12621db4d
+:END:
+** 8.7 内置常量
+:PROPERTIES:
+:ID:       2d192dd0-87ac-42b9-9800-5597f8f148d3
+:END:
+** 8.6 参考配置
+:PROPERTIES:
+:ID:       31abfb8c-4061-4f96-a14c-01958d376933
+:END:
+** 8.5 IpStatListener实现(可选)
+:PROPERTIES:
+:ID:       5001b6af-0f54-4f81-91ed-c9dd55e91c94
+:END:
+** 8.4 WsServerAioListener
+:PROPERTIES:
+:ID:       e826ab1f-e55c-41bb-a25a-aaed32c3b09e
+:END:
+** 8.3 IWsMsgHandler实现
+:PROPERTIES:
+:ID:       98b9f2f9-d20f-433e-9f0c-fa6ca1d3007e
+:END:
+** 8.2 pom.xml项目文档编写
+:PROPERTIES:
+:ID:       87609a27-9c24-4c1f-aaed-30fda31961b0
+:END:
+** 8.1 引言
+:PROPERTIES:
+:ID:       635b03e5-34e8-4013-805d-51156b241900
+:END:
+* 7. t-io编程高级知识
+:PROPERTIES:
+:ID:       30c4ad98-98e5-47b9-89e5-c1a0afbf46a5
+:END:
+** 7.7 与Spring集成
+:PROPERTIES:
+:ID:       e33dd03e-cf0c-47b7-bef7-9fc60789c4b4
+:END:
+** 7.6与Final集成
+:PROPERTIES:
+:ID:       1f053069-e55b-4c3c-a645-5c26d7f5d3c5
+:END:
+** 7.5 Channel流量统计与监控
+:PROPERTIES:
+:ID:       37278297-877c-42ee-b24e-a82fdcc7e98b
+:END:
+** 7.4 IP流量统计与监控
+:PROPERTIES:
+:ID:       9b730606-9b7e-46d6-a83c-ba6dba724694
+:END:
+** 7.3 拉黑IP
+:PROPERTIES:
+:ID:       6824502c-d4b1-4410-a7df-e3c42ab9b6a7
+:END:
+** 7.2 群组成员内置排序
+:PROPERTIES:
+:ID:       09b665d5-b995-44b2-b003-607194cdcb88
+:END:
+** 7.1 SSL?一行代码解决
+:PROPERTIES:
+:ID:       2c0ba1e1-fb90-4049-8290-004d7d667bed
+:END:
+* 6. 生成项目的Helloworld
+:PROPERTIES:
+:ID:       dc5f61f2-a0b0-4c18-aef4-fc972c25138f
+:END:
+** 6.7 结束语
+:PROPERTIES:
+:ID:       c3c7edb5-ab57-487e-aaba-633c5595dd12
+:END:
+** 6.6 运行
+:PROPERTIES:
+:ID:       6b78e6f2-3df8-47cd-a45e-99e1fedb5913
+:END:
+** 6.4 服务端编写
+:PROPERTIES:
+:ID:       693b283b-e774-4879-b754-53488ade9544
+:END:
+** 6.5 客户端编写
+:PROPERTIES:
+:ID:       9fdd8add-b765-4d2e-b222-423a81ee0efc
+:END:
+** 6.3 公共模块编写
+:PROPERTIES:
+:ID:       793c68e5-b518-47c2-9266-119b83d48e43
+:END:
+** 6.2 应用层协议介绍
+:PROPERTIES:
+:ID:       9b807977-8251-41ef-a248-6802ceb0f375
+:END:
+** 6.1 引言
+:PROPERTIES:
+:ID:       99eba80c-c69c-44c2-893f-f1e693b01d8f
+:END:
+* 5. t-io编程基础知识
+:PROPERTIES:
+:ID:       d700c535-a112-4098-9232-a6b89079a2ec
+:END:
+** 5.12 Tio集大成者
+:PROPERTIES:
+:ID:       3e4c04db-bcff-466b-b82e-0df79d0d586b
+:END:
+Tio.java概述
+•	为了让用户减少查找API的时间，t-io把常用API以静态方法的形式汇集于一个类，这就是Tio.java
+•	下面归类讲解各API
+资源绑定的API
+•	资源绑定是指把业务相关的数据和Tcp连接（即ChannelContext）关联起来，譬如ChannelContext-A代表了用户张三，张三的userid是333，就用下面的代码进行绑定
+
+#+BEGIN_SRC java
+1.	Tio.bindUser(ChannelContext-A, "333")
+#+END_SRC
+
+•	t-io目前内置了4种资源绑定，当然用户可以灵活使用这些绑定从而解决业务层所有的资源绑定问题，譬如可以给group加前缀”ios-“，从而标记这个用户使用的是ios，譬如
+
+#+BEGIN_SRC java
+0.	Tio.bindGroup(ChannelContext-A, "333");
+1.	Tio.bindGroup(ChannelContext-A, "ios-" + "333");
+#+END_SRC
+
+•	内置的4种资源绑定方法中，一个ChannelContext是可以绑定到多个groupid的，其它三个绑定都是一对一的关系，也就是说一个ChannelContext可以同时属于group-a，group-b… …
+•	下面贴一下这4个资源绑定的源代码
+
+
+#+BEGIN_SRC java
+  0.	/**
+  1.	   * 绑定业务id
+  2.	   * @param channelContext
+  3.	   * @param bsId
+  4.	   * @author tanyaowu
+  5.	   */
+  6.	  public static void bindBsId(ChannelContext channelContext, String bsId) {
+  7.	      channelContext.groupContext.bsIds.bind(channelContext, bsId);
+  8.	  }
+  9.	
+  10.	  /**
+  11.	   * 绑定群组
+  12.	   * @param channelContext
+  13.	   * @param group
+  14.	   * @author tanyaowu
+  15.	   */
+  16.	  public static void bindGroup(ChannelContext channelContext, String group) {
+  17.	      channelContext.groupContext.groups.bind(group, channelContext);
+  18.	  }
+  19.	
+  20.	  /**
+  21.	   * 绑定token
+  22.	   * @param channelContext
+  23.	   * @param token
+  24.	   * @author tanyaowu
+  25.	   */
+  26.	  public static void bindToken(ChannelContext channelContext, String token) {
+  27.	      channelContext.groupContext.tokens.bind(token, channelContext);
+  28.	  }
+  29.	
+  30.	  /**
+  31.	   * 绑定用户
+  32.	   * @param channelContext
+  33.	   * @param userid
+  34.	   * @author tanyaowu
+  35.	   */
+  36.	  public static void bindUser(ChannelContext channelContext, String userid) {
+  37.	      channelContext.groupContext.users.bind(userid, channelContext);
+  38.	  }
+
+#+END_SRC
+
+资源解绑的API
+•	既有绑定，就肯定会有解绑，这是个和绑定相反的操作，所以话不多说，直接贴出不长的源代码
+
+
+#+BEGIN_SRC java
+  /**
+  2.	   * 解绑业务id
+  3.	   * @param channelContext
+  4.	   * @author tanyaowu
+  5.	   */
+  6.	  public static void unbindBsId(ChannelContext channelContext) {
+  7.	      channelContext.groupContext.bsIds.unbind(channelContext);
+  8.	  }
+  9.	
+  10.	  /**
+  11.	   * 与所有组解除解绑关系
+  12.	   * @param channelContext
+  13.	   * @author tanyaowu
+  14.	   */
+  15.	  public static void unbindGroup(ChannelContext channelContext) {
+  16.	      channelContext.groupContext.groups.unbind(channelContext);
+  17.	  }
+  18.	
+  19.	  /**
+  20.	   * 与指定组解除绑定关系
+  21.	   * @param group
+  22.	   * @param channelContext
+  23.	   * @author tanyaowu
+  24.	   */
+  25.	  public static void unbindGroup(String group, ChannelContext channelContext) {
+  26.	      channelContext.groupContext.groups.unbind(group, channelContext);
+  27.	  }
+  28.	
+  29.	  /**
+  30.	   * 解除channelContext绑定的token
+  31.	   * @param channelContext
+  32.	   * @author tanyaowu
+  33.	   */
+  34.	  public static void unbindToken(ChannelContext channelContext) {
+  35.	      channelContext.groupContext.tokens.unbind(channelContext);
+  36.	  }
+  37.	
+  38.	  //    org.tio.core.GroupContext.ipBlacklist
+  39.	
+  40.	  /**
+  41.	   * 解除channelContext绑定的userid
+  42.	   * @param channelContext
+  43.	   * @author tanyaowu
+  44.	   */
+  45.	  public static void unbindUser(ChannelContext channelContext) {
+  46.	      channelContext.groupContext.users.unbind(channelContext);
+  47.	  }
+  48.	
+  49.	  /**
+  50.	   * 解除userid的绑定。一般用于多地登录，踢掉前面登录的场景
+  51.	   * @param groupContext
+  52.	   * @param userid
+  53.	   * @author: tanyaowu
+  54.	   */
+  55.	  public static void unbindUser(GroupContext groupContext, String userid) {
+  56.	      groupContext.users.unbind(groupContext, userid);
+  57.	  }
+
+#+END_SRC
+
+异步发送的API
+•	异步发送，指的是业务层把Packet丢给t-io后立即返回，返回时Packet并没有被发送，而只是提交到了待发送队列
+•	异步发送都是以send开头的，这个API有点多，贴代码有点长，用图片展示更舒适些
+    [[file:img/5.12yibu.png][异步发送]]
+阻塞发送的API
+•	阻塞发送：t-io把Packet送给对方后才返回
+•	阻塞发送都是以bSend开头的，这个API有点多，贴代码有点长，用图片展示更舒适些
+    [[file:img/5.12zusai.png][阻塞发送]] 
+
+获取ChannelContext的API
+•	前面的资源绑定，一个重要的目的就是要根据那些业务标识来获取ChannelContext，譬如你绑定了一个userid，那么后面就可以通过这个userid来获取ChannelContext
+•	获取ChannelContext的API都是以get开头的，这个API有点多，贴代码有点长，用图片展示更舒适些
+    [[file:img/5.12get.png][get]] 
+断开连接和移除连接的API
+•	断开连接都是以close开头的方法，指的是把当前已经连上的TCP连接断开掉，如果是TCP客户端，并不一定会移除该连接对应的ChannelContext对象，后面会根据重连规则进行重连，如果是TCP服务器，断开连接就会彻底移除该连接，同时释放该连接对应的ChannelContext对象，因为服务器不存在重连一说。
+ 
+•	移除连接都是以remove开头的方法，指的是彻底抛弃这个连接
+    [[file:img/5.12close.png][关闭]] 
+集群通知的API
+•	t-io是内置集群功能的，作为与业务不相关的io框架，内置集群功能是件费力却不见得讨好的事（为啥不讨好？譬如会增加代码复杂度、会降低tio-mvc在TFB上的跑分排名），但t-io考虑到广大用户的呼声，还是内置了集群功能
+•	目前t-io提供的消息发送功能，都是支持集群的，这个从Tio.java的源代码中就能看出来。但是t-io并没有提供其它功能的集群，譬如移除连接、绑定资源，这些操作用户需要自己完成集群能力，也可以通过t-io内置的消息发送集群灵活实现这些集群能力(譬如发送一条特定指令去实现这些功能的集群能力)
+•	集群通知类API都是以notifyCluster开头的，见图
+    [[file:img/5.12notifyCluster.png][集群通知]] 
+
+
+** 5.11 GroupStat所有通道统计
+:PROPERTIES:
+:ID:       9bde0089-2d57-4b41-8d78-209fa274422d
+:END:
+GroupStat是ChannelStat的集合，它有俩子类ServerChannelStat和ClientChannelStat，当你用t-io做tcp服务器端时，你拿到的是ServerChannelStat，反之则是ClientChannelStat
+如何获取GroupStat
+
+#+BEGIN_SRC java
+1.	org.tio.core.GroupContext.groupStat
+#+END_SRC
+
+GroupStat有哪些统计项
+直接看源代码吧，这个比文档还容易理解
+
+
+#+BEGIN_SRC java
+  1.	package org.tio.core.stat;
+  2.	
+  3.	import java.util.concurrent.atomic.AtomicLong;
+  4.	
+  5.	/**
+  6.	 * 
+  7.	 * @author tanyaowu 
+  8.	 * 2017年10月19日 上午9:40:48
+  9.	 */
+  10.	public class GroupStat implements java.io.Serializable {
+  11.	    private static final long serialVersionUID = -6988655941470121164L;
+  12.	    /**
+  13.	     * 关闭了多少连接
+  14.	     */
+  15.	    public final AtomicLong closed = new AtomicLong();
+  16.	    /**
+  17.	     * 接收到的消息包
+  18.	     */
+  19.	    public final AtomicLong receivedPackets = new AtomicLong();
+  20.	
+  21.	    /**
+  22.	     * 接收到的消息字节数
+  23.	     */
+  24.	    public final AtomicLong receivedBytes = new AtomicLong();
+  25.	
+  26.	    /**
+  27.	     * 处理了的消息包数
+  28.	     */
+  29.	    public final AtomicLong handledPackets = new AtomicLong();
+  30.	
+  31.	    /**
+  32.	     * 处理消息包耗时，单位：毫秒
+  33.	     */
+  34.	    public final AtomicLong handledPacketCosts = new AtomicLong();
+  35.	
+  36.	    /**
+  37.	     * 处理了多少字节
+  38.	     */
+  39.	    public final AtomicLong handledBytes = new AtomicLong();
+  40.	
+  41.	    /**
+  42.	     * 发送了的消息包数
+  43.	     */
+  44.	    public final AtomicLong sentPackets = new AtomicLong();
+  45.	
+  46.	    /**
+  47.	     * 发送了的字节数
+  48.	     */
+  49.	    public final AtomicLong sentBytes = new AtomicLong();
+  50.	
+  51.	    /**
+  52.	     * 本IP已接收了多少次TCP数据包
+  53.	     */
+  54.	    public final AtomicLong receivedTcps = new AtomicLong();
+  55.	
+  56.	    /**
+  57.	     * 平均每次TCP接收到的字节数，这个可以用来监控慢攻击，配置PacketsPerTcpReceive定位慢攻击
+  58.	     */
+  59.	    public double getBytesPerTcpReceive() {
+  60.	        if (receivedTcps.get() == 0) {
+  61.	            return 0;
+  62.	        }
+  63.	        double ret = (double) receivedBytes.get() / (double) receivedTcps.get();
+  64.	        return ret;
+  65.	    }
+  66.	
+  67.	    /**
+  68.	     * 平均每次TCP接收到的业务包数，这个可以用来监控慢攻击，此值越小越有攻击嫌疑
+  69.	     */
+  70.	    public double getPacketsPerTcpReceive() {
+  71.	        if (receivedTcps.get() == 0) {
+  72.	            return 0;
+  73.	        }
+  74.	        double ret = (double) receivedPackets.get() / (double) receivedTcps.get();
+  75.	        return ret;
+  76.	    }
+  77.	
+  78.	    /**
+  79.	     * @return the closed
+  80.	     */
+  81.	    public AtomicLong getClosed() {
+  82.	        return closed;
+  83.	    }
+  84.	
+  85.	    /**
+  86.	     * @return the handledBytes
+  87.	     */
+  88.	    public AtomicLong getHandledBytes() {
+  89.	        return handledBytes;
+  90.	    }
+  91.	
+  92.	    /**
+  93.	     * @return the handledPackets
+  94.	     */
+  95.	    public AtomicLong getHandledPackets() {
+  96.	        return handledPackets;
+  97.	    }
+  98.	
+  99.	    /**
+  100.	     * @return the receivedBytes
+  101.	     */
+  102.	    public AtomicLong getReceivedBytes() {
+  103.	        return receivedBytes;
+  104.	    }
+  105.	
+  106.	    /**
+  107.	     * @return the receivedPackets
+  108.	     */
+  109.	    public AtomicLong getReceivedPackets() {
+  110.	        return receivedPackets;
+  111.	    }
+  112.	
+  113.	    /**
+  114.	     * @return the sentBytes
+  115.	     */
+  116.	    public AtomicLong getSentBytes() {
+  117.	        return sentBytes;
+  118.	    }
+  119.	
+  120.	    /**
+  121.	     * @return the sentPacket
+  122.	     */
+  123.	    public AtomicLong getSentPackets() {
+  124.	        return sentPackets;
+  125.	    }
+  126.	
+  127.	    /**
+  128.	     * @return the receivedTcps
+  129.	     */
+  130.	    public AtomicLong getReceivedTcps() {
+  131.	        return receivedTcps;
+  132.	    }
+  133.	
+  134.	    /**
+  135.	     * 处理消息包耗时，单位：毫秒
+  136.	     * @return
+  137.	     */
+  138.	    public AtomicLong getHandledPacketCosts() {
+  139.	        return handledPacketCosts;
+  140.	    }
+  141.	
+  142.	    /**
+  143.	     * 处理packet平均耗时，单位：毫秒
+  144.	     * @return
+  145.	     */
+  146.	    public double getHandledCostsPerPacket() {
+  147.	        if (handledPackets.get() > 0) {
+  148.	            return handledPacketCosts.get() / handledPackets.get();
+  149.	        }
+  150.	        return 0;
+  151.	    }
+  152.	}
+
+#+END_SRC
+
+当然它的两个子类还会有各自的字段
+
+
+#+BEGIN_SRC java
+
+  1.	package org.tio.server;
+  2.	
+  3.	import java.util.concurrent.atomic.AtomicLong;
+  4.	
+  5.	import org.tio.core.stat.GroupStat;
+  6.	
+  7.	/**
+  8.	 *
+  9.	 * @author tanyaowu
+  10.	 *
+  11.	 */
+  12.	public class ServerGroupStat extends GroupStat {
+  13.	
+  14.	    private static final long serialVersionUID = -139100692961946342L;
+  15.	    /**
+  16.	     * 接受了多少连接
+  17.	     */
+  18.	    public final AtomicLong accepted = new AtomicLong();
+  19.	
+  20.	    /**
+  21.	     *
+  22.	     *
+  23.	     * @author tanyaowu
+  24.	     * 2016年12月3日 下午2:29:28
+  25.	     *
+  26.	     */
+  27.	    public ServerGroupStat() {
+  28.	    }
+  29.	
+  30.	    /**
+  31.	     * @return the accepted
+  32.	     */
+  33.	    public AtomicLong getAccepted() {
+  34.	        return accepted;
+  35.	    }
+  36.	}
+  1.	package org.tio.client;
+  2.	
+  3.	import org.tio.core.stat.GroupStat;
+  4.	
+  5.	/**
+  6.	 *
+  7.	 * @author tanyaowu
+  8.	 * 2017年4月1日 上午9:32:01
+  9.	 */
+  10.	public class ClientGroupStat extends GroupStat {
+  11.	
+  12.	    private static final long serialVersionUID = 804270967157603097L;
+  13.	}
+#+END_SRC
+
+** 5.10 ChannelStat:单条通道统计
+:PROPERTIES:
+:ID:       718623e1-4558-4ca2-9c0a-9b851ccb9c39
+:END:
+ChannelStat是单条TCP通道的流量统计，t-io自诩拥有最强级别的流量统计和监控，也绝不是吹吹牛
+如何获取ChannelStat
+
+#+BEGIN_SRC java
+1.	org.tio.core.ChannelContext.stat
+#+END_SRC
+
+ChannelStat有哪些统计项
+直接看源代码吧，这个比文档还容易理解
+
+#+BEGIN_SRC java
+
+  1.	package org.tio.core.stat;
+  2.	
+  3.	import java.util.concurrent.atomic.AtomicLong;
+  4.	
+  5.	import org.tio.utils.SystemTimer;
+  6.	
+  7.	/**
+  8.	 * @author tanyaowu
+  9.	 * 2017年4月1日 下午2:17:35
+  10.	 */
+  11.	public class ChannelStat implements java.io.Serializable {
+  12.	    private static final long serialVersionUID = -6942731710053482089L;
+  13.	
+  14.	    /**
+  15.	     * 本次解码失败的次数
+  16.	     */
+  17.	    public int decodeFailCount = 0;
+  18.	
+  19.	    /**
+  20.	     * 最近一次收到业务消息包的时间(一个完整的业务消息包，一部分消息不算)
+  21.	     */
+  22.	    public long latestTimeOfReceivedPacket = SystemTimer.currTime;
+  23.	
+  24.	    /**
+  25.	     * 最近一次发送业务消息包的时间(一个完整的业务消息包，一部分消息不算)
+  26.	     */
+  27.	    public long latestTimeOfSentPacket = SystemTimer.currTime;
+  28.	
+  29.	    /**
+  30.	     * 最近一次收到业务消息包的时间:收到字节就算
+  31.	     */
+  32.	    public long latestTimeOfReceivedByte = SystemTimer.currTime;
+  33.	
+  34.	    /**
+  35.	     * 最近一次发送业务消息包的时间：发送字节就算
+  36.	     */
+  37.	    public long latestTimeOfSentByte = SystemTimer.currTime;
+  38.	
+  39.	    /**
+  40.	     * ChannelContext对象创建的时间
+  41.	     */
+  42.	    public long timeCreated = System.currentTimeMillis();
+  43.	
+  44.	    /**
+  45.	     * 第一次连接成功的时间
+  46.	     */
+  47.	    public Long timeFirstConnected = null;
+  48.	
+  49.	    /**
+  50.	     * 连接关闭的时间
+  51.	     */
+  52.	    public long timeClosed = SystemTimer.currTime;
+  53.	
+  54.	    /**
+  55.	     * 进入重连队列时间
+  56.	     */
+  57.	    public long timeInReconnQueue = SystemTimer.currTime;
+  58.	
+  59.	    /**
+  60.	     * 本连接已发送的字节数
+  61.	     */
+  62.	    public final AtomicLong sentBytes = new AtomicLong();
+  63.	
+  64.	    /**
+  65.	     * 本连接已发送的packet数
+  66.	     */
+  67.	    public final AtomicLong sentPackets = new AtomicLong();
+  68.	
+  69.	    /**
+  70.	     * 本连接已处理的字节数
+  71.	     */
+  72.	    public final AtomicLong handledBytes = new AtomicLong();
+  73.	
+  74.	    /**
+  75.	     * 本连接已处理的packet数
+  76.	     */
+  77.	    public final AtomicLong handledPackets = new AtomicLong();
+  78.	
+  79.	    /**
+  80.	     * 处理消息包耗时，单位：毫秒
+  81.	     * 拿这个值除以handledPackets，就是处理每个消息包的平均耗时
+  82.	     */
+  83.	    public final AtomicLong handledPacketCosts = new AtomicLong();
+  84.	
+  85.	    /**
+  86.	     * 本连接已接收的字节数
+  87.	     */
+  88.	    public final AtomicLong receivedBytes = new AtomicLong();
+  89.	
+  90.	    /**
+  91.	     * 本连接已接收了多少次TCP数据包
+  92.	     */
+  93.	    public final AtomicLong receivedTcps = new AtomicLong();
+  94.	
+  95.	    /**
+  96.	     * 本连接已接收的packet数
+  97.	     */
+  98.	    public final AtomicLong receivedPackets = new AtomicLong();
+  99.	
+  100.	    /**
+  101.	     * 平均每次TCP接收到的字节数，这个可以用来监控慢攻击，配置PacketsPerTcpReceive定位慢攻击
+  102.	     */
+  103.	    public double getBytesPerTcpReceive() {
+  104.	        if (receivedTcps.get() == 0) {
+  105.	            return 0;
+  106.	        }
+  107.	        double ret = (double)receivedBytes.get() / (double)receivedTcps.get();
+  108.	        return ret;
+  109.	    }
+  110.	
+  111.	    /**
+  112.	     * 平均每次TCP接收到的业务包数，这个可以用来监控慢攻击，此值越小越有攻击嫌疑
+  113.	     */
+  114.	    public double getPacketsPerTcpReceive() {
+  115.	        if (receivedTcps.get() == 0) {
+  116.	            return 0;
+  117.	        }
+  118.	        double ret = (double)receivedPackets.get() / (double)receivedTcps.get();
+  119.	        return ret;
+  120.	    }
+  121.	
+  122.	    /**
+  123.	     * @return the decodeFailCount
+  124.	     */
+  125.	    public int getDecodeFailCount() {
+  126.	        return decodeFailCount;
+  127.	    }
+  128.	
+  129.	    /**
+  130.	     * @return the countHandledByte
+  131.	     */
+  132.	    public AtomicLong getHandledBytes() {
+  133.	        return handledBytes;
+  134.	    }
+  135.	
+  136.	    /**
+  137.	     * @return the countHandledPacket
+  138.	     */
+  139.	    public AtomicLong getHandledPackets() {
+  140.	        return handledPackets;
+  141.	    }
+  142.	
+  143.	    /**
+  144.	     * @return the timeLatestReceivedMsg
+  145.	     */
+  146.	    public long getLatestTimeOfReceivedPacket() {
+  147.	        return latestTimeOfReceivedPacket;
+  148.	    }
+  149.	
+  150.	    /**
+  151.	     * @return the timeLatestSentMsg
+  152.	     */
+  153.	    public long getLatestTimeOfSentPacket() {
+  154.	        return latestTimeOfSentPacket;
+  155.	    }
+  156.	
+  157.	    /**
+  158.	     * @return the countReceivedByte
+  159.	     */
+  160.	    public AtomicLong getReceivedBytes() {
+  161.	        return receivedBytes;
+  162.	    }
+  163.	
+  164.	    /**
+  165.	     * @return the countReceivedPacket
+  166.	     */
+  167.	    public AtomicLong getReceivedPackets() {
+  168.	        return receivedPackets;
+  169.	    }
+  170.	
+  171.	    /**
+  172.	     * @return the countSentByte
+  173.	     */
+  174.	    public AtomicLong getSentBytes() {
+  175.	        return sentBytes;
+  176.	    }
+  177.	
+  178.	    /**
+  179.	     * @return the countSentPacket
+  180.	     */
+  181.	    public AtomicLong getSentPackets() {
+  182.	        return sentPackets;
+  183.	    }
+  184.	
+  185.	    /**
+  186.	     * @return the timeClosed
+  187.	     */
+  188.	    public long getTimeClosed() {
+  189.	        return timeClosed;
+  190.	    }
+  191.	
+  192.	    /**
+  193.	     * @return the timeCreated
+  194.	     */
+  195.	    public long getTimeCreated() {
+  196.	        return timeCreated;
+  197.	    }
+  198.	
+  199.	    /**
+  200.	     * @return the timeFirstConnected
+  201.	     */
+  202.	    public Long getTimeFirstConnected() {
+  203.	        return timeFirstConnected;
+  204.	    }
+  205.	
+  206.	    /**
+  207.	     * @return the timeInReconnQueue
+  208.	     */
+  209.	    public long getTimeInReconnQueue() {
+  210.	        return timeInReconnQueue;
+  211.	    }
+  212.	
+  213.	    /**
+  214.	     * @param timeLatestSentMsg the timeLatestSentMsg to set
+  215.	     */
+  216.	    public void setLatestTimeOfSentPacket(long latestTimeOfSentPacket) {
+  217.	        this.latestTimeOfSentPacket = latestTimeOfSentPacket;
+  218.	    }
+  219.	
+  220.	    /**
+  221.	     * @param timeClosed the timeClosed to set
+  222.	     */
+  223.	    public void setTimeClosed(long timeClosed) {
+  224.	        this.timeClosed = timeClosed;
+  225.	    }
+  226.	
+  227.	    /**
+  228.	     * @param timeFirstConnected the timeFirstConnected to set
+  229.	     */
+  230.	    public void setTimeFirstConnected(Long timeFirstConnected) {
+  231.	        this.timeFirstConnected = timeFirstConnected;
+  232.	    }
+  233.	
+  234.	    /**
+  235.	     * @param timeInReconnQueue the timeInReconnQueue to set
+  236.	     */
+  237.	    public void setTimeInReconnQueue(long timeInReconnQueue) {
+  238.	        this.timeInReconnQueue = timeInReconnQueue;
+  239.	    }
+  240.	
+  241.	    /**
+  242.	     * @return the latestTimeOfReceivedByte
+  243.	     */
+  244.	    public long getLatestTimeOfReceivedByte() {
+  245.	        return latestTimeOfReceivedByte;
+  246.	    }
+  247.	
+  248.	    /**
+  249.	     * @param latestTimeOfReceivedByte the latestTimeOfReceivedByte to set
+  250.	     */
+  251.	    public void setLatestTimeOfReceivedByte(long latestTimeOfReceivedByte) {
+  252.	        this.latestTimeOfReceivedByte = latestTimeOfReceivedByte;
+  253.	    }
+  254.	
+  255.	    /**
+  256.	     * @return the latestTimeOfSentByte
+  257.	     */
+  258.	    public long getLatestTimeOfSentByte() {
+  259.	        return latestTimeOfSentByte;
+  260.	    }
+  261.	
+  262.	    /**
+  263.	     * @param latestTimeOfSentByte the latestTimeOfSentByte to set
+  264.	     */
+  265.	    public void setLatestTimeOfSentByte(long latestTimeOfSentByte) {
+  266.	        this.latestTimeOfSentByte = latestTimeOfSentByte;
+  267.	    }
+  268.	
+  269.	    /**
+  270.	     * @return the receivedTcps
+  271.	     */
+  272.	    public AtomicLong getReceivedTcps() {
+  273.	        return receivedTcps;
+  274.	    }
+  275.	
+  276.	    public AtomicLong getHandledPacketCosts() {
+  277.	        return handledPacketCosts;
+  278.	    }
+  279.	
+  280.	    /**
+  281.	     * 处理packet平均耗时，单位：毫秒
+  282.	     * @return
+  283.	     */
+  284.	    public double getHandledCostsPerPacket() {
+  285.	        if (handledPackets.get() > 0) {
+  286.	            return handledPacketCosts.get() / handledPackets.get();
+  287.	        }
+  288.	        return 0;
+  289.	    }
+  290.	}
+#+END_SRC
+
+** 5.9 ObjWithLock带读写锁的对象
+:PROPERTIES:
+:ID:       288f4c3f-8b4e-4c0b-8fb2-feb67756255a
+:END:
+网络编程中会伴随大量并发操作，大家对ConcurrentModificationException一定不会陌生，这个是典型的并发操作集合引发的异常。为了更好的处理并发，tio自创了一个ObjWithLock对象，这个对象很简单，但给并发编程带来了极大的方便，如果您阅读过tio源代码，相信已经体会到这个对象在tio中是无处不在的。ObjWithLock顾名思义，它就是一个自带了一把（读写）锁的普通对象（一般是集合对象），每当要对这个对象进行同步安全操作（并发下对集合进行遍历或对集合对象进行元素修改删除增加）时，就得用这个锁。
+ObjWithLock对象源代码见下
+
+
+#+BEGIN_SRC java
+
+  1.	package org.tio.utils.lock;
+  2.	
+  3.	import java.io.Serializable;
+  4.	import java.util.concurrent.locks.ReentrantReadWriteLock;
+  5.	import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
+  6.	import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
+  7.	
+  8.	import org.slf4j.Logger;
+  9.	import org.slf4j.LoggerFactory;
+  10.	
+  11.	/**
+  12.	 * 自带读写锁的对象.
+  13.	 *
+  14.	 * @author tanyaowu
+  15.	 */
+  16.	public class ObjWithLock<T> implements Serializable {
+  17.	
+  18.	    private static final long serialVersionUID = -3048283373239453901L;
+  19.	
+  20.	    private static Logger log = LoggerFactory.getLogger(ObjWithLock.class);
+  21.	
+  22.	    /**
+  23.	     * 
+  24.	     */
+  25.	    private T obj = null;
+  26.	
+  27.	    /**
+  28.	     * 
+  29.	     */
+  30.	    private ReentrantReadWriteLock lock = null;
+  31.	
+  32.	    /**
+  33.	     * 
+  34.	     * @param obj
+  35.	     * @author tanyaowu
+  36.	     */
+  37.	    public ObjWithLock(T obj) {
+  38.	        this(obj, new ReentrantReadWriteLock());
+  39.	    }
+  40.	
+  41.	    /**
+  42.	     * 
+  43.	     * @param obj
+  44.	     * @param lock
+  45.	     * @author tanyaowu
+  46.	     */
+  47.	    public ObjWithLock(T obj, ReentrantReadWriteLock lock) {
+  48.	        super();
+  49.	        this.obj = obj;
+  50.	        this.lock = lock;
+  51.	    }
+  52.	
+  53.	    /**
+  54.	     * 
+  55.	     * @return
+  56.	     * @author tanyaowu
+  57.	     */
+  58.	    public ReentrantReadWriteLock getLock() {
+  59.	        return lock;
+  60.	    }
+  61.	
+  62.	    /**
+  63.	     * 获取写锁
+  64.	     * @return
+  65.	     */
+  66.	    public WriteLock writeLock() {
+  67.	        return lock.writeLock();
+  68.	    }
+  69.	
+  70.	    /**
+  71.	     * 获取读锁
+  72.	     * @return
+  73.	     */
+  74.	    public ReadLock readLock() {
+  75.	        return lock.readLock();
+  76.	    }
+  77.	
+  78.	    /**
+  79.	     * 
+  80.	     * @return
+  81.	     * @author tanyaowu
+  82.	     */
+  83.	    public T getObj() {
+  84.	        return obj;
+  85.	    }
+  86.	
+  87.	    /**
+  88.	     * 
+  89.	     * @param obj
+  90.	     * @author tanyaowu
+  91.	     */
+  92.	    public void setObj(T obj) {
+  93.	        this.obj = obj;
+  94.	    }
+  95.	
+  96.	    /**
+  97.	     * 操作obj时，带上读锁
+  98.	     * @param readLockHandler
+  99.	     */
+  100.	    public void handle(ReadLockHandler<T>  readLockHandler) {
+  101.	        ReadLock readLock = lock.readLock();
+  102.	        readLock.lock();
+  103.	        try {
+  104.	            readLockHandler.handler(obj);
+  105.	        } catch (Throwable e) {
+  106.	            log.error(e.getMessage(), e);
+  107.	        } finally {
+  108.	            readLock.unlock();
+  109.	        }
+  110.	    }
+  111.	
+  112.	    /**
+  113.	     * 操作obj时，带上写锁
+  114.	     * @param writeLockHandler
+  115.	     */
+  116.	    public void handle(WriteLockHandler<T>  writeLockHandler) {
+  117.	        WriteLock writeLock = lock.writeLock();
+  118.	        writeLock.lock();
+  119.	        try {
+  120.	            writeLockHandler.handler(obj);
+  121.	        } catch (Throwable e) {
+  122.	            log.error(e.getMessage(), e);
+  123.	        } finally {
+  124.	            writeLock.unlock();
+  125.	        }
+  126.	    }
+  127.	
+  128.	}
+#+END_SRC
+为了更便捷地操作，tio提供了三个ObjWithLock子类
+•	ListWithLock
+•	MapWithLock
+•	SetWithLock
+ListWithLock里面有Obj就是List对象，MapWithLock里面有Obj就是Map对象，SetWithLock里面有Obj就是Set对象
+掌握这些对象，我觉得最好的方法是看个例子，SetWithLock就是个活生生的例子，它的源代码如下
+
+
+#+BEGIN_SRC java
+
+  1.	package org.tio.utils.lock;
+  2.	
+  3.	import java.util.Set;
+  4.	import java.util.concurrent.locks.ReentrantReadWriteLock;
+  5.	import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
+  6.	import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
+  7.	
+  8.	import org.slf4j.Logger;
+  9.	import org.slf4j.LoggerFactory;
+  10.	
+  11.	/**
+  12.	 * @author tanyaowu
+  13.	 * 2017年5月14日 上午9:55:37
+  14.	 */
+  15.	public class SetWithLock<T> extends ObjWithLock<Set<T>> {
+  16.	    private static final long serialVersionUID = -2305909960649321346L;
+  17.	    private static final Logger log = LoggerFactory.getLogger(SetWithLock.class);
+  18.	
+  19.	    /**
+  20.	     * @param set
+  21.	     * @author tanyaowu
+  22.	     */
+  23.	    public SetWithLock(Set<T> set) {
+  24.	        super(set);
+  25.	    }
+  26.	
+  27.	    /**
+  28.	     * @param set
+  29.	     * @param lock
+  30.	     * @author tanyaowu
+  31.	     */
+  32.	    public SetWithLock(Set<T> set, ReentrantReadWriteLock lock) {
+  33.	        super(set, lock);
+  34.	    }
+  35.	
+  36.	    /**
+  37.	     *
+  38.	     * @param t
+  39.	     * @return
+  40.	     * @author tanyaowu
+  41.	     */
+  42.	    public boolean add(T t) {
+  43.	        WriteLock writeLock = this.writeLock();
+  44.	        writeLock.lock();
+  45.	        try {
+  46.	            Set<T> set = this.getObj();
+  47.	            return set.add(t);
+  48.	        } catch (Throwable e) {
+  49.	            log.error(e.getMessage(), e);
+  50.	        } finally {
+  51.	            writeLock.unlock();
+  52.	        }
+  53.	        return false;
+  54.	    }
+  55.	
+  56.	    /**
+  57.	     *
+  58.	     *
+  59.	     * @author tanyaowu
+  60.	     */
+  61.	    public void clear() {
+  62.	        WriteLock writeLock = this.writeLock();
+  63.	        writeLock.lock();
+  64.	        try {
+  65.	            Set<T> set = this.getObj();
+  66.	            set.clear();
+  67.	        } catch (Throwable e) {
+  68.	            log.error(e.getMessage(), e);
+  69.	        } finally {
+  70.	            writeLock.unlock();
+  71.	        }
+  72.	    }
+  73.	
+  74.	    /**
+  75.	     *
+  76.	     * @param t
+  77.	     * @return
+  78.	     * @author tanyaowu
+  79.	     */
+  80.	    public boolean remove(T t) {
+  81.	        WriteLock writeLock = this.writeLock();
+  82.	        writeLock.lock();
+  83.	        try {
+  84.	            Set<T> set = this.getObj();
+  85.	            return set.remove(t);
+  86.	        } catch (Throwable e) {
+  87.	            log.error(e.getMessage(), e);
+  88.	        } finally {
+  89.	            writeLock.unlock();
+  90.	        }
+  91.	        return false;
+  92.	    }
+  93.	
+  94.	    /**
+  95.	     * 
+  96.	     * @return
+  97.	     * @author tanyaowu
+  98.	     */
+  99.	    public int size() {
+  100.	        ReadLock readLock = this.readLock();
+  101.	        readLock.lock();
+  102.	        try {
+  103.	            Set<T> set = this.getObj();
+  104.	            return set.size();
+  105.	        } finally {
+  106.	            readLock.unlock();
+  107.	        }
+  108.	    }
+  109.	}
+#+END_SRC
+
+先拿到相应的锁（根据业务需要获取读锁或写锁，如果只是读取数据，则获取读锁，如果需要对集合进行修改，则获取写锁），然后【 lock()—>业务处理—>unlock() 】，注意一定要在try前面进行lock()，在finally块中进行unlock()操作，这样可以保证一个获取锁到释放锁形成一个原子操作。图解如下
+
+[[file:img/5.9ObjLock.png][对象锁]]
+
+
+** 5.8 TioClient客户端入口
+:PROPERTIES:
+:ID:       e1789e1d-b699-42c0-8895-387d9ec90f94
+:END:
+只有当你在用t-io作为TCP客户端时，才用得到TioClient，此处简单贴一下它的源代码，它的用法，见后面的showcase示范工程
+
+#+BEGIN_SRC java
+  1.	package org.tio.client;
+  2.	
+  3.	import java.io.IOException;
+  4.	import java.net.InetSocketAddress;
+  5.	import java.net.StandardSocketOptions;
+  6.	import java.nio.channels.AsynchronousChannelGroup;
+  7.	import java.nio.channels.AsynchronousSocketChannel;
+  8.	import java.util.Set;
+  9.	import java.util.concurrent.CountDownLatch;
+  10.	import java.util.concurrent.LinkedBlockingQueue;
+  11.	import java.util.concurrent.TimeUnit;
+  12.	import java.util.concurrent.locks.ReentrantReadWriteLock;
+  13.	import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
+  14.	import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
+  15.	
+  16.	import org.slf4j.Logger;
+  17.	import org.slf4j.LoggerFactory;
+  18.	import org.tio.client.intf.ClientAioHandler;
+  19.	import org.tio.core.ChannelContext;
+  20.	import org.tio.core.Node;
+  21.	import org.tio.core.Tio;
+  22.	import org.tio.core.intf.Packet;
+  23.	import org.tio.core.ssl.SslFacadeContext;
+  24.	import org.tio.core.stat.ChannelStat;
+  25.	import org.tio.utils.SystemTimer;
+  26.	import org.tio.utils.hutool.StrUtil;
+  27.	import org.tio.utils.lock.SetWithLock;
+  28.	
+  29.	/**
+  30.	 *
+  31.	 * @author tanyaowu
+  32.	 * 2017年4月1日 上午9:29:58
+  33.	 */
+  34.	public class TioClient {
+  35.	    /**
+  36.	     * 自动重连任务
+  37.	     * @author tanyaowu
+  38.	     *
+  39.	     */
+  40.	    private static class ReconnRunnable implements Runnable {
+  41.	        ClientChannelContext channelContext = null;
+  42.	        TioClient tioClient = null;
+  43.	
+  44.	        //        private static Map<Node, Long> cacheMap = new HashMap<>();
+  45.	
+  46.	        public ReconnRunnable(ClientChannelContext channelContext, TioClient tioClient) {
+  47.	            this.channelContext = channelContext;
+  48.	            this.tioClient = tioClient;
+  49.	        }
+  50.	
+  51.	        /**
+  52.	         * @see java.lang.Runnable#run()
+  53.	         *
+  54.	         * @author tanyaowu
+  55.	         * 2017年2月2日 下午8:24:40
+  56.	         *
+  57.	         */
+  58.	        @Override
+  59.	        public void run() {
+  60.	            ReentrantReadWriteLock closeLock = channelContext.closeLock;
+  61.	            WriteLock writeLock = closeLock.writeLock();
+  62.	            writeLock.lock();
+  63.	            try {
+  64.	                if (!channelContext.isClosed) //已经连上了，不需要再重连了
+  65.	                {
+  66.	                    return;
+  67.	                }
+  68.	                long start = SystemTimer.currTime;
+  69.	                tioClient.reconnect(channelContext, 2);
+  70.	                long end = SystemTimer.currTime;
+  71.	                long iv = end - start;
+  72.	                if (iv >= 100) {
+  73.	                    log.error("{},重连耗时:{} ms", channelContext, iv);
+  74.	                } else {
+  75.	                    log.info("{},重连耗时:{} ms", channelContext, iv);
+  76.	                }
+  77.	
+  78.	                if (channelContext.isClosed) {
+  79.	                    channelContext.setReconnCount(channelContext.getReconnCount() + 1);
+  80.	                    //                    cacheMap.put(channelContext.getServerNode(), SystemTimer.currTime);
+  81.	                    return;
+  82.	                }
+  83.	            } catch (java.lang.Throwable e) {
+  84.	                log.error(e.toString(), e);
+  85.	            } finally {
+  86.	                writeLock.unlock();
+  87.	            }
+  88.	
+  89.	        }
+  90.	    }
+  91.	
+  92.	    private static Logger log = LoggerFactory.getLogger(TioClient.class);
+  93.	
+  94.	    private AsynchronousChannelGroup channelGroup;
+  95.	
+  96.	    private ClientGroupContext clientGroupContext;
+  97.	
+  98.	    /**
+  99.	     * @param serverIp 可以为空
+  100.	     * @param serverPort
+  101.	     * @param aioDecoder
+  102.	     * @param aioEncoder
+  103.	     * @param aioHandler
+  104.	     *
+  105.	     * @author tanyaowu
+  106.	     * @throws IOException
+  107.	     *
+  108.	     */
+  109.	    public TioClient(final ClientGroupContext clientGroupContext) throws IOException {
+  110.	        super();
+  111.	        this.clientGroupContext = clientGroupContext;
+  112.	        this.channelGroup = AsynchronousChannelGroup.withThreadPool(clientGroupContext.groupExecutor);
+  113.	
+  114.	        startHeartbeatTask();
+  115.	        startReconnTask();
+  116.	    }
+  117.	
+  118.	    /**
+  119.	     *
+  120.	     * @param serverNode
+  121.	     * @throws Exception
+  122.	     *
+  123.	     * @author tanyaowu
+  124.	     *
+  125.	     */
+  126.	    public void asynConnect(Node serverNode) throws Exception {
+  127.	        asynConnect(serverNode, null);
+  128.	    }
+  129.	
+  130.	    /**
+  131.	     *
+  132.	     * @param serverNode
+  133.	     * @param timeout
+  134.	     * @throws Exception
+  135.	     *
+  136.	     * @author tanyaowu
+  137.	     *
+  138.	     */
+  139.	    public void asynConnect(Node serverNode, Integer timeout) throws Exception {
+  140.	        asynConnect(serverNode, null, null, timeout);
+  141.	    }
+  142.	
+  143.	    /**
+  144.	     *
+  145.	     * @param serverNode
+  146.	     * @param bindIp
+  147.	     * @param bindPort
+  148.	     * @param timeout
+  149.	     * @throws Exception
+  150.	     *
+  151.	     * @author tanyaowu
+  152.	     *
+  153.	     */
+  154.	    public void asynConnect(Node serverNode, String bindIp, Integer bindPort, Integer timeout) throws Exception {
+  155.	        connect(serverNode, bindIp, bindPort, null, timeout, false);
+  156.	    }
+  157.	
+  158.	    /**
+  159.	     *
+  160.	     * @param serverNode
+  161.	     * @return
+  162.	     * @throws Exception
+  163.	     *
+  164.	     * @author tanyaowu
+  165.	     *
+  166.	     */
+  167.	    public ClientChannelContext connect(Node serverNode) throws Exception {
+  168.	        return connect(serverNode, null);
+  169.	    }
+  170.	
+  171.	    /**
+  172.	     *
+  173.	     * @param serverNode
+  174.	     * @param timeout
+  175.	     * @return
+  176.	     * @throws Exception
+  177.	     * @author tanyaowu
+  178.	     */
+  179.	    public ClientChannelContext connect(Node serverNode, Integer timeout) throws Exception {
+  180.	        return connect(serverNode, null, 0, timeout);
+  181.	    }
+  182.	
+  183.	    /**
+  184.	     *
+  185.	     * @param serverNode
+  186.	     * @param bindIp
+  187.	     * @param bindPort
+  188.	     * @param initClientChannelContext
+  189.	     * @param timeout 超时时间，单位秒
+  190.	     * @return
+  191.	     * @throws Exception
+  192.	     * @author tanyaowu
+  193.	     */
+  194.	    public ClientChannelContext connect(Node serverNode, String bindIp, Integer bindPort, ClientChannelContext initClientChannelContext, Integer timeout) throws Exception {
+  195.	        return connect(serverNode, bindIp, bindPort, initClientChannelContext, timeout, true);
+  196.	    }
+  197.	
+  198.	    /**
+  199.	     *
+  200.	     * @param serverNode
+  201.	     * @param bindIp
+  202.	     * @param bindPort
+  203.	     * @param initClientChannelContext
+  204.	     * @param timeout 超时时间，单位秒
+  205.	     * @param isSyn true: 同步, false: 异步
+  206.	     * @return
+  207.	     * @throws Exception
+  208.	     * @author tanyaowu
+  209.	     */
+  210.	    private ClientChannelContext connect(Node serverNode, String bindIp, Integer bindPort, ClientChannelContext initClientChannelContext, Integer timeout, boolean isSyn)
+  211.	            throws Exception {
+  212.	
+  213.	        AsynchronousSocketChannel asynchronousSocketChannel = null;
+  214.	        ClientChannelContext channelContext = null;
+  215.	        boolean isReconnect = initClientChannelContext != null;
+  216.	        //        ClientAioListener clientAioListener = clientGroupContext.getClientAioListener();
+  217.	
+  218.	        long start = SystemTimer.currTime;
+  219.	        asynchronousSocketChannel = AsynchronousSocketChannel.open(channelGroup);
+  220.	        long end = SystemTimer.currTime;
+  221.	        long iv = end - start;
+  222.	        if (iv >= 100) {
+  223.	            log.error("{}, open 耗时:{} ms", channelContext, iv);
+  224.	        }
+  225.	
+  226.	        asynchronousSocketChannel.setOption(StandardSocketOptions.TCP_NODELAY, true);
+  227.	        asynchronousSocketChannel.setOption(StandardSocketOptions.SO_REUSEADDR, true);
+  228.	        asynchronousSocketChannel.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
+  229.	
+  230.	        InetSocketAddress bind = null;
+  231.	        if (bindPort != null && bindPort > 0) {
+  232.	            if (false == StrUtil.isBlank(bindIp)) {
+  233.	                bind = new InetSocketAddress(bindIp, bindPort);
+  234.	            } else {
+  235.	                bind = new InetSocketAddress(bindPort);
+  236.	            }
+  237.	        }
+  238.	
+  239.	        if (bind != null) {
+  240.	            asynchronousSocketChannel.bind(bind);
+  241.	        }
+  242.	
+  243.	        channelContext = initClientChannelContext;
+  244.	
+  245.	        start = SystemTimer.currTime;
+  246.	
+  247.	        InetSocketAddress inetSocketAddress = new InetSocketAddress(serverNode.getIp(), serverNode.getPort());
+  248.	
+  249.	        ConnectionCompletionVo attachment = new ConnectionCompletionVo(channelContext, this, isReconnect, asynchronousSocketChannel, serverNode, bindIp, bindPort);
+  250.	
+  251.	        if (isSyn) {
+  252.	            Integer realTimeout = timeout;
+  253.	            if (realTimeout == null) {
+  254.	                realTimeout = 5;
+  255.	            }
+  256.	
+  257.	            CountDownLatch countDownLatch = new CountDownLatch(1);
+  258.	            attachment.setCountDownLatch(countDownLatch);
+  259.	            asynchronousSocketChannel.connect(inetSocketAddress, attachment, clientGroupContext.getConnectionCompletionHandler());
+  260.	            boolean f = countDownLatch.await(realTimeout, TimeUnit.SECONDS);
+  261.	            if (f) {
+  262.	                return attachment.getChannelContext();
+  263.	            } else {
+  264.	                log.error("countDownLatch.await(realTimeout, TimeUnit.SECONDS) 返回false ");
+  265.	                return attachment.getChannelContext();
+  266.	            }
+  267.	        } else {
+  268.	            asynchronousSocketChannel.connect(inetSocketAddress, attachment, clientGroupContext.getConnectionCompletionHandler());
+  269.	            return null;
+  270.	        }
+  271.	    }
+  272.	
+  273.	    /**
+  274.	     *
+  275.	     * @param serverNode
+  276.	     * @param bindIp
+  277.	     * @param bindPort
+  278.	     * @param timeout 超时时间，单位秒
+  279.	     * @return
+  280.	     * @throws Exception
+  281.	     *
+  282.	     * @author tanyaowu
+  283.	     *
+  284.	     */
+  285.	    public ClientChannelContext connect(Node serverNode, String bindIp, Integer bindPort, Integer timeout) throws Exception {
+  286.	        return connect(serverNode, bindIp, bindPort, null, timeout);
+  287.	    }
+  288.	
+  289.	    /**
+  290.	     * @return the channelGroup
+  291.	     */
+  292.	    public AsynchronousChannelGroup getChannelGroup() {
+  293.	        return channelGroup;
+  294.	    }
+  295.	
+  296.	    /**
+  297.	     * @return the clientGroupContext
+  298.	     */
+  299.	    public ClientGroupContext getClientGroupContext() {
+  300.	        return clientGroupContext;
+  301.	    }
+  302.	
+  303.	    /**
+  304.	     *
+  305.	     * @param channelContext
+  306.	     * @param timeout
+  307.	     * @return
+  308.	     * @throws Exception
+  309.	     *
+  310.	     * @author tanyaowu
+  311.	     *
+  312.	     */
+  313.	    public void reconnect(ClientChannelContext channelContext, Integer timeout) throws Exception {
+  314.	        connect(channelContext.getServerNode(), channelContext.getBindIp(), channelContext.getBindPort(), channelContext, timeout);
+  315.	    }
+  316.	
+  317.	    /**
+  318.	     * @param clientGroupContext the clientGroupContext to set
+  319.	     */
+  320.	    public void setClientGroupContext(ClientGroupContext clientGroupContext) {
+  321.	        this.clientGroupContext = clientGroupContext;
+  322.	    }
+  323.	
+  324.	    /**
+  325.	     * 定时任务：发心跳
+  326.	     * @author tanyaowu
+  327.	     *
+  328.	     */
+  329.	    private void startHeartbeatTask() {
+  330.	        final ClientGroupStat clientGroupStat = (ClientGroupStat)clientGroupContext.groupStat;
+  331.	        final ClientAioHandler aioHandler = clientGroupContext.getClientAioHandler();
+  332.	
+  333.	        final String id = clientGroupContext.getId();
+  334.	        new Thread(new Runnable() {
+  335.	            @Override
+  336.	            public void run() {
+  337.	                while (!clientGroupContext.isStopped()) {
+  338.	//                    final long heartbeatTimeout = clientGroupContext.heartbeatTimeout;
+  339.	                    if (clientGroupContext.heartbeatTimeout <= 0) {
+  340.	                        log.warn("用户取消了框架层面的心跳定时发送功能，请用户自己去完成心跳机制");
+  341.	                        break;
+  342.	                    }
+  343.	                    SetWithLock<ChannelContext> setWithLock = clientGroupContext.connecteds;
+  344.	                    ReadLock readLock = setWithLock.readLock();
+  345.	                    readLock.lock();
+  346.	                    try {
+  347.	                        Set<ChannelContext> set = setWithLock.getObj();
+  348.	                        long currtime = SystemTimer.currTime;
+  349.	                        for (ChannelContext entry : set) {
+  350.	                            ClientChannelContext channelContext = (ClientChannelContext) entry;
+  351.	                            if (channelContext.isClosed || channelContext.isRemoved) {
+  352.	                                continue;
+  353.	                            }
+  354.	
+  355.	                            ChannelStat stat = channelContext.stat;
+  356.	                            long compareTime = Math.max(stat.latestTimeOfReceivedByte, stat.latestTimeOfSentPacket);
+  357.	                            long interval = currtime - compareTime;
+  358.	                            if (interval >= clientGroupContext.heartbeatTimeout / 2) {
+  359.	                                Packet packet = aioHandler.heartbeatPacket(channelContext);
+  360.	                                if (packet != null) {
+  361.	                                    if (log.isInfoEnabled()) {
+  362.	                                        log.info("{}发送心跳包", channelContext.toString());
+  363.	                                    }
+  364.	                                    Tio.send(channelContext, packet);
+  365.	                                }
+  366.	                            }
+  367.	                        }
+  368.	                        if (log.isInfoEnabled()) {
+  369.	                            log.info("[{}]: curr:{}, closed:{}, received:({}p)({}b), handled:{}, sent:({}p)({}b)", id, set.size(), clientGroupStat.closed.get(),
+  370.	                                    clientGroupStat.receivedPackets.get(), clientGroupStat.receivedBytes.get(), clientGroupStat.handledPackets.get(),
+  371.	                                    clientGroupStat.sentPackets.get(), clientGroupStat.sentBytes.get());
+  372.	                        }
+  373.	
+  374.	                    } catch (Throwable e) {
+  375.	                        log.error("", e);
+  376.	                    } finally {
+  377.	                        try {
+  378.	                            readLock.unlock();
+  379.	                            Thread.sleep(clientGroupContext.heartbeatTimeout / 4);
+  380.	                        } catch (Throwable e) {
+  381.	                            log.error(e.toString(), e);
+  382.	                        } finally {
+  383.	
+  384.	                        }
+  385.	                    }
+  386.	                }
+  387.	            }
+  388.	        }, "tio-timer-heartbeat" + id).start();
+  389.	    }
+  390.	
+  391.	    /**
+  392.	     * 启动重连任务
+  393.	     *
+  394.	     *
+  395.	     * @author tanyaowu
+  396.	     *
+  397.	     */
+  398.	    private void startReconnTask() {
+  399.	        final ReconnConf reconnConf = clientGroupContext.getReconnConf();
+  400.	        if (reconnConf == null || reconnConf.getInterval() <= 0) {
+  401.	            return;
+  402.	        }
+  403.	
+  404.	        final String id = clientGroupContext.getId();
+  405.	        Thread thread = new Thread(new Runnable() {
+  406.	            @Override
+  407.	            public void run() {
+  408.	                while (!clientGroupContext.isStopped()) {
+  409.	                    //log.info("准备重连");
+  410.	                    LinkedBlockingQueue<ChannelContext> queue = reconnConf.getQueue();
+  411.	                    ClientChannelContext channelContext = null;
+  412.	                    try {
+  413.	                        channelContext = (ClientChannelContext) queue.take();
+  414.	                    } catch (InterruptedException e1) {
+  415.	                        log.error(e1.toString(), e1);
+  416.	                    }
+  417.	                    if (channelContext == null) {
+  418.	                        continue;
+  419.	                        //                        return;
+  420.	                    }
+  421.	
+  422.	                    if (channelContext.isRemoved) //已经删除的，不需要重新再连
+  423.	                    {
+  424.	                        continue;
+  425.	                    }
+  426.	
+  427.	                    SslFacadeContext sslFacadeContext = channelContext.sslFacadeContext;
+  428.	                    if (sslFacadeContext != null) {
+  429.	                        sslFacadeContext.setHandshakeCompleted(false);
+  430.	                    }
+  431.	
+  432.	                    long sleeptime = reconnConf.getInterval() - (SystemTimer.currTime - channelContext.stat.timeInReconnQueue);
+  433.	                    //log.info("sleeptime:{}, closetime:{}", sleeptime, timeInReconnQueue);
+  434.	                    if (sleeptime > 0) {
+  435.	                        try {
+  436.	                            Thread.sleep(sleeptime);
+  437.	                        } catch (InterruptedException e) {
+  438.	                            log.error(e.toString(), e);
+  439.	                        }
+  440.	                    }
+  441.	
+  442.	                    if (channelContext.isRemoved || !channelContext.isClosed) //已经删除的和已经连上的，不需要重新再连
+  443.	                    {
+  444.	                        continue;
+  445.	                    }
+  446.	                    ReconnRunnable runnable = new ReconnRunnable(channelContext, TioClient.this);
+  447.	                    reconnConf.getThreadPoolExecutor().execute(runnable);
+  448.	                }
+  449.	            }
+  450.	        });
+  451.	        thread.setName("tio-timer-reconnect-" + id);
+  452.	        thread.setDaemon(true);
+  453.	        thread.start();
+  454.	
+  455.	    }
+  456.	
+  457.	    /**
+  458.	     * 
+  459.	     * @return
+  460.	     * @author tanyaowu
+  461.	     */
+  462.	    public boolean stop() {
+  463.	        boolean ret = true;
+  464.	        try {
+  465.	            clientGroupContext.groupExecutor.shutdown();
+  466.	        } catch (Exception e1) {
+  467.	            log.error(e1.toString(), e1);
+  468.	        }
+  469.	        try {
+  470.	            clientGroupContext.tioExecutor.shutdown();
+  471.	        } catch (Exception e1) {
+  472.	            log.error(e1.toString(), e1);
+  473.	        }
+  474.	
+  475.	
+  476.	        clientGroupContext.setStopped(true);
+  477.	        try {
+  478.	            ret = ret && clientGroupContext.groupExecutor.awaitTermination(6000, TimeUnit.SECONDS);
+  479.	            ret = ret && clientGroupContext.tioExecutor.awaitTermination(6000, TimeUnit.SECONDS);
+  480.	        } catch (InterruptedException e) {
+  481.	            log.error(e.getLocalizedMessage(), e);
+  482.	        }
+  483.	        log.info("client resource has released");
+  484.	        return ret;
+  485.	    }
+  486.	}
+
+#+END_SRC
+
+** 5.7 TioServer服务端入口
+:PROPERTIES:
+:ID:       67055909-2615-4bfc-9332-cf3c0dd29b89
+:END:
+这个对象大家稍微了解一下即可，服务器启动时会用到这个对象，简单贴一下它的源代码吧，大家只需要关注它有一个start()方法是用来启动网络服务的即可
+
+#+BEGIN_SRC java
+
+  1.	package org.tio.server;
+  2.	
+  3.	import java.io.IOException;
+  4.	import java.lang.management.ManagementFactory;
+  5.	import java.lang.management.RuntimeMXBean;
+  6.	import java.net.InetSocketAddress;
+  7.	import java.net.StandardSocketOptions;
+  8.	import java.nio.channels.AsynchronousChannelGroup;
+  9.	import java.nio.channels.AsynchronousServerSocketChannel;
+  10.	import java.util.ArrayList;
+  11.	import java.util.Date;
+  12.	import java.util.List;
+  13.	import java.util.concurrent.TimeUnit;
+  14.	
+  15.	import org.slf4j.Logger;
+  16.	import org.slf4j.LoggerFactory;
+  17.	import org.tio.core.Node;
+  18.	import org.tio.utils.SysConst;
+  19.	import org.tio.utils.date.DateUtils;
+  20.	import org.tio.utils.hutool.StrUtil;
+  21.	
+  22.	/**
+  23.	 * @author tanyaowu
+  24.	 *
+  25.	 */
+  26.	public class TioServer {
+  27.	    private static Logger log = LoggerFactory.getLogger(TioServer.class);
+  28.	
+  29.	    private ServerGroupContext serverGroupContext;
+  30.	
+  31.	    private AsynchronousServerSocketChannel serverSocketChannel;
+  32.	
+  33.	    private AsynchronousChannelGroup channelGroup = null;
+  34.	
+  35.	    private Node serverNode;
+  36.	
+  37.	    private boolean isWaitingStop = false;
+  38.	
+  39.	    /**
+  40.	     *
+  41.	     * @param serverGroupContext
+  42.	     *
+  43.	     * @author tanyaowu
+  44.	     * 2017年1月2日 下午5:53:06
+  45.	     *
+  46.	     */
+  47.	    public TioServer(ServerGroupContext serverGroupContext) {
+  48.	        super();
+  49.	        this.serverGroupContext = serverGroupContext;
+  50.	    }
+  51.	
+  52.	    /**
+  53.	     * @return the serverGroupContext
+  54.	     */
+  55.	    public ServerGroupContext getServerGroupContext() {
+  56.	        return serverGroupContext;
+  57.	    }
+  58.	
+  59.	    /**
+  60.	     * @return the serverNode
+  61.	     */
+  62.	    public Node getServerNode() {
+  63.	        return serverNode;
+  64.	    }
+  65.	
+  66.	    /**
+  67.	     * @return the serverSocketChannel
+  68.	     */
+  69.	    public AsynchronousServerSocketChannel getServerSocketChannel() {
+  70.	        return serverSocketChannel;
+  71.	    }
+  72.	
+  73.	    /**
+  74.	     * @return the isWaitingStop
+  75.	     */
+  76.	    public boolean isWaitingStop() {
+  77.	        return isWaitingStop;
+  78.	    }
+  79.	
+  80.	    /**
+  81.	     * @param serverGroupContext the serverGroupContext to set
+  82.	     */
+  83.	    public void setServerGroupContext(ServerGroupContext serverGroupContext) {
+  84.	        this.serverGroupContext = serverGroupContext;
+  85.	    }
+  86.	
+  87.	    /**
+  88.	     * @param isWaitingStop the isWaitingStop to set
+  89.	     */
+  90.	    public void setWaitingStop(boolean isWaitingStop) {
+  91.	        this.isWaitingStop = isWaitingStop;
+  92.	    }
+  93.	
+  94.	    public void start(String serverIp, int serverPort) throws IOException {
+  95.	        long start = System.currentTimeMillis();
+  96.	        this.serverNode = new Node(serverIp, serverPort);
+  97.	        channelGroup = AsynchronousChannelGroup.withThreadPool(serverGroupContext.groupExecutor);
+  98.	        serverSocketChannel = AsynchronousServerSocketChannel.open(channelGroup);
+  99.	
+  100.	        serverSocketChannel.setOption(StandardSocketOptions.SO_REUSEADDR, true);
+  101.	        serverSocketChannel.setOption(StandardSocketOptions.SO_RCVBUF, 64 * 1024);
+  102.	
+  103.	        InetSocketAddress listenAddress = null;
+  104.	
+  105.	        if (StrUtil.isBlank(serverIp)) {
+  106.	            listenAddress = new InetSocketAddress(serverPort);
+  107.	        } else {
+  108.	            listenAddress = new InetSocketAddress(serverIp, serverPort);
+  109.	        }
+  110.	
+  111.	        serverSocketChannel.bind(listenAddress, 0);
+  112.	
+  113.	        AcceptCompletionHandler acceptCompletionHandler = serverGroupContext.getAcceptCompletionHandler();
+  114.	        serverSocketChannel.accept(this, acceptCompletionHandler);
+  115.	
+  116.	        serverGroupContext.startTime = System.currentTimeMillis();
+  117.	
+  118.	        //下面这段代码有点无聊，写得随意，纯粹是为了打印好看些
+  119.	        String baseStr = "|----------------------------------------------------------------------------------------|";
+  120.	        int baseLen = baseStr.length();
+  121.	        StackTraceElement[] ses = Thread.currentThread().getStackTrace();
+  122.	        StackTraceElement se = ses[ses.length - 1];
+  123.	        int xxLen = 18;
+  124.	        int aaLen = baseLen - 3;
+  125.	        List<String> infoList = new ArrayList<>();
+  126.	        infoList.add(StrUtil.fillAfter("Tio gitee address", ' ', xxLen) + "| " + SysConst.TIO_URL_GITEE);
+  127.	        infoList.add(StrUtil.fillAfter("Tio site address", ' ', xxLen) + "| " + SysConst.TIO_URL_SITE);
+  128.	        infoList.add(StrUtil.fillAfter("Tio version", ' ', xxLen) + "| " + SysConst.TIO_CORE_VERSION);
+  129.	
+  130.	        infoList.add(StrUtil.fillAfter("-", '-', aaLen));
+  131.	
+  132.	        infoList.add(StrUtil.fillAfter("GroupContext name", ' ', xxLen) + "| " + serverGroupContext.getName());
+  133.	        infoList.add(StrUtil.fillAfter("Started at", ' ', xxLen) + "| " + DateUtils.formatDateTime(new Date()));
+  134.	        infoList.add(StrUtil.fillAfter("Listen on", ' ', xxLen) + "| " + this.serverNode);
+  135.	        infoList.add(StrUtil.fillAfter("Main Class", ' ', xxLen) + "| " + se.getClassName());
+  136.	
+  137.	        try {
+  138.	            RuntimeMXBean runtimeMxBean = ManagementFactory.getRuntimeMXBean();
+  139.	            String runtimeName = runtimeMxBean.getName();
+  140.	            String pid = runtimeName.split("@")[0];
+  141.	            long startTime = runtimeMxBean.getStartTime();
+  142.	            long startCost = System.currentTimeMillis() - startTime;
+  143.	            infoList.add(StrUtil.fillAfter("Jvm start time", ' ', xxLen) + "| " + startCost + " ms");
+  144.	            infoList.add(StrUtil.fillAfter("Tio start time", ' ', xxLen) + "| " + (System.currentTimeMillis() - start) + " ms");
+  145.	            infoList.add(StrUtil.fillAfter("Pid", ' ', xxLen) + "| " + pid);
+  146.	
+  147.	        } catch (Exception e) {
+  148.	
+  149.	        }
+  150.	        //100
+  151.	        String printStr = "\r\n"+baseStr+"\r\n";
+  152.	        //        printStr += "|--" + leftStr + " " + info + " " + rightStr + "--|\r\n";
+  153.	        for (String string : infoList) {
+  154.	            printStr += "| " + StrUtil.fillAfter(string, ' ', aaLen) + "|\r\n";
+  155.	        }
+  156.	        printStr += baseStr + "\r\n";
+  157.	        if (log.isInfoEnabled()) {
+  158.	            log.info(printStr);
+  159.	        } else {
+  160.	            System.out.println(printStr);
+  161.	        }
+  162.	    }
+  163.	
+  164.	    /**
+  165.	     * 
+  166.	     * @return
+  167.	     * @author tanyaowu
+  168.	     */
+  169.	    public boolean stop() {
+  170.	        isWaitingStop = true;
+  171.	        boolean ret = true;
+  172.	
+  173.	        try {
+  174.	            channelGroup.shutdownNow();
+  175.	        } catch (Exception e) {
+  176.	            log.error("channelGroup.shutdownNow()时报错", e);
+  177.	        }
+  178.	
+  179.	        try {
+  180.	            serverSocketChannel.close();
+  181.	        } catch (Exception e1) {
+  182.	            log.error("serverSocketChannel.close()时报错", e1);
+  183.	        }
+  184.	
+  185.	        try {
+  186.	            serverGroupContext.groupExecutor.shutdown();
+  187.	        } catch (Exception e1) {
+  188.	            log.error(e1.toString(), e1);
+  189.	        }
+  190.	        try {
+  191.	            serverGroupContext.tioExecutor.shutdown();
+  192.	        } catch (Exception e1) {
+  193.	            log.error(e1.toString(), e1);
+  194.	        }
+  195.	
+  196.	        serverGroupContext.setStopped(true);
+  197.	        try {
+  198.	            ret = ret && serverGroupContext.groupExecutor.awaitTermination(6000, TimeUnit.SECONDS);
+  199.	            ret = ret && serverGroupContext.tioExecutor.awaitTermination(6000, TimeUnit.SECONDS);
+  200.	        } catch (InterruptedException e) {
+  201.	            log.error(e.getLocalizedMessage(), e);
+  202.	        }
+  203.	
+  204.	        log.info(this.serverNode + " stopped");
+  205.	        return ret;
+  206.	    }
+  207.	}
+#+END_SRC
+
+** 5.6 AioListener消息来往监听
+:PROPERTIES:
+:ID:       dacf7e47-73c9-4413-9fc9-0d8b32e10ede
+:END:
+AioListener是处理消息的核心接口，它有两个子接口，ClientAioListener和ServerAioListener，当用tio作tcp客户端时需要实现ClientAioListener，当用tio作tcp服务器时需要实现ServerAioListener，它主要定义了如下方法
+
+#+BEGIN_SRC java
+1.	package org.tio.core.intf;
+2.	
+3.	import org.tio.core.ChannelContext;
+4.	
+5.	/**
+6.	 *
+7.	 * @author tanyaowu
+8.	 * 2017年4月1日 上午9:34:08
+9.	 */
+10.	public interface AioListener {
+11.	
+12.	
+13.	    /**
+14.	     * 建链后触发本方法，注：建链不一定成功，需要关注参数isConnected
+15.	     * @param channelContext
+16.	     * @param isConnected 是否连接成功,true:表示连接成功，false:表示连接失败
+17.	     * @param isReconnect 是否是重连, true: 表示这是重新连接，false: 表示这是第一次连接
+18.	     * @throws Exception
+19.	     * @author: tanyaowu
+20.	     */
+21.	    public void onAfterConnected(ChannelContext channelContext, boolean isConnected, boolean isReconnect) throws Exception;
+22.	
+23.	    /**
+24.	     * 原方法名：onAfterDecoded
+25.	     * 解码成功后触发本方法
+26.	     * @param channelContext
+27.	     * @param packet
+28.	     * @param packetSize
+29.	     * @throws Exception
+30.	     * @author: tanyaowu
+31.	     */
+32.	    public void onAfterDecoded(ChannelContext channelContext, Packet packet, int packetSize) throws Exception;
+33.	
+34.	    /**
+35.	     * 接收到TCP层传过来的数据后
+36.	     * @param channelContext
+37.	     * @param receivedBytes 本次接收了多少字节
+38.	     * @throws Exception
+39.	     */
+40.	    public void onAfterReceivedBytes(ChannelContext channelContext, int receivedBytes) throws Exception;
+41.	
+42.	    /**
+43.	     * 消息包发送之后触发本方法
+44.	     * @param channelContext
+45.	     * @param packet
+46.	     * @param isSentSuccess true:发送成功，false:发送失败
+47.	     * @throws Exception
+48.	     * @author tanyaowu
+49.	     */
+50.	    public void onAfterSent(ChannelContext channelContext, Packet packet, boolean isSentSuccess) throws Exception;
+51.	
+52.	    /**
+53.	     * 处理一个消息包后
+54.	     * @param channelContext
+55.	     * @param packet
+56.	     * @param cost 本次处理消息耗时，单位：毫秒
+57.	     * @throws Exception
+58.	     */
+59.	    public void onAfterHandled(ChannelContext channelContext, Packet packet, long cost) throws Exception;
+60.	
+61.	    /**
+62.	     * 连接关闭前触发本方法
+63.	     * @param channelContext the channelcontext
+64.	     * @param throwable the throwable 有可能为空
+65.	     * @param remark the remark 有可能为空
+66.	     * @param isRemove
+67.	     * @author tanyaowu
+68.	     * @throws Exception 
+69.	     */
+70.	    public void onBeforeClose(ChannelContext channelContext, Throwable throwable, String remark, boolean isRemove) throws Exception;
+71.	
+72.	    /**
+73.	     * 连接关闭前后触发本方法
+74.	     * 警告：走到这个里面时，很多绑定的业务都已经解绑了，所以这个方法一般是空着不实现的
+75.	     * @param channelContext the channelcontext
+76.	     * @param throwable the throwable 有可能为空
+77.	     * @param remark the remark 有可能为空
+78.	     * @param isRemove 是否是删除
+79.	     * @throws Exception
+80.	     * @author: tanyaowu
+81.	     */
+82.	//    public void onAfterClose(ChannelContext channelContext, Throwable throwable, String remark, boolean isRemove) throws Exception;
+83.	}
+#+END_SRC
+
+
+** 5.5 AioHandler:编码、解码、处理
+:PROPERTIES:
+:ID:       08f05aad-e860-47e2-ac61-8050dcf60cbe
+:END:
+AioHandler是处理消息的核心接口，它有两个子接口，ClientAioHandler和ServerAioHandler，当用tio作tcp客户端时需要实现ClientAioHandler，当用tio作tcp服务器时需要实现ServerAioHandler，它主要定义了3个方法，见下
+
+#+BEGIN_SRC java
+1.	package org.tio.core.intf;
+2.	
+3.	import java.nio.ByteBuffer;
+4.	
+5.	import org.tio.core.ChannelContext;
+6.	import org.tio.core.GroupContext;
+7.	import org.tio.core.exception.AioDecodeException;
+8.	
+9.	/**
+10.	 * 
+11.	 * @author tanyaowu 
+12.	 * 2017年10月19日 上午9:40:15
+13.	 */
+14.	public interface AioHandler {
+15.	
+16.	    /**
+17.	     * 根据ByteBuffer解码成业务需要的Packet对象.
+18.	     * 如果收到的数据不全，导致解码失败，请返回null，在下次消息来时框架层会自动续上前面的收到的数据
+19.	     * @param buffer 参与本次希望解码的ByteBuffer
+20.	     * @param limit ByteBuffer的limit
+21.	     * @param position ByteBuffer的position，不一定是0哦
+22.	     * @param readableLength ByteBuffer参与本次解码的有效数据（= limit - position）
+23.	     * @param channelContext
+24.	     * @return
+25.	     * @throws AioDecodeException
+26.	     */
+27.	    Packet decode(ByteBuffer buffer, int limit, int position, int readableLength, ChannelContext channelContext) throws AioDecodeException;
+28.	
+29.	    /**
+30.	     * 编码
+31.	     * @param packet
+32.	     * @param groupContext
+33.	     * @param channelContext
+34.	     * @return
+35.	     * @author: tanyaowu
+36.	     */
+37.	    ByteBuffer encode(Packet packet, GroupContext groupContext, ChannelContext channelContext);
+38.	
+39.	    /**
+40.	     * 处理消息包
+41.	     * @param packet
+42.	     * @param channelContext
+43.	     * @throws Exception
+44.	     * @author: tanyaowu
+45.	     */
+46.	    void handler(Packet packet, ChannelContext channelContext) throws Exception;
+47.	
+48.	}
+#+END_SRC
+
+
+** 5.4 GroupContext:服务器配置与维护
+:PROPERTIES:
+:ID:       370b4d2f-5eac-46ec-8d10-ac70c353db28
+:END:
+我们在写TCP Server时，都会先选好一个端口以监听客户端连接，再创建N组线程池来执行相关的任务，譬如发送消息、解码数据包、处理数据包等任务，还要维护客户端连接的各种数据，为了和业务互动，还要把这些客户端连接和各种业务数据绑定起来，譬如把某个客户端绑定到一个群组，绑定到一个userid，绑定到一个token等。GroupContext就是用来配置线程池、确定监听端口，维护客户端各种数据等的。
+GroupContext是个抽象类，如果你是用tio作tcp客户端，那么你需要创建ClientGroupContext，如果你是用tio作tcp服务器，那么你需要创建ServerGroupContext
+GroupContext对象包含的信息非常多，主要对象见下图
+ [[file:img/5.4GroupContext.png][GroupContext]]
+
+如何获取GroupContext对象
+
+很多用户在使用t-io时，不知道如何获取GroupContext，其实这是个伪命题，因为这个对象是你创建
+•	如果你只用了tio-core
+获取GroupContext的方式就很简单了，因为这个对象就是你创建的，你把这个对象存为全局变量就可以了
+
+#+BEGIN_SRC java
+•	如果你用了tio-websocket-server
+1.	WsServerStarter wsServerStarter = new WsServerStarter(port, wsMsgHandler);
+2.	ServerGroupContext  serverGroupContext = wsServerStarter.getServerGroupContext();//此处把serverGroupContext存为全局变量即可
+#+END_SRC
+
+•	如果你是用了tio-http-server
+
+#+BEGIN_SRC java
+1.	org.tio.http.common.HttpRequest.channelContext.groupContext;
+#+END_SRC
+
+
+
+** 5.3 ChannelContext:TCP链接上下文
+:PROPERTIES:
+:ID:       b07f3079-43a4-419b-a2c1-d412736b6f23
+:END:
+每一个tcp连接的建立都会产生一个ChannelContext对象，这是个抽象类，如果你是用t-io作tcp客户端，那么就是ClientChannelContext，如果你是用tio作tcp服务器，那么就是ServerChannelContext
+    [[file:img/5.3tcp.png][tcp]] 
+用户可以把业务数据通过ChannelContext对象和TCP连接关联起来，像下面这样设置属性
+
+#+BEGIN_SRC java
+1.	ChannelContext.setAttribute(String key, Object value)
+#+END_SRC
+
+然后用下面的方式获取属性
+
+#+BEGIN_SRC java
+1.	ChannelContext.getAttribute(String key)
+#+END_SRC
+
+当然最最常用的还是用t-io提供的强大的bind功能，譬如用下面的代码绑定userid
+
+#+BEGIN_SRC java
+1.	Tio.bindUser(ChannelContext channelContext, String userid)
+#+END_SRC
+
+然后可以通过userid进行操作，示范代码如下
+
+#+BEGIN_SRC java
+1.	//获取某用户的ChannelContext集合
+2.	SetWithLock<ChannelContext> set = Tio.getChannelContextsByUserid(groupContext, userid);
+3.	
+4.	//给某用户发消息
+5.	Tio.sendToUser(GroupContext, userid, Packet)
+#+END_SRC
+
+除了可以绑定userid，t-io还内置了如下绑定API
+•	绑定业务id
+
+#+BEGIN_SRC java
+1.	Tio.bindBsId(ChannelContext channelContext, String bsId)
+#+END_SRC
+
+•	绑定token
+
+#+BEGIN_SRC java
+0.	Tio.bindToken(ChannelContext channelContext, String token)
+#+END_SRC
+
+•	绑定群组
+
+#+BEGIN_SRC java
+0.	Tio.bindGroup(ChannelContext channelContext, String group)
+#+END_SRC
+
+ChannelContext对象包含的信息非常多，主要对象见下图
+ [[file:img/5.3ChannelContext.png][ChannelContext]]
+
+说明：
+
+ChannelContext是t-io中非常重要的类，他是业务和连接的沟通桥梁！
+
+
+** 5.2 Packet： 应用层包
+:PROPERTIES:
+:ID:       509e5370-dd8d-4dd8-aab9-f4f42aaadc3c
+:END:
+Packet是用于表述业务数据结构的，我们通过继承Packet来实现自己的业务数据结构，对于各位而言，把Packet看作是一个普通的VO对象即可。
+此处贴一下Packet的源代码以凑一些字数，不过用户其实并不需要太关心这个源代码，只需要知道要继承这个类以实现自己的业务数据结构类即可。
+
+
+#+BEGIN_SRC java
+  1.	package org.tio.core.intf;
+  2.	
+  3.	import java.nio.ByteBuffer;
+  4.	import java.util.concurrent.CountDownLatch;
+  5.	import java.util.concurrent.atomic.AtomicLong;
+  6.	
+  7.	import org.slf4j.Logger;
+  8.	import org.slf4j.LoggerFactory;
+  9.	
+  10.	/**
+  11.	 *
+  12.	 * @author tanyaowu
+  13.	 * 2017年4月1日 上午9:34:59
+  14.	 */
+  15.	public class Packet implements java.io.Serializable, Cloneable {
+  16.	    private static Logger log = LoggerFactory.getLogger(Packet.class);
+  17.	
+  18.	    private static final long serialVersionUID = 5275372187150637318L;
+  19.	
+  20.	    private static final AtomicLong ID_ATOMICLONG = new AtomicLong();
+  21.	
+  22.	    private Long id = ID_ATOMICLONG.incrementAndGet();
+  23.	
+  24.	    private int byteCount = 0;
+  25.	
+  26.	    private Long respId = null;
+  27.	
+  28.	    private PacketListener packetListener;
+  29.	
+  30.	    private boolean isBlockSend = false;
+  31.	
+  32.	    private Meta meta = null;
+  33.	
+  34.	    /**
+  35.	     * 消息是否是另外一台机器通过topic转过来的，如果是就不要死循环地再一次转发啦
+  36.	     * 这个属性是tio内部使用，业务层的用户请勿使用
+  37.	     */
+  38.	    private boolean isFromCluster = false;
+  39.	
+  40.	    /**
+  41.	     * 同步发送时，需要的同步序列号
+  42.	     */
+  43.	    private Integer synSeq = 0;
+  44.	
+  45.	    /**
+  46.	     * 预编码过的bytebuffer，如果此值不为null，框架则会忽略原来的encode()而直接用此值
+  47.	     */
+  48.	    private ByteBuffer preEncodedByteBuffer = null;
+  49.	
+  50.	    /**
+  51.	     * 是否已经进行ssl加密过
+  52.	     */
+  53.	    private boolean isSslEncrypted = false;
+  54.	
+  55.	    @Override
+  56.	    public Packet clone() {
+  57.	        try {
+  58.	            Packet ret = (Packet) super.clone();
+  59.	            ret.setPreEncodedByteBuffer(null);
+  60.	            ret.setSslEncrypted(false);
+  61.	            return ret;
+  62.	        } catch (CloneNotSupportedException e) {
+  63.	            log.error("", e);
+  64.	            return null;
+  65.	        }
+  66.	    }
+  67.	
+  68.	    /**
+  69.	     * @return the byteCount
+  70.	     */
+  71.	    public int getByteCount() {
+  72.	        return byteCount;
+  73.	    }
+  74.	
+  75.	    /**
+  76.	     * @return the id
+  77.	     */
+  78.	    public Long getId() {
+  79.	        return id;
+  80.	    }
+  81.	
+  82.	    /**
+  83.	     * @return the packetListener
+  84.	     */
+  85.	    public PacketListener getPacketListener() {
+  86.	        return packetListener;
+  87.	    }
+  88.	
+  89.	    /**
+  90.	     * @return the preEncodedByteBuffer
+  91.	     */
+  92.	    public ByteBuffer getPreEncodedByteBuffer() {
+  93.	        return preEncodedByteBuffer;
+  94.	    }
+  95.	
+  96.	    /**
+  97.	     * @return the respId
+  98.	     */
+  99.	    public Long getRespId() {
+  100.	        return respId;
+  101.	    }
+  102.	
+  103.	    /**
+  104.	     * @return the synSeq
+  105.	     */
+  106.	    public Integer getSynSeq() {
+  107.	        return synSeq;
+  108.	    }
+  109.	
+  110.	    /**
+  111.	     * @return the isBlockSend
+  112.	     */
+  113.	    public boolean isBlockSend() {
+  114.	        return isBlockSend;
+  115.	    }
+  116.	
+  117.	    public String logstr() {
+  118.	        return "";
+  119.	    }
+  120.	
+  121.	    /**
+  122.	     * @param isBlockSend the isBlockSend to set
+  123.	     */
+  124.	    public void setBlockSend(boolean isBlockSend) {
+  125.	        this.isBlockSend = isBlockSend;
+  126.	    }
+  127.	
+  128.	    /**
+  129.	     * @param byteCount the byteCount to set
+  130.	     */
+  131.	    public void setByteCount(int byteCount) {
+  132.	        this.byteCount = byteCount;
+  133.	    }
+  134.	
+  135.	    /**
+  136.	     * @param id the id to set
+  137.	     */
+  138.	    public void setId(Long id) {
+  139.	        this.id = id;
+  140.	    }
+  141.	
+  142.	    /**
+  143.	     * @param packetListener the packetListener to set
+  144.	     */
+  145.	    public void setPacketListener(PacketListener packetListener) {
+  146.	        this.packetListener = packetListener;
+  147.	    }
+  148.	
+  149.	    /**
+  150.	     * @param preEncodedByteBuffer the preEncodedByteBuffer to set
+  151.	     */
+  152.	    public void setPreEncodedByteBuffer(ByteBuffer preEncodedByteBuffer) {
+  153.	        this.preEncodedByteBuffer = preEncodedByteBuffer;
+  154.	    }
+  155.	
+  156.	    /**
+  157.	     * @param respId the respId to set
+  158.	     */
+  159.	    public void setRespId(Long respId) {
+  160.	        this.respId = respId;
+  161.	    }
+  162.	
+  163.	    /**
+  164.	     * @param synSeq the synSeq to set
+  165.	     */
+  166.	    public void setSynSeq(Integer synSeq) {
+  167.	        this.synSeq = synSeq;
+  168.	    }
+  169.	
+  170.	    public boolean isFromCluster() {
+  171.	        return isFromCluster;
+  172.	    }
+  173.	
+  174.	    public void setFromCluster(boolean isFromCluster) {
+  175.	        this.isFromCluster = isFromCluster;
+  176.	    }
+  177.	
+  178.	    public boolean isSslEncrypted() {
+  179.	        return isSslEncrypted;
+  180.	    }
+  181.	
+  182.	    public void setSslEncrypted(boolean isSslEncrypted) {
+  183.	        this.isSslEncrypted = isSslEncrypted;
+  184.	    }
+  185.	
+  186.	    public Meta getMeta() {
+  187.	        return meta;
+  188.	    }
+  189.	
+  190.	    public void setMeta(Meta meta) {
+  191.	        this.meta = meta;
+  192.	    }
+  193.	
+  194.	    public static class Meta {
+  195.	        private Boolean isSentSuccess = false;
+  196.	        private CountDownLatch countDownLatch = null;
+  197.	
+  198.	        public Boolean getIsSentSuccess() {
+  199.	            return isSentSuccess;
+  200.	        }
+  201.	
+  202.	        public void setIsSentSuccess(Boolean isSentSuccess) {
+  203.	            this.isSentSuccess = isSentSuccess;
+  204.	        }
+  205.	
+  206.	        public CountDownLatch getCountDownLatch() {
+  207.	            return countDownLatch;
+  208.	        }
+  209.	
+  210.	        public void setCountDownLatch(CountDownLatch countDownLatch) {
+  211.	            this.countDownLatch = countDownLatch;
+  212.	        }
+  213.	
+  214.	    }
+  215.	
+  216.	}
+
+#+END_SRC
+
+** 5.1 t-io收发消息过程
+:PROPERTIES:
+:ID:       ab4e1993-37be-4596-b9bf-8cf2884eea75
+:END:
+t-io收发消息及处理过程，可以用一张图清晰地表达出来
+    [[file:img/5.1getAndReceive.png][消息收发过程]]
+* 4. t-io示范工程
+:PROPERTIES:
+:ID:       d2b73732-8b6f-4d18-b488-a76f7106d7d5
+:END:
+** 4.4 tio-udf-showcase
+:PROPERTIES:
+:ID:       d736fcbd-680c-4697-b09b-1a2536488228
+:END:
+引言
+•	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
+•	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
+•	tio-udp是包含在tio-core的一个功能子集
+tio-udp-showcase工程简介
+•	用于学习tio-udp-server的示范工程
+•	工程地址：https://gitee.com/tywo45/tio-udp-showcase
+学习步骤
+•	把工程以maven的形式导入到eclipse后
+•	运行org.tio.showcase.udp.server.ShowcaseUdpServerStarter启动udp服务器，启动成功后，日志如下
+
+
+#+BEGIN_SRC java
+  1.	2018-12-30 21:08:23,764 INFO  org.tio.core.udp.UdpServer[136]: started tio udp server: 0.0.0.0:3000
+#+END_SRC
+  •	运行org.tio.showcase.udp.client.UdpClientStarter
+  •	观察服务器端的console，会看到如下日志
+#+BEGIN_SRC java
+  0.	2018-12-30 21:11:27,336 INFO  o.t.s.u.s.ShowcaseUdpHandler[29]: 收到来自127.0.0.1:62699的消息:【775008、用tio开发udp，有点意思】
+  1.	2018-12-30 21:11:27,336 INFO  o.t.s.u.s.ShowcaseUdpHandler[29]: 收到来自127.0.0.1:62699的消息:【775009、用tio开发udp，有点意思】
+  2.	2018-12-30 21:11:27,336 INFO  o.t.s.u.s.ShowcaseUdpHandler[29]: 收到来自127.0.0.1:62699的消息:【775010、用tio开发udp，有点意思】
+  3.	2018-12-30 21:11:27,336 INFO  o.t.s.u.s.ShowcaseUdpHandler[29]: 收到来自127.0.0.1:62699的消息:【775011、用tio开发udp，有点意思】
+  4.	2018-12-30 21:11:27,336 INFO  o.t.s.u.s.ShowcaseUdpHandler[29]: 收到来自127.0.0.1:62699的消息:【775012、用tio开发udp，有点意思】
+  5.	2018-12-30 21:11:27,336 INFO  o.t.s.u.s.ShowcaseUdpHandler[29]: 收到来自127.0.0.1:62699的消息:【775013、用tio开发udp，有点意思】
+  6.	2018-12-30 21:11:27,336 INFO  o.t.s.u.s.ShowcaseUdpHandler[29]: 收到来自127.0.0.1:62699的消息:【775014、用tio开发udp，有点意思】
+#+END_SRC
+
+•	整个工程才3个类，简单到极致，少年加油吧！
+
+** 4.3 tio-http-server-showcase
+:PROPERTIES:
+:ID:       268737f3-942e-4150-93d8-e69799397b00
+:END:
+
+引言
+•	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
+•	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
+•	tio-http-server是基于tio-core实现的http服务器，自带t-io提供的各项API以及一流的性能和稳定性
+tio-http-server-showcase工程简介
+•	用于学习tio-http-server的示范工程
+•	工程地址：https://gitee.com/tywo45/tio-http-server-showcase
+入口程序
+
+#+BEGIN_SRC java
+1.	org.tio.http.server.showcase.HttpServerShowcaseStarter
+#+END_SRC
+
+控制器
+
+#+BEGIN_SRC java
+1.	org.tio.http.server.showcase.controller.ShowcaseController
+#+END_SRC
+
+启动成功日志
+
+#+BEGIN_SRC java
+  12-30 20:43:46 INFO  org.tio.server.TioServer[158]
+  |----------------------------------------------------------------------------------------|
+  | Tio gitee address | https://gitee.com/tywo45/t-io                                      |
+  | Tio site address  | https://t-io.org/                                                  |
+  | Tio version       | 3.2.4.v20181218-RELEASE                                            |
+  | ---------------------------------------------------------------------------------------|
+  | GroupContext name | Tio Http Server                                                    |
+  | Started at        | 2018-12-30 20:43:46                                                |
+  | Listen on         | 0.0.0.0:80                                                         |
+  | Main Class        | org.tio.http.server.showcase.HttpServerShowcaseStarter             |
+  | Jvm start time    | 624 ms                                                             |
+  | Tio start time    | 21 ms                                                              |
+  | Pid               | 9792                                                               |
+  |----------------------------------------------------------------------------------------|
+#+END_SRC
+访问
+用浏览器打开：http://127.0.0.1
+ 
+    [[file:img/4.3browser.png][浏览器]]
+
+** 4.2 tio-websocket-showcase
+:PROPERTIES:
+:ID:       6b6805dc-b178-4ed6-8369-0ddbc8e96586
+:END:
+
+引言
+•	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
+•	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
+•	tio-websocket-server是基于tio-core实现的websocket服务器，自带t-io提供的各项API以及一流的性能和稳定性
+tio-websocket-showcase工程简介
+•	用于学习tio-websocket-server的示范工程
+•	包括wss和流量监控及处理等高级特性
+•	还包括t-io作者写的一个用于连接websocket服务器的js小框架——tiows.js（内置断链重连、定时主动发心跳等功能，使用API极其简单）
+•	工程地址：https://gitee.com/tywo45/tio-websocket-showcase
+•	效果图
+ 
+    [[file:img/4.2weixin.png][微信聊天窗口]]
+学习步骤
+•	把工程以maven的形式导入到eclipse后
+•	运行org.tio.showcase.websocket.server.ShowcaseWebsocketStarter
+•	用chrome打开http://127.0.0.1/index.html（说明：本工程不仅会启动websocket服务器，还会启动一个http服务器用于访问websocket服务器）
+•	这是个用iframe嵌入了两个demo.html的页面，方便在一个窗口查看群聊效果
+•	可以愉快地聊天了
+说明
+•	服务器端，大家看代码就好，用起来比较简单
+•	客户端（js），page/tio/tiows.js是和业务无关的websocket js小框架，主要是实现了重连、定时发心跳等和业务无关的功能
+
+** 4.1 Tio-showcase
+:PROPERTIES:
+:ID:       a1342ea8-bf92-40e9-919c-2e7d193f6b8b
+:END:
+引言
+•	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
+•	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
+tio-showcase工程简介
+•	用于学习t-io的示范工程，一共3个示范工程
+•	在t-io工程结构一节中已经说了：一般用户口中的t-io就是指tio-core
+•	工程地址：https://gitee.com/tywo45/tio-showcase
+•	下面分别对这三个工程进行简介
+helloworld
+•	helloworld是入门t-io最好的方式！而作者也是用心写了一个对生产项目有参考价值的hello tio，而不是仅仅是show hello而hello
+•	服务器端入口程序：org.tio.examples.helloworld.server.HelloServerStarter
+•	客户端入口程序：org.tio.examples.helloworld.client.HelloClientStarter
+•	本例子演示的是一个典型的TCP长连接应用，大体业务简介如下。
+•	分为server和client工程，server和client共用common工程
+•	服务端和客户端的消息协议比较简单，消息头为4个字节，用以表示消息体的长度，消息体为一个字符串的byte[]
+•	服务端先启动，监听6789端口
+•	客户端连接到服务端后，会主动向服务器发送一条消息
+•	服务器收到消息后会回应一条消息
+•	之后，框架层会自动从客户端发心跳到服务器，服务器也会检测心跳有没有超时（这些事都是框架做的，业务层只需要配一个心跳超时参数即可）
+•	框架层会在断链后自动重连（这些事都是框架做的，业务层只需要配一个重连配置对象即可）
+showcase
+•	showcase工程用于进一步掌握t-io，甚至可以用作你项目的脚手架（@精灵007 同学已经用这个工程完成了3个项目）
+•	这里有一篇博客，可以参考：ShowCase设计分析
+•	服务器端入口程序：org.tio.examples.showcase.server.ShowcaseServerStarter
+•	客户端入口程序：org.tio.examples.showcase.client.ShowcaseClientStarter
+IM
+•	im项目在1.7.0版本前一直都开放的（见：https://gitee.com/tywo45/t-io/tree/v1.7.0），考虑到im的复杂性，这会给作者带来一些额外的咨询工作，所以在后面的版本没有放出来，现在重新放出来
+•	j-im项目是在本项目的基础上改造而来的，有兴趣的可以看看j-im
+•	服务器端入口程序：org.tio.examples.im.server.ImServerStarter
+•	客户端入口程序：org.tio.examples.im.client.ImClientStarter
+•	当年有用户用这个工程 轰出每秒收发500万条聊天消息 （当然现在t-io加了各种流量监控后，简单测试发现性能大约降了一半）
+
+[[file:img/4.1ChatRoom.png][chatRoom]]
+* 3. 性能和稳定性
+:PROPERTIES:
+:ID:       e6a57c18-f69e-4a37-a544-aa80a5c9ce52
+:END:
+* 2. t-io背景
+:PROPERTIES:
+:ID:       430b7bc8-c366-4419-a10d-ac8b378af230
+:END:
+* 1.网络编程预备知识
+:PROPERTIES:
+:ID:       ae3c881e-9a21-4628-8e23-b64fb130f54a
+:END:
