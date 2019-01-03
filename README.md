@@ -3333,7 +3333,25 @@ If you don't expect having to do it again,don't try to optimise it.
   <2018-06-27 09:49> <2018-07-24 16:27> 一直想着实现vimwiki click <CR> to create file links
 ```
 
+插入超链接比较简单，可以先黏贴进去links，然后全选，`C-c C-l`就会提醒进行description.
+同样插入文件链接也是类似，通过选择一个单词或者词组或者一个句子，然后`C-c C-l`,添加文件路径名即可。
+所以`C-c C-l`在org-mode中是一个非常重要的工具命令。
 
+#### 插入标题链接?
+
+如何插入标题链接？
+
+当然在org-brain模式很简单，通过`c-c c-l`找到`brain`,然后输入对应标题名字即可! 这种最方便，以后都离不开brain。
+或者可以通过找到`id`,通过id名也是可以的(前提得用`M-x org-id-get-create`,然后通过`M-x org-id-copy`来复制,
+紧接着你在使用`C-c C-l`,找到id,会提醒你输入id，直接使用`Alt-y`,打开evil-paste-pop,直接黏贴不行，只好。
+
+本质是：插入文件，支持文件协议开头`file:`
+       插入brain标题，支持brain协议开头`brain:`
+       插入id标题，支持id协议开头`id:`
+       插入网络url,支持http[s]协议开头的`http[s]:`
+       
+也就是你可以通过在id名字前面，添加`id:`,然后进行`c-c c-l`,org-mode就会知道要干什么事情，其他链接依此类推。
+这也是为什么你插入网络链接时候，自动会识别为http或者https协议的原因(ftp用的少)
 ```
 
 file:~/code/main.c:255

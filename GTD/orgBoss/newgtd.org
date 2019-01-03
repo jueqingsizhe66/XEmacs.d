@@ -2473,6 +2473,7 @@ DEADLINE: <2019-01-24 周四>
                     :PROPERTIES:
                     :CREATED: [2019-01-03 周四 16:59]
                     :Effort: 1:00
+                    :ID:       d97e7fa8-b4ae-4894-aabf-db3d8ec5e85f
                     :END:
                     :LOGBOOK:
                     CLOCK: [2019-01-03 周四 17:00]--[2019-01-03 周四 17:00] =>  0:00

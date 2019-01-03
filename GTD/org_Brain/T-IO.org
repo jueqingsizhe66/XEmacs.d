@@ -8,6 +8,30 @@
 :PROPERTIES:
 :ID:       e065e50e-f484-43e6-882d-aa507dd26ec6
 :END:
+** 11.4 t-io 3.2.5
+:PROPERTIES:
+:ID:       a5858fe8-a8d8-4279-bdea-f90a96160cd7
+:END:
+修改点
+
+1. 新需求：https://gitee.com/tywo45/t-io/issues/IQ15R
+2. bug fix：https://gitee.com/tywo45/t-io/issues/IQATJ
+3. 增加：org.tio.http.common.HttpConfig.getStaticPaths()
+4. 增加：org.tio.http.common.HttpConfig.getStaticPathsMap()
+5. 根据用户反馈优化代码
+8. 升级pom依赖
+
+最新pom
+
+
+#+BEGIN_SRC java
+<dependency>
+    <groupId>org.t-io</groupId>
+    <artifactId>tio-core</artifactId>
+    <version>3.2.5.v20190101-RELEASE</version>
+</dependency>
+#+END_SRC
+
 ** 11.3 t-io 3.2.2
 :PROPERTIES:
 :ID:       efcde747-197c-4412-a476-003ccbc9f9af
@@ -4540,7 +4564,8 @@ t-io收发消息及处理过程，可以用一张图清晰地表达出来
 
 *** IM
 
-1. 	im项目在1.7.0版本前一直都开放的（见：https://gitee.com/tywo45/t-io/tree/v1.7.0），考虑到im的复杂性，这会给作者带来一些额外的咨询工作，所以在后面的版本没有放出来，现在重新放出来
+1. 	im项目在1.7.0版本前一直都开放的（见：https://gitee.com/tywo45/t-io/tree/v1.7.0
+），考虑到im的复杂性，这会给作者带来一些额外的咨询工作，所以在后面的版本没有放出来，现在重新放出来
 2. j-im项目是在本项目的基础上改造而来的，有兴趣的可以看看j-im
 3. 服务器端入口程序：org.tio.examples.im.server.ImServerStarter
 4. 客户端入口程序：org.tio.examples.im.client.ImClientStarter
@@ -4862,30 +4887,20 @@ ByteBuffer.allocate(int cap)即可创建一个指定容器大小的ByteBuffer，
 [[file:img/1.2debug.png][程序调试图]] 
 3. 这些字符串就是应用层数据，应用层数据是按照一定格式来组织的，这个格式就是应用层协议，譬如http协议。
 4. 传输层在往应用层传递数据时，并不保证每次传递的数据是一个完整的应用层数据包（以http协议为例，就是并不保证应用层收到的数据刚好可以组成一个http包），这就是我们经常提到的半包和粘包。传输层只负责传递byte[]数据，应用层需要自己对byte[]数据进行解码，以http协议为例，就是把byte[]解码成http协议格式的字符串。
-
-** 1.1 TCP/IP协议分层模型
-:PROPERTIES:
-:ID:       2d2880f1-eab8-4a62-88bc-4f5f80d2e665
-:END:
-	大学教科书中有说分成7层，也有说分成4层的，笔者觉得4层更合适一些，像七层中的第5、6层完全不是必须的，就算有也是各自制定协议，而制定协议的人基本不会去考虑第5层叫会话层第6层叫表示层，在私有应用层协议中，更多的是会私定一个握手互信协议，以表示通讯双方是互信的
-[[file:img/1.1tcp.jpg][tcp/ip网络协议]]
-*** 应用层？
-
-1. 你想用java写一个网络程序，你写的这个程序就是应用层
-2. 所以QQ、微信、以及你正在使用的浏览器，都是应用层
-*** 应用层数据？
-1. 你想通过你前面写的这个网络程序发一个字符串”are you ok”到对方，这个字符串”are you ok”就是应用层数据
-2. 对方回你一句”yes, I am fine”，这个”yes, I am fine”也是应用层数据
-*** 传输层?
+?
 
 1. 传输层要么走TCP协议，要么走UDP协议，没有第三种协议
 2. TCP协议的通信双方，需要知道彼此都在家呆着，且由客户端主动发起连接
 3. UDP协议，客户端知道服务器家住在哪，但并不知道服务器在不在家，扔条消息去服务器家，如果服务器不在家这条消息就被丢了
 4. 应用层把数据丢给传输层后，传输层把数据进行一下包装，包装纸上面写着“源端口、目的端口、序号、确认序号、检验和等TCP自身的数据”
 5. 传输层把数据给应用层时，会拆开对方的包装纸，应用层只看得到对方应用层发的数据
-
-*** 传输层数据?
+*** 传输层数据?                                                  :@Company:
 
 1. 就是应用层的数据带上一张包装纸后的数据
 2. 这层包装纸就是传输层的元数据或叫头部数据
 3. 为什么要带包装纸？因为要实名呀，现在快递都要实名了
+
+[[https://mp.weixin.qq.com/s/Koto-w9U9mt8H1zZW2ETZQ][Session会话本质讨论]]
+
+
+
