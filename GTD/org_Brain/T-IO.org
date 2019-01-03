@@ -18,8 +18,8 @@ tio-http 模块的升级
 
 [tio-utils]：优化tio内置的Cache框架
 
-•	Tio.java部分方法调整
-•	[tio-http]：HttpRequest增加很多便捷的方法用于获取参数
+1. Tio.java部分方法调整
+2. [tio-http]：HttpRequest增加很多便捷的方法用于获取参数
 
 #+BEGIN_SRC java
 1.	  getObject(String name)
@@ -33,17 +33,23 @@ tio-http 模块的升级
 #+END_SRC
 
 
+1. [tio-http]：增加和优化forward()
+
 #+BEGIN_SRC java
-•	[tio-http]：增加和优化forward()
 org.tio.http.common.HttpRequest.forward(String)
 org.tio.http.server.util.Resps.forward(HttpRequest, String)
-•	[tio-http]：优化404, 500处理，由原来的redirect改为forward，用户体验更棒一些
-•	[tio-http]：注释中内置forward字段，用起来跟nginx的rewrite差不多
+#+END_SRC
+
+2. [tio-http]：优化404, 500处理，由原来的redirect改为forward，用户体验更棒一些
+3. [tio-http]：注释中内置forward字段，用起来跟nginx的rewrite差不多
+
+#+BEGIN_SRC java
 @RequestPath(value = “/{adid}”, forward = “/ad/methodB”)
 public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception {…}
-外部访问”/ad/12345”，对内的处理逻辑就是”/ad/methodB?adid=12345”
-•	[tio-websocket]：优化一个小的编码问题，减少新对象的创建
 #+END_SRC
+
+外部访问”/ad/12345”，对内的处理逻辑就是”/ad/methodB?adid=12345”
+4. [tio-websocket]：优化一个小的编码问题，减少新对象的创建
 
 最新pom
 
@@ -61,17 +67,20 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 :ID:       479f1064-71ea-4e13-bd59-867bbbfca10d
 :END:
 *** 修改点
-•	[tio-utils]：增加和优化forward()
-•	zookpeer，重连策略换成RetryForever
-•	[tio-core]
-•	ChannelContext.java增加属性
-•	logWhenDecodeError: 解码异常时，是否打印异常日志
-•	heartbeatTimeout : https://gitee.com/tywo45/t-io/issues/IP9WY
-•	[tio-http]
-•	限流接口重新设计，更灵活，更多主动权下放到业务端
-•	HttpRequest增加isForward，用于处理forward的请求
-•	对于http，ip黑名单判断放在请求头解析完成时进行
+
+1. [tio-utils]：增加和优化forward()
+2. zookpeer，重连策略换成RetryForever
+3. [tio-core]
+4. ChannelContext.java增加属性
+5. logWhenDecodeError: 解码异常时，是否打印异常日志
+6. heartbeatTimeout : https://gitee.com/tywo45/t-io/issues/IP9WY
+7. [tio-http]
+8. 限流接口重新设计，更灵活，更多主动权下放到业务端
+9. HttpRequest增加isForward，用于处理forward的请求
+10. 对于http，ip黑名单判断放在请求头解析完成时进行
+
 最新pom
+
 
 #+BEGIN_SRC java
 1.	<dependency>
@@ -93,13 +102,15 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 [[file:img/11.1extend.png][tio衍生品]]
 
 *** 修改点
-•	新需求：https://gitee.com/tywo45/t-io/issues/IOZQB
-•	增加org.tio.utils.lock.ReadLockHandler
-•	增加org.tio.utils.lock.WriteLockHandler
-•	优化http解码过程中的字符编码(对于ws原来是固定utf-8的，现在改成可配)
-•	拉黑相关的从GroupContext移到ServerGroupContext
-•	ws握手包改名，原名：handshakeRequestPacket，现名：handshakeRequest
-•	合并PR
+
+1. 新需求：https://gitee.com/tywo45/t-io/issues/IOZQB
+2. 增加org.tio.utils.lock.ReadLockHandler
+3. 增加org.tio.utils.lock.WriteLockHandler
+4. 优化http解码过程中的字符编码(对于ws原来是固定utf-8的，现在改成可配)
+5. 拉黑相关的从GroupContext移到ServerGroupContext
+6. ws握手包改名，原名：handshakeRequestPacket，现名：handshakeRequest
+7. 合并PR
+
 最新pom
 
 
@@ -1122,10 +1133,11 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 :ID:       635b03e5-34e8-4013-805d-51156b241900
 :END:
 
-•	在t-io的官方主群，经常会有用户发出这样的感叹：“用tio写一个聊天室或在线客服，几乎就是个分分钟的事儿”。如果不考虑业务上的细节，这话儿看似浮夸，却又十分接近事实，所以大家也看到了：在t-io出来后，码云上用t-io做的开源im项目就非常多。
-•	本文手把手教大家如何用t-io快速做一个网页版聊天室——这不仅仅只是个demo，它更多的可作为项目的一个脚手架，读者可以以此为基础，完成一个真实的网页聊天室，甚至扩展成一个在线客服。
-•	本文有部分代码并非必须，譬如数据监控相关的listener，但是在大型的项目中，对这些监控数据的处理却是一个必须，所以本文从实用角度出发，加了不少很实用的代码，望读者朋友喜欢并从中获益。
-•	为了更贴近实战，本例子所在的工程还提供了tio-http-server的启动代码，不过本文并不会介绍和tio-http-server相关的知识点，有需要的朋友自行去https://local.t-io.org/doc/126掌握tio-http-server的相关知识
+
+1. 	在t-io的官方主群，经常会有用户发出这样的感叹：“用tio写一个聊天室或在线客服，几乎就是个分分钟的事儿”。如果不考虑业务上的细节，这话儿看似浮夸，却又十分接近事实，所以大家也看到了：在t-io出来后，码云上用t-io做的开源im项目就非常多。
+2. 	本文手把手教大家如何用t-io快速做一个网页版聊天室——这不仅仅只是个demo，它更多的可作为项目的一个脚手架，读者可以以此为基础，完成一个真实的网页聊天室，甚至扩展成一个在线客服。
+3. 	本文有部分代码并非必须，譬如数据监控相关的listener，但是在大型的项目中，对这些监控数据的处理却是一个必须，所以本文从实用角度出发，加了不少很实用的代码，望读者朋友喜欢并从中获益。
+4.	为了更贴近实战，本例子所在的工程还提供了tio-http-server的启动代码，不过本文并不会介绍和tio-http-server相关的知识点，有需要的朋友自行去https://local.t-io.org/doc/126掌握tio-http-server的相关知识
 
 * 7. t-io编程高级知识
 :PROPERTIES:
@@ -1139,6 +1151,83 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 :PROPERTIES:
 :ID:       1f053069-e55b-4c3c-a645-5c26d7f5d3c5
 :END:
+1.maven拉tio包
+
+
+#+BEGIN_SRC java
+1.	
+2.	        <dependency>
+3.	            <groupId>org.t-io</groupId>
+4.	            <artifactId>tio-core</artifactId>
+5.	            <version>3.2.1.v20181024-RELEASE</version>
+6.	        </dependency>
+#+END_SRC
+
+*** 2.从tio-showcase拉来helloworld代码
+[[file:img/7.6hello.png][helloworld]] 
+*** 3.HelloClientStarter HelloServerStarter 实现IPlugin,把start实现
+
+#+BEGIN_SRC java
+1.	public class HelloServerStarter implements IPlugin {
+2.	    //handler, 包括编码、解码、消息处理
+3.	    public static ServerAioHandler aioHandler = new HelloServerAioHandler();
+4.	
+5.	    //事件监听器，可以为null，但建议自己实现该接口，可以参考showcase了解些接口
+6.	    public static ServerAioListener aioListener = null;
+7.	
+8.	    //一组连接共用的上下文对象
+9.	    public static ServerGroupContext serverGroupContext = new ServerGroupContext("hello-tio-server", aioHandler, aioListener);
+10.	
+11.	    //tioServer对象
+12.	    public static TioServer tioServer = new TioServer(serverGroupContext);
+13.	
+14.	    //有时候需要绑定ip，不需要则null
+15.	    public static String serverIp = null;
+16.	
+17.	    //监听的端口
+18.	    public static int serverPort = Const.PORT;
+19.	
+20.	    /**
+21.	     * 启动程序入口
+22.	     */
+23.	    public static void main(String[] args) throws IOException {
+24.	        serverGroupContext.setHeartbeatTimeout(Const.TIMEOUT);
+25.	        tioServer.start(serverIp, serverPort);
+26.	    }
+27.	
+28.	    @Override
+29.	    public boolean start() {
+30.	        serverGroupContext.setHeartbeatTimeout(Const.TIMEOUT);
+31.	        try {
+32.	            tioServer.start(serverIp, serverPort);
+33.	        } catch (IOException e) {
+34.	            e.printStackTrace();
+35.	        }
+36.	        return true;
+37.	    }
+38.	
+39.	    @Override
+40.	    public boolean stop() {
+41.	        return false;
+42.	    }
+43.	}
+#+END_SRC
+
+
+*** 4.启动服务端、客户端搞定
+
+#+BEGIN_SRC java
+1.	    @Override
+2.	    public void configPlugin(Plugins me) {
+3.	        me.add(new HelloServerStarter());
+4.	        me.add(new HelloClientStarter());
+5.	    }
+#+END_SRC
+
+[[file:img/7.6server.png][server启动]] 
+*** 5.代码
+[[https://gitee.com/xiaoxustudent/jfinal-tio][jfinal整合tio]]
+
 ** 7.5 Channel流量统计与监控
 :PROPERTIES:
 :ID:       37278297-877c-42ee-b24e-a82fdcc7e98b
@@ -1147,29 +1236,470 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 :PROPERTIES:
 :ID:       9b730606-9b7e-46d6-a83c-ba6dba724694
 :END:
+ip的监控数据定义在IpStat中
+
+#+BEGIN_SRC java
+
+  1.	package org.tio.core.stat;
+  2.	
+  3.	import java.util.Date;
+  4.	import java.util.concurrent.atomic.AtomicInteger;
+  5.	import java.util.concurrent.atomic.AtomicLong;
+  6.	
+  7.	import org.tio.utils.SystemTimer;
+  8.	import org.tio.utils.hutool.BetweenFormater;
+  9.	import org.tio.utils.hutool.BetweenFormater.Level;
+  10.	
+  11.	/**
+  12.	 * 这个是给服务器用的，主要用于监控IP情况，随时拉黑恶意攻击IP
+  13.	 * @author tanyaowu
+  14.	 * 2017年8月20日 下午8:02:41
+  15.	 */
+  16.	public class IpStat implements java.io.Serializable {
+  17.	
+  18.	    private static final long serialVersionUID = -6942731710053482089L;
+  19.	
+  20.	    private Date start = new Date();
+  21.	
+  22.	    /**
+  23.	     * 当前统计了多久，单位：毫秒
+  24.	     */
+  25.	    private long duration;
+  26.	
+  27.	    /**
+  28.	     * 时长类型，单位：秒，譬如60，3600等
+  29.	     */
+  30.	    private Long durationType;
+  31.	
+  32.	    /**
+  33.	     * 客户端ip
+  34.	     */
+  35.	    private String ip;
+  36.	
+  37.	    /**
+  38.	     * 解码异常的次数
+  39.	     */
+  40.	    private AtomicInteger decodeErrorCount = new AtomicInteger();
+  41.	
+  42.	    /**
+  43.	     * 收到该IP连接请求的次数
+  44.	     */
+  45.	    private AtomicInteger requestCount = new AtomicInteger();
+  46.	
+  47.	    /**
+  48.	     * 本IP已发送的字节数
+  49.	     */
+  50.	    private AtomicLong sentBytes = new AtomicLong();
+  51.	
+  52.	    /**
+  53.	     * 本IP已发送的packet数
+  54.	     */
+  55.	    private AtomicLong sentPackets = new AtomicLong();
+  56.	
+  57.	    /**
+  58.	     * 本IP已处理的字节数
+  59.	     */
+  60.	    private AtomicLong handledBytes = new AtomicLong();
+  61.	
+  62.	    /**
+  63.	     * 本IP已处理的packet数
+  64.	     */
+  65.	    private AtomicLong handledPackets = new AtomicLong();
+  66.	
+  67.	    /**
+  68.	     * 处理消息包耗时，单位：毫秒
+  69.	     */
+  70.	    private AtomicLong handledPacketCosts = new AtomicLong();
+  71.	
+  72.	    /**
+  73.	     * 本IP已接收的字节数
+  74.	     */
+  75.	    private AtomicLong receivedBytes = new AtomicLong();
+  76.	
+  77.	    /**
+  78.	     * 本IP已接收了多少次TCP数据包
+  79.	     */
+  80.	    private AtomicLong receivedTcps = new AtomicLong();
+  81.	
+  82.	    /**
+  83.	     * 本IP已接收的packet数
+  84.	     */
+  85.	    private AtomicLong receivedPackets = new AtomicLong();
+  86.	
+  87.	    public IpStat(String ip, Long durationType) {
+  88.	        this.ip = ip;
+  89.	        this.durationType = durationType;
+  90.	    }
+  91.	
+  92.	    /**
+  93.	     * 平均每次TCP接收到的字节数，这个可以用来监控慢攻击，配置PacketsPerTcpReceive定位慢攻击
+  94.	     */
+  95.	    public double getBytesPerTcpReceive() {
+  96.	        if (receivedTcps.get() == 0) {
+  97.	            return 0;
+  98.	        }
+  99.	        double ret = (double) receivedBytes.get() / (double) receivedTcps.get();
+  100.	        return ret;
+  101.	    }
+  102.	
+  103.	    /**
+  104.	     * @return the decodeErrorCount
+  105.	     */
+  106.	    public AtomicInteger getDecodeErrorCount() {
+  107.	        return decodeErrorCount;
+  108.	    }
+  109.	
+  110.	    public long getDuration() {
+  111.	        duration = SystemTimer.currTime - this.start.getTime();
+  112.	        return duration;
+  113.	    }
+  114.	
+  115.	    /**
+  116.	     * @return the durationType
+  117.	     */
+  118.	    public Long getDurationType() {
+  119.	        return durationType;
+  120.	    }
+  121.	
+  122.	    /**
+  123.	     * @return the duration
+  124.	     */
+  125.	    public String getFormatedDuration() {
+  126.	        duration = SystemTimer.currTime - this.start.getTime();
+  127.	        BetweenFormater betweenFormater = new BetweenFormater(duration, Level.MILLSECOND);
+  128.	        return betweenFormater.format();
+  129.	    }
+  130.	
+  131.	    /**
+  132.	     * @return the countHandledByte
+  133.	     */
+  134.	    public AtomicLong getHandledBytes() {
+  135.	        return handledBytes;
+  136.	    }
+  137.	
+  138.	    /**
+  139.	     * @return the countHandledPacket
+  140.	     */
+  141.	    public AtomicLong getHandledPackets() {
+  142.	        return handledPackets;
+  143.	    }
+  144.	
+  145.	    /**
+  146.	     * @return the ip
+  147.	     */
+  148.	    public String getIp() {
+  149.	        return ip;
+  150.	    }
+  151.	
+  152.	    /**
+  153.	     * 平均每次TCP接收到的业务包数，这个可以用来监控慢攻击，此值越小越有攻击嫌疑
+  154.	     */
+  155.	    public double getPacketsPerTcpReceive() {
+  156.	        if (receivedTcps.get() == 0) {
+  157.	            return 0;
+  158.	        }
+  159.	        double ret = (double) receivedPackets.get() / (double) receivedTcps.get();
+  160.	        return ret;
+  161.	    }
+  162.	
+  163.	    /**
+  164.	     * @return the countReceivedByte
+  165.	     */
+  166.	    public AtomicLong getReceivedBytes() {
+  167.	        return receivedBytes;
+  168.	    }
+  169.	
+  170.	    /**
+  171.	     * @return the countReceivedPacket
+  172.	     */
+  173.	    public AtomicLong getReceivedPackets() {
+  174.	        return receivedPackets;
+  175.	    }
+  176.	
+  177.	    /**
+  178.	     * @return the receivedTcps
+  179.	     */
+  180.	    public AtomicLong getReceivedTcps() {
+  181.	        return receivedTcps;
+  182.	    }
+  183.	
+  184.	    /**
+  185.	     * @return the requestCount
+  186.	     */
+  187.	    public AtomicInteger getRequestCount() {
+  188.	        return requestCount;
+  189.	    }
+  190.	
+  191.	    /**
+  192.	     * @return the countSentByte
+  193.	     */
+  194.	    public AtomicLong getSentBytes() {
+  195.	        return sentBytes;
+  196.	    }
+  197.	
+  198.	    /**
+  199.	     * @return the countSentPacket
+  200.	     */
+  201.	    public AtomicLong getSentPackets() {
+  202.	        return sentPackets;
+  203.	    }
+  204.	
+  205.	    /**
+  206.	     * @return the start
+  207.	     */
+  208.	    public Date getStart() {
+  209.	        return start;
+  210.	    }
+  211.	
+  212.	    /**
+  213.	     * @param durationType the durationType to set
+  214.	     */
+  215.	    public void setDurationType(Long durationType) {
+  216.	        this.durationType = durationType;
+  217.	    }
+  218.	
+  219.	    /**
+  220.	     * @param ip the ip to set
+  221.	     */
+  222.	    public void setIp(String ip) {
+  223.	        this.ip = ip;
+  224.	    }
+  225.	
+  226.	    /**
+  227.	     * @param start the start to set
+  228.	     */
+  229.	    public void setStart(Date start) {
+  230.	        this.start = start;
+  231.	    }
+  232.	
+  233.	    public AtomicLong getHandledPacketCosts() {
+  234.	        return handledPacketCosts;
+  235.	    }
+  236.	
+  237.	    /**
+  238.	     * 处理packet平均耗时，单位：毫秒
+  239.	     * @return
+  240.	     */
+  241.	    public double getHandledCostsPerPacket() {
+  242.	        if (handledPackets.get() > 0) {
+  243.	            return handledPacketCosts.get() / handledPackets.get();
+  244.	        }
+  245.	        return 0;
+  246.	    }
+  247.	}
+#+END_SRC
+
+*** 使用步骤：
+•	实现IpStatListener
+
+
+#+BEGIN_SRC java
+  4.	package org.tio.showcase.websocket.server;
+  5.	
+  6.	import org.slf4j.Logger;
+  7.	import org.slf4j.LoggerFactory;
+  8.	import org.tio.core.ChannelContext;
+  9.	import org.tio.core.GroupContext;
+  10.	import org.tio.core.intf.Packet;
+  11.	import org.tio.core.stat.IpStat;
+  12.	import org.tio.core.stat.IpStatListener;
+  13.	
+  14.	/**
+  15.	 * 
+  16.	 * @author tanyaowu
+  17.	 *
+  18.	 */
+  19.	public class ShowcaseIpStatListener implements IpStatListener {
+  20.	    @SuppressWarnings("unused")
+  21.	    private static Logger log = LoggerFactory.getLogger(ShowcaseIpStatListener.class);
+  22.	
+  23.	    public static final ShowcaseIpStatListener me = new ShowcaseIpStatListener();
+  24.	
+  25.	    /**
+  26.	     * 
+  27.	     */
+  28.	    private ShowcaseIpStatListener() {
+  29.	    }
+  30.	
+  31.	    @Override
+  32.	    public void onExpired(GroupContext groupContext, IpStat ipStat) {
+  33.	        //在这里把统计数据入库中或日志
+  34.	//        if (log.isInfoEnabled()) {
+  35.	//            log.info("可以把统计数据入库\r\n{}", Json.toFormatedJson(ipStat));
+  36.	//        }
+  37.	    }
+  38.	
+  39.	    @Override
+  40.	    public void onAfterConnected(ChannelContext channelContext, boolean isConnected, boolean isReconnect, IpStat ipStat) throws Exception {
+  41.	//        if (log.isInfoEnabled()) {
+  42.	//            log.info("onAfterConnected\r\n{}", Json.toFormatedJson(ipStat));
+  43.	//        }
+  44.	    }
+  45.	
+  46.	    @Override
+  47.	    public void onDecodeError(ChannelContext channelContext, IpStat ipStat) {
+  48.	//        if (log.isInfoEnabled()) {
+  49.	//            log.info("onDecodeError\r\n{}", Json.toFormatedJson(ipStat));
+  50.	//        }
+  51.	    }
+  52.	
+  53.	    @Override
+  54.	    public void onAfterSent(ChannelContext channelContext, Packet packet, boolean isSentSuccess, IpStat ipStat) throws Exception {
+  55.	//        if (log.isInfoEnabled()) {
+  56.	//            log.info("onAfterSent\r\n{}\r\n{}", packet.logstr(), Json.toFormatedJson(ipStat));
+  57.	//        }
+  58.	    }
+  59.	
+  60.	    @Override
+  61.	    public void onAfterDecoded(ChannelContext channelContext, Packet packet, int packetSize, IpStat ipStat) throws Exception {
+  62.	//        if (log.isInfoEnabled()) {
+  63.	//            log.info("onAfterDecoded\r\n{}\r\n{}", packet.logstr(), Json.toFormatedJson(ipStat));
+  64.	//        }
+  65.	    }
+  66.	
+  67.	    @Override
+  68.	    public void onAfterReceivedBytes(ChannelContext channelContext, int receivedBytes, IpStat ipStat) throws Exception {
+  69.	//        if (log.isInfoEnabled()) {
+  70.	//            log.info("onAfterReceivedBytes\r\n{}", Json.toFormatedJson(ipStat));
+  71.	//        }
+  72.	    }
+  73.	
+  74.	    @Override
+  75.	    public void onAfterHandled(ChannelContext channelContext, Packet packet, IpStat ipStat, long cost) throws Exception {
+  76.	//        if (log.isInfoEnabled()) {
+  77.	//            log.info("onAfterHandled\r\n{}\r\n{}", packet.logstr(), Json.toFormatedJson(ipStat));
+  78.	//        }
+  79.	    }
+  80.	
+  81.	}
+
+#+END_SRC
+
+•	初始化时添加监听器和监控时段
+
+
+#+BEGIN_SRC java
+  1.	serverGroupContext.setIpStatListener(ShowcaseIpStatListener.me);
+  2.	serverGroupContext.ipStats.addDuration(Time.MINUTE_1 * 5);
+
+#+END_SRC
+
+•	OK了，什么时候拉黑IP以及把监控数据入库都在ShowcaseIpStatListener中实现
 ** 7.3 拉黑IP
 :PROPERTIES:
 :ID:       6824502c-d4b1-4410-a7df-e3c42ab9b6a7
 :END:
+简单到极致，只需要一行代码
+
+#+BEGIN_SRC java
+  1.	Tio.IpBlacklist.add(groupContext, channelContext.getClientNode().getIp());
+#+END_SRC
+
 ** 7.2 群组成员内置排序
 :PROPERTIES:
 :ID:       09b665d5-b995-44b2-b003-607194cdcb88
 :END:
+实现比较器Comparator
+
+#+BEGIN_SRC java
+  1.	package xxx;
+  2.	
+  3.	import java.util.Comparator;
+  4.	import java.util.Objects;
+  5.	import java.util.Set;
+  6.	import java.util.TreeSet;
+  7.	
+  8.	import org.slf4j.Logger;
+  9.	import org.slf4j.LoggerFactory;
+  10.	import org.tio.core.ChannelContext;
+  11.	
+  12.	
+  13.	import cn.hutool.core.util.StrUtil;
+  14.	
+  15.	/**
+  16.	 * @author tanyaowu
+  17.	 *
+  18.	 */
+  19.	public class ChannelContextComparator implements Comparator<ChannelContext> {
+  20.	    @SuppressWarnings("unused")
+  21.	    private static Logger log = LoggerFactory.getLogger(ChannelContextComparator.class);
+  22.	
+  23.	    public static final ChannelContextComparator me = new ChannelContextComparator();
+  24.	
+  25.	    /**
+  26.	     * 
+  27.	     */
+  28.	    private ChannelContextComparator() {
+  29.	    }
+  30.	
+  31.	    /**
+  32.	     * o2在前面请返回1
+  33.	     * o1在前面请返回-1
+  34.	     */
+  35.	    @Override
+  36.	    public int compare(ChannelContext o1, ChannelContext o2) {
+  37.	        return compareWhenEqual(o1, o2);
+  38.	    }
+  39.	
+  40.	    /**
+  41.	     * 当都为游客或为同一个用户时
+  42.	     * o2在前面请返回1
+  43.	     * o1在前面请返回-1
+  44.	     */
+  45.	    private int compareWhenEqual(ChannelContext o1, ChannelContext o2) {
+  46.	        if (o2.stat.timeCreated > o1.stat.timeCreated) {//后进的在前面（2在前面 ）
+  47.	            return 1;
+  48.	        } else if (o2.stat.timeCreated < o1.stat.timeCreated) {//后进的在前面（1在前面 ）
+  49.	            return -1;
+  50.	        } else {
+  51.	            String cid1 = o1.getId();
+  52.	            String cid2 = o2.getId();
+  53.	            int ret = StrUtil.compare(cid1, cid2, false);//cid1.compareTo(cid2);
+  54.	            return ret;
+  55.	        }
+  56.	    }
+  57.	
+  58.	
+  59.	}
+
+#+END_SRC
+
+初始化时，设置一下上面实现的比较器初始化时，设置一下上面实现的比较器
+
+
+#+BEGIN_SRC java
+  1.	serverGroupContext.groups.setChannelContextComparator(ChannelContextComparator.me);
+#+END_SRC
+
+收功
+这样做了后，群组里的元素就是有序放置的，这个对于IM中的群聊非常有用，牛吧云播上帝视角的观众在线列表，其排序就是用t-io内置的，性能非常好，更重要的是只要你的排序算法没问题，就不会出现资源释放不了的情况！
+
 ** 7.1 SSL?一行代码解决
 :PROPERTIES:
 :ID:       2c0ba1e1-fb90-4049-8290-004d7d667bed
 :END:
-申请SSL证书
+
+*** 申请SSL证书
 阿里云可以申请，当然还有很多申请方式，本话题不在本文档范围
-生成jks证书
+*** 生成jks证书
+
+#+BEGIN_SRC java
 1.	keytool -importkeystore -srckeystore .\xxxx.pfx -destkeystore .\xxxx.jks -srcstoretype PKCS12 -deststoretype JKS
+#+END_SRC
+
 一行代码配上SSL
+
+#+BEGIN_SRC java
 1.	serverGroupContext.useSsl("/cert/xxx.jks", "/cert/xxx.jks", "******");
+#+END_SRC
+
 •	注册useSsl()是在ServerGroupContext.java中定义的，而不是GroupContext
 打完收工
 是不是简单到极致？
 意犹未尽，那就看一下t-io源代码吧
 
+
+#+BEGIN_SRC java
 1.	/**
 2.	     * 
 3.	     * @param keyStoreFile 如果是以"classpath:"开头，则从classpath中查找，否则视为普通的文件路径
@@ -1183,6 +1713,8 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 11.	            this.setSslConfig(sslConfig);
 12.	        }
 13.	    }
+#+END_SRC
+
 
 
 * 6. 生成项目的Helloworld
@@ -3545,6 +4077,7 @@ GroupContext对象包含的信息非常多，主要对象见下图
 :PROPERTIES:
 :ID:       b07f3079-43a4-419b-a2c1-d412736b6f23
 :END:
+
 每一个tcp连接的建立都会产生一个ChannelContext对象，这是个抽象类，如果你是用t-io作tcp客户端，那么就是ClientChannelContext，如果你是用tio作tcp服务器，那么就是ServerChannelContext
     [[file:img/5.3tcp.png][tcp]] 
 用户可以把业务数据通过ChannelContext对象和TCP连接关联起来，像下面这样设置属性
@@ -3606,6 +4139,7 @@ ChannelContext是t-io中非常重要的类，他是业务和连接的沟通桥�
 :PROPERTIES:
 :ID:       509e5370-dd8d-4dd8-aab9-f4f42aaadc3c
 :END:
+
 Packet是用于表述业务数据结构的，我们通过继承Packet来实现自己的业务数据结构，对于各位而言，把Packet看作是一个普通的VO对象即可。
 此处贴一下Packet的源代码以凑一些字数，不过用户其实并不需要太关心这个源代码，只需要知道要继承这个类以实现自己的业务数据结构类即可。
 
@@ -3834,6 +4368,7 @@ Packet是用于表述业务数据结构的，我们通过继承Packet来实现�
 :PROPERTIES:
 :ID:       ab4e1993-37be-4596-b9bf-8cf2884eea75
 :END:
+
 t-io收发消息及处理过程，可以用一张图清晰地表达出来
     [[file:img/5.1getAndReceive.png][消息收发过程]]
 * 4. t-io示范工程
@@ -3844,14 +4379,20 @@ t-io收发消息及处理过程，可以用一张图清晰地表达出来
 :PROPERTIES:
 :ID:       d736fcbd-680c-4697-b09b-1a2536488228
 :END:
-引言
+
+*** 引言
+
 •	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
 •	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
 •	tio-udp是包含在tio-core的一个功能子集
-tio-udp-showcase工程简介
+
+*** tio-udp-showcase工程简介
+
 •	用于学习tio-udp-server的示范工程
 •	工程地址：https://gitee.com/tywo45/tio-udp-showcase
-学习步骤
+
+*** 学习步骤
+
 •	把工程以maven的形式导入到eclipse后
 •	运行org.tio.showcase.udp.server.ShowcaseUdpServerStarter启动udp服务器，启动成功后，日志如下
 
@@ -3878,11 +4419,14 @@ tio-udp-showcase工程简介
 :ID:       268737f3-942e-4150-93d8-e69799397b00
 :END:
 
-引言
+*** 引言
+
 •	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
 •	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
 •	tio-http-server是基于tio-core实现的http服务器，自带t-io提供的各项API以及一流的性能和稳定性
-tio-http-server-showcase工程简介
+
+*** tio-http-server-showcase工程简介
+
 •	用于学习tio-http-server的示范工程
 •	工程地址：https://gitee.com/tywo45/tio-http-server-showcase
 入口程序
@@ -3915,6 +4459,7 @@ tio-http-server-showcase工程简介
   | Pid               | 9792                                                               |
   |----------------------------------------------------------------------------------------|
 #+END_SRC
+
 访问
 用浏览器打开：http://127.0.0.1
  
@@ -3925,11 +4470,14 @@ tio-http-server-showcase工程简介
 :ID:       6b6805dc-b178-4ed6-8369-0ddbc8e96586
 :END:
 
-引言
+*** 引言
+
 •	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
 •	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
 •	tio-websocket-server是基于tio-core实现的websocket服务器，自带t-io提供的各项API以及一流的性能和稳定性
-tio-websocket-showcase工程简介
+
+*** tio-websocket-showcase工程简介
+
 •	用于学习tio-websocket-server的示范工程
 •	包括wss和流量监控及处理等高级特性
 •	还包括t-io作者写的一个用于连接websocket服务器的js小框架——tiows.js（内置断链重连、定时主动发心跳等功能，使用API极其简单）
@@ -3937,13 +4485,17 @@ tio-websocket-showcase工程简介
 •	效果图
  
     [[file:img/4.2weixin.png][微信聊天窗口]]
-学习步骤
+
+*** 学习步骤
+
 •	把工程以maven的形式导入到eclipse后
 •	运行org.tio.showcase.websocket.server.ShowcaseWebsocketStarter
 •	用chrome打开http://127.0.0.1/index.html（说明：本工程不仅会启动websocket服务器，还会启动一个http服务器用于访问websocket服务器）
 •	这是个用iframe嵌入了两个demo.html的页面，方便在一个窗口查看群聊效果
 •	可以愉快地聊天了
-说明
+
+*** 说明
+
 •	服务器端，大家看代码就好，用起来比较简单
 •	客户端（js），page/tio/tiows.js是和业务无关的websocket js小框架，主要是实现了重连、定时发心跳等和业务无关的功能
 
@@ -3951,16 +4503,21 @@ tio-websocket-showcase工程简介
 :PROPERTIES:
 :ID:       a1342ea8-bf92-40e9-919c-2e7d193f6b8b
 :END:
-引言
+*** 引言
+
 •	t-io提供了非常实用的示范工程，这些示范工程不仅仅是供用户学习t-io用的，也是作者本人用来快速搭建新项目的脚手架
+
 •	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
-tio-showcase工程简介
+*** tio-showcase工程简介
+
 •	用于学习t-io的示范工程，一共3个示范工程
 •	在t-io工程结构一节中已经说了：一般用户口中的t-io就是指tio-core
 •	工程地址：https://gitee.com/tywo45/tio-showcase
 •	下面分别对这三个工程进行简介
-helloworld
+
+*** helloworld
 •	helloworld是入门t-io最好的方式！而作者也是用心写了一个对生产项目有参考价值的hello tio，而不是仅仅是show hello而hello
+
 •	服务器端入口程序：org.tio.examples.helloworld.server.HelloServerStarter
 •	客户端入口程序：org.tio.examples.helloworld.client.HelloClientStarter
 •	本例子演示的是一个典型的TCP长连接应用，大体业务简介如下。
@@ -3971,12 +4528,16 @@ helloworld
 •	服务器收到消息后会回应一条消息
 •	之后，框架层会自动从客户端发心跳到服务器，服务器也会检测心跳有没有超时（这些事都是框架做的，业务层只需要配一个心跳超时参数即可）
 •	框架层会在断链后自动重连（这些事都是框架做的，业务层只需要配一个重连配置对象即可）
-showcase
+
+*** showcase
+
 •	showcase工程用于进一步掌握t-io，甚至可以用作你项目的脚手架（@精灵007 同学已经用这个工程完成了3个项目）
 •	这里有一篇博客，可以参考：ShowCase设计分析
 •	服务器端入口程序：org.tio.examples.showcase.server.ShowcaseServerStarter
 •	客户端入口程序：org.tio.examples.showcase.client.ShowcaseClientStarter
-IM
+
+*** IM
+
 •	im项目在1.7.0版本前一直都开放的（见：https://gitee.com/tywo45/t-io/tree/v1.7.0），考虑到im的复杂性，这会给作者带来一些额外的咨询工作，所以在后面的版本没有放出来，现在重新放出来
 •	j-im项目是在本项目的基础上改造而来的，有兴趣的可以看看j-im
 •	服务器端入口程序：org.tio.examples.im.server.ImServerStarter
