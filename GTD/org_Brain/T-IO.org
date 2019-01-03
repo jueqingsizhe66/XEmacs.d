@@ -8,13 +8,472 @@
 :PROPERTIES:
 :ID:       e065e50e-f484-43e6-882d-aa507dd26ec6
 :END:
+** 11.3 t-io 3.2.2
+:PROPERTIES:
+:ID:       efcde747-197c-4412-a476-003ccbc9f9af
+:END:
+tio-http 模块的升级
+
+*** 修改点
+
+[tio-utils]：优化tio内置的Cache框架
+
+•	Tio.java部分方法调整
+•	[tio-http]：HttpRequest增加很多便捷的方法用于获取参数
+
+#+BEGIN_SRC java
+1.	  getObject(String name)
+2.	  getString(String name)
+3.	  getUploadFile(String name)
+4.	  getInt(String name)
+5.	  getShort(String name)
+6.	  getLong(String name)
+7.	  getDouble(String name)
+8.	  getFloat(String name)
+#+END_SRC
+
+
+#+BEGIN_SRC java
+•	[tio-http]：增加和优化forward()
+org.tio.http.common.HttpRequest.forward(String)
+org.tio.http.server.util.Resps.forward(HttpRequest, String)
+•	[tio-http]：优化404, 500处理，由原来的redirect改为forward，用户体验更棒一些
+•	[tio-http]：注释中内置forward字段，用起来跟nginx的rewrite差不多
+@RequestPath(value = “/{adid}”, forward = “/ad/methodB”)
+public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception {…}
+外部访问”/ad/12345”，对内的处理逻辑就是”/ad/methodB?adid=12345”
+•	[tio-websocket]：优化一个小的编码问题，减少新对象的创建
+#+END_SRC
+
+最新pom
+
+#+BEGIN_SRC java
+1.	<dependency>
+2.	    <groupId>org.t-io</groupId>
+3.	    <artifactId>tio-core</artifactId>
+4.	    <version>3.2.2.v20181122-RELEASE</version>
+5.	</dependency>
+#+END_SRC
+
+
+** 11.2 t-io 3.2.3
+:PROPERTIES:
+:ID:       479f1064-71ea-4e13-bd59-867bbbfca10d
+:END:
+*** 修改点
+•	[tio-utils]：增加和优化forward()
+•	zookpeer，重连策略换成RetryForever
+•	[tio-core]
+•	ChannelContext.java增加属性
+•	logWhenDecodeError: 解码异常时，是否打印异常日志
+•	heartbeatTimeout : https://gitee.com/tywo45/t-io/issues/IP9WY
+•	[tio-http]
+•	限流接口重新设计，更灵活，更多主动权下放到业务端
+•	HttpRequest增加isForward，用于处理forward的请求
+•	对于http，ip黑名单判断放在请求头解析完成时进行
+最新pom
+
+#+BEGIN_SRC java
+1.	<dependency>
+2.	    <groupId>org.t-io</groupId>
+3.	    <artifactId>tio-core</artifactId>
+4.	    <version>3.2.3.v20181212-RELEASE</version>
+5.	</dependency>
+#+END_SRC
+
+
+** 11.1 t-io 3.2.4
+:PROPERTIES:
+:ID:       9bc1d955-1f32-457c-a50b-01c4b34bfc02
+:END:
+
+一张图了解t-io的历史和能力
+[[file:img/11.1talent.png][tio的历史和能力]]
+一张图了解t-io及官方衍生品
+[[file:img/11.1extend.png][tio衍生品]]
+
+*** 修改点
+•	新需求：https://gitee.com/tywo45/t-io/issues/IOZQB
+•	增加org.tio.utils.lock.ReadLockHandler
+•	增加org.tio.utils.lock.WriteLockHandler
+•	优化http解码过程中的字符编码(对于ws原来是固定utf-8的，现在改成可配)
+•	拉黑相关的从GroupContext移到ServerGroupContext
+•	ws握手包改名，原名：handshakeRequestPacket，现名：handshakeRequest
+•	合并PR
+最新pom
+
+
+#+BEGIN_SRC java
+  1.	<dependency>
+  2.	    <groupId>org.t-io</groupId>
+  3.	    <artifactId>tio-core</artifactId>
+  4.	    <version>3.2.4.v20181218-RELEASE</version>
+  5.	</dependency>
+
+#+END_SRC
+
+例行说明
+•	t-io是OSC官方人员（还不止一个^_^，此处 @红薯 应该来辟谣）也在使用的通讯框架，譬如这个网站的动弹：http://lifes77.com
+•	欢迎来https://www.t-io.org/guide, 用t-io写的t-io官网（注：官网用的是tio-core、tio-http、tio-websocket、tio-webpack，并未使用类似tomcat这样的容器），
+
 * 10. T-io源代码分析
 :PROPERTIES:
 :ID:       18b9627a-1b9e-42b6-9408-ddcaa696259a
 :END:
+** 10.1 t-io对半包和粘包的处理
+:PROPERTIES:
+:ID:       ccfa6372-0ffb-4de7-a3ce-5f4ac7cea662
+:END:
+*** 概述
+•	t-io对数据的解码是在DecodeRunnable中完成的，一个TCP连接对应一个DecodeRunnable
+•	半包粘包的处理也都在DecodeRunnable中完成的
+
+*** 先上源代码
+
+#+BEGIN_SRC java
+  1.	package org.tio.core.task;
+  2.	
+  3.	import java.nio.BufferUnderflowException;
+  4.	import java.nio.ByteBuffer;
+  5.	import java.util.List;
+  6.	import java.util.concurrent.Executor;
+  7.	
+  8.	import org.slf4j.Logger;
+  9.	import org.slf4j.LoggerFactory;
+  10.	import org.tio.core.ChannelContext;
+  11.	import org.tio.core.GroupContext;
+  12.	import org.tio.core.Tio;
+  13.	import org.tio.core.exception.AioDecodeException;
+  14.	import org.tio.core.intf.Packet;
+  15.	import org.tio.core.stat.ChannelStat;
+  16.	import org.tio.core.stat.IpStat;
+  17.	import org.tio.core.utils.ByteBufferUtils;
+  18.	import org.tio.utils.SystemTimer;
+  19.	import org.tio.utils.thread.pool.AbstractQueueRunnable;
+  20.	
+  21.	/**
+  22.	 * 解码任务对象，一个连接对应一个本对象
+  23.	 *
+  24.	 * @author 谭耀武
+  25.	 * 2012-08-09
+  26.	 */
+  27.	public class DecodeRunnable extends AbstractQueueRunnable<ByteBuffer> {
+  28.	    private static final Logger log = LoggerFactory.getLogger(DecodeRunnable.class);
+  29.	
+  30.	    /**
+  31.	     *
+  32.	     * @param packet
+  33.	     * @param byteCount
+  34.	     * @author tanyaowu
+  35.	     */
+  36.	    public void handler(Packet packet, int byteCount) {
+  37.	        switch (groupContext.packetHandlerMode) {
+  38.	        case QUEUE:
+  39.	            channelContext.handlerRunnable.addMsg(packet);
+  40.	            channelContext.handlerRunnable.execute();
+  41.	            break;
+  42.	        default:
+  43.	            channelContext.handlerRunnable.handler(packet);
+  44.	            break;
+  45.	        }
+  46.	    }
+  47.	
+  48.	    private ChannelContext channelContext = null;
+  49.	
+  50.	    private GroupContext groupContext = null;
+  51.	
+  52.	    /**
+  53.	     * 上一次解码剩下的数据
+  54.	     */
+  55.	    private ByteBuffer lastByteBuffer = null;
+  56.	
+  57.	    /**
+  58.	     * 新收到的数据
+  59.	     */
+  60.	    private ByteBuffer newByteBuffer = null;
+  61.	
+  62.	    /**
+  63.	     *
+  64.	     */
+  65.	    public DecodeRunnable(ChannelContext channelContext, Executor executor) {
+  66.	        super(executor);
+  67.	        this.channelContext = channelContext;
+  68.	        this.groupContext = channelContext.groupContext;
+  69.	    }
+  70.	
+  71.	    /**
+  72.	     * 清空处理的队列消息
+  73.	     */
+  74.	    public void clearMsgQueue() {
+  75.	        super.clearMsgQueue();
+  76.	        lastByteBuffer = null;
+  77.	        newByteBuffer = null;
+  78.	    }
+  79.	
+  80.	    @Override
+  81.	    public void runTask() {
+  82.	        while ((newByteBuffer = msgQueue.poll()) != null) {
+  83.	            decode();
+  84.	        }
+  85.	    }
+  86.	
+  87.	    /**
+  88.	     * @see java.lang.Runnable#run()
+  89.	     *
+  90.	     * @author tanyaowu
+  91.	     * 2017年3月21日 下午4:26:39
+  92.	     *
+  93.	     */
+  94.	    public void decode() {
+  95.	        ByteBuffer byteBuffer = newByteBuffer;
+  96.	        if (lastByteBuffer != null) {
+  97.	            byteBuffer = ByteBufferUtils.composite(lastByteBuffer, byteBuffer);
+  98.	            lastByteBuffer = null;
+  99.	        }
+  100.	
+  101.	        label_2: while (true) {
+  102.	            try {
+  103.	                int initPosition = byteBuffer.position();
+  104.	                int limit = byteBuffer.limit();
+  105.	                int readableLength = limit - initPosition;
+  106.	                Packet packet = null;
+  107.	                if (channelContext.packetNeededLength != null) {
+  108.	                    log.info("{}, 解码所需长度:{}", channelContext, channelContext.packetNeededLength);
+  109.	                    if (readableLength >= channelContext.packetNeededLength) {
+  110.	                        packet = groupContext.getAioHandler().decode(byteBuffer, limit, initPosition, readableLength, channelContext);
+  111.	                    }
+  112.	                } else {
+  113.	                    try {
+  114.	                        packet = groupContext.getAioHandler().decode(byteBuffer, limit, initPosition, readableLength, channelContext);
+  115.	                    } catch (BufferUnderflowException e) {
+  116.	                        //log.error(e.toString(), e);
+  117.	                        //数据不够读
+  118.	                    }
+  119.	                }
+  120.	
+  121.	                if (packet == null)// 数据不够，解不了码
+  122.	                {
+  123.	                    //                    lastByteBuffer = ByteBufferUtils.copy(byteBuffer, initPosition, limit);
+  124.	                    if (groupContext.useQueueDecode || (byteBuffer != newByteBuffer)) {
+  125.	                        byteBuffer.position(initPosition);
+  126.	                        byteBuffer.limit(limit);
+  127.	                        lastByteBuffer = byteBuffer;
+  128.	                    } else {
+  129.	                        lastByteBuffer = ByteBufferUtils.copy(byteBuffer, initPosition, limit);
+  130.	                    }
+  131.	                    ChannelStat channelStat = channelContext.stat;
+  132.	                    channelStat.decodeFailCount++;
+  133.	                    //                    int len = byteBuffer.limit() - initPosition;
+  134.	                    log.debug("{} 本次解码失败, 已经连续{}次解码失败，参与解码的数据长度共{}字节", channelContext, channelStat.decodeFailCount, readableLength);
+  135.	                    if (channelStat.decodeFailCount > 5) {
+  136.	                        if (channelContext.packetNeededLength == null) {
+  137.	                            log.info("{} 本次解码失败, 已经连续{}次解码失败，参与解码的数据长度共{}字节", channelContext, channelStat.decodeFailCount, readableLength);
+  138.	                        }
+  139.	
+  140.	                        //检查慢包攻击（只有自用版才有）
+  141.	                        if (channelStat.decodeFailCount > 10) {
+  142.	                            //                            int capacity = lastByteBuffer.capacity();
+  143.	                            int per = readableLength / channelStat.decodeFailCount;
+  144.	                            if (per < Math.min(groupContext.getReadBufferSize() / 2, 256)) {
+  145.	                                String str = "连续解码" + channelStat.decodeFailCount + "次都不成功，并且平均每次接收到的数据为" + per + "字节，有慢攻击的嫌疑";
+  146.	                                log.error(str);
+  147.	                                throw new AioDecodeException(str);
+  148.	                            }
+  149.	                        }
+  150.	                    }
+  151.	                    return;
+  152.	                } else //解码成功
+  153.	                {
+  154.	                    channelContext.setPacketNeededLength(null);
+  155.	                    channelContext.stat.latestTimeOfReceivedPacket = SystemTimer.currTime;
+  156.	                    channelContext.stat.decodeFailCount = 0;
+  157.	
+  158.	                    int len = byteBuffer.position() - initPosition;
+  159.	                    packet.setByteCount(len);
+  160.	
+  161.	                    if (groupContext.statOn) {
+  162.	                        groupContext.groupStat.receivedPackets.incrementAndGet();
+  163.	                        channelContext.stat.receivedPackets.incrementAndGet();
+  164.	                    }
+  165.	
+  166.	                    if (groupContext.ipStats.durationList != null && groupContext.ipStats.durationList.size() > 0) {
+  167.	                        try {
+  168.	                            for (Long v : groupContext.ipStats.durationList) {
+  169.	                                IpStat ipStat = groupContext.ipStats.get(v, channelContext.getClientNode().getIp());
+  170.	                                ipStat.getReceivedPackets().incrementAndGet();
+  171.	                                groupContext.getIpStatListener().onAfterDecoded(channelContext, packet, len, ipStat);
+  172.	                            }
+  173.	                        } catch (Exception e1) {
+  174.	                            log.error(packet.logstr(), e1);
+  175.	                        }
+  176.	                    }
+  177.	
+  178.	                    if (groupContext.getAioListener() != null) {
+  179.	                        try {
+  180.	                            groupContext.getAioListener().onAfterDecoded(channelContext, packet, len);
+  181.	                        } catch (Throwable e) {
+  182.	                            log.error(e.toString(), e);
+  183.	                        }
+  184.	                    }
+  185.	
+  186.	                    if (log.isDebugEnabled()) {
+  187.	                        log.debug("{}, 解包获得一个packet:{}", channelContext, packet.logstr());
+  188.	                    }
+  189.	
+  190.	                    handler(packet, len);
+  191.	
+  192.	                    if (byteBuffer.hasRemaining())//组包后，还剩有数据
+  193.	                    {
+  194.	                        if (log.isDebugEnabled()) {
+  195.	                            log.debug("{},组包后，还剩有数据:{}", channelContext, byteBuffer.remaining());
+  196.	                        }
+  197.	                        continue label_2;
+  198.	                    } else//组包后，数据刚好用完
+  199.	                    {
+  200.	                        lastByteBuffer = null;
+  201.	                        log.debug("{},组包后，数据刚好用完", channelContext);
+  202.	                        return;
+  203.	                    }
+  204.	                }
+  205.	            } catch (Throwable e) {
+  206.	                if (channelContext.logWhenDecodeError) {
+  207.	                    log.error("解码时遇到异常", e);
+  208.	                }
+  209.	
+  210.	                channelContext.setPacketNeededLength(null);
+  211.	
+  212.	                if (e instanceof AioDecodeException) {
+  213.	                    List<Long> list = groupContext.ipStats.durationList;
+  214.	                    if (list != null && list.size() > 0) {
+  215.	                        try {
+  216.	                            for (Long v : list) {
+  217.	                                IpStat ipStat = groupContext.ipStats.get(v, channelContext.getClientNode().getIp());
+  218.	                                ipStat.getDecodeErrorCount().incrementAndGet();
+  219.	                                groupContext.getIpStatListener().onDecodeError(channelContext, ipStat);
+  220.	                            }
+  221.	                        } catch (Exception e1) {
+  222.	                            log.error(e1.toString(), e1);
+  223.	                        }
+  224.	                    }
+  225.	                }
+  226.	
+  227.	                Tio.close(channelContext, e, "解码异常:" + e.getMessage());
+  228.	                return;
+  229.	            }
+  230.	        }
+  231.	    }
+  232.	
+  233.	    /**
+  234.	     * @param newByteBuffer the newByteBuffer to set
+  235.	     */
+  236.	    public void setNewByteBuffer(ByteBuffer newByteBuffer) {
+  237.	        this.newByteBuffer = newByteBuffer;
+  238.	    }
+  239.	
+  240.	    @Override
+  241.	    public String toString() {
+  242.	        return this.getClass().getSimpleName() + ":" + channelContext.toString();
+  243.	    }
+  244.	
+  245.	    @Override
+  246.	    public String logstr() {
+  247.	        return toString();
+  248.	    }
+  249.	}
+
+#+END_SRC
+
+*** 源代码解说
+**** 对于半包
+业务端需要在AioHandler.decode()里返回一个null对象给框架，框架拿到null后，就会认为这是个半包，进而把收到的数据暂存到DecodeRunnable.lastByteBuffer，当后面再收到数据时，把DecodeRunnable.lastByteBuffer和新收到的数据组成一个新的bytebuffer给业务端，如此循环，直到业务端能组成一个packet对象给框架层。
+**** 对于粘包
+业务端在AioHandler.decode()方法中，解码一个packet对象返回给框架后，框架会自行判断是否有多余的byte没有被处理，如果有，则拿剩下的byte(bytebuffer)让业务端继续解码，直到业务端返回null或是返回packet但没有剩余byte为止。
+**** 小结
+框架层已经做好半包和粘包的工作，业务层只需要按着业务协议解码即可，框架会处理好剩下的byte或是上次没处理完的byte的。
+如果还有什么不理解的，请在右侧聊天区域进行留言讨论！
+
 * 9. T-io提供的工具类
 :PROPERTIES:
 :ID:       06e7fa7d-4d7e-44f8-8170-6579b18e920e
+:END:
+** 9.2基于quartz封装的定时任务
+:PROPERTIES:
+:ID:       c60fb3a1-38eb-44f9-a660-1a89c23214d7
+:END:
+定时任务不须多言，几乎是每个项目必备功能，而原生的quartz用起来着实有点哆嗦，市面上也有不少依赖spring的定时任务组件，因为笔者本人已经完全抛弃spring（笔者还抛弃了servlet），所以自己动手对quartz进行了简单封装，使其更容易开发和维护！
+
+*** 编写pom.xml
+
+#+BEGIN_SRC java
+  1.	<dependency>
+  2.	    <groupId>org.quartz-scheduler</groupId>
+  3.	    <artifactId>quartz</artifactId>
+  4.	    <version>2.3.0</version>
+  5.	</dependency>
+  6.	<dependency>
+  7.	    <groupId>org.quartz-scheduler</groupId>
+  8.	    <artifactId>quartz-jobs</artifactId>
+  9.	    <version>2.3.0</version>
+  10.	</dependency>
+  11.	<dependency>
+  12.	  <groupId>org.t-io</groupId>
+  13.	  <artifactId>tio-core</artifactId>
+  14.	  <version>3.2.4.v20181218-RELEASE</version>
+  15.	</dependency>
+
+#+END_SRC
+
+*** 创建任务类
+
+#+BEGIN_SRC java
+  1.	package demo.timetask;
+  2.	
+  3.	import org.quartz.JobExecutionContext;
+  4.	import org.tio.utils.quartz.AbstractJobWithLog;
+  5.	
+  6.	/**
+  7.	 * 
+  8.	 * @author tanyw
+  9.	 *
+  10.	 */
+  11.	public class DemoTask extends AbstractJobWithLog {
+  12.	
+  13.	    /**
+  14.	     * 生成博客网站地址
+  15.	     */
+  16.	    @Override
+  17.	    public void run(JobExecutionContext context) throws Exception {
+  18.	        System.out.println(context);
+  19.	    }
+  20.	
+  21.	}
+
+#+END_SRC
+
+*** 创建配置文件
+在src/main/resources/config目录下创建tio-quartz.properties文件，内容如下：
+
+
+#+BEGIN_SRC java
+  1.	#每10秒执行一次
+  2.	demo.timetask.DemoTask = 0/10 * * * * ?
+
+#+END_SRC
+
+*** 在主程序中启动定时任务
+
+#+BEGIN_SRC java
+
+  1.	public static void main(String[] args) throws Exception {
+  2.	    //你的其它启动代码
+  3.	    //启动配置在config/tio-quartz.properties的所有定时任务
+  4.	    QuartzUtils.start();
+  5.	}
+#+END_SRC
+
+** 9.1 类似J2Cache的tio-cache
+:PROPERTIES:
+:ID:       0c11303e-22bb-43d4-89b4-60ec5d9d9b1a
 :END:
 * 8. 基于tio-websocket生产项目的聊天室
 :PROPERTIES:
@@ -24,46 +483,650 @@
 :PROPERTIES:
 :ID:       ae947208-0e20-4121-b414-48e375256404
 :END:
+文档总是不如代码来得实际，笔者花大量精力提供了可用于实战的示范工程，就是让大家以极少的代价掌握t-io，然而还是有很多用户更愿意花大量时间去啃书本，觉得啃书本是个好方法，进而埋怨t-io提供的文档实在太少，对于这个论调，我国著名诗人陆游早就说过：“纸上得来终觉浅，绝知此事要躬行”，为什么很多朋友在t-io文档量几乎为0的情况下用t-io快速完成了生产项目，原因就是他们更愿意笔者提供的示范代码！
 ** 8.10 写一个js client
 :PROPERTIES:
 :ID:       318cbb0c-e7cd-4af7-a83f-2e69aaa3147c
 :END:
+
+为了简化js端websocket的开发，本人写了一个简单的小js，它的名字叫tiows.js，它处理了重连、发心跳等很多开发人员不愿意去干的活。
+它的源代码在：https://gitee.com/tywo45/tio-websocket-showcase
+把源代码下载下来后，在page/tio/目录中就能看到tiows.js
+然后再打开page/index.html，就能看到下面这个界面了（前提是前面8步要完成），如果你不想完成前面8步，你同样可以在https://gitee.com/tywo45/tio-websocket-showcase，中找到前8步所需要的java代码。
+
 ** 8.9启动服务器
 :PROPERTIES:
 :ID:       7e6ae3eb-2f98-4ce3-b167-edec9a100720
 :END:
+
+在eclipse中以main函数的形式运行org.tio.showcase.http.HttpServerShowcaseStarter，能看到类似如下的日志
+
+#+BEGIN_SRC java
+1.	2018-12-28 19:53:09,907 INFO  org.tio.server.TioServer[158]: 
+2.	|----------------------------------------------------------------------------------------|
+3.	| Tio gitee address | https://gitee.com/tywo45/t-io                                      |
+4.	| Tio site address  | https://t-io.org/                                                  |
+5.	| Tio version       | 3.2.4.v20181218-RELEASE                                            |
+6.	| ---------------------------------------------------------------------------------------|
+7.	| GroupContext name | showcase                                                           |
+8.	| Started at        | 2018-12-28 19:53:09                                                |
+9.	| Listen on         | 0.0.0.0:9326                                                       |
+10.	| Main Class        | org.tio.showcase.websocket.server.ShowcaseWebsocketStarter         |
+11.	| Jvm start time    | 507 ms                                                             |
+12.	| Tio start time    | 1 ms                                                               |
+13.	| Pid               | 19020                                                              |
+14.	|----------------------------------------------------------------------------------------|
+#+END_SRC
+
+
 ** 8.8 项目启动项
 :PROPERTIES:
 :ID:       32e399d7-91e0-4376-9874-88d12621db4d
 :END:
+
+#+BEGIN_SRC java
+  1.	package org.tio.showcase.websocket.server;
+  2.	
+  3.	import java.io.IOException;
+  4.	
+  5.	import org.tio.server.ServerGroupContext;
+  6.	import org.tio.showcase.http.init.HttpServerInit;
+  7.	import org.tio.utils.jfinal.P;
+  8.	import org.tio.websocket.server.WsServerStarter;
+  9.	
+  10.	/**
+  11.	* @author tanyaowu
+  12.	* 2017年6月28日 下午5:34:04
+  13.	*/
+  14.	public class ShowcaseWebsocketStarter {
+  15.	
+  16.	private WsServerStarter wsServerStarter;
+  17.	private ServerGroupContext serverGroupContext;
+  18.	
+  19.	/**
+  20.	*
+  21.	* @author tanyaowu
+  22.	*/
+  23.	public ShowcaseWebsocketStarter(int port, ShowcaseWsMsgHandler wsMsgHandler) throws Exception {
+  24.	wsServerStarter = new WsServerStarter(port, wsMsgHandler);
+  25.	
+  26.	serverGroupContext = wsServerStarter.getServerGroupContext();
+  27.	serverGroupContext.setName(ShowcaseServerConfig.PROTOCOL_NAME);
+  28.	serverGroupContext.setServerAioListener(ShowcaseServerAioListener.me);
+  29.	
+  30.	//设置ip监控
+  31.	serverGroupContext.setIpStatListener(ShowcaseIpStatListener.me);
+  32.	//设置ip统计时间段
+  33.	serverGroupContext.ipStats.addDurations(ShowcaseServerConfig.IpStatDuration.IPSTAT_DURATIONS);
+  34.	
+  35.	//设置心跳超时时间
+  36.	serverGroupContext.setHeartbeatTimeout(ShowcaseServerConfig.HEARTBEAT_TIMEOUT);
+  37.	
+  38.	if (P.getInt("ws.use.ssl", 1) == 1) {
+  39.	//如果你希望通过wss来访问，就加上下面的代码吧，不过首先你得有SSL证书（证书必须和域名相匹配，否则可能访问不了ssl）
+  40.	// String keyStoreFile = "classpath:config/ssl/keystore.jks";
+  41.	// String trustStoreFile = "classpath:config/ssl/keystore.jks";
+  42.	// String keyStorePwd = "214323428310224";
+  43.	
+  44.	
+  45.	String keyStoreFile = P.get("ssl.keystore", null);
+  46.	String trustStoreFile = P.get("ssl.truststore", null);
+  47.	String keyStorePwd = P.get("ssl.pwd", null);
+  48.	serverGroupContext.useSsl(keyStoreFile, trustStoreFile, keyStorePwd);
+  49.	}
+  50.	}
+  51.	
+  52.	/**
+  53.	* @param args
+  54.	* @author tanyaowu
+  55.	* @throws IOException
+  56.	*/
+  57.	public static void start() throws Exception {
+  58.	ShowcaseWebsocketStarter appStarter = new ShowcaseWebsocketStarter(ShowcaseServerConfig.SERVER_PORT, ShowcaseWsMsgHandler.me);
+  59.	appStarter.wsServerStarter.start();
+  60.	}
+  61.	
+  62.	/**
+  63.	* @return the serverGroupContext
+  64.	*/
+  65.	public ServerGroupContext getServerGroupContext() {
+  66.	return serverGroupContext;
+  67.	}
+  68.	
+  69.	public WsServerStarter getWsServerStarter() {
+  70.	return wsServerStarter;
+  71.	}
+  72.	
+  73.	public static void main(String[] args) throws Exception {
+  74.	//启动http server，这个步骤不是必须的，但是为了用页面演示websocket，所以先启动http
+  75.	P.use("app.properties");
+  76.	
+  77.	
+  78.	if (P.getInt("start.http", 1) == 1) {
+  79.	HttpServerInit.init();
+  80.	}
+  81.	
+  82.	//启动websocket server
+  83.	start();
+  84.	}
+  85.	
+  86.	}
+
+#+END_SRC
+
 ** 8.7 内置常量
 :PROPERTIES:
 :ID:       2d192dd0-87ac-42b9-9800-5597f8f148d3
 :END:
+
+#+BEGIN_SRC java
+  4.	package org.tio.showcase.websocket.server;
+  5.	
+  6.	/**
+  7.	* @author tanyaowu
+  8.	*
+  9.	*/
+  10.	public class Const {
+  11.	/**
+  12.	* 用于群聊的group id
+  13.	*/
+  14.	public static final String GROUP_ID = "showcase-websocket";
+  15.	}
+
+#+END_SRC
+
 ** 8.6 参考配置
 :PROPERTIES:
 :ID:       31abfb8c-4061-4f96-a14c-01958d376933
 :END:
+
+#+BEGIN_SRC java
+  4.	package org.tio.showcase.websocket.server;
+  5.	
+  6.	import org.tio.utils.time.Time;
+  7.	
+  8.	/**
+  9.	* @author tanyaowu
+  10.	*
+  11.	*/
+  12.	public abstract class ShowcaseServerConfig {
+  13.	/**
+  14.	* 协议名字(可以随便取，主要用于开发人员辨识)
+  15.	*/
+  16.	public static final String PROTOCOL_NAME = "showcase";
+  17.	
+  18.	public static final String CHARSET = "utf-8";
+  19.	/**
+  20.	* 监听的ip
+  21.	*/
+  22.	public static final String SERVER_IP = null;//null表示监听所有，并不指定ip
+  23.	
+  24.	/**
+  25.	* 监听端口
+  26.	*/
+  27.	public static final int SERVER_PORT = 9326;
+  28.	
+  29.	/**
+  30.	* 心跳超时时间，单位：毫秒
+  31.	*/
+  32.	public static final int HEARTBEAT_TIMEOUT = 1000 * 60;
+  33.	
+  34.	/**
+  35.	* ip数据监控统计，时间段
+  36.	* @author tanyaowu
+  37.	*
+  38.	*/
+  39.	public static interface IpStatDuration {
+  40.	public static final Long DURATION_1 = Time.MINUTE_1 * 5;
+  41.	public static final Long[] IPSTAT_DURATIONS = new Long[] { DURATION_1 };
+  42.	}
+  43.	
+  44.	}
+
+#+END_SRC
+
 ** 8.5 IpStatListener实现(可选)
 :PROPERTIES:
 :ID:       5001b6af-0f54-4f81-91ed-c9dd55e91c94
 :END:
+
+#+BEGIN_SRC java
+
+  4.	package org.tio.showcase.websocket.server;
+  5.	
+  6.	import org.slf4j.Logger;
+  7.	import org.slf4j.LoggerFactory;
+  8.	import org.tio.core.ChannelContext;
+  9.	import org.tio.core.GroupContext;
+  10.	import org.tio.core.intf.Packet;
+  11.	import org.tio.core.stat.IpStat;
+  12.	import org.tio.core.stat.IpStatListener;
+  13.	
+  14.	/**
+  15.	* 
+  16.	* @author tanyaowu
+  17.	*
+  18.	*/
+  19.	public class ShowcaseIpStatListener implements IpStatListener {
+  20.	@SuppressWarnings("unused")
+  21.	private static Logger log = LoggerFactory.getLogger(ShowcaseIpStatListener.class);
+  22.	
+  23.	public static final ShowcaseIpStatListener me = new ShowcaseIpStatListener();
+  24.	
+  25.	/**
+  26.	* 
+  27.	*/
+  28.	private ShowcaseIpStatListener() {
+  29.	}
+  30.	
+  31.	@Override
+  32.	public void onExpired(GroupContext groupContext, IpStat ipStat) {
+  33.	//在这里把统计数据入库中或日志
+  34.	// if (log.isInfoEnabled()) {
+  35.	// log.info("可以把统计数据入库\r\n{}", Json.toFormatedJson(ipStat));
+  36.	// }
+  37.	}
+  38.	
+  39.	@Override
+  40.	public void onAfterConnected(ChannelContext channelContext, boolean isConnected, boolean isReconnect, IpStat ipStat) throws Exception {
+  41.	// if (log.isInfoEnabled()) {
+  42.	// log.info("onAfterConnected\r\n{}", Json.toFormatedJson(ipStat));
+  43.	// }
+  44.	}
+  45.	
+  46.	@Override
+  47.	public void onDecodeError(ChannelContext channelContext, IpStat ipStat) {
+  48.	// if (log.isInfoEnabled()) {
+  49.	// log.info("onDecodeError\r\n{}", Json.toFormatedJson(ipStat));
+  50.	// }
+  51.	}
+  52.	
+  53.	@Override
+  54.	public void onAfterSent(ChannelContext channelContext, Packet packet, boolean isSentSuccess, IpStat ipStat) throws Exception {
+  55.	// if (log.isInfoEnabled()) {
+  56.	// log.info("onAfterSent\r\n{}\r\n{}", packet.logstr(), Json.toFormatedJson(ipStat));
+  57.	// }
+  58.	}
+  59.	
+  60.	@Override
+  61.	public void onAfterDecoded(ChannelContext channelContext, Packet packet, int packetSize, IpStat ipStat) throws Exception {
+  62.	// if (log.isInfoEnabled()) {
+  63.	// log.info("onAfterDecoded\r\n{}\r\n{}", packet.logstr(), Json.toFormatedJson(ipStat));
+  64.	// }
+  65.	}
+  66.	
+  67.	@Override
+  68.	public void onAfterReceivedBytes(ChannelContext channelContext, int receivedBytes, IpStat ipStat) throws Exception {
+  69.	// if (log.isInfoEnabled()) {
+  70.	// log.info("onAfterReceivedBytes\r\n{}", Json.toFormatedJson(ipStat));
+  71.	// }
+  72.	}
+  73.	
+  74.	@Override
+  75.	public void onAfterHandled(ChannelContext channelContext, Packet packet, IpStat ipStat, long cost) throws Exception {
+  76.	// if (log.isInfoEnabled()) {
+  77.	// log.info("onAfterHandled\r\n{}\r\n{}", packet.logstr(), Json.toFormatedJson(ipStat));
+  78.	// }
+  79.	}
+  80.	
+  81.	}
+#+END_SRC
+
 ** 8.4 WsServerAioListener
 :PROPERTIES:
 :ID:       e826ab1f-e55c-41bb-a25a-aaed32c3b09e
 :END:
+
+#+BEGIN_SRC java
+  4.	package org.tio.showcase.websocket.server;
+  5.	
+  6.	import org.slf4j.Logger;
+  7.	import org.slf4j.LoggerFactory;
+  8.	import org.tio.core.Tio;
+  9.	import org.tio.core.ChannelContext;
+  10.	import org.tio.core.intf.Packet;
+  11.	import org.tio.websocket.common.WsResponse;
+  12.	import org.tio.websocket.common.WsSessionContext;
+  13.	import org.tio.websocket.server.WsServerAioListener;
+  14.	
+  15.	/**
+  16.	* @author tanyaowu
+  17.	* 用户根据情况来完成该类的实现
+  18.	*/
+  19.	public class ShowcaseServerAioListener extends WsServerAioListener {
+  20.	private static Logger log = LoggerFactory.getLogger(ShowcaseServerAioListener.class);
+  21.	
+  22.	public static final ShowcaseServerAioListener me = new ShowcaseServerAioListener();
+  23.	
+  24.	private ShowcaseServerAioListener() {
+  25.	
+  26.	}
+  27.	
+  28.	@Override
+  29.	public void onAfterConnected(ChannelContext channelContext, boolean isConnected, boolean isReconnect) throws Exception {
+  30.	super.onAfterConnected(channelContext, isConnected, isReconnect);
+  31.	if (log.isInfoEnabled()) {
+  32.	log.info("onAfterConnected\r\n{}", channelContext);
+  33.	}
+  34.	
+  35.	}
+  36.	
+  37.	@Override
+  38.	public void onAfterSent(ChannelContext channelContext, Packet packet, boolean isSentSuccess) throws Exception {
+  39.	super.onAfterSent(channelContext, packet, isSentSuccess);
+  40.	if (log.isInfoEnabled()) {
+  41.	log.info("onAfterSent\r\n{}\r\n{}", packet.logstr(), channelContext);
+  42.	}
+  43.	}
+  44.	
+  45.	@Override
+  46.	public void onBeforeClose(ChannelContext channelContext, Throwable throwable, String remark, boolean isRemove) throws Exception {
+  47.	super.onBeforeClose(channelContext, throwable, remark, isRemove);
+  48.	if (log.isInfoEnabled()) {
+  49.	log.info("onBeforeClose\r\n{}", channelContext);
+  50.	}
+  51.	
+  52.	WsSessionContext wsSessionContext = (WsSessionContext) channelContext.getAttribute();
+  53.	
+  54.	if (wsSessionContext != null && wsSessionContext.isHandshaked()) {
+  55.	
+  56.	int count = Tio.getAllChannelContexts(channelContext.groupContext).getObj().size();
+  57.	
+  58.	String msg = channelContext.getClientNode().toString() + " 离开了，现在共有【" + count + "】人在线";
+  59.	//用tio-websocket，服务器发送到客户端的Packet都是WsResponse
+  60.	WsResponse wsResponse = WsResponse.fromText(msg, ShowcaseServerConfig.CHARSET);
+  61.	//群发
+  62.	Tio.sendToGroup(channelContext.groupContext, Const.GROUP_ID, wsResponse);
+  63.	}
+  64.	}
+  65.	
+  66.	@Override
+  67.	public void onAfterDecoded(ChannelContext channelContext, Packet packet, int packetSize) throws Exception {
+  68.	super.onAfterDecoded(channelContext, packet, packetSize);
+  69.	if (log.isInfoEnabled()) {
+  70.	log.info("onAfterDecoded\r\n{}\r\n{}", packet.logstr(), channelContext);
+  71.	}
+  72.	}
+  73.	
+  74.	@Override
+  75.	public void onAfterReceivedBytes(ChannelContext channelContext, int receivedBytes) throws Exception {
+  76.	super.onAfterReceivedBytes(channelContext, receivedBytes);
+  77.	if (log.isInfoEnabled()) {
+  78.	log.info("onAfterReceivedBytes\r\n{}", channelContext);
+  79.	}
+  80.	}
+  81.	
+  82.	@Override
+  83.	public void onAfterHandled(ChannelContext channelContext, Packet packet, long cost) throws Exception {
+  84.	super.onAfterHandled(channelContext, packet, cost);
+  85.	if (log.isInfoEnabled()) {
+  86.	log.info("onAfterHandled\r\n{}\r\n{}", packet.logstr(), channelContext);
+  87.	}
+  88.	}
+  89.	
+  90.	}
+
+#+END_SRC
+
 ** 8.3 IWsMsgHandler实现
 :PROPERTIES:
 :ID:       98b9f2f9-d20f-433e-9f0c-fa6ca1d3007e
 :END:
+
+#+BEGIN_SRC java
+  1.	package org.tio.showcase.websocket.server;
+  2.	
+  3.	import java.util.Objects;
+  4.	
+  5.	import org.slf4j.Logger;
+  6.	import org.slf4j.LoggerFactory;
+  7.	import org.tio.core.Tio;
+  8.	import org.tio.core.ChannelContext;
+  9.	import org.tio.http.common.HttpRequest;
+  10.	import org.tio.http.common.HttpResponse;
+  11.	import org.tio.websocket.common.WsRequest;
+  12.	import org.tio.websocket.common.WsResponse;
+  13.	import org.tio.websocket.common.WsSessionContext;
+  14.	import org.tio.websocket.server.handler.IWsMsgHandler;
+  15.	
+  16.	/**
+  17.	* @author tanyaowu
+  18.	* 2017年6月28日 下午5:32:38
+  19.	*/
+  20.	public class ShowcaseWsMsgHandler implements IWsMsgHandler {
+  21.	private static Logger log = LoggerFactory.getLogger(ShowcaseWsMsgHandler.class);
+  22.	
+  23.	public static final ShowcaseWsMsgHandler me = new ShowcaseWsMsgHandler();
+  24.	
+  25.	private ShowcaseWsMsgHandler() {
+  26.	
+  27.	}
+  28.	
+  29.	/**
+  30.	* 握手时走这个方法，业务可以在这里获取cookie，request参数等
+  31.	*/
+  32.	@Override
+  33.	public HttpResponse handshake(HttpRequest request, HttpResponse httpResponse, ChannelContext channelContext) throws Exception {
+  34.	String clientip = request.getClientIp();
+  35.	String myname = request.getParam("name");
+  36.	
+  37.	Tio.bindUser(channelContext, myname);
+  38.	// channelContext.setUserid(myname);
+  39.	log.info("收到来自{}的ws握手包\r\n{}", clientip, request.toString());
+  40.	return httpResponse;
+  41.	}
+  42.	
+  43.	/** 
+  44.	* @param httpRequest
+  45.	* @param httpResponse
+  46.	* @param channelContext
+  47.	* @throws Exception
+  48.	* @author tanyaowu
+  49.	*/
+  50.	@Override
+  51.	public void onAfterHandshaked(HttpRequest httpRequest, HttpResponse httpResponse, ChannelContext channelContext) throws Exception {
+  52.	//绑定到群组，后面会有群发
+  53.	Tio.bindGroup(channelContext, Const.GROUP_ID);
+  54.	int count = Tio.getAllChannelContexts(channelContext.groupContext).getObj().size();
+  55.	
+  56.	String msg = "{name:'admin',message:'" + channelContext.userid + " 进来了，共【" + count + "】人在线" + "'}";
+  57.	//用tio-websocket，服务器发送到客户端的Packet都是WsResponse
+  58.	WsResponse wsResponse = WsResponse.fromText(msg, ShowcaseServerConfig.CHARSET);
+  59.	//群发
+  60.	Tio.sendToGroup(channelContext.groupContext, Const.GROUP_ID, wsResponse);
+  61.	}
+  62.	
+  63.	/**
+  64.	* 字节消息（binaryType = arraybuffer）过来后会走这个方法
+  65.	*/
+  66.	@Override
+  67.	public Object onBytes(WsRequest wsRequest, byte[] bytes, ChannelContext channelContext) throws Exception {
+  68.	return null;
+  69.	}
+  70.	
+  71.	/**
+  72.	* 当客户端发close flag时，会走这个方法
+  73.	*/
+  74.	@Override
+  75.	public Object onClose(WsRequest wsRequest, byte[] bytes, ChannelContext channelContext) throws Exception {
+  76.	Tio.remove(channelContext, "receive close flag");
+  77.	return null;
+  78.	}
+  79.	
+  80.	/*
+  81.	* 字符消息（binaryType = blob）过来后会走这个方法
+  82.	*/
+  83.	@Override
+  84.	public Object onText(WsRequest wsRequest, String text, ChannelContext channelContext) throws Exception {
+  85.	WsSessionContext wsSessionContext = (WsSessionContext) channelContext.getAttribute();
+  86.	HttpRequest httpRequest = wsSessionContext.getHandshakeRequest();//获取websocket握手包
+  87.	if (log.isDebugEnabled()) {
+  88.	log.debug("握手包:{}", httpRequest);
+  89.	}
+  90.	
+  91.	log.info("收到ws消息:{}", text);
+  92.	
+  93.	if (Objects.equals("心跳内容", text)) {
+  94.	return null;
+  95.	}
+  96.	//channelContext.getToken()
+  97.	//String msg = channelContext.getClientNode().toString() + " 说：" + text;
+  98.	String msg = "{name:'" + channelContext.userid + "',message:'" + text + "'}";
+  99.	//用tio-websocket，服务器发送到客户端的Packet都是WsResponse
+  100.	WsResponse wsResponse = WsResponse.fromText(msg, ShowcaseServerConfig.CHARSET);
+  101.	//群发
+  102.	Tio.sendToGroup(channelContext.groupContext, Const.GROUP_ID, wsResponse);
+  103.	
+  104.	//返回值是要发送给客户端的内容，一般都是返回null
+  105.	return null;
+  106.	}
+  107.	
+  108.	}
+
+#+END_SRC
+
 ** 8.2 pom.xml项目文档编写
 :PROPERTIES:
 :ID:       87609a27-9c24-4c1f-aaed-30fda31961b0
 :END:
+
+#+BEGIN_SRC java
+  1.	<project xmlns="http://maven.apache.org/POM/4.0.0"
+  2.	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  3.	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  4.	<modelVersion>4.0.0</modelVersion>
+  5.	<artifactId>tio-showcase-websocket</artifactId>
+  6.	<name>${project.artifactId}</name>
+  7.	
+  8.	<parent>
+  9.	<groupId>org.t-io</groupId>
+  10.	<artifactId>tio-parent</artifactId>
+  11.	<version>3.2.4.v20181218-RELEASE</version>
+  12.	</parent>
+  13.	
+  14.	<dependencies>
+  15.	<dependency>
+  16.	<groupId>org.t-io</groupId>
+  17.	<artifactId>tio-websocket-server</artifactId>
+  18.	</dependency>
+  19.	
+  20.	<!-- slf4j-logback绑定 -->
+  21.	<dependency>
+  22.	<groupId>ch.qos.logback</groupId>
+  23.	<artifactId>logback-classic</artifactId>
+  24.	</dependency>
+  25.	<dependency>
+  26.	<groupId>ch.qos.logback</groupId>
+  27.	<artifactId>logback-access</artifactId>
+  28.	</dependency>
+  29.	
+  30.	
+  31.	<!-- redirect apache commons logging -->
+  32.	<dependency>
+  33.	<groupId>org.slf4j</groupId>
+  34.	<artifactId>jcl-over-slf4j</artifactId>
+  35.	</dependency>
+  36.	<!-- redirect jdk util logging -->
+  37.	<dependency>
+  38.	<groupId>org.slf4j</groupId>
+  39.	<artifactId>jul-to-slf4j</artifactId>
+  40.	</dependency>
+  41.	<!-- redirect log4j -->
+  42.	<dependency>
+  43.	<groupId>org.slf4j</groupId>
+  44.	<artifactId>log4j-over-slf4j</artifactId>
+  45.	</dependency>
+  46.	
+  47.	<dependency>
+  48.	<groupId>junit</groupId>
+  49.	<artifactId>junit</artifactId>
+  50.	<scope>test</scope>
+  51.	</dependency>
+  52.	<dependency>
+  53.	<groupId>org.testng</groupId>
+  54.	<artifactId>testng</artifactId>
+  55.	<scope>test</scope>
+  56.	</dependency>
+  57.	</dependencies>
+  58.	
+  59.	
+  60.	<build>
+  61.	<resources>
+  62.	<resource>
+  63.	<directory>src/main/resources</directory>
+  64.	<filtering>false</filtering>
+  65.	</resource>
+  66.	</resources>
+  67.	
+  68.	<plugins>
+  69.	<plugin>
+  70.	<groupId>org.apache.maven.plugins</groupId>
+  71.	<artifactId>maven-deploy-plugin</artifactId>
+  72.	<configuration>
+  73.	<skip>true</skip>
+  74.	</configuration>
+  75.	</plugin>
+  76.	
+  77.	<plugin>
+  78.	<groupId>org.apache.maven.plugins</groupId>
+  79.	<artifactId>maven-jar-plugin</artifactId>
+  80.	<configuration>
+  81.	<archive>
+  82.	<manifest>
+  83.	<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+  84.	<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+  85.	</manifest>
+  86.	<addMavenDescriptor>false</addMavenDescriptor><!-- 生成的jar中，不要包含pom.xml和pom.properties这两个文件 -->
+  87.	</archive>
+  88.	
+  89.	<finalName>${project.artifactId}</finalName>
+  90.	
+  91.	<excludes>
+  92.	<exclude>config/**/*</exclude>
+  93.	<exclude>*.properties</exclude>
+  94.	<exclude>*.xml</exclude>
+  95.	</excludes>
+  96.	</configuration>
+  97.	</plugin>
+  98.	
+  99.	<!-- The configuration of maven-assembly-plugin -->
+  100.	<plugin>
+  101.	<groupId>org.apache.maven.plugins</groupId>
+  102.	<artifactId>maven-assembly-plugin</artifactId>
+  103.	<executions>
+  104.	<execution>
+  105.	<id>make-assembly</id> <!--名字任意 -->
+  106.	<phase>package</phase> <!-- 绑定到package生命周期阶段上 -->
+  107.	<goals>
+  108.	<goal>single</goal>
+  109.	</goals>
+  110.	<configuration>
+  111.	<appendAssemblyId>false</appendAssemblyId>
+  112.	<descriptors>
+  113.	<descriptor>script/pkg.xml</descriptor>
+  114.	</descriptors>
+  115.	<outputDirectory>${project.build.directory}/</outputDirectory>
+  116.	<finalName>${project.artifactId}</finalName>
+  117.	</configuration>
+  118.	</execution>
+  119.	</executions>
+  120.	</plugin>
+  121.	</plugins>
+  122.	</build>
+  123.	</project>
+
+#+END_SRC
+
 ** 8.1 引言
 :PROPERTIES:
 :ID:       635b03e5-34e8-4013-805d-51156b241900
 :END:
+
+•	在t-io的官方主群，经常会有用户发出这样的感叹：“用tio写一个聊天室或在线客服，几乎就是个分分钟的事儿”。如果不考虑业务上的细节，这话儿看似浮夸，却又十分接近事实，所以大家也看到了：在t-io出来后，码云上用t-io做的开源im项目就非常多。
+•	本文手把手教大家如何用t-io快速做一个网页版聊天室——这不仅仅只是个demo，它更多的可作为项目的一个脚手架，读者可以以此为基础，完成一个真实的网页聊天室，甚至扩展成一个在线客服。
+•	本文有部分代码并非必须，譬如数据监控相关的listener，但是在大型的项目中，对这些监控数据的处理却是一个必须，所以本文从实用角度出发，加了不少很实用的代码，望读者朋友喜欢并从中获益。
+•	为了更贴近实战，本例子所在的工程还提供了tio-http-server的启动代码，不过本文并不会介绍和tio-http-server相关的知识点，有需要的朋友自行去https://local.t-io.org/doc/126掌握tio-http-server的相关知识
+
 * 7. t-io编程高级知识
 :PROPERTIES:
 :ID:       30c4ad98-98e5-47b9-89e5-c1a0afbf46a5
@@ -96,6 +1159,32 @@
 :PROPERTIES:
 :ID:       2c0ba1e1-fb90-4049-8290-004d7d667bed
 :END:
+申请SSL证书
+阿里云可以申请，当然还有很多申请方式，本话题不在本文档范围
+生成jks证书
+1.	keytool -importkeystore -srckeystore .\xxxx.pfx -destkeystore .\xxxx.jks -srcstoretype PKCS12 -deststoretype JKS
+一行代码配上SSL
+1.	serverGroupContext.useSsl("/cert/xxx.jks", "/cert/xxx.jks", "******");
+•	注册useSsl()是在ServerGroupContext.java中定义的，而不是GroupContext
+打完收工
+是不是简单到极致？
+意犹未尽，那就看一下t-io源代码吧
+
+1.	/**
+2.	     * 
+3.	     * @param keyStoreFile 如果是以"classpath:"开头，则从classpath中查找，否则视为普通的文件路径
+4.	     * @param trustStoreFile 如果是以"classpath:"开头，则从classpath中查找，否则视为普通的文件路径
+5.	     * @param keyStorePwd 
+6.	     * @throws FileNotFoundException
+7.	     */
+8.	    public void useSsl(String keyStoreFile, String trustStoreFile, String keyStorePwd) throws Exception {
+9.	        if (StrUtil.isNotBlank(keyStoreFile) && StrUtil.isNotBlank(trustStoreFile)) {
+10.	            SslConfig sslConfig = SslConfig.forServer(keyStoreFile, trustStoreFile, keyStorePwd);
+11.	            this.setSslConfig(sslConfig);
+12.	        }
+13.	    }
+
+
 * 6. 生成项目的Helloworld
 :PROPERTIES:
 :ID:       dc5f61f2-a0b0-4c18-aef4-fc972c25138f
@@ -104,30 +1193,499 @@
 :PROPERTIES:
 :ID:       c3c7edb5-ab57-487e-aaba-633c5595dd12
 :END:
+
+t-io提供的hello world和其它框架提供的似乎不太一样，其它框架的hello world非常简单非常易懂，但大家往往忽略了一个事实，这些框架提供的hello world也只是仅仅拿来看看和了解概念。t-io提供的hello world是可以用于生产项目的脚手架的，用户只需要修改编码、解码、处理的实现，再额外加一些自己想要的功能即可上线
 ** 6.6 运行
 :PROPERTIES:
 :ID:       6b78e6f2-3df8-47cd-a45e-99e1fedb5913
 :END:
+•	运行服务器：org.tio.examples.helloworld.server.HelloServerStarter，控制台应该会打印如下日志：
+
+#+BEGIN_SRC java
+1.	2018-11-14 20:01:44,567 INFO  org.tio.server.TioServer[158]: 
+2.	|----------------------------------------------------------------------------------------|
+3.	| Tio gitee address | https://gitee.com/tywo45/t-io                                      |
+4.	| Tio site address  | https://t-io.org/                                                  |
+5.	| Tio version       | 3.2.1.v20181024-RELEASE                                            |
+6.	| ---------------------------------------------------------------------------------------|
+7.	| GroupContext name | hello-tio-server                                                   |
+8.	| Started at        | 2018-11-14 20:01:44                                                |
+9.	| Listen on         | 0.0.0.0:6789                                                       |
+10.	| Main Class        | org.tio.examples.helloworld.server.HelloServerStarter              |
+11.	| Jvm start time    | 408 ms                                                             |
+12.	| Tio start time    | 18 ms                                                              |
+13.	| Pid               | 6700                                                               |
+14.	|----------------------------------------------------------------------------------------|
+#+END_SRC
+
+•	运行客户端：org.tio.examples.helloworld.client.HelloClientStarter，会有如下日志
+
+#+BEGIN_SRC java
+1.	2018-11-14 20:04:11 INFO  o.t.c.ConnectionCompletionHandler[101]: connected to 127.0.0.1:6789
+2.	收到消息：收到了你的消息，你的消息是:hello world
+3.	2018-11-14 20:04:12 INFO  org.tio.client.TioClient[369]: [1]: curr:1, closed:0, received:(1p)(55b), handled:1, sent:(1p)(15b)
+4.	2018-11-14 20:04:14 INFO  org.tio.client.TioClient[369]: [1]: curr:1, closed:0, received:(1p)(55b), handled:1, sent:(1p)(15b)
+5.	2018-11-14 20:04:15 INFO  org.tio.client.TioClient[362]: server:127.0.0.1:6789, client:0:0:0:0:0:0:0:0:54739发送心跳包
+6.	2018-11-14 20:04:15 INFO  org.tio.client.TioClient[369]: [1]: curr:1, closed:0, received:(1p)(55b), handled:1, sent:(1p)(15b)
+7.	2018-11-14 20:04:16 INFO  org.tio.client.TioClient[369]: [1]: curr:1, closed:0, received:(1p)(55b), handled:1, sent:(2p)(19b)
+8.	2018-11-14 20:04:17 INFO  org.tio.client.TioClient[362]: server:127.0.0.1:6789, client:0:0:0:0:0:0:0:0:54739发送心跳包
+9.	2018-11-14 20:04:17 INFO  org.tio.client.TioClient[369]: [1]: curr:1, closed:0, received:(1p)(55b), handled:1, sent:(2p)(19b)
+10.	2018-11-14 20:04:19 INFO  org.tio.client.TioClient[369]: [1]: curr:1, closed:0, received:(1p)(55b), handled:1, sent:(3p)(23b)
+11.	2018-11-14 20:04:20 INFO  org.tio.client.TioClient[362]: server:127.0.0.1:6789, client:0:0:0:0:0:0:0:0:54739发送心跳包
+#+END_SRC
+
+
 ** 6.4 服务端编写
 :PROPERTIES:
 :ID:       693b283b-e774-4879-b754-53488ade9544
 :END:
+服务端代码
+
+
+#+BEGIN_SRC java
+  1.	package org.tio.examples.helloworld.server;
+  2.	
+  3.	import java.nio.ByteBuffer;
+  4.	
+  5.	import org.tio.core.Tio;
+  6.	import org.tio.core.ChannelContext;
+  7.	import org.tio.core.GroupContext;
+  8.	import org.tio.core.exception.AioDecodeException;
+  9.	import org.tio.core.intf.Packet;
+  10.	import org.tio.examples.helloworld.common.HelloPacket;
+  11.	import org.tio.server.intf.ServerAioHandler;
+  12.	
+  13.	/**
+  14.	 * @author tanyaowu
+  15.	 */
+  16.	public class HelloServerAioHandler implements ServerAioHandler {
+  17.	
+  18.	    /**
+  19.	     * 解码：把接收到的ByteBuffer，解码成应用可以识别的业务消息包
+  20.	     * 总的消息结构：消息头 + 消息体
+  21.	     * 消息头结构：    4个字节，存储消息体的长度
+  22.	     * 消息体结构：   对象的json串的byte[]
+  23.	     */
+  24.	    @Override
+  25.	    public HelloPacket decode(ByteBuffer buffer, int limit, int position, int readableLength, ChannelContext channelContext) throws AioDecodeException {
+  26.	        //提醒：buffer的开始位置并不一定是0，应用需要从buffer.position()开始读取数据
+  27.	        //收到的数据组不了业务包，则返回null以告诉框架数据不够
+  28.	        if (readableLength < HelloPacket.HEADER_LENGHT) {
+  29.	            return null;
+  30.	        }
+  31.	
+  32.	        //读取消息体的长度
+  33.	        int bodyLength = buffer.getInt();
+  34.	
+  35.	        //数据不正确，则抛出AioDecodeException异常
+  36.	        if (bodyLength < 0) {
+  37.	            throw new AioDecodeException("bodyLength [" + bodyLength + "] is not right, remote:" + channelContext.getClientNode());
+  38.	        }
+  39.	
+  40.	        //计算本次需要的数据长度
+  41.	        int neededLength = HelloPacket.HEADER_LENGHT + bodyLength;
+  42.	        //收到的数据是否足够组包
+  43.	        int isDataEnough = readableLength - neededLength;
+  44.	        // 不够消息体长度(剩下的buffe组不了消息体)
+  45.	        if (isDataEnough < 0) {
+  46.	            return null;
+  47.	        } else //组包成功
+  48.	        {
+  49.	            HelloPacket imPacket = new HelloPacket();
+  50.	            if (bodyLength > 0) {
+  51.	                byte[] dst = new byte[bodyLength];
+  52.	                buffer.get(dst);
+  53.	                imPacket.setBody(dst);
+  54.	            }
+  55.	            return imPacket;
+  56.	        }
+  57.	    }
+  58.	
+  59.	    /**
+  60.	     * 编码：把业务消息包编码为可以发送的ByteBuffer
+  61.	     * 总的消息结构：消息头 + 消息体
+  62.	     * 消息头结构：    4个字节，存储消息体的长度
+  63.	     * 消息体结构：   对象的json串的byte[]
+  64.	     */
+  65.	    @Override
+  66.	    public ByteBuffer encode(Packet packet, GroupContext groupContext, ChannelContext channelContext) {
+  67.	        HelloPacket helloPacket = (HelloPacket) packet;
+  68.	        byte[] body = helloPacket.getBody();
+  69.	        int bodyLen = 0;
+  70.	        if (body != null) {
+  71.	            bodyLen = body.length;
+  72.	        }
+  73.	
+  74.	        //bytebuffer的总长度是 = 消息头的长度 + 消息体的长度
+  75.	        int allLen = HelloPacket.HEADER_LENGHT + bodyLen;
+  76.	        //创建一个新的bytebuffer
+  77.	        ByteBuffer buffer = ByteBuffer.allocate(allLen);
+  78.	        //设置字节序
+  79.	        buffer.order(groupContext.getByteOrder());
+  80.	
+  81.	        //写入消息头----消息头的内容就是消息体的长度
+  82.	        buffer.putInt(bodyLen);
+  83.	
+  84.	        //写入消息体
+  85.	        if (body != null) {
+  86.	            buffer.put(body);
+  87.	        }
+  88.	        return buffer;
+  89.	    }
+  90.	
+  91.	
+  92.	    /**
+  93.	     * 处理消息
+  94.	     */
+  95.	    @Override
+  96.	    public void handler(Packet packet, ChannelContext channelContext) throws Exception {
+  97.	        HelloPacket helloPacket = (HelloPacket) packet;
+  98.	        byte[] body = helloPacket.getBody();
+  99.	        if (body != null) {
+  100.	            String str = new String(body, HelloPacket.CHARSET);
+  101.	            System.out.println("收到消息：" + str);
+  102.	
+  103.	            HelloPacket resppacket = new HelloPacket();
+  104.	            resppacket.setBody(("收到了你的消息，你的消息是:" + str).getBytes(HelloPacket.CHARSET));
+  105.	            Tio.send(channelContext, resppacket);
+  106.	        }
+  107.	        return;
+  108.	    }
+  109.	}
+
+#+END_SRC
+
+•	服务器端启动类
+
+
+#+BEGIN_SRC java
+
+  1.	package org.tio.examples.helloworld.server;
+  2.	
+  3.	import java.io.IOException;
+  4.	
+  5.	import org.tio.examples.helloworld.common.Const;
+  6.	import org.tio.server.TioServer;
+  7.	import org.tio.server.ServerGroupContext;
+  8.	import org.tio.server.intf.ServerAioHandler;
+  9.	import org.tio.server.intf.ServerAioListener;
+  10.	
+  11.	/**
+  12.	 *
+  13.	 * @author tanyaowu
+  14.	 * 2017年4月4日 下午12:22:58
+  15.	 */
+  16.	public class HelloServerStarter {
+  17.	    //handler, 包括编码、解码、消息处理
+  18.	    public static ServerAioHandler aioHandler = new HelloServerAioHandler();
+  19.	
+  20.	    //事件监听器，可以为null，但建议自己实现该接口，可以参考showcase了解些接口
+  21.	    public static ServerAioListener aioListener = null;
+  22.	
+  23.	    //一组连接共用的上下文对象
+  24.	    public static ServerGroupContext serverGroupContext = new ServerGroupContext("hello-tio-server", aioHandler, aioListener);
+  25.	
+  26.	    //tioServer对象
+  27.	    public static TioServer tioServer = new TioServer(serverGroupContext);
+  28.	
+  29.	    //有时候需要绑定ip，不需要则null
+  30.	    public static String serverIp = null;
+  31.	
+  32.	    //监听的端口
+  33.	    public static int serverPort = Const.PORT;
+  34.	
+  35.	    /**
+  36.	     * 启动程序入口
+  37.	     */
+  38.	    public static void main(String[] args) throws IOException {
+  39.	        serverGroupContext.setHeartbeatTimeout(org.tio.examples.helloworld.common.Const.TIMEOUT);
+  40.	
+  41.	        tioServer.start(serverIp, serverPort);
+  42.	    }
+  43.	}
+#+END_SRC
 ** 6.5 客户端编写
 :PROPERTIES:
 :ID:       9fdd8add-b765-4d2e-b222-423a81ee0efc
 :END:
+
+#+BEGIN_SRC java
+  1.	package org.tio.examples.helloworld.client;
+  2.	
+  3.	import java.nio.ByteBuffer;
+  4.	
+  5.	import org.tio.client.intf.ClientAioHandler;
+  6.	import org.tio.core.ChannelContext;
+  7.	import org.tio.core.GroupContext;
+  8.	import org.tio.core.exception.AioDecodeException;
+  9.	import org.tio.core.intf.Packet;
+  10.	import org.tio.examples.helloworld.common.HelloPacket;
+  11.	
+  12.	/**
+  13.	 * 
+  14.	 * @author tanyaowu
+  15.	 */
+  16.	public class HelloClientAioHandler implements ClientAioHandler {
+  17.	    private static HelloPacket heartbeatPacket = new HelloPacket();
+  18.	
+  19.	
+  20.	    /**
+  21.	     * 解码：把接收到的ByteBuffer，解码成应用可以识别的业务消息包
+  22.	     * 总的消息结构：消息头 + 消息体
+  23.	     * 消息头结构：    4个字节，存储消息体的长度
+  24.	     * 消息体结构：   对象的json串的byte[]
+  25.	     */
+  26.	    @Override
+  27.	    public HelloPacket decode(ByteBuffer buffer, int limit, int position, int readableLength, ChannelContext channelContext) throws AioDecodeException {
+  28.	        //收到的数据组不了业务包，则返回null以告诉框架数据不够
+  29.	        if (readableLength < HelloPacket.HEADER_LENGHT) {
+  30.	            return null;
+  31.	        }
+  32.	
+  33.	        //读取消息体的长度
+  34.	        int bodyLength = buffer.getInt();
+  35.	
+  36.	        //数据不正确，则抛出AioDecodeException异常
+  37.	        if (bodyLength < 0) {
+  38.	            throw new AioDecodeException("bodyLength [" + bodyLength + "] is not right, remote:" + channelContext.getClientNode());
+  39.	        }
+  40.	
+  41.	        //计算本次需要的数据长度
+  42.	        int neededLength = HelloPacket.HEADER_LENGHT + bodyLength;
+  43.	        //收到的数据是否足够组包
+  44.	        int isDataEnough = readableLength - neededLength;
+  45.	        // 不够消息体长度(剩下的buffe组不了消息体)
+  46.	        if (isDataEnough < 0) {
+  47.	            return null;
+  48.	        } else //组包成功
+  49.	        {
+  50.	            HelloPacket imPacket = new HelloPacket();
+  51.	            if (bodyLength > 0) {
+  52.	                byte[] dst = new byte[bodyLength];
+  53.	                buffer.get(dst);
+  54.	                imPacket.setBody(dst);
+  55.	            }
+  56.	            return imPacket;
+  57.	        }
+  58.	    }
+  59.	
+  60.	    /**
+  61.	     * 编码：把业务消息包编码为可以发送的ByteBuffer
+  62.	     * 总的消息结构：消息头 + 消息体
+  63.	     * 消息头结构：    4个字节，存储消息体的长度
+  64.	     * 消息体结构：   对象的json串的byte[]
+  65.	     */
+  66.	    @Override
+  67.	    public ByteBuffer encode(Packet packet, GroupContext groupContext, ChannelContext channelContext) {
+  68.	        HelloPacket helloPacket = (HelloPacket) packet;
+  69.	        byte[] body = helloPacket.getBody();
+  70.	        int bodyLen = 0;
+  71.	        if (body != null) {
+  72.	            bodyLen = body.length;
+  73.	        }
+  74.	
+  75.	        //bytebuffer的总长度是 = 消息头的长度 + 消息体的长度
+  76.	        int allLen = HelloPacket.HEADER_LENGHT + bodyLen;
+  77.	        //创建一个新的bytebuffer
+  78.	        ByteBuffer buffer = ByteBuffer.allocate(allLen);
+  79.	        //设置字节序
+  80.	        buffer.order(groupContext.getByteOrder());
+  81.	
+  82.	        //写入消息头----消息头的内容就是消息体的长度
+  83.	        buffer.putInt(bodyLen);
+  84.	
+  85.	        //写入消息体
+  86.	        if (body != null) {
+  87.	            buffer.put(body);
+  88.	        }
+  89.	        return buffer;
+  90.	    }
+  91.	
+  92.	    /**
+  93.	     * 处理消息
+  94.	     */
+  95.	    @Override
+  96.	    public void handler(Packet packet, ChannelContext channelContext) throws Exception {
+  97.	        HelloPacket helloPacket = (HelloPacket) packet;
+  98.	        byte[] body = helloPacket.getBody();
+  99.	        if (body != null) {
+  100.	            String str = new String(body, HelloPacket.CHARSET);
+  101.	            System.out.println("收到消息：" + str);
+  102.	        }
+  103.	
+  104.	        return;
+  105.	    }
+  106.	
+  107.	    /**
+  108.	     * 此方法如果返回null，框架层面则不会发心跳；如果返回非null，框架层面会定时发本方法返回的消息包
+  109.	     */
+  110.	    @Override
+  111.	    public HelloPacket heartbeatPacket() {
+  112.	        return heartbeatPacket;
+  113.	    }
+  114.	}
+
+#+END_SRC
+
+客户端启动类
+
+
+#+BEGIN_SRC java
+  1.	package org.tio.examples.helloworld.client;
+  2.	
+  3.	import org.tio.client.TioClient;
+  4.	import org.tio.client.ClientChannelContext;
+  5.	import org.tio.client.ClientGroupContext;
+  6.	import org.tio.client.ReconnConf;
+  7.	import org.tio.client.intf.ClientAioHandler;
+  8.	import org.tio.client.intf.ClientAioListener;
+  9.	import org.tio.core.Tio;
+  10.	import org.tio.core.Node;
+  11.	import org.tio.examples.helloworld.common.Const;
+  12.	import org.tio.examples.helloworld.common.HelloPacket;
+  13.	
+  14.	/**
+  15.	 *
+  16.	 * @author tanyaowu
+  17.	 *
+  18.	 */
+  19.	public class HelloClientStarter {
+  20.	    //服务器节点
+  21.	    public static Node serverNode = new Node(Const.SERVER, Const.PORT);
+  22.	
+  23.	    //handler, 包括编码、解码、消息处理
+  24.	    public static ClientAioHandler tioClientHandler = new HelloClientAioHandler();
+  25.	
+  26.	    //事件监听器，可以为null，但建议自己实现该接口，可以参考showcase了解些接口
+  27.	    public static ClientAioListener aioListener = null;
+  28.	
+  29.	    //断链后自动连接的，不想自动连接请设为null
+  30.	    private static ReconnConf reconnConf = new ReconnConf(5000L);
+  31.	
+  32.	    //一组连接共用的上下文对象
+  33.	    public static ClientGroupContext clientGroupContext = new ClientGroupContext(tioClientHandler, aioListener, reconnConf);
+  34.	
+  35.	    public static TioClient tioClient = null;
+  36.	    public static ClientChannelContext clientChannelContext = null;
+  37.	
+  38.	    /**
+  39.	     * 启动程序入口
+  40.	     */
+  41.	    public static void main(String[] args) throws Exception {
+  42.	        clientGroupContext.setHeartbeatTimeout(Const.TIMEOUT);
+  43.	        tioClient = new TioClient(clientGroupContext);
+  44.	        clientChannelContext = tioClient.connect(serverNode);
+  45.	        //连上后，发条消息玩玩
+  46.	        send();
+  47.	    }
+  48.	
+  49.	    private static void send() throws Exception {
+  50.	        HelloPacket packet = new HelloPacket();
+  51.	        packet.setBody("hello world".getBytes(HelloPacket.CHARSET));
+  52.	        Tio.send(clientChannelContext, packet);
+  53.	    }
+  54.	}
+
+#+END_SRC
+
 ** 6.3 公共模块编写
 :PROPERTIES:
 :ID:       793c68e5-b518-47c2-9266-119b83d48e43
 :END:
+
+•	在pom.xml文件中引入tio-core（最新版本请参考： http://repo.maven.apache.org/maven2/org/t-io/ ）
+
+
+#+BEGIN_SRC java
+1.	<dependency>
+2.	    <groupId>org.t-io</groupId>
+3.	    <artifactId>tio-core</artifactId>
+4.	    <version>3.2.1.v20181024-RELEASE</version>
+5.	</dependency>
+#+END_SRC
+
+•	定义Packet
+
+#+BEGIN_SRC java
+1.	package org.tio.examples.helloworld.common;
+2.	
+3.	import org.tio.core.intf.Packet;
+4.	
+5.	/**
+6.	 * @author tanyaowu
+7.	 */
+8.	public class HelloPacket extends Packet {
+9.	    private static final long serialVersionUID = -172060606924066412L;
+10.	    public static final int HEADER_LENGHT = 4;//消息头的长度
+11.	    public static final String CHARSET = "utf-8";
+12.	    private byte[] body;
+13.	
+14.	    /**
+15.	     * @return the body
+16.	     */
+17.	    public byte[] getBody() {
+18.	        return body;
+19.	    }
+20.	
+21.	    /**
+22.	     * @param body the body to set
+23.	     */
+24.	    public void setBody(byte[] body) {
+25.	        this.body = body;
+26.	    }
+27.	}
+#+END_SRC
+
+•	定义服务器端和客户端都用得到的常量
+
+#+BEGIN_SRC java
+1.	package org.tio.examples.helloworld.common;
+2.	
+3.	/**
+4.	 *
+5.	 * @author tanyaowu
+6.	 * 2017年3月30日 下午7:05:54
+7.	 */
+8.	public interface Const {
+9.	    /**
+10.	     * 服务器地址
+11.	     */
+12.	    public static final String SERVER = "127.0.0.1";
+13.	
+14.	    /**
+15.	     * 监听端口
+16.	     */
+17.	    public static final int PORT = 6789;
+18.	
+19.	    /**
+20.	     * 心跳超时时间
+21.	     */
+22.	    public static final int TIMEOUT = 5000;
+23.	}
+#+END_SRC
+
+
 ** 6.2 应用层协议介绍
 :PROPERTIES:
 :ID:       9b807977-8251-41ef-a248-6802ceb0f375
 :END:
+本例子演示的是一个典型的TCP长连接应用，大体业务简介如下
+•	分为server和client工程，server和client共用common工程
+•	服务端和客户端的消息协议比较简单，消息头为4个字节，用以表示消息体的长度，消息体为一个字符串的byte[]
+•	服务端先启动，监听6789端口
+•	客户端连接到服务端后，会主动向服务器发送一条消息
+•	服务器收到消息后会回应一条消息
+•	之后，框架层会自动从客户端发心跳到服务器，服务器也会检测心跳有没有超时（这些事都是框架做的，业务层只需要配一个心跳超时参数即可）
+•	框架层会在断链后自动重连（这些事都是框架做的，业务层只需要配一个重连配置对象即可）
+
 ** 6.1 引言
 :PROPERTIES:
 :ID:       99eba80c-c69c-44c2-893f-f1e693b01d8f
 :END:
+学习的开端往往从hello world开始
+•	hello world是入门t-io最好的方式！而作者也是用心写了一个对生产项目有参考价值的hello world，不少用户直接拿官方提供的hello world入门，并且稍作逻辑修改后就直接用在生产环境了。
+•	hello world的源代码在：https://gitee.com/tywo45/tio-showcase
+
 * 5. t-io编程基础知识
 :PROPERTIES:
 :ID:       d700c535-a112-4098-9232-a6b89079a2ec
@@ -2430,11 +3988,305 @@ IM
 :PROPERTIES:
 :ID:       e6a57c18-f69e-4a37-a544-aa80a5c9ce52
 :END:
+** 3.2 TFB性能PK平台
+:PROPERTIES:
+:ID:       dccc530c-1e38-4350-a141-7ef5e51f9549
+:END:
+•	在actframework作者罗总的怂恿下，t-io未也加入了全球最大的免费性能PK平台——TFB，t-io拿去PK的作品是基于tio-http-server的tio-mvc，说是叫tio-mvc，其实这个tio-mvc是内置在tio-http-server中的
+•	观战地址：https://www.techempower.com/benchmarks/#section=data-r17&hw=ph&test=plaintext
+
+•	特别说明：不少非常大众的很多框架是排在tio-mvc后面的，譬如… …（此处还是不点名），排在tio-mvc前面的框架有少数框架是不具备生产实战能力的，譬如有的框架可能连基本的参数绑定、甚至post都不支持（此处亦不点名），纯粹一玩物！
+•	当然：性能到这份上，再对性能斤斤计较，也是没太多必要，还是花更大精力去提供更优质的业务功能更实在一些。像actframework的性能就非常靠前，但actframework的作者也是很少提及它家作品的性能了，而是强调actframework的表达力
+** 3.1 t-io 30W长连接并发压力测试报告
+:PROPERTIES:
+:ID:       fff89213-3e04-413f-9b85-e65a890d007f
+:END:
+开始前准备。操作系统Ubuntu 12
+在/etc/sysctl.conf中添加如下配置：
+
+#+BEGIN_SRC java
+
+  s.file-max = 1048576
+  2.	net.ipv4.ip_local_port_range = 1024 65535
+  3.	net.ipv4.tcp_mem = 786432 2097152 3145728
+  4.	net.ipv4.tcp_rmem = 4096 4096 16777216
+  5.	net.ipv4.tcp_wmem = 4096 4096 16777216
+  6.	
+  7.	net.ipv4.tcp_tw_reuse = 1
+  8.	net.ipv4.tcp_tw_recycle = 1
+#+END_SRC
+
+在/etc/security/limits.conf中添加如下配置：
+
+#+BEGIN_SRC java
+1.	*    soft nofile 1048576
+2.	*    hard nofile 1048576
+#+END_SRC
+
+最后使用ulimit -an查询设置是否生效。
+测试主机cpu:
+[[file:img/3.1cpu.png][CPU]] 
+内存：
+[[file:img/3.2memory.png][内存]] 
+客户端测试机用VMware创建12台虚拟机。机器性能就不列举了。每台虚拟机可以跑3W链接
+1：t-io启动时内存占用率以及链接情况
+[[file:img/3.1free.png][内存占用率以及链接情况]] 
+2：5W链接时内存占用情况
+[[file:img/3.1ss.png][ss]] 
+3：10W
+[[file:img/3.110w.png][10W]] 
+4：20W
+[[file:img/3.120w.png][20w]] 
+5：30W
+[[file:img/3.130w.png][30w]] 
+java进程统计情况
+[[file:img/3.1proced.png][进程]] 
+cpu
+ 
+ 
+jvm
+
+[[file:img/3.1jvm.png][jvm1]] 
+
+[[file:img/3.1jvm2.png][jvm2]]
+ 
+2小时后观察内存变化情况如下图
+[[file:img/3.1free2.png][2小时内存使用情况]] 
+
+*** 结论如下
+
+•	0-10万连接。内存变化较大。主要是由于内存初始化时jvm会占用一部分内存。
+•	10万之后。每增加10万连接 内存占用率上升300M左右。
+•	随着连接数增加可以发现cpu性能对连接数影响不大。
+•	新生代内存与老生代内存占用率比较合理。
+•	并发30W连接在2小时内。内存变化不明显。处于合理状态
+根据以上数据可以推论 —-> 以8G内存(可使用内存为7.5G左右)为例:当内存占用率达到5G左右时足以支撑100W并发连接。
+
+
 * 2. t-io背景
 :PROPERTIES:
 :ID:       430b7bc8-c366-4419-a10d-ac8b378af230
 :END:
+
+** 2.3 t-io工程结构及讲解
+:PROPERTIES:
+:ID:       01bc1d17-89af-4bce-bc3c-8ff970690223
+:END:
+先用一张图描述t-io的工程结构
+[[file:img/11.1extend.png][工程结构图]]
+各工程分别讲解
+*** tio-utils
+
+•	tio-utils是笔者在项目开发中积累的部分工具类
+•	里面有少部分代码是在开源许可范围内摘自第三方开源项目代码的，还有部分代码是其它开源作者提供的，譬如hutool的作者路神就提供了许多类，在此也是表示感谢！笔者这么做，仅仅是因为广大用户强力要求tio减少第三方依赖！
+•	当然笔者更愿意使第三方工具类，譬如hutool
+•	在tio-utils中目前鄙人用得最多的Cache
+•	首先这个Cache是个门面——把市面上的各路Cache统一成了ICache，操作方法统一了，
+•	其次它内置了一级cache，两级cache，并且性能极好、操作省心、稳定性也在大量项目中得到了考验
+•	哦，说这么，其实就是想挑战J2cache，不过tio-utils也把J2cache门面化了^_^
+*** tio-core
+•	大家口中的t-io或tio指的就是tio-core，这个一定要记住，要不然会混掉
+•	tio-core依赖tio-utils
+
+•	tio-core基于java aio的网络编程框架（很多人说t-io是基于netty，大家不要听信这样不负责任的言论）
+•	如果你知道netty是啥，那理解tio-core就很容易了，因为tio-core是和netty类似的框架
+•	关于社区的问答
+•	问：市面上已经有netty这样优秀的框架，为何还要自己写一个tio-core？
+•	答：每个人心中有杆秤，你认为优秀的，不代表所有人都这样认为
+•	问：和netty比，tio-core有何优势和劣势？
+•	答：很难回答这个问题，说几个事实：
+•	在t-io没提供任何文档的情况下，许多用户仅依靠笔者提供的示范工程就掌握了tio，并用于生产项目中，这表明t-io很容易上手
+*** tio-mvc
+•	tio-mvc是基于tio-http-server的mvc框架，它在TFB上的性能排名不差（不得不严肃提醒各位：TFB上部分排在tio-mvc前面的框架，并不具备用于生产项目的能力，而只是DEMO级别的，譬如协议容错、协议防攻击、session支持、分布session支持，流控这些都没有，重要的是普通开发工程师难以入手）
+
+ 
+•	tio-mvc在TFB上的PK排名表明t-io性能很好
+•	观察了解t-io的历史，以及大量生产项目以及真实用户的口碑，这个能表明t-io足够稳定！
+•	性能达到一定高度的前提下，再对比性能，其已经意义不大，稳定性、易用性、坑多否才是后面主要的竞技场！
+•	貌似说了一堆和问题无关的内容？！是的，和netty的对比，只能由第三方公正处给出，而不是我！
+*** tio-http-common
+•	一个给tio-http-server和tio-http-client共用的工程，大家可以略过
+*** tio-http-server
+•	基于tio-core（为啥不说是基于tio-http-common？怎么说都可以）实现的http服务器
+•	内置了极易使用的MVC框架
+•	内置了流控、拉黑、forward、拦截器等常用能力
+•	性能优秀，前面已经有地方描述了它在TFB上的性能表现，在TFB上tio-mvc的性能远超使用人群最多的springmvc，当然这不是说springmvc不优秀，而是说性能到这份上了，再说性能没啥意义！
+*** tio-websocket-common
+•	一个给tio-websocket-server和tio-websocket-client共用的工程，大家可以略过
+*** tio-websocket-server
+•	基于tio-core（为啥不说是基于tio-websocket-common？怎么说都可以）实现的websocket服务器
+•	请注意：tio-http-server和tio-websocket-server是分开的，不能在同一端口用tio-http-server和tio-websocket-server，这么样的原因很简单：为了提升性能。
+•	“哦，那为什么其它框架是放在一起的？”
+•	“我想说的是websocket协议是后来硬扯在http协议之上的，从设计上来讲：这俩货根本就不应该呆在一起，搞得笔者在实现websocket协议时，还得用http协议来完成握手”
+*** tio-webpack-core
+•	笔者在tio-http-server的基础之上依赖freemarker实现的类似nodejs webpack的功能，现在还没完全封装到位，就笔者一人在用
+•	你现在正在浏览的网页就是基于tio-webpacke-core的，不信你用右键点击查看源代码，全TM压缩或加密的^_^
+
+** 2.2 t-io应用场景和能力
+:PROPERTIES:
+:ID:       d4125bb8-f634-442e-ba15-771603350636
+:END:
+t-io是基于JVM的网络编程框架，和netty属同类，所以netty能做的t-io都能做，考虑到t-io是从项目抽象出来的框架，所以t-io提供了更多的和业务相关的API，大体上t-io具有如下特点和能力
+•	提供了最强级别的监控和流控能力
+•	内置半包粘包处理
+•	最强最稳级别的资源管理能力
+•	内置心跳检查和心跳发送能力
+•	IP拉黑
+•	各种花式群发能力
+•	一流的性能
+•	极其稳定的表现(很多用户还是停在t-io 1.x版本，就是因为太过稳定，不想变动)
+•	内置慢攻击防御
+•	异步发送、阻塞发送、同步发送一个不落
+•	内置简单的集群发送消息能力(集群更多的是和业务耦合的，所以内置的集群始终是有限的)
+•	多端口资源共享能力（譬如一个端口是websocket协议，一个端口是私有的im协议，这两个端口的资源可以共享，这对协议适配极其有用）
+•	极强的资源和业务绑定能力：绑定group、绑定userid、绑定token、绑定bsId，这些绑定几乎囊括了所有业务需求
+把t-io的使用场景和能力用一张图简述一下
+
+[[file:img/11.1talent.png][使用场景和历史]]
+** 2.1 t-io发展历史
+:PROPERTIES:
+:ID:       bc9e6f46-9e05-49d4-be24-6fd3fba2fad8
+:END:
+
+2018年
+•	基于tio-core、tio-websocket、tio-http、tio-webpack的大型金融直播平台—— 牛吧云播正式上线
+•	GVP开源项目贝密游戏在已经大量使用netty的情况下，用t-io重写通讯模块，并表示：” 换上t-io后，吃嘛嘛香 “
+•	开源java区块链平台md_blockchain表示：” t-io在联盟链的网络通信中表现非常稳定 “
+•	基于t-io的开源IM项目 J-IM ，获得开源社区的极大关注，并斩获GVP大奖，据说J-IM作者薪水大涨^_^
+•	氦氪云 的协议网关采用t-io实现
+•	上市公司 长飞光纤 ，S8000协议采用t-io实现
+•	更多的用户愿意反馈t-io使用案例
+2017年
+•	talent-aio改名为t-io
+•	用t-io实现了http、websocket协议
+•	基于tio-http创建了用于传统前端的tio-webpack框架
+•	t-io案例大量产生，用户口碑极佳
+•	获GVP(Gitee Most Valuable Projects) - 码云最有价值开源项目计划、年度欢迎开源项目等奖
+2016年
+•	用AIO技术创建了talent-aio框架，代码入驻码云
+2015年
+•	开始关注AIO技术，同时进一步提升和封装多线程、锁等技术
+2014年
+•	用talent-nio实现了热波直播平台的IM模块
+2013年
+•	短暂性介入开源项目mycat，并用talent-nio实现了Mycat-Balance(不是pom方式引入)
+2012年
+•	在离开中兴后，用开发EMF积累的NIO及多线程等知识，创建了talent-nio框架
+2011年
+•	新EMF框架应用于新的网管项目V4，该项目迄今(2018-12-27)仍然稳定运行
+2010年
+•	用NIO技术重写中兴网管底层通讯框架EMF，解决了大量不稳定因素
+
 * 1.网络编程预备知识
 :PROPERTIES:
 :ID:       ae3c881e-9a21-4628-8e23-b64fb130f54a
 :END:
+
+** 1.4 半包和粘包
+:PROPERTIES:
+:ID:       f80a5332-4716-4140-bd09-2069b99ce2ee
+:END:
+*** 半包
+•	顾名思义，就是收到了半个包，这个时候不足以组成一个应用层的包。就像你要对你喜欢的人说“我喜欢你”，但是因为喝水咽着了，第一次只说了“我”字，第二次说了个“喜”字，第三个次了个“欢你”，那么就发生了半包问题，对方只有等待你说完这4个字后才知道你是想说“我喜欢你”！
+•	用http协议为例，展示半包场景
+[[file:img/1.4ban.png][半包实例]] 
+*** 粘包
+•	粘包与半包相反，就是把多个想说的话，一口气说完了，对方反应不过来，得把你的话拆开一条一条地理解
+•	用http协议为例，展示粘包场景
+[[file:img/1.4nianbao.png][粘包实例]] 
+说明：http协议是一来一回的，所以正常场景是不会有粘包的，但pipeline模式下是允许一方连续发多个请求的，所以会有粘包产生
+为何坑人无数
+•	初涉网络编程的同学，往往认为每次收到的数据刚好是一个完整的数据包
+•	于是当网络不好，或是消息包过大时，半包的情况就发生了，而程序并没有考虑到半包的情况，结果就是解码失败，导致消息丢失
+•	当通信的对方把数条数据包放在一个TCP包中发过来时，粘包就产生了，而程序没有考虑到一次TCP收包会收到多个业务包，从而解析到第一个业务包后把后面的业务包丢弃了
+•	百度一下半包粘包，一定会搜到很多记录，这也证明这俩货确实坑人无数，所以看完本节内容，你还会继续犯半包粘包的错吗？
+
+** 1.3ByteBuffer:网络编程必须的数据结构
+:PROPERTIES:
+:ID:       1e8c0b61-ade6-4fd2-96b8-b9b524a96c3c
+:END:
+
+ByteBuffer是nio/aio编程所必须掌握的一个数据结构，也是掌握tio所必须要学会的基础知识。
+设想你不懂Map，不懂List，不懂Set，那么你在编程领域将会一事无成，同样的道理ByteBuffer是nio/aio编程领域必不可缺的必备技能
+初识ByteBuffer
+我们可以把bytebuffer理解成如下几个属性组成的一个数据结构
+
+#+BEGIN_SRC java
+•	byte[] bytes: 用来存储数据
+•	int capacity: 用来表示bytes的容量，那么可以想像capacity就等于bytes.size()，此值在初始化bytes后，是不可变的。
+•	int limit: 用来表示bytes实际装了多少数据，可以容易想像得到limit <= capacity，此值是可灵活变动的
+•	int position: 用来表示在哪个位置开始往bytes写数据或是读数据，此值是可灵活变动的
+#+END_SRC
+
+一图感知一下ByteBuffer
+
+[[file:img/1.3bb.png][bytebuffer定义]]
+*** 创建ByteBuffer
+ByteBuffer.allocate(int cap)即可创建一个指定容器大小的ByteBuffer，见图
+
+[[file:img/1.3bb2.png][创建byteBuffer]] 
+
+*** 往ByteBuffer中写入数据
+调用ByteBuffer.put(byte b)即可ByteBuffer中写入一个字节，见图
+[[file:img/1.3bb3.png][写入bytebuffer]] 
+*** 从ByteBuffer读取数据
+对于刚刚写好的bytebuffer，我们要读取它的内容，需要先设置一下position和limit，否则读的位置就不对
+
+#+BEGIN_SRC java
+1.	byteBuffer.position(0);  //设置position到0位置，这样读数据时就从这个位置开始读
+2.	byteBuffer.limit(1);     //设置limit为1，表示当前bytebuffer的有效数据长度是1
+#+END_SRC
+
+[[file:img/1.3getData.png][读取数据1]] 
+接下来调用ByteBuffer.get()即可读取一个字节，在读取数据的同时，ByteBuffer的position也会跟关位移，见图
+
+[[file:img/1.3bb4.png][读取数据2]] 
+
+
+** 1.2 应用层和传输成的关系
+:PROPERTIES:
+:ID:       642c0766-633f-4dbc-a40a-e42cbc9fc376
+:END:
+
+•	以http协议为例，我们在访问一个网站时，浏览器会通过TCP协议发送如下字符串到服务器的应用层
+
+#+BEGIN_SRC java
+1.	GET /test/abtest HTTP/1.1
+2.	Host: 127.0.0.1
+3.	Connection: keep-alive
+4.	Cache-Control: max-age=0
+5.	Upgrade-Insecure-Requests: 1
+6.	User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+7.	Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+8.	Accept-Encoding: gzip, deflate, br
+9.	Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
+10.	Cookie: PHPSESSID=970260278652571648
+#+END_SRC
+
+•	程序调试截图(tio的HttpRequest.toString())
+[[file:img/1.2debug.png][程序调试图]] 
+•	这些字符串就是应用层数据，应用层数据是按照一定格式来组织的，这个格式就是应用层协议，譬如http协议。
+•	传输层在往应用层传递数据时，并不保证每次传递的数据是一个完整的应用层数据包（以http协议为例，就是并不保证应用层收到的数据刚好可以组成一个http包），这就是我们经常提到的半包和粘包。传输层只负责传递byte[]数据，应用层需要自己对byte[]数据进行解码，以http协议为例，就是把byte[]解码成http协议格式的字符串。
+
+** 1.1 TCP/IP协议分层模型
+:PROPERTIES:
+:ID:       2d2880f1-eab8-4a62-88bc-4f5f80d2e665
+:END:
+	大学教科书中有说分成7层，也有说分成4层的，笔者觉得4层更合适一些，像七层中的第5、6层完全不是必须的，就算有也是各自制定协议，而制定协议的人基本不会去考虑第5层叫会话层第6层叫表示层，在私有应用层协议中，更多的是会私定一个握手互信协议，以表示通讯双方是互信的
+[[file:img/1.1tcp.jpg][tcp/ip网络协议]]
+*** 应用层？
+•	你想用java写一个网络程序，你写的这个程序就是应用层
+•	所以QQ、微信、以及你正在使用的浏览器，都是应用层
+*** 应用层数据？
+•	你想通过你前面写的这个网络程序发一个字符串”are you ok”到对方，这个字符串”are you ok”就是应用层数据
+•	对方回你一句”yes, I am fine”，这个”yes, I am fine”也是应用层数据
+*** 传输层?
+•	传输层要么走TCP协议，要么走UDP协议，没有第三种协议
+•	TCP协议的通信双方，需要知道彼此都在家呆着，且由客户端主动发起连接
+•	UDP协议，客户端知道服务器家住在哪，但并不知道服务器在不在家，扔条消息去服务器家，如果服务器不在家这条消息就被丢了
+•	应用层把数据丢给传输层后，传输层把数据进行一下包装，包装纸上面写着“源端口、目的端口、序号、确认序号、检验和等TCP自身的数据”
+•	传输层把数据给应用层时，会拆开对方的包装纸，应用层只看得到对方应用层发的数据
+*** 传输层数据?
+•	就是应用层的数据带上一张包装纸后的数据
+•	这层包装纸就是传输层的元数据或叫头部数据
+•	为什么要带包装纸？因为要实名呀，现在快递都要实名了
