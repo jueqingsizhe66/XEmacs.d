@@ -431,6 +431,72 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 :PROPERTIES:
 :ID:       06e7fa7d-4d7e-44f8-8170-6579b18e920e
 :END:
+
+** 9.3 用CacheUtils.java简化缓存和数据源间的操作
+:PROPERTIES:
+:ID:       62f35740-568a-46f2-bd4a-80134b972785
+:END:
+  互联网应用，有大量代码在处理安全、并发、攻击等，而缓存就是一个非常常用的武器，譬如缓存可以缓解查询攻击、缓存可以提升并发等。
+本人在开发过程中也是涉及到大量的缓存操作，譬如某数据先从缓存中取，缓存中取不到再从数据库中获取，如果数据库中也没有，还要防止缓存NULL攻击，不得不用一个对象放在临时缓存中，为了防止并发访问数据库，在从数据库中获取数据时，还要带一把锁。这个过程用代码大体是类似如下这样的
+
+#+BEGIN_SRC java
+1.	public Integer getXxxxxx(Integer roomnum) {
+2.	    if (roomnum == null) {
+3.	        return null;
+4.	    }
+5.	    Integer invalidUid = -1;
+6.	    String key = roomnum + "";
+7.	    Integer uid = roomnumAndUidCache.get(key, Integer.class);
+8.	    if (uid != null) {
+9.	        if (Objects.equals(invalidUid, uid)) {//防止缓存穿透
+10.	            return null;
+11.	        }
+12.	        return uid;
+13.	    }
+14.	
+15.	    Object lock = LockUtils.getLocalLockObj(CacheConfig.ROOMNUM_UID_3, key);
+16.	    synchronized (lock) {
+17.	        uid = roomnumAndUidCache.get(key, Integer.class);
+18.	        if (uid != null) {
+19.	            return uid;
+20.	        }
+21.	
+22.	        /**
+23.	         * 获取房间号uid
+24.	         */
+25.	        uid = Xxxxxxx.me.getZzzzzz(roomnum);
+26.	        if (uid != null) {
+27.	            roomnumAndUidCache.put(key, uid);
+28.	            return uid;
+29.	        } else {
+30.	            roomnumAndUidCache.putTemporary(key, invalidUid);//防止缓存穿透
+31.	            return null;
+32.	        }
+33.	    }
+34.	}
+#+END_SRC
+
+代码多而易错，用t-io提供的CacheUtils.java，代码就少得多，而且不容易出错
+
+#+BEGIN_SRC java
+1.	public Integer getXxxxxx(Integer roomnum) {
+2.	    if (roomnum == null) {
+3.	        return null;
+4.	    }
+5.	    String key = roomnum + "";
+6.	    Integer uid = CacheUtils.get(roomnumAndUidCache, key, true, new FirsthandCreater<Integer>() {
+7.	        @Override
+8.	        public Integer create() {
+9.	            return Xxxxxxx.me.getZzzzzz(roomnum);
+10.	        }
+11.	    });
+12.	    return uid;
+13.	}
+#+END_SRC
+
+是不是简单多了？
+最后附上[[file:CacheUtils.java][CacheUtils.java]]源代码地址：https://github.com/tywo45/t-io/tree/master/src/utils/src/main/java/org/tio/utils/cache/CacheUtils.java
+
 ** 9.2基于quartz封装的定时任务
 :PROPERTIES:
 :ID:       c60fb3a1-38eb-44f9-a660-1a89c23214d7
