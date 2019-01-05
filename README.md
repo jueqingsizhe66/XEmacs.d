@@ -7808,6 +7808,15 @@ org file ,you will get the good style of your new html file.
 
 有空研究一下 [cider-spy][439], [cider-eval-sexp-fu][440]没什么用
 
+helm-imenu(counsel-imenu一样效果)结合也是不错。
+
+#### imenu作用
+
+[imenu][500]的作用就是显示函数文件的[函数名列表、属性名列表][499]。
+这时候imenu认为所有函数式stuff或者叫做珠子、节点. 他的作用和markdown-mode、org-mode
+中使用`counsel-outline`的效果是一样的，此时header视为节点。
+
+
 ### 160. 科学上网
 
 源自于shadowsocket的[ssrss.space][441], 使用时需要注意
@@ -7973,7 +7982,7 @@ Aaron Bieber 给我们介绍它是如何使用[org-refile][461]
 ### 166. Counsel-outline
 
 
-`M-x counel-outline`可以快速打开markdown或者org-mode的目录!
+`M-x counel-outline`可以快速打开markdown或者org-mode的目录(也可以分级打开代码文件的注释条)!
 对应的快捷键`C-c o`
 
 ### 167. doom-modeline
@@ -8186,6 +8195,8 @@ python3执行,即可完成对自己插件的更新。
 `M-x ielm`可以打开elisp解释器,
 
 支持补全.
+
+elisp也是不错的解释器系统。
 
 
 [Music for pragramming][483] -----> Just listening
@@ -8814,3 +8825,5 @@ thing-edit不断处理文本字的系统，主要三个功能复制、剪切和�
 [496]: https://github.com/vermiculus/magithub/issues/363
 [497]: https://magit.vc/manual/ghub/Interactively-Creating-and-Storing-a-Token.html#Interactively-Creating-and-Storing-a-Token
 [498]: https://github.com/settings/tokens
+[499]: https://emacs-china.org/t/topic/5917
+[500]: https://www.emacswiki.org/emacs/ImenuMode

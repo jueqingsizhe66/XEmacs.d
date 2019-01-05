@@ -30,6 +30,7 @@ counsel-org-clock https://github.com/akirak/counsel-org-clock
 emacs-presentation-mode https://github.com/zonuexe/emacs-presentation-mode
 fic-mode https://github.com/lewang/fic-mode
 thing-edit https://github.com/manateelazycat/thing-edit/
+lazy-search https://github.com/manateelazycat/lazy-search
 """.strip()
 
 

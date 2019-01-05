@@ -402,3 +402,12 @@ modifications)."
 
 
 (require 'init-thing-edit)
+
+;; lazy-search
+
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/customizations/my_plugins/lazy-search//"))
+
+(require 'lazy-search)
+(global-set-key (kbd "M-s") 'lazy-search)
+
+
