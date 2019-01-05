@@ -416,6 +416,14 @@ info系统相当于是一个幻灯片系统), d返回info系统的主目录(所�
         next chapter. For browsing ,use [ and ] to cycle back and forth
         through nodes.
 
+类似于fieldStoneMethod(FSM), 石头也需要有用的，削型，然后才能用来搭墙, 有些石头
+有些珠子（因为你长期使用org的header按照珠子的类型，所以你对珠子有感觉),可以充当
+你记忆的触发器(trigger), 他们都有一定的能量，可大可小, 比如一张照片、电影、故事片段
+气味、场景、人、地方、音乐。
+
+有效写作关键就是human emotional response to stones(对珠子的情感反应)
+当你发现一个有潜力的珠子，你放下珠子的细节，你要深入(inward)去感受他，倾听你的感受，
+一定要记住你的感受(feeling, notice your response to the stone)，这样才能有你的直觉。
 
 在`c-h i` 具有menu的文档下，可以输入`m` 命令得到menu菜单，执行定义到某个manual下，
 常用的组合过程`c-h i m`

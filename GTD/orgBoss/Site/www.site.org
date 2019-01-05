@@ -686,3 +686,5 @@ https://github.com/wmunters/phd_thesis
 [[file:%E5%BE%90%E5%BB%BA%E4%B8%AD%E5%BF%86%E5%90%B4%E4%BB%B2%E5%8D%8E.org][绝江者托于船]]
 ** perl高质量帮助文档
  https://perldoc.perl.org/perl.html?tdsourcetag=s_pctim_aiomsg
+** 王小波文集
+ https://www.kanunu8.com/files/writer/156.html

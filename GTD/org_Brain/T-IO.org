@@ -4,11 +4,57 @@
 #+Title: T-io
 #+Author:  Ye Zhaoliang
 #+Email: yezhaoliang@ncepu.edu.cn
-* 11. T-io版本发布历史
+* 9. t-io常见问题
+:PROPERTIES:
+:ID:       1a793ff3-19b9-4ff6-9fb2-f05682066cfc
+:END:
+** 9.1 Tio.remove()和Tio.close()的区别
+:PROPERTIES:
+:ID:       f0fbcf9c-d8c6-401a-8b3a-a34c3dcc663e
+:END:
+
+Tio.remove()和Tio.close()，是初学者容易混淆的两个api，本文详细说明一下两者的区别
+
+首先我们要明白一个概念，您用t-io，可能是用t-io做TCP服务器，也可能是用t-io做TCP客户端，下面对这俩方法进行分别讲解
+
+*** Tio.remove()
+
+不管是用t-io做TCP服务器还是TCP客户端，调用Tio.remove()后，t-io都会彻底删除TCP连接并释放包括ChannelContext在内的所有和该条TCP连接对应的资源，当然那些和群组、Token的绑定关系也全部释放掉
+
+*** Tio.close()
+
+如果是用t-io做TCP服务器，此方法等价于Tio.remove()；
+如果是用t-io做TCP客户端
+该方法会断开当前TCP连接
+如果业务程序配置了重连策略（就是：ReconnConf）：
+t-io后面会进行重连操作，也就是说并不会抛弃该条TCP连接对应的ChannelContext对象
+如果该条TCP连接对应的ChannelContext对象绑定了groupid、userid、token、bsId，那么这些绑定关系会全部释放掉，在重连成功后，业务侧需要再次进行绑定
+如果业务程序没有配置重连策略（就是：ReconnConf），此方法等价于Tio.remove()
+简单看下重连代码
+
+#+BEGIN_SRC java
+    /**
+     * 启动重连任务
+     *
+     * @author tanyaowu
+     *
+     */
+    private void startReconnTask() {
+        final ReconnConf reconnConf = clientGroupContext.getReconnConf();
+        if (reconnConf == null || reconnConf.getInterval() <= 0) {
+            return;
+        }
+        // 进行重连操作，代码省略 ... ...
+    }
+#+END_SRC
+
+出现网络异常或其它异常时，业务需要主动调用这俩方法吗？
+答：不需要的，出现任何网络异常，t-io都会释放掉该条TCP连接对应的全部资源，这也是t-io如此稳定的一大原因。网络编程的很多坑，都是源于资源没释放
+* 12. T-io版本发布历史
 :PROPERTIES:
 :ID:       e065e50e-f484-43e6-882d-aa507dd26ec6
 :END:
-** 11.4 t-io 3.2.5
+** 12.4 t-io 3.2.5
 :PROPERTIES:
 :ID:       a5858fe8-a8d8-4279-bdea-f90a96160cd7
 :END:
@@ -32,7 +78,7 @@
 </dependency>
 #+END_SRC
 
-** 11.3 t-io 3.2.2
+** 12.3 t-io 3.2.2
 :PROPERTIES:
 :ID:       efcde747-197c-4412-a476-003ccbc9f9af
 :END:
@@ -86,7 +132,7 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 #+END_SRC
 
 
-** 11.2 t-io 3.2.3
+** 12.2 t-io 3.2.3
 :PROPERTIES:
 :ID:       479f1064-71ea-4e13-bd59-867bbbfca10d
 :END:
@@ -115,7 +161,7 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 #+END_SRC
 
 
-** 11.1 t-io 3.2.4
+** 12.1 t-io 3.2.4
 :PROPERTIES:
 :ID:       9bc1d955-1f32-457c-a50b-01c4b34bfc02
 :END:
@@ -151,11 +197,11 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 •	t-io是OSC官方人员（还不止一个^_^，此处 @红薯 应该来辟谣）也在使用的通讯框架，譬如这个网站的动弹：http://lifes77.com
 •	欢迎来https://www.t-io.org/guide, 用t-io写的t-io官网（注：官网用的是tio-core、tio-http、tio-websocket、tio-webpack，并未使用类似tomcat这样的容器），
 
-* 10. T-io源代码分析
+* 11. T-io源代码分析
 :PROPERTIES:
 :ID:       18b9627a-1b9e-42b6-9408-ddcaa696259a
 :END:
-** 10.1 t-io对半包和粘包的处理
+** 11.1 t-io对半包和粘包的处理
 :PROPERTIES:
 :ID:       ccfa6372-0ffb-4de7-a3ce-5f4ac7cea662
 :END:
@@ -427,12 +473,12 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 框架层已经做好半包和粘包的工作，业务层只需要按着业务协议解码即可，框架会处理好剩下的byte或是上次没处理完的byte的。
 如果还有什么不理解的，请在右侧聊天区域进行留言讨论！
 
-* 9. T-io提供的工具类
+* 10. T-io提供的工具类
 :PROPERTIES:
 :ID:       06e7fa7d-4d7e-44f8-8170-6579b18e920e
 :END:
 
-** 9.3 用CacheUtils.java简化缓存和数据源间的操作
+** 10.3 用CacheUtils.java简化缓存和数据源间的操作
 :PROPERTIES:
 :ID:       62f35740-568a-46f2-bd4a-80134b972785
 :END:
@@ -497,7 +543,7 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
 是不是简单多了？
 最后附上[[file:CacheUtils.java][CacheUtils.java]]源代码地址：https://github.com/tywo45/t-io/tree/master/src/utils/src/main/java/org/tio/utils/cache/CacheUtils.java
 
-** 9.2基于quartz封装的定时任务
+** 10.2基于quartz封装的定时任务
 :PROPERTIES:
 :ID:       c60fb3a1-38eb-44f9-a660-1a89c23214d7
 :END:
@@ -572,7 +618,7 @@ public HttpResponse methodA(Integer adid, HttpRequest request) throws Exception 
   5.	}
 #+END_SRC
 
-** 9.1 类似J2Cache的tio-cache
+** 10.1 类似J2Cache的tio-cache
 :PROPERTIES:
 :ID:       0c11303e-22bb-43d4-89b4-60ec5d9d9b1a
 :END:
