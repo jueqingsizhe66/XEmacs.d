@@ -390,18 +390,24 @@ emacs经常地使用方式是
 
 使用 `C-h i` 可以得到一个info window, 一个不错的帮助平台（结合标题19进行学习）
 
-1. 使用space键执行翻屏(scroll one screen at a time)
-2. [ and ] Previous /Next node(前后章连续小节跳转,顺序浏览当前书籍的前后张杰)
-3. 使用n和p跳转上下章节(同级目录跳转）(Previous/next sibling node), t返回当前插件(书籍)的首页, d返回info系统的主目录(所有书籍列表)
-4. l and r可以返回和向前跳转(in history)(l and r go back /forward in history)
+1. [ and ] Previous /Next node(前后章连续小节跳转,顺序浏览当前书籍的前后章节，可以把所有标题当作一串珠子，珠子大小不同,这两个快捷键
+   支持任意珠子间跳转)
+2. 使用n和p跳转上下章节(同级目录-一个章节跳转，相同级别的标题跳转，相同大小的珠子跳转）(Previous/next sibling node), t返回当前插件(当前书籍)的首页(有用)---T返回当前文件的目录(类似于org-tree-slide效果可以返回目录形式，然后接着往下走，所以
+info系统相当于是一个幻灯片系统), d返回info系统的主目录(所有插件书籍列表)
+3. l and r可以返回和向前跳转(in history)(l and r go back /forward in history)
 类似于浏览器的回退和前进
-5. Tab 表示在links之间跳转
-6. Enter进入链接, m 弹出一个prompt minibuffer(挑选你需要学习的major modes), for a menu item name to choose it.
-7. q 推出info browser
-8. `^`
-9. `L`显示一个访问列表(visited history list)
-10. `?` 显示快捷键帮助信息
-11. `g` 是一个很好的显示node列表(书籍中的张继烈表)的工具
+4. Tab 表示在links之间跳转
+5. Enter进入链接, m 弹出一个prompt minibuffer(挑选你需要学习的major modes,的确有用!), for a menu item name to choose it.
+6. q 推出info browser
+7. `^`
+8. `L`显示一个访问列表(visited history list)
+9. `?` 显示快捷键帮助信息
+10. `g` 是一个很好的显示node列表(书籍中章节,只针对其中一本书的所有珠子)的工具(比如直接定位到org-mode的document structure即可!
+11. `f`显示当前的所有链接
+12. `o` 类似于快速的ace-jump(其实就是`ace-link-info`),实现标题间的快速跳转
+13. `C-S-u`物理性的向上跳转，`C-S-d`物理性向下跳转(`inertial-scroll`)
+
+        嘈嘈切切错杂弹，大珠小珠落玉盘
 
         Everyday reading
         For everyday reading, you want SPACE for browsing and reading 
@@ -413,6 +419,7 @@ emacs经常地使用方式是
 
 在`c-h i` 具有menu的文档下，可以输入`m` 命令得到menu菜单，执行定义到某个manual下，
 常用的组合过程`c-h i m`
+
 
 `C-h F` 函数说明`M-x describe-function`
 
