@@ -8,3 +8,7 @@
 }{
 (factorial 3)
 }{
+(load "little-prover.scm")
+}{
+(dethm.align/align)
+}{

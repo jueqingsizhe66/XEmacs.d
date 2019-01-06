@@ -688,3 +688,12 @@ https://github.com/wmunters/phd_thesis
  https://perldoc.perl.org/perl.html?tdsourcetag=s_pctim_aiomsg
 ** 王小波文集
  https://www.kanunu8.com/files/writer/156.html
+** The little Prover
+ https://the-little-prover.github.io/
+ 
+[[file:j-bob-lang.scm][j-bob-lang.scm]]
+
+[[file:j-bob.scm][j-bob.scm]]
+
+[[file:little-prover.scm][little-prover.scm]]
+
