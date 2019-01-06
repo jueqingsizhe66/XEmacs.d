@@ -30,72 +30,92 @@
 ;; '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_GB" "-p" "C:\\hunspell\\share\\hunspell\\en_GB.dic") nil iso-8859-1))) ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(let* ((variable-tuple (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+                             ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+                             ((x-list-fonts "Verdana")         '(:font "Verdana"))
+                             ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+                             (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+       (base-font-color     (face-foreground 'default nil 'default))
+       (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-document-title ((t 
-                        (:inherit default 
-                                  :weight bold 
-                                  :foreground "#9F5F9F" 
-                                  :font "Source Sans Pro" 
-                                  :height 1.4 
-                                  :underline nil)))) 
- '(org-done ((t 
-              (:foreground "PaleGreen" 
-                           :weight normal 
-                           :strike-through t)))) 
- '(org-headline-done ((((class color) 
-                        (min-colors 16) 
-                        (background dark)) 
-                       (:foreground "LightSalmon" 
-                                    :strike-through t)))) 
- '(org-level-1 ((t 
-                 (:inherit default 
-                           :weight bold 
-                           :foreground "#FCE8C3" 
-                           :font "Source Sans Pro" 
-                           :height 1.5)))) 
- '(org-level-2 ((t 
-                 (:inherit default 
-                           :weight bold 
-                           :foreground "#FCE8C3" 
-                           :font "Source Sans Pro" 
-                           :height 1.25)))) 
- '(org-level-3 ((t 
-                 (:inherit default 
-                           :weight bold 
-                           :foreground "#FCE8C3" 
-                           :font "Source Sans Pro" 
-                           :height 1.15)))) 
- '(org-level-4 ((t 
-                 (:inherit default 
-                           :weight bold 
-                           :foreground "#FCE8C3" 
-                           :font "Source Sans Pro" 
-                           :height 1.05)))) 
- '(org-level-5 ((t 
-                 (:inherit default 
-                           :weight bold 
-                           :foreground "#FCE8C3" 
-                           :font "Source Sans Pro")))) 
- '(org-level-6 ((t 
-                 (:inherit default 
-                           :weight bold 
-                           :foreground "#FCE8C3" 
-                           :font "Source Sans Pro")))) 
- '(org-level-7 ((t 
-                 (:inherit default 
-                           :weight bold 
-                           :foreground "#FCE8C3" 
-                           :font "Source Sans Pro")))) 
- '(org-level-8 ((t 
-                 (:inherit default 
-                           :weight bold 
-                           :foreground "#FCE8C3" 
-                           :font "Source Sans Pro")))))
+  (custom-theme-set-faces 'user
+                          `(org-level-8 ((t (,@headline ,@variable-tuple))))
+                          `(org-level-7 ((t (,@headline ,@variable-tuple))))
+                          `(org-level-6 ((t (,@headline ,@variable-tuple))))
+                          `(org-level-5 ((t (,@headline ,@variable-tuple))))
+                          `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+                          `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
+                          `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
+                          `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
+                          `(org-document-title ((t (,@headline ,@variable-tuple :height 1.5 :underline nil))))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (custom-set-faces                                                ;;
+;;  ;; custom-set-faces was added by Custom.                        ;;
+;;  ;; If you edit it by hand, you could mess it up, so be careful. ;;
+;;  ;; Your init file should contain only one such instance.        ;;
+;;  ;; If there is more than one, they won't work right.            ;;
+;;  '(org-document-title ((t                                        ;;
+;;                         (:inherit default                        ;;
+;;                                   :weight bold                   ;;
+;;                                   :foreground "#9F5F9F"          ;;
+;;                                   :font "Source Sans Pro"        ;;
+;;                                   :height 1.4                    ;;
+;;                                   :underline nil))))             ;;
+;;  '(org-done ((t                                                  ;;
+;;               (:foreground "PaleGreen"                           ;;
+;;                            :weight normal                        ;;
+;;                            :strike-through t))))                 ;;
+;;  '(org-headline-done ((((class color)                            ;;
+;;                         (min-colors 16)                          ;;
+;;                         (background dark))                       ;;
+;;                        (:foreground "LightSalmon"                ;;
+;;                                     :strike-through t))))        ;;
+;;  '(org-level-1 ((t                                               ;;
+;;                  (:inherit default                               ;;
+;;                            :weight bold                          ;;
+;;                            :foreground "#FCE8C3"                 ;;
+;;                            :font "Source Sans Pro"               ;;
+;;                            :height 1.5))))                       ;;
+;;  '(org-level-2 ((t                                               ;;
+;;                  (:inherit default                               ;;
+;;                            :weight bold                          ;;
+;;                            :foreground "#FCE8C3"                 ;;
+;;                            :font "Source Sans Pro"               ;;
+;;                            :height 1.25))))                      ;;
+;;  '(org-level-3 ((t                                               ;;
+;;                  (:inherit default                               ;;
+;;                            :weight bold                          ;;
+;;                            :foreground "#FCE8C3"                 ;;
+;;                            :font "Source Sans Pro"               ;;
+;;                            :height 1.15))))                      ;;
+;;  '(org-level-4 ((t                                               ;;
+;;                  (:inherit default                               ;;
+;;                            :weight bold                          ;;
+;;                            :foreground "#FCE8C3"                 ;;
+;;                            :font "Source Sans Pro"               ;;
+;;                            :height 1.05))))                      ;;
+;;  '(org-level-5 ((t                                               ;;
+;;                  (:inherit default                               ;;
+;;                            :weight bold                          ;;
+;;                            :foreground "#FCE8C3"                 ;;
+;;                            :font "Source Sans Pro"))))           ;;
+;;  '(org-level-6 ((t                                               ;;
+;;                  (:inherit default                               ;;
+;;                            :weight bold                          ;;
+;;                            :foreground "#FCE8C3"                 ;;
+;;                            :font "Source Sans Pro"))))           ;;
+;;  '(org-level-7 ((t                                               ;;
+;;                  (:inherit default                               ;;
+;;                            :weight bold                          ;;
+;;                            :foreground "#FCE8C3"                 ;;
+;;                            :font "Source Sans Pro"))))           ;;
+;;  '(org-level-8 ((t                                               ;;
+;;                  (:inherit default                               ;;
+;;                            :weight bold                          ;;
+;;                            :foreground "#FCE8C3"                 ;;
+;;                            :font "Source Sans Pro")))))          ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ;(require 'org-mouse) ;;加载这个包报错 muse变量未定义
                                         ;把下面几行加到 .emacs 文件里。后三行是为命令定义全局快捷键――请改成适合你自己的。
                                         ;设置之后，打开 .org 扩展的文件会自动进入 org 模式;
@@ -397,8 +417,8 @@ Captured %<%Y-%m-%d %H:%M>
                     :CREATED: %U
                     :END:
 :COACH: \n%[~/.emacs.d/GTD/orgTemplate/.daily_review.txt]\n"  
-                                                             :clock-in t 
-                                                             :clock-resume t) 
+                                                           :clock-in t 
+                                                           :clock-resume t) 
                               ("a" "Appointment Or Meeting" entry (file+headline
                                                                    "~/.emacs.d/CalendarDairy/diary.org")
                                "** APP [#B] %^{Description} %^g
@@ -1607,7 +1627,7 @@ Use a prefix arg to get regular RET. " ;;
  '(org-agenda-sorting-strategy (quote ((agenda time-up priority-down tag-up) 
                                        (todo tag-up)))) 
  '(org-deadline-warning-days 7)
-) ;;
+ ) ;;
 
 
 

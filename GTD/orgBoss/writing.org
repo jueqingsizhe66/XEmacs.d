@@ -905,7 +905,6 @@ https://wenku.baidu.com/view/110e924f19e8b8f67d1cb929.html
 
 
  
- [[file:~/.emacs.d/GTD/orgBoss/newgtd.org::*Chapter11.%20Modules][Chapter11. Modules]]
 ** 不要愤怒那会影响你的判断 
 老教父 柯里昂尼 说：“不要愤怒，那会影响你的判断”
 不要紧张，那会影响你的判断。

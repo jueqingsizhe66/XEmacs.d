@@ -304,7 +304,7 @@
  '(org-deadline-warning-days 7)
  '(package-selected-packages
    (quote
-    (magithub fixme-mode ivy-posframe company-reftex visual-fill elisp-format ht company-anaconda anaconda-mode elpy all-the-icons-dired all-the-icons-ivy doom-themes doom-modeline yasnippet-snippets persp-projectile perspective projectile-rails projectile-ripgrep counsel-projectile persp-mode-projectile-bridge evil-leader evil-org py-autopep8 python-pylint pylint exec-path-from-shell cider-eval-sexp-fu helm-cider-history helm-cider cider-decompile super-save evil-mc-extras evil-mc youdao-dictionary nlinum-relative nlinum rg ivy-xref flx ivy-bibtex ripgrep artbollocks-mode plantuml-mode beginend link-hint helm-eww log4j-mode language-detection eww-lnum clj-refactor howm deft ace-link 4clojure evil-vimish-fold origami scribble-mode ac-geiser geiser ascii-art-to-unicode visual-ascii-mode suggest counsel-world-clock ivy-yasnippet helpful abyss-theme ledger-mode flycheck-ledger org-agenda-property org-link-minor-mode org-dashboard dashboard page-break-lines writeroom-mode poporg org-mru-clock epresent xpm window-numbering evil-visualstar git-timemachine git-gutter org-wild-notifier dumb-diff fringe-current-line ag highlight-indentation ruby-end ruby-tools ruby-refactor cljr-helm org-bookmark-heading org-alert org-mind-map spaceline dired-narrow dired-rainbow dired-subtree emms sotclojure sotlisp ox-reveal pretty-symbols org-journal org-autolist org-babel-eval-in-repl org-bullets request-deferred fortpy flycheck-clojure spacemacs-theme w3m use-package simplezen zencoding-mode move-text highlight-escape-sequences dired-details+ dired+ ace-jump-mode paredit-menu iy-go-to-char key-chord string-edit flycheck-perl6 company cal-china-x image+ 2048-game 0xc ivy-rich ivy-dired-history ivy smart-mode-line mo-git-blame evil-surround markdown-mode+ scheme-complete 0blayout org-plus-contrib cl-lib-highlight tagedit smex rainbow-delimiters paredit ido-ubiquitous clojure-mode-extra-font-locking cider)))
+    (beacon aggressive-indent magithub fixme-mode ivy-posframe company-reftex visual-fill elisp-format ht company-anaconda anaconda-mode elpy all-the-icons-dired all-the-icons-ivy doom-themes doom-modeline yasnippet-snippets persp-projectile perspective projectile-rails projectile-ripgrep counsel-projectile persp-mode-projectile-bridge evil-leader evil-org py-autopep8 python-pylint pylint exec-path-from-shell cider-eval-sexp-fu helm-cider-history helm-cider cider-decompile super-save evil-mc-extras evil-mc youdao-dictionary nlinum-relative nlinum rg ivy-xref flx ivy-bibtex ripgrep artbollocks-mode plantuml-mode beginend link-hint helm-eww log4j-mode language-detection eww-lnum clj-refactor howm deft ace-link 4clojure evil-vimish-fold origami scribble-mode ac-geiser geiser ascii-art-to-unicode visual-ascii-mode suggest counsel-world-clock ivy-yasnippet helpful abyss-theme ledger-mode flycheck-ledger org-agenda-property org-link-minor-mode org-dashboard dashboard page-break-lines writeroom-mode poporg org-mru-clock epresent xpm window-numbering evil-visualstar git-timemachine git-gutter org-wild-notifier dumb-diff fringe-current-line ag highlight-indentation ruby-end ruby-tools ruby-refactor cljr-helm org-bookmark-heading org-alert org-mind-map spaceline dired-narrow dired-rainbow dired-subtree emms sotclojure sotlisp ox-reveal pretty-symbols org-journal org-autolist org-babel-eval-in-repl org-bullets request-deferred fortpy flycheck-clojure spacemacs-theme w3m use-package simplezen zencoding-mode move-text highlight-escape-sequences dired-details+ dired+ ace-jump-mode paredit-menu iy-go-to-char key-chord string-edit flycheck-perl6 company cal-china-x image+ 2048-game 0xc ivy-rich ivy-dired-history ivy smart-mode-line mo-git-blame evil-surround markdown-mode+ scheme-complete 0blayout org-plus-contrib cl-lib-highlight tagedit smex rainbow-delimiters paredit ido-ubiquitous clojure-mode-extra-font-locking cider)))
  '(send-mail-function (quote smtpmail-send-it))
  '(session-use-package t nil (session))
  '(smtpmail-smtp-server "smtp.163.com")
@@ -379,23 +379,41 @@
 
 (load "init-projectile.el") ;;
 (load "init-ivy.el")        ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (custom-set-faces                                                                                                                     ;;
+;;  ;; custom-set-faces was added by Custom.                                                                                             ;;
+;;  ;; If you edit it by hand, you could mess it up, so be careful.                                                                      ;;
+;;  ;; Your init file should contain only one such instance.                                                                             ;;
+;;  ;; If there is more than one, they won't work right.                                                                                 ;;
+;;  '(org-document-title ((t (:inherit default :weight bold :foreground "#9F5F9F" :font "Source Sans Pro" :height 1.4 :underline nil)))) ;;
+;;  '(org-done ((t (:foreground "PaleGreen" :weight normal :strike-through t))))                                                         ;;
+;;  '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "LightSalmon" :strike-through t))))             ;;
+;;  '(org-level-1 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.5))))                       ;;
+;;  '(org-level-2 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.25))))                      ;;
+;;  '(org-level-3 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.15))))                      ;;
+;;  '(org-level-4 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.05))))                      ;;
+;;  '(org-level-5 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))                                   ;;
+;;  '(org-level-6 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))                                   ;;
+;;  '(org-level-7 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))                                   ;;
+;;  '(org-level-8 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro")))))                                  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-visual-line-mode)
+(global-visual-fill-column-mode)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-document-title ((t (:inherit default :weight bold :foreground "#9F5F9F" :font "Source Sans Pro" :height 1.4 :underline nil))))
+ '(org-document-title ((t (:inherit default :weight bold :foreground "#f8f8f2" :font "Source Sans Pro" :height 1.5 :underline nil))))
  '(org-done ((t (:foreground "PaleGreen" :weight normal :strike-through t))))
  '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "LightSalmon" :strike-through t))))
- '(org-level-1 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.5))))
- '(org-level-2 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.25))))
- '(org-level-3 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.15))))
- '(org-level-4 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro" :height 1.05))))
- '(org-level-5 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))
- '(org-level-6 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))
- '(org-level-7 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro"))))
- '(org-level-8 ((t (:inherit default :weight bold :foreground "#FCE8C3" :font "Source Sans Pro")))))
-
-(global-visual-line-mode)
-(global-visual-fill-column-mode)
-
+ '(org-level-1 ((t (:inherit default :weight bold :foreground "#f8f8f2" :font "Source Sans Pro" :height 1.75))))
+ '(org-level-2 ((t (:inherit default :weight bold :foreground "#f8f8f2" :font "Source Sans Pro" :height 1.5))))
+ '(org-level-3 ((t (:inherit default :weight bold :foreground "#f8f8f2" :font "Source Sans Pro" :height 1.25))))
+ '(org-level-4 ((t (:inherit default :weight bold :foreground "#f8f8f2" :font "Source Sans Pro" :height 1.1))))
+ '(org-level-5 ((t (:inherit default :weight bold :foreground "#f8f8f2" :font "Source Sans Pro"))))
+ '(org-level-6 ((t (:inherit default :weight bold :foreground "#f8f8f2" :font "Source Sans Pro"))))
+ '(org-level-7 ((t (:inherit default :weight bold :foreground "#f8f8f2" :font "Source Sans Pro"))))
+ '(org-level-8 ((t (:inherit default :weight bold :foreground "#f8f8f2" :font "Source Sans Pro")))))

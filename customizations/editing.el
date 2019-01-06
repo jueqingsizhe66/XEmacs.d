@@ -410,4 +410,10 @@ modifications)."
 (require 'lazy-search)
 (global-set-key (kbd "M-s") 'lazy-search)
 
-
+;; bacon global minor mode
+(beacon-mode 1)
+(setq cursor-type 'box
+      blink-cursor-delay 0.2
+      blink-cursor-blinks 10
+      blink-cursor-interval 0.2
+      beacon-color "#721cd4")

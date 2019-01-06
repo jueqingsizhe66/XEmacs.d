@@ -91,6 +91,7 @@ effect until to achieve the beauty and elegance , more functions)
 
 vars into functions, then upgrades into modules, upgrade into project,
 upgrade into problem domain
+
 ** 学习 [#A] visual memory of clojure <2017-10-31 周二 16:17> 
 - State "学习"       from "TODO"          [2018-06-20 周三 11:13]
 :LOGBOOK:

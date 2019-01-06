@@ -2082,6 +2082,8 @@ All journal entries are registered in the Emacs Calendar. To see available journ
 
 [howardabrams][106] alternated between the browser-based presentation tool, [reveal.js][108] and staying in Emacs with [org-tree-slide][107].
 
+[howard使用org-tree-slide介绍Magit-Youtube][501]
+
 #### In emacs, org-tree-slide(边写org，边做幻灯片)
 
 ##### 函数
@@ -8322,6 +8324,28 @@ thing-edit不断处理文本字的系统，主要三个功能复制、剪切和�
 
 终于也是增加了[number的objects提取][495]
 
+### 183. aggressive-indent-mode
+
+
+[aggressive-indent][502] 是minor mode,用于保持你的代码缩进, 据说比内置的electric-indent-mode更靠谱，且支持任意语言。
+
+### 184. 有趣的功能，光标光线
+
+[ Beacon][503] 在当前鼠标位置发出一束光表明当前位置(global monor mode)。
+适用情况： 当你翻页查找，或者切换页面的时候，会有一束光出现在你的切换页的鼠标位置。
+
+紫色光线:
+``` elisp
+
+(beacon-mode 1)
+(setq cursor-type 'box
+      blink-cursor-delay 0.2
+      blink-cursor-blinks 10
+      blink-cursor-interval 0.2
+      beacon-color "#721cd4")
+```
+
+
 
 ----------
 ----------
@@ -8827,3 +8851,6 @@ thing-edit不断处理文本字的系统，主要三个功能复制、剪切和�
 [498]: https://github.com/settings/tokens
 [499]: https://emacs-china.org/t/topic/5917
 [500]: https://www.emacswiki.org/emacs/ImenuMode
+[501]: https://www.youtube.com/watch?v=vQO7F2Q9DwA
+[502]: https://github.com/Malabarba/aggressive-indent-mode
+[503]: https://github.com/Malabarba/beacon
