@@ -4,10 +4,107 @@
 #+Title: T-io
 #+Author:  Ye Zhaoliang
 #+Email: yezhaoliang@ncepu.edu.cn
+
+刚开始接触T-IO并没有逻辑去理通它是什么?分不出层次，还是得用起来!
+
+tio是唯一一个内置支持集群的io框架
+不过因为集群和业务相关，tio内置的集群功能，也只是把消息分发做了集群
+
 * 9. t-io常见问题
 :PROPERTIES:
 :ID:       1a793ff3-19b9-4ff6-9fb2-f05682066cfc
 :END:
+
+t-io本身就属于高难度系列的技术(高层次运用)
+很多人说netty，讲真，做一个IM，用netty花的代价是tio的10倍以上
+
+基本ddos流量都是国外来的
+** 两个byte[]合并，tio有工具类吗
+
+arraycopy 这个可以完成 取左边 取右边 取中间
+并非两个文件合并。
+
+#+BEGIN_SRC java
+  package com.freeyun.common.util;
+
+  import java.util.Arrays;
+  import java.util.Random;
+
+  public class ByteUtils {
+      public static byte[] randByte(int num){
+          byte[] bin = new byte[num];
+          Random rand = new Random();
+          rand.nextBytes(bin);
+          return bin;
+      }
+      //System.arraycopy()方法
+      public static byte[] byteMerger(byte[] bt1, byte[] bt2){  
+          byte[] bt3 = new byte[bt1.length+bt2.length];  
+          System.arraycopy(bt1, 0, bt3, 0, bt1.length);  
+          System.arraycopy(bt2, 0, bt3, bt1.length, bt2.length);  
+          return bt3;  
+      }
+    
+      public static byte[] subByte(byte[] data,int len){
+          byte[] dest = new byte[len];
+          System.arraycopy(data, 0, dest, 0, len);
+          return dest;
+      }
+    
+      public static void main(String[] args) {
+          byte[] recvIv = { (byte) 203, (byte) 130, (byte) 212, 12, 36, 18, (byte) 143, (byte) 186, (byte) 144, (byte) 252, (byte) 245, 123, (byte) 168, (byte) 139, (byte)156,(byte) 210, (byte)223,(byte) 228,(byte) 195,(byte) 208 };
+    	
+          byte[] a= subByte(recvIv, 8);
+          System.out.println(Arrays.toString(a));
+    	
+    	
+      }
+  }
+
+#+END_SRC
+
+
+** 怎么实现多点登录
+:PROPERTIES:
+:ID:       1134816f-5b0b-4a3d-a030-794bad8dd91a
+:END:
+:RESOURCES:
+:END:
+
+https://github.com/tywo45/t-io/issues/8
+
+背景: Tio api 中没有 多点登陆 实现的代码 是需要改源码 才可以实现 嘛 我需要标识 一个userid 的ios 设备 和 android 设备
+
+解决方案:
+
+
+#+BEGIN_SRC java
+ios的设备这样绑定：Tio.bindUser(ChannelContext channelContext, "ios_"+userid)
+安卓的设备这样绑定：Tio.bindUser(ChannelContext channelContext, "android_"+userid)
+#+END_SRC
+
+我们websocket 换成 tio 之后，之前是用spring 那个 websocket ，偶尔会有数据推送不出去,就是同时往一个地方写数据会报错；
+换成tio之后，干干的；再也不当心前端不稳定了
+
+
+** t-io.org官网
+现在多房间已经支持了，就是没在界面上体现出来而已
+
+我们进的不同页面，其实就是一个“房间”，你可以体验一下
+
+不同页面的聊天内容是不一样的
+自己开发聊天室，你要做成像tio官网这样的，还是很费劲的
+更多人接触这个及时通讯
+不写一个io框架 就不知道里面藏了多少坑
+要自己搞这么一套服务、一来不稳定、时间成本学习成本
+
+如果数据部符合协议规则，建议怎么处理，是抛出异常，还是交给AioHandler的handler方法处理
+A: 抛异常
+
+A: 抛出异常后，当前的socket连接回断开吧
+
+我的经验：把框架当工具用，主体还得靠好的架构师来弄
+
 ** 9.1 Tio.remove()和Tio.close()的区别
 :PROPERTIES:
 :ID:       f0fbcf9c-d8c6-401a-8b3a-a34c3dcc663e
@@ -50,10 +147,62 @@ t-io后面会进行重连操作，也就是说并不会抛弃该条TCP连接对�
 
 出现网络异常或其它异常时，业务需要主动调用这俩方法吗？
 答：不需要的，出现任何网络异常，t-io都会释放掉该条TCP连接对应的全部资源，这也是t-io如此稳定的一大原因。网络编程的很多坑，都是源于资源没释放
+** 9.2 t-io官网IM图片、视频是怎么处理的
+:PROPERTIES:
+:ID:       efda33d9-cf40-406e-ac67-badfe06a54a0
+:END:
+t-io官网IM的图片、视频是怎么处理的？
+这是个被问得有点多的问题，那我这说一下整个处理过程，当然其实是很简单的
+
+1. 用HTTP把图片、视频上传到文件服务器(也是HTTP协议的)
+2. 把图片、视频存储路径存入数据库，作好标记
+3. 通过tio发送IM指令，群发消息，消息格式如下
+
+   简短些:
+
+1、通过http上传到服务器
+2、存入数据库
+3、发送IM指令
+
+图片啥的存的是路径，官网不有个资源服务器专门存放视频，图片的
+<2019-01-07 10:12> tio-webpack还没封装好，作者在用，有这个后，开发方便太多了
+物联网未来发展形势很好，估计tio前景会很不错
+
+学java还是java核心技术这本书好，又全又容易懂，还有各种核心api介绍
+
+#+BEGIN_SRC java
+{
+  "comefrom": 1,
+  "coverheight": 267,
+  "coversize": 66761,
+  "coverurl": "/im/upload/img/50/8931/1119484/88097537/74541310905/9/235442/333.png",
+  "coverwidth": 399,
+  "filename": "1.png",
+  "height": 680,
+  "id": 316,
+  "session": "10181437920656891639169303552",
+  "size": 391940,
+  "status": 1,
+  "title": "1.png",
+  "uid": 23357,
+  "url": "/im/upload/img/50/8931/1119484/88097537/74541310905/9/235442/444.png",
+  "width": 1016
+}
+#+END_SRC
+
+客户端拿到消息后进行解析显示
 * 12. T-io版本发布历史
 :PROPERTIES:
 :ID:       e065e50e-f484-43e6-882d-aa507dd26ec6
 :END:
+** 12.5 t-io 3.2.6
+:PROPERTIES:
+:ID:       7e59b254-17ad-44b7-a722-1521b9e859d9
+:END:
+
+[修复]：https://github.com/tywo45/t-io/issues/7
+根据用户反馈优化代码
+升级pom依赖
 ** 12.4 t-io 3.2.5
 :PROPERTIES:
 :ID:       a5858fe8-a8d8-4279-bdea-f90a96160cd7
@@ -4708,12 +4857,14 @@ t-io收发消息及处理过程，可以用一张图清晰地表达出来
 
 2. 	在t-io提供文档前，大量用户就是通过这些示范工程掌握t-io的，并且将这些项目作为脚手架，直接用到生产环境，这一方面表明掌握t-io并不困难，另一方面表明这些示范工程极具教学和实战价值
 *** tio-showcase工程简介
+学习t-io最好的方式是从本项目开始，甚至可以当作项目脚手架来使用
 
 1. 用于学习t-io的示范工程，一共3个示范工程
 2. 在t-io工程结构一节中已经说了：一般用户口中的t-io就是指tio-core
 3. 工程地址：https://gitee.com/tywo45/tio-showcase
 4. 下面分别对这三个工程进行简介
 
+   嘿嘿，可以导入idea愉快的开始学习T-io了
 *** helloworld
 1. 	helloworld是入门t-io最好的方式！而作者也是用心写了一个对生产项目有参考价值的hello tio，而不是仅仅是show hello而hello
 
@@ -4745,6 +4896,9 @@ t-io收发消息及处理过程，可以用一张图清晰地表达出来
 5. 当年有用户用这个工程 轰出每秒收发500万条聊天消息 （当然现在t-io加了各种流量监控后，简单测试发现性能大约降了一半）
 
 [[file:img/4.1ChatRoom.png][chatRoom]]
+
+
+J-IM是升级版!
 * 3. 性能和稳定性
 :PROPERTIES:
 :ID:       e6a57c18-f69e-4a37-a544-aa80a5c9ce52
@@ -4973,6 +5127,7 @@ t-io是基于JVM的网络编程框架，和netty属同类，所以netty能做的
 :ID:       ae3c881e-9a21-4628-8e23-b64fb130f54a
 :END:
 
+
 ** 1.4 半包和粘包
 :PROPERTIES:
 :ID:       f80a5332-4716-4140-bd09-2069b99ce2ee
@@ -5014,6 +5169,7 @@ ByteBuffer是nio/aio编程所必须掌握的一个数据结构，也是掌握tio
 一图感知一下ByteBuffer
 
 [[file:img/1.3bb.png][bytebuffer定义]]
+
 *** 创建ByteBuffer
 ByteBuffer.allocate(int cap)即可创建一个指定容器大小的ByteBuffer，见图
 
@@ -5060,13 +5216,31 @@ ByteBuffer.allocate(int cap)即可创建一个指定容器大小的ByteBuffer，
 [[file:img/1.2debug.png][程序调试图]] 
 3. 这些字符串就是应用层数据，应用层数据是按照一定格式来组织的，这个格式就是应用层协议，譬如http协议。
 4. 传输层在往应用层传递数据时，并不保证每次传递的数据是一个完整的应用层数据包（以http协议为例，就是并不保证应用层收到的数据刚好可以组成一个http包），这就是我们经常提到的半包和粘包。传输层只负责传递byte[]数据，应用层需要自己对byte[]数据进行解码，以http协议为例，就是把byte[]解码成http协议格式的字符串。
-?
+   
+** 
+
+大学教科书中有说分成7层，也有说分成4层的，笔者觉得4层更合适一些，像七层中的第5、6层完全不是必须的，就算有也是各自制定协议，而制定协议的人基本不会去考虑第5层叫会话层第6层叫表示层，在私有应用层协议中，更多的是会私定一个握手互信协议，以表示通讯双方是互信的
+
+** 1.1 TCP/IP协议分层模型
+:PROPERTIES:
+:ID:       f4a451d2-339d-4f5b-b14e-df84544a9c1f
+:END:
+
+*** 应用层？
+你想用java写一个网络程序，你写的这个程序就是应用层
+所以QQ、微信、以及你正在使用的浏览器，都是应用层
+*** 应用层数据？
+你想通过你前面写的这个网络程序发一个字符串”are you ok”到对方，这个字符串”are you ok”就是应用层数据
+对方回你一句”yes, I am fine”，这个”yes, I am fine”也是应用层数据
+
+*** 传输层?
 
 1. 传输层要么走TCP协议，要么走UDP协议，没有第三种协议
 2. TCP协议的通信双方，需要知道彼此都在家呆着，且由客户端主动发起连接
 3. UDP协议，客户端知道服务器家住在哪，但并不知道服务器在不在家，扔条消息去服务器家，如果服务器不在家这条消息就被丢了
 4. 应用层把数据丢给传输层后，传输层把数据进行一下包装，包装纸上面写着“源端口、目的端口、序号、确认序号、检验和等TCP自身的数据”
 5. 传输层把数据给应用层时，会拆开对方的包装纸，应用层只看得到对方应用层发的数据
+
 *** 传输层数据?                                                  :@Company:
 
 1. 就是应用层的数据带上一张包装纸后的数据
@@ -5075,5 +5249,10 @@ ByteBuffer.allocate(int cap)即可创建一个指定容器大小的ByteBuffer，
 
 [[https://mp.weixin.qq.com/s/Koto-w9U9mt8H1zZW2ETZQ][Session会话本质讨论]]
 
+
+
+
+有价值，大家都愿意肤浅，没价值，一毛不拔
+可是有趣？不付钱?! 有趣不能跟钱挂钩，否则就失去了它的趣味。
 
 

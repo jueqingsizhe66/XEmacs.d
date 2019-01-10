@@ -1,0 +1,246 @@
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_TRANS: linear
+#+REVEAL_THEME: jr0cket
+#+Title: Java thinking nodes
+#+Author:  Ye Zhaoliang
+#+Email: yezhaoliang@ncepu.edu.cn
+
+* 编写技巧                                                             :java:
+:PROPERTIES:
+:ID:       c0b25d2f-298b-474a-978e-534ff6c914ae
+:END:
+
+idea常用快捷键
+|   |                  |                                  |
+|---+------------------+----------------------------------|
+|   | Ctrl+H           | 显示一个类继承关系Type hierarchy |
+|   | Ctrl+B(F4)       | 显示词的定义                     |
+|   | Ctrl+N           | 显示类                           |
+|   | Ctrl+F12(Alt+7)  | 显示当前文档结构                 |
+|   | Ctrl+shift+N     | 查找文件                         |
+|   | Ctrl+0(数字键盘) | toggle全屏                       |
+|---+------------------+----------------------------------|
+|   | Alt+4            | 显示运行窗口界面                 |
+|   | Alt+6            | toggle Todo窗口                  |
+|   | Alt+7(Ctrl+F12)  | toggle当前文档结构               |
+|   | Alt+1            | toggle project目录               |
+|   | Alt+F12          | toggle命令行窗口                 |
+|   | F11              | Toggle bookmark                  |
+|   | ctrl+F11         | Toggle Bookmark with标记         |
+|   | Shift+f11        | 显示所有bookmark                 |
+|   | Ctrl+Shift+E     | 最近更改的文件                   |
+|---+------------------+----------------------------------|
+|   | Alt+insert       | 快速插入getter and setter        |
+|   | Ctrl+enter       | 导入包，自动修正                 |
+|---+------------------+----------------------------------|
+|   | Ctrl+Tab         | 切换标签页                       |
+|   | Ctrl+F4          | 关闭当前标签页                   |
+|   | Ctrl+E           | 切换最近显示的文件（类似于标签页 |
+|   |                  | 切换的效果)包含已经关闭的文件    |
+|   |                  |                                  |
+
+idea有趣快捷键
+|   |                 |                                                 |
+|---+-----------------+-------------------------------------------------|
+|   | Alt+shift+N     | 新建一个基于master分支的任务                    |
+|   | Ctrl+Shift+c    | 复制当前文件路径                                |
+|   | Ctrl+`          | 更改color-scheme                                |
+|   | Ctrl+Alt+T      | 全选一行代码 包裹上if,for等结构                 |
+|---+-----------------+-------------------------------------------------|
+|   | Ctrl+Alt+]      | 下一个项目窗口(当你用idea打开多个java项目的时候 |
+|   | Ctrl+Alt+[      | 上一个项目窗口(类似于persp-projectile)          |
+|---+-----------------+-------------------------------------------------|
+|   | Ctrl+Alt+L      | 格式化代码                                      |
+|   | Ctrl+Q          | 显示函数注释信息                                |
+|---+-----------------+-------------------------------------------------|
+|   | Ctrl+Shift+F    | 全局查找类似于 projectile-counsel-ag的功能      |
+|   | Ctrl+F          | 类似于`M-x swiper`                              |
+|   | Ctrl+Alt+F7     | 显示这个项目谁在用该类或者该方法                |
+|   | Alt+F7(Ctrl+F7) | 显示当前文件这个函数有谁在用                    |
+|   |                 |                                                 |
+* 如鹏面试题
+:PROPERTIES:
+:ID:       fcef84f9-5e11-4e01-bc39-d1a8968cf568
+:END:
+
+https://mstk.rupeng.com/
+* 6. IO
+:PROPERTIES:
+:ID:       1e45dd81-309f-4131-bce6-737f578f4401
+:END:
+* 5. 多线程编程
+:PROPERTIES:
+:ID:       6f261f89-d150-4799-a060-5395038df138
+:END:
+* 4. 网络编程
+:PROPERTIES:
+:ID:       e6b2a849-2787-4c7d-b45a-ec87b01fe8a6
+:END:
+
+Ip查找所在区域
+https://gitee.com/lionsoul/ip2region
+
+类似T-Io的位处理风格代码
+
+** socket是什么?
+:PROPERTIES:
+:ID:       6a0a5a82-66a2-4d2a-974e-19439222e6a5
+:END:
+
+网络上的两个程序通过一个双向的通信连接实现数据的交换，这个连接的一端称为一个socket。
+建立网络通信连接至少要一对端口号(socket)。socket本质是编程接口(API)，对TCP/IP的封装，TCP/IP也要提供可供程序员做网络开发所用的接口，这就是Socket编程接口；HTTP是轿车，提供了封装或者显示数据的具体形式；Socket是发动机，提供了网络通信的能力。
+
+socket是传输层的概念，http是运用层的概念
+https://baike.baidu.com/item/socket/281150?fr=aladdin
+
+* 3. 面向对象
+:PROPERTIES:
+:ID:       2a93cb9b-5fec-4fde-9500-c1e1c4ffa2dc
+:END:
+** 3.9 this and super
+:PROPERTIES:
+:ID:       66740acf-84cd-436e-8662-545f54d1afcc
+:END:
+** 3.8 多态
+:PROPERTIES:
+:ID:       6717e17e-33fe-48db-a14a-fe854276aa20
+:END:
+** 3.7 继承
+:PROPERTIES:
+:ID:       0e962a88-6e86-4972-a65b-94f33c1122d3
+:END:
+** 3.6 封装
+:PROPERTIES:
+:ID:       a10897ea-129e-47c3-978d-79231fa77c95
+:END:
+** 3.5 内置函数
+:PROPERTIES:
+:ID:       1d0e378e-14c6-4e89-bd9c-a0dde2d014d0
+:END:
+** 3.4 析构函数
+:PROPERTIES:
+:ID:       2ad04f9e-68c7-49c6-adb3-af441c83291d
+:END:
+** 3.3 方法
+:PROPERTIES:
+:ID:       510dbd8e-8656-46e1-b36b-23c4e836baf3
+:END:
+** 3.2 属性
+:PROPERTIES:
+:ID:       fc49ca23-536e-4a29-afc3-930a38b0fe4c
+:END:
+** 3.1 构造函数
+:PROPERTIES:
+:ID:       085ef5ec-2422-4b37-b7fb-3449021f090f
+:END:
+
+1. 无参构造函数
+2. 有参构造函数(一个属性，两个属性对应构造函数几个consumers)
+* 2. 集合
+:PROPERTIES:
+:ID:       15518b35-9318-444a-8d72-e448192454e7
+:END:
+** 2.1 HashMap(泛型)
+:PROPERTIES:
+:ID:       d5c326d8-f222-46d5-876e-2c466b08506c
+:END:
+
+
+#+BEGIN_SRC java
+  public static <T> List<Map<String, Object>> convertListBean2ListMap(List<T> beanList, Class<T> T){
+      List<Map<String, Object>> mapList = new ArrayList();
+      for (int i = 0, n = beanList.size(); i < n; i++) {
+          Object bean = beanList.get(i);
+          Map<String, Object> map = BeanUtil.beanToMap(bean);
+          mapList.add(map);
+      }
+      return mapList;
+  }
+
+
+  public static <T> List<T> convertListMap2ListBean(List<Map<String, Object>> listMap, Class<T> T){
+      List<T> beanList = new ArrayList();
+      if (listMap != null && !listMap.isEmpty()) {
+          for (int i = 0, n = listMap.size(); i < n; i++) {
+              Map<String, Object> map = listMap.get(i);
+              T bean = BeanUtil.mapToBean(map, T, CopyOptions.create().setIgnoreNullValue(true));
+              beanList.add(bean);
+          }
+      }
+      return beanList;
+  }
+#+END_SRC
+
+* 1. 类加载器和反射
+:PROPERTIES:
+:ID:       77d92fb0-c261-42cf-a1f7-77f6622ed581
+:END:
+
+ClassLoader, Method, class, properties.
+
+类加载器类似于evaluator，解释各个部分，具体运用则是之后运用。
+
+#+BEGIN_SRC java
+  package com.baobaotao. reflect;  
+  import java.lang.reflect.Constructor;  
+  import java.lang.reflect.Field;  
+  import java.lang.reflect.Method;  
+  public class ReflectTest {  
+      public static Car  initByDefaultConst() throws Throwable  
+      {  
+          //①通过类装载器获取Car类对象  
+          ClassLoader loader = Thread.currentThread().getContextClassLoader();   
+          Class clazz = loader.loadClass("com.baobaotao.reflect.Car");   
+          
+          //②获取类的默认构造器对象并通过它实例化Car  
+          Constructor cons = clazz.getDeclaredConstructor((Class[])null);   
+          Car car = (Car)cons.newInstance();  
+          
+           
+          //③通过反射方法设置属性  
+          Method setBrand = clazz.getMethod("setBrand",String.class);          
+          setBrand.invoke(car,"红旗CA72");        
+          Method setColor = clazz.getMethod("setColor",String.class);  
+          setColor.invoke(car,"黑色");        
+          Method setMaxSpeed = clazz.getMethod("setMaxSpeed",int.class);  
+          setMaxSpeed.invoke(car,200);          
+          return car;  
+      }  
+  
+      public static void main(String[] args) throws Throwable {  
+          Car car = initByDefaultConst();  
+          car.introduce();  
+      }  
+  }  
+#+END_SRC
+
+https://stamen.iteye.com/blog/1497981
+** 1.2 Reference Value
+:PROPERTIES:
+:ID:       e7422a21-0796-423f-a042-42adae5da921
+:END:
+http://www.yinwang.org/blog-cn/2016/06/08/java-value-type
+
+Java，Scheme 等语言的原始类型，比如 char，int，boolean，double 等，在“实现”上确实是通过值（而不是引用，或者叫指针）直接传递的，然而这完全是一种为了效率的优化（叫做 inlining）。这种优化对于程序员应该是不可见的。Java 继承了 Scheme/Lisp 的衣钵，它们在“语义”上其实是没有值类型的。
+
+*** 值和引用？
+
+一个在语义上有值类型的语言（比如 C#，Go 和 Swift）必须具有以下两种特性之一（或者两者都有），程序员才能感觉到值类型的存在：
+
+1. deref 操作。这使得你可以用 *x = 2 这样的语句来改变引用指向的内容，导致共享地址的其它引用看到新的值。你没法通过 x = 2 让其他值变量得到新的值，所以你感觉到值类型的存在。
+2. 像 struct 这样的“值组合类型”。你可以通过 x.foo = 2 这样的成员赋值改变引用数据（比如 class object）的一部分，使得共享地址的其它引用看到新的值。你没法通过成员赋值让另一个 struct 变量得到新的值，所以你感觉到值类型的存在。
+
+实际上，所有的数据都是引用类型就是 Scheme 和 Java最初的设计原理。原始类型用值来传递数据只是一种性能优化（叫做inlining），它对于程序员应该是透明（看不见）的。
+
+那些在面试时喜欢问“Java是否所有数据都是引用”，然后当你回答“是”的时候纠正你说“int，boolean 是值类型”的人，都是本本主义者。
+
+值操作直接改变内存地址的值，引用操作只是改变指向。一个是真的改变，一个是方向的改变
+
+只要理解取值(value)和取地址(reference)的区别即可。
+
+观空亦空、空无所空、所空既无，无无所无。
+
+** 1.1 jvm
+:PROPERTIES:
+:ID:       41b38b71-ef65-4d46-8178-a98144fa77ba
+:END:
