@@ -1,3 +1,7 @@
+;;; README.md --- Insert description here -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
+
 # 主要目的: Emacs learning(org-mode) ---Emacsable
 ## 次要目的: clojure(closure) learning ----Clojureable
 ### 最终目的: Exercise yourself! Train yourself(训练你自己)! Teach yourself! Tell yourself something!
@@ -3203,8 +3207,7 @@ elisp编写技巧(<2018-05-08 22:39> [emacs-lisp-guide][257])
 C-M-d   Move down into a list(进入）
 C-M-u   Move up outof a list(跳出)
 
-The usual way to access the property list is to specify a name and ask what value corresponds to it.
-```
+The usual way to access the property list is to specify a name and ask what value corresponds to it.```
 
 快速编写括号相关的代码。
 
@@ -8123,6 +8126,13 @@ Aaron Bieber 给我们介绍它是如何使用[org-refile][461]
 
 一个加入org-agenda-files的文件，只有具有标题，才能让`org-refile`捕捉得到，只要有标题就可以查到。
 
+可以参考[知识消纳系统][505] ,提到的如何整理的问题可以通过org-refile进行规整。
+知识标签，被用于运用知识的过程，你的命名必须具有它的含义!
+
+#### 进一步的走向:闭环输出
+
+笔记系统应该形成闭环，积极的合并整理再输出是非常必要的. 当然有的时候会出现难以取舍的情况, 所以建议建立一个 archive system， 就我个人而言，[一个topic 的核心笔记永远不超过2张A4纸][505], 笔记内容应针对方法而不是过程. 4000多条，都看完要多久…
+
 ### 166. Counsel-outline
 
 
@@ -8490,6 +8500,39 @@ thing-edit不断处理文本字的系统，主要三个功能复制、剪切和�
 ```
 
 然后再配合inertial scroll，就更有意思了,滚动光波。
+
+### 185. 快速插入当前文件名
+
+[如何快速插入文件名][504]
+
+``` elisp
+
+(defun my/headerise-elisp-comment ()
+  "Add minimal header and footer to an elisp buffer in order to placate flycheck."
+  (interactive)
+  (let ((fname (if (buffer-file-name)
+                   (file-name-nondirectory (buffer-file-name))
+                 (error "This buffer is not visiting a file"))))
+    (save-excursion
+      (goto-char (point-min))
+      (insert ";;; " fname " --- Insert description here -*- lexical-binding: t -*-\n"
+              ";;; Commentary:\n"
+              ";;; Code:\n\n")
+      (goto-char (point-max))
+      (insert ";;; " fname " ends here\n"))))
+```
+
+### 186. 交付成果
+
+看了[保证完成项目交付成果][506]和[知识消化系统][505], 我觉得现在我的记录应该也得尝试不断
+浓缩，才能变成一坛可以品尝的佳酿，而不是一滩死水。
+
+Knowledage archive system的确是挺重要的工作，也是对你的过去的总结。
+
+就好像你去面试之前，最好把你做过的东西做一个ppt，然后你再给用人单位展示你的成果，
+总结你做了什么，你所经历的挑战，你做了什么，最终得到了什么，并教会了你什么，就是
+这样一个成果归纳过程也是对你的人生的浓缩。
+
 
 
 ----------
@@ -8999,3 +9042,6 @@ thing-edit不断处理文本字的系统，主要三个功能复制、剪切和�
 [501]: https://www.youtube.com/watch?v=vQO7F2Q9DwA
 [502]: https://github.com/Malabarba/aggressive-indent-mode
 [503]: https://github.com/Malabarba/beacon
+[504]: https://emacs-china.org/t/topic/3802/118
+[505]: https://emacs-china.org/t/v1/8218
+[506]: https://www.jianshu.com/p/59942e04e462

@@ -1,3 +1,7 @@
+;;; navigation.el --- Insert description here -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
+
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
 

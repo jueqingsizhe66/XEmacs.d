@@ -1,11 +1,4 @@
 (1
- (projectile-extras .
-		    [(20181231 1319)
-		     ((emacs
-		       (24))
-		      (cl-lib
-		       (0 5)))
-		     "A few extra functions for projectile" single])
  (zone-tunnels .
 	       [(20180309 2155)
 		((emacs
@@ -1342,6 +1335,13 @@
  (prolog .
 	 [(1 22)
 	  nil "major mode for editing and running Prolog (and Mercury) code" single])
+ (projectile-extras .
+		    [(20190101 2353)
+		     ((emacs
+		       (24))
+		      (cl-lib
+		       (0 5)))
+		     "A few extra functions for projectile" single])
  (projectile .
 	     [(0 10 0)
 	      ((s
