@@ -8557,6 +8557,21 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 经常容易出问题啊！！还是小心!
 
+为了解决由于你的上传而导致的第二个原因只能用`--force`强制覆盖了，否则github reject
+
+``` org
+c:\Users\yzl\AppData\Roaming\.emacs.d>git push origin develop --force
+Enumerating objects: 52, done.
+Counting objects: 100% (52/52), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (34/34), done.
+Writing objects: 100% (34/34), 834.95 KiB | 14.40 MiB/s, done.
+Total 34 (delta 18), reused 0 (delta 0)
+remote: Resolving deltas: 100% (18/18), completed with 16 local objects.
+To https://github.com/jueqingsizhe66/XEmacs.d
+ + bc89023...c75e960 develop -> develop (forced update)
+```
+
 
 ----------
 ----------
