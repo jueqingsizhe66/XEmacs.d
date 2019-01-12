@@ -6773,6 +6773,8 @@ data into it)
 3. 当前父Heading(p   大写P去除父heading）  map图当前heading上方显示
 4. 当前子Heading(c   大写C去除子Heading)   map图当前heading下方显示
 5. 不属与当前heading范畴的其他heading([Friend or jump heading][324] , 但是你联想到的) map图当前heading平行显示
+6. 使用`+`或者`-`来显示当前标题的目录,只不过会`org-mind-map`的模式，查看[org-brain的概念][508]更新。
+
 
 你可以使用父子parent-child relationship 来interpret你接触到的信息,报告,阅读的内容(山谷节奏，音乐节奏，联想都是有坡起、下降的过程)。
 
@@ -9084,3 +9086,4 @@ To https://github.com/jueqingsizhe66/XEmacs.d
 [505]: https://emacs-china.org/t/v1/8218
 [506]: https://www.jianshu.com/p/59942e04e462
 [507]: https://blog.csdn.net/alphapersonality/article/details/80581730
+[508]: https://github.com/Kungsgeten/org-brain/commit/32137d7d3dc35b5b3903f7e1bab44c16415ec106
