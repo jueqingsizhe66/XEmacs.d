@@ -24,3 +24,6 @@ eshell/
 .python-environments/
 *.docx
 perspectives/
+*.mp4
+*.avi
+*.swf

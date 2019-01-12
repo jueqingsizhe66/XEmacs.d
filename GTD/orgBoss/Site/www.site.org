@@ -702,3 +702,47 @@ https://github.com/wmunters/phd_thesis
 类似于spring
 ** hutool值得拥有
  https://hutool.cn/
+** It's time for the cleanest energy
+ https://www.blancair.com/
+ 
+https://mp.weixin.qq.com/s?__biz=MjM5Mzk4Mzg3NA==&mid=2651975050&idx=2&sn=e8789228e81e99b5ac48eb95c5913c77&chksm=bd6bf1678a1c7871f93494d2c621a8fd0406483e78b239fb716fdfb83192bcdb6635879463b5&mpshare=1&scene=1&srcid=0110HHGkY83iNLShXINOeq8J#rd
+
+
+LET’S START THE NEXT GENERATION OF WIND ENERGY(下一代风能)
+Presenting the first wind turbine that generates clean energy and cleans the air(清洁空气) at the same time. For this purpose, we are developing a product, which reduces the content of Carbon Dioxide in the atmosphere while operating economically by improving the efficiency of the wind turbine.
+
+
+*** THE NEXT GENERATION OF WIND ENERGY.
+
+Our vision is a new generation of wind turbines! In the past, mankind only produced energy from fossil fuels creating damage to human health and the environment. Today, we can use renewable energy to produce clean, climate friendly energy but we have to go even further. BLANCAIR is the first energy generation, a technology that simultaneously produces clean energy and strengthens the environment(加强环境保护).
+
+This wind turbine is able to be a milestone in the wind energy industry. It’s much more than just a „better performing one“ than the others before. It will be the next generation of wind energy. With the complete new benefit of CO2 extraction.
+
+[[file:renewableEnergy/Climate.png][气候变化]]
+
+*** THE BENEFITS.
+
+We can generate electricity, gather CO2(同时捕捉) at the same time and use the recovered raw material to produce synthetic gasses or fuels directly at the turbine or in the wind farm. There is no downtime of the wind farm when the grid is overloaded, since the wind energy by the combined use of the CO2 can be stored as e-Fuels with the well-known power-to-liquids technology(能量液体技术).
+
+**** In addition:
+
+The system works in a passive mode – no energy is consumed for collecting CO2(捕捉co2能量来自哪里?).
+The turbine operates more efficient with optimized rotor blades.
+We can increase the turbines lifetime and reduce the maintenance.
+Optionally we can use the collected CO2 in the food or agriculture industry.
+Last but not least our most favorite benefit which has nothing to do with annual energy production or making profit. It is the benefit we generate for our environment. It is the active reduction of the CO2 concentration in our atmosphere.
+
+[[file:renewableEnergy/cloud_wind_turbine.jpg][turbine in the cloud]]
+
+WITH 20 YEARS EXPERTISE IN AVIATION AND WIND ENERGY TO INNOVATIVE PRODUCTS.
+
+The Engineering Office SPITZNER ENGINEERS (founder and owner Joerg Spitzner), located in Hamburg Finkenwerder, has been active in the aviation and wind energy industry for two decades. The services range from structural solutions, through production technologies and aerodynamic optimizations to complete product ideas such as the new wind energy technology BLANCAIR. 
+
+SPITZNER ENGINEERS owns or has significant involvement in more than 60 publications and patents(专利) and was honored with the 2013 German Renewables Award. 
+
+[[file:renewableEnergy/180710_BLANCAIR_02.mp4][下一代风力机]]
+** ASME V20-2009(R2016)
+ ASME V&V 20-2009 (R2016) 
+Standard for Verification and Validation in Computational Fluid Dynamics and Heat Transfer
+
+https://www.techstreet.com/standards/asme-v-v-20-2009-r2016?product_id=1669326

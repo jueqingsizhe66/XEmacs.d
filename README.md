@@ -8533,6 +8533,14 @@ Knowledage archive system的确是挺重要的工作，也是对你的过去的�
 总结你做了什么，你所经历的挑战，你做了什么，最终得到了什么，并教会了你什么，就是
 这样一个成果归纳过程也是对你的人生的浓缩。
 
+### 187. git reset --hard head~1
+
+你不小心把mp4也commit到你的git链中，但并未上传到服务器，mp4文件太大了，所以想要撤回来。
+
+这时候你只要 `git reset --hard head~1`即可，不会影响到你的本地修改，不要害怕你的修改也被
+
+删掉了，他只是让你的.git目录下的commit链减少一个而已。
+
 
 
 ----------
@@ -9045,3 +9053,4 @@ Knowledage archive system的确是挺重要的工作，也是对你的过去的�
 [504]: https://emacs-china.org/t/topic/3802/118
 [505]: https://emacs-china.org/t/v1/8218
 [506]: https://www.jianshu.com/p/59942e04e462
+[507]: https://blog.csdn.net/alphapersonality/article/details/80581730

@@ -171,6 +171,11 @@
                              "~/.emacs.d/GTD/orgBoss/perlLearning.org"
                              "~/.emacs.d/GTD/orgBoss/clojureLearning.org"
                              "~/.emacs.d/GTD/orgBoss/rubyLearning.org"
+                             "~/.emacs.d/GTD/org_Brain/T-IO.org"
+                             "~/.emacs.d/GTD/org_Brain/JAVA.org"
+                             "~/.emacs.d/GTD/org_Brain/SICP.org"
+                             "~/.emacs.d/GTD/org_Brain/公司.org"
+                             "~/.emacs.d/GTD/org_Brain/科研论文.org"
                                         ;(append (file-expand-wildcards "~/.emacs.d/GTD/orgBoss/Journal/2*"))
                                         ;"~/.emacs.d/GTD/orgBoss/Journal/"
                              ))

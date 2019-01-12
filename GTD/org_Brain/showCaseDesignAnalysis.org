@@ -1,0 +1,255 @@
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_TRANS: linear
+#+REVEAL_THEME: jr0cket
+#+Title: Showcase
+#+Author:  Ye Zhaoliang(edit)  written by http://www.cnblogs.com/panzi/p/7814062.html
+#+Email: yezhaoliang@ncepu.edu.cn
+
+
+* 给初学者的Demo：ShowCase设计分析
+
+** 前言
+
+最近闲暇时间研究Springboot，正好需要用到即时通讯部分了，虽然springboot 有websocket，但是我还是看中了t-io框架。看了部分源代码和示例，先把helloworld敲了一
+遍，又把showcase代码敲了一遍，决定做一个总结。本篇文章并不会解释T-io是如何通讯的，
+而是从showcase这个给t-io初学者写的demo分析showcase的设计思路，以及为什么这么设计等
+。不过都是我个人理解，疏漏之处在所难免。
+
+** T-io简单介绍
+t-io 源代码：https://gitee.com/tywo45/t-io/
+
+　　代码结构很简单，首先我们知道通讯有客户端(client)和服务端(server).它们之间又会
+存在一些重复的业务处理逻辑，于是就有common的存在。那么整体的showcase下包含三部分：
+client，server，common。在代码分析之前呢，先简单介绍一下关于使用tio实现通讯的基础
+思路。我从tio官方截了两个图：
+
+server端，我们只看红色部分。没错，要实现AioHandler中的encode，decode，handler方法
+。然后创建ServerGroupContext，最后调用start方法开启服务端。
+
+[[file:img/showCase/server.png][服务端红色流程]]
+
+client端，同样也需要实现AioHandler中的encode，decode，handler方法。不过客户端可以
+看到，多了一个心跳包（heartbeatPacket）。
+
+[[file:img/showCase/client.png][客户端红色流程]]
+
+** 通讯流程
+
+我们知道，最基本的通讯流程就是，客户端发送消息到服务端，服务端处理之后，返回响应结果
+到客户端。或者服务端主动推送消息到客户端。因为客户端发送的消息格式不固定，所以t-io把
+编解码的权利交给开发者，这样可以自定义消息结构。那么Demo中由于采用的是同样的编解码方
+式。所以会有一个在common中的一个基础实现类。当然，由于消息类型的不同，具体的handler
+方法实现还是得区分不同的处理。
+
+1. 服务端启动
+2. 客户端发送消息到服务端
+3. 服务端处理后返回响应给客户端 或者服务端主动推送消息到客户端
+** 结构分析
+以下的图都是根据我自己的理解画的，错误之处欢迎指正。　　
+
+　　首先，我们看一下接口，类关系图：
+
+[[file:img/showCase/userCase.png][类关系图]]
+　　然后，AioHandler，ClientAioHandler，ServerAioHandler 都是t-io中的Hander接口。我们从ShowcaseAbsAioHander开始看。上文中说道编解码属于通
+用部分，于是ShowcaseAbsAioHander 实现了AioHandler 接口中的 encode，decode方法。就是说不管客户端，服务端编码，解码方式都是同样的。其中有一个基
+础包 ShowcasePacket 。 它是贯穿整个通讯流程的。我们看一下代码：
+
+
+#+BEGIN_SRC java
+  public class ShowcasePacket extends Packet {
+        
+      private byte type;//消息类型（用于消息处理）
+
+      private byte[] body;//消息体
+  }
+#+END_SRC
+
+　其中，type消息类型是对应在common中的Type接口，它定义了不同的消息类型。
+
+#+BEGIN_SRC java
+public interface Type {
+
+    /**
+     * 登录消息请求
+     */
+    byte LOGIN_REQ = 1;
+    /**
+     * 登录消息响应
+     */
+    byte LOGIN_RESP = 2;
+
+    /**
+     * 进入群组消息请求
+     */
+    byte JOIN_GROUP_REQ = 3;
+    /**
+     * 进入群组消息响应
+     */
+    byte JOIN_GROUP_RESP = 4;
+
+    /**
+     * 点对点消息请求
+     */
+    byte P2P_REQ = 5;
+    /**
+     * 点对点消息响应
+     */
+    byte P2P_RESP = 6;
+
+    /**
+     * 群聊消息请求
+     */
+    byte GROUP_MSG_REQ = 7;
+    /**
+     * 群聊消息响应
+     */
+    byte GROUP_MSG_RESP = 8;
+
+    /**
+     * 心跳
+     */
+    byte HEART_BEAT_REQ = 99;
+
+}
+#+END_SRC
+
+我们继续看上图，ShowcaseClientAioHandler 和 ShowCaseServerAioHandler 这两个类的实现差不多。都是做基础消息处理。并且根据消息类型创建（获取）不同的消息处理
+器（handler）。实现代码如下：
+
+#+BEGIN_SRC java
+  @Override
+  public void handler(Packet packet, ChannelContext channelContext) throws Exception {
+      //接收到的消息包
+      ShowcasePacket showcasePacket = (ShowcasePacket) packet;
+      //获取消息类型
+      Byte type = showcasePacket.getType();
+      //从handleMap中获取到具体的消息处理器
+      AbsShowcaseBsHandler<?> showcaseBsHandler = handlerMap.get(type);
+      　　　　　//服务端的处理可能由于type类型不正确拿不到相应的消息处理器，直接return不给客户端响应。（或者统一返回错误消息）
+          //处理消息
+          showcaseBsHandler.handler(showcasePacket, channelContext);
+      return;
+  }
+#+END_SRC
+下面我们看一下，handler相关接口的设计。
+
+[[file:img/showCase/handle.png][handler接口设计]]
+可以看到，消息处理类使用了泛型。AbsShowcaseBsHandler<T> 实现了ShowcaseBsHandlerIntf 中的handler方法。并且定义了一个抽象方法 handler，其中多了 T bsBody 参数。可以知道，他对消息的实现，就是将消息字符转换为具体的消息对象，然后在调用具体的
+消息处理器处理相应的消息逻辑。代码如下：
+
+
+#+BEGIN_SRC java
+  public abstract class AbsShowcaseBsHandler<T extends BaseBody> implements ShowcaseBsHandlerIntf {
+      private static Logger log = LoggerFactory.getLogger(AbsShowcaseBsHandler.class);
+
+      /**
+       ,*
+       ,* @author tanyaowu
+       ,*/
+      public AbsShowcaseBsHandler() {
+      }
+      //抽象方法，具体是什么类型的由子类实现
+      public abstract Class<T> bodyClass();
+
+      @Override
+      public Object handler(ShowcasePacket packet, ChannelContext channelContext) throws Exception {
+          String jsonStr = null;
+          T bsBody = null;
+          if (packet.getBody() != null) {
+              //将body转化为string
+              jsonStr = new String(packet.getBody(), Const.CHARSET);
+              //根据类型反序列化消息，得到具体类型的消息对象
+              bsBody = Json.toBean(jsonStr, bodyClass());
+          }
+          //调用具体的消息处理的实现
+          return handler(packet, bsBody, channelContext);
+      }
+
+      //抽象方法，由每个消息处理类来实现具体的消息处理逻辑
+      public abstract Object handler(ShowcasePacket packet, T bsBody, ChannelContext channelContext) throws Exception;
+
+  }
+#+END_SRC
+** 登录用例
+
+我们以登录消息为例，分析具体消息处理流程。
+首先客户端发起登录请求。(比如用户名：panzi，密码：123123)
+
+#+BEGIN_SRC java
+LoginReqBody loginReqBody = new LoginReqBody();
+            loginReqBody.setLoginname(loginname);
+            loginReqBody.setPassword(password);
+　　　　　　　//具体的消息都会包装在ShowcasePacket中（byte[] body）
+            ShowcasePacket reqPacket = new ShowcasePacket();
+　　　　　　　//这里呢就是传相应的消息类型
+            reqPacket.setType(Type.LOGIN_REQ);
+
+            reqPacket.setBody(Json.toJson(loginReqBody).getBytes(ShowcasePacket.CHARSET));
+　　　　　　　//调用 t-io 发送消息方法
+            Aio.send(clientChannelContext, reqPacket);
+#+END_SRC
+
+服务端收到消息。这时候我们回过头看 ShowcaseServerAioHandler 中的 handle方法。（上文中有介绍）此时消息类型为Type.LOGIN_REQ.可以很容易的想到，需要用 LoginReqHandler来处理这条消息。
+
+[[file:img/showCase/loginREQ.png][服务端处理图]]
+
+我们看一下LoginReqHandler的具体实现
+
+#+BEGIN_SRC java
+  @Override
+  public Object handler(ShowcasePacket packet, LoginReqBody bsBody, ChannelContext channelContext) throws Exception {
+      log.info("收到登录请求消息:{}", Json.toJson(bsBody));
+      //定义响应对象
+      LoginRespBody loginRespBody = new LoginRespBody();
+      //模拟登录，直接给Success
+      loginRespBody.setCode(JoinGroupRespBody.Code.SUCCESS);
+      //返回一个模拟的token
+      loginRespBody.setToken(newToken());
+        
+      //登录成功之后绑定用户
+      String userid = bsBody.getLoginname();
+      Aio.bindUser(channelContext, userid);
+
+      //给全局Context设置用户ID
+      ShowcaseSessionContext showcaseSessionContext = (ShowcaseSessionContext) channelContext.getAttribute();
+      showcaseSessionContext.setUserid(userid);
+
+      //构造响应消息包
+      ShowcasePacket respPacket = new ShowcasePacket();
+      //响应消息类型为 Type.LOGIN_RESP
+      respPacket.setType(Type.LOGIN_RESP);
+      //将loginRespBody转化为byte[]
+      respPacket.setBody(Json.toJson(loginRespBody).getBytes(ShowcasePacket.CHARSET));
+      //发送响应到客户端（告诉客户端登录结果）
+      Aio.send(channelContext, respPacket);
+
+      return null;
+  }
+#+END_SRC
+
+这个时候就要到客户端处理了。同理，客户端处理拿到具体的处理器（LoginRespHandler）
+
+[[file:img/showCase/loginResq.png][客户端处理图]]
+
+　看一下客户端消息处理代码
+
+#+BEGIN_SRC java
+  @Override
+  public Object handler(ShowcasePacket packet, LoginRespBody bsBody, ChannelContext channelContext) throws Exception {
+      System.out.println("收到登录响应消息:" + Json.toJson(bsBody));
+      if (LoginRespBody.Code.SUCCESS.equals(bsBody.getCode())) {
+          ShowcaseSessionContext showcaseSessionContext = (ShowcaseSessionContext) channelContext.getAttribute();
+          showcaseSessionContext.setToken(bsBody.getToken());
+          System.out.println("登录成功，token是:" + bsBody.getToken());
+      }
+      return null;
+  }
+#+END_SRC
+
+这样，整个消息流程就结束了。为了更清晰一点，我们将它以流程图的形式展现。
+
+[[file:img/showCase/timeSeries.png][登录时序图]]
+
+** 总结
+
+虽然一个简单的Showcase，但是作者也是用了心思。通过这个例子可以既让我们学习到如何使用t-io，又能领略到程序设计的魅力，一个小小demo都这么多东西，看来读源代码之路还是比较遥远啊。以上是我对Showcase的代码理解，多有不当之处敬请指正。

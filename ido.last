@@ -2,6 +2,8 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/org_Brain/img/" . "showCase/")
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/Site/" . "renewableEnergy/")
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/org_Brain/" . "img/")
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/" . "CalendarDairy/")
  ("c:/Users/yzl/AppData/Roaming/" . ".emacs.d/")
@@ -25,15 +27,19 @@
 
 ;; ----- ido-dir-file-cache -----
 (
- ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/Site/" (23601 49001 0 0) "徐建中忆吴仲华.org" "www.site.org" "j-bob.scm" "j-bob-lang.scm" "../" "./")
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/org_Brain/img/showCase/" (23609 55220 0 0) "userCase.png" "timeSeries.png" "server.png" "loginResq.png" "loginREQ.png" "handle.png" "client.png" "../" "./")
+
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/org_Brain/img/" (23609 55208 0 0) "showCase/" "7.6server.png" "7.6hello.png" "5.9ObjLock.png" "5.4GroupContext.png" "5.3tcp.png" "5.3ChannelContext.png" "5.1getAndReceive.png" "5.12zusai.png" "5.12yibu.png" "5.12remove.png" "5.12notifyCluster.png" "5.12get.png" "5.12close.png" "4.3browser.png" "4.2weixin.png" "4.1ChatRoom.png" "3.2memory.png" "3.1ss.png" "3.1proced.png" "3.1jvm2.png" "3.1jvm.png" "3.1free2.png" "3.1free.png" "3.1cpu.png" "3.130w.png" "3.120w.png" "3.110w.png" "11.1talent.png" "11.1extend.png" "1.4nianbao.png" "1.4ban.png" "1.3getData.png" "1.3bb4.png" "1.3bb3.png" "1.3bb2.png" "1.3bb.png" "1.2debug.png" "1.1tcp.jpg" "../" "./")
+
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/org_Brain/" (23609 53921 0 0) "调研.org" "自然基金面上项目.org" "背景.org" "网格无关性.org" "结果.org" "科研论文.org" "湍流模型.org" "方法.org" "参考文献.org" "公司.org" "公司.html" "一个idea.org" "WindPowerGeneration.org" "windFarm.org" "URANS时间步无关性.org" "T-SST.org" "T-IO.org" "SST.org" "SICP.org" "showCaseDesignAnalysis.org" "SA.org" "ReynoldStress.org" "k-omega.org" "K-e.org" "JAVA.org" "img/" "CacheUtils.java" "Appendence.org" ".org-brain-data.el" "../" "./")
+
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/Site/renewableEnergy/" (23609 52242 0 0) "cloud_wind_turbine.jpg" "Climate.png" "180710_BLANCAIR_02.mp4" "../" "./")
+
+ ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/Site/" (23609 52055 0 0) "徐建中忆吴仲华.org" "www.site.org" "renewableEnergy/" "little-prover.scm" "j-bob.scm" "j-bob-lang.scm" "../" "./")
 
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/orgBoss/Note/" (23499 25391 0 0) "TheMostCommonHabitsForChineseEnglish.org" "TheMostCommonHabitsForChineseEnglish.html" "test_package.png" "test_graphviz.png" "testUseCase.png" "testSequence.png" "test.uml.png" "summarizing.org" "notes.org_archive" "notes.org" "a.py" "../" "./")
 
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/" (23595 34150 0 0) "__pycache__/" "vimish-fold/" "vim.exe.stackdump" "url/" "themes/" "testLisp.lisp" "test.py" "test.ledger" "test.el" "template/" "srecode-map.el" "snippets/" "server/" "rg.exe" "README.md" "projectile.cache" "projectile-bookmarks.eld" "magithub/" "ledger_3.1.1_win_bin/" "init.el" "ido.last~" "ido.last" "hello-graphviz.png" "GTD/" "geiser-history.racket" "geiser-history.chez" "eww-bookmarks" "eshell/" "emms/" "elpa/" "elisp-tutor.el" "diary" "customizations/" "custom.el" "CalendarDairy/" "bookmarks" "backups/" "auto-save-list/" "anaconda-mode/" "ag.exe" "ac-comphist.dat" "abbrev_defs" ".smex-items" ".session" ".recentf~" ".recentf" ".python-environments/" ".orgConf.el" ".org-id-locations" ".mc-lists.el" ".gitmodules" ".gitignore" ".git/" "../" "./")
-
- ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/org_Brain/img/" (23598 1491 0 0) "7.6server.png" "7.6hello.png" "5.9ObjLock.png" "5.4GroupContext.png" "5.3tcp.png" "5.3ChannelContext.png" "5.1getAndReceive.png" "5.12zusai.png" "5.12yibu.png" "5.12remove.png" "5.12notifyCluster.png" "5.12get.png" "5.12close.png" "4.3browser.png" "4.2weixin.png" "4.1ChatRoom.png" "3.2memory.png" "3.1ss.png" "3.1proced.png" "3.1jvm2.png" "3.1jvm.png" "3.1free2.png" "3.1free.png" "3.1cpu.png" "3.130w.png" "3.120w.png" "3.110w.png" "11.1talent.png" "11.1extend.png" "1.4nianbao.png" "1.4ban.png" "1.3getData.png" "1.3bb4.png" "1.3bb3.png" "1.3bb2.png" "1.3bb.png" "1.2debug.png" "1.1tcp.jpg" "../" "./")
-
- ("c:/Users/yzl/AppData/Roaming/.emacs.d/GTD/org_Brain/" (23596 30877 0 0) "调研.org" "自然基金面上项目.org" "背景.org" "网格无关性.org" "结果.org" "科研论文.org" "湍流模型.org" "方法.org" "参考文献.org" "公司.org" "公司.html" "一个idea.org" "WindPowerGeneration.org" "windFarm.org" "URANS时间步无关性.org" "T-SST.org" "T-IO.org" "SST.org" "SICP.org" "SA.org" "ReynoldStress.org" "k-omega.org" "K-e.org" "img/" "Appendence.org" ".org-brain-data.el" "../" "./")
 
  ("c:/Users/yzl/AppData/Roaming/.emacs.d/customizations/img/" (23551 42323 0 0) "youdao.png" "vimish-fold.png" "tablestar.png" "spacemacs.jpg" "shift2.png" "shift.png" "secret.png" "scribble.png" "right.png" "racket2.png" "racket.png" "quicksort.png" "purple.jpg" "projectile.jpg" "perspectiveWriting.png" "org-evil.png" "org-dash.png" "org-bullet.jpg" "oo.jpg" "new.jpg" "music.jpg" "math.png" "map.jpg" "ledger2.png" "ledger.png" "learning.png" "holyshit.jpg" "gpa.png" "gnupg.jpg" "gnucrypt.png" "git-gutter.png" "f90mode.jpg" "dumb-diff.png" "dired.jpg" "deft.png" "crypt.jpg" "clock-in.png" "chez.png" "cause.png" "calenar.jpg" "buffer.png" "betterbullet.jpg" "baby-org-mode.png" "all-the-icons.png" "ace.png" "../" "./")
 

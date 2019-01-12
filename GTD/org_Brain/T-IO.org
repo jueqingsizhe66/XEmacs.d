@@ -2502,6 +2502,7 @@ t-io提供的hello world和其它框架提供的似乎不太一样，其它框�
 学习的开端往往从hello world开始
 •	hello world是入门t-io最好的方式！而作者也是用心写了一个对生产项目有参考价值的hello world，不少用户直接拿官方提供的hello world入门，并且稍作逻辑修改后就直接用在生产环境了。
 •	hello world的源代码在：https://gitee.com/tywo45/tio-showcase
+https://res.t-io.org/tio-showcase.zip(最新版本 enterprise版本)
 
 * 5. t-io编程基础知识
 :PROPERTIES:
@@ -4837,7 +4838,8 @@ t-io收发消息及处理过程，可以用一张图清晰地表达出来
 
 1. 把工程以maven的形式导入到eclipse后
 2. 运行org.tio.showcase.websocket.server.ShowcaseWebsocketStarter
-3. 	用chrome打开http://127.0.0.1/index.html（说明：本工程不仅会启动websocket服务器，还会启动一个http服务器用于访问websocket服务器）
+3. 	用chrome打开http://127.0.0.1/index.html
+（说明：本工程不仅会启动websocket服务器，还会启动一个http服务器用于访问websocket服务器）
 4. 这是个用iframe嵌入了两个demo.html的页面，方便在一个窗口查看群聊效果
 5. 可以愉快地聊天了
 
@@ -4859,36 +4861,44 @@ t-io收发消息及处理过程，可以用一张图清晰地表达出来
 *** tio-showcase工程简介
 学习t-io最好的方式是从本项目开始，甚至可以当作项目脚手架来使用
 
-1. 用于学习t-io的示范工程，一共3个示范工程
-2. 在t-io工程结构一节中已经说了：一般用户口中的t-io就是指tio-core
+1. 用于学习[[https://github.com/tywo45/t-io][t-io]]的示范工程，一共3个示范工程
+2. 在[[https://www.t-io.org/doc/87][t-io工程结构]]一节中已经说了：一般用户口中的t-io就是指tio-core
 3. 工程地址：https://gitee.com/tywo45/tio-showcase
+   最新版 https://res.t-io.org/tio-showcase.zip
 4. 下面分别对这三个工程进行简介
 
    嘿嘿，可以导入idea愉快的开始学习T-io了
 *** helloworld
-1. 	helloworld是入门t-io最好的方式！而作者也是用心写了一个对生产项目有参考价值的hello tio，而不是仅仅是show hello而hello
+1. helloworld是入门[[https://github.com/tywo45/t-io][t-io]]最好的方式！而作者也是用心写了一个对生产项目有参考价值的hello tio，而不是仅仅是show hello而hello
 
 2. 服务器端入口程序：org.tio.examples.helloworld.server.HelloServerStarter
 3. 客户端入口程序：org.tio.examples.helloworld.client.HelloClientStarter
 4. 本例子演示的是一个典型的TCP长连接应用，大体业务简介如下。
-5. 分为server和client工程，server和client共用common工程
-6.      服务端和客户端的消息协议比较简单，消息头为4个字节，用以表示消息体的长度，消息体为一个字符串的byte[]
-7. 服务端先启动，监听6789端口
-8. 客户端连接到服务端后，会主动向服务器发送一条消息
-9. 服务器收到消息后会回应一条消息
-10. 之后，框架层会自动从客户端发心跳到服务器，服务器也会检测心跳有没有超时（这些事都是框架做的，业务层只需要配一个心跳超时参数即可）
-11. 	框架层会在断链后自动重连（这些事都是框架做的，业务层只需要配一个重连配置对象即可）
+   1. 分为server和client工程，server和client共用common工程
+
+   2. 服务端和客户端的消息协议比较简单，消息头为4个字节，用以表示消息体的长度，消息体为一个字符串的byte[]
+
+   3. 服务端先启动，监听6789端口
+
+   4. 客户端连接到服务端后，会主动向服务器发送一条消息
+
+   5. 服务器收到消息后会回应一条消息
+
+   6. 之后，框架层会自动从客户端发心跳到服务器，服务器也会检测心跳有没有超时（这些事都是框架做的，业务层只需要配一个心跳超时参数即可）
+
+   7. 框架层会在断链后自动重连（这些事都是框架做的，业务层只需要配一个重连配置对象即可）
 
 *** showcase
 
 1. showcase工程用于进一步掌握t-io，甚至可以用作你项目的脚手架（@精灵007 同学已经用这个工程完成了3个项目）
-2. 这里有一篇博客，可以参考：ShowCase设计分析
+2. 这里有一篇博客，可以参考：[[http://www.cnblogs.com/panzi/p/7814062.html][ShowCase设计分析]]
+   [[file:showCaseDesignAnalysis.org][showCase设计分析Local]]
 3. 服务器端入口程序：org.tio.examples.showcase.server.ShowcaseServerStarter
 4. 客户端入口程序：org.tio.examples.showcase.client.ShowcaseClientStarter
 
 *** IM
 
-1. 	im项目在1.7.0版本前一直都开放的（见：https://gitee.com/tywo45/t-io/tree/v1.7.0
+1. 	im项目在1.7.0版本前一直都开放的（见：https://gitee.com/tywo45/t-io/tree/v1.7.0  https://github.com/tywo45/t-io/tree/v1.7.0
 ），考虑到im的复杂性，这会给作者带来一些额外的咨询工作，所以在后面的版本没有放出来，现在重新放出来
 2. j-im项目是在本项目的基础上改造而来的，有兴趣的可以看看j-im
 3. 服务器端入口程序：org.tio.examples.im.server.ImServerStarter
@@ -4995,7 +5005,7 @@ jvm
 *** tio-utils
 
 1. tio-utils是笔者在项目开发中积累的部分工具类
-2. 	里面有少部分代码是在开源许可范围内摘自第三方开源项目代码的，还有部分代码是其它开源作者提供的，譬如hutool的作者路神就提供了许多类，在此也是表示感谢！笔者这么做，仅仅是因为广大用户强力要求tio减少第三方依赖！
+2. 	里面有少部分代码是在开源许可范围内摘自第三方开源项目代码的，还有部分代码是其它开源作者提供的，譬如[[https://gitee.com/loolly/hutool][hutool]]的作者路神就提供了许多类，在此也是表示感谢！笔者这么做，仅仅是因为广大用户强力要求tio减少第三方依赖！
 3. 当然笔者更愿意使第三方工具类，譬如hutool
 4. 在tio-utils中目前鄙人用得最多的Cache
 5. 首先这个Cache是个门面——把市面上的各路Cache统一成了ICache，操作方法统一了，
