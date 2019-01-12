@@ -8541,6 +8541,21 @@ Knowledage archive system的确是挺重要的工作，也是对你的过去的�
 
 删掉了，他只是让你的.git目录下的commit链减少一个而已。
 
+但是如果不小心你提交到服务器了，比如github服务器，上传一半终止了，github服务器仍会保留相关信息，
+这时候你虽然本地已经修改了并提交了你的信息，但是你的远程仓库却是不让你上传,因为你爹commit链落后
+远程服务器.
+
+``` org
+To https://github.com/jueqingsizhe66/XEmacs.d
+ ! [rejected]        develop -> develop (non-fast-forward)
+error: failed to push some refs to 'https://github.com/jueqingsizhe66/XEmacs.d'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+经常容易出问题啊！！还是小心!
 
 
 ----------
