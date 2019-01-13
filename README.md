@@ -6803,7 +6803,7 @@ org-brain最重要的是他的org-id(虽然也可以使用org file形式来进�
 | k or S-TAB | backward-button                    | Goto previous link                                         |
 |------------+------------------------------------+------------------------------------------------------------|
 | b          | org-brain-visualize-back           | Like the back button in a web browser.                     |
-| h or *     | org-brain-new-child                | Add a new child headline to entry(只在当前entry文件内)                          |
+| h or *     | org-brain-add-child-headline                | Add a new child headline to entry(只在当前entry文件内)                          |
 | c          | org-brain-add-child                | Add an existing entry, or a new file(如果这个entry不存在 则新建一个文件, as a child           |
 | C          | org-brain-remove-child             | Remove one the entry’s child relations                     |
 | p          | org-brain-add-parent               | Add an existing entry, or a new file, as a parent          |
@@ -8423,7 +8423,22 @@ To use, add the backends to company-begin-backends in the buffers where you want
 (defun addBug () 
   (interactive)         ; permit invocation in minibuffer
   (insert "BUG(YZL)"))
+  
 ```
+
+#### hl-todo 
+
+Batsov的[hl-todo][509]增加很多字符的高亮，很喜欢
+
+```
+"HOLD", "TODO", "NEXT", "THEM", "PROG", "OKAY", "DONT", "FAIL", "DONE", "NOTE"  , "KLUDGE", "HACK"  , "TEMP"  , "FIXME" , "XXX"   , "XXXX"  , "???"    
+
+```
+
+设置了全局可见`(global-hl-todo-mode 1)`
+
+
+
 
 ### 181. 我该写什么?
 
@@ -9087,3 +9102,4 @@ To https://github.com/jueqingsizhe66/XEmacs.d
 [506]: https://www.jianshu.com/p/59942e04e462
 [507]: https://blog.csdn.net/alphapersonality/article/details/80581730
 [508]: https://github.com/Kungsgeten/org-brain/commit/32137d7d3dc35b5b3903f7e1bab44c16415ec106
+[509]: https://github.com/tarsius/hl-todo

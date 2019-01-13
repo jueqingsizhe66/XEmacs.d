@@ -255,3 +255,242 @@ if __name__ == "__main__":
 
 
 #+END_SRC
+*  parseData initial
+file:j:/BaiduYunDownload/FAST816/CertTest/executeSyste.pl::21
+In ~$configueFile~:
+
+通过命令行组合，批处理一定控制规律下的气动计算
+
+#+BEGIN_SRC perl
+
+use strict;
+use warnings;
+use utf8;
+
+
+my  $fast="FAST_x64.exe";
+
+my  $configueFile="Test01.fst";
+
+system("$fast $configueFile");
+
+
+#+END_SRC
+* 不同风速下的parseData 
+
+file:j:/BaiduYunDownload/FAST816/CertTest/parseData5MW.pl::21
+In ~handle~:
+#+BEGIN_SRC perl
+use strict;
+use warnings;
+use utf8;
+use File::Spec;    ## catfile
+use File::Copy;    ## move
+my $ControlData_file_name = './5MW_Baseline/controler5MW.csv';  # input file name
+my @records;
+my @cols = ( 'velocity', 'pitch', 'rpm' );
+
+# my $winddirname='./10MWRWT/';
+# my $windfilename="DTU_10MW_InflowWind.dat";
+# my  $windcurrentfilename=File::Spec->catfile($winddirname,$windfilename);
+#my $windcurrentfilename = './10MWRWT/DTU_10MW_InflowWind.dat';
+my $windcurrentfilename = './5MW_Baseline/NRELOffshrBsline5MW_InflowWind_12mps.dat';
+
+# my $elastodirname='./10MWRWT/';
+# my $elastofilename="DTU_10MW_RWT_ElastoDyn.dat";
+# my  $elastocurrentfilename=File::Spec->catfile($elastodirname,$elastofilename);
+#my $elastocurrentfilename = './10MWRWT/DTU_10MW_RWT_ElastoDyn.dat';
+my $elastocurrentfilename = './5MW_Baseline/NRELOffshrBsline5MW_Onshore_ElastoDyn.dat';
+
+open my $ControlData, '<', $ControlData_file_name
+  or die "$0 : failed to open  input file '$ControlData_file_name' : $!\n";
+
+while (<$ControlData>) {
+    chomp;
+
+    my %rec;
+    @rec{@cols} = split /,/;
+    push @records, \%rec;
+}
+
+foreach my $case (@records) {
+    print "$.  $case->{velocity}   $case->{pitch}  $case->{rpm} \n";
+    handle( $windcurrentfilename,   "$case->{velocity}", "HWindSpeed" );
+    handle( $elastocurrentfilename, "$case->{pitch}",    "BlPitch" );
+    handle( $elastocurrentfilename, "$case->{rpm}",      "RotSpeed" );
+    #
+    # my $input;
+    # while ( $input = <> ) {
+    #
+    #     #        local $input;
+    #     if ( $input =~ /c/ ) {
+    #         last;
+    #     }
+    #     if ( $input eq "\cD" ) {
+    #         exit;
+    #     }
+    #     else {
+    #         print "ok\n";
+    #     }
+    # }
+    #
+    #system 'pause';
+
+    # system 'pause';
+    my $fast = "FAST_x64.exe";
+
+    # my  $configueFile="Test01.fst";
+    my $special = "Test18";
+
+    my $configueFile = "./$special.fst";
+
+     system("$fast $configueFile");
+    #
+
+    my $foldOutput = "Output5MW";
+    if ( -e $foldOutput ) {
+        print "Existed $foldOutput already\n";
+    }
+    else {
+        mkdir("Output5MW");
+    }
+
+    my $newPrefix    = "$case->{velocity}-$case->{pitch}-$case->{rpm}.sum";
+    my $newoutPrefix = "$case->{velocity}-$case->{pitch}-$case->{rpm}.out";
+
+    move( "./$special.AD.sum", "$foldOutput/$special.AD.sum$newPrefix" );
+    move( "./$special.ED.sum", "$foldOutput/$special.ED.sum$newPrefix" );
+    move( "./$special.sum",    "$foldOutput/$special.sum$newPrefix" );
+    move( "./$special.out",    "$foldOutput/$special.out$newoutPrefix" );
+
+}
+
+close $ControlData
+  or warn "$0 : failed to close input file '$ControlData_file_name' : $!\n";
+
+# Perl call system commands
+# my  $fast="FAST_x64.exe";
+# my  $configueFile="Test01.fst";
+# system("$fast $configueFile");
+#
+#
+#handle( "Test03.fst", "15", "CompAero", "CompServo" );
+
+#pause("")
+#system 'pause';
+
+## 1. find the pattern 1.1 if not print, 1.2 if yes ,modify
+## 2. rename
+## 3. delete temp files
+sub handle {
+    my ( $filename, $newData, @words ) = @_;
+    my $INPUTSource_file_name = $filename;    # input file name
+
+    #print "$filename\n";
+    print "$newData\n";
+    print "@words\n";
+    open my $INPUTSource, '<', $INPUTSource_file_name
+      or die "$0 : failed to open  input file '$INPUTSource_file_name' : $!\n";
+
+    my $TEMP_file_name = 'temp.md';           # output file name
+
+    open my $TEMP, '>', $TEMP_file_name
+      or die "$0 : failed to open  output file '$TEMP_file_name' : $!\n";
+
+    my $pattern;
+
+    ###  Use macro thinking to create expression, then evaluate it
+    # if ( @_ == 1 ) {
+    #     $pattern = "/$words[0]/";
+    # }
+    # else {
+    #$pattern = "/($words[0])/ || /($words[1])/";
+    #$pattern = '$line=~';
+    $pattern .= ' /[^"]\b'.$_.'\b[^"]/ ||'
+      foreach @words;    ## concat every parameters!!
+                         #print "Before: $pattern\n";
+    $pattern = substr( $pattern, 0, length($pattern) - 2 );
+
+    #    }
+    #print "Ye: $pattern\n";
+    
+    #system 'pause';
+
+    while (<$INPUTSource>) {
+
+        #@temp = split /\s+/;
+
+        my $line = $_;
+        ##  evaluate it , then get the result
+        #if ( eval{$_~~$pattern} ) {
+        if ( eval($pattern) ) {
+
+            my $currentWord;
+
+ #print "Ye: $line\n";
+ # Get the current Matched word, for indexing, so you can cut the string behind.
+            foreach my $tempWord (@words) {
+
+                $currentWord = $tempWord if $line =~ /$tempWord/;
+
+            }
+
+            # print "YE2:  $_ :: $currentWord\n";
+            # print "\n"  split /\s+/;
+            my $position = index( $_, $currentWord );
+
+            #print "CurrentPosition is : $position\n";
+
+            my $format = sprintf( "%ds", $position - 4 );
+
+            #print "Ye3: $format\n";
+            my $newContent;
+            $newContent = sprintf( "%$format    ", $newData );
+            print $TEMP $newContent
+              . substr( $_, $position, length($_) - $position );
+        }
+        else {
+            print $TEMP $_;
+        }
+
+    }
+    close $INPUTSource
+      or warn "$0 : failed to close input file '$INPUTSource_file_name' : $!\n";
+    close $TEMP
+      or warn "$0 : failed to close output file '$TEMP_file_name' : $!\n";
+
+    rename $TEMP_file_name, $INPUTSource_file_name;    # Rename it
+    unlink $TEMP_file_name;                            ## delete tempFile
+    return;
+}    ## --- end sub handle
+#+END_SRC
+
+对应的不同风速下不同变桨下的控制文件
+
+
+#+BEGIN_SRC org
+  4,0.0602,6.967
+  5,0.075,6.968
+  6,0.09,6.9696
+  7,0.1041,7.97119
+  8,0.1192,9.05281
+  9,0.1342,10.294
+  10,0.14931,11.456
+  11,0.16311,12.1
+  11.4,0,12.1
+  12,3.83,12.1
+  13,6.6,12.1
+  14,8.7,12.1
+  15,10.45,12.1
+  16,12.06,12.1
+  17,13.54,12.1
+  18,14.92,12.1
+  19,16.23,12.1
+  20,17.47,12.1
+  21,18.7,12.1
+  22,19.94,12.1
+  23,21.18,12.1
+  24,22.35,12.1
+  25,23.47,12.1
+
+#+END_SRC

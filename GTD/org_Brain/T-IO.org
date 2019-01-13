@@ -4913,6 +4913,38 @@ J-IM是升级版!
 :PROPERTIES:
 :ID:       e6a57c18-f69e-4a37-a544-aa80a5c9ce52
 :END:
+
+** 3.3 t-io性能对比
+:PROPERTIES:
+:ID:       55bc98bb-3bc8-43d6-9a0d-054a2ccbf70f
+:END:
+
+时不时有朋友拿出这张图来问在下，说t-io到底支不支持http，支不支持SSL，支不支持udp等
+[[file:img/TIO%E5%AF%B9%E6%AF%94%E5%9B%BE.png][TIO和netty,voovan的性能对比]]
+
+在此纠正一下些图，以下是t-io已经支持了的特性
+
+http：t-io官网和[[https://www.t-io.org/mytio/ad/15.tio_x][牛吧云播]]就是基于tio-http-server开发的。[[https://www.t-io.org/doc/126][tio-http-server示范工程]]
+
+ssl：请参考：[[https://www.t-io.org/doc/131][SSL？t-io只需要一行代码]]
+
+udp：请参考：[[https://www.t-io.org/doc/127][udp示范工程]]
+
+半包粘包：支持半包粘包是任何一个成熟io框架必须拥有的能力，否则就没法玩了。只是在下必须对这个东西进行特别说明
+
+1. 没有任何一个io框架可以自行判断当前参与解码的ByteBuffer是半包还是粘包（这是常识，如果有人说有某框架能做到，那一定是无知或说谎）
+
+2. 在tio中，业务端只要解码的方法中返回null，即表示这是半包，tio在框架层会自行把当前的ByteBuffer暂存起来，用于与下次收到的ByteBuffer进行组合
+3. 至于粘包，业务端几乎感知不到——业务端在解码的方法中，只需一个一个解码即可，tio会自行判断，当前是否还有多余的byte[]没参与解码，一旦发现有多余的byte[]，tio会自行循环调用业务端的解码方法
+
+4. 更详细的请参考：[[https://www.t-io.org/doc/132][t-io对半包和粘包的处理]]
+
+说明
+
+网上流传的这张图，原文作者是Voovan作者，这差不多是两年前左右的事了，当时这张图是正确
+的，t-io后来飞速发展，在功能和性能都得到了极速迭代，并经历了众多成功案例考验，那么曾
+经正确的数据就变得过时了，请各位知悉！
+
 ** 3.2 TFB性能PK平台
 :PROPERTIES:
 :ID:       dccc530c-1e38-4350-a141-7ef5e51f9549

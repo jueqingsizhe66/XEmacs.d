@@ -102,6 +102,7 @@ DEADLINE: <2018-11-11 周日>
                     :Effort: 1:00
                     :END:
                     :LOGBOOK:
+                    CLOCK: [2019-01-13 周日 19:13]
                     CLOCK: [2018-12-15 周六 17:27]--[2018-12-15 周六 17:29] =>  0:02
                     - Clocked out on T:[2018-12-15 周六 17:29]
                     CLOCK: [2018-12-03 周一 20:58]--[2018-12-03 周一 23:29] =>  2:31
@@ -138,6 +139,7 @@ https://note.youdao.com/share/?id=d73ecd8bfe94d2328316bd194b5de781&type=notebook
 [[file:pythonLearning.org][pythonLearningByLiuXJ]]
 
 目的： 
+
    学会简单统计
    整合常用脚本
    主要功能就是进行数据清理(by qiu）
@@ -147,8 +149,9 @@ http://pandas.pydata.org/
 
 python科学计算之Pandas
  http://www.datadependence.com/2016/05/scientific-python-pandas/                         
- 
+ https://www.kaggle.com/jpiyush3008/cnn-starter-nasnet-mobile
 kaggle kernal
+
 https://www.youtube.com/watch?v=ENPBTl0uNOE
 
 https://www.kaggle.com/   kaggle kernal is just the same as  the jupyter notebook
@@ -2074,14 +2077,14 @@ obj = Series(['c','a','a','b','d'] * 4)
 print obj.describe()
 #+END_SRC
 
-'''
+
 结果为：
 count     20
 unique     4
 top        a
 freq       8
 其中，freq是指字母出现的最高频率
-'''
+
 
 
 
@@ -2803,13 +2806,13 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from pandas import Series,DataFrame
-'''
+
 #另一种合并运算为连接（concatenation），绑定（binding）或者堆叠（stacking）。
 #Numpy有一个用于合并原始Numpy数组的concatenation函数：
 arr = np.arange(12).reshape((3,4))
 print arr
 print np.concatenate([arr,arr],axis = 1)
-'''
+
 s1 = Series([0,1],index = ['a','b'])
 s2 = Series([2,3,4],index = ['c','d','e'])
 s3 = Series([5,6],index = ['f','g'])
@@ -3944,7 +3947,6 @@ matplotlib的图像都位于Figure对象中。用plt.figure创建一个新的Fig
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-'''
 #plt.plot(np.arange(10))
 fig = plt.figure()
 #plt.show()
@@ -3960,7 +3962,7 @@ plt.plot(np.random.randn(50).cumsum(),'k--')
 _ = ax1.hist(np.random.randn(100),bins = 20,color = 'k',alpha = 0.3)
 ax2.scatter(np.arange(30),np.arange(30) + 3 * np.random.randn(30))
 plt.show()
-'''
+
 #由于Figure 和 subplot是一件非常常见的任务，于是出现了更为方便的方法（plt.subplots ),它可以创建一个新的Figure，
 #并返回一个含有已创建的subplot对象的Numpy数组
 fig,axes = plt.subplots(2,3)
@@ -3991,7 +3993,6 @@ import matplotlib.pyplot as plt
 
 subplots_adjust(left = None,bottom = None,right = None,top = None,wspace = None,hspace = None)
 #wspace和space用于控制宽度和高度的百分比，可以用做subplot之间的间距，下面是个例子：
-'''
 fig,ax = plt.subplots(2,2,sharex = True,sharey = True)
 for i in range(2):
      for j in range(2):
@@ -6040,6 +6041,8 @@ print parse('42')
 
 #+END_SRC
 
+#+RESULTS:
+
 下面是日期的一些格式：
 
 
@@ -8020,12 +8023,20 @@ Freq: 10L, Length: 10000000
 #+END_SRC
 *  第十一章 金融和经济数据应用（一）
 
-自2005年开始，python在金融行业中的应用越来越多，这主要得益于越来越成熟的函数库（NumPy和pandas）以及大量经验丰富的程序员。许多机构发现python不仅非常适合成为交互式的分析环境，也非常适合开发文件的系统，所需的时间也比Java或C++少得多。Python还是一种非常好的粘合层，可以非常轻松为C或C++编写的库构建Python接口。
-金融分析领域的内容博大精深。在数据规整化方面所花费的精力常常会比解决核心建模和研究问题所花费的时间多得多。
-在本章中，术语截面（cross-section）来表示某个时间点的数据。例如标普500指数中所有成份股在特定日期的收盘价就形成了一个截面。多个数据在多个时间点的截面数据就构成了一个面板（panel）。面板数据既可以表示为层次化索引的DataFrame，也可以表示为三维的Panel pandas对象。
+自2005年开始，python在金融行业中的应用越来越多，这主要得益于越来越成熟的函数库
+（NumPy和pandas）以及大量经验丰富的程序员。许多机构发现python不仅非常适合成为交互式的
+分析环境，也非常适合开发文件的系统，所需的时间也比Java或C++少得多。Python还是一种非常
+好的粘合层，可以非常轻松为C或C++编写的库构建Python接口。
+
+金融分析领域的内容博大精深。在数据规整化方面所花费的精力常常会比解决核心建模和研究问题
+所花费的时间多得多。
+在本章中，术语截面（cross-section）来表示某个时间点的数据。例如标普500指数中所有成份
+股在特定日期的收盘价就形成了一个截面。多个数据在多个时间点的截面数据就构成了一个面板（
+panel）。面板数据既可以表示为层次化索引的DataFrame，也可以表示为三维的Panel pandas对象。
 1、数据规整化方面的话题 
 时间序列以及截面对齐
-处理金融数据时，最费神的一个问题就是所谓的数据对齐（data alignment）。两个时间序列的索引可能没有很好的对齐，或者两个DataFrame对象可能含有不匹配的行或者列。MATLAB、R用户通常会耗费大量的时间来进行数据对对齐工作（确实如此）。
+处理金融数据时，最费神的一个问题就是所谓的数据对齐（data alignment）。两个时间序列的索引可能没有很好的对齐，或者两个DataFrame对象可能含有不匹
+配的行或者列。MATLAB、R用户通常会耗费大量的时间来进行数据对对齐工作（确实如此）。
 pandas可以在运算中自动对齐数据。这是极好的，会提高效率。
 时间序列以及截面对齐
 
@@ -8425,3 +8436,160 @@ fvl的逐年累加利润等于fvb的计算方式
 本节介绍一些其他的例子。 
 信号前沿分析
 本小节将介绍一种简化的截面动量投资组合，并得出如何得到模型参数化网格。
+
+* 第一步 命令流版本
+
+
+#+BEGIN_SRC python
+  import pandas as pd
+  analysisFiles='J:\\BaiduYunDownload\\FAST816\\CertTest\\Output5MWYaw\\analysis15.csv'
+
+
+  df_yaw=pd.read_csv(analysisFiles)
+  the_end=df_yaw['RotTorq'].__len__()
+  the_start=(the_end-the_end*1/4).__int__();
+  print(sum(df_yaw['RotTorq'][the_start:the_end]))
+  print(sum(df_yaw['RotTorq'][the_start:the_end])/the_end)
+
+#+END_SRC
+
+
+然后是把过程进行精炼
+(你想着你愿意的代码是什么样子的，比如一个文件夹，然后遍历所有csv文件结尾
+
+
+#+BEGIN_SRC python
+    def analysisFolder(file):
+        pass
+
+
+    analysisFolder(file)
+
+#+END_SRC
+
+这样你就简化了你的双眼。
+
+
+
+#+BEGIN_SRC python
+  import pandas as pd
+  analysisFiles='J:\\BaiduYunDownload\\FAST816\\CertTest\\Output5MWYaw\\analysis15.csv'
+
+  def analysisFolder(file):
+      df_yaw=pd.read_csv(analysisFiles)
+      the_end=df_yaw['RotTorq'].__len__()
+      the_start=(the_end-the_end*1/4).__int__();
+      print(sum(df_yaw['RotTorq'][the_start:the_end]))
+      print(sum(df_yaw['RotTorq'][the_start:the_end])/the_end)
+      pass
+
+  analysisFolder(analysisFiles)
+
+
+#+END_SRC
+
+
+
+第三个版本循环版本
+
+
+#+BEGIN_SRC python
+  import pandas as pd
+  import os
+
+  analysisFiles='J:\\BaiduYunDownload\\FAST816\\CertTest\\Output5MWYaw\\analysis15.csv'
+  analysisFolder='J:\\BaiduYunDownload\\FAST816\\CertTest\\Output5MWYaw\\'
+
+
+  def listdir(path, list_name):  # 传入存储的list
+      #file2=os.listdir('L:\\newMovieGif\\NacelleContour\\png\\')
+      files=os.listdir(path)
+      files.sort()
+      for file in files:
+          file_path = os.path.join(path, file)
+          if os.path.isdir(file_path):
+              # listdir(file_path, list_name)
+              continue
+          else:
+              list_name.append(file_path)
+      return
+  def analysisFile(file):
+      df_yaw=pd.read_csv(analysisFiles)
+      splitArrays=analysisFiles.split('\\')
+      the_end=df_yaw['RotTorq'].__len__()
+      the_start=(the_end-the_end*1/4).__int__();
+      print(sum(df_yaw['RotTorq'][the_start:the_end]))
+      print(splitArrays[splitArrays.__len__()-1],"\t",the_end,"\t", sum(df_yaw['RotTorq'][the_start:the_end])/the_end)
+      pass
+
+  #analysisFolder(analysisFiles)
+
+
+  def summaryFolder(folder):
+      files=[]
+      listdir(analysisFolder,files)
+      for file in files:
+          analysisFile(file)
+      pass
+
+
+  summaryFolder(analysisFolder)
+
+#+END_SRC
+
+
+改进文件过滤
+
+
+#+BEGIN_SRC python
+
+  import pandas as pd
+  import os
+
+  analysisFiles='J:\\BaiduYunDownload\\FAST816\\CertTest\\Output5MWYaw\\analysis15.csv'
+  analysisFolder='J:\\BaiduYunDownload\\FAST816\\CertTest\\Output5MWYaw\\'
+
+  def file_list_start_WithStr_EndWithOut(dirname, sta='ana',ext='.csv'):
+      """获取目录下所有特定后缀的文件
+      @param dirname: str 目录的完整路径
+      @param ext: str 后缀名, 以点号开头
+      @return: list(str) 所有子文件名(不包含路径)组成的列表
+      """
+      return list(filter(
+          lambda filename: os.path.splitext(filename)[1] == ext and \
+          os.path.splitext(filename)[0].startswith(sta),
+          os.listdir(dirname)))
+
+  def analysisFile(file):
+      df_yaw=pd.read_csv(file)
+      splitArrays=file.split('\\')
+      the_end=df_yaw['RotTorq'].__len__()
+      the_start=(the_end-the_end*1/4).__int__();
+      print(sum(df_yaw['RotTorq'][the_start:the_end]))
+      print(splitArrays[splitArrays.__len__()-1],"\t",the_end,"\t", sum(df_yaw['RotTorq'][the_start:the_end])/the_end)
+      pass
+
+
+  def summaryFolder(folder):
+      files=[]
+      #listdir(analysisFolder,files)
+      files=file_list_start_WithStr_EndWithOut(analysisFolder,sta='ana',ext='.csv')
+      for file in files:
+          analysisFile(analysisFolder+file)
+      pass
+
+
+  summaryFolder(analysisFolder)
+#+END_SRC
+
+
+
+然后你就接着可以改进字段等操作了
+
+
+** 总结
+
+你想要让函数怎么用起来，先写出来，把他的名字和所需参数放上去。
+然后再逐步建立起来即可。
+
+这种编程方式叫做`wishful thinking`

@@ -746,3 +746,9 @@ SPITZNER ENGINEERS owns or has significant involvement in more than 60 publicati
 Standard for Verification and Validation in Computational Fluid Dynamics and Heat Transfer
 
 https://www.techstreet.com/standards/asme-v-v-20-2009-r2016?product_id=1669326
+** Batsov(projectile and cider author)
+
+https://emacsredux.com/blog/2019/01/10/the-emacs-year-in-review/
+ 
+Batsov个人主页 https://metaredux.com/projects/
+super save也是他写的

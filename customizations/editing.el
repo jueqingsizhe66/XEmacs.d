@@ -389,7 +389,8 @@ modifications)."
 (require 'fic-mode)
 ;; (add-hook 'prog-mode-hook 'fixme-mode)
 ;; (add-hook 'org-mode-hook 'fixme-mode)
-;; FIXME(yezhaoliang) 
+;; FIXME(yezhaoliang)
+
 
 
 
@@ -398,7 +399,7 @@ modifications)."
 (add-hook 'org-mode-hook 'fixme-mode)
 (add-hook 'markdown-mode-hook 'fixme-mode)
 
-
+(global-hl-todo-mode 1)
 
 
 (require 'init-thing-edit)
@@ -409,6 +410,7 @@ modifications)."
 
 (require 'lazy-search)
 (global-set-key (kbd "M-s") 'lazy-search)
+
 
 ;; bacon global minor mode
 (beacon-mode 1)
