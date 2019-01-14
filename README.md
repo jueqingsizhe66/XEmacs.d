@@ -14,7 +14,7 @@
     
     Let it(means something) connect with functionality or with relationship
     it maybe unexisted------Wishful programming---functional programming(愿望编程)
-    ---通过命令流，架构，配置，实现你的愿望!
+    ---通过命令流，架构，配置，实现你的任务和愿望!
     
     Extension of function without modification
 

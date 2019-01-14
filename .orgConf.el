@@ -336,7 +336,7 @@ Captured %<%Y-%m-%d %H:%M>
                                :empty-lines 1 ) 
                               ("t" "Todo" entry  (file+headline "~/.emacs.d/GTD/orgBoss/newgtd.org"
                                                                 "Tasks")
-                               "* TODO [#B] %^{Wishful Task} %T %^g
+                               "* TODO [#B] %^{Working Task} %T %^g
                     :PROPERTIES:
                     :CREATED: %U
                     :Effort: %^{effort|1:00|0:30|2:00|4:00|6:00|8:00|10:00|12:00|14:00|16:00}
@@ -350,7 +350,7 @@ Captured %<%Y-%m-%d %H:%M>
                                :clock-resume t ) 
                               ("T" "QuickTask" entry  (file+headline
                                                        "~/.emacs.d/GTD/orgBoss/newgtd.org" "Tasks")
-                               "* TODO [#C] %^{Wishful Task} %T\nSCHEDULED:%t\n
+                               "* TODO [#C] %^{Working Task} %T\nSCHEDULED:%t\n
                     :PROPERTIES:
                     :CREATED: %U
                     :END:
@@ -358,17 +358,17 @@ Captured %<%Y-%m-%d %H:%M>
                         " 
                                :clock-in t 
                                :clock-resume t ) 
-                              ("I" "Interrupted Task" entry  (file+headline
-                                                              "~/.emacs.d/GTD/orgBoss/newgtd.org"
-                                                              "Tasks") "* STARTED %^{Wishful Task} %T
+                              ("I" "Write your Wishes" entry  (file+headline
+                                                               "~/.emacs.d/GTD/orgBoss/newgtd.org"
+                                                               "Wishes") "* TODO %^{Wishful achievement} %T
 
                     :PROPERTIES:
                     :CREATED: %U
                     :END:
 " 
 
-                                                              :clock-in 
-                                                              :clock-resume) 
+                                                               :clock-in 
+                                                               :clock-resume) 
                               ("i" "IDEA" entry  (file+headline
                                                   "~/.emacs.d/GTD/orgBoss/IDEA/idea.org" "IDEA")
                                "* TODO [#A] %^{What's your greatIDEA (Briefly)} %T \n %?
