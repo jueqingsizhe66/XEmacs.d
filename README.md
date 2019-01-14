@@ -1,7 +1,3 @@
-;;; README.md --- Insert description here -*- lexical-binding: t -*-
-;;; Commentary:
-;;; Code:
-
 # 主要目的: Emacs learning(org-mode) ---Emacsable
 ## 次要目的: clojure(closure) learning ----Clojureable
 ### 最终目的: Exercise yourself! Train yourself(训练你自己)! Teach yourself! Tell yourself something!
@@ -14,10 +10,11 @@
          focus let you achieve your thinking.
 
     Use your force, make it reachable(reference--relationship---interaction), Zhao!
-    Make it useable!
+    Make it useable! 
     
     Let it(means something) connect with functionality or with relationship
-    it maybe unexisted
+    it maybe unexisted------Wishful programming---functional programming(愿望编程)
+    ---通过命令流，架构，配置，实现你的愿望!
     
     Extension of function without modification
 

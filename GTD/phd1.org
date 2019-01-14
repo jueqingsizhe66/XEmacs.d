@@ -1623,7 +1623,7 @@ https://mp.weixin.qq.com/s/o9RZObStZNLPT9I7Y7wmuQ
 
 是按照距离来判断的，方圆多少米要降低到一定范围内，具体数值记不太清了
 
-* TODO [#A] 基于多轴角运动的气动特性和流场分析大论文 <2018-06-25 周一 16:19>[6/10] :学术:
+* TODO [#A] 基于多轴角运动的气动特性和流场分析大论文 <2018-06-25 周一 16:19>[7/10] :学术:
 DEADLINE: <2019-04-15 周一>
                     :PROPERTIES:
                     :Effort: 16:00
@@ -1650,6 +1650,8 @@ DEADLINE: <2019-04-15 周一>
                     - State "TODO"       from "TODO"       [2018-08-01 周三 08:48]
                     - State "TODO"       from "TODO"          [2018-07-31 周二 16:19]
                     :LOGBOOK:
+                    - State "TODO"       from "TODO"          T:[2019-01-14 周一 12:37]
+                    - State "TODO"       from "TODO"          T:[2019-01-14 周一 12:36]
                     - State "TODO"       from "TODO"       T:[2018-12-18 周二 08:38]
                     - State "TODO"       from "TODO"       T:[2018-12-18 周二 08:38]
                     - State "TODO"       from "TODO"          T:[2018-12-11 周二 14:43]
@@ -1814,7 +1816,7 @@ CLOSED: [2018-08-23 周四 19:46]
 |                              |                            |
 
 
-*** TODO [#A] NREL 5MW fluent静态和动态偏航计算 <2018-06-25 周一 08:42>[3/5] :学术:
+*** TODO [#A] NREL 5MW fluent静态和动态偏航计算 <2018-06-25 周一 08:42>[4/5] :学术:
 DEADLINE: <2018-08-01 周三>
                     :PROPERTIES:
                     :Effort: 16:00
@@ -1900,8 +1902,8 @@ CLOSED: [2018-08-01 周三 10:48]
 3. [ ] PIV实验
 
 
-**** TODO [#A]  NREL5MW动态数据处理+文章写作 <2018-08-23 周四 18:52> :@NCEPU:
-DEADLINE: <2018-12-14 周五> SCHEDULED: <2018-08-23 周四>
+**** ABORT [#A]  NREL5MW动态数据处理+文章写作 <2018-08-23 周四 18:52> :@NCEPU:
+CLOSED: [2019-01-14 周一 12:37] DEADLINE: <2018-12-14 周五> SCHEDULED: <2018-08-23 周四>
                     :PROPERTIES:
                     :Effort: 4:00
                     :END:
@@ -1969,8 +1971,8 @@ CLOSED: [2018-11-20 周二 13:48] DEADLINE: <2018-11-01 周四>
 <Unsteady aerodynamics of offshore floating wind turbines in platform
 pitching motion using vortex lattice method>
 图3是我昨天跟你说的情况，就是一定叶展高度的水平面的图
-*** TODO [#B] 修正nrel5MW处理cn ct代码 <2018-08-29 周三 10:33>        :@NCEPU:
-SCHEDULED: <2018-08-29 周三>
+*** ABORT [#B] 修正nrel5MW处理cn ct代码 <2018-08-29 周三 10:33>    :@NCEPU:
+CLOSED: [2019-01-14 周一 12:36] SCHEDULED: <2018-08-29 周三>
                     :PROPERTIES:
                     :Effort: 4:00
                     :CATEGORY: Coding

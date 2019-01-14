@@ -96,15 +96,20 @@ CLOSED: [2017-12-11 周一 19:56]
 :END:
 - State "DONE"       from "TODO"          [2017-12-11 周一 19:56]
 Captured 2017-09-27 22:52
-** 学习 Get Things Done
+** DONE Get Things Done
+CLOSED: [2019-01-14 周一 12:34]
                     :PROPERTIES:
                     :Effort: 4:00
+                    :END:
+                    :LOGBOOK:
+                    - State "DONE"       from "学习"       T:[2019-01-14 周一 12:34]
                     :END:
                     - State "学习"       from "TODO"          [2018-06-27 周三 15:35]
                     Captured 2017-09-28 11:21
 *** 1. you capture the ideas or todos(capture--refile--consider,organize---review---do)
 *** 2. you capture your todos with time, so you have time pocket(momentum); However
-**** PENDING [#B] clojure学习 <2017-11-20 周一 13:52 +1w>          :@F708:
+**** DONE [#B] clojure学习 <2017-11-20 周一 13:52>                    :@F708:
+CLOSED: [2019-01-14 周一 12:38]
                     :PROPERTIES:
                     :Effort: 1:00
                     :LAST_REPEAT: [2017-12-22 周五 10:38]
@@ -112,6 +117,7 @@ Captured 2017-09-27 22:52
                     
                     - State "DONE"       from "PENDING"    [2017-12-22 周五 10:38]
                     :LOGBOOK:
+                    - State "DONE"       from "PENDING"    T:[2019-01-14 周一 12:38]
                     CLOCK: [2017-11-22 周三 12:07]--[2017-11-22 周三 13:38] =>  1:31
                     CLOCK: [2017-11-21 周二 17:51]--[2017-11-21 周二 22:38] =>  4:47
                     CLOCK: [2017-11-21 周二 15:42]--[2017-11-21 周二 17:20] =>  1:38
@@ -618,16 +624,19 @@ http://www.howardism.org/Technical/Emacs/spreadsheet.html
 #+END_EXAMPLE
 
 
-** TODO [#B] 番茄时间(30min)-for 倒计时 <2017-10-28 周六 16:21>         :@work:
+** DONE [#B] 番茄时间(30min)-for 倒计时 <2017-10-28 周六 16:21>         :@work:
+CLOSED: [2019-01-14 周一 12:34]
                     :PROPERTIES:
                     :Effort: 0:30
-                    :LAST_REPEAT: [2018-12-04 周二 14:06]
+                    :LAST_REPEAT: [2019-01-14 周一 12:34]
                     :END:
                     - State "DONE"       from "PENDING"    [2018-02-08 周四 13:07]
                     - State "DONE"       from "PENDING"    [2018-02-08 周四 13:06]
                     - State "PENDING"    from "PENDING"    [2018-02-08 周四 13:06]
                     - State "DONE"       from "TODO"          [2018-02-08 周四 13:06]
                     :LOGBOOK:
+                    - State "DONE"       from "PENDING"    T:[2019-01-14 周一 12:34]
+                    - State "DONE"       from "TODO"          T:[2019-01-14 周一 12:34]
                     - State "TODO"       from "PENDING"    T:[2018-12-04 周二 14:07]
                     - State "DONE"       from "PENDING"    T:[2018-12-04 周二 14:06]
                     CLOCK: [2017-10-28 周六 16:22]--[2017-10-28 周六 16:24] =>  0:02
@@ -638,7 +647,7 @@ http://www.howardism.org/Technical/Emacs/spreadsheet.html
           |-------------------------------------------------+--------+------|
           | *Total time*                                    | *0:02* |      |
           |-------------------------------------------------+--------+------|
-          | \_  番茄时间(30min) <2017-11-07 周二 16:21 +1w> |        | 0:02 |
+          | \_  番茄时间(30min) <2017-11-14 周二 16:21> |        | 0:02 |
           #+END:
           
                     
@@ -2303,7 +2312,7 @@ DEADLINE: <2019-03-02 周六>
                     
 争取每天做到
 <2019-01-05 18:32> 锻炼两个小时
-** TODO [#B] 博士大论文写作 <2018-11-30 周五 11:47>[0%]                  :学术:
+** TODO [#A] 博士大论文写作 <2018-11-30 周五 11:47>[0%]                  :学术:
 DEADLINE: <2019-03-25 周一>
                     :PROPERTIES:
                     :Effort: 4:00
@@ -2454,7 +2463,7 @@ CLOSED: [2019-01-04 周五 23:23] DEADLINE: <2019-01-01 周二>
 1. NREL PhaseVI平台偏航，在一个周期内的变化过程
 2. 5MW动态偏航部分
 3. 5MW平台变桨和平台旋转
-** TODO [#B] 重新激活idea <2019-01-01 周二 21:22>                   :@NCEPU:
+** TODO [#D] 重新激活idea <2019-01-01 周二 21:22>                      :@NCEPU:
 DEADLINE: <2019-01-24 周四>
                     :PROPERTIES:
                     :CREATED: [2019-01-01 周二 21:22]
@@ -2466,7 +2475,7 @@ DEADLINE: <2019-01-24 周四>
 
               过期前一周进行重新激活      
               
-** TODO [#B] 学习t-io <2019-01-02 周三 17:05>                         :java:
+** TODO [#C] 学习t-io <2019-01-02 周三 17:05>                            :java:
                     :PROPERTIES:
                     :CREATED: [2019-01-02 周三 17:05]
                     :Effort: 16:00
@@ -2494,7 +2503,7 @@ CLOSED: [2019-01-04 周五 23:23]
 
                     
 确定一下
-** TODO [#B] 更换翼型时候的注意事项 <2019-01-11 周五 16:50>         :@NCEPU:
+** TODO [#D] 更换翼型时候的注意事项 <2019-01-11 周五 16:50>            :@NCEPU:
 DEADLINE: <2019-01-14 周一>
                     :PROPERTIES:
                     :CREATED: [2019-01-11 周五 16:50]

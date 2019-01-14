@@ -336,7 +336,7 @@ Captured %<%Y-%m-%d %H:%M>
                                :empty-lines 1 ) 
                               ("t" "Todo" entry  (file+headline "~/.emacs.d/GTD/orgBoss/newgtd.org"
                                                                 "Tasks")
-                               "* TODO [#B] %^{Task} %T %^g
+                               "* TODO [#B] %^{Wishful Task} %T %^g
                     :PROPERTIES:
                     :CREATED: %U
                     :Effort: %^{effort|1:00|0:30|2:00|4:00|6:00|8:00|10:00|12:00|14:00|16:00}
@@ -350,7 +350,7 @@ Captured %<%Y-%m-%d %H:%M>
                                :clock-resume t ) 
                               ("T" "QuickTask" entry  (file+headline
                                                        "~/.emacs.d/GTD/orgBoss/newgtd.org" "Tasks")
-                               "* TODO [#C] %^{Task} %T\nSCHEDULED:%t\n
+                               "* TODO [#C] %^{Wishful Task} %T\nSCHEDULED:%t\n
                     :PROPERTIES:
                     :CREATED: %U
                     :END:
@@ -360,7 +360,7 @@ Captured %<%Y-%m-%d %H:%M>
                                :clock-resume t ) 
                               ("I" "Interrupted Task" entry  (file+headline
                                                               "~/.emacs.d/GTD/orgBoss/newgtd.org"
-                                                              "Tasks") "* STARTED %^{Task} %T
+                                                              "Tasks") "* STARTED %^{Wishful Task} %T
 
                     :PROPERTIES:
                     :CREATED: %U
@@ -371,7 +371,7 @@ Captured %<%Y-%m-%d %H:%M>
                                                               :clock-resume) 
                               ("i" "IDEA" entry  (file+headline
                                                   "~/.emacs.d/GTD/orgBoss/IDEA/idea.org" "IDEA")
-                               "* TODO [#A] %^{What's your IDEA (Briefly)} %T \n %?
+                               "* TODO [#A] %^{What's your greatIDEA (Briefly)} %T \n %?
 
                     :PROPERTIES:
                     :CREATED: %U
@@ -452,7 +452,7 @@ Captured %<%Y-%m-%d %H:%M>
                               ;;                "\n* %^{name} :contact:\n\n")
                               ("q" "Quick note" entry (file+headline
                                                        "~/.emacs.d/GTD/orgBoss/Note/notes.org"
-                                                       "Quick notes") "* %^{Keyword?} [#B]  %^g
+                                                       "Quick notes") "* %^{Fact Headline?} [#B]  %^g
 
                     :PROPERTIES:
                     :CREATED: %U
